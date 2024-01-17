@@ -6,7 +6,7 @@ import { TRPCError } from "@trpc/server";
 
 export const handler = async () => {
   try {
-    if (HOSTED_CAL_FEATURES) {
+    if (!HOSTED_CAL_FEATURES) {
       return {
         connectionExists: null,
       };

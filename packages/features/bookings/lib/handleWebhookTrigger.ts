@@ -19,6 +19,7 @@ export async function handleWebhookTrigger(args: {
             `Error executing webhook for event: ${args.eventTrigger}, URL: ${sub.subscriberUrl}`,
             e
           );
+          console.error(`Error executing webhook for event: bookingId: ${args.webhookData?.bookingId}, uid: ${args.webhookData?.uid}`)
         }
       )
     );

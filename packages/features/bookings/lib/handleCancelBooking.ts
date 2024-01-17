@@ -305,6 +305,7 @@ async function handler(req: CustomRequest) {
       smsReminderNumber: bookingToDelete.smsReminderNumber || undefined,
     }).catch((e) => {
       console.error(`Error executing webhook for event: ${eventTrigger}, URL: ${webhook.subscriberUrl}`, e);
+      console.error(`Error executing webhook for event: bookingId: ${evt?.bookingId}, uid: ${evt?.uid}`);
     })
   );
   await Promise.all(promises);
@@ -798,6 +799,7 @@ async function handleSeatedEventCancellation(
         `Error executing webhook for event: ${WebhookTriggerEvents.BOOKING_CANCELLED}, URL: ${webhook.subscriberUrl}`,
         e
       );
+      console.error(`Error executing webhook for event: bookingId: ${evt?.bookingId}, uid: ${evt?.uid}`);
     })
   );
   await Promise.all(promises);
