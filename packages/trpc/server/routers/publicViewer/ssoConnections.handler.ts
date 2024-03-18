@@ -5,6 +5,9 @@ import { HOSTED_CAL_FEATURES } from "@calcom/lib/constants";
 import { TRPCError } from "@trpc/server";
 
 export const handler = async () => {
+  return {
+    connectionExists: null,
+  };
   try {
     if (HOSTED_CAL_FEATURES || !isSAMLLoginEnabled) {
       return {

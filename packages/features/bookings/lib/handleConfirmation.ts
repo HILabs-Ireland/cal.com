@@ -356,6 +356,7 @@ export async function handleConfirmation(args: {
           `Error executing webhook for event: ${WebhookTriggerEvents.BOOKING_CREATED}, URL: ${sub.subscriberUrl}`,
           e
         );
+        console.error(`Error executing webhook for event: bookingId: ${bookingId}, uid: ${evt?.uid}`);
       })
     );
 

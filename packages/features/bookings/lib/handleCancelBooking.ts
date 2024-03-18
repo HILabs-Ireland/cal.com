@@ -285,6 +285,7 @@ async function handler(req: CustomRequest) {
       smsReminderNumber: bookingToDelete.smsReminderNumber || undefined,
     }).catch((e) => {
       console.error(`Error executing webhook for event: ${eventTrigger}, URL: ${webhook.subscriberUrl}`, e);
+      console.error(`Error executing webhook for event: bookingId: ${evt?.bookingId}, uid: ${evt?.uid}`);
     })
   );
   await Promise.all(promises);
