@@ -283,10 +283,21 @@ async function handler(req: CustomRequest) {
       ...eventTypeInfo,
       status: "CANCELLED",
       smsReminderNumber: bookingToDelete.smsReminderNumber || undefined,
-    }).catch((e) => {
-      console.error(`Error executing webhook for event: ${eventTrigger}, URL: ${webhook.subscriberUrl}`, e);
-      console.error(`Error executing webhook for event: bookingId: ${evt?.bookingId}, uid: ${evt?.uid}`);
     })
+      .then((res) => {
+        console.log(
+          `Webhook Response ok: ${res?.ok} status: ${res?.status} bookingId: ${evt?.bookingId} uid: ${evt?.uid}`
+        );
+        if (!res?.ok) {
+          console.error(
+            `Webhook error for event: ${eventTrigger} bookingId: ${evt?.bookingId}, uid: ${evt?.uid}`
+          );
+        }
+      })
+      .catch((e) => {
+        console.error(`Error executing webhook for event: ${eventTrigger}, URL: ${webhook.subscriberUrl}`, e);
+        console.error(`Error executing webhook for event: bookingId: ${evt?.bookingId}, uid: ${evt?.uid}`);
+      })
   );
   await Promise.all(promises);
 

@@ -351,13 +351,24 @@ export async function handleConfirmation(args: {
         status: "ACCEPTED",
         smsReminderNumber: booking.smsReminderNumber || undefined,
         metadata: meetingUrl ? { videoCallUrl: meetingUrl } : undefined,
-      }).catch((e) => {
-        console.error(
-          `Error executing webhook for event: ${WebhookTriggerEvents.BOOKING_CREATED}, URL: ${sub.subscriberUrl}`,
-          e
-        );
-        console.error(`Error executing webhook for event: bookingId: ${bookingId}, uid: ${evt?.uid}`);
       })
+        .then((res) => {
+          console.log(
+            `Webhook Response ok: ${res?.ok} status: ${res?.status} bookingId: ${evt?.bookingId} uid: ${evt?.uid}`
+          );
+          if (!res?.ok) {
+            console.error(
+              `Webhook error for event: ${WebhookTriggerEvents.BOOKING_CREATED} bookingId: ${evt?.bookingId}, uid: ${evt?.uid}`
+            );
+          }
+        })
+        .catch((e) => {
+          console.error(
+            `Error executing webhook for event: ${WebhookTriggerEvents.BOOKING_CREATED}, URL: ${sub.subscriberUrl}`,
+            e
+          );
+          console.error(`Error executing webhook for event: bookingId: ${bookingId}, uid: ${evt?.uid}`);
+        })
     );
 
     await Promise.all(promises);
