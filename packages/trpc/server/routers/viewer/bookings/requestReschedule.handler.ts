@@ -304,13 +304,8 @@ export const requestRescheduleHandler = async ({ ctx, input }: RequestReschedule
     })
       .then((res) => {
         console.log(
-          `Webhook Response ok: ${res?.ok} status: ${res?.status} bookingId: ${evt?.bookingId} uid: ${evt?.uid}`
+          `Webhook Response ok: ${res?.ok} status: ${res?.status} event: ${eventTrigger} bookingId: ${bookingToReschedule.id}, uid: ${evt?.uid}`
         );
-        if (!res?.ok) {
-          console.error(
-            `Webhook error for event: ${eventTrigger} bookingId: ${evt?.bookingId}, uid: ${evt?.uid}`
-          );
-        }
       })
       .catch((e) => {
         console.error(`Error executing webhook for event: ${eventTrigger}, URL: ${webhook.subscriberUrl}`, e);

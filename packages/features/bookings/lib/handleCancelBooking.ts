@@ -276,7 +276,7 @@ async function handler(req: CustomRequest) {
   // If it's just an attendee of a booking then just remove them from that booking
   const result = await cancelAttendeeSeat(req, dataForWebhooks);
   if (result) return { success: true };
-
+  console.log(`Starting webhook for event: ${eventTrigger} bookingId: ${evt?.bookingId}, uid: ${evt?.uid}`);
   const promises = webhooks.map((webhook) =>
     sendPayload(webhook.secret, eventTrigger, new Date().toISOString(), webhook, {
       ...evt,
@@ -286,13 +286,8 @@ async function handler(req: CustomRequest) {
     })
       .then((res) => {
         console.log(
-          `Webhook Response ok: ${res?.ok} status: ${res?.status} bookingId: ${evt?.bookingId} uid: ${evt?.uid}`
+          `Webhook Response ok: ${res?.ok} status: ${res?.status} event: ${eventTrigger} bookingId: ${evt?.bookingId}, uid: ${evt?.uid}`
         );
-        if (!res?.ok) {
-          console.error(
-            `Webhook error for event: ${eventTrigger} bookingId: ${evt?.bookingId}, uid: ${evt?.uid}`
-          );
-        }
       })
       .catch((e) => {
         console.error(`Error executing webhook for event: ${eventTrigger}, URL: ${webhook.subscriberUrl}`, e);

@@ -12,17 +12,15 @@ export async function handleWebhookTrigger(args: {
   try {
     const subscribers = await getWebhooks(args.subscriberOptions);
 
+    console.log(
+      `Starting webhook for event: ${args.eventTrigger} bookingId: ${args.webhookData?.bookingId} uid: ${args.webhookData?.uid}`
+    );
     const promises = subscribers.map((sub) =>
       sendPayload(sub.secret, args.eventTrigger, new Date().toISOString(), sub, args.webhookData)
         .then((res) => {
           console.log(
-            `Webhook Response ok: ${res?.ok} status: ${res?.status} bookingId: ${args.webhookData?.bookingId} uid: ${args.webhookData?.uid}`
+            `Webhook Response ok: ${res?.ok} status: ${res?.status} event: ${args.eventTrigger} bookingId: ${args.webhookData?.bookingId} uid: ${args.webhookData?.uid}`
           );
-          if (!res?.ok) {
-            console.error(
-              `Webhook error for event: ${args.eventTrigger} bookingId: ${args.webhookData?.bookingId} uid: ${args.webhookData?.uid}`
-            );
-          }
         })
         .catch((e) => {
           console.error(

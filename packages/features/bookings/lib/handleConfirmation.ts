@@ -354,13 +354,8 @@ export async function handleConfirmation(args: {
       })
         .then((res) => {
           console.log(
-            `Webhook Response ok: ${res?.ok} status: ${res?.status} bookingId: ${evt?.bookingId} uid: ${evt?.uid}`
+            `Webhook Response ok: ${res?.ok} status: ${res?.status} event: ${WebhookTriggerEvents.BOOKING_CREATED} bookingId: ${evt?.bookingId} uid: ${evt?.uid}`
           );
-          if (!res?.ok) {
-            console.error(
-              `Webhook error for event: ${WebhookTriggerEvents.BOOKING_CREATED} bookingId: ${evt?.bookingId}, uid: ${evt?.uid}`
-            );
-          }
         })
         .catch((e) => {
           console.error(
