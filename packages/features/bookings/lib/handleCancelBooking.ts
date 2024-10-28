@@ -332,6 +332,7 @@ async function handler(req: CustomRequest) {
   const dataForWebhooks = { evt, webhooks, eventTypeInfo };
 
   // If it's just an attendee of a booking then just remove them from that booking
+  log.info(`Starting webhook for event: ${eventTrigger} bookingId: ${evt?.bookingId}, uid: ${evt?.uid}`);
   const result = await cancelAttendeeSeat(
     req,
     dataForWebhooks,
@@ -353,12 +354,22 @@ async function handler(req: CustomRequest) {
       status: "CANCELLED",
       smsReminderNumber: bookingToDelete.smsReminderNumber || undefined,
       cancelledBy: cancelledBy,
-    }).catch((e) => {
-      logger.error(
-        `Error executing webhook for event: ${eventTrigger}, URL: ${webhook.subscriberUrl}, bookingId: ${evt.bookingId}, bookingUid: ${evt.uid}`,
-        safeStringify(e)
-      );
     })
+      .catch((e) => {
+        log.error(
+          `Error executing webhook for event: ${eventTrigger}, URL: ${webhook.subscriberUrl}, bookingId: ${evt.bookingId}, bookingUid: ${evt.uid}`,
+          safeStringify(e)
+        );
+      })
+      .then((res) => {
+        log.info(
+          `Webhook Response ok: ${res?.ok} status: ${res?.status} event: ${eventTrigger} bookingId: ${evt?.bookingId}, uid: ${evt?.uid}`
+        );
+      })
+      .catch((e) => {
+        log.error(`Error executing webhook for event: ${eventTrigger}, URL: ${webhook.subscriberUrl}`, e);
+        log.error(`Error executing webhook for event: bookingId: ${evt?.bookingId}, uid: ${evt?.uid}`);
+      })
   );
   await Promise.all(promises);
 

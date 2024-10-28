@@ -409,18 +409,19 @@ export async function handleConfirmation(args: {
     };
 
     const promises = subscribersBookingCreated.map((sub) =>
-      sendPayload(
-        sub.secret,
-        WebhookTriggerEvents.BOOKING_CREATED,
-        new Date().toISOString(),
-        sub,
-        payload
-      ).catch((e) => {
-        log.error(
-          `Error executing webhook for event: ${WebhookTriggerEvents.BOOKING_CREATED}, URL: ${sub.subscriberUrl}, bookingId: ${evt.bookingId}, bookingUid: ${evt.uid}`,
-          safeStringify(e)
-        );
-      })
+      sendPayload(sub.secret, WebhookTriggerEvents.BOOKING_CREATED, new Date().toISOString(), sub, payload)
+        .then((res) => {
+          log.info(
+            `Webhook Response ok: ${res?.ok} status: ${res?.status} event: ${WebhookTriggerEvents.BOOKING_CREATED} bookingId: ${evt?.bookingId} uid: ${evt?.uid}`
+          );
+        })
+        .catch((e) => {
+          log.error(
+            `Error executing webhook for event: ${WebhookTriggerEvents.BOOKING_CREATED}, URL: ${sub.subscriberUrl}`,
+            e
+          );
+          log.error(`Error executing webhook for event: bookingId: ${bookingId}, uid: ${evt?.uid}`);
+        })
     );
 
     await Promise.all(promises);

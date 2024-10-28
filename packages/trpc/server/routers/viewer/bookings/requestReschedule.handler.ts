@@ -316,12 +316,19 @@ export const requestRescheduleHandler = async ({ ctx, input }: RequestReschedule
       ...evt,
       smsReminderNumber: bookingToReschedule.smsReminderNumber || undefined,
       cancelledBy: user.email,
-    }).catch((e) => {
-      log.error(
-        `Error executing webhook for event: ${eventTrigger}, URL: ${webhook.subscriberUrl}, bookingId: ${evt.bookingId}, bookingUid: ${evt.uid}`,
-        safeStringify(e)
-      );
     })
+      .then((res) => {
+        log.info(
+          `Webhook Response ok: ${res?.ok} status: ${res?.status} event: ${eventTrigger} bookingId: ${bookingToReschedule.id}, uid: ${evt?.uid}`
+        );
+      })
+      .catch((e) => {
+        log.error(`Error executing webhook for event: ${eventTrigger}, URL: ${webhook.subscriberUrl}`);
+        log.error(
+          `Error executing webhook for event: ${eventTrigger}, URL: ${webhook.subscriberUrl}, bookingId: ${evt.bookingId}, bookingUid: ${evt.uid}`,
+          safeStringify(e)
+        );
+      })
   );
   await Promise.all(promises);
 };
