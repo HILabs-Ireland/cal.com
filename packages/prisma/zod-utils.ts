@@ -236,7 +236,11 @@ export const bookingCreateBodySchema = z.object({
   eventTypeSlug: z.string().optional(),
   rescheduleUid: z.string().optional(),
   recurringEventId: z.string().optional(),
-  rescheduledBy: z.string().email({ message: "Invalid email" }).optional(),
+  rescheduledBy: z
+    .string()
+    .regex(/^[A-Za-z0-9+/=]*$/)
+    .max(200)
+    .optional(), // Montu - remove email validation for base64 usage
   start: z.string(),
   timeZone: z.string().refine((value: string) => isSupportedTimeZone(value), { message: "Invalid timezone" }),
   user: z.union([z.string(), z.array(z.string())]).optional(),
@@ -320,7 +324,11 @@ export const schemaBookingCancelParams = z.object({
   allRemainingBookings: z.boolean().optional(),
   cancellationReason: z.string().optional(),
   seatReferenceUid: z.string().optional(),
-  cancelledBy: z.string().email({ message: "Invalid email" }).optional(),
+  cancelledBy: z
+    .string()
+    .regex(/^[A-Za-z0-9+/=]*$/)
+    .max(200)
+    .optional(), // Montu - remove email validation for base64 usage
 });
 
 export const vitalSettingsUpdateSchema = z.object({
