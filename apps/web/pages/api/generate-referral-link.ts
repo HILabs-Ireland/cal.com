@@ -9,16 +9,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const session = await getServerSession({ req, res });
+  const session = await getServerSession({ req });
 
   if (!session?.user?.username) {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
   try {
-    return await dub.links.get({
+    const { shortLink } = await dub.links.get({
       externalId: `ext_${session.user.id.toString()}`,
     });
+    return res.status(200).json({ shortLink });
   } catch (error) {
     console.log("Referral link not found, creating...");
   }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { TApiKeys } from "@calcom/ee/api-keys/components/ApiKeyListItem";
 import LicenseRequired from "@calcom/ee/common/components/LicenseRequired";
@@ -9,25 +9,38 @@ import ApiKeyListItem from "@calcom/features/ee/api-keys/components/ApiKeyListIt
 import { APP_NAME } from "@calcom/lib/constants";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { trpc } from "@calcom/trpc/react";
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  EmptyScreen,
-  Meta,
-  SkeletonContainer,
-  SkeletonText,
-} from "@calcom/ui";
+import { Button, Dialog, DialogContent, EmptyScreen, SkeletonContainer, SkeletonText } from "@calcom/ui";
 
 const SkeletonLoader = ({ title, description }: { title: string; description: string }) => {
   return (
     <SkeletonContainer>
-      <Meta title={title} description={description} borderInShellHeader={true} />
       <div className="divide-subtle border-subtle space-y-6 rounded-b-lg border border-t-0 px-6 py-4">
         <SkeletonText className="h-8 w-full" />
         <SkeletonText className="h-8 w-full" />
       </div>
     </SkeletonContainer>
+  );
+};
+
+export const apiKeyModalRef = {
+  current: null as null | ((show: boolean) => void),
+};
+export const apiKeyToEditRef = {
+  current: null as null | ((apiKey: (TApiKeys & { neverExpires?: boolean }) | undefined) => void),
+};
+
+export const NewApiKeyButton = () => {
+  const { t } = useLocale();
+  return (
+    <Button
+      color="secondary"
+      StartIcon="plus"
+      onClick={() => {
+        apiKeyModalRef.current?.(true);
+        apiKeyToEditRef.current?.(undefined);
+      }}>
+      {t("add")}
+    </Button>
   );
 };
 
@@ -41,19 +54,14 @@ const ApiKeysView = () => {
     undefined
   );
 
-  const NewApiKeyButton = () => {
-    return (
-      <Button
-        color="secondary"
-        StartIcon="plus"
-        onClick={() => {
-          setApiKeyToEdit(undefined);
-          setApiKeyModal(true);
-        }}>
-        {t("add")}
-      </Button>
-    );
-  };
+  useEffect(() => {
+    apiKeyModalRef.current = setApiKeyModal;
+    apiKeyToEditRef.current = setApiKeyToEdit;
+    return () => {
+      apiKeyModalRef.current = null;
+      apiKeyToEditRef.current = null;
+    };
+  }, []);
 
   if (isPending || !data) {
     return (

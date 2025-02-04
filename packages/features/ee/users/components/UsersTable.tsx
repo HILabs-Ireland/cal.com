@@ -116,12 +116,12 @@ function UsersTableBare() {
           })),
         };
       });
+      utils.viewer.admin.listPaginated.invalidate();
     },
   });
 
   const handleImpersonateUser = async (username: string | null) => {
-    await signIn("impersonation-auth", { redirect: false, username: username });
-    router.push(`/event-types`);
+    await signIn("impersonation-auth", { username: username, callbackUrl: `${WEBAPP_URL}/event-types` });
   };
 
   //we must flatten the array of arrays from the useInfiniteQuery hook
@@ -187,14 +187,16 @@ function UsersTableBare() {
                     />
 
                     <div className="text-subtle ml-4 font-medium">
-                      <span className="text-default">{user.name}</span>
-                      <span className="ml-3">/{user.username}</span>
-                      {user.locked && (
-                        <span className="ml-3">
-                          <Icon name="lock" />
-                        </span>
-                      )}
-                      <br />
+                      <div className="flex flex-row">
+                        <span className="text-default">{user.name}</span>
+                        <span className="ml-3">/{user.username}</span>
+                        {user.locked && (
+                          <span className="ml-3">
+                            <Icon name="lock" />
+                          </span>
+                        )}
+                        <br />
+                      </div>
                       <span className="break-all">{user.email}</span>
                     </div>
                   </div>

@@ -254,7 +254,7 @@ export const Components: Record<FieldType, Component> = {
                       value={value[index]}
                       className={inputClassName}
                       onChange={(e) => {
-                        value[index] = e.target.value;
+                        value[index] = e.target.value.toLowerCase();
                         setValue(value);
                       }}
                       placeholder={placeholder}
@@ -306,8 +306,8 @@ export const Components: Record<FieldType, Component> = {
                 value.push("");
                 setValue(value);
               }}
-              className="mr-auto">
-              {label}
+              className="mr-auto h-fit whitespace-normal text-left">
+              <span className="flex-1">{label}</span>
             </Button>
           )}
         </>
