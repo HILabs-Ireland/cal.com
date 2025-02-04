@@ -43,8 +43,16 @@ const schemaBookingEditParams = z
     title: z.string().optional(),
     startTime: iso8601.optional(),
     endTime: iso8601.optional(),
-    cancelledBy: z.string().email({ message: "Invalid Email" }).optional(),
-    rescheduledBy: z.string().email({ message: "Invalid Email" }).optional(),
+    cancelledBy: z
+      .string()
+      .regex(/^[A-Za-z0-9+/=]*$/)
+      .max(200)
+      .optional(), // Montu - remove email validation for base64 usage
+    rescheduledBy: z
+      .string()
+      .regex(/^[A-Za-z0-9+/=]*$/)
+      .max(200)
+      .optional(), // Montu - remove email validation for base64 usage
     // Not supporting responses in edit as that might require re-triggering emails
     // responses
   })

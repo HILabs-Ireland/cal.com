@@ -14,18 +14,31 @@ export async function handleWebhookTrigger(args: {
   try {
     if (args.isDryRun) return;
     const subscribers = await getWebhooks(args.subscriberOptions);
-
+    if (isEventPayload(args.webhookData)) {
+      logger.info(
+        `Starting webhook for event: ${args.eventTrigger} bookingId: ${args.webhookData?.bookingId} uid: ${args.webhookData?.uid}`
+      );
+    }
     const promises = subscribers.map((sub) =>
-      sendPayload(sub.secret, args.eventTrigger, new Date().toISOString(), sub, args.webhookData).catch(
-        (e) => {
+      sendPayload(sub.secret, args.eventTrigger, new Date().toISOString(), sub, args.webhookData)
+        .then((res) => {
+          if (isEventPayload(args.webhookData)) {
+            logger.info(
+              `Webhook Response ok: ${res?.ok} status: ${res?.status} event: ${args.eventTrigger} bookingId: ${args.webhookData?.bookingId} uid: ${args.webhookData?.uid}`
+            );
+          }
+        })
+        .catch((e) => {
           if (isEventPayload(args.webhookData)) {
             logger.error(
               `Error executing webhook for event: ${args.eventTrigger}, URL: ${sub.subscriberUrl}, booking id: ${args.webhookData.bookingId}, booking uid: ${args.webhookData.uid}`,
               safeStringify(e)
             );
+            logger.error(
+              `Error executing webhook for event: bookingId: ${args.webhookData?.bookingId}, uid: ${args.webhookData?.uid}`
+            );
           }
-        }
-      )
+        })
     );
     await Promise.all(promises);
   } catch (error) {
