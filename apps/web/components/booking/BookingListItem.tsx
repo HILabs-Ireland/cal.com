@@ -17,7 +17,7 @@ import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { useGetTheme } from "@calcom/lib/hooks/useTheme";
 import isSmsCalEmail from "@calcom/lib/isSmsCalEmail";
 import { getEveryFreqFor } from "@calcom/lib/recurringStrings";
-import { BookingStatus, SchedulingType } from "@calcom/prisma/enums";
+import { BookingStatus } from "@calcom/prisma/enums";
 import { bookingMetadataSchema } from "@calcom/prisma/zod-utils";
 import type { RouterInputs, RouterOutputs } from "@calcom/trpc/react";
 import { trpc } from "@calcom/trpc/react";
@@ -267,16 +267,22 @@ function BookingListItem(booking: BookingItemProps) {
     },
   ];
 
-  if (booking.eventType.schedulingType === SchedulingType.ROUND_ROBIN) {
-    editBookingActions.push({
-      id: "reassign ",
-      label: t("reassign"),
-      onClick: () => {
-        setIsOpenReassignDialog(true);
-      },
-      icon: "users" as const,
-    });
-  }
+  /**
+   *
+   * This action doesn not fire a webhook.
+   * While convienient, we would lose sync of which nurse is assigned to which patient.
+   * So our system would be displaying incorrect data.
+   */
+  // if (booking.eventType.schedulingType === SchedulingType.ROUND_ROBIN) {
+  //   editBookingActions.push({
+  //     id: "reassign ",
+  //     label: t("reassign"),
+  //     onClick: () => {
+  //       setIsOpenReassignDialog(true);
+  //     },
+  //     icon: "users" as const,
+  //   });
+  // }
 
   if (isBookingInPast || isOngoing) {
     editBookingActions.push({

@@ -329,6 +329,7 @@ export const useBookings = ({ event, hashedLink, bookingForm, metadata, teamMemb
         eventTypeSlug: eventSlug,
         formerTime:
           isRescheduling && bookingData?.startTime ? dayjs(bookingData.startTime).toString() : undefined,
+        rescheduledBy, // ensure further reschedules performed on the success page are recorded correctly
       };
 
       if (isRescheduling) {
