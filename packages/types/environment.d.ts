@@ -27,7 +27,10 @@ declare namespace NodeJS {
     readonly STRIPE_PRIVATE_KEY: string | undefined;
     readonly STRIPE_CLIENT_ID: string | undefined;
     readonly STRIPE_WEBHOOK_SECRET: string | undefined;
+<<<<<<< HEAD
     readonly STRIPE_WEBHOOK_SECRET_APPS: string | undefined;
+=======
+>>>>>>> cbfc609d18 (ENV var phase out)
     readonly PAYMENT_FEE_PERCENTAGE: number | undefined;
     readonly PAYMENT_FEE_FIXED: number | undefined;
     readonly NEXT_PUBLIC_INTERCOM_APP_ID: string | undefined;

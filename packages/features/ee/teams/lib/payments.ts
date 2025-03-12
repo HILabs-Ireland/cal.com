@@ -55,7 +55,7 @@ export const generateTeamCheckoutSession = async ({
     line_items: [
       {
         /** We only need to set the base price and we can upsell it directly on Stripe's checkout  */
-        price: process.env.STRIPE_TEAM_MONTHLY_PRICE_ID,
+        price: 0,
         /**Initially it will be just the team owner */
         quantity: 1,
       },
@@ -139,6 +139,7 @@ export const purchaseTeamOrOrgSubscription = async (input: {
    * Determines the priceId depending on if a custom price is required or not.
    * If the organization has a custom price per seat, it will create a new price in stripe and return its ID.
    */
+<<<<<<< HEAD
   async function getPriceId() {
     const fixedPriceId = isOrg
       ? process.env.STRIPE_ORG_MONTHLY_PRICE_ID
@@ -149,6 +150,10 @@ export const purchaseTeamOrOrgSubscription = async (input: {
         "You need to have STRIPE_ORG_MONTHLY_PRICE_ID and STRIPE_TEAM_MONTHLY_PRICE_ID env variables set"
       );
     }
+=======
+  async function getFixedPrice() {
+    const fixedPriceId = 0;
+>>>>>>> cbfc609d18 (ENV var phase out)
 
     log.debug("Getting price ID", safeStringify({ fixedPriceId, isOrg, teamId, pricePerSeat }));
 

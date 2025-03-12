@@ -5,7 +5,6 @@ import type { GetServerSidePropsContext, NextApiResponse } from "next";
 import { v4 as uuidv4 } from "uuid";
 
 import stripe from "@calcom/app-store/stripepayment/lib/server";
-import { getPremiumMonthlyPlanPriceId } from "@calcom/app-store/stripepayment/lib/utils";
 import { sendChangeOfEmailVerification } from "@calcom/features/auth/lib/verifyEmail";
 import { getFeatureFlag } from "@calcom/features/flags/server/utils";
 import hasKeyInMetadata from "@calcom/lib/hasKeyInMetadata";
@@ -123,9 +122,7 @@ export const updateProfileHandler = async ({ ctx, input }: UpdateProfileOptions)
     // Iterate over subscriptions and look for premium product id and status active
     // @TODO: iterate if stripeSubscriptions.hasMore is true
     const isPremiumUsernameSubscriptionActive = stripeSubscriptions.data.some(
-      (subscription) =>
-        subscription.items.data[0].price.id === getPremiumMonthlyPlanPriceId() &&
-        subscription.status === "active"
+      (subscription) => subscription.items.data[0].price.id === 0 && subscription.status === "active"
     );
 
     if (!isPremiumUsernameSubscriptionActive) {

@@ -6,9 +6,17 @@ import stripe from "@calcom/app-store/stripepayment/lib/server";
 
 import { purchaseTeamOrOrgSubscription } from "./payments";
 
+<<<<<<< HEAD
 beforeAll(() => {
   vi.stubEnv("STRIPE_ORG_MONTHLY_PRICE_ID", "STRIPE_ORG_MONTHLY_PRICE_ID");
   vi.stubEnv("STRIPE_TEAM_MONTHLY_PRICE_ID", "STRIPE_TEAM_MONTHLY_PRICE_ID");
+=======
+beforeEach(async () => {
+  vi.resetAllMocks();
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  await prismock.reset();
+>>>>>>> cbfc609d18 (ENV var phase out)
 });
 
 afterAll(() => {

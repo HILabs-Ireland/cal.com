@@ -190,7 +190,7 @@ const generateTeamCheckoutSession = async ({
     line_items: [
       {
         /** We only need to set the base price and we can upsell it directly on Stripe's checkout  */
-        price: process.env.STRIPE_TEAM_MONTHLY_PRICE_ID,
+        price: 0,
         /**Initially it will be just the team owner */
         quantity: 1,
       },
