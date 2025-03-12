@@ -217,15 +217,7 @@ export const purchaseTeamOrOrgSubscription = async (input: {
    * If the organization has a custom price per seat, it will create a new price in stripe and return its ID.
    */
   async function getFixedPrice() {
-    const fixedPriceId = isOrg
-      ? process.env.STRIPE_ORG_MONTHLY_PRICE_ID
-      : process.env.STRIPE_TEAM_MONTHLY_PRICE_ID;
-
-    if (!fixedPriceId) {
-      throw new Error(
-        "You need to have STRIPE_ORG_MONTHLY_PRICE_ID and STRIPE_TEAM_MONTHLY_PRICE_ID env variables set"
-      );
-    }
+    const fixedPriceId = "0";
 
     log.debug("Getting price ID", safeStringify({ fixedPriceId, isOrg, teamId, pricePerSeat }));
 
