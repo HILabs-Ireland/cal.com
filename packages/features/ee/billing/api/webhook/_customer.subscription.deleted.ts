@@ -5,8 +5,6 @@ type Data = SWHMap["customer.subscription.deleted"]["data"];
 
 type Handlers = Record<`prod_${string}`, () => LazyModule<Data>>;
 
-const STRIPE_TEAM_PRODUCT_ID = process.env.STRIPE_TEAM_PRODUCT_ID || "";
-
 const stripeWebhookProductHandler = (handlers: Handlers) => async (data: Data) => {
   const subscription = data.object;
   // @ts-expect-error - we know subscription.plan.product is defined when unsubscribing
@@ -21,5 +19,5 @@ const stripeWebhookProductHandler = (handlers: Handlers) => async (data: Data) =
 };
 
 export default stripeWebhookProductHandler({
-  [STRIPE_TEAM_PRODUCT_ID]: () => import("./_customer.subscription.deleted.team-plan"),
+  [""]: () => import("./_customer.subscription.deleted.team-plan"),
 });

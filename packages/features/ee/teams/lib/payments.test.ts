@@ -11,8 +11,6 @@ import {
 } from "./payments";
 
 beforeEach(async () => {
-  vi.stubEnv("STRIPE_ORG_MONTHLY_PRICE_ID", "STRIPE_ORG_MONTHLY_PRICE_ID");
-  vi.stubEnv("STRIPE_TEAM_MONTHLY_PRICE_ID", "STRIPE_TEAM_MONTHLY_PRICE_ID");
   vi.resetAllMocks();
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore

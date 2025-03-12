@@ -82,13 +82,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       throw new HttpCode({ statusCode: 400, message: "Missing stripe-signature" });
     }
 
-    if (!process.env.STRIPE_WEBHOOK_SECRET_APPS) {
-      throw new HttpCode({ statusCode: 500, message: "Missing process.env.STRIPE_WEBHOOK_SECRET_APPS" });
-    }
     const requestBuffer = await buffer(req);
     const payload = requestBuffer.toString();
 
-    const event = stripe.webhooks.constructEvent(payload, sig, process.env.STRIPE_WEBHOOK_SECRET_APPS);
+    const event = stripe.webhooks.constructEvent(payload, sig, "");
 
     const handler = webhookHandlers[event.type];
     if (handler) {
