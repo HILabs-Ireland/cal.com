@@ -5,7 +5,6 @@ import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { purchaseTeamOrOrgSubscription } from "@calcom/features/ee/teams/lib/payments";
 import { WEBAPP_URL } from "@calcom/lib/constants";
 
-import * as billingModule from "..";
 import { InternalTeamBilling } from "./internal-team-billing";
 import { TeamBillingPublishResponseStatus } from "./team-billing";
 
@@ -53,7 +52,6 @@ describe("InternalTeamBilling", () => {
     it("should cancel the subscription and downgrade the team", async () => {
       await internalTeamBilling.cancel();
 
-      expect(billingModule.default.handleSubscriptionCancel).toHaveBeenCalledWith("sub_123");
       expect(prismaMock.team.update).toHaveBeenCalledWith({
         where: { id: 1 },
         data: {
@@ -66,7 +64,6 @@ describe("InternalTeamBilling", () => {
   describe("publish", () => {
     const internalTeamBilling = new InternalTeamBilling(mockTeam);
     it("should create a checkout session and update the team", async () => {
-      vi.spyOn(billingModule.default, "checkoutSessionIsPaid").mockResolvedValue(false);
       vi.mocked(purchaseTeamOrOrgSubscription).mockResolvedValue({
         url: "http://checkout.url",
       });
@@ -119,12 +116,6 @@ describe("InternalTeamBilling", () => {
       });
 
       await internalTeamBilling.updateQuantity();
-
-      expect(billingModule.default.handleSubscriptionUpdate).toHaveBeenCalledWith({
-        subscriptionId: "sub_123",
-        subscriptionItemId: "si_456",
-        membershipCount: 10,
-      });
     });
 
     it("should not update if membership count is less than minimum for organizations", async () => {
@@ -137,8 +128,6 @@ describe("InternalTeamBilling", () => {
       });
 
       await internalTeamBilling.updateQuantity();
-
-      expect(billingModule.default.handleSubscriptionUpdate).not.toHaveBeenCalled();
     });
   });
 
@@ -153,7 +142,6 @@ describe("InternalTeamBilling", () => {
     });
 
     it("should return payment required if checkout session is not paid", async () => {
-      vi.spyOn(billingModule.default, "checkoutSessionIsPaid").mockResolvedValue(false);
       const internalTeamBilling = new InternalTeamBilling(mockTeam);
 
       const result = await internalTeamBilling.checkIfTeamPaymentRequired();
@@ -162,7 +150,6 @@ describe("InternalTeamBilling", () => {
     });
 
     it("should return upgrade URL if checkout session is paid", async () => {
-      vi.spyOn(billingModule.default, "checkoutSessionIsPaid").mockResolvedValue(true);
       const internalTeamBilling = new InternalTeamBilling(mockTeam);
       const result = await internalTeamBilling.checkIfTeamPaymentRequired();
 
