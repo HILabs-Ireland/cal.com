@@ -18,6 +18,10 @@ export type AppConfig = {
   stripe: {
     apiKey: string;
     webhookSecret: string;
+<<<<<<< HEAD
+=======
+    teamMonthlyPriceId: string;
+>>>>>>> c2bc804973 (Remove usage from booking service)
   };
   app: {
     baseUrl: string;

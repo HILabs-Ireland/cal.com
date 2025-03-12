@@ -30,8 +30,11 @@ export type Environment = {
   RATE_LIMIT_DEFAULT_BLOCK_DURATION_MS: number;
   AXIOM_DATASET: string;
   AXIOM_TOKEN: string;
+<<<<<<< HEAD
   IS_TEAM_BILLING_ENABLED: boolean;
 >>>>>>> cbfc609d18 (ENV var phase out)
+=======
+>>>>>>> c2bc804973 (Remove usage from booking service)
 };
 
 export const getEnv = <K extends keyof Environment>(key: K, fallback?: Environment[K]): Environment[K] => {

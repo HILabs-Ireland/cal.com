@@ -3,7 +3,7 @@ import type { NextApiRequest } from "next";
 import { getStripeCustomerIdFromUserId } from "@calcom/app-store/stripepayment/lib/customer";
 import stripe from "@calcom/app-store/stripepayment/lib/server";
 import { IS_PRODUCTION } from "@calcom/lib/constants";
-import { IS_TEAM_BILLING_ENABLED, WEBAPP_URL } from "@calcom/lib/constants";
+import { WEBAPP_URL } from "@calcom/lib/constants";
 import { HttpError } from "@calcom/lib/http-error";
 import { defaultResponder } from "@calcom/lib/server";
 import prisma from "@calcom/prisma";
@@ -119,7 +119,11 @@ async function postHandler(req: NextApiRequest) {
     metadata: data.metadata === null ? {} : data.metadata || undefined,
   };
 
+<<<<<<< HEAD
   if (!IS_TEAM_BILLING_ENABLED) {
+=======
+  if (data.parentId) {
+>>>>>>> c2bc804973 (Remove usage from booking service)
     const team = await prisma.team.create({
       data: {
         ...cloneData,

@@ -2,7 +2,6 @@ import type { Prisma } from "@prisma/client";
 import type { NextApiRequest } from "next";
 
 import { purchaseTeamOrOrgSubscription } from "@calcom/features/ee/teams/lib/payments";
-import { IS_TEAM_BILLING_ENABLED } from "@calcom/lib/constants";
 import { HttpError } from "@calcom/lib/http-error";
 import { defaultResponder } from "@calcom/lib/server";
 import prisma from "@calcom/prisma";
@@ -104,20 +103,18 @@ export async function patchHandler(req: NextApiRequest) {
       requestedSlug: data.slug,
     };
     delete data.slug;
-    if (IS_TEAM_BILLING_ENABLED) {
-      const checkoutSession = await purchaseTeamOrOrgSubscription({
-        teamId: _team.id,
-        seatsUsed: _team.members.length,
-        userId,
-        pricePerSeat: null,
+    const checkoutSession = await purchaseTeamOrOrgSubscription({
+      teamId: _team.id,
+      seatsUsed: _team.members.length,
+      userId,
+      pricePerSeat: null,
+    });
+    if (!checkoutSession.url)
+      throw new TRPCError({
+        code: "INTERNAL_SERVER_ERROR",
+        message: "Failed retrieving a checkout session URL.",
       });
-      if (!checkoutSession.url)
-        throw new TRPCError({
-          code: "INTERNAL_SERVER_ERROR",
-          message: "Failed retrieving a checkout session URL.",
-        });
-      paymentUrl = checkoutSession.url;
-    }
+    paymentUrl = checkoutSession.url;
   }
 
   // TODO: Perhaps there is a better fix for this?

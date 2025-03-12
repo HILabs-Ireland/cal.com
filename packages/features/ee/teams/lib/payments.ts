@@ -183,6 +183,21 @@ export const purchaseTeamOrOrgSubscription = async (input: {
       throw new Error("Error in creation of custom price");
     }
   }
+<<<<<<< HEAD
+=======
+
+  /**
+   * Determines the priceId depending on if a custom price is required or not.
+   * If the organization has a custom price per seat, it will create a new price in stripe and return its ID.
+   */
+  async function getFixedPrice() {
+    const fixedPriceId = "0";
+
+    log.debug("Getting price ID", safeStringify({ fixedPriceId, isOrg, teamId, pricePerSeat }));
+
+    return fixedPriceId;
+  }
+>>>>>>> c2bc804973 (Remove usage from booking service)
 };
 
 const getTeamWithPaymentMetadata = async (teamId: number) => {

@@ -28,10 +28,14 @@ const loadConfig = (): AppConfig => {
       apiKey: getEnv("STRIPE_API_KEY"),
       webhookSecret: getEnv("STRIPE_WEBHOOK_SECRET"),
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       teamMonthlyPriceId: 0,
       isTeamBillingEnabled: getEnv("IS_TEAM_BILLING_ENABLED", true),
 >>>>>>> cbfc609d18 (ENV var phase out)
+=======
+      teamMonthlyPriceId: "0",
+>>>>>>> c2bc804973 (Remove usage from booking service)
     },
     app: {
       baseUrl: getEnv("WEB_APP_URL", "https://app.cal.com"),
