@@ -62,6 +62,10 @@ describe("OAuth Clients Endpoints", () => {
     let usersFixtures: UserRepositoryFixture;
     let membershipFixtures: MembershipRepositoryFixture;
     let teamFixtures: TeamRepositoryFixture;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files)
     let user: User;
     let org: Team;
     let app: INestApplication;
@@ -80,6 +84,10 @@ describe("OAuth Clients Endpoints", () => {
       usersFixtures = new UserRepositoryFixture(moduleRef);
       membershipFixtures = new MembershipRepositoryFixture(moduleRef);
       teamFixtures = new TeamRepositoryFixture(moduleRef);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files)
       user = await usersFixtures.create({
         email: userEmail,
       });
@@ -114,6 +122,10 @@ describe("OAuth Clients Endpoints", () => {
     let usersFixtures: UserRepositoryFixture;
     let membershipFixtures: MembershipRepositoryFixture;
     let teamFixtures: TeamRepositoryFixture;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files)
     let user: User;
     let org: Team;
     let app: INestApplication;
@@ -132,6 +144,10 @@ describe("OAuth Clients Endpoints", () => {
       usersFixtures = new UserRepositoryFixture(moduleRef);
       membershipFixtures = new MembershipRepositoryFixture(moduleRef);
       teamFixtures = new TeamRepositoryFixture(moduleRef);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files)
       user = await usersFixtures.create({
         email: userEmail,
       });

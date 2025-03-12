@@ -8,7 +8,10 @@ import { showToast } from "@calcom/ui";
 
 import { useCreateOAuthClient } from "@lib/hooks/settings/platform/oauth-clients/usePersistOAuthClient";
 
+<<<<<<< HEAD:apps/web/pages/settings/platform/oauth-clients/create.tsx
 import PageWrapper from "@components/PageWrapper";
+=======
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files):apps/web/modules/settings/platform/oauth-clients/create-new-view.tsx
 import { useGetUserAttributes } from "@components/settings/platform/hooks/useGetUserAttributes";
 import type { FormValues } from "@components/settings/platform/oauth-clients/oauth-client-form";
 import { OAuthClientForm } from "@components/settings/platform/oauth-clients/oauth-client-form";
@@ -16,7 +19,11 @@ import { OAuthClientForm } from "@components/settings/platform/oauth-clients/oau
 export default function CreateOAuthClient() {
   const searchParams = useCompatSearchParams();
   const router = useRouter();
+<<<<<<< HEAD:apps/web/pages/settings/platform/oauth-clients/create.tsx
   const clientId = searchParams?.get("clientId") || "";
+=======
+  const { t } = useLocale();
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files):apps/web/modules/settings/platform/oauth-clients/create-new-view.tsx
 
   const { isUserLoading, isPlatformUser, isPaidUser } = useGetUserAttributes();
 
@@ -81,9 +88,13 @@ export default function CreateOAuthClient() {
 
   return (
     <div>
+<<<<<<< HEAD:apps/web/pages/settings/platform/oauth-clients/create.tsx
       <Shell isPlatformUser={true} hideHeadingOnMobile withoutMain={false} SidebarContainer={<></>}>
         You are not subscribed to a Platform plan.
       </Shell>
+=======
+      <Shell withoutSeo={true} isPlatformUser={true} withoutMain={false} SidebarContainer={<></>} />
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files):apps/web/modules/settings/platform/oauth-clients/create-new-view.tsx
     </div>
   );
 }

@@ -1,12 +1,7 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 import { SUCCESS_STATUS } from "@calcom/platform-constants";
-import type {
-  ApiResponse,
-  CreateOAuthClientInput,
-  DeleteOAuthClientInput,
-  SubscribeTeamInput,
-} from "@calcom/platform-types";
+import type { ApiResponse, CreateOAuthClientInput, DeleteOAuthClientInput } from "@calcom/platform-types";
 import type { OAuthClient } from "@calcom/prisma/client";
 
 interface IPersistOAuthClient {
@@ -118,6 +113,7 @@ export const useDeleteOAuthClient = (
 
   return mutation;
 };
+<<<<<<< HEAD
 
 export const useCheckTeamBilling = (teamId?: number | null) => {
   const QUERY_KEY = "check-team-billing";
@@ -174,3 +170,5 @@ export const useSubscribeTeamToStripe = (
 
   return mutation;
 };
+=======
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files)

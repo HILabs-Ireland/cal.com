@@ -9,7 +9,10 @@ import { showToast } from "@calcom/ui";
 import { useOAuthClient } from "@lib/hooks/settings/platform/oauth-clients/useOAuthClients";
 import { useUpdateOAuthClient } from "@lib/hooks/settings/platform/oauth-clients/usePersistOAuthClient";
 
+<<<<<<< HEAD:apps/web/pages/settings/platform/oauth-clients/[clientId]/edit/index.tsx
 import PageWrapper from "@components/PageWrapper";
+=======
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files):apps/web/modules/settings/platform/oauth-clients/[clientId]/edit/edit-view.tsx
 import { useGetUserAttributes } from "@components/settings/platform/hooks/useGetUserAttributes";
 import type { FormValues } from "@components/settings/platform/oauth-clients/oauth-client-form";
 import { OAuthClientForm as EditOAuthClientForm } from "@components/settings/platform/oauth-clients/oauth-client-form";
@@ -48,7 +51,6 @@ export default function EditOAuthClient() {
   });
 
   const onSubmit = (data: FormValues) => {
-    let userPermissions = 0;
     const userRedirectUris = data.redirectUris.map((uri) => uri.uri).filter((uri) => !!uri);
 
     Object.keys(PERMISSIONS_GROUPED_MAP).forEach((key) => {
@@ -76,8 +78,13 @@ export default function EditOAuthClient() {
   if (isPlatformUser && isPaidUser) {
     return (
       <div>
+<<<<<<< HEAD:apps/web/pages/settings/platform/oauth-clients/[clientId]/edit/index.tsx
         <Shell title="OAuth client updation form" isPlatformUser={true}>
           <div className="m-2 md:mx-14 md:mx-5">
+=======
+        <Shell withoutSeo={true} title={t("oAuth_client_updation_form")} isPlatformUser={true}>
+          <div className="m-2 md:mx-14">
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files):apps/web/modules/settings/platform/oauth-clients/[clientId]/edit/edit-view.tsx
             <div className="border-subtle mx-auto block justify-between rounded-t-lg border px-4 py-6 sm:flex sm:px-6">
               <div className="flex w-full flex-col">
                 <h1 className="font-cal text-emphasis mb-1 text-xl font-semibold leading-5 tracking-wide">
@@ -123,9 +130,13 @@ export default function EditOAuthClient() {
 
   return (
     <div>
+<<<<<<< HEAD:apps/web/pages/settings/platform/oauth-clients/[clientId]/edit/index.tsx
       <Shell isPlatformUser={true} hideHeadingOnMobile withoutMain={false} SidebarContainer={<></>}>
         You are not subscribed to a Platform plan.
       </Shell>
+=======
+      <Shell withoutSeo={true} isPlatformUser={true} withoutMain={false} SidebarContainer={<></>} />
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files):apps/web/modules/settings/platform/oauth-clients/[clientId]/edit/edit-view.tsx
     </div>
   );
 }

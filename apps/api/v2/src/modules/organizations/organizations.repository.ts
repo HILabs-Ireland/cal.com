@@ -1,4 +1,3 @@
-import { PlatformPlan } from "@/modules/billing/types";
 import { PrismaReadService } from "@/modules/prisma/prisma-read.service";
 import { PrismaWriteService } from "@/modules/prisma/prisma-write.service";
 import { StripeService } from "@/modules/stripe/stripe.service";
@@ -20,6 +19,7 @@ export class OrganizationsRepository {
     });
   }
 
+<<<<<<< HEAD
   async findByIdIncludeBilling(orgId: number) {
     return this.dbRead.prisma.team.findUnique({
       where: {
@@ -55,6 +55,8 @@ export class OrganizationsRepository {
     return id;
   }
 
+=======
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files)
   async findTeamIdFromClientId(clientId: string) {
     return this.dbRead.prisma.team.findFirstOrThrow({
       where: {

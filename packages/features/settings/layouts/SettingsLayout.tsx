@@ -18,6 +18,7 @@ import { trpc } from "@calcom/trpc/react";
 import type { VerticalTabItemProps } from "@calcom/ui";
 import { Badge, Button, ErrorBoundary, Icon, Skeleton, useMeta, VerticalTabItem } from "@calcom/ui";
 
+<<<<<<< HEAD:packages/features/settings/layouts/SettingsLayout.tsx
 const tabs: VerticalTabItemProps[] = [
   {
     name: "my_account",
@@ -134,6 +135,121 @@ const tabs: VerticalTabItemProps[] = [
     ],
   },
 ];
+=======
+const getTabs = (orgBranding: OrganizationBranding | null) => {
+  const tabs: VerticalTabItemProps[] = [
+    {
+      name: "my_account",
+      href: "/settings/my-account",
+      icon: "user",
+      children: [
+        { name: "profile", href: "/settings/my-account/profile" },
+        { name: "general", href: "/settings/my-account/general" },
+        { name: "calendars", href: "/settings/my-account/calendars" },
+        { name: "conferencing", href: "/settings/my-account/conferencing" },
+        { name: "appearance", href: "/settings/my-account/appearance" },
+        { name: "out_of_office", href: "/settings/my-account/out-of-office" },
+        // TODO
+        // { name: "referrals", href: "/settings/my-account/referrals" },
+      ],
+    },
+    {
+      name: "security",
+      href: "/settings/security",
+      icon: "key",
+      children: [
+        { name: "password", href: "/settings/security/password" },
+        { name: "impersonation", href: "/settings/security/impersonation" },
+        { name: "2fa_auth", href: "/settings/security/two-factor-auth" },
+      ],
+    },
+    {
+      name: "developer",
+      href: "/settings/developer",
+      icon: "terminal",
+      children: [
+        //
+        { name: "webhooks", href: "/settings/developer/webhooks" },
+        { name: "api_keys", href: "/settings/developer/api-keys" },
+        { name: "admin_api", href: "/settings/organizations/admin-api" },
+        // TODO: Add profile level for embeds
+        // { name: "embeds", href: "/v2/settings/developer/embeds" },
+      ],
+    },
+    {
+      name: "organization",
+      href: "/settings/organizations",
+      children: [
+        {
+          name: "profile",
+          href: "/settings/organizations/profile",
+        },
+        {
+          name: "general",
+          href: "/settings/organizations/general",
+        },
+        ...(orgBranding
+          ? [
+              {
+                name: "members",
+                href: `/settings/organizations/${orgBranding.slug}/members`,
+              },
+            ]
+          : []),
+        {
+          name: "privacy",
+          href: "/settings/organizations/privacy",
+        },
+        { name: "OAuth Clients", href: "/settings/organizations/platform/oauth-clients" },
+        {
+          name: "SSO",
+          href: "/settings/organizations/sso",
+        },
+        {
+          name: "directory_sync",
+          href: "/settings/organizations/dsync",
+        },
+        {
+          name: "admin_api",
+          href: "https://cal.com/docs/enterprise-features/api/api-reference/bookings#admin-access",
+        },
+        // {
+        //   name: "domain_wide_delegation",
+        //   href: "/settings/organizations/domain-wide-delegation",
+        // },
+      ],
+    },
+    {
+      name: "teams",
+      href: "/teams",
+      icon: "users",
+      children: [],
+    },
+    {
+      name: "other_teams",
+      href: "/settings/organizations/teams/other",
+      icon: "users",
+      children: [],
+    },
+    {
+      name: "admin",
+      href: "/settings/admin",
+      icon: "lock",
+      children: [
+        //
+        { name: "features", href: "/settings/admin/flags" },
+        { name: "license", href: "/auth/setup?step=1" },
+        { name: "impersonation", href: "/settings/admin/impersonation" },
+        { name: "apps", href: "/settings/admin/apps/calendar" },
+        { name: "users", href: "/settings/admin/users" },
+        { name: "organizations", href: "/settings/admin/organizations" },
+        { name: "lockedSMS", href: "/settings/admin/lockedSMS" },
+        { name: "oAuth", href: "/settings/admin/oAuth" },
+        { name: "Workspace Platforms", href: "/settings/admin/workspace-platforms" },
+      ],
+    },
+  ];
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files):apps/web/app/settings/(settings-layout)/SettingsLayoutAppDirClient.tsx
 
 tabs.find((tab) => {
   if (tab.name === "security" && !HOSTED_CAL_FEATURES) {
@@ -146,7 +262,11 @@ tabs.find((tab) => {
 // The following keys are assigned to admin only
 const adminRequiredKeys = ["admin"];
 const organizationRequiredKeys = ["organization"];
+<<<<<<< HEAD:packages/features/settings/layouts/SettingsLayout.tsx
 const organizationAdminKeys = ["privacy", "appearance", "billing", "OAuth Clients", "SSO", "directory_sync"];
+=======
+const organizationAdminKeys = ["privacy", "OAuth Clients", "SSO", "directory_sync"];
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files):apps/web/app/settings/(settings-layout)/SettingsLayoutAppDirClient.tsx
 
 const useTabs = () => {
   const session = useSession();
@@ -245,7 +365,7 @@ const TeamListCollapsible = () => {
         tabMembers?.scrollIntoView({ behavior: "smooth" });
       }, 100);
     }
-  }, [searchParams?.get("id"), teams]);
+  }, [searchParams, teams]);
 
   return (
     <>
@@ -338,6 +458,7 @@ const TeamListCollapsible = () => {
                         textClassNames="px-3 text-emphasis font-medium text-sm"
                         disableChevron
                       />
+<<<<<<< HEAD:packages/features/settings/layouts/SettingsLayout.tsx
                       {/* Hide if there is a parent ID */}
                       {!team.parentId ? (
                         <>
@@ -349,6 +470,14 @@ const TeamListCollapsible = () => {
                           />
                         </>
                       ) : null}
+=======
+                      <VerticalTabItem
+                        name={t("settings")}
+                        href={`/settings/teams/${team.id}/settings`}
+                        textClassNames="px-3 text-emphasis font-medium text-sm"
+                        disableChevron
+                      />
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files):apps/web/app/settings/(settings-layout)/SettingsLayoutAppDirClient.tsx
                     </>
                   )}
                 </CollapsibleContent>
@@ -398,7 +527,7 @@ const SettingsSidebarContainer = ({
         tabMembers?.scrollIntoView({ behavior: "smooth" });
       }, 100);
     }
-  }, [searchParams?.get("id"), otherTeams]);
+  }, [otherTeams, searchParams]);
 
   const isOrgAdminOrOwner =
     currentOrg && currentOrg?.user?.role && ["OWNER", "ADMIN"].includes(currentOrg?.user?.role);
@@ -649,13 +778,13 @@ export default function SettingsLayout({
     return () => {
       window.removeEventListener("resize", closeSideContainer);
     };
-  }, []);
+  }, [setSideContainerOpen]);
 
   useEffect(() => {
     if (sideContainerOpen) {
       setSideContainerOpen(!sideContainerOpen);
     }
-  }, [pathname]);
+  }, [pathname, setSideContainerOpen, sideContainerOpen]);
 
   return (
     <Shell

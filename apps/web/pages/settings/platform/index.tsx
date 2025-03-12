@@ -1,5 +1,5 @@
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 import Shell from "@calcom/features/shell/Shell";
 import { showToast } from "@calcom/ui";
@@ -10,8 +10,12 @@ import {
 } from "@lib/hooks/settings/platform/oauth-clients/useOAuthClients";
 import { useDeleteOAuthClient } from "@lib/hooks/settings/platform/oauth-clients/usePersistOAuthClient";
 
+<<<<<<< HEAD:apps/web/pages/settings/platform/index.tsx
 import PageWrapper from "@components/PageWrapper";
 import { ManagedUserList } from "@components/settings/platform/dashboard/managed-user-list";
+=======
+import { HelpCards } from "@components/settings/platform/dashboard/HelpCards";
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files):apps/web/modules/settings/platform/platform-view.tsx
 import { OAuthClientsList } from "@components/settings/platform/dashboard/oauth-clients-list";
 import { useGetUserAttributes } from "@components/settings/platform/hooks/useGetUserAttributes";
 import { PlatformPricing } from "@components/settings/platform/pricing/platform-pricing";
@@ -19,9 +23,13 @@ import { PlatformPricing } from "@components/settings/platform/pricing/platform-
 const queryClient = new QueryClient();
 
 export default function Platform() {
+<<<<<<< HEAD:apps/web/pages/settings/platform/index.tsx
   const [initialClientId, setInitialClientId] = useState("");
   const [initialClientName, setInitialClientName] = useState("");
 
+=======
+  const { t } = useLocale();
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files):apps/web/modules/settings/platform/platform-view.tsx
   const { data, isLoading: isOAuthClientLoading, refetch: refetchClients } = useOAuthClients();
   const {
     isLoading: isManagedUserLoading,
@@ -29,8 +37,7 @@ export default function Platform() {
     refetch: refetchManagedUsers,
   } = useGetOAuthClientManagedUsers(initialClientId);
 
-  const { isUserLoading, isUserBillingDataLoading, isPlatformUser, isPaidUser, userBillingData, userOrgId } =
-    useGetUserAttributes();
+  const { isUserLoading, isPlatformUser, isPaidUser, userOrgId } = useGetUserAttributes();
 
   const { mutateAsync, isPending: isDeleting } = useDeleteOAuthClient({
     onSuccess: () => {
@@ -51,11 +58,25 @@ export default function Platform() {
 
   if (isUserLoading || isOAuthClientLoading) return <div className="m-5">Loading...</div>;
 
+<<<<<<< HEAD:apps/web/pages/settings/platform/index.tsx
   if (isUserBillingDataLoading && !userBillingData) {
     return <div className="m-5">Loading...</div>;
   }
 
   if (isPlatformUser && !isPaidUser) return <PlatformPricing teamId={userOrgId} />;
+=======
+  if (isPlatformUser && !isPaidUser)
+    return (
+      <PlatformPricing
+        teamId={userOrgId}
+        heading={
+          <div className="mb-5 text-center text-2xl font-semibold">
+            <h1>Subscribe to Platform</h1>
+          </div>
+        }
+      />
+    );
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files):apps/web/modules/settings/platform/platform-view.tsx
 
   if (isPlatformUser) {
     return (
@@ -95,9 +116,15 @@ export default function Platform() {
         isPlatformUser={true}
         hideHeadingOnMobile
         withoutMain={false}
+<<<<<<< HEAD:apps/web/pages/settings/platform/index.tsx
         SidebarContainer={<></>}>
         You are not subscribed to a Platform plan.
       </Shell>
+=======
+        withoutSeo={true}
+        SidebarContainer={<></>}
+      />
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files):apps/web/modules/settings/platform/platform-view.tsx
     </div>
   );
 }

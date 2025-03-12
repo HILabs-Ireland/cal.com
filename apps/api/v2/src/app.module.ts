@@ -1,7 +1,6 @@
 import appConfig from "@/config/app";
 import { AppLoggerMiddleware } from "@/middleware/app.logger.middleware";
 import { RewriterMiddleware } from "@/middleware/app.rewrites.middleware";
-import { JsonBodyMiddleware } from "@/middleware/body/json.body.middleware";
 import { RawBodyMiddleware } from "@/middleware/body/raw.body.middleware";
 import { ResponseInterceptor } from "@/middleware/request-ids/request-id.interceptor";
 import { RequestIdMiddleware } from "@/middleware/request-ids/request-id.middleware";
@@ -11,7 +10,13 @@ import { JwtModule } from "@/modules/jwt/jwt.module";
 import { PrismaModule } from "@/modules/prisma/prisma.module";
 import { RedisModule } from "@/modules/redis/redis.module";
 import { RedisService } from "@/modules/redis/redis.service";
+<<<<<<< HEAD
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
+=======
+import { ThrottlerStorageRedisService } from "@nest-lab/throttler-storage-redis";
+import { BullModule } from "@nestjs/bull";
+import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
+>>>>>>> 79bd2d1104 (Remove global vars and dedicated js files)
 import { ConfigModule } from "@nestjs/config";
 import { APP_INTERCEPTOR, RouterModule } from "@nestjs/core";
 import { seconds, ThrottlerModule } from "@nestjs/throttler";
@@ -65,11 +70,6 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer): void {
     consumer
       .apply(RawBodyMiddleware)
-      .forRoutes({
-        path: "/api/v2/billing/webhook",
-        method: RequestMethod.POST,
-      })
-      .apply(JsonBodyMiddleware)
       .forRoutes("*")
       .apply(RequestIdMiddleware)
       .forRoutes("*")

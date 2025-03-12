@@ -43,7 +43,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       line_items: [
         {
           quantity: 1,
-          price: 0,
+          price: "0",
         },
       ],
       allow_promotion_codes: true,
