@@ -6,7 +6,6 @@ import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { MembershipRole } from "@calcom/prisma/enums";
 import { trpc } from "@calcom/trpc/react";
 import { Button } from "@calcom/ui";
-import NoPlatformPlan from "@calcom/web/components/settings/platform/dashboard/NoPlatformPlan";
 import { useGetUserAttributes } from "@calcom/web/components/settings/platform/hooks/useGetUserAttributes";
 import { PlatformPricing } from "@calcom/web/components/settings/platform/pricing/platform-pricing/index";
 
@@ -41,9 +40,7 @@ const PlatformMembersView = () => {
   if (!isPlatformUser)
     return (
       <div>
-        <Shell isPlatformUser={true} hideHeadingOnMobile withoutMain={false} SidebarContainer={<></>}>
-          <NoPlatformPlan />
-        </Shell>
+        <Shell isPlatformUser={true} withoutMain={false} SidebarContainer={<></>} />
       </div>
     );
 

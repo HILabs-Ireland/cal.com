@@ -42,7 +42,6 @@ export class TeamsController {
         status: SUCCESS_STATUS,
         data: {
           pendingTeam: plainToClass(TeamOutputDto, team.pendingTeam, { strategy: "excludeAll" }),
-          paymentLink: "",
           message: team.message,
         },
       };

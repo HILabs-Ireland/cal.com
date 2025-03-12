@@ -1,8 +1,6 @@
 import { API_VERSIONS_VALUES } from "@/lib/api-versions";
-import { PlatformPlan } from "@/modules/auth/decorators/billing/platform-plan.decorator";
 import { Roles } from "@/modules/auth/decorators/roles/roles.decorator";
 import { ApiAuthGuard } from "@/modules/auth/guards/api-auth/api-auth.guard";
-import { PlatformPlanGuard } from "@/modules/auth/guards/billing/platform-plan.guard";
 import { IsMembershipInOrg } from "@/modules/auth/guards/memberships/is-membership-in-org.guard";
 import { IsAdminAPIEnabledGuard } from "@/modules/auth/guards/organizations/is-admin-api-enabled.guard";
 import { IsOrgGuard } from "@/modules/auth/guards/organizations/is-org.guard";
@@ -40,13 +38,12 @@ import { SkipTakePagination } from "@calcom/platform-types";
   path: "/v2/organizations/:orgId/memberships",
   version: API_VERSIONS_VALUES,
 })
-@UseGuards(ApiAuthGuard, IsOrgGuard, RolesGuard, PlatformPlanGuard, IsAdminAPIEnabledGuard)
+@UseGuards(ApiAuthGuard, IsOrgGuard, RolesGuard, IsAdminAPIEnabledGuard)
 @DocsTags("Orgs / Memberships")
 export class OrganizationsMembershipsController {
   constructor(private organizationsMembershipService: OrganizationsMembershipService) {}
 
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @Get("/")
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: "Get all memberships" })
@@ -69,7 +66,6 @@ export class OrganizationsMembershipsController {
   }
 
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @Post("/")
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: "Create a membership" })
@@ -85,7 +81,6 @@ export class OrganizationsMembershipsController {
   }
 
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @UseGuards(IsMembershipInOrg)
   @Get("/:membershipId")
   @HttpCode(HttpStatus.OK)
@@ -102,7 +97,6 @@ export class OrganizationsMembershipsController {
   }
 
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @UseGuards(IsMembershipInOrg)
   @Delete("/:membershipId")
   @HttpCode(HttpStatus.OK)
@@ -120,7 +114,6 @@ export class OrganizationsMembershipsController {
 
   @UseGuards(IsMembershipInOrg)
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @Patch("/:membershipId")
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: "Update a membership" })

@@ -1,7 +1,7 @@
 "use client";
 
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 import Shell from "@calcom/features/shell/Shell";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
@@ -11,7 +11,6 @@ import { useOAuthClients } from "@lib/hooks/settings/platform/oauth-clients/useO
 import { useDeleteOAuthClient } from "@lib/hooks/settings/platform/oauth-clients/usePersistOAuthClient";
 
 import { HelpCards } from "@components/settings/platform/dashboard/HelpCards";
-import NoPlatformPlan from "@components/settings/platform/dashboard/NoPlatformPlan";
 import { OAuthClientsList } from "@components/settings/platform/dashboard/oauth-clients-list";
 import { useGetUserAttributes } from "@components/settings/platform/hooks/useGetUserAttributes";
 import { PlatformPricing } from "@components/settings/platform/pricing/platform-pricing";
@@ -20,13 +19,9 @@ const queryClient = new QueryClient();
 
 export default function Platform() {
   const { t } = useLocale();
-  const [initialClientId, setInitialClientId] = useState("");
-  const [initialClientName, setInitialClientName] = useState("");
-
   const { data, isLoading: isOAuthClientLoading, refetch: refetchClients } = useOAuthClients();
 
-  const { isUserLoading, isUserBillingDataLoading, isPlatformUser, isPaidUser, userBillingData, userOrgId } =
-    useGetUserAttributes();
+  const { isUserLoading, isPlatformUser, isPaidUser, userOrgId } = useGetUserAttributes();
 
   const { mutateAsync, isPending: isDeleting } = useDeleteOAuthClient({
     onSuccess: () => {
@@ -45,10 +40,6 @@ export default function Platform() {
   }, [data]);
 
   if (isUserLoading || isOAuthClientLoading) return <div className="m-5">Loading...</div>;
-
-  if (isUserBillingDataLoading && !userBillingData) {
-    return <div className="m-5">Loading...</div>;
-  }
 
   if (isPlatformUser && !isPaidUser)
     return (
@@ -92,9 +83,8 @@ export default function Platform() {
         hideHeadingOnMobile
         withoutMain={false}
         withoutSeo={true}
-        SidebarContainer={<></>}>
-        <NoPlatformPlan />
-      </Shell>
+        SidebarContainer={<></>}
+      />
     </div>
   );
 }

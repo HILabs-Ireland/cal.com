@@ -15,7 +15,6 @@ import {
   useUpdateOAuthClientWebhook,
 } from "@lib/hooks/settings/platform/oauth-clients/useOAuthClientWebhooks";
 
-import NoPlatformPlan from "@components/settings/platform/dashboard/NoPlatformPlan";
 import { useGetUserAttributes } from "@components/settings/platform/hooks/useGetUserAttributes";
 
 export default function EditOAuthClientWebhooks() {
@@ -126,14 +125,7 @@ export default function EditOAuthClientWebhooks() {
 
   return (
     <div>
-      <Shell
-        withoutSeo={true}
-        isPlatformUser={true}
-        hideHeadingOnMobile
-        withoutMain={false}
-        SidebarContainer={<></>}>
-        <NoPlatformPlan />
-      </Shell>
+      <Shell withoutSeo={true} isPlatformUser={true} withoutMain={false} SidebarContainer={<></>} />
     </div>
   );
 }

@@ -7,8 +7,6 @@ import { ConfigService } from "@nestjs/config";
 
 @Injectable()
 export class TeamsService {
-  private isTeamBillingEnabled = this.configService.get("stripe.isTeamBillingEnabled");
-
   constructor(
     private readonly teamsRepository: TeamsRepository,
     private readonly teamsMembershipsRepository: TeamsMembershipsRepository,

@@ -1,4 +1,3 @@
-import { getEnv } from "@/env";
 import { API_VERSIONS_VALUES } from "@/lib/api-versions";
 import { GetUser } from "@/modules/auth/decorators/get-user/get-user.decorator";
 import { MembershipRoles } from "@/modules/auth/decorators/roles/membership-roles.decorator";
@@ -30,14 +29,8 @@ import {
   Logger,
   UseGuards,
   NotFoundException,
-  BadRequestException,
 } from "@nestjs/common";
-import {
-  ApiTags as DocsTags,
-  ApiExcludeController as DocsExcludeController,
-  ApiOperation as DocsOperation,
-  ApiCreatedResponse as DocsCreatedResponse,
-} from "@nestjs/swagger";
+import { ApiOperation as DocsOperation, ApiCreatedResponse as DocsCreatedResponse } from "@nestjs/swagger";
 import { User, MembershipRole } from "@prisma/client";
 
 import { SUCCESS_STATUS } from "@calcom/platform-constants";
@@ -78,11 +71,6 @@ export class OAuthClientsController {
     this.logger.log(
       `For organisation ${organizationId} creating OAuth Client with data: ${JSON.stringify(body)}`
     );
-
-    const organization = await this.teamsRepository.findByIdIncludeBilling(organizationId);
-    if (!organization?.platformBilling || !organization?.platformBilling?.subscriptionId) {
-      throw new BadRequestException("Team is not subscribed, cannot create an OAuth Client.");
-    }
 
     const { id, secret } = await this.oauthClientRepository.createOAuthClient(organizationId, body);
 
