@@ -1,7 +1,6 @@
 import { EventTypesModule } from "@/ee/event-types/event-types.module";
 import { SchedulesModule } from "@/ee/schedules/schedules.module";
 import { AuthModule } from "@/modules/auth/auth.module";
-import { BillingModule } from "@/modules/billing/billing.module";
 import { MembershipsModule } from "@/modules/memberships/memberships.module";
 import { OAuthClientUsersController } from "@/modules/oauth-clients/controllers/oauth-client-users/oauth-client-users.controller";
 import { OAuthClientsController } from "@/modules/oauth-clients/controllers/oauth-clients/oauth-clients.controller";
@@ -31,8 +30,12 @@ import { Global, Module } from "@nestjs/common";
     EventTypesModule,
     OrganizationsModule,
     StripeModule,
+<<<<<<< HEAD
     BillingModule,
     SchedulesModule,
+=======
+    SchedulesModule_2024_04_15,
+>>>>>>> 89e759a251 (Remove billing module)
   ],
   providers: [
     OAuthClientRepository,
