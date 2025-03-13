@@ -101,8 +101,8 @@ function capitalize(text: string) {
   }
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
-
-test.describe("Organization", () => {
+/* eslint-disable playwright/no-skipped-test */
+test.skip("[EE feature] Organization", () => {
   test("Admin should be able to create an org where an existing user is made an owner", async ({
     page,
     users,

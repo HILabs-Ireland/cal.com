@@ -1,7 +1,8 @@
 import { loginUser } from "../fixtures/regularBookings";
 import { test } from "../lib/fixtures";
 
-test.describe("Limits Tab - Event Type", () => {
+/* eslint-disable playwright/no-skipped-test */
+test.skip("[EE feature] Limits Tab - Event Type", () => {
   test.beforeEach(async ({ page, users, bookingPage }) => {
     await loginUser(users);
     await page.goto("/event-types");

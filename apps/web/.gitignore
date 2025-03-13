@@ -17,6 +17,7 @@ playwright/screenshots
 playwright/artifacts
 playwright/results
 playwright/reports/*
+playwright/icons.e2e.ts-snapshots/*
 
 # next.js
 /.next/

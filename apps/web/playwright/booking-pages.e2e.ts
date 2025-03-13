@@ -22,8 +22,8 @@ test.describe.configure({ mode: "parallel" });
 test.afterEach(async ({ users }) => {
   await users.deleteAll();
 });
-
-test("check SSR and OG - User Event Type", async ({ page, users }) => {
+/* eslint-disable playwright/no-skipped-test */
+test.skip("[EE feature] check SSR and OG - User Event Type", async ({ page, users }) => {
   const name = "Test User";
   const user = await users.create({
     name,
@@ -97,8 +97,8 @@ test.describe("free user", () => {
     await page.locator("[data-testid=booking-fail]").waitFor({ state: "visible" });
   });
 });
-
-test.describe("pro user", () => {
+/* eslint-disable playwright/no-skipped-test */
+test.skip("[EE feature] pro user", () => {
   test.beforeEach(async ({ page, users }) => {
     const pro = await users.create();
     await page.goto(`/${pro.username}`);

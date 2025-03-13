@@ -17,6 +17,7 @@ coverage
 **/playwright/artifacts
 **/playwright/results
 **/playwright/reports/*
+test-insights.csv
 
 # next.js
 .next/

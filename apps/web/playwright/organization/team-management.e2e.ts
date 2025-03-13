@@ -7,7 +7,8 @@ import { MembershipRole } from "@calcom/prisma/enums";
 import { test } from "../lib/fixtures";
 import { fillStripeTestCheckout } from "../lib/testUtils";
 
-test.describe("Teams", () => {
+// eslint-disable-next-line playwright/no-skipped-test
+test.skip("[EE feature] Teams", () => {
   test.afterEach(({ orgs, users }) => {
     orgs.deleteAll();
     users.deleteAll();

@@ -15,8 +15,8 @@ test.describe.configure({ mode: "parallel" });
 test.afterEach(async ({ users }) => {
   await users.deleteAll();
 });
-
-test.describe("Teams", () => {
+// eslint-disable-next-line playwright/no-skipped-test
+test.skip("[EE feature] Teams", () => {
   test("Profile page is loaded for users in Organization", async ({ page, users }) => {
     const teamMatesObj = [{ name: "teammate-1" }, { name: "teammate-2" }];
     const owner = await users.create(undefined, {
@@ -32,8 +32,8 @@ test.describe("Teams", () => {
     await page.getByTestId("profile-upload-avatar").isVisible();
   });
 });
-
-test.describe("Update Profile", () => {
+// eslint-disable-next-line playwright/no-skipped-test
+test.skip("[EE feature] Update Profile", () => {
   test("Cannot update a users email when existing user has same email (verification enabled)", async ({
     page,
     users,

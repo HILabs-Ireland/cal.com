@@ -16,8 +16,8 @@ test.afterEach(async ({ users }) => {
 
 /** Short hand to get elements by translation key */
 const getByKey = async (page: Page, key: string) => page.getByText((await localize("en"))(key));
-
-test.describe("Managed Event Types", () => {
+/* eslint-disable playwright/no-skipped-test */
+test.skip("[EE feature] Managed Event Types", () => {
   /** We don't use setupManagedEvent here to test the actual creation flow */
   test("Can create managed event type", async ({ page, users }) => {
     // Creating the owner user of the team

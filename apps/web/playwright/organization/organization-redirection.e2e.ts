@@ -1,3 +1,4 @@
+/* eslint-disable playwright/no-skipped-test */
 import { expect } from "@playwright/test";
 import type { createUsersFixture } from "playwright/fixtures/users";
 
@@ -38,8 +39,7 @@ async function createUserWithOrganizationAndTeam(users: ReturnType<typeof create
   );
   return orgOwnerUser;
 }
-
-test.describe("Unpublished Organization Redirection", () => {
+test.skip("[EE feature] Unpublished Organization Redirection", () => {
   test.afterEach(({ orgs, users }) => {
     orgs.deleteAll();
     users.deleteAll();

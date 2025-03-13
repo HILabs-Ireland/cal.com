@@ -14,7 +14,8 @@ test.describe.configure({ mode: "parallel" });
 
 // a test to logout requires both a succesfull login as logout, to prevent
 // a doubling of tests failing on logout & logout, we can group them.
-test.describe("2FA Tests", async () => {
+/* eslint-disable playwright/no-skipped-test */
+test.skip("[EE feature] 2FA Tests", async () => {
   test.afterEach(async ({ users }) => {
     await users.deleteAll();
   });

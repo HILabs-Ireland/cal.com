@@ -8,6 +8,7 @@ test.use({
 });
 
 test("Icons render properly", async ({ page }) => {
+  await page.setViewportSize({ width: 1265, height: 1368 });
   await page.goto("/icons");
   await expect(page).toHaveScreenshot("icons.png", {
     maxDiffPixelRatio: 0.05,

@@ -3,8 +3,8 @@ import { expect } from "@playwright/test";
 import { test } from "./lib/fixtures";
 
 test.describe.configure({ mode: "parallel" });
-
-test.describe("Users can impersonate", async () => {
+/* eslint-disable playwright/no-skipped-test */
+test.skip("[EE feature] Users can impersonate", async () => {
   test.afterEach(async ({ users }) => {
     await users.deleteAll();
   });

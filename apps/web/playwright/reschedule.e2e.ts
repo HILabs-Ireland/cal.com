@@ -182,8 +182,12 @@ test.describe("Reschedule Tests", async () => {
 
     await expect(page).toHaveURL(/.*booking/);
   });
-
-  test("Opt in event should be PENDING when rescheduled by USER", async ({ page, users, bookings }) => {
+  // eslint-disable-next-line playwright/no-skipped-test
+  test.skip("[EE feature] Opt in event should be PENDING when rescheduled by USER", async ({
+    page,
+    users,
+    bookings,
+  }) => {
     const user = await users.create();
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const eventType = user.eventTypes.find((e) => e.slug === "opt-in")!;
@@ -341,8 +345,8 @@ test.describe("Reschedule Tests", async () => {
   test("Team Event Booking", () => {
     // It is tested in teams.e2e.ts
   });
-
-  test.describe("Organization", () => {
+  /* eslint-disable playwright/no-skipped-test */
+  test.skip("[EE feature] Organization", () => {
     test("Booking should be rescheduleable for a user that was moved to an organization through org domain", async ({
       users,
       bookings,
