@@ -10,8 +10,6 @@ const env: Partial<Omit<Environment, "NODE_ENV">> = {
   JWT_SECRET: "XF+Hws3A5g2eyWA5uGYYVJ74X+wrCWJ8oWo6kAfU6O8=",
   LOG_LEVEL: "trace",
   REDIS_URL: "redis://localhost:6379",
-  STRIPE_API_KEY: "sk_test_51J4",
-  STRIPE_WEBHOOK_SECRET: "whsec_51J4",
   IS_E2E: true,
   API_KEY_PREFIX: "cal_test_",
   GET_LICENSE_KEY_URL: " https://console.cal.com/api/license",

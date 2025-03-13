@@ -1,6 +1,5 @@
 import { expect } from "@playwright/test";
 
-import { IS_TEAM_BILLING_ENABLED } from "@calcom/lib/constants";
 import { prisma } from "@calcom/prisma";
 import { SchedulingType } from "@calcom/prisma/enums";
 
@@ -8,7 +7,6 @@ import { test, todo } from "./lib/fixtures";
 import {
   bookTimeSlot,
   confirmReschedule,
-  fillStripeTestCheckout,
   selectFirstAvailableTimeSlotNextMonth,
   testName,
 } from "./lib/testUtils";
@@ -166,8 +164,6 @@ test.describe("Teams - NonOrg", () => {
       // Click text=Continue
       await page.click("[type=submit]");
       // TODO: Figure out a way to make this more reliable
-      // eslint-disable-next-line playwright/no-conditional-in-test
-      if (IS_TEAM_BILLING_ENABLED) await fillStripeTestCheckout(page);
       await page.waitForURL(/\/settings\/teams\/(\d+)\/onboard-members.*$/i);
       // Click text=Continue
       await page.locator("[data-testid=publish-button]").click();

@@ -385,16 +385,6 @@ export function generateTotpCode(email: string) {
   return totp.generate(secret);
 }
 
-export async function fillStripeTestCheckout(page: Page) {
-  await page.fill("[name=cardNumber]", "4242424242424242");
-  await page.fill("[name=cardExpiry]", "12/30");
-  await page.fill("[name=cardCvc]", "111");
-  await page.fill("[name=billingName]", "Stripe Stripeson");
-  await page.selectOption("[name=billingCountry]", "US");
-  await page.fill("[name=billingPostalCode]", "12345");
-  await page.click(".SubmitButton--complete-Shimmer");
-}
-
 export function goToUrlWithErrorHandling({ page, url }: { page: Page; url: string }) {
   return new Promise<{ success: boolean; url: string }>(async (resolve) => {
     const onRequestFailed = (request: PlaywrightRequest) => {

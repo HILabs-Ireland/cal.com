@@ -14,8 +14,6 @@ export type Environment = {
   SENTRY_PROFILES_SAMPLE_RATE?: number;
   LOG_LEVEL: keyof typeof logLevels;
   REDIS_URL: string;
-  STRIPE_API_KEY: string;
-  STRIPE_WEBHOOK_SECRET: string;
   WEB_APP_URL: string;
   IS_E2E: boolean;
   CALCOM_LICENSE_KEY: string;
