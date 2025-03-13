@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import { updateQuantitySubscriptionFromStripe } from "@calcom/features/ee/teams/lib/payments";
+=======
+import { type TFunction } from "i18next";
+
+>>>>>>> 7581f5ca71 (Remove billing from handlers)
 import { checkRateLimitAndThrowError } from "@calcom/lib/checkRateLimitAndThrowError";
 import { IS_TEAM_BILLING_ENABLED } from "@calcom/lib/constants";
 import { createAProfileForAnExistingUser } from "@calcom/lib/createAProfileForAnExistingUser";
@@ -364,4 +369,74 @@ async function handleExistingUsersInvites({
       orgSlug,
     });
   }
+<<<<<<< HEAD
+=======
+
+  return {
+    // TODO: Better rename it to invitations only maybe?
+    usernameOrEmail:
+      invitations.length == 1
+        ? invitations[0].usernameOrEmail
+        : invitations.map((invitation) => invitation.usernameOrEmail),
+    numUsersInvited: invitableExistingUsers.length + invitationsForNewUsers.length,
+  };
+};
+
+const inviteMembers = async ({ ctx, input }: InviteMemberOptions) => {
+  const { user: inviter } = ctx;
+  const { usernameOrEmail, role, isPlatform, creationSource } = input;
+
+  const team = await getTeamOrThrow(input.teamId);
+  const requestedSlugForTeam = team?.metadata?.requestedSlug ?? null;
+  const isTeamAnOrg = team.isOrganization;
+  const organization = inviter.profile.organization;
+
+  let inviterOrgId = inviter.organization.id;
+  let orgSlug = organization ? organization.slug || organization.requestedSlug : null;
+  let isInviterOrgAdmin = inviter.organization.isOrgAdmin;
+
+  const invitations = buildInvitationsFromInput({
+    usernameOrEmail,
+    roleForAllInvitees: role,
+  });
+  const isAddingNewOwner = !!invitations.find((invitation) => invitation.role === MembershipRole.OWNER);
+
+  if (isTeamAnOrg) {
+    await throwIfInviterCantAddOwnerToOrg();
+  }
+
+  if (isPlatform) {
+    inviterOrgId = team.id;
+    orgSlug = team ? team.slug || requestedSlugForTeam : null;
+    isInviterOrgAdmin = await UserRepository.isAdminOrOwnerOfTeam({ userId: inviter.id, teamId: team.id });
+  }
+
+  await ensureAtleastAdminPermissions({
+    userId: inviter.id,
+    teamId: inviterOrgId && isInviterOrgAdmin ? inviterOrgId : input.teamId,
+    isOrg: isTeamAnOrg,
+  });
+  const result = await inviteMembersWithNoInviterPermissionCheck({
+    inviterName: inviter.name,
+    team,
+    language: input.language,
+    creationSource,
+    orgSlug,
+    invitations,
+  });
+  return result;
+
+  async function throwIfInviterCantAddOwnerToOrg() {
+    const isInviterOrgOwner = await isOrganisationOwner(inviter.id, input.teamId);
+    if (isAddingNewOwner && !isInviterOrgOwner) throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+};
+
+export default async function inviteMemberHandler({ ctx, input }: InviteMemberOptions) {
+  const { user: inviter } = ctx;
+  await checkRateLimitAndThrowError({
+    identifier: `invitedBy:${inviter.id}`,
+  });
+  return await inviteMembers({ ctx, input });
+>>>>>>> 7581f5ca71 (Remove billing from handlers)
 }

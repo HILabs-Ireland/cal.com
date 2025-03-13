@@ -1,4 +1,3 @@
-import { IS_TEAM_BILLING_ENABLED } from "@calcom/lib/constants";
 import { prisma } from "@calcom/prisma";
 import { MembershipRole } from "@calcom/prisma/enums";
 import { teamMetadataSchema } from "@calcom/prisma/zod-utils";
@@ -10,9 +9,13 @@ type GetUpgradeableOptions = {
   };
 };
 
+<<<<<<< HEAD
 export const getUpgradeableHandler = async ({ ctx }: GetUpgradeableOptions) => {
   if (!IS_TEAM_BILLING_ENABLED) return [];
 
+=======
+export const getUpgradeableHandler = async ({ userId }: GetUpgradeableOptions) => {
+>>>>>>> 7581f5ca71 (Remove billing from handlers)
   // Get all teams/orgs where the user is an owner
   let teams = await prisma.membership.findMany({
     where: {

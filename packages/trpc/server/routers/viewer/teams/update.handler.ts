@@ -1,7 +1,12 @@
 import type { Prisma } from "@prisma/client";
 
 import { getOrgFullOrigin } from "@calcom/ee/organizations/lib/orgDomains";
+<<<<<<< HEAD
 import { IS_TEAM_BILLING_ENABLED } from "@calcom/lib/constants";
+=======
+import { validateIntervalLimitOrder } from "@calcom/lib";
+import { uploadLogo } from "@calcom/lib/server/avatar";
+>>>>>>> 7581f5ca71 (Remove billing from handlers)
 import { isTeamAdmin } from "@calcom/lib/server/queries/teams";
 import { uploadLogo } from "@calcom/lib/server/uploadLogo";
 import { closeComUpdateTeam } from "@calcom/lib/sync/SyncServiceManager";
@@ -66,7 +71,6 @@ export const updateHandler = async ({ ctx, input }: UpdateOptions) => {
 
   if (
     input.slug &&
-    IS_TEAM_BILLING_ENABLED &&
     /** If the team doesn't have a slug we can assume that it hasn't been published yet. */
     !prevTeam.slug
   ) {

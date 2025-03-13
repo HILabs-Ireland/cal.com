@@ -1,11 +1,17 @@
 import type { Prisma } from "@prisma/client";
 
+<<<<<<< HEAD
 import { getRequestedSlugError } from "@calcom/app-store/stripepayment/lib/team-billing";
 import {
   purchaseTeamOrOrgSubscription,
   updateQuantitySubscriptionFromStripe,
 } from "@calcom/features/ee/teams/lib/payments";
 import { IS_TEAM_BILLING_ENABLED, WEBAPP_URL } from "@calcom/lib/constants";
+=======
+import { purchaseTeamOrOrgSubscription } from "@calcom/features/ee/teams/lib/payments";
+import { WEBAPP_URL } from "@calcom/lib/constants";
+import { Redirect } from "@calcom/lib/redirect";
+>>>>>>> 7581f5ca71 (Remove billing from handlers)
 import { isOrganisationAdmin } from "@calcom/lib/server/queries/organisations";
 import { isTeamAdmin } from "@calcom/lib/server/queries/teams";
 import { closeComUpdateTeam } from "@calcom/lib/sync/SyncServiceManager";
@@ -41,8 +47,6 @@ const generateCheckoutSession = async ({
   seats: number;
   userId: number;
 }) => {
-  if (!IS_TEAM_BILLING_ENABLED) return;
-
   const checkoutSession = await purchaseTeamOrOrgSubscription({
     teamId,
     seatsUsed: seats,
