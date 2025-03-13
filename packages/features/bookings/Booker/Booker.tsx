@@ -38,7 +38,6 @@ import { isBookingDryRun } from "./utils/isBookingDryRun";
 const TurnstileCaptcha = dynamic(() => import("@calcom/features/auth/Turnstile"), { ssr: false });
 
 const loadFramerFeatures = () => import("./framer-features").then((res) => res.default);
-const PoweredBy = dynamic(() => import("@calcom/ee/components/PoweredBy").then((mod) => mod.default));
 const UnpublishedEntity = dynamic(() =>
   import("@calcom/ui/components/unpublished-entity/UnpublishedEntity").then((mod) => mod.UnpublishedEntity)
 );
@@ -526,9 +525,8 @@ const BookerComponent = ({
               "mb-6 mt-auto pt-6 [&_img]:h-[15px]",
               hasDarkBackground ? "dark" : "",
               layout === BookerLayouts.MONTH_VIEW ? "block" : "hidden"
-            )}>
-            <PoweredBy logoOnly hasValidLicense={hasValidLicense} />
-          </m.span>
+            )}
+          />
         )}
       </div>
 
