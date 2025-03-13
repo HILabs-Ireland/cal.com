@@ -24,4 +24,3 @@ The [/ee](https://github.com/calcom/cal.com/tree/main/apps/web/ee) subfolder is 
 5. Copy your client*id (`ca*...`) to `STRIPE_CLIENT_ID` in the .env file.
 6. Open [Stripe Webhooks](https://dashboard.stripe.com/webhooks) and add `<CALENDSO URL>/api/integrations/stripepayment/webhook` as webhook for connected applications.
 7. Select all `payment_intent` events for the webhook.
-8. Copy the webhook secret (`whsec_...`) to `STRIPE_WEBHOOK_SECRET` in the .env file.

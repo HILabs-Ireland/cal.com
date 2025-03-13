@@ -9,9 +9,12 @@ const env: Partial<Omit<Environment, "NODE_ENV">> = {
   LOG_LEVEL: "trace",
   REDIS_URL: "redis://localhost:9199",
   STRIPE_API_KEY: "sk_test_51J4",
+<<<<<<< HEAD
   STRIPE_WEBHOOK_SECRET: "whsec_51J4",
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> 584d0c5f74 (Remove stripe webhook secret)
   IS_E2E: true,
   API_KEY_PREFIX: "cal_test_",
   GET_LICENSE_KEY_URL: " https://console.cal.com/api/license",

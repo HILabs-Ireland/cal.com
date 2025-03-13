@@ -11,7 +11,6 @@ export function setupAndTeardown() {
     //@ts-expect-error - It is a readonly variable
     process.env.CALENDSO_ENCRYPTION_KEY = "abcdefghjnmkljhjklmnhjklkmnbhjui";
     //@ts-expect-error - It is a readonly variable
-    process.env.STRIPE_WEBHOOK_SECRET = "MOCK_STRIPE_WEBHOOK_SECRET";
     // We are setting it in vitest.config.ts because otherwise it's too late to set it.
     // process.env.DAILY_API_KEY = "MOCK_DAILY_API_KEY";
 
@@ -27,7 +26,6 @@ export function setupAndTeardown() {
     //@ts-expect-error - It is a readonly variable
     delete process.env.CALENDSO_ENCRYPTION_KEY;
     //@ts-expect-error - It is a readonly variable
-    delete process.env.STRIPE_WEBHOOK_SECRET;
     delete process.env.DAILY_API_KEY;
     globalThis.testEmails = [];
     fetchMock.resetMocks();

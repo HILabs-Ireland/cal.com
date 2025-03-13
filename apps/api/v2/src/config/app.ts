@@ -24,6 +24,7 @@ const loadConfig = (): AppConfig => {
     next: {
       authSecret: getEnv("NEXTAUTH_SECRET"),
     },
+<<<<<<< HEAD
     stripe: {
       apiKey: getEnv("STRIPE_API_KEY"),
       webhookSecret: getEnv("STRIPE_WEBHOOK_SECRET"),
@@ -37,6 +38,8 @@ const loadConfig = (): AppConfig => {
       teamMonthlyPriceId: "0",
 >>>>>>> c2bc804973 (Remove usage from booking service)
     },
+=======
+>>>>>>> 584d0c5f74 (Remove stripe webhook secret)
     app: {
       baseUrl: getEnv("WEB_APP_URL", "https://app.cal.com"),
     },

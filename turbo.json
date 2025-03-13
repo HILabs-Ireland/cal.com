@@ -366,12 +366,15 @@
     "STRIPE_PRODUCT_ID_ESSENTIALS",
     "STRIPE_PRODUCT_ID_SCALE",
     "STRIPE_PRODUCT_ID_STARTER",
+<<<<<<< HEAD
     "STRIPE_WEBHOOK_SECRET",
 <<<<<<< HEAD
     "STRIPE_WEBHOOK_SECRET_APPS",
 =======
     "STRIPE_WEBHOOK_SECRET_BILLING",
 >>>>>>> cbfc609d18 (ENV var phase out)
+=======
+>>>>>>> 584d0c5f74 (Remove stripe webhook secret)
     "TANDEM_BASE_URL",
     "TANDEM_CLIENT_ID",
     "TANDEM_CLIENT_SECRET",
