@@ -24,6 +24,7 @@ declare namespace NodeJS {
     readonly CRON_API_KEY: string | undefined;
     readonly CRON_ENABLE_APP_SYNC: string | undefined;
     readonly NEXT_PUBLIC_STRIPE_PUBLIC_KEY: string | undefined;
+<<<<<<< HEAD
     readonly STRIPE_CLIENT_ID: string | undefined;
 <<<<<<< HEAD
     readonly STRIPE_WEBHOOK_SECRET: string | undefined;
@@ -33,6 +34,8 @@ declare namespace NodeJS {
 >>>>>>> cbfc609d18 (ENV var phase out)
 =======
 >>>>>>> 584d0c5f74 (Remove stripe webhook secret)
+=======
+>>>>>>> f7f10a7b16 (Remove billing functions)
     readonly PAYMENT_FEE_PERCENTAGE: number | undefined;
     readonly PAYMENT_FEE_FIXED: number | undefined;
     readonly NEXT_PUBLIC_INTERCOM_APP_ID: string | undefined;

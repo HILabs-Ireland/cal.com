@@ -7,6 +7,7 @@ const env: Partial<Omit<Environment, "NODE_ENV">> = {
   NEXTAUTH_SECRET: "XF+Hws3A5g2eyWA5uGYYVJ74X+wrCWJ8oWo6kAfU6O8=",
   JWT_SECRET: "XF+Hws3A5g2eyWA5uGYYVJ74X+wrCWJ8oWo6kAfU6O8=",
   LOG_LEVEL: "trace",
+<<<<<<< HEAD
   REDIS_URL: "redis://localhost:9199",
   STRIPE_API_KEY: "sk_test_51J4",
 <<<<<<< HEAD
@@ -15,6 +16,9 @@ const env: Partial<Omit<Environment, "NODE_ENV">> = {
 =======
 =======
 >>>>>>> 584d0c5f74 (Remove stripe webhook secret)
+=======
+  REDIS_URL: "redis://localhost:6379",
+>>>>>>> f7f10a7b16 (Remove billing functions)
   IS_E2E: true,
   API_KEY_PREFIX: "cal_test_",
   GET_LICENSE_KEY_URL: " https://console.cal.com/api/license",

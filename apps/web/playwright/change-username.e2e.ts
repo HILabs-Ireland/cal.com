@@ -102,9 +102,6 @@ test.describe("Change username on settings", () => {
 
     expect(currentUsernameText).not.toBe(newUsernameText);
 
-    // Click on Go to billing
-    await page.click("[data-testid=go-to-billing]", { timeout: 300 });
-
     await page.waitForLoadState();
 
     await expect(page).toHaveURL(/.*checkout.stripe.com/);

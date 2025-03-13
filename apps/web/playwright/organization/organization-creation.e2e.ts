@@ -5,11 +5,8 @@ import type { Messages } from "mailhog";
 import path from "path";
 import { uuid } from "short-uuid";
 
-import { IS_TEAM_BILLING_ENABLED } from "@calcom/lib/constants";
-
 import type { createEmailsFixture } from "../fixtures/emails";
 import { test } from "../lib/fixtures";
-import { fillStripeTestCheckout } from "../lib/testUtils";
 import { getEmailsReceivedByUser } from "../lib/testUtils";
 import { gotoPathAndExpectRedirectToOrgDomain } from "./lib/gotoPathAndExpectRedirectToOrgDomain";
 
@@ -212,6 +209,7 @@ test.describe("Organization", () => {
       await page.waitForURL("/event-types");
     });
 
+<<<<<<< HEAD
     await test.step("Login as org owner and pay", async () => {
       // eslint-disable-next-line playwright/no-skipped-test
       test.skip(!IS_TEAM_BILLING_ENABLED, "Skipping paying for org as stripe is disabled");
@@ -239,6 +237,8 @@ test.describe("Organization", () => {
       await expect(upgradeButtonHidden).toBeHidden();
     });
 
+=======
+>>>>>>> f7f10a7b16 (Remove billing functions)
     // Verify that the owner's old username redirect is properly set
     await gotoPathAndExpectRedirectToOrgDomain({
       page,
@@ -382,6 +382,7 @@ test.describe("Organization", () => {
       // Finishing the creation wizard
       await page.getByTestId("continue_or_checkout").click();
     });
+<<<<<<< HEAD
 
     await test.step("Login as org owner and pay", async () => {
       // eslint-disable-next-line playwright/no-skipped-test
@@ -408,6 +409,8 @@ test.describe("Organization", () => {
 
       await expect(upgradeButtonHidden).toBeHidden();
     });
+=======
+>>>>>>> f7f10a7b16 (Remove billing functions)
   });
 
   test("User gets prompted with >=3 teams to upgrade & can transfer existing teams to org", async ({
@@ -528,6 +531,7 @@ test.describe("Organization", () => {
       await page.getByTestId("continue_or_checkout").click();
     });
 
+<<<<<<< HEAD
     await test.step("Login as org owner and pay", async () => {
       // eslint-disable-next-line playwright/no-skipped-test
       test.skip(!IS_TEAM_BILLING_ENABLED, "Skipping paying for org as stripe is disabled");
@@ -554,6 +558,8 @@ test.describe("Organization", () => {
       await expect(upgradeButtonHidden).toBeHidden();
     });
 
+=======
+>>>>>>> f7f10a7b16 (Remove billing functions)
     await test.step("Ensure correctnumberOfTeams are migrated", async () => {
       // eslint-disable-next-line playwright/no-skipped-test
       await page.goto("/teams");

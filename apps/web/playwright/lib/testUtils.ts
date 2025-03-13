@@ -355,6 +355,7 @@ export function generateTotpCode(email: string) {
   return totp.generate(secret);
 }
 
+<<<<<<< HEAD
 export async function fillStripeTestCheckout(page: Page) {
   await page.fill("[name=cardNumber]", "4242424242424242");
   await page.fill("[name=cardExpiry]", "12/30");
@@ -365,6 +366,27 @@ export async function fillStripeTestCheckout(page: Page) {
   await page.click(".SubmitButton--complete-Shimmer");
 }
 
+=======
+export function goToUrlWithErrorHandling({ page, url }: { page: Page; url: string }) {
+  return new Promise<{ success: boolean; url: string }>(async (resolve) => {
+    const onRequestFailed = (request: PlaywrightRequest) => {
+      const failedToLoadUrl = request.url();
+      console.log("goToUrlWithErrorHandling: Failed to load URL:", failedToLoadUrl);
+      resolve({ success: false, url: failedToLoadUrl });
+    };
+    page.on("requestfailed", onRequestFailed);
+    try {
+      await page.goto(url);
+    } catch (e) {}
+    page.off("requestfailed", onRequestFailed);
+    resolve({ success: true, url: page.url() });
+  });
+}
+
+/**
+ * Within this function's callback if a non-org domain is opened, it is considered an org domain identfied from `orgSlug`
+ */
+>>>>>>> f7f10a7b16 (Remove billing functions)
 export async function doOnOrgDomain(
   { orgSlug, page }: { orgSlug: string | null; page: Page },
   callback: ({ page }: { page: Page }) => Promise<void>

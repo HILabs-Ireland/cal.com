@@ -12,7 +12,6 @@ export type Environment = {
   SENTRY_DSN: string;
   LOG_LEVEL: keyof typeof logLevels;
   REDIS_URL: string;
-  STRIPE_API_KEY: string;
   WEB_APP_URL: string;
 <<<<<<< HEAD
 =======
