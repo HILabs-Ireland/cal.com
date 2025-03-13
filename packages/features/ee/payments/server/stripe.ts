@@ -7,7 +7,7 @@ declare global {
 
 const stripe =
   globalThis.stripe ||
-  new Stripe(process.env.STRIPE_PRIVATE_KEY!, {
+  new Stripe("", {
     apiVersion: "2020-08-27",
   });
 
