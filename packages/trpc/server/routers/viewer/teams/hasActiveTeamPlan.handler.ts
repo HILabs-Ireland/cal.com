@@ -1,4 +1,3 @@
-import { InternalTeamBilling } from "@calcom/ee/billing/teams/internal-team-billing";
 import { IS_SELF_HOSTED } from "@calcom/lib/constants";
 import { prisma } from "@calcom/prisma";
 import type { TrpcSessionUser } from "@calcom/trpc/server/trpc";
@@ -33,9 +32,9 @@ export const hasActiveTeamPlanHandler = async ({ input, ctx }: HasActiveTeamPlan
   });
   if (!team) return false;
 
-  // Get the current team's subscription
-  const teamBillingService = new InternalTeamBilling(team);
-  return await teamBillingService.checkIfTeamHasActivePlan();
+  if (!teams.length) return false;
+
+  return false;
 };
 
 export default hasActiveTeamPlanHandler;

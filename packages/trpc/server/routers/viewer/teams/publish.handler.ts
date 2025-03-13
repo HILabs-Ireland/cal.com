@@ -1,7 +1,7 @@
 import type { Prisma } from "@prisma/client";
 
 import { purchaseTeamOrOrgSubscription } from "@calcom/features/ee/teams/lib/payments";
-import { IS_TEAM_BILLING_ENABLED, WEBAPP_URL } from "@calcom/lib/constants";
+import { WEBAPP_URL } from "@calcom/lib/constants";
 import { Redirect } from "@calcom/lib/redirect";
 import { isOrganisationAdmin } from "@calcom/lib/server/queries/organisations";
 import { isTeamAdmin } from "@calcom/lib/server/queries/teams";
@@ -37,8 +37,6 @@ const generateCheckoutSession = async ({
   seats: number;
   userId: number;
 }) => {
-  if (!IS_TEAM_BILLING_ENABLED) return;
-
   const checkoutSession = await purchaseTeamOrOrgSubscription({
     teamId,
     seatsUsed: seats,

@@ -32,7 +32,6 @@ export type AppPageProps = {
   author: string;
   pro?: boolean;
   price?: number;
-  commission?: number;
   feeType?: AppType["feeType"];
   docs?: string;
   website?: string;
@@ -59,7 +58,6 @@ export const AppPage = ({
   categories,
   author,
   price = 0,
-  commission,
   isGlobal = false,
   feeType,
   docs,

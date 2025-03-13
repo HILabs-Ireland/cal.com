@@ -1,5 +1,5 @@
 import { generateTeamCheckoutSession } from "@calcom/features/ee/teams/lib/payments";
-import { IS_TEAM_BILLING_ENABLED, WEBAPP_URL } from "@calcom/lib/constants";
+import { WEBAPP_URL } from "@calcom/lib/constants";
 import { uploadLogo } from "@calcom/lib/server/avatar";
 import { ProfileRepository } from "@calcom/lib/server/repository/profile";
 import { resizeBase64Image } from "@calcom/lib/server/resizeBase64Image";
@@ -27,11 +27,6 @@ const generateCheckoutSession = async ({
   teamName: string;
   userId: number;
 }) => {
-  if (!IS_TEAM_BILLING_ENABLED) {
-    console.info("Team billing is disabled, not generating a checkout session.");
-    return;
-  }
-
   const checkoutSession = await generateTeamCheckoutSession({
     teamSlug,
     teamName,
