@@ -5,7 +5,7 @@ import _package from "./package.json";
 export const metadata = {
   name: "Stripe",
   description: _package.description,
-  installed: !!process.env.STRIPE_CLIENT_ID,
+  installed: false,
   slug: "stripe",
   category: "payment",
   categories: ["payment"],

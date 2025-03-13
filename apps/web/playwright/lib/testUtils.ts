@@ -33,12 +33,16 @@ export const teamEventTitle = "Team Event - 30min";
 export const teamEventSlug = "team-event-30min";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 export const IS_STRIPE_ENABLED = !!(
   process.env.STRIPE_CLIENT_ID &&
   process.env.PAYMENT_FEE_FIXED &&
   process.env.PAYMENT_FEE_PERCENTAGE
 );
+=======
+export const IS_STRIPE_ENABLED = !!(process.env.PAYMENT_FEE_FIXED && process.env.PAYMENT_FEE_PERCENTAGE);
+>>>>>>> a039c918e9 (Remove stripe client id)
 
 >>>>>>> de7c7dd9b2 (Remove stripe private key)
 export function createHttpServer(opts: { requestHandler?: RequestHandler } = {}) {
