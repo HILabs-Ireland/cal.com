@@ -70,7 +70,7 @@ export async function GET(req: NextRequest, { params }: { params: { team: string
         try {
           team = await prisma.team.update({ where: { id }, data: { slug } });
         } catch (error) {
-          const { message, statusCode } = getRequestedSlugError(error, slug);
+          const { message, statusCode } = error;
           return NextResponse.json({ message }, { status: statusCode });
         }
       }

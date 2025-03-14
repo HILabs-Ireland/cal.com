@@ -12,7 +12,6 @@ import { OAuthFlowService } from "@/modules/oauth-clients/services/oauth-flow.se
 import { OrganizationsModule } from "@/modules/organizations/organizations.module";
 import { PrismaModule } from "@/modules/prisma/prisma.module";
 import { RedisModule } from "@/modules/redis/redis.module";
-import { StripeModule } from "@/modules/stripe/stripe.module";
 import { TokensModule } from "@/modules/tokens/tokens.module";
 import { TokensRepository } from "@/modules/tokens/tokens.repository";
 import { UsersModule } from "@/modules/users/users.module";
@@ -29,11 +28,14 @@ import { Global, Module } from "@nestjs/common";
     MembershipsModule,
     EventTypesModule,
     OrganizationsModule,
+<<<<<<< HEAD
     StripeModule,
 <<<<<<< HEAD
     BillingModule,
     SchedulesModule,
 =======
+=======
+>>>>>>> f801e1a2ae (Remove major stripe files)
     SchedulesModule_2024_04_15,
 >>>>>>> 89e759a251 (Remove billing module)
   ],

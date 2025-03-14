@@ -7,6 +7,10 @@ import { ConferencingModule } from "@/modules/conferencing/conferencing.module";
 import { DestinationCalendarsModule } from "@/modules/destination-calendars/destination-calendars.module";
 >>>>>>> 6530483014 (Remove usage from booking service and modules)
 import { OAuthClientModule } from "@/modules/oauth-clients/oauth-client.module";
+<<<<<<< HEAD
+=======
+import { RouterModule } from "@/modules/router/router.module";
+>>>>>>> f801e1a2ae (Remove major stripe files)
 import { TimezoneModule } from "@/modules/timezones/timezones.module";
 import type { MiddlewareConsumer, NestModule } from "@nestjs/common";
 import { Module } from "@nestjs/common";
@@ -23,7 +27,6 @@ import { Module } from "@nestjs/common";
     WebhooksModule,
     DestinationCalendarsModule,
     AtomsModule,
-    StripeModule,
     ConferencingModule,
     RouterModule,
   ],

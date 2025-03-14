@@ -1,3 +1,4 @@
+/* eslint-disable @calcom/eslint/no-prisma-include-true */
 import { WEBAPP_URL } from "@calcom/lib/constants";
 import { isOrganisationAdmin } from "@calcom/lib/server/queries/organisations";
 import { closeComUpdateTeam } from "@calcom/lib/sync/SyncServiceManager";
@@ -76,7 +77,7 @@ export const publishHandler = async ({ ctx }: PublishOptions) => {
       },
     });
   } catch (error) {
-    const { message } = getRequestedSlugError(error, requestedSlug);
+    const { message } = error;
     throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message });
   }
 
