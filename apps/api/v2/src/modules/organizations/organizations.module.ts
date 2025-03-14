@@ -43,7 +43,6 @@ import { OrganizationsWebhooksService } from "@/modules/organizations/services/o
 import { OrganizationsService } from "@/modules/organizations/services/organizations.service";
 import { PrismaModule } from "@/modules/prisma/prisma.module";
 import { RedisModule } from "@/modules/redis/redis.module";
-import { StripeModule } from "@/modules/stripe/stripe.module";
 import { TeamsEventTypesModule } from "@/modules/teams/event-types/teams-event-types.module";
 import { TeamsModule } from "@/modules/teams/teams/teams.module";
 import { UsersModule } from "@/modules/users/users.module";
@@ -54,7 +53,6 @@ import { Module } from "@nestjs/common";
 @Module({
   imports: [
     PrismaModule,
-    StripeModule,
     SchedulesModule_2024_06_11,
     UsersModule,
     RedisModule,

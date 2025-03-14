@@ -13,7 +13,6 @@ import { OrganizationsModule } from "@/modules/organizations/organizations.modul
 import { OrganizationsTeamsService } from "@/modules/organizations/services/organizations-teams.service";
 import { PrismaModule } from "@/modules/prisma/prisma.module";
 import { RedisModule } from "@/modules/redis/redis.module";
-import { StripeModule } from "@/modules/stripe/stripe.module";
 import { TokensModule } from "@/modules/tokens/tokens.module";
 import { TokensRepository } from "@/modules/tokens/tokens.repository";
 import { UsersModule } from "@/modules/users/users.module";
@@ -30,8 +29,6 @@ import { Global, Module } from "@nestjs/common";
     MembershipsModule,
     EventTypesModule_2024_04_15,
     OrganizationsModule,
-    StripeModule,
-    BillingModule,
     SchedulesModule_2024_04_15,
   ],
   providers: [

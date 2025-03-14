@@ -4,7 +4,8 @@ import { BillingModule } from "@/modules/billing/billing.module";
 import { ConferencingModule } from "@/modules/conferencing/conferencing.module";
 import { DestinationCalendarsModule } from "@/modules/destination-calendars/destination-calendars.module";
 import { OAuthClientModule } from "@/modules/oauth-clients/oauth-client.module";
-import { StripeModule } from "@/modules/stripe/stripe.module";
+import { OrganizationsTeamsBookingsModule } from "@/modules/organizations/controllers/teams/bookings/organizations-teams-bookings.module";
+import { RouterModule } from "@/modules/router/router.module";
 import { TimezoneModule } from "@/modules/timezones/timezones.module";
 import type { MiddlewareConsumer, NestModule } from "@nestjs/common";
 import { Module } from "@nestjs/common";
@@ -22,7 +23,6 @@ import { WebhooksModule } from "./webhooks/webhooks.module";
     WebhooksModule,
     DestinationCalendarsModule,
     AtomsModule,
-    StripeModule,
     ConferencingModule,
   ],
 })
