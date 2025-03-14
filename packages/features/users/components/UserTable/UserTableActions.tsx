@@ -13,7 +13,6 @@ import {
   DropdownMenuItem,
   DropdownMenuPortal,
   DropdownItem,
-  DropdownMenuSeparator,
   showToast,
 } from "@calcom/ui";
 
@@ -94,27 +93,6 @@ export function TableActions({
                       {t("edit")}
                     </DropdownItem>
                   </DropdownMenuItem>
-                )}
-                {permissionsForUser.canImpersonate && (
-                  <>
-                    <DropdownMenuItem>
-                      <DropdownItem
-                        type="button"
-                        onClick={() =>
-                          dispatch({
-                            type: "SET_IMPERSONATE_ID",
-                            payload: {
-                              user,
-                              showModal: true,
-                            },
-                          })
-                        }
-                        StartIcon="lock">
-                        {t("impersonate")}
-                      </DropdownItem>
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                  </>
                 )}
                 {permissionsForUser.canRemove && (
                   <DropdownMenuItem>

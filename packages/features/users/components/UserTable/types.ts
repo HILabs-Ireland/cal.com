@@ -44,7 +44,6 @@ export type PlatformUserTablePayload = {
 export type UserTableState = {
   changeMemberRole: UserTablePayload;
   deleteMember: UserTablePayload;
-  impersonateMember: UserTablePayload;
   inviteMember: UserTablePayload;
   editSheet: UserTablePayload & { user?: UserTableUser };
 };
