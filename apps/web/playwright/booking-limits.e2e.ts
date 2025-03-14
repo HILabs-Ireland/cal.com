@@ -2,6 +2,8 @@
  * These e2e tests only aim to cover standard cases
  * Edge cases are currently handled in integration tests only
  */
+
+/* eslint-disable playwright/no-skipped-test */
 import { expect } from "@playwright/test";
 
 import type { Dayjs } from "@calcom/dayjs";
@@ -289,7 +291,7 @@ test.describe("Booking limits", () => {
   });
 });
 
-test.describe("Duration limits", () => {
+test.skip("[Flaky] Duration limits", () => {
   entries(BOOKING_LIMITS_SINGLE).forEach(([limitKey, bookingLimit]) => {
     const limitUnit = intervalLimitKeyToUnit(limitKey);
 

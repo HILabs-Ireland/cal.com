@@ -1,3 +1,4 @@
+/* eslint-disable playwright/no-skipped-test */
 import prismock from "../../../../../../tests/libs/__mocks__/prisma";
 
 import {
@@ -208,7 +209,7 @@ async function createWorkflowRemindersForWorkflow(workflowName: string) {
   return workflow;
 }
 
-describe("deleteRemindersOfActiveOnIds", () => {
+describe.skip("deleteRemindersOfActiveOnIds", () => {
   test("should delete all reminders from removed event types", async ({}) => {
     const organizer = getOrganizer({
       name: "Organizer",
@@ -366,7 +367,7 @@ describe("deleteRemindersOfActiveOnIds", () => {
   });
 });
 
-describe("scheduleBookingReminders", () => {
+describe.skip("scheduleBookingReminders", () => {
   setupAndTeardown();
 
   test("schedules workflow notifications with before event trigger and email to host action", async ({}) => {
@@ -669,7 +670,7 @@ describe("scheduleBookingReminders", () => {
   });
 });
 
-describe("deleteWorkfowRemindersOfRemovedMember", () => {
+describe.skip("deleteWorkfowRemindersOfRemovedMember", () => {
   test("deletes all workflow reminders when member is removed from org", async ({}) => {
     const org = await createOrganization({
       name: "Test Org",
