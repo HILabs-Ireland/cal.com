@@ -4,7 +4,7 @@ on:
   pull_request_target:
     types: [opened, synchronize, reopened, labeled]
     branches:
-      - main
+      - fix/fork-for-v4.9.3
       - gh-actions-test-branch
   workflow_dispatch:
 
@@ -19,7 +19,7 @@ concurrency:
 jobs:
   changes:
     name: Detect changes
-    runs-on: buildjet-2vcpu-ubuntu-2204
+    runs-on: ubuntu-latest
     permissions:
       pull-requests: read
     outputs:
@@ -41,7 +41,7 @@ jobs:
 
   check-label:
     needs: [changes]
-    runs-on: buildjet-2vcpu-ubuntu-2204
+    runs-on: ubuntu-latest
     name: Check for E2E label
     permissions:
       pull-requests: read
@@ -132,19 +132,19 @@ jobs:
     uses: ./.github/workflows/api-v2-production-build.yml
     secrets: inherit
 
-  build-atoms:
-    name: Production builds
-    needs: [changes, check-label, deps]
-    if: ${{ needs.check-label.outputs.run-e2e == 'true' && needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
-    uses: ./.github/workflows/atoms-production-build.yml
-    secrets: inherit
+ #build-atoms:
+ #   name: Production builds
+ #   needs: [changes, check-label, deps]
+ #   if: ${{ needs.check-label.outputs.run-e2e == 'true' && needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
+ #   uses: ./.github/workflows/atoms-production-build.yml
+ #   secrets: inherit
 
-  build-docs:
-    name: Production builds
-    needs: [changes, check-label, deps]
-    if: ${{ needs.check-label.outputs.run-e2e == 'true' && needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
-    uses: ./.github/workflows/docs-build.yml
-    secrets: inherit
+  #build-docs:
+  #  name: Production builds
+  #  needs: [changes, check-label, deps]
+  #  if: ${{ needs.check-label.outputs.run-e2e == 'true' && needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
+  #  uses: ./.github/workflows/docs-build.yml
+  #  secrets: inherit
 
   build:
     name: Production builds
@@ -231,8 +231,8 @@ jobs:
         build,
         build-api-v1,
         build-api-v2,
-        build-atoms,
-        build-docs,
+        #build-atoms,
+        #build-docs,
         e2e,
         e2e-api-v2,
         e2e-embed,
@@ -240,7 +240,7 @@ jobs:
         e2e-app-store,
       ]
     if: always()
-    runs-on: buildjet-2vcpu-ubuntu-2204
+    runs-on: ubuntu-latest
     steps:
       - name: fail if conditional jobs failed
         if: needs.changes.outputs.has-files-requiring-all-checks == 'true' && (contains(needs.*.result, 'failure') || contains(needs.*.result, 'skipped') || contains(needs.*.result, 'cancelled'))
