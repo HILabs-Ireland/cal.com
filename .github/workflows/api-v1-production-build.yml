@@ -68,7 +68,7 @@ jobs:
       - uses: ./.github/actions/yarn-install
       - uses: ./.github/actions/cache-db
       - name: Cache API v2 production build
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: cache-api-v1-build
         with:
           path: |
