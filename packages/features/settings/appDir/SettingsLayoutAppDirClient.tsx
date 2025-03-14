@@ -102,10 +102,6 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
           href: "/settings/organizations/sso",
         },
         {
-          name: "directory_sync",
-          href: "/settings/organizations/dsync",
-        },
-        {
           name: "admin_api",
           href: "https://cal.com/docs/enterprise-features/api/api-reference/bookings#admin-access",
         },
@@ -149,8 +145,6 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
   tabs.find((tab) => {
     if (tab.name === "security" && !HOSTED_CAL_FEATURES) {
       tab.children?.push({ name: "sso_configuration", href: "/settings/security/sso" });
-      // TODO: Enable dsync for self hosters
-      // tab.children?.push({ name: "directory_sync", href: "/settings/security/dsync" });
     }
     if (tab.name === "admin" && IS_CALCOM) {
       tab.children?.push({ name: "create_your_org", href: "/settings/organizations/new" });
@@ -166,7 +160,7 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
 // The following keys are assigned to admin only
 const adminRequiredKeys = ["admin"];
 const organizationRequiredKeys = ["organization"];
-const organizationAdminKeys = ["privacy", "billing", "OAuth Clients", "SSO", "directory_sync"];
+const organizationAdminKeys = ["privacy", "billing", "OAuth Clients", "SSO"];
 
 const useTabs = () => {
   const session = useSession();
