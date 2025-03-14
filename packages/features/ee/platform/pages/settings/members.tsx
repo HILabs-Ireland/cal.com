@@ -12,8 +12,7 @@ import { PlatformPricing } from "@calcom/web/components/settings/platform/pricin
 
 const PlatformMembersView = () => {
   const { t } = useLocale();
-  const { isUserLoading, isUserBillingDataLoading, isPlatformUser, isPaidUser, userBillingData, userOrgId } =
-    useGetUserAttributes();
+  const { isUserLoading, isPlatformUser, isPaidUser, userOrgId } = useGetUserAttributes();
   const { data: currentOrg, isPending } = trpc.viewer.organizations.listCurrent.useQuery();
 
   const isOrgAdminOrOwner =
@@ -23,7 +22,7 @@ const PlatformMembersView = () => {
   const canLoggedInUserSeeMembers =
     (currentOrg?.isPrivate && isOrgAdminOrOwner) || isOrgAdminOrOwner || !currentOrg?.isPrivate;
 
-  if (isUserLoading || (isUserBillingDataLoading && !userBillingData)) {
+  if (isUserLoading) {
     return <div className="m-5">Loading...</div>;
   }
 

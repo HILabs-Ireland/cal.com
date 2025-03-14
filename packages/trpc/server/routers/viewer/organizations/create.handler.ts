@@ -20,7 +20,6 @@ import { UserPermissionRole } from "@calcom/prisma/enums";
 import { TRPCError } from "@trpc/server";
 
 import type { TrpcSessionUser } from "../../../trpc";
-import { BillingPeriod } from "./create.schema";
 import type { TCreateInputSchema } from "./create.schema";
 
 /**
@@ -81,15 +80,7 @@ const getIPAddress = async (url: string): Promise<string> => {
 };
 
 export const createHandler = async ({ input, ctx }: CreateOptions) => {
-  const {
-    slug,
-    name,
-    orgOwnerEmail,
-    seats,
-    pricePerSeat,
-    isPlatform,
-    billingPeriod: billingPeriodRaw,
-  } = input;
+  const { slug, name, orgOwnerEmail, seats, pricePerSeat, isPlatform, creationSource } = input;
 
   const loggedInUser = await prisma.user.findUnique({
     where: {
@@ -119,9 +110,6 @@ export const createHandler = async ({ input, ctx }: CreateOptions) => {
 
   const IS_USER_ADMIN = loggedInUser.role === UserPermissionRole.ADMIN;
   const verifiedUser = loggedInUser.completedOnboarding && !!loggedInUser.emailVerified;
-
-  // We only allow creating an annual billing period if you are a system admin
-  const billingPeriod = (IS_USER_ADMIN ? billingPeriodRaw : BillingPeriod.MONTHLY) ?? BillingPeriod.MONTHLY;
 
   if (!ORG_SELF_SERVE_ENABLED && !IS_USER_ADMIN && !isPlatform) {
     throw new TRPCError({ code: "FORBIDDEN", message: "Only admins can create organizations" });
@@ -219,7 +207,6 @@ export const createHandler = async ({ input, ctx }: CreateOptions) => {
     seats: seats ?? null,
     pricePerSeat: pricePerSeat ?? null,
     isPlatform,
-    billingPeriod,
   };
 
   // Create a new user and invite them as the owner of the organization

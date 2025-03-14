@@ -446,11 +446,6 @@ export const orgSettingsSchema = z
   .nullable();
 export type userMetadataType = z.infer<typeof userMetadata>;
 
-export enum BillingPeriod {
-  MONTHLY = "MONTHLY",
-  ANNUALLY = "ANNUALLY",
-}
-
 export const teamMetadataSchema = z
   .object({
     requestedSlug: z.string().or(z.null()),
@@ -467,7 +462,6 @@ export const teamMetadataSchema = z
         lastRevertTime: z.string().optional(),
       })
       .optional(),
-    billingPeriod: z.nativeEnum(BillingPeriod).optional(),
   })
   .partial()
   .nullable();

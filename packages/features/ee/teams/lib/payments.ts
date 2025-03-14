@@ -13,7 +13,6 @@ import {
 import logger from "@calcom/lib/logger";
 import { safeStringify } from "@calcom/lib/safeStringify";
 import prisma from "@calcom/prisma";
-import { BillingPeriod } from "@calcom/prisma/zod-utils";
 import { teamMetadataSchema } from "@calcom/prisma/zod-utils";
 
 const log = logger.getSubLogger({ prefix: ["teams/lib/payments"] });
@@ -107,17 +106,8 @@ export const purchaseTeamOrOrgSubscription = async (input: {
   userId: number;
   isOrg?: boolean;
   pricePerSeat: number | null;
-  billingPeriod?: BillingPeriod;
 }) => {
-  const {
-    teamId,
-    seatsToChargeFor,
-    seatsUsed,
-    userId,
-    isOrg,
-    pricePerSeat,
-    billingPeriod = BillingPeriod.MONTHLY,
-  } = input;
+  const { teamId, seatsToChargeFor, seatsUsed, userId, isOrg, pricePerSeat } = input;
   const { url } = await checkIfTeamPaymentRequired({ teamId });
   if (url) return { url };
 
@@ -144,7 +134,6 @@ export const purchaseTeamOrOrgSubscription = async (input: {
         isOrg: !!isOrg,
         teamId,
         pricePerSeat,
-        billingPeriod,
         product: customPriceObj.product as string, // We don't expand the object from stripe so just use the product as ID
         currency: customPriceObj.currency,
       });
@@ -188,21 +177,19 @@ export const purchaseTeamOrOrgSubscription = async (input: {
     isOrg,
     teamId,
     pricePerSeat,
-    billingPeriod,
     product,
     currency,
   }: {
     isOrg: boolean;
     teamId: number;
     pricePerSeat: number;
-    billingPeriod: BillingPeriod;
     product: Stripe.Product | string;
     currency: string;
   }) {
     try {
       const pricePerSeatInCents = pricePerSeat * 100;
       // Price comes in monthly so we need to convert it to a monthly/yearly price
-      const occurrence = billingPeriod === "MONTHLY" ? 1 : 12;
+      const occurrence = 12;
       const yearlyPrice = pricePerSeatInCents * occurrence;
 
       const customPriceObj = await stripe.prices.create({
@@ -210,7 +197,7 @@ export const purchaseTeamOrOrgSubscription = async (input: {
         unit_amount: yearlyPrice, // Stripe expects the amount in cents
         // Use the same currency as in the fixed price to avoid hardcoding it.
         currency: currency,
-        recurring: { interval: billingPeriod === "MONTHLY" ? "month" : "year" }, // Define your subscription interval
+        recurring: "year",
         product: typeof product === "string" ? product : product.id,
         tax_behavior: "exclusive",
       });
