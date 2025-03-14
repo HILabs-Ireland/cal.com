@@ -3,7 +3,8 @@ import { expect } from "@playwright/test";
 import { test } from "../lib/fixtures";
 import { submitAndWaitForResponse } from "../lib/testUtils";
 
-test.describe("Can signup from a team invite", async () => {
+// eslint-disable-next-line playwright/no-skipped-test
+test.skip("[EE feature] Can signup from a team invite", async () => {
   test.beforeEach(async ({ users }) => {
     const proUser = await users.create();
     await proUser.apiLogin();

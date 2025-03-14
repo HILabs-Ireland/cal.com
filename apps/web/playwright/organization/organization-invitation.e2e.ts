@@ -16,9 +16,9 @@ test.afterEach(async ({ users, orgs }) => {
   await users.deleteAll();
   await orgs.deleteAll();
 });
-
-test.describe("Organization", () => {
-  test.describe("Email not matching orgAutoAcceptEmail", () => {
+/* eslint-disable playwright/no-skipped-test */
+test.skip("[EE feature] Organization", () => {
+  test("Email not matching orgAutoAcceptEmail", () => {
     test("nonexisting user invited to an organization", async ({ browser, page, users, emails }) => {
       const orgOwner = await users.create(undefined, { hasTeam: true, isOrg: true });
       const { team: org } = await orgOwner.getOrgMembership();

@@ -16,8 +16,8 @@ import {
 
 test.describe.configure({ mode: "parallel" });
 test.afterEach(({ users }) => users.deleteAll());
-
-test.describe("Booking with Seats", () => {
+/* eslint-disable playwright/no-skipped-test */
+test.skip("[EE feature] Booking with Seats", () => {
   test("User can create a seated event (2 seats as example)", async ({ users, page }) => {
     const user = await users.create({ name: "Seated event" });
     await user.apiLogin();

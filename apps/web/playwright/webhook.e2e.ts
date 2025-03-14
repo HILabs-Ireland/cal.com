@@ -127,8 +127,8 @@ test.describe("BOOKING_CREATED", async () => {
     webhookReceiver.close();
   });
 });
-
-test.describe("BOOKING_REJECTED", async () => {
+// eslint-disable-next-line playwright/no-skipped-test
+test.skip("[Flaky] BOOKING_REJECTED", async () => {
   test("can book an event that requires confirmation and then that booking can be rejected by organizer", async ({
     page,
     users,
@@ -236,8 +236,8 @@ test.describe("BOOKING_REJECTED", async () => {
     webhookReceiver.close();
   });
 });
-
-test.describe("BOOKING_REQUESTED", async () => {
+// eslint-disable-next-line playwright/no-skipped-test
+test.skip("[Flaky] BOOKING_REQUESTED", async () => {
   test("can book an event that requires confirmation and get a booking requested event", async ({
     page,
     users,

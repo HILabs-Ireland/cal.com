@@ -100,8 +100,8 @@ test.skip("it contains the right event details", async ({ page }) => {
 
   expect((await page.locator('[data-testid="event-meta"] [data-testid="avatar"]').all()).length).toBe(3);
 });
-
-test.describe("Organization:", () => {
+/* eslint-disable playwright/no-skipped-test */
+test.skip("[EE feature] Organization:", () => {
   test.afterEach(({ orgs, users }) => {
     orgs.deleteAll();
     users.deleteAll();

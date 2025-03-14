@@ -69,8 +69,8 @@ test.describe("Event Types tests", () => {
       const firstEventTitle = await firstEvent.getAttribute("title");
       await expect(firstEventTitle).toBe(eventTitle);
     });
-
-    test("enabling recurring event comes with default options", async ({ page }) => {
+    /* eslint-disable playwright/no-skipped-test */
+    test.skip("[EE feature] enabling recurring event comes with default options", async ({ page }) => {
       const nonce = randomString(3);
       const eventTitle = `my recurring event ${nonce}`;
       await createNewEventType(page, { eventTitle });

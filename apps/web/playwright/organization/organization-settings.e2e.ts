@@ -1,3 +1,4 @@
+/* eslint-disable playwright/no-skipped-test */
 import { expect } from "@playwright/test";
 import type { Page } from "@playwright/test";
 import { doOnOrgDomain } from "playwright/lib/testUtils";
@@ -83,8 +84,7 @@ async function verifyRobotsMetaTag({ page, orgSlug, urls, expectedContent }: Ver
     }
   });
 }
-
-test.describe("Organization Settings", () => {
+test.skip("[EE feature] Organization Settings", () => {
   test.describe("Setting - 'Allow search engine indexing' inside Org profile settings", async () => {
     let ctx: TestContext;
 

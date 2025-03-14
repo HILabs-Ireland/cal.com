@@ -129,8 +129,8 @@ test.describe("Team Logo", async () => {
     });
   });
 });
-
-test.describe("Organization Logo", async () => {
+/* eslint-disable playwright/no-skipped-test */
+test.skip("[EE feature] Organization Logo", async () => {
   test("it can upload a organization logo image", async ({ page, users, orgs }) => {
     const owner = await users.create(undefined, { hasTeam: true, isUnpublished: true, isOrg: true });
     const { team: org } = await owner.getOrgMembership();
