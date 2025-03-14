@@ -771,8 +771,7 @@
   "teams": "Équipes",
   "team": "Équipe",
   "organization": "Organisation",
-      "upgrade_to_flexible_pro_title": "Nous avons modifié la facturation pour les équipes",
-  "upgrade_to_flexible_pro_message": "Des membres dans votre équipe n'ont pas de place. Mettez à niveau votre plan Pro pour couvrir les places manquantes.",
+        "upgrade_to_flexible_pro_message": "Des membres dans votre équipe n'ont pas de place. Mettez à niveau votre plan Pro pour couvrir les places manquantes.",
     "create_manage_teams_collaborative": "Créez et gérez des équipes pour utiliser les fonctionnalités collaboratives.",
   "only_available_on_pro_plan": "Cette fonctionnalité n'est disponible que dans le plan Pro",
   "remove_cal_branding_description": "Pour supprimer les références à la marque {{appName}} de vos pages de réservation, vous devez passer à un compte Pro.",
@@ -1196,8 +1195,7 @@
   "new_workflow_description": "Les workflows vous permettent d'automatiser l'envoi de rappels et de notifications.",
   "active_on": "Actif sur",
   "workflow_updated_successfully": "Workflow {{workflowName}} mis à jour avec succès",
-  "premium_to_standard_username_description": "Il s'agit d'un nom d'utilisateur standard et l'appliquer vous redirigera vers la facturation pour résilier votre plan.",
-  "premium_username": "Il s'agit d'un nom d'utilisateur premium, obtenez-le pour {{price}}",
+    "premium_username": "Il s'agit d'un nom d'utilisateur premium, obtenez-le pour {{price}}",
   "current": "Actuel",
   "premium": "premium",
   "standard": "standard",
@@ -2243,7 +2241,11 @@
   "advanced_managed_events_description": "Ajoutez une seule carte de crédit pour payer tous les abonnements de votre équipe",
   "enterprise_description": "Passez en Entreprise pour créer votre organisation",
   "create_your_org": "Créer votre organisation",
+<<<<<<< HEAD
   "create_your_org_description": "Passez en Organizations et recevez un sous-domaine, une facturation unifiée, des statistiques, un marquage blanc extensif et plus encore",
+=======
+    "create_your_enterprise_description": "Passez à la version Entreprise et accédez à Synchronisation Active Directory, au provisionnement automatique des utilisateurs SCIM, aux agents vocaux Cal.ai, aux API d'administration et à bien d'autres choses encore !",
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
   "other_payment_app_enabled": "Vous ne pouvez activer qu'une seule application de paiement par type d'événement",
   "admin_delete_organization_description": "<ul><li>Les équipes qui sont membres de cette organisation seront également supprimées, ainsi que leurs types d'événements</li><li>Les utilisateurs qui faisaient partie de l'organisation ne seront pas supprimés et leurs types d'événements resteront intacts.</li><li>Les noms d'utilisateur seront modifiés pour leur permettre d'exister en dehors de l'organisation</li></ul>",
   "admin_delete_organization_title": "Supprimer {{organizationName}} ?",

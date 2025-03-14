@@ -771,8 +771,7 @@
   "teams": "Equipas",
   "team": "Equipa",
   "organization": "Organização",
-      "upgrade_to_flexible_pro_title": "Alterámos os termos de facturação",
-  "upgrade_to_flexible_pro_message": "Há membros sem lugar na sua equipa. Actualize para o plano Pro para cobrir os lugares em falta.",
+        "upgrade_to_flexible_pro_message": "Há membros sem lugar na sua equipa. Actualize para o plano Pro para cobrir os lugares em falta.",
     "create_manage_teams_collaborative": "Criar e gerir equipas para usar recursos colaborativos.",
   "only_available_on_pro_plan": "Este recurso só está disponível no plano Pro",
   "remove_cal_branding_description": "Para remover a marca {{appName}} das suas páginas de reservas, tem de atualizar para uma conta Pro.",
@@ -1196,8 +1195,7 @@
   "new_workflow_description": "Os fluxos de trabalho permitem automatizar o envio de lembretes e notificações.",
   "active_on": "Activo em",
   "workflow_updated_successfully": "Fluxo de trabalho {{workflowName}} actualizado com sucesso",
-  "premium_to_standard_username_description": "Este é um nome de utilizador padrão, e ao atualizar irá para a faturação para fazer o downgrade.",
-  "premium_username": "Este é um nome de utilizador premium. Obtenha o seu por {{price}}",
+    "premium_username": "Este é um nome de utilizador premium. Obtenha o seu por {{price}}",
   "current": "Atual",
   "premium": "premium",
   "standard": "padrão",
@@ -2243,7 +2241,11 @@
   "advanced_managed_events_description": "Adicione um único cartão de crédito para pagar todas as subscrições da sua equipa",
   "enterprise_description": "Atualize para Enterprise para criar a sua Organização",
   "create_your_org": "Crie a sua Organização",
+<<<<<<< HEAD
   "create_your_org_description": "Atualize para Organizations e receba um subdomínio, faturação unificada, Insights, personalização abrangente da imagem corporativa e muito mais",
+=======
+    "create_your_enterprise_description": "Atualize para Enterprise e tenha acesso à sincronização com Active Directory, aprovisionamento automático de utilizadores com SCIM, agentes de voz Cal.ai, API de Administração e muito mais!",
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
   "other_payment_app_enabled": "Só pode ativar uma aplicação de pagamento por tipo de evento",
   "admin_delete_organization_description": "<ul><li>As equipas que são membros desta organização também serão eliminadas, em conjunto com os respetivos tipos de evento</li><li>Utilizadores que faziam parte da organização não serão eliminados e os seus tipos de evento também permanecerão intactos.</li><li>Os nomes de utilizador serão alterados para permitir que possam existir fora da organização</li></ul>",
   "admin_delete_organization_title": "Eliminar {{organizationName}}?",

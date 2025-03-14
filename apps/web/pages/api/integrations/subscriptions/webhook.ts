@@ -61,7 +61,6 @@ const handleSubscriptionDeleted = async (event: Stripe.Event) => {
     },
     data: {
       paymentStatus: "inactive",
-      billingCycleStart: null,
     },
   });
 };

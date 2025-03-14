@@ -490,9 +490,13 @@
   "team": "Taldea",
   "organization": "Erakundea",
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       "upgrade_to_flexible_pro_title": "Taldeen fakturazioa aldatu dugu",
   "upgrade_to_flexible_pro_message": "Eserlekurik gabeko kideak daude zure taldean. Eguneratu zure pro plana falta diren eserlekuak estaltzeko",
+=======
+        "upgrade_to_flexible_pro_message": "Eserlekurik gabeko kideak daude zure taldean. Eguneratu zure pro plana falta diren eserlekuak estaltzeko",
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
     "create_manage_teams_collaborative": "Sortu eta kudeatu taldeak lankidetza-funtzioak erabiltzeko.",
   "only_available_on_pro_plan": "Funtzio hau Pro planean soilik dago eskuragarri",
   "remove_cal_branding_description": "{{appName}} marka zure erreserba-orrietatik kentzeko, Pro kontu batera igo behar duzu.",
@@ -664,6 +668,16 @@
   "day_timeUnit": "egun",
   "hour_timeUnit": "ordu",
   "minute_timeUnit": "minutu",
+<<<<<<< HEAD
+=======
+  "minute_short": "min",
+  "hour_short": "ordu",
+  "new_workflow_heading": "Sortu zure lehen workflowa",
+  "new_workflow_description": "Workflowekin jakinarazpenak eta oroigarriak automatikoki bidaltzea ahalbidetzen duzu.",
+  "active_on": "Aktibo",
+  "workflow_updated_successfully": "{{workflowName}} workflowa ondo eguneratu da",
+    "premium_username": "Hau premium erabiltzaile-izena da, lortu zurea {{price}}-gatik",
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
   "current": "Unekoa",
   "confirm_username_change_dialog_title": "Baieztatu erabiltzaile-izenaren aldaketa",
 <<<<<<< HEAD
@@ -1468,8 +1482,7 @@
   "enterprise": "Enterprise",
   "enterprise_description": "Igo Enterprise mailara zure erakundea sortzeko",
   "create_your_org": "Sortu zure erakundea",
-  "create_your_org_description": "Erakundeetara igo eta jaso azpidomeinua, fakturazio bateratua, Insights, marka-pertsonalizazio zabala eta gehiago",
-  "create_your_enterprise_description": "Enterprise-ra igo eta eskuratu Active Directory Sync, SCIM erabiltzaile hornidura automatikoa, Cal.ai ahots-agenteak, Admin APIak eta gehiago!",
+    "create_your_enterprise_description": "Enterprise-ra igo eta eskuratu Active Directory Sync, SCIM erabiltzaile hornidura automatikoa, Cal.ai ahots-agenteak, Admin APIak eta gehiago!",
   "other_payment_app_enabled": "Ordainketa aplikazio bakarra gaitu dezakezu gertaera mota bakoitzeko",
   "admin_delete_organization_description": "<ul><li>Erakunde honetako kide diren taldeak ere ezabatuko dira beraien gertaera-motarekin batera</li><li>Erakundeko erabiltzaileak ez dira ezabatuko baina beraien erabiltzaile-izenak aldatuko dira erakundetik kanpo existitu ahal izateko</li><li>Erabiltzailea erakundean egon ondoren sortutako erabiltzaile-gertaerak ezabatuko dira</li><li>Migratutako erabiltzaile-gertaerak ez dira ezabatuko</li></ul>",
   "admin_delete_organization_title": "{{organizationName}} ezabatu?",

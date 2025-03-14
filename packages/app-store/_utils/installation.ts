@@ -27,7 +27,6 @@ type InstallationArgs = {
   teamId?: number;
   subscriptionId?: string | null;
   paymentStatus?: string | null;
-  billingCycleStart?: number | null;
 };
 
 export async function createDefaultInstallation({
@@ -36,7 +35,6 @@ export async function createDefaultInstallation({
   slug,
   key = {},
   teamId,
-  billingCycleStart,
   paymentStatus,
   subscriptionId,
 }: InstallationArgs) {
@@ -48,7 +46,6 @@ export async function createDefaultInstallation({
       appId: slug,
       subscriptionId,
       paymentStatus,
-      billingCycleStart,
     },
   });
   if (!installation) {

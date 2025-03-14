@@ -771,8 +771,7 @@
   "teams": "Csapatok",
   "team": "Csapat",
   "organization": "Szervezet",
-      "upgrade_to_flexible_pro_title": "Módosítottuk a csapatok számlázását",
-  "upgrade_to_flexible_pro_message": "Vannak olyan tagok a csapatban, akiknek nincs helye. Frissítse profi tervét, hogy fedezze a hiányzó helyeket.",
+        "upgrade_to_flexible_pro_message": "Vannak olyan tagok a csapatban, akiknek nincs helye. Frissítse profi tervét, hogy fedezze a hiányzó helyeket.",
     "create_manage_teams_collaborative": "Hozzon létre és kezeljen csapatokat az együttműködési funkciók használatához.",
   "only_available_on_pro_plan": "Ez a funkció csak a PRO csomagban érhető el",
   "remove_cal_branding_description": "Ha el szeretné távolítani a(z) {{appName}} márkajelzést a foglalási oldalairól, PRO-fiókra kell frissítenie.",
@@ -1196,8 +1195,7 @@
   "new_workflow_description": "A munkafolyamatok lehetővé teszik az emlékeztetők és értesítések küldésének automatizálását.",
   "active_on": "Aktív ezen:",
   "workflow_updated_successfully": "A {{workflowName}} munkafolyamat sikeresen frissítve",
-  "premium_to_standard_username_description": "Ez egy szabványos felhasználónév, és a frissítéssel a számlázáshoz juthat, hogy alacsonyabb verzióra váltson.",
-  "premium_username": "Ez egy prémium felhasználónév, szerezze be a sajátját {{price}} áron",
+    "premium_username": "Ez egy prémium felhasználónév, szerezze be a sajátját {{price}} áron",
   "current": "Jelenlegi",
   "premium": "prémium",
   "standard": "alap",
@@ -2243,7 +2241,11 @@
   "advanced_managed_events_description": "Adjon hozzá egyetlen hitelkártyát, hogy kifizesse csapata összes előfizetését",
   "enterprise_description": "Szervezete létrehozásához frissítsen Vállalati-ra",
   "create_your_org": "Hozd létre a szervezetedet",
+<<<<<<< HEAD
   "create_your_org_description": "Frissítsen Vállalati-ra, és kapjon aldomaint, egységes számlázást, Elemzés szolgáltatást, kiterjedt fehér címkézést és sok mást",
+=======
+    "create_your_enterprise_description": "Frissítsen Enterprise-ra, és szerezzen hozzáférést az Active Directory Sync-hez, az SCIM automatikus felhasználói kiépítéshez, a Cal.ai Voice Agents-hez, az Admin API-khoz és még sok máshoz!",
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
   "other_payment_app_enabled": "Eseménytípusonként csak egy fizetési alkalmazást engedélyezhet",
   "admin_delete_organization_description": "<ul><li>A szervezethez tartozó csapatok is törlésre kerülnek az eseménytípusukkal együtt.</li><li>A szervezethez tartozó felhasználók nem törlődnek, és eseménytípusaik is érintetlenül maradnak .</li><li>A felhasználónevek módosulnak, hogy a szervezeten kívül is létezhessenek</li></ul>",
   "admin_delete_organization_title": "Törli a következőt: {{organizationName}}?",

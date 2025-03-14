@@ -15,6 +15,7 @@ export type AppConfig = {
   next: {
     authSecret: string;
   };
+<<<<<<< HEAD
   stripe: {
     apiKey: string;
     webhookSecret: string;
@@ -23,6 +24,8 @@ export type AppConfig = {
     teamMonthlyPriceId: string;
 >>>>>>> c2bc804973 (Remove usage from booking service)
   };
+=======
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
   app: {
     baseUrl: string;
   };

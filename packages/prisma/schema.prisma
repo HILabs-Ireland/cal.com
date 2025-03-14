@@ -163,9 +163,8 @@ model Credential {
   appId  String?
 
   // paid apps
-  subscriptionId    String?
-  paymentStatus     String?
-  billingCycleStart Int?
+  subscriptionId String?
+  paymentStatus  String?
 
   destinationCalendars DestinationCalendar[]
   selectedCalendars    SelectedCalendar[]
@@ -375,6 +374,7 @@ model Team {
   workflows             Workflow[]
   createdAt             DateTime                @default(now())
   /// @zod.custom(imports.teamMetadataSchema)
+<<<<<<< HEAD
   metadata              Json?
   theme                 String?
   brandColor            String?
@@ -405,6 +405,52 @@ model Team {
   platformOAuthClient   PlatformOAuthClient[]
   smsLockState          SMSLockState            @default(UNLOCKED)
   platformBilling       PlatformBilling?
+=======
+  metadata               Json?
+  theme                  String?
+  brandColor             String?
+  darkBrandColor         String?
+  verifiedNumbers        VerifiedNumber[]
+  verifiedEmails         VerifiedEmail[]
+  bannerUrl              String?
+  parentId               Int?
+  parent                 Team?                   @relation("organization", fields: [parentId], references: [id], onDelete: Cascade)
+  children               Team[]                  @relation("organization")
+  orgUsers               User[]                  @relation("scope")
+  inviteTokens           VerificationToken[]
+  webhooks               Webhook[]
+  timeFormat             Int?
+  timeZone               String                  @default("Europe/London")
+  weekStart              String                  @default("Sunday")
+  routingForms           App_RoutingForms_Form[]
+  apiKeys                ApiKey[]
+  credentials            Credential[]
+  accessCodes            AccessCode[]
+  isOrganization         Boolean                 @default(false)
+  organizationSettings   OrganizationSettings?
+  instantMeetingTokens   InstantMeetingToken[]
+  orgProfiles            Profile[]
+  pendingPayment         Boolean                 @default(false)
+  dsyncTeamGroupMapping  DSyncTeamGroupMapping[]
+  isPlatform             Boolean                 @default(false)
+  // Organization's OAuth clients. Organization has them but a team does not.
+  platformOAuthClient    PlatformOAuthClient[]
+  // OAuth client used to create team of an organization. Team has it but organization does not.
+  createdByOAuthClient   PlatformOAuthClient?    @relation("CreatedByOAuthClient", fields: [createdByOAuthClientId], references: [id], onDelete: Cascade)
+  createdByOAuthClientId String?
+  smsLockState           SMSLockState            @default(UNLOCKED)
+  activeOrgWorkflows     WorkflowsOnTeams[]
+  attributes             Attribute[]
+  smsLockReviewedByAdmin Boolean                 @default(false)
+  // Available for Organization only
+  domainWideDelegations  DomainWideDelegation[]
+  features               TeamFeatures[]
+
+  /// @zod.custom(imports.intervalLimitsType)
+  bookingLimits                Json?
+  includeManagedEventsInLimits Boolean              @default(false)
+  internalNotePresets          InternalNotePreset[]
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
 
   @@unique([slug, parentId])
   @@index([parentId])
@@ -1381,6 +1427,7 @@ enum SMSLockState {
   REVIEW_NEEDED
 }
 
+<<<<<<< HEAD
 model PlatformBilling {
   id Int @id @unique // team id
 
@@ -1393,4 +1440,244 @@ model PlatformBilling {
   overdue           Boolean? @default(false)
 
   team Team @relation(fields: [id], references: [id], onDelete: Cascade)
+=======
+enum AttributeType {
+  TEXT
+  NUMBER
+  SINGLE_SELECT
+  MULTI_SELECT
+}
+
+model AttributeOption {
+  id            String            @id @default(uuid())
+  attribute     Attribute         @relation(fields: [attributeId], references: [id], onDelete: Cascade)
+  attributeId   String
+  value         String
+  slug          String
+  isGroup       Boolean           @default(false)
+  // It is a list of AttributeOptions ids that are contained in the group option
+  // You could think of a person having the group option to actually have all the options in the contains list.
+  // We are not using relation here because it would be a many to many relation because a group option can contain many non-group options and a non-group option can be contained in many group options
+  // Such a relation would require its own table to be managed and we don't need it for now.
+  contains      String[]
+  assignedUsers AttributeToUser[]
+}
+
+model Attribute {
+  id String @id @default(uuid())
+
+  // This is organization
+  team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+
+  // This is organizationId
+  teamId Int
+
+  type AttributeType
+
+  name String
+  slug String @unique
+
+  enabled Boolean @default(true)
+
+  usersCanEditRelation Boolean @default(false)
+
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  options          AttributeOption[]
+  isWeightsEnabled Boolean           @default(false)
+  isLocked         Boolean           @default(false)
+
+  @@index([teamId])
+}
+
+model AttributeToUser {
+  id String @id @default(uuid())
+
+  // This is the membership of the organization
+  member Membership @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  // This is the membership id of the organization
+  memberId Int
+
+  attributeOption   AttributeOption @relation(fields: [attributeOptionId], references: [id], onDelete: Cascade)
+  attributeOptionId String
+
+  weight Int?
+
+  // We don't intentionally delete assignments on deletion of a user/directory sync
+  createdAt        DateTime   @default(now())
+  createdById      Int?
+  createdBy        User?      @relation("createdBy", fields: [createdById], references: [id], onDelete: SetNull)
+  createdByDSyncId String?
+  createdByDSync   DSyncData? @relation("createdByDSync", fields: [createdByDSyncId], references: [directoryId], onDelete: SetNull)
+
+  updatedAt        DateTime?  @updatedAt
+  updatedBy        User?      @relation("updatedBy", fields: [updatedById], references: [id], onDelete: SetNull)
+  updatedById      Int?
+  updatedByDSyncId String?
+  updatedByDSync   DSyncData? @relation("updatedByDSync", fields: [updatedByDSyncId], references: [directoryId], onDelete: SetNull)
+
+  @@unique([memberId, attributeOptionId])
+}
+
+enum AssignmentReasonEnum {
+  ROUTING_FORM_ROUTING
+  ROUTING_FORM_ROUTING_FALLBACK
+  REASSIGNED
+  REROUTED
+  SALESFORCE_ASSIGNMENT
+}
+
+model AssignmentReason {
+  id           Int                  @id @unique @default(autoincrement())
+  createdAt    DateTime             @default(now())
+  bookingId    Int
+  booking      Booking              @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  reasonEnum   AssignmentReasonEnum
+  reasonString String
+
+  @@index([bookingId])
+}
+
+enum EventTypeAutoTranslatedField {
+  DESCRIPTION
+  TITLE
+}
+
+model DomainWideDelegation {
+  id                  String                @id @default(uuid())
+  workspacePlatform   WorkspacePlatform     @relation(fields: [workspacePlatformId], references: [id], onDelete: Cascade)
+  workspacePlatformId Int
+  // Provides possibility to have different service accounts for different organizations if the need arises, but normally they should be the same
+  /// @zod.custom(imports.serviceAccountKeySchema)
+  serviceAccountKey   Json
+  enabled             Boolean               @default(false)
+  organizationId      Int
+  organization        Team                  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  domain              String
+  selectedCalendars   SelectedCalendar[]
+  destinationCalendar DestinationCalendar[]
+  bookingReferences   BookingReference[]
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+
+  // Should be fair to assume that one domain can be only on one workspace platform at a time. So, one can't have two different workspace platforms for the same domain
+  // Because we don't know which domain the organization might have, we couldn't make "domain" unique here as that would prevent an actual owner of the domain to be unable to use that domain if it is used by someone else.
+  @@unique([organizationId, domain])
+}
+
+// It is for domain-wide delegation
+model WorkspacePlatform {
+  id                       Int                    @id @default(autoincrement())
+  /// @zod.min(1)
+  slug                     String
+  /// @zod.min(1)
+  name                     String
+  description              String
+  /// @zod.custom(imports.serviceAccountKeySchema)
+  defaultServiceAccountKey Json
+  createdAt                DateTime               @default(now())
+  updatedAt                DateTime               @updatedAt
+  enabled                  Boolean                @default(false)
+  domainWideDelegations    DomainWideDelegation[]
+
+  @@unique([slug])
+}
+
+model EventTypeTranslation {
+  uid            String                       @id @default(cuid())
+  eventType      EventType                    @relation(fields: [eventTypeId], references: [id], onDelete: Cascade)
+  eventTypeId    Int
+  field          EventTypeAutoTranslatedField
+  sourceLocale   String
+  targetLocale   String
+  translatedText String                       @db.Text
+  createdAt      DateTime                     @default(now())
+  createdBy      Int
+  updatedAt      DateTime                     @updatedAt
+  updatedBy      Int?
+  creator        User                         @relation("CreatedEventTypeTranslations", fields: [createdBy], references: [id])
+  updater        User?                        @relation("UpdatedEventTypeTranslations", fields: [updatedBy], references: [id], onDelete: SetNull)
+
+  @@unique([eventTypeId, field, targetLocale])
+  @@index([eventTypeId, field, targetLocale])
+}
+
+enum WatchlistType {
+  EMAIL
+  DOMAIN
+  USERNAME
+}
+
+enum WatchlistSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+model Watchlist {
+  id          String            @id @unique @default(cuid())
+  type        WatchlistType
+  // The identifier of the Watchlisted entity (email or domain)
+  value       String
+  description String?
+  createdAt   DateTime          @default(now())
+  createdBy   User              @relation("CreatedWatchlists", onDelete: Cascade, fields: [createdById], references: [id])
+  createdById Int
+  updatedAt   DateTime          @updatedAt
+  updatedBy   User?             @relation("UpdatedWatchlists", onDelete: SetNull, fields: [updatedById], references: [id])
+  updatedById Int?
+  severity    WatchlistSeverity @default(LOW)
+
+  @@unique([type, value])
+  @@index([type, value])
+}
+
+enum IncompleteBookingActionType {
+  SALESFORCE
+}
+
+model App_RoutingForms_IncompleteBookingActions {
+  id           Int                         @id @default(autoincrement())
+  form         App_RoutingForms_Form       @relation(fields: [formId], references: [id], onDelete: Cascade)
+  formId       String
+  actionType   IncompleteBookingActionType
+  data         Json
+  enabled      Boolean                     @default(true)
+  credentialId Int?
+}
+
+model InternalNotePreset {
+  id                 Int     @id @default(autoincrement())
+  name               String
+  cancellationReason String?
+  team               Team    @relation(fields: [teamId], references: [id])
+  teamId             Int
+
+  createdAt           DateTime              @default(now())
+  BookingInternalNote BookingInternalNote[]
+
+  @@unique([teamId, name])
+  @@index([teamId])
+}
+
+model BookingInternalNote {
+  id Int @id @default(autoincrement())
+
+  notePreset   InternalNotePreset? @relation(fields: [notePresetId], references: [id], onDelete: Cascade)
+  notePresetId Int?
+  text         String?
+
+  booking   Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  bookingId Int
+
+  createdBy   User @relation(fields: [createdById], references: [id])
+  createdById Int
+
+  createdAt DateTime @default(now())
+
+  @@unique([bookingId, notePresetId])
+  @@index([bookingId])
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
 }

@@ -107,6 +107,66 @@ describe("purchaseTeamOrOrgSubscription", () => {
       })
     );
   });
+<<<<<<< HEAD
+=======
+
+  it("It should not create a custom price if price_per_seat is not set", async () => {
+    const FAKE_PAYMENT_ID = "FAKE_PAYMENT_ID";
+    const user = await prismock.user.create({
+      data: {
+        name: "test",
+        email: "test@email.com",
+      },
+    });
+
+    mockStripeCheckoutSessionsCreate({
+      url: "SESSION_URL",
+    });
+
+    mockStripeCheckoutSessionRetrieve(
+      {
+        currency: "USD",
+        product: {
+          id: "PRODUCT_ID",
+        },
+      },
+      [FAKE_PAYMENT_ID]
+    );
+
+    mockStripeCheckoutPricesRetrieve({
+      id: "PRICE_ID",
+      product: {
+        id: "PRODUCT_ID",
+      },
+    });
+
+    const checkoutPricesCreate = mockStripePricesCreate({
+      id: "PRICE_ID",
+    });
+
+    const team = await prismock.team.create({
+      data: {
+        name: "test",
+        metadata: {
+          paymentId: FAKE_PAYMENT_ID,
+        },
+      },
+    });
+
+    const seatsToChargeFor = 1000;
+    expect(
+      await purchaseTeamOrOrgSubscription({
+        teamId: team.id,
+        seatsUsed: 10,
+        seatsToChargeFor,
+        userId: user.id,
+        isOrg: true,
+      })
+    ).toEqual({ url: "SESSION_URL" });
+
+    expect(checkoutPricesCreate).not.toHaveBeenCalled();
+  });
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
 });
 
 function mockStripePricesCreate(data) {

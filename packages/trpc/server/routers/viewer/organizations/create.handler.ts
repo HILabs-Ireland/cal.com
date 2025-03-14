@@ -39,7 +39,12 @@ const getIPAddress = async (url: string): Promise<string> => {
 };
 
 export const createHandler = async ({ input, ctx }: CreateOptions) => {
+<<<<<<< HEAD
   const { slug, name, orgOwnerEmail, seats, pricePerSeat, isPlatform } = input;
+=======
+  const { slug, name, orgOwnerEmail, seats, pricePerSeat, isPlatform, creationSource } = input;
+
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
   const loggedInUser = await prisma.user.findUnique({
     where: {
       id: ctx.user.id,
@@ -62,6 +67,10 @@ export const createHandler = async ({ input, ctx }: CreateOptions) => {
   if (!loggedInUser) throw new TRPCError({ code: "UNAUTHORIZED", message: "You are not authorized." });
 
   const IS_USER_ADMIN = loggedInUser.role === UserPermissionRole.ADMIN;
+<<<<<<< HEAD
+=======
+  const verifiedUser = loggedInUser.completedOnboarding && !!loggedInUser.emailVerified;
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
 
   if (!ORG_SELF_SERVE_ENABLED && !IS_USER_ADMIN && !isPlatform) {
     throw new TRPCError({ code: "FORBIDDEN", message: "Only admins can create organizations" });

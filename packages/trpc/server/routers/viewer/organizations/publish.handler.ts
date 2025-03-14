@@ -1,6 +1,4 @@
-import { getRequestedSlugError } from "@calcom/app-store/stripepayment/lib/team-billing";
-import { purchaseTeamOrOrgSubscription } from "@calcom/features/ee/teams/lib/payments";
-import { IS_TEAM_BILLING_ENABLED, WEBAPP_URL } from "@calcom/lib/constants";
+import { WEBAPP_URL } from "@calcom/lib/constants";
 import { isOrganisationAdmin } from "@calcom/lib/server/queries/organisations";
 import { closeComUpdateTeam } from "@calcom/lib/sync/SyncServiceManager";
 import { prisma } from "@calcom/prisma";
@@ -35,6 +33,7 @@ export const publishHandler = async ({ ctx }: PublishOptions) => {
   const metadata = teamMetadataSchema.safeParse(prevTeam.metadata);
   if (!metadata.success) throw new TRPCError({ code: "BAD_REQUEST", message: "Invalid team metadata" });
 
+<<<<<<< HEAD
   // Since this is an ORG we need to make sure ORG members are scyned with the team. Every time a user is added to the TEAM, we need to add them to the ORG
   if (IS_TEAM_BILLING_ENABLED) {
     const checkoutSession = await purchaseTeamOrOrgSubscription({
@@ -56,6 +55,8 @@ export const publishHandler = async ({ ctx }: PublishOptions) => {
     return { url: checkoutSession.url, message: "Payment required to publish organization" };
   }
 
+=======
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
   if (!metadata.data?.requestedSlug) {
     throw new TRPCError({
       code: "BAD_REQUEST",

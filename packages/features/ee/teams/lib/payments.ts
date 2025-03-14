@@ -105,6 +105,34 @@ export const purchaseTeamOrOrgSubscription = async (input: {
 
   const customer = await getStripeCustomerIdFromUserId(userId);
 
+<<<<<<< HEAD
+=======
+  const fixedPrice = await getFixedPrice();
+
+  let priceId: string | undefined;
+
+  if (pricePerSeat) {
+    if (
+      isOrg &&
+      pricePerSeat === ORGANIZATION_SELF_SERVE_PRICE &&
+      seats === ORGANIZATION_SELF_SERVE_MIN_SEATS
+    ) {
+      priceId = fixedPrice as string;
+    } else {
+      const customPriceObj = await getPriceObject(fixedPrice);
+      priceId = await createPrice({
+        isOrg: !!isOrg,
+        teamId,
+        pricePerSeat,
+        product: customPriceObj.product as string, // We don't expand the object from stripe so just use the product as ID
+        currency: customPriceObj.currency,
+      });
+    }
+  } else {
+    priceId = fixedPrice as string;
+  }
+
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
   const session = await stripe.checkout.sessions.create({
     customer,
     mode: "subscription",
@@ -135,6 +163,7 @@ export const purchaseTeamOrOrgSubscription = async (input: {
   });
   return { url: session.url };
 
+<<<<<<< HEAD
   /**
    * Determines the priceId depending on if a custom price is required or not.
    * If the organization has a custom price per seat, it will create a new price in stripe and return its ID.
@@ -144,6 +173,26 @@ export const purchaseTeamOrOrgSubscription = async (input: {
     const fixedPriceId = isOrg
       ? process.env.STRIPE_ORG_MONTHLY_PRICE_ID
       : process.env.STRIPE_TEAM_MONTHLY_PRICE_ID;
+=======
+  async function createPrice({
+    isOrg,
+    teamId,
+    pricePerSeat,
+    product,
+    currency,
+  }: {
+    isOrg: boolean;
+    teamId: number;
+    pricePerSeat: number;
+    product: Stripe.Product | string;
+    currency: string;
+  }) {
+    try {
+      const pricePerSeatInCents = pricePerSeat * 100;
+      // Price comes in monthly so we need to convert it to a monthly/yearly price
+      const occurrence = 12;
+      const yearlyPrice = pricePerSeatInCents * occurrence;
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
 
     if (!fixedPriceId) {
       throw new Error(
@@ -168,9 +217,15 @@ export const purchaseTeamOrOrgSubscription = async (input: {
         nickname: `Custom price for ${isOrg ? "Organization" : "Team"} ID: ${teamId}`,
         unit_amount: pricePerSeat * 100, // Stripe expects the amount in cents
         // Use the same currency as in the fixed price to avoid hardcoding it.
+<<<<<<< HEAD
         currency: priceObj.currency,
         recurring: { interval: "month" }, // Define your subscription interval
         product: typeof priceObj.product === "string" ? priceObj.product : priceObj.product.id,
+=======
+        currency: currency,
+        recurring: "year",
+        product: typeof product === "string" ? product : product.id,
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
         tax_behavior: "exclusive",
       });
       return customPriceObj.id;

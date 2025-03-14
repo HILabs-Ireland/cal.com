@@ -9,7 +9,11 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
+<<<<<<< HEAD
 import { IS_TEAM_BILLING_ENABLED, WEBAPP_URL } from "@calcom/lib/constants";
+=======
+import { WEBAPP_URL } from "@calcom/lib/constants";
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
 import { getPlaceholderAvatar } from "@calcom/lib/defaultAvatarImage";
 import { trackFormbricksAction } from "@calcom/lib/formbricks-client";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
@@ -97,7 +101,7 @@ const OtherTeamProfileView = () => {
         router.replace("/enterprise");
       }
     },
-    [teamError]
+    [router, teamError]
   );
 
   useEffect(
@@ -112,7 +116,7 @@ const OtherTeamProfileView = () => {
         }
       }
     },
-    [team]
+    [form, team]
   );
 
   // This page can only be accessed by team admins (owner/admin)
@@ -158,6 +162,7 @@ const OtherTeamProfileView = () => {
     if (team?.id) deleteTeamMutation.mutate({ teamId: team.id });
   }
 
+<<<<<<< HEAD
   function leaveTeam() {
     if (team?.id && session.data)
       removeMemberMutation.mutate({
@@ -166,6 +171,8 @@ const OtherTeamProfileView = () => {
       });
   }
 
+=======
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
   if (!team) return null;
 
   return (
@@ -262,6 +269,7 @@ const OtherTeamProfileView = () => {
               <Button color="primary" className="mt-8" type="submit" loading={mutation.isPending}>
                 {t("update")}
               </Button>
+<<<<<<< HEAD
               {IS_TEAM_BILLING_ENABLED &&
                 team.slug === null &&
                 (team.metadata as Prisma.JsonObject)?.requestedSlug && (
@@ -275,6 +283,19 @@ const OtherTeamProfileView = () => {
                     Publish
                   </Button>
                 )}
+=======
+              {team.slug === null && (team.metadata as Prisma.JsonObject)?.requestedSlug && (
+                <Button
+                  color="secondary"
+                  className="ml-2 mt-8"
+                  type="button"
+                  onClick={() => {
+                    publishMutation.mutate({ teamId: team.id });
+                  }}>
+                  Publish
+                </Button>
+              )}
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
             </Form>
           ) : (
             <div className="flex">

@@ -770,8 +770,7 @@
   "teams": "צוותים",
   "team": "צוות",
   "organization": "ארגון",
-      "upgrade_to_flexible_pro_title": "שינינו את החיוב בעבור צוותים",
-  "upgrade_to_flexible_pro_message": "יש בצוות שלך חברים שאין להם מקום. שדרג לחבילת Pro לדאוג למקומות החסרים.",
+        "upgrade_to_flexible_pro_message": "יש בצוות שלך חברים שאין להם מקום. שדרג לחבילת Pro לדאוג למקומות החסרים.",
     "create_manage_teams_collaborative": "צור ונהל צוותים כדי להשתמש בתכונות של שיתוף פעולה.",
   "only_available_on_pro_plan": "תכונה זו זמינה רק בחבילת Pro",
   "remove_cal_branding_description": "כדי להסיר את המיתוג של {{appName}} מדפי הזימון שלך, עליך לשדרג לחשבון Pro.",
@@ -1195,8 +1194,7 @@
   "new_workflow_description": "תהליכי עבודה מאפשרים להפוך את פעולת השליחה של תזכורות ועדכונים לאוטומטית.",
   "active_on": "פעיל ב",
   "workflow_updated_successfully": "עדכון תהליך העבודה {{workflowName}} בוצע בהצלחה",
-  "premium_to_standard_username_description": "זהו שם משתמש סטנדרטי. אם תעדכן/י אותו, תועבר/י לדף החיוב לצורך שנמוך.",
-  "premium_username": "זהו שם משתמש פרימיום, קבל/י אחד משלך תמורת {{price}}",
+    "premium_username": "זהו שם משתמש פרימיום, קבל/י אחד משלך תמורת {{price}}",
   "current": "נוכחי",
   "premium": "פרימיום",
   "standard": "רגיל",
@@ -2232,7 +2230,11 @@
   "advanced_managed_events_description": "אפשר להוסיף כרטיס אשראי יחיד כדי לשלם עבור כל המינויים של הצוות שלך",
   "enterprise_description": "יש לשדרג לרישיון תאגידי כדי ליצור את הארגון שלך",
   "create_your_org": "יצירת הארגון שלך",
+<<<<<<< HEAD
   "create_your_org_description": "אפשר לשדרג לרישיון תאגידי ולקבל תת־תחום, חיוב מאוחד, תובנות, שינוי מיתוג נרחב ועוד",
+=======
+    "create_your_enterprise_description": "שדרג ל-Enterprise וקבל גישה לסנכרון Active Directory, הקצאת משתמשים אוטומטית באמצעות SCIM, סוכני קול של Cal.ai, APIs למנהלים ועוד!",
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
   "other_payment_app_enabled": "אפשר להפעיל רק יישומון תשלום אחד לכל סוג אירוע",
   "admin_delete_organization_description": "<ul><li>צוותים שחברים בארגון הזה יימחקו יחד עם סוגי האירועים שלהם</li><li>משתמשים שהיו חלק מהארגון לא יימחקו וסוג האירועים שלהם יישארו ללא שינוי.</li><li>שמות המשתמשים ישתנו כדי לאפשר להם להתקיים מחוץ לארגון שהיו חברים בו</li></ul>",
   "admin_delete_organization_title": "למחוק את הארגון?",

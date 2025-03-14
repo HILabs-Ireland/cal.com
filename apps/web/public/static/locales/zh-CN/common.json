@@ -754,12 +754,16 @@
   "teams": "团队",
   "team": "团队",
   "organization": "组织",
+<<<<<<< HEAD
       "upgrade_to_flexible_pro_title": "我们更改了团队的计费方式",
   "upgrade_to_flexible_pro_message": "您的团队中有没有位置的成员。升级到专业版来获得更多位置。",
 <<<<<<< HEAD
   "changed_team_billing_info": "自2022年1月起，我们将按每个位置向团队成员收取费用。 您的团队中免费获得专业版的成员现在正在进行为期14天的试用。 试用期结束后，这些成员将在您的团队中隐藏，除非您现在升级到专业版。",
   "create_manage_teams_collaborative": "创建并管理团队以使用协作功能。",
 =======
+=======
+        "upgrade_to_flexible_pro_message": "您的团队中有没有位置的成员。升级到专业版来获得更多位置。",
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
     "create_manage_teams_collaborative": "创建并管理团队以使用协作功能。",
 >>>>>>> afa6c27c7f (Remove billing from commons)
   "only_available_on_pro_plan": "此功能仅在 Pro 套餐中可用",
@@ -1179,8 +1183,7 @@
   "new_workflow_description": "工作流程可让您自动发送提醒和通知。",
   "active_on": "活跃于",
   "workflow_updated_successfully": "{{workflowName}} 工作流程已成功更新",
-  "premium_to_standard_username_description": "这是一个标准用户名，更新流程会将您引导至账单页面进行降级。",
-  "premium_username": "这是高级用户名，支付 {{price}} 即可获得您的高级用户名",
+    "premium_username": "这是高级用户名，支付 {{price}} 即可获得您的高级用户名",
   "current": "当前",
   "premium": "高级",
   "standard": "标准",
@@ -2168,8 +2171,7 @@
   "enterprise": "企业",
   "enterprise_description": "升级到企业版以创建您的组织",
   "create_your_org": "创建您的组织",
-  "create_your_org_description": "升级到企业版获得子域名、统一计费、分析见解、全面的白标功能等等",
-  "create_your_enterprise_description": "升级到企业版，获取Active Directory同步、SCIM自动用户配置、Cal.ai语音代理、管理员API等功能！",
+    "create_your_enterprise_description": "升级到企业版，获取Active Directory同步、SCIM自动用户配置、Cal.ai语音代理、管理员API等功能！",
   "other_payment_app_enabled": "每种事件类型只能启用一个支付应用程序",
   "admin_delete_organization_description": "<ul><li>属于该组织的团队及其事件类型也将被删除</li><li>曾属于该组织的用户不会被删除，他们的事件类型也将保持不变。</li><li>用户名将被更改，以允许他们在组织之外存在</li></ul>",
   "admin_delete_organization_title": "是否删除 {{organizationName}}？",

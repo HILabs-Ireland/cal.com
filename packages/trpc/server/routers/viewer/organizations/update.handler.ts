@@ -1,6 +1,5 @@
 import type { Prisma } from "@prisma/client";
 
-import { IS_TEAM_BILLING_ENABLED } from "@calcom/lib/constants";
 import { getMetadataHelpers } from "@calcom/lib/getMetadataHelpers";
 import { isOrganisationAdmin } from "@calcom/lib/server/queries/organisations";
 import { resizeBase64Image } from "@calcom/lib/server/resizeBase64Image";
@@ -170,7 +169,6 @@ export const updateHandler = async ({ ctx, input }: UpdateOptions) => {
 
   if (input.slug) {
     if (
-      IS_TEAM_BILLING_ENABLED &&
       /** If the team doesn't have a slug we can assume that it hasn't been published yet. */
       !prevOrganisation.slug
     ) {

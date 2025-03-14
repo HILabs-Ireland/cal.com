@@ -61,7 +61,17 @@ export async function bulkDeleteUsersHandler({ ctx, input }: BulkDeleteUsersHand
 
   // We do this in a transaction to make sure that all memberships are removed before we remove the organization relation from the user
   // We also do this to make sure that if one of the queries fail, the whole transaction fails
+<<<<<<< HEAD
   await prisma.$transaction([removeProfiles, deleteMany, removeOrgrelation]);
+=======
+  await prisma.$transaction([
+    removeProfiles,
+    deleteMany,
+    removeOrgrelation,
+    removeManagedEventTypes,
+    removeHostAssignment,
+  ]);
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
 
   return {
     success: true,

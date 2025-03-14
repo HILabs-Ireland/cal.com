@@ -2,6 +2,11 @@ import { Prisma } from "@prisma/client";
 import type { z } from "zod";
 
 import { whereClauseForOrgWithSlugOrRequestedSlug } from "@calcom/ee/organizations/lib/orgDomains";
+<<<<<<< HEAD
+=======
+import removeMember from "@calcom/features/ee/teams/lib/removeMember";
+import { deleteDomain } from "@calcom/lib/domainManager/organization";
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
 import logger from "@calcom/lib/logger";
 import prisma from "@calcom/prisma";
 import { teamMetadataSchema } from "@calcom/prisma/zod-utils";
@@ -177,4 +182,108 @@ export class TeamRepository {
     }
     return getParsedTeam(team);
   }
+<<<<<<< HEAD
+=======
+
+  static async deleteById({ id }: { id: number }) {
+    try {
+      await WorkflowService.deleteWorkflowRemindersOfRemovedTeam(id);
+    } catch (e) {
+      console.error(e);
+    }
+
+    const deletedTeam = await prisma.$transaction(async (tx) => {
+      await tx.eventType.deleteMany({
+        where: {
+          teamId: id,
+          schedulingType: "MANAGED",
+        },
+      });
+
+      // delete all memberships
+      await tx.membership.deleteMany({
+        where: {
+          teamId: id,
+        },
+      });
+
+      const deletedTeam = await tx.team.delete({
+        where: {
+          id: id,
+        },
+      });
+
+      return deletedTeam;
+    });
+
+    if (deletedTeam?.isOrganization && deletedTeam.slug) deleteDomain(deletedTeam.slug);
+
+    return deletedTeam;
+  }
+
+  // TODO: Move errors away from TRPC error to make it more generic
+  static async inviteMemberByToken(token: string, userId: number) {
+    const verificationToken = await prisma.verificationToken.findFirst({
+      where: {
+        token,
+        OR: [{ expiresInDays: null }, { expires: { gte: new Date() } }],
+      },
+      include: {
+        team: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
+
+    if (!verificationToken) throw new TRPCError({ code: "NOT_FOUND", message: "Invite not found" });
+    if (!verificationToken.teamId || !verificationToken.team)
+      throw new TRPCError({
+        code: "NOT_FOUND",
+        message: "Invite token is not associated with any team",
+      });
+
+    try {
+      await prisma.membership.create({
+        data: {
+          teamId: verificationToken.teamId,
+          userId: userId,
+          role: MembershipRole.MEMBER,
+          accepted: false,
+        },
+      });
+    } catch (e) {
+      if (e instanceof Prisma.PrismaClientKnownRequestError) {
+        if (e.code === "P2002") {
+          throw new TRPCError({
+            code: "FORBIDDEN",
+            message: "This user is a member of this team / has a pending invitation.",
+          });
+        }
+      } else throw e;
+    }
+
+    return verificationToken.team.name;
+  }
+
+  static async removeMembers(teamIds: number[], memberIds: number[], isOrg = false) {
+    const deleteMembershipPromises = [];
+
+    for (const memberId of memberIds) {
+      for (const teamId of teamIds) {
+        deleteMembershipPromises.push(
+          // This removeMember function is from @calcom/features/ee/teams/lib/removeMember.ts we should probably move it to this repository.
+          removeMember({
+            teamId,
+            memberId,
+            isOrg,
+          })
+        );
+      }
+    }
+
+    await Promise.all(deleteMembershipPromises);
+  }
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
 }

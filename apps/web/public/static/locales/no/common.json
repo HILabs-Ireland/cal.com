@@ -604,9 +604,13 @@
   "upgrade_to_flexible_pro_title": "Vi har endret fakturering for team",
 =======
   "organization": "Organisasjon",
+<<<<<<< HEAD
       "upgrade_to_flexible_pro_title": "Vi har endret fakturering for team",
 >>>>>>> afa6c27c7f (Remove billing from commons)
   "upgrade_to_flexible_pro_message": "Det er medlemmer i teamet ditt uten sete. Oppgrader proffplanen din for å dekke manglende seter.",
+=======
+        "upgrade_to_flexible_pro_message": "Det er medlemmer i teamet ditt uten sete. Oppgrader proffplanen din for å dekke manglende seter.",
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
     "create_manage_teams_collaborative": "Opprett og administrer team for å bruke samarbeidsfunksjoner.",
   "only_available_on_pro_plan": "Denne funksjonen er bare tilgjengelig i Pro-planen",
   "remove_cal_branding_description": "For å fjerne {{appName}}-merket fra bookingsidene dine, må du oppgradere til en Pro-konto.",
@@ -967,7 +971,11 @@
   "new_workflow_description": "Arbeidsflyter lar deg automatisere sending av påminnelser og varsler.",
   "active_on": "Aktiv på",
   "workflow_updated_successfully": "Arbeidsflyten for {{workflowName}} ble oppdatert",
+<<<<<<< HEAD
   "premium_to_standard_username_description": "Dette er et standard brukernavn og oppdatering tar deg til betaling for å nedgradere.",
+=======
+    "premium_username": "Dette er et premium brukernavn, få ditt for {{price}}",
+>>>>>>> eb7546b337 (Remove remaining billing mentions)
   "current": "Nåværende",
   "premium": "premium",
   "standard": "standard",
@@ -1798,8 +1806,7 @@
   "enterprise": "Bedrift",
   "enterprise_description": "Oppgrader til Enterprise for å opprette din organisasjon",
   "create_your_org": "Opprett din Organisasjon",
-  "create_your_org_description": "Oppgrader til Organisasjoner og få et underdomene, enhetlig fakturering, innsikt, omfattende whitelabeling og mer",
-  "create_your_enterprise_description": "Oppgrader til Enterprise og få tilgang til Active Directory Sync, SCIM Automatisk Brukerprovisjonering, Cal.ai Voice Agents, Admin APIer og mer!",
+    "create_your_enterprise_description": "Oppgrader til Enterprise og få tilgang til Active Directory Sync, SCIM Automatisk Brukerprovisjonering, Cal.ai Voice Agents, Admin APIer og mer!",
   "other_payment_app_enabled": "Du kan kun aktivere én betalingsapp per hendelsestype",
   "admin_delete_organization_description": "<ul><li>Team som er medlem av denne organisasjonen vil også bli slettet sammen med deres hendelsestyper</li><li>Brukere som var en del av organisasjonen vil ikke bli slettet, men brukernavnene deres vil bli endret for å tillate dem å eksistere utenfor organisasjonen</li><li>Brukerhendelsestyper opprettet etter at brukeren var i organisasjonen vil bli slettet</li><li>Migrerte brukerhendelsestyper vil ikke bli slettet</li></ul>",
   "admin_delete_organization_title": "Slett {{organizationName}}?",
