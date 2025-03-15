@@ -1,4 +1,3 @@
-import { PROMPT_TEMPLATES } from "@calcom/features/ee/cal-ai-phone/promptTemplates";
 import { RetellAIService, validatePhoneNumber } from "@calcom/features/ee/cal-ai-phone/retellAIService";
 import { templateTypeEnum } from "@calcom/features/ee/cal-ai-phone/zod-utils";
 import type { TCreatePhoneCallSchema } from "@calcom/features/ee/cal-ai-phone/zod-utils";
@@ -40,10 +39,7 @@ export const handleCreatePhoneCall = async ({
     generalPrompt: userCustomPrompt,
   } = input;
 
-  const generalPrompt =
-    templateType === templateTypeEnum.enum.CUSTOM_TEMPLATE
-      ? userCustomPrompt
-      : PROMPT_TEMPLATES[templateType]?.generalPrompt;
+  const generalPrompt = templateType === templateTypeEnum.enum.CUSTOM_TEMPLATE ? userCustomPrompt : undefined;
 
   const retellAI = new RetellAIService({
     templateType,
