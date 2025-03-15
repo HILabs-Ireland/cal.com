@@ -1,5 +1,3 @@
-import { CreatePhoneCallInput } from "@/ee/event-types/event-types_2024_06_14/inputs/create-phone-call.input";
-import { CreatePhoneCallOutput } from "@/ee/event-types/event-types_2024_06_14/outputs/create-phone-call.output";
 import { API_VERSIONS_VALUES } from "@/lib/api-versions";
 import { PlatformPlan } from "@/modules/auth/decorators/billing/platform-plan.decorator";
 import { GetUser } from "@/modules/auth/decorators/get-user/get-user.decorator";
@@ -17,28 +15,26 @@ import { UpdateTeamEventTypeOutput } from "@/modules/teams/event-types/outputs/u
 import { TeamsEventTypesService } from "@/modules/teams/event-types/services/teams-event-types.service";
 import { UserWithProfile } from "@/modules/users/users.repository";
 import {
-  Controller,
-  UseGuards,
-  Get,
-  Post,
-  Param,
-  ParseIntPipe,
   Body,
-  Patch,
+  Controller,
   Delete,
+  Get,
   HttpCode,
   HttpStatus,
   NotFoundException,
+  Param,
+  ParseIntPipe,
+  Patch,
+  Post,
   Query,
+  UseGuards,
 } from "@nestjs/common";
 import { ApiOperation, ApiTags as DocsTags } from "@nestjs/swagger";
 
 import { ERROR_STATUS, SUCCESS_STATUS } from "@calcom/platform-constants";
-import { handleCreatePhoneCall } from "@calcom/platform-libraries";
 import {
   CreateTeamEventTypeInput_2024_06_14,
   GetTeamEventTypesQuery_2024_06_14,
-  SkipTakePagination,
   TeamEventTypeOutput_2024_06_14,
   UpdateTeamEventTypeInput_2024_06_14,
 } from "@calcom/platform-types";
@@ -103,31 +99,6 @@ export class TeamsEventTypesController {
       data: (await this.outputTeamEventTypesResponsePipe.transform(
         eventType
       )) as TeamEventTypeOutput_2024_06_14,
-    };
-  }
-
-  @Roles("TEAM_ADMIN")
-  @Post("/:eventTypeId/create-phone-call")
-  @UseGuards(ApiAuthGuard, RolesGuard)
-  @ApiOperation({ summary: "Create a phone call" })
-  async createPhoneCall(
-    @Param("eventTypeId") eventTypeId: number,
-    @Param("orgId", ParseIntPipe) orgId: number,
-    @Body() body: CreatePhoneCallInput,
-    @GetUser() user: UserWithProfile
-  ): Promise<CreatePhoneCallOutput> {
-    const data = await handleCreatePhoneCall({
-      user: {
-        id: user.id,
-        timeZone: user.timeZone,
-        profile: { organization: { id: orgId } },
-      },
-      input: { ...body, eventTypeId },
-    });
-
-    return {
-      status: SUCCESS_STATUS,
-      data,
     };
   }
 
