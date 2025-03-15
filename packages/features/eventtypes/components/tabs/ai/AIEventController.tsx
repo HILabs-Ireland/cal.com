@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { useFormContext, Controller } from "react-hook-form";
 import { z } from "zod";
 
-import { getTemplateFieldsSchema } from "@calcom/features/ee/cal-ai-phone/getTemplateFieldsSchema";
 import { TEMPLATES_FIELDS } from "@calcom/features/ee/cal-ai-phone/template-fields-map";
 import type { TemplateType } from "@calcom/features/ee/cal-ai-phone/zod-utils";
 import LicenseRequired from "@calcom/features/ee/common/components/LicenseRequired";
@@ -164,21 +163,6 @@ const AISettings = ({ eventType }: { eventType: EventTypeSetup }) => {
     try {
       const values = formMethods.getValues("aiPhoneCallConfig");
       const { templateType } = values;
-
-      const schema = getTemplateFieldsSchema({ templateType });
-
-      const data = schema.parse({
-        ...values,
-        guestEmail: values.guestEmail && values.guestEmail.trim().length ? values.guestEmail : undefined,
-        guestCompany:
-          values.guestCompany && values.guestCompany.trim().length ? values.guestCompany : undefined,
-        guestName: values.guestName && values.guestName.trim().length ? values.guestName : undefined,
-        eventTypeId: eventType.id,
-        calApiKey,
-        id: eventType.id,
-      });
-
-      createCallMutation.mutate(data);
     } catch (err) {
       if (err instanceof z.ZodError) {
         const fieldName = err.issues?.[0]?.path?.[0];
