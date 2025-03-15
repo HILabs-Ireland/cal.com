@@ -4,13 +4,21 @@ import { useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { z } from "zod";
 
-import PhoneInput from "@calcom/features/components/phone-input";
 import LicenseRequired from "@calcom/features/ee/common/components/LicenseRequired";
 import type { EventTypeSetup, FormValues } from "@calcom/features/eventtypes/lib/types";
+import { classNames } from "@calcom/lib";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
-import { trpc } from "@calcom/trpc/react";
-import { Button, Divider, EmptyScreen, Icon, Label, SettingsToggle, TextField, showToast } from "@calcom/ui";
-import classNames from "@calcom/ui/classNames";
+import {
+  Button,
+  Label,
+  EmptyScreen,
+  SettingsToggle,
+  Divider,
+  TextField,
+  PhoneInput,
+  showToast,
+  Icon,
+} from "@calcom/ui";
 
 type AIEventControllerProps = {
   eventType: EventTypeSetup;
@@ -101,18 +109,6 @@ const AISettings = ({ eventType }: { eventType: EventTypeSetup }) => {
   const formMethods = useFormContext<FormValues>();
 
   const [calApiKey, setCalApiKey] = useState("");
-
-  const createCallMutation = trpc.viewer.organizations.createPhoneCall.useMutation({
-    onSuccess: (data) => {
-      if (!!data?.callId) {
-        showToast("Phone Call Created successfully", "success");
-      }
-    },
-    onError: (err) => {
-      const message = err?.message ? err.message : t("something_went_wrong");
-      showToast(message, "error");
-    },
-  });
 
   const handleSubmit = async () => {
     try {
@@ -242,12 +238,7 @@ const AISettings = ({ eventType }: { eventType: EventTypeSetup }) => {
 
         <Divider />
 
-        <Button
-          disabled={createCallMutation.isPending}
-          loading={createCallMutation.isPending}
-          onClick={handleSubmit}>
-          {t("make_a_call")}
-        </Button>
+        <Button onClick={handleSubmit}>{t("make_a_call")}</Button>
 
         {/* TODO:<small className="block opacity-60">
           Want to automate outgoing phone calls? Read our{" "}
