@@ -1,18 +1,15 @@
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import { useSession } from "next-auth/react";
-import React, { useState } from "react";
-import { useFormContext, Controller } from "react-hook-form";
+import { useState } from "react";
+import { Controller, useFormContext } from "react-hook-form";
 import { z } from "zod";
 
 import PhoneInput from "@calcom/features/components/phone-input";
-import { TEMPLATES_FIELDS } from "@calcom/features/ee/cal-ai-phone/template-fields-map";
-import type { TemplateType } from "@calcom/features/ee/cal-ai-phone/zod-utils";
 import LicenseRequired from "@calcom/features/ee/common/components/LicenseRequired";
 import type { EventTypeSetup, FormValues } from "@calcom/features/eventtypes/lib/types";
-import { ComponentForField } from "@calcom/features/form-builder/FormBuilderField";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { trpc } from "@calcom/trpc/react";
-import { Button, Label, EmptyScreen, SettingsToggle, Divider, TextField, showToast, Icon } from "@calcom/ui";
+import { Button, Divider, EmptyScreen, Icon, Label, SettingsToggle, TextField, showToast } from "@calcom/ui";
 import classNames from "@calcom/ui/classNames";
 
 type AIEventControllerProps = {
@@ -94,41 +91,8 @@ const TemplateFields = () => {
   const { control, watch } = formMethods;
 
   const templateType = watch("aiPhoneCallConfig.templateType");
-  const fields = TEMPLATES_FIELDS[templateType as TemplateType];
 
-  return (
-    <div className="space-y-4">
-      {fields?.map((field) => (
-        <div key={field.name}>
-          <Controller
-            control={control}
-            name={`aiPhoneCallConfig.${field.name}`}
-            render={({ field: { value, onChange }, fieldState: { error } }) => {
-              const { variableName, ...restField } = field;
-              const variableInfo = !!variableName ? `: ${t("variable")} {{${variableName}}}` : "";
-              return (
-                <div>
-                  <ComponentForField
-                    field={{
-                      ...restField,
-                      label: `${t(field.defaultLabel)}${variableInfo}`,
-                      placeholder: t(field.placeholder),
-                    }}
-                    value={value ?? ""}
-                    readOnly={false}
-                    setValue={(val: unknown) => {
-                      onChange(val);
-                    }}
-                  />
-                  {error?.message && <ErrorMessage message={error.message} fieldName={field.name} />}
-                </div>
-              );
-            }}
-          />
-        </div>
-      ))}
-    </div>
-  );
+  return <div className="space-y-4" />;
 };
 
 const AISettings = ({ eventType }: { eventType: EventTypeSetup }) => {
