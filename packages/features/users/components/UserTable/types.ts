@@ -57,7 +57,6 @@ export type UserTableAction =
       type:
         | "SET_CHANGE_MEMBER_ROLE_ID"
         | "SET_DELETE_ID"
-        | "SET_IMPERSONATE_ID"
         | "INVITE_MEMBER"
         | "EDIT_USER_SHEET"
         | "INVITE_MEMBER";

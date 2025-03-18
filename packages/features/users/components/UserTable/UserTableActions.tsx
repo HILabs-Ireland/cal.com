@@ -30,7 +30,6 @@ export function TableActions({
   permissionsForUser: {
     canEdit: boolean;
     canRemove: boolean;
-    canImpersonate: boolean;
     canResendInvitation: boolean;
   };
 }) {
