@@ -373,8 +373,6 @@ export default async function main() {
       client_secret: "",
       payment_fee_fixed: Number(process.env.PAYMENT_FEE_FIXED),
       payment_fee_percentage: Number(process.env.PAYMENT_FEE_PERCENTAGE),
-      public_key: process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY,
-      webhook_secret: process.env.STRIPE_WEBHOOK_SECRET,
     });
   }
 

@@ -40,7 +40,6 @@ export const mockEnv = {
   BUNNY_PASSWORD: "xxx",
   STRIPE_TEST_KEY: "xxx",
   STRIPE_LIVE_KEY: "xxx",
-  STRIPE_WEBHOOK_SECRET: "xxx",
   NEXT_URL: "xxx",
   OPEN_AI_KEY: "xxx",
   OPEN_AI_ORG: "xxx",
