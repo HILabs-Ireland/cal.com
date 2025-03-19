@@ -5,7 +5,7 @@
   "day_other": "{{count}}일",
   "second_one": "{{count}}초",
   "second_other": "{{count}}초",
-  "upgrade_now": "지금 업그레이드",
+  
   "untitled": "제목 없음",
   "accept_invitation": "초대 수락",
   "max_characters": "최대 문자 수",
@@ -68,18 +68,18 @@
   "accept_our_license": "<1>NEXT_PUBLIC_LICENSE_CONSENT</1> 환경 변수를 '{{agree}}'로 바꾸어 라이선스를 허용해주십시오.",
   "remove_banner_instructions": "이 배너를 제거하려면 env. 파일을 열고 <1>NEXT_PUBLIC_LICENSE_CONSENT</1>를 '{{agree}}'.로 바꾸어 주십시오.",
   "error_message": "오류 메시지는: '{{errorMessage}}'",
-  "refund_failed_subject": "환불 실패: {{name}} - {{date}} - {{eventType}}",
-  "refund_failed": "{{date}} {{userName}} 의 {{eventType}} 이벤트에 대한 환불이 이루어지지 않았습니다.",
+  
+  
   "check_with_provider_and_user": "이 문제의 처리 방법은 결제 제공업체 및 {{user}}에서 확인하십시오.",
-  "a_refund_failed": "환불이 이루어지지 않았습니다.",
-  "awaiting_payment_subject": "결제를 기다리고 있습니다: {{date}} {{title}}",
-  "meeting_awaiting_payment": "회의를 위해 결제해 주십시오.",
+  
+  
+  
   "dark_theme_contrast_error": "다크 테마 색상이 대비 검사를 통과하지 못했습니다. 버튼이 더 잘 보이도록 이 색상을 변경하는 것이 좋습니다.",
   "light_theme_contrast_error": "라이트 테마 색상이 대비 검사를 통과하지 못했습니다. 버튼이 더 잘 보이도록 이 색상을 변경하는 것이 좋습니다.",
   "event_type_color_light_theme_contrast_error": "라이트 테마 색상이 대비 검사를 통과하지 못했습니다. 이벤트 유형 색상이 더 잘 보이도록 이 색상을 변경하는 것이 좋습니다.",
   "event_type_color_dark_theme_contrast_error": "다크 테마 색상이 대비 검사를 통과하지 못했습니다. 이벤트 유형 색상이 더 잘 보이도록 이 색상을 변경하는 것이 좋습니다.",
-  "payment_not_created_error": "결제를 생성할 수 없습니다.",
-  "couldnt_charge_card_error": "카드 결제에 실패했습니다.",
+  
+  
   "no_available_users_found_error": "사용 가능한 사용자를 찾을 수 없습니다. 다른 시간대를 시도해 보시겠습니까?",
   "request_body_end_time_internal_error": "내부 오류. 요청 본문에 종료 시간이 포함되어 있지 않습니다.",
   "create_calendar_event_error": "주최자의 캘린더에 캘린더 이벤트를 생성할 수 없습니다.",
@@ -88,12 +88,12 @@
   "already_signed_up_for_this_booking_error": "이미 이 예약에 등록되어 있습니다.",
   "hosts_unavailable_for_booking": "일부 호스트는 예약이 불가능합니다.",
   "help": "Help",
-  "price": "가격",
-  "paid": "결제완료",
-  "refunded": "환불완료",
-  "payment": "결제",
-  "missing_card_fields": "카드 항목 누락",
-  "pay_now": "지금 결제하십시오.",
+  
+  
+  
+  
+  
+  
   "general_prompt": "일반 프롬프트",
   "begin_message": "메시지 시작",
   "codebase_has_to_stay_opensource": "코드베이스는 수정여부와 상관 없이 오픈 소스로 유지되어야 합니다.",
@@ -179,17 +179,17 @@
   "hidden_team_member_message": "귀하의 시트 비용은 Pro로 업그레이드하거나 팀 소유자에게 그들이 귀하의 시트 비용을 지불할 수 있다고 알리는 어떤 경우에도 지불되지 않습니다.",
   "hidden_team_owner_message": "팀을 사용하려면 Pro 계정이 필요합니다. 귀하의 계정은 업그레이드할 때까지 숨겨졌습니다.",
   "link_expires": "{{expiresIn}} 시간 안에 만료됩니다.",
-  "upgrade_to_per_seat": "시트 단위로 업그레이드",
+  
   "seat_options_doesnt_support_confirmation": "좌석 옵션이 확인 요구 사항을 지원하지 않습니다",
   "multilocation_doesnt_support_seats": "다중 위치는 좌석 옵션을 지원하지 않습니다.",
-  "no_show_fee_doesnt_support_seats": "노쇼 수수료는 좌석 옵션을 지원하지 않습니다.",
+  
   "seats_option_doesnt_support_multi_location": "좌석 옵션은 다중 위치를 지원하지 않습니다.",
-  "team_upgrade_seats_details": "귀하의 팀원 {{memberCount}}명 중 {{unpaidCount}}명의 시트 비용이 미지급되었습니다. 시트당 ${{seatPrice}}/m로 계산시, 예상 총 멤버십 비용은 ${{totalCost}}/m입니다.",
-  "team_upgrade_banner_description": "당사의 새로운 팀 플랜을 사용해 주셔서 감사합니다. 귀하의 \"{{teamName}}\" 팀에 업그레이드가 필요한 것으로 확인되었습니다.",
-  "upgrade_banner_action": "여기서 업그레이드",
-  "team_upgraded_successfully": "팀이 성공적으로 업그레이드되었습니다!",
-  "org_upgrade_banner_description": "당사의 Organization 플랜 체험을 선택해 주셔서 감사합니다. 귀하의 Organization \"{{teamName}}\"에 업그레이드가 필요한 것으로 확인되었습니다.",
-  "org_upgraded_successfully": "Organization이 성공적으로 업그레이드되었습니다!",
+  
+  
+  
+  
+  
+  
   "use_link_to_reset_password": "비밀번호를 재설정하시려면 아래 링크를 사용하세요.",
   "hey_there": "안녕하세요",
   "forgot_your_password_calcom": "비밀번호를 잊어버리셨나요? - {{appName}}",
@@ -208,8 +208,8 @@
   "webhook_created_successfully": "웹훅이 생성되었습니다!",
   "webhook_updated_successfully": "웹훅이 업데이트되었습니다!",
   "webhook_removed_successfully": "웹훅이 제거되었습니다!",
-  "subscription_needed": "구독이 필요합니다",
-  "subscription_needed_description": "플랫폼 요금제에 가입되어 있지 않습니다.",
+  
+  
   "payload_template": "페이로드 템플릿",
   "dismiss": "없애기",
   "no_data_yet": "아직 데이터 없음",
@@ -374,8 +374,8 @@
   "booking_submitted_recurring": "되풀이 회의가 제출되었습니다",
   "booking_confirmed": "예약 확정",
   "booking_confirmed_recurring": "되풀이 회의가 확인되었습니다",
-  "warning_recurring_event_payment": "결제는 되풀이 이벤트에서 아직 지원되지 않습니다",
-  "warning_payment_recurring_event": "되풀이 이벤트에는 아직 결제가 지원되지 않습니다",
+  
+  
   "enter_new_password": "새 비밀번호를 입력하세요.",
   "reset_password": "비밀번호 재설정",
   "change_your_password": "비밀번호 변경",
@@ -504,15 +504,15 @@
   "booking_created": "예약 생성",
   "booking_rejected": "예약 거부됨",
   "booking_requested": "예약 요청됨",
-  "booking_payment_initiated": "예약 결제가 시작되었습니다",
+  
   "meeting_ended": "회의 종료됨",
   "form_submitted": "양식 제출됨",
   "form_submitted_no_event": "양식이 제출되었으나, 예약된 이벤트가 없습니다",
-  "booking_paid": "예약 결제됨",
+  
   "ooo_created": "부재중 설정 완료",
   "booking_no_show_updated": "예약된 미팅에 불참한 정보가 업데이트되었습니다",
   "event_triggers": "이벤트 트리거",
-  "subscriber_url": "구독자 URL",
+  
   "create_new_webhook": "새 웹훅 만들기",
   "webhooks": "웹훅",
   "team_webhooks": "팀 웹훅",
@@ -773,10 +773,10 @@
   "readonly": "읽기 전용",
   "one_time_link": "일회성 링크",
   "plan_description": "현재 {{plan}} 요금제를 사용 중입니다.",
-  "plan_upgrade_invitation": "귀하의 계정을 Pro 플랜으로 업그레이드하여 저희가 제공하는 모든 기능을 잠금 해제하십시오.",
-  "plan_upgrade": "활성 이벤트 타입이 두 개 이상 있도록 요금제를 업그레이드해야 합니다.",
-  "plan_upgrade_teams": "팀을 만들려면 요금제를 업그레이드해야 합니다.",
-  "plan_upgrade_instructions": "<1>여기</1>에서 업그레이드할 수 있습니다.",
+  
+  
+  
+  
   "event_types_page_title": "이벤트 타입",
   "event_types_page_subtitle": "사람들이 캘린더에서 예약할 수 있도록 공유할 이벤트를 만드세요.",
   "new": "신규",
@@ -833,8 +833,8 @@
   "teams": "팀",
   "team": "팀",
   "organization": "조직",
-      "upgrade_to_flexible_pro_title": "팀에 대한 청구를 변경했습니다",
-  "upgrade_to_flexible_pro_message": "팀에 시트가 없는 구성원이 있습니다. 누락된 시트를 보완하려면 Pro 플랜을 업그레이드하세요.",
+      
+  
     "create_manage_teams_collaborative": "협업 기능을 사용할 팀을 만들고 관리합니다.",
   "only_available_on_pro_plan": "이 기능은 Pro 요금제에서만 사용할 수 있습니다.",
   "remove_cal_branding_description": "예약 페이지에서 {{appName}} 브랜드를 제거하려면 Pro 계정으로 업그레이드해야 합니다.",
@@ -843,8 +843,8 @@
   "little_something_about": "자신에 대해 조금 알려주세요.",
   "profile_updated_successfully": "프로필이 업데이트되었습니다.",
   "your_user_profile_updated_successfully": "사용자 프로필이 성공적으로 업데이트되었습니다.",
-  "your_upgrade_is_here": "업그레이드가 준비되었습니다",
-  "your_upgrade_is_here_description": "새로운 요금제로 업그레이드하여 일정 관리 경험을 개선하고 새로운 기능을 즐겨보세요.",
+  
+  
   "you_are_all_set": "모든 준비가 완료되었습니다",
   "you_are_all_set_description": "이미 최신 요금제를 사용 중입니다. 업그레이드할 필요가 없습니다. 새로운 기능을 즐기시고 궁금한 점이 있으시면 언제든 문의해 주세요!",
   "user_cannot_found_db": "사용자가 로그인한 것 같지만 db에서 찾을 수 없습니다.",
@@ -889,8 +889,8 @@
   "recurring_event": "되풀이 이벤트",
   "recurring_event_description": "사람들이 되풀이 이벤트를 구독할 수 있습니다",
   "connect_and_join": "연결하고 참여하기",
-  "cannot_be_used_with_paid_event_types": "유료 이벤트 유형과 함께 사용할 수 없습니다",
-  "warning_payment_instant_meeting_event": "즉석 회의는 반복 이벤트 및 결제 앱과 아직 호환되지 않습니다",
+  
+  
   "warning_instant_meeting_experimental": "실험적: 즉석 회의 이벤트는 현재 실험 중입니다.",
   "starting": "시작 중",
   "disable_guests": "게스트 비활성화",
@@ -921,7 +921,7 @@
   "cal_provide_jitsi_meeting_url": "{{appName}}은 Jitsi Meet 회의 URL을 제공합니다.",
   "cal_provide_huddle01_meeting_url": "{{appName}}은 Huddle01 Web3 회의 URL을 제공합니다.",
   "cal_provide_teams_meeting_url": "{{appName}}은 MS Teams 회의 URL을 제공합니다. 참고: 직장 또는 학교 계정이 있어야 합니다.",
-  "require_payment": "지불 요청",
+  
   "you_need_to_add_a_name": "이름을 추가해야 합니다",
   "commission_per_transaction": "거래당 수수료",
   "event_type_updated_successfully_description": "이벤트 타입이 성공적으로 업데이트되었습니다.",
@@ -965,7 +965,7 @@
   "next_step": "건너뛰기",
   "prev_step": "이전 단계",
   "install": "설치",
-  "start_paid_trial": "무료 체험 시작",
+  
   "installed": "설치됨",
   "active_install_one": "{{count}}개 활성 설치",
   "active_install_other": "{{count}}개 활성 설치",
@@ -983,7 +983,7 @@
   "check_here": "여기를 확인하세요",
   "conferencing": "회의",
   "calendar": "달력",
-  "payments": "결제",
+  
   "not_installed": "설치되지 않음",
   "error_password_mismatch": "비밀번호가 일치하지 않습니다.",
   "error_required_field": "이 필드는 필수입니다.",
@@ -1025,14 +1025,14 @@
   "all_apps": "모든 앱",
   "no_category_apps_description_calendar": "중복 예약을 방지하기 위해 충돌을 확인하려는 캘린더 앱을 추가합니다",
   "no_category_apps_description_conferencing": "고객과 화상 통화하려면 회의 앱을 추가해 보세요",
-  "no_category_apps_description_payment": "귀하와 귀하 고객 간의 거래를 용이하게 하는 결제 앱을 추가합니다",
+  
   "no_category_apps_description_analytics": "예약 페이지에 대한 분석 앱 추가",
   "no_category_apps_description_automation": "사용할 자동화 앱 추가",
   "no_category_apps_description_other": "모든 종류의 작업을 수행하는 다른 유형의 앱을 추가합니다",
   "no_category_apps_description_messaging": "사용자 정의 알림 및 미리 알림을 설정하려면 메시징 앱을 추가하세요",
   "no_category_apps_description_crm": "CRM 앱을 추가하여 만났던 사람을 추적하세요",
   "installed_app_calendar_description": "중복 예약을 방지하기 위해 충돌을 확인하도록 캘린더를 설정합니다.",
-  "installed_app_payment_description": "고객에게 요금 청구 시 사용할 결제 처리 서비스를 구성합니다.",
+  
   "installed_app_analytics_description": "예약 페이지에 사용할 분석 앱 구성",
   "installed_app_other_description": "기타 카테고리에서 설치된 모든 앱.",
   "installed_app_conferencing_description": "사용할 회의 앱 구성",
@@ -1049,7 +1049,7 @@
   "permissions": "권한",
   "terms_and_privacy": "약관 및 개인정보 보호",
   "published_by": "퍼블리셔 {{author}}",
-  "subscribe": "구독",
+  
   "buy": "구매",
   "install_app": "앱 설치",
   "categories": "카테고리",
@@ -1064,14 +1064,14 @@
   "create_events_on": "이벤트 생성일:",
   "enterprise_license": "이것은 상업용 기능입니다",
   "enterprise_license_locally": "이 기능은 로컬에서 테스트할 수 있지만 실제 운영 환경에서는 할 수 없습니다.",
-  "enterprise_license_sales": "상업용 라이선스를 구매하려면 영업팀에 문의하십시오. 이미 라이선스 키가 있는 경우, 지원이 필요하면 support@cal.com으로 연락해 주십시오.",
+  
   "missing_license": "라이선스 없음",
   "next_steps": "다음 단계",
   "acquire_commercial_license": "상용 라이선스 취득하기",
   "the_infrastructure_plan": "인프라 플랜은 사용량 기반이고 스타트업 위주의 할인을 제공합니다.",
   "prisma_studio_tip": "Prisma Studio를 통해 계정 생성",
   "prisma_studio_tip_description": "첫 사용자 설정 방법 알아보기",
-  "contact_sales": "영업팀에 문의",
+  
   "error_404": "오류 404",
   "default": "기본값",
   "set_to_default": "기본값으로 설정",
@@ -1231,7 +1231,7 @@
   "developer_documentation": "개발자 문서",
   "get_in_touch": "연락하기",
   "contact_support": "지원 문의",
-  "premium_support": "프리미엄 지원",
+  
   "community_support": "커뮤니티 지원",
   "feedback": "피드백",
   "submitted_feedback": "피드백을 주셔서 감사합니다!",
@@ -1290,14 +1290,14 @@
   "new_workflow_description": "워크플로를 사용하면 미리 알림 및 알림 보내기를 자동화할 수 있습니다.",
   "active_on": "유효일",
   "workflow_updated_successfully": "{{workflowName}} 워크플로 업데이트 완료",
-    "premium_username": "프리미엄 사용자 이름입니다. {{price}}에 구입하세요",
+    
   "current": "기존",
-  "premium": "프리미엄",
+  
   "standard": "표준",
   "confirm_username_change_dialog_title": "사용자 이름 변경 확인",
-  "change_username_standard_to_premium": "표준 사용자 이름에서 프리미엄 사용자 이름으로 변경하면 업그레이드를 위한 결제 단계로 이동합니다.",
-  "change_username_premium_to_standard": "프리미엄에서 표준 사용자 이름으로 변경하면 다운그레이드를 위한 결제 단계로 이동합니다.",
-    "stripe_description": "예약 결제 필수(거래 건당 0.5% + €0.10 수수료)",
+  
+  
+    
   "trial_expired": "평가 기간이 만료되었습니다",
   "remove_app": "앱 제거",
   "yes_remove_app": "예, 앱을 제거합니다",
@@ -1366,16 +1366,16 @@
   "event_date_variable": "이벤트 날짜",
   "event_time_variable": "이벤트 시간",
   "organizer_name_variable": "주최자 이름",
-  "app_upgrade_description": "이 기능을 사용하려면 Pro 계정으로 업그레이드해야 합니다.",
+  
   "invalid_number": "유효하지 않은 전화 번호",
   "invalid_url_error_message": "{{label}}에 대한 URL이 유효하지 않습니다. 샘플 URL: {{sampleUrl}}",
   "navigate": "탐색하기",
   "open": "열기",
   "close": "닫기",
-  "upgrade": "업그레이드",
-  "upgrade_to_access_recordings_title": "녹음에 액세스하려면 업그레이드하세요",
-  "upgrade_to_access_recordings_description": "녹음은 팀 계획의 일부로만 사용할 수 있습니다. 통화 녹음을 시작하려면 업그레이드하세요",
-  "upgrade_to_cal_ai_phone_number_description": "Enterprise로 업그레이드하여 게스트에게 전화를 걸어 일정을 잡을 수 있는 AI 에이전트 전화번호를 생성하세요",
+  
+  
+  
+  
   "recordings_are_part_of_the_teams_plan": "녹음은 팀 계획의 일부입니다",
   "team_feature_teams": "이것은 Team 기능입니다. 팀의 가용성을 확인하려면 Team으로 업그레이드하세요.",
   "team_feature_workflows": "이것은 Team 기능입니다. 워크플로로 이벤트 알림 및 미리 알림을 자동화하려면 Team으로 업그레이드하세요.",
@@ -1389,7 +1389,7 @@
   "company_size": "회사 규모",
   "what_help_needed": "어떻게 도와 드릴까요?",
   "variable_format": "변수 형식",
-  "webhook_subscriber_url_reserved": "웹훅 구독자 URL이 이미 정의되었습니다",
+  
   "custom_input_as_variable_info": "추가 입력 레이블의 모든 특수 문자는 무시하고(문자와 숫자만 사용) 모든 문자에 대문자를 사용하며 공백은 밑줄로 대체합니다.",
   "using_booking_questions_as_variables": "예약 질문을 어떻게 변수로 사용합니까?",
   "download_desktop_app": "데스크탑 앱 다운로드",
@@ -1413,8 +1413,8 @@
   "event_limit_tab_description": "예약 가능 횟수",
   "event_advanced_tab_description": "캘린더 설정 및 기타...",
   "event_advanced_tab_title": "고급",
-  "event_payments_tab_title": "결제",
-  "event_payments_tab_description": "이벤트 결제 설정하기",
+  
+  
   "event_setup_multiple_duration_error": "이벤트 설정: 복수 기간에는 최소 1개의 옵션이 필요합니다.",
   "event_setup_multiple_duration_default_error": "이벤트 설정: 유효한 기본 기간을 선택하십시오.",
   "event_setup_booking_limits_error": "예약 한도는 오름차순이어야 합니다. [일, 주, 월, 년]",
@@ -1499,7 +1499,7 @@
   "connect_calendars_from_app_store": "앱 스토어에서 더 많은 캘린더를 추가할 수 있습니다",
   "connect_conference_apps": "회의 앱 연결",
   "connect_calendar_apps": "캘린더 앱 연결",
-  "connect_payment_apps": "결제 앱 연결",
+  
   "connect_automation_apps": "자동화 앱 연결",
   "connect_analytics_apps": "분석 앱 연결",
   "connect_other_apps": "기타 앱 연결",
@@ -1621,7 +1621,7 @@
   "password_reset_email": "비밀번호 재설정 지침이 포함된 이메일이 {{email}} 주소로 전송됩니다.",
   "password_reset_leading": "이메일을 아직 받지 못한 경우 입력한 이메일 주소가 올바른지 확인하고 스팸 폴더를 확인하거나 문제가 지속되면 지원팀에 문의하세요.",
   "password_updated": "비밀번호가 업데이트되었습니다!",
-  "pending_payment": "진행 중인 결제",
+  
   "pending_invites": "보류 중인 초대",
   "pending_organization_invites": "대기 중인 조직 초대",
   "not_on_cal": "{{appName}}에 없음",
@@ -1734,7 +1734,7 @@
   "route_to": "목표 경로",
   "test_preview_description": "데이터를 제출하지 않고 라우팅 양식 테스트",
   "test_routing": "라우팅 테스트",
-  "payment_app_disabled": "관리자가 결제 앱을 비활성화했습니다",
+  
   "edit_event_type": "이벤트 타입 편집",
   "only_admin_can_see_members_of_org": "이 조직은 비공개이며, 조직의 관리자나 소유자만 구성원을 볼 수 있습니다.",
   "only_admin_can_manage_sso_org": "조직의 관리자나 소유자만 SSO 설정을 관리할 수 있습니다.",
@@ -1755,8 +1755,8 @@
   "email_body_slug_replacement_notice": "<strong>{{teamName}}</strong> 팀의 관리자가 귀하의 이벤트 타입 <strong>/{{slug}}</strong>을(를) 제어 대상인 관리형 이벤트 타입으로 교체했습니다.",
   "email_body_slug_replacement_info": "링크는 계속 유효하지만 일부 설정이 변경될 수 있습니다. 이벤트 타입에서 이를 검토할 수 있습니다.",
   "email_body_slug_replacement_suggestion": "이벤트 타입에 대한 질문이 있는 경우, 관리자에게 문의하십시오.<br /><br />즐겁게 일정 관리하세요! <br />Cal.com 팀 드림",
-  "disable_payment_app": "관리자가 {{appName}}을(를) 비활성화했으며, 이는 이벤트 유형 {{title}}에 영향을 미칩니다. 참석자들은 여전히 이 유형의 이벤트를 예약할 수 있지만 결제 요청을 받지 않습니다. 관리자가 결제 방법을 다시 활성화할 때까지 이 이벤트 유형을 숨길 수 있습니다.",
-  "payment_disabled_still_able_to_book": "참석자들은 여전히 이 유형의 이벤트를 예약할 수 있지만 결제 요청을 받지 않습니다. 관리자가 결제 방법을 다시 활성화할 때까지 이 이벤트 유형을 숨길 수 있습니다.",
+  
+  
   "app_disabled_with_event_type": "관리자가 이벤트 타입 {{title}}에 영향을 미치는 {{appName}} 앱을 비활성화했습니다.",
   "app_disabled_video": "관리자가 이벤트 타입에 영향을 미칠 수 있는 {{appName}} 앱을 비활성화했습니다. 위치가 {{appName}}인 이벤트 타입이 있는 경우 기본적으로 Cal Video로 설정됩니다.",
   "app_disabled_subject": "{{appName}} 앱이 비활성화되었습니다",
@@ -1842,8 +1842,8 @@
   "round_robin_hosts": "라운드 로빈 호스트",
   "minimum_round_robin_hosts_count": "참석에 필요한 호스트 수",
   "hosts": "호스트",
-  "upgrade_to_enable_feature": "이 기능을 활성화하려면 팀을 생성해야 합니다. 여기를 클릭하여 팀을 생성하세요.",
-  "orgs_upgrade_to_enable_feature": "이 기능을 활성화하려면 엔터프라이즈 플랜으로 업그레이드해야 합니다.",
+  
+  
   "new_attendee": "새 참석자",
   "awaiting_approval": "승인 기다리는 중",
   "requires_google_calendar": "이 앱은 Google Calendar 연결이 필요합니다",
@@ -1944,9 +1944,9 @@
   "add_a_booking_question": "질문 추가",
   "identifier": "ID",
   "duplicate_email": "중복 이메일입니다",
-  "booking_with_payment_cancelled": "이 이벤트는 더 이상 결제할 수 없습니다",
-  "booking_with_payment_cancelled_already_paid": "이 예약 결제에 대한 환불 처리가 진행 중입니다.",
-  "booking_with_payment_cancelled_refunded": "이 예약 결제는 환불 처리되었습니다.",
+  
+  
+  
   "booking_confirmation_failed": "예약 확인 실패",
   "not_enough_seats": "좌석이 부족합니다",
   "form_builder_field_already_exists": "이 이름을 가진 필드가 이미 존재합니다",
@@ -2079,31 +2079,31 @@
   "clear_filters": "필터 지우기",
   "clear": "지우기",
   "hold": "보류",
-  "on_booking_option": "예약 시 결제 징수",
-  "hold_option": "노쇼 수수료 부과",
-  "card_held": "카드 보류됨",
-  "charge_card": "카드에 요금 부과",
-  "card_charged": "카드에 요금 부과됨",
-  "no_show_fee_amount": "{{amount, currency}} 노쇼 수수료",
-  "no_show_fee": "노쇼 수수료",
-  "submit_card": "카드 제출",
-  "submit_payment_information": "결제 정보 제출",
-  "meeting_awaiting_payment_method": "회의에 대한 결제 수단을 기다리는 중입니다",
-  "no_show_fee_charged_email_subject": "{{amount, currency}}에 대한 노쇼 수수료 부과됨: {{title}} 날짜 {{date}}",
-  "no_show_fee_charged_text_body": "노쇼 수수료가 부과되었습니다",
-  "no_show_fee_charged_subtitle": "다음 이벤트에 대해 {{amount, currency}}에 대한 노쇼 수수료가 부과되었습니다",
-  "error_charging_card": "노쇼 수수료를 부과하는 중 문제가 발생했습니다. 나중에 다시 시도해주세요.",
-  "collect_no_show_fee": "노쇼 수수료 청구",
-  "no_show_fee_charged": "노쇼 수수료 부과됨",
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   "insights": "인사이트",
   "routing_forms": "라우팅 양식",
   "testing_workflow_info_message": "이 워크플로를 테스트할 때 이메일 및 SMS는 최소 1시간 전에만 예약할 수 있다는 점에 유의하세요",
   "insights_no_data_found_for_filter": "선택한 필터 또는 날짜에 대한 데이터를 찾을 수 없습니다.",
-  "acknowledge_booking_no_show_fee": "본인은 이 이벤트에 참석하지 않을 경우 {{amount, currency}}에 대한 노쇼 수수료가 내 카드에 부과됨을 인정합니다.",
-  "card_details": "카드 세부정보",
+  
+  
   "something_went_wrong_on_our_end": "문제가 발생했습니다. 지원팀에 연락하시면 즉시 문제를 해결해 드리겠습니다.",
   "please_provide_following_text_to_suppport": "더 나은 도움을 받으려면 지원팀에 문의할 때 다음 텍스트를 제공해 주세요",
-  "seats_and_no_show_fee_error": "현재 좌석을 활성화할 수 없으므로 노쇼 수수료를 부과할 수 없습니다",
+  
   "complete_your_booking": "예약을 완료하세요",
   "complete_your_booking_subject": "예약 완료: {{title}} 날짜 {{date}}",
   "confirm_your_details": "세부 정보 확인",
@@ -2121,12 +2121,12 @@
   "one_year": "1년",
   "team_invite_received": "{{teamName}}에 초대되셨습니다",
   "currency_string": "{{amount, currency}}",
-  "charge_card_dialog_body": "참석자에게 {{amount, currency}}을 청구하려고 합니다. 계속 진행하시겠습니까?",
+  
   "charge_attendee": "참석자에게 {{amount, currency}} 청구",
-  "payment_app_commission": "결제가 필요합니다(건당 수수료 {{paymentFeePercentage}}% + {{fee, currency}})",
+  
   "email_invite_team": "{{email}}이(가) 초대되었습니다",
   "email_invite_team_bulk": "사용자 {{userCount}}명이 초대됨",
-  "error_collecting_card": "카드 수집 중 오류 발생",
+  
   "image_size_limit_exceed": "업로드되는 이미지의 크기는 5MB를 초과하면 안 됩니다.",
   "unauthorized_workflow_error_message": "{{errorCode}}: 이 워크플로를 활성화 또는 비활성화할 권한이 없습니다",
   "inline_embed": "인라인 임베드",
@@ -2395,7 +2395,7 @@
   "unlocked": "잠금 해제",
   "lock_timezone_toggle_on_booking_page": "예약 페이지의 시간대 잠금",
   "description_lock_timezone_toggle_on_booking_page": "예약 페이지에서 시간대를 잠그는 기능은 대면 이벤트에 유용합니다.",
-  "event_setup_multiple_payment_apps_error": "이벤트 유형당 하나의 결제 앱만 활성화할 수 있습니다.",
+  
   "number_in_international_format": "국제 형식으로 번호를 입력하세요.",
   "install_calendar": "캘린더 설치",
   "branded_subdomain": "브랜드 서브도메인",
@@ -2412,7 +2412,7 @@
   "enterprise_description": "Enterprise로 업그레이드하여 조직을 만드세요",
   "create_your_org": "조직 만들기",
     "create_your_enterprise_description": "Enterprise로 업그레이드하고 Active Directory Sync, SCIM 자동 사용자 프로비저닝, Cal.ai 음성 에이전트, 관리자 API 등을 이용하세요!",
-  "other_payment_app_enabled": "이벤트 유형당 하나의 결제 앱만 활성화할 수 있습니다",
+  
   "admin_delete_organization_description": "<ul><li>이 조직의 멤버인 팀도 이벤트 유형과 함께 삭제됩니다</li><li>조직의 일부였던 사용자는 삭제되지 않지만, 조직 외부에서 존재할 수 있도록 사용자 이름이 변경됩니다</li><li>사용자가 조직에 속한 후 생성된 사용자 이벤트 유형은 삭제됩니다</li><li>이전된 사용자 이벤트 유형은 삭제되지 않습니다</li></ul>",
   "admin_delete_organization_title": "{{organizationName}}을(를) 삭제하시겠습니까?",
   "published": "게시됨",
@@ -2432,12 +2432,12 @@
   "uprade_to_create_instant_bookings": "엔터프라이즈로 업그레이드하여 게스트가 즉시 참여할 수 있는 통화를 만드세요. 이는 팀 이벤트 유형에만 해당됩니다",
   "dont_want_to_wait": "기다리고 싶지 않으신가요?",
   "meeting_started": "회의 시작됨",
-  "pay_and_book": "결제하고 예약하기",
+  
   "cal_ai_event_tab_description": "AI 에이전트가 예약하도록 하세요",
   "booking_not_found_error": "예약을 찾을 수 없습니다",
   "booking_seats_full_error": "예약 좌석이 가득 찼습니다",
-  "missing_payment_credential_error": "결제 자격 증명이 없습니다",
-  "missing_payment_app_id_error": "결제 앱 ID가 없습니다",
+  
+  
   "not_enough_available_seats_error": "예약 가능한 좌석이 충분하지 않습니다",
   "user_redirect_title": "{{username}}님이 잠시 자리를 비웠습니다.",
   "user_redirect_description": "그동안 {{profile.username}}님이 {{username}}님을 대신하여 모든 새로 예약된 회의를 담당할 것입니다.",
@@ -2534,7 +2534,7 @@
   "email|existing_user_added_link_changed": "링크가 <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a>에서 <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>로 변경되었지만 걱정하지 마세요, 이전 링크는 여전히 작동하며 적절히 리디렉션됩니다.<br /><br />참고: 모든 개인 이벤트 유형이 <strong>{{teamName}}</strong> 조직으로 이동되었으며, 잠재적인 개인 링크도 포함될 수 있습니다.<br /><br />새 조직 계정에 개인 이벤트가 없는지 확인하려면 로그인하세요.<br /><br />개인 이벤트를 위해서는 개인 이메일 주소로 새 계정을 만드는 것을 권장합니다.<br /><br />새로운 깔끔한 링크를 즐기세요: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "귀하의 조직이 생성되었습니다",
   "your_current_plan": "현재 요금제",
-  "organization_price_per_user_month": "사용자당 월 $37 (최소 30석)",
+  
   "privacy_organization_description": "조직의 개인정보 설정 관리",
   "privacy": "개인정보보호",
   "team_will_be_under_org": "새 팀은 귀하의 조직에 속하게 됩니다",
@@ -2631,7 +2631,7 @@
   "proceeding_agreement": "계속 진행하시면 당사의",
   "terms": "이용약관",
   "always_show_x_days": "항상 {{x}}일 사용 가능",
-  "unable_to_subscribe_to_the_platform": "플랫폼 플랜 구독 중 오류가 발생했습니다. 나중에 다시 시도해 주세요.",
+  
   "updating_oauth_client_error": "OAuth 클라이언트 업데이트 중 오류가 발생했습니다. 나중에 다시 시도해 주세요.",
   "creating_oauth_client_error": "OAuth 클라이언트 생성 중 오류가 발생했습니다. 나중에 다시 시도해 주세요.",
   "event_type_color": "이벤트 유형 색상",
@@ -2692,9 +2692,9 @@
   "outlook_connect_atom_label": "Outlook 캘린더 연결",
   "outlook_connect_atom_already_connected_label": "Outlook 캘린더 연결됨",
   "outlook_connect_atom_loading_label": "Outlook 캘린더 확인 중",
-  "stripe_connect_atom_label": "Stripe에 연결",
-  "stripe_connect_atom_already_connected_label": "Stripe에 연결됨",
-  "stripe_connect_atom_loading_label": "Stripe 자격 증명 확인 중",
+  
+  
+  
   "booking_question_response_variables": "예약 질문 응답 변수",
   "managed_by_teamAdmins": "{{teamAdmins}}에 의해 관리됨",
   "number_of_options": "{{count}}개의 옵션",
@@ -2718,10 +2718,10 @@
   "month_to_date": "이번 달 현재까지",
   "year_to_date": "올해 현재까지",
   "custom_range": "사용자 지정 범위",
-  "refund_policy": "환불 정책",
+  
   "always": "항상",
   "never": "절대 불가",
-  "payment_option": "결제 옵션",
+  
   "if_cancelled": "취소하는 경우",
   "before": "이전",
   "show_all_columns": "모든 열 표시",

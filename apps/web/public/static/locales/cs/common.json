@@ -5,7 +5,7 @@
   "day_other": "{{count}} dny/dní",
   "second_one": "{{count}} sekunda",
   "second_other": "{{count}} s",
-  "upgrade_now": "Přejít na vyšší tarif",
+  
   "untitled": "Bez názvu",
   "accept_invitation": "Přijmout pozvánku",
   "max_characters": "Max. znaků",
@@ -68,18 +68,18 @@
   "accept_our_license": "Přijměte naši licenci změnou proměnné .env <1>NEXT_PUBLIC_LICENSE_CONSENT</1> na '{{agree}}'.",
   "remove_banner_instructions": "Chcete-li tento banner odstranit, otevřete prosím váš .env soubor a změňte <1>NEXT_PUBLIC_LICENSE_CONSENT</1> proměnnou na '{{agree}}'.",
   "error_message": "Chybová zpráva: '{{errorMessage}}'",
-  "refund_failed_subject": "Vrácení peněz se nezdařilo: {{name}} - {{date}} - {{eventType}}",
-  "refund_failed": "Vrácení peněz za událost {{eventType}} pro {{userName}} během {{date}} selhalo.",
+  
+  
   "check_with_provider_and_user": "Pro řešení prosím zkontaktujte vašeho správce plateb a/nebo uživatele {{user}}.",
-  "a_refund_failed": "Vrácení platby selhalo",
-  "awaiting_payment_subject": "Čekám na platbu: {{title}} během {{date}}",
-  "meeting_awaiting_payment": "Vaše schůzka čeká na platbu",
+  
+  
+  
   "dark_theme_contrast_error": "Barva tmavého motivu neprošla kontrolou kontrastu. Doporučujeme změnit tuto barvu, aby byly vaše tlačítka viditelnější.",
   "light_theme_contrast_error": "Barva světlého motivu neprošla kontrolou kontrastu. Doporučujeme změnit tuto barvu, aby byly vaše tlačítka viditelnější.",
   "event_type_color_light_theme_contrast_error": "Barva světlého motivu neprošla kontrolou kontrastu. Doporučujeme změnit tuto barvu, aby byly barvy vašich typů událostí viditelnější.",
   "event_type_color_dark_theme_contrast_error": "Barva tmavého motivu neprošla kontrolou kontrastu. Doporučujeme změnit tuto barvu, aby byly barvy vašich typů událostí viditelnější.",
-  "payment_not_created_error": "Platbu se nepodařilo vytvořit",
-  "couldnt_charge_card_error": "Nepodařilo se strhnout platbu z karty",
+  
+  
   "no_available_users_found_error": "Nebyli nalezeni žádní dostupní uživatelé. Můžete zkusit jiný časový slot?",
   "request_body_end_time_internal_error": "Interní chyba. Tělo požadavku neobsahuje čas ukončení",
   "create_calendar_event_error": "Nelze vytvořit událost v kalendáři organizátora",
@@ -88,12 +88,12 @@
   "already_signed_up_for_this_booking_error": "Již jste se zaregistrovali na tuto rezervaci.",
   "hosts_unavailable_for_booking": "Někteří hostitelé nejsou k dispozici pro rezervaci.",
   "help": "Nápověda",
-  "price": "Cena",
-  "paid": "Zaplaceno",
-  "refunded": "Platba vrácena",
-  "payment": "Platba",
-  "missing_card_fields": "Chybějící údaje karty",
-  "pay_now": "Zaplatit",
+  
+  
+  
+  
+  
+  
   "general_prompt": "Obecná výzva",
   "begin_message": "Zahájit zprávu",
   "codebase_has_to_stay_opensource": "Zdrojové kódy musí zůstat jako open source, bez ohledu na to, jestli je upravujete nebo ne",
@@ -179,17 +179,17 @@
   "hidden_team_member_message": "Vaše místo není zaplacené. Buď přejděte na tarif Pro, nebo informujte vlastníka týmu, že za vaše místo může zaplatit.",
   "hidden_team_owner_message": "Pro využívání týmů potřebujete tarif Pro, budete skrytí, než přejdete na vyšší verzi.",
   "link_expires": "P.S. Platnost vyprší za {{expiresIn}} hodin.",
-  "upgrade_to_per_seat": "Přejít na placení za místo",
+  
   "seat_options_doesnt_support_confirmation": "Možnost Místa nevyžaduje potvrzení",
   "multilocation_doesnt_support_seats": "Více lokalit nepodporuje možnost míst.",
-  "no_show_fee_doesnt_support_seats": "Poplatek za neúčast nepodporuje možnost míst.",
+  
   "seats_option_doesnt_support_multi_location": "Možnost míst nepodporuje více lokalit.",
-  "team_upgrade_seats_details": "Z {{memberCount}} členů ve vašem týmů je {{unpaidCount}} míst neplacených. Při ${{seatPrice}} měsíčně za místo je odhad celkové částky za členství ${{totalCost}} měsíčně.",
-  "team_upgrade_banner_description": "Děkujeme vám za vyzkoušení našeho nového týmového plánu. Všimli jsme si, že váš tým „{{teamName}}“ je nutné upgradovat.",
-  "upgrade_banner_action": "Upgradovat zde",
-  "team_upgraded_successfully": "Váš tým byl úspěšně přešel na vyšší verzi!",
-  "org_upgrade_banner_description": "Děkujeme, že jste vyzkoušeli náš tarif Organizace. Všimli jsme si, že vaše organizace „{{teamName}}“ vyžaduje upgrade.",
-  "org_upgraded_successfully": "Váš upgrade na tarif Organization byl úspěšně dokončen!",
+  
+  
+  
+  
+  
+  
   "use_link_to_reset_password": "Pro obnovení hesla použijte odkaz níž",
   "hey_there": "Ahoj",
   "forgot_your_password_calcom": "Zapomněli jste heslo? - {{appName}}",
@@ -208,8 +208,8 @@
   "webhook_created_successfully": "Webhook úspěšně vytvořen!",
   "webhook_updated_successfully": "Webhook úspěšně aktualizován!",
   "webhook_removed_successfully": "Webhook úspěšně odstraněn!",
-  "subscription_needed": "Je vyžadováno předplatné",
-  "subscription_needed_description": "Nemáte aktivní předplatné platformy.",
+  
+  
   "payload_template": "Šablona Payloadu",
   "dismiss": "Zavřít",
   "no_data_yet": "Zatím žádná data",
@@ -374,8 +374,8 @@
   "booking_submitted_recurring": "Opakovaná schůzka byla odeslána",
   "booking_confirmed": "Vaše rezervace byla schválena",
   "booking_confirmed_recurring": "Opakovaná schůzka byla potvrzena",
-  "warning_recurring_event_payment": "Platby zatím nejsou v opakovaných událostech podporovány",
-  "warning_payment_recurring_event": "Platby zatím nepodporují opakované události",
+  
+  
   "enter_new_password": "Zadejte nové heslo, které chcete u účtu používat.",
   "reset_password": "Obnovit heslo",
   "change_your_password": "Změnit heslo",
@@ -504,15 +504,15 @@
   "booking_created": "Rezervace vytvořena",
   "booking_rejected": "Rezervace byla zamítnuta",
   "booking_requested": "Váš požadavek na rezervaci byl úspěšně odeslán",
-  "booking_payment_initiated": "Platba za rezervaci zahájena",
+  
   "meeting_ended": "Schůzka skončila",
   "form_submitted": "Formulář byl odeslán",
   "form_submitted_no_event": "Formulář odeslán, žádná událost nebyla zarezervována",
-  "booking_paid": "Rezervace uhrazena",
+  
   "ooo_created": "Vytvořeno mimo kancelář",
   "booking_no_show_updated": "Aktualizováno: Nepřítomnost na rezervaci",
   "event_triggers": "Eventy na základě akce",
-  "subscriber_url": "URL pro odběry",
+  
   "create_new_webhook": "Vytvořit nový webhook",
   "webhooks": "Webhooky",
   "team_webhooks": "Týmové Webhooky",
@@ -773,10 +773,10 @@
   "readonly": "Jen pro čtení",
   "one_time_link": "Jednorázový odkaz",
   "plan_description": "Momentálně používáte tarif {{plan}}.",
-  "plan_upgrade_invitation": "Přejděte s účtem na tarif PRO a odemkněte všechny funkce, které nabízíme.",
-  "plan_upgrade": "Je potřeba přejít na vyšší tarif, abyste mohli mít víc jak jeden aktivní typ události.",
-  "plan_upgrade_teams": "Je potřeba přejít na vyšší tarif, abyste mohli vytvořit tým.",
-  "plan_upgrade_instructions": "<1>Přejít na vyšší tarif</1>.",
+  
+  
+  
+  
   "event_types_page_title": "Typy událostí",
   "event_types_page_subtitle": "Vytvořte události, které si po nasdílení mohou lidé rezervovat ve vašem kalendáři.",
   "new": "Nové",
@@ -833,8 +833,8 @@
   "teams": "Týmy",
   "team": "Tým",
   "organization": "Organizace",
-      "upgrade_to_flexible_pro_title": "Změnili jsme fakturaci pro týmy",
-  "upgrade_to_flexible_pro_message": "Ve vašem týmu jsou členové bez místa. Upgradujte svůj Pro plán pro pokrytí chybějících míst.",
+      
+  
     "create_manage_teams_collaborative": "Vytvořte a spravujte týmy pro zpřístupnění funkcionality spolupráce.",
   "only_available_on_pro_plan": "Tato funkce je dostupná pouze v tarifu PRO",
   "remove_cal_branding_description": "Přejděte s účtem na tarif PRO, pokud z rezervačních stránek chcete odstranit branding {{appName}}.",
@@ -843,8 +843,8 @@
   "little_something_about": "Pár drobností o vás.",
   "profile_updated_successfully": "Profil byl úspěšně aktualizován",
   "your_user_profile_updated_successfully": "Váš uživatelský profil byl úspěšně aktualizován.",
-  "your_upgrade_is_here": "Váš upgrade je zde",
-  "your_upgrade_is_here_description": "Vylepšete svůj rezervační systém přechodem na nový plán a užijte si nové funkce.",
+  
+  
   "you_are_all_set": "Vše je připraveno",
   "you_are_all_set_description": "Již máte nejnovější plán. Není třeba nic upgradovat. Užijte si nové funkce a v případě dotazů nás kontaktujte!",
   "user_cannot_found_db": "Zdá se, že uživatel je přihlášen, ale nelze najít v databázi",
@@ -889,8 +889,8 @@
   "recurring_event": "Opakovaná událost",
   "recurring_event_description": "Lidé se mohou přihlásit k opakovaným událostem",
   "connect_and_join": "Připojit a přidat se",
-  "cannot_be_used_with_paid_event_types": "Nelze použít s placenými typy událostí",
-  "warning_payment_instant_meeting_event": "Okamžité schůzky nejsou zatím podporovány s opakujícími se událostmi a platebními aplikacemi",
+  
+  
   "warning_instant_meeting_experimental": "Experimentální: Okamžité schůzky jsou momentálně ve fázi experimentu.",
   "starting": "Začátek",
   "disable_guests": "Zakázat hosty",
@@ -921,7 +921,7 @@
   "cal_provide_jitsi_meeting_url": "{{appName}} poskytne URL Jitsi Meet video meetingu.",
   "cal_provide_huddle01_meeting_url": "{{appName}} poskytne URL Huddle01 video meetingu.",
   "cal_provide_teams_meeting_url": "{{appName}} poskytne URL schůzky aplikace MS Teams. POZNÁMKA: MUSÍ SE JEDNAT O PRACOVNÍ NEBO ŠKOLNÍ ÚČET",
-  "require_payment": "Vyžadovat platbu",
+  
   "you_need_to_add_a_name": "Musíte přidat název",
   "commission_per_transaction": "provize za transakci",
   "event_type_updated_successfully_description": "Typ události byl úspěšně aktualizován.",
@@ -965,7 +965,7 @@
   "next_step": "Přeskočit krok",
   "prev_step": "Předchozí krok",
   "install": "Nainstalovat",
-  "start_paid_trial": "Začít bezplatnou zkušební verzi",
+  
   "installed": "Nainstalováno",
   "active_install_one": "Aktivní instalace: {{count}}",
   "active_install_other": "Aktivní instalace: {{count}}",
@@ -983,7 +983,7 @@
   "check_here": "Zkontrolujte zde",
   "conferencing": "Konference",
   "calendar": "Kalendář",
-  "payments": "Platby",
+  
   "not_installed": "Nenainstalováno",
   "error_password_mismatch": "Hesla se neshodují.",
   "error_required_field": "Toto pole je povinné.",
@@ -1025,14 +1025,14 @@
   "all_apps": "Všechny aplikace",
   "no_category_apps_description_calendar": "Přidejte aplikaci kalendáře, ať máte přehled v zájmu prevence dvojích rezervací",
   "no_category_apps_description_conferencing": "Zkuste přidat aplikaci pro videokonference s klienty",
-  "no_category_apps_description_payment": "Přidejte platební aplikaci, která usnadní provádění transakcí mezi vámi a vašimi klienty",
+  
   "no_category_apps_description_analytics": "Přidejte analytickou aplikaci pro vaše rezervační stránky",
   "no_category_apps_description_automation": "Přidejte aplikaci pro automatizaci",
   "no_category_apps_description_other": "Přidejte jakýkoli jiný typ aplikace pro nejrůznější činnosti",
   "no_category_apps_description_messaging": "Přidejte aplikaci pro zasílání zpráv a nastavte vlastní oznámení a připomenutí",
   "no_category_apps_description_crm": "Přidejte aplikaci CRM, ať jste v obraze, s kým jste se setkali",
   "installed_app_calendar_description": "Nastavte si kalendáře, ať můžete kontrolovat konflikty a zabránit tak dvojím rezervacím.",
-  "installed_app_payment_description": "Nakonfigurujte služby zpracování plateb, které se mají používat při strhávání plateb od klientů.",
+  
   "installed_app_analytics_description": "Nakonfigurujte aplikace, které chcete použít pro své rezervační stránky",
   "installed_app_other_description": "Všechny vaše nainstalované aplikace z ostatních kategorií.",
   "installed_app_conferencing_description": "Nakonfigurujte konferenční aplikace, které chcete používat",
@@ -1049,7 +1049,7 @@
   "permissions": "Oprávnění",
   "terms_and_privacy": "Podmínky a ochrana soukromí",
   "published_by": "Publikoval/a {{author}}",
-  "subscribe": "Odebírat",
+  
   "buy": "Koupit",
   "install_app": "Nainstalovat aplikaci",
   "categories": "Kategorie",
@@ -1064,14 +1064,14 @@
   "create_events_on": "Vytvořit události v:",
   "enterprise_license": "Toto je komerční funkce",
   "enterprise_license_locally": "Tuto funkci můžete testovat lokálně, ale ne v produkčním prostředí.",
-  "enterprise_license_sales": "Pro zakoupení komerční licence se obraťte na náš prodejní tým. Pokud již máte licenční klíč, kontaktujte prosím podporu na adrese support@cal.com pro pomoc.",
+  
   "missing_license": "Chybějící licence",
   "next_steps": "Další kroky",
   "acquire_commercial_license": "Získat komerční licenci",
   "the_infrastructure_plan": "Infrastruktura se účtuje podle reálného využívání a má příznivé slevy pro startupy.",
   "prisma_studio_tip": "Vytvořit účet prostřednictvím Prisma Studio",
   "prisma_studio_tip_description": "Zjistěte, jak nastavit svého prvního uživatele",
-  "contact_sales": "Kontaktovat obchodní oddělení",
+  
   "error_404": "Chyba 404",
   "default": "Výchozí",
   "set_to_default": "Nastavit jako výchozí",
@@ -1231,7 +1231,7 @@
   "developer_documentation": "Dokumentace vývojáře",
   "get_in_touch": "Kontaktujte nás",
   "contact_support": "Kontaktujte podporu",
-  "premium_support": "Prémiová podpora",
+  
   "community_support": "Podpora komunity",
   "feedback": "Zpětná vazba",
   "submitted_feedback": "Děkujeme za vaši zpětnou vazbu!",
@@ -1290,14 +1290,14 @@
   "new_workflow_description": "Pracovní postupy umožňují automatizovat zasílání upomínek a oznámení.",
   "active_on": "Aktivní pro:",
   "workflow_updated_successfully": "Pracovní postup {{workflowName}} byl aktualizován",
-    "premium_username": "Toto je prémiové uživatelské jméno, získejte ho za {{price}}",
+    
   "current": "Aktuální",
-  "premium": "prémiové",
+  
   "standard": "standardní",
   "confirm_username_change_dialog_title": "Potvrdit změnu uživatelského jména",
-  "change_username_standard_to_premium": "Při změně uživatelského jména ze standardního na prémiové budete přesměrováni k platbě, po které přejdete na vyšší verzi.",
-  "change_username_premium_to_standard": "Při změně uživatelského jména z prémiového na standardní budete přesměrováni k platbě, po které přejdete na nižší verzi.",
-    "stripe_description": "Vyžadovat poplatek za rezervace (0,5 % + 0,10 € provize za transakci)",
+  
+  
+    
   "trial_expired": "Vaše zkušební verze vypršela",
   "remove_app": "Odstranit aplikaci",
   "yes_remove_app": "Ano, odstranit aplikaci",
@@ -1366,16 +1366,16 @@
   "event_date_variable": "Datum události",
   "event_time_variable": "Čas události",
   "organizer_name_variable": "Jméno organizátora",
-  "app_upgrade_description": "Pokud chcete použít tuto funkci, musíte provést aktualizaci na účet Pro.",
+  
   "invalid_number": "Neplatné telefonní číslo",
   "invalid_url_error_message": "Neplatná adresa URL pro {{label}}. Příklad URL: {{sampleUrl}}",
   "navigate": "Navigace",
   "open": "Otevřít",
   "close": "Zavřít",
-  "upgrade": "Upgradovat",
-  "upgrade_to_access_recordings_title": "Získejte po upgradu přístup k nahrávkám",
-  "upgrade_to_access_recordings_description": "Nahrávky jsou dostupné pouze v rámci našeho tarifu pro týmy. Proveďte upgrade a začněte nahrávat své hovory",
-  "upgrade_to_cal_ai_phone_number_description": "Upgradujte na Enterprise a získejte telefonní číslo AI agenta, který může volat hostům a plánovat hovory",
+  
+  
+  
+  
   "recordings_are_part_of_the_teams_plan": "Nahrávky jsou součástí tarifu pro týmy",
   "team_feature_teams": "Toto je funkce verze Team. Pokud chcete zobrazit dostupnost svého týmu, upgradujte na verzi Team.",
   "team_feature_workflows": "Jedná se o funkci verze Team. Upgradujte na verzi Team, abyste mohli automatizovat upozornění na události a upomínky pomocí pracovních postupů.",
@@ -1389,7 +1389,7 @@
   "company_size": "Velikost společnosti",
   "what_help_needed": "S čím potřebujete pomoci?",
   "variable_format": "Formát proměnné",
-  "webhook_subscriber_url_reserved": "Adresa URL odběratele webhooku je již definována",
+  
   "custom_input_as_variable_info": "Ignorujte všechny speciální znaky doplňkového vstupního štítku (používejte pouze písmena a číslice), používejte velká písmena a bílé znaky nahraďte podtržítky.",
   "using_booking_questions_as_variables": "Jak používat rezervační otázky jako proměnné?",
   "download_desktop_app": "Stáhněte si aplikaci pro stolní počítače",
@@ -1413,8 +1413,8 @@
   "event_limit_tab_description": "Jak často lze u vás provést rezervaci",
   "event_advanced_tab_description": "Nastavení kalendáře a další...",
   "event_advanced_tab_title": "Upřesnit",
-  "event_payments_tab_title": "Platby",
-  "event_payments_tab_description": "Nastavit platby pro událost",
+  
+  
   "event_setup_multiple_duration_error": "Nastavení události: více dob trvání vyžaduje alespoň 1 možnost.",
   "event_setup_multiple_duration_default_error": "Nastavení události: vyberte prosím platnou výchozí dobu trvání.",
   "event_setup_booking_limits_error": "Limity rezervací musí být seřazeny vzestupně. [den,týden,měsíc,rok]",
@@ -1499,7 +1499,7 @@
   "connect_calendars_from_app_store": "Další kalendáře můžete přidat přes obchod s aplikacemi",
   "connect_conference_apps": "Propojit konferenční aplikace",
   "connect_calendar_apps": "Propojit kalendářové aplikace",
-  "connect_payment_apps": "Propojit platební aplikace",
+  
   "connect_automation_apps": "Připojit aplikace pro automatizaci",
   "connect_analytics_apps": "Připojit analytické aplikace",
   "connect_other_apps": "Propojit další aplikace",
@@ -1621,7 +1621,7 @@
   "password_reset_email": "E-mail s pokyny k obnovení hesla byl zaslán na adresu {{email}}.",
   "password_reset_leading": "Pokud brzy neobdržíte e-mail, zkontrolujte, zda je zadaná e-mailová adresa správná, dále složku nevyžádané pošty nebo se obraťte na podporu, pokud problém přetrvává.",
   "password_updated": "Heslo bylo úspěšně změněno!",
-  "pending_payment": "Čeká se na platbu",
+  
   "pending_invites": "Čekající pozvánky",
   "pending_organization_invites": "Čekající pozvánky do organizace",
   "not_on_cal": "Nenachází se na {{appName}}",
@@ -1734,7 +1734,7 @@
   "route_to": "Směrovat na",
   "test_preview_description": "Otestujte svůj směrovací formulář bez odeslání jakýchkoli dat",
   "test_routing": "Test směrování",
-  "payment_app_disabled": "Správce zakázal platební aplikaci",
+  
   "edit_event_type": "Upravit typ události",
   "only_admin_can_see_members_of_org": "Tato organizace je soukromá a pouze administrátor nebo vlastník organizace může vidět její členy.",
   "only_admin_can_manage_sso_org": "Pouze administrátor nebo vlastník organizace může spravovat nastavení SSO",
@@ -1755,8 +1755,8 @@
   "email_body_slug_replacement_notice": "Správce v týmu <strong>{{teamName}}</strong> nahradil váš typ události <strong>/{{slug}}</strong> spravovaným typem události, který ovládá.",
   "email_body_slug_replacement_info": "Váš odkaz bude dále fungovat, ale některá příslušná nastavení se mohla změnit. Můžete si je prohlédnout v části Typy událostí.",
   "email_body_slug_replacement_suggestion": "Pokud máte k typu události dotazy, obraťte se na svého správce.<br /><br />Hodně štěstí s plánováním. <br />tým Cal.com",
-  "disable_payment_app": "Administrátor zakázal {{appName}}, což ovlivňuje váš typ události {{title}}. Účastníci si stále mohou tento typ události rezervovat, ale nebudou vyzváni k platbě. Můžete tento typ události skrýt, dokud administrátor znovu nepovolí vaši platební metodu.",
-  "payment_disabled_still_able_to_book": "Účastníci si stále mohou tento typ události rezervovat, ale nebudou vyzváni k platbě. Můžete tento typ události skrýt, dokud administrátor znovu nepovolí vaši platební metodu.",
+  
+  
   "app_disabled_with_event_type": "Administrátor zakázal {{appName}}, což ovlivňuje váš typ události {{title}}.",
   "app_disabled_video": "Administrátor zakázal {{appName}}, což může ovlivnit vaše typy událostí. Pokud máte typy událostí s {{appName}} jako umístění, bude výchozí nastavení Cal Video.",
   "app_disabled_subject": "Aplikace {{appName}} byla zakázána",
@@ -1842,8 +1842,8 @@
   "round_robin_hosts": "Hostitelé typu „round robin“",
   "minimum_round_robin_hosts_count": "Počet hostitelů, kteří se musí zúčastnit",
   "hosts": "Hostitelé",
-  "upgrade_to_enable_feature": "Pro povolení této funkce musíte vytvořit tým. Klikněte zde pro vytvoření týmu.",
-  "orgs_upgrade_to_enable_feature": "Pokud chcete zapnout tuto funkci, musíte upgradovat na náš tarif Enterprise.",
+  
+  
   "new_attendee": "Nový účastník",
   "awaiting_approval": "Čeká na schválení",
   "requires_google_calendar": "Tato aplikace vyžaduje připojení ke Kalendáři Google",
@@ -1944,9 +1944,9 @@
   "add_a_booking_question": "Přidat otázku",
   "identifier": "Identifikátor",
   "duplicate_email": "Duplicitní e-mail",
-  "booking_with_payment_cancelled": "Platba za tuto událost již není možná",
-  "booking_with_payment_cancelled_already_paid": "Vrácení peněz za tuto rezervační platbu je na cestě.",
-  "booking_with_payment_cancelled_refunded": "Tato rezervační platba byla vrácena.",
+  
+  
+  
   "booking_confirmation_failed": "Potvrzení rezervace se nezdařilo",
   "not_enough_seats": "Nedostatek míst",
   "form_builder_field_already_exists": "Pole s tímto názvem již existuje",
@@ -2079,31 +2079,31 @@
   "clear_filters": "Vymazat filtry",
   "clear": "Vymazat",
   "hold": "Blokace",
-  "on_booking_option": "Vybrat platbu při rezervaci",
-  "hold_option": "Účtovat poplatek za nedostavení se",
-  "card_held": "Blokace částky na kartě",
-  "charge_card": "Strhnout z karty",
-  "card_charged": "Strženo z karty",
-  "no_show_fee_amount": "Poplatek {{amount, currency}} za nedostavení se",
-  "no_show_fee": "Poplatek za nedostavení se",
-  "submit_card": "Předložit kartu",
-  "submit_payment_information": "Odeslat platební údaje",
-  "meeting_awaiting_payment_method": "Vaše schůzka čeká na způsob platby",
-  "no_show_fee_charged_email_subject": "Poplatek za nedostavení se ve výši {{amount, currency}} stržen za {{title}} dne {{date}}.",
-  "no_show_fee_charged_text_body": "Byl stržen poplatek za nedostavení se",
-  "no_show_fee_charged_subtitle": "V souvislosti s následující událostí byl stržen poplatek za nedostavení se ve výši {{amount, currency}}",
-  "error_charging_card": "Při strhávání poplatku za nedostavení se došlo k chybě. Zkuste to později.",
-  "collect_no_show_fee": "Vybrat poplatek za nedostavení se",
-  "no_show_fee_charged": "Poplatek za nedostavení se stržen",
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   "insights": "Přehledy",
   "routing_forms": "Směrovací formuláře",
   "testing_workflow_info_message": "Při testování tohoto pracovního postupu mějte na paměti, že e-maily a SMS lze naplánovat pouze nejméně 1 hodinu předem.",
   "insights_no_data_found_for_filter": "Pro vybraný filtr nebo vybraná data nebyla nalezena žádná data.",
-  "acknowledge_booking_no_show_fee": "Beru na vědomí, že pokud se této události nezúčastním, bude z mé karty stržen poplatek za nedostavení se ve výši {{amount, currency}}.",
-  "card_details": "Údaje o kartě",
+  
+  
   "something_went_wrong_on_our_end": "Na naší straně se něco pokazilo. Spojte se s naší podporou a hned to napravíme.",
   "please_provide_following_text_to_suppport": "Při kontaktování podpory uveďte v zájmu lepší efektivity následující",
-  "seats_and_no_show_fee_error": "V současné době nelze povolit místa a strhnout poplatek za nedostavení se",
+  
   "complete_your_booking": "Dokončete svou rezervaci",
   "complete_your_booking_subject": "Dokončete svou rezervaci: {{title}} dne {{date}}",
   "confirm_your_details": "Potvrďte své údaje",
@@ -2121,12 +2121,12 @@
   "one_year": "1 rok",
   "team_invite_received": "Byli jste pozváni do týmu {{teamName}}",
   "currency_string": "{{amount, currency}}",
-  "charge_card_dialog_body": "Chystáte se účtovat účastníkovi {{amount, currency}}. Opravdu chcete pokračovat?",
+  
   "charge_attendee": "Naúčtovat účastníkovi {{amount, currency}}",
-  "payment_app_commission": "Vyžadujte platbu ({{paymentFeePercentage}} % + provizi {{fee, currency}} za transakci)",
+  
   "email_invite_team": "Pozvánka pro uživatele {{email}} odeslána",
   "email_invite_team_bulk": "Počet pozvaných uživatelů: {{userCount}}",
-  "error_collecting_card": "Chyba při výběru karty",
+  
   "image_size_limit_exceed": "Velikost nahraného obrázku by neměla překročit limit 5 MB",
   "unauthorized_workflow_error_message": "{{errorCode}}: Nejste oprávněni zapnout nebo vypnout tento pracovní postup",
   "inline_embed": "Vložit na řádek",
@@ -2395,7 +2395,7 @@
   "unlocked": "Odemčeno",
   "lock_timezone_toggle_on_booking_page": "Uzamčení časového pásma na stránce rezervace",
   "description_lock_timezone_toggle_on_booking_page": "Uzamčení časového pásma na stránce rezervace (užitečné pro osobní události).",
-  "event_setup_multiple_payment_apps_error": "Pro každý typ události můžete mít povolenou pouze jednu platební aplikaci.",
+  
   "number_in_international_format": "Zadejte číslo v mezinárodním formátu.",
   "install_calendar": "Nainstalovat kalendář",
   "branded_subdomain": "Brandovaný subdoména",
@@ -2412,7 +2412,7 @@
   "enterprise_description": "Upgradujte na Enterprise a vytvořte svou organizaci",
   "create_your_org": "Vytvořte svou organizaci",
     "create_your_enterprise_description": "Upgradujte na Enterprise a získejte přístup k synchronizaci Active Directory, automatickému poskytování uživatelů SCIM, hlasovým agentům Cal.ai, administrátorským API a dalším funkcím!",
-  "other_payment_app_enabled": "Pro každý typ události můžete povolit pouze jednu platební aplikaci",
+  
   "admin_delete_organization_description": "<ul><li>Týmy, které jsou členy této organizace, budou také smazány spolu s jejich typy událostí</li><li>Uživatelé, kteří byli součástí organizace, nebudou smazáni, ale jejich uživatelská jména budou změněna, aby mohli existovat mimo organizaci</li><li>Typy událostí vytvořené uživatelem po jeho vstupu do organizace budou smazány</li><li>Migrované typy událostí uživatele nebudou smazány</li></ul>",
   "admin_delete_organization_title": "Smazat {{organizationName}}?",
   "published": "Publikováno",
@@ -2432,12 +2432,12 @@
   "uprade_to_create_instant_bookings": "Upgradujte na Enterprise a umožněte hostům připojit se k okamžitému hovoru, do kterého se mohou účastníci ihned zapojit. Toto je pouze pro týmové typy událostí",
   "dont_want_to_wait": "Nechcete čekat?",
   "meeting_started": "Schůzka začala",
-  "pay_and_book": "Zaplatit a rezervovat",
+  
   "cal_ai_event_tab_description": "Nechte AI agenty rezervovat za vás",
   "booking_not_found_error": "Rezervaci nelze najít",
   "booking_seats_full_error": "Všechny místa jsou obsazena",
-  "missing_payment_credential_error": "Chybí platební údaje",
-  "missing_payment_app_id_error": "Chybí ID platební aplikace",
+  
+  
   "not_enough_available_seats_error": "Rezervace nemá dostatek volných míst",
   "user_redirect_title": "{{username}} je momentálně na krátkou dobu pryč.",
   "user_redirect_description": "Mezitím bude {{profile.username}} zodpovědný za všechny nové naplánované schůzky jménem {{username}}.",
@@ -2534,7 +2534,7 @@
   "email|existing_user_added_link_changed": "Váš odkaz byl změněn z <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> na <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>, ale nebojte se, všechny předchozí odkazy stále fungují a přesměrovávají správně. <br /><br />Upozornění: Všechny vaše osobní typy událostí byly přesunuty do organizace <strong>{teamName}</strong>, což může zahrnovat i potenciální osobní odkaz.<br /><br />Přihlaste se a ujistěte se, že na svém novém organizačním účtu nemáte žádné soukromé události.<br /><br />Pro osobní události doporučujeme vytvořit nový účet s osobní e-mailovou adresou.<br /><br />Užijte si svůj nový čistý odkaz: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Vaše organizace byla vytvořena",
   "your_current_plan": "Váš aktuální plán",
-  "organization_price_per_user_month": "$37 za uživatele měsíčně (minimálně 30 míst)",
+  
   "privacy_organization_description": "Spravujte nastavení soukromí pro vaši organizaci",
   "privacy": "Ochrana soukromí",
   "team_will_be_under_org": "Nové týmy budou pod vaší organizací",
@@ -2631,7 +2631,7 @@
   "proceeding_agreement": "Pokračováním souhlasíte s našimi",
   "terms": "Podmínkami",
   "always_show_x_days": "Vždy dostupné {{x}} dní",
-  "unable_to_subscribe_to_the_platform": "Při pokusu o přihlášení k plánu platformy došlo k chybě, zkuste to prosím znovu později",
+  
   "updating_oauth_client_error": "Při aktualizaci OAuth klienta došlo k chybě, zkuste to prosím znovu později",
   "creating_oauth_client_error": "Při vytváření OAuth klienta došlo k chybě, zkuste to prosím znovu později",
   "event_type_color": "Barva typu události",
@@ -2692,9 +2692,9 @@
   "outlook_connect_atom_label": "Připojit Outlook Kalendář",
   "outlook_connect_atom_already_connected_label": "Připojený Outlook Kalendář",
   "outlook_connect_atom_loading_label": "Kontrola kalendáře Outlook",
-  "stripe_connect_atom_label": "Připojit ke Stripe",
-  "stripe_connect_atom_already_connected_label": "Stripe připojeno",
-  "stripe_connect_atom_loading_label": "Kontrola přihlašovacích údajů Stripe",
+  
+  
+  
   "booking_question_response_variables": "Proměnné odpovědí na otázky při rezervaci",
   "managed_by_teamAdmins": "Spravováno {{teamAdmins}}",
   "number_of_options": "{{count}} možností",
@@ -2718,10 +2718,10 @@
   "month_to_date": "od začátku měsíce",
   "year_to_date": "od začátku roku",
   "custom_range": "vlastní rozsah",
-  "refund_policy": "Pravidla pro vrácení peněz",
+  
   "always": "Vždy",
   "never": "Nikdy",
-  "payment_option": "Možnost platby",
+  
   "if_cancelled": "Při zrušení",
   "before": "před",
   "show_all_columns": "Zobrazit všechny sloupce",

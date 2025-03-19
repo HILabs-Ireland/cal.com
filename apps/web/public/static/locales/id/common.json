@@ -4,7 +4,7 @@
   "day_other": "{{count}} hari",
   "second_one": "{{count}} detik",
   "second_other": "{{count}} detik",
-  "upgrade_now": "Upgrade sekarang",
+  
   "accept_invitation": "Terima undangan",
   "calcom_explained": "{{appName}} menyediakan infrastruktur penjadwalan untuk semua orang.",
   "calcom_explained_new_user": "Selesaikan pengaturan akun {{appName}}! Tinggal selangkah lagi untuk solusi penjadwalan kamu.",
@@ -28,19 +28,19 @@
   "accept_our_license": "Setujui lisensi dengan mengganti variabel .env <1>NEXT_PUBLIC_LICENSE_CONSENT</1> menjadi {{agree}}.",
   "remove_banner_instructions": "Untuk menghilangkan spanduk ini, buka file .env kamu dan ganti variabel <1>NEXT_PUBLIC_LICENSE_CONSENT</1> menjadi '{{agree}}'.",
   "error_message": "Pesan kesalahannya adalah: '{{errorMessage}}'",
-  "refund_failed_subject": "Pengembalian dana gagal: {{name}}-{{date}}-{{eventType}}",
-  "refund_failed": "Pengembalian dana untuk acara {{eventType}} dengan {{userName}} pada {{date}} gagal.",
+  
+  
   "check_with_provider_and_user": "Silakan periksa kembali dengan penyedia layanan pembayaran kamu dan {{user}} bagaimana untuk menangani ini.",
-  "a_refund_failed": "Pengembalian dana gagal",
-  "awaiting_payment_subject": "Menunggu Pembayaran: {{title}} pada {{date}}",
-  "meeting_awaiting_payment": "Pertemuan kamu sedang menunggu pembayaran",
+  
+  
+  
   "help": "Bantuan",
-  "price": "Harga",
-  "paid": "Lunas",
-  "refunded": "Dikembalikan",
-  "payment": "Pembayaran",
-  "missing_card_fields": "Kolom kartu belum terisi",
-  "pay_now": "Bayar sekarang",
+  
+  
+  
+  
+  
+  
   "codebase_has_to_stay_opensource": "Basis kode harus tetap sebagau sumber terbuka, walau diubah atau tidak",
   "cannot_repackage_codebase": "Kamu tidak bisa mengemas ulang atau menjual basis kode",
   "acquire_license": "Dapatkan lisensi komersial untuk menghilangkan ketentuan ini dengan mengirimkan email",
@@ -78,11 +78,11 @@
   "hidden_team_member_message": "Kamu tidak dibayari, upgrade ke PRO atau beritahu pemilik tim bahwa mereka bisa membayari kamu.",
   "hidden_team_owner_message": "Kamu perlu akun pro untuk menggunakan tim, kamu disembunyikan sementara hingga kamu upgrade.",
   "link_expires": "oya, ini hangus dalam {{expiresIn}} jam.",
-  "upgrade_to_per_seat": "Upgrade ke Per-Orang",
-  "team_upgrade_seats_details": "Dari {{memberCount}} anggota di tim kamu, {{unpaidCount}} orang tidak berbayar. Dengan harga ${{seatPrice}}/bulan per orang, perkiraan biaya total keanggotaan adalah ${{totalCost}}/bulan.",
-  "team_upgrade_banner_description": "Terimakasih telah mencoba paket tim kami. Kami perhatikan tim kamu \"{{teamName}}\" perlu diupgrade.",
-  "upgrade_banner_action": "Upgrade disini",
-  "team_upgraded_successfully": "Tim kamu telah berhasil diupgrade!",
+  
+  
+  
+  
+  
   "use_link_to_reset_password": "Gunakan link di bawah ini untuk mengatur ulang kata sandi kamu",
   "hey_there": "Halo,",
   "forgot_your_password_calcom": "Lupa kata sandi? - {{appName}}",
@@ -153,6 +153,6 @@
   "ooo_create_entry_modal": "Keluar dari kantor",
   "ooo_select_reason": "Pilih alasan",
   "enterprise_license_locally": "Anda dapat menguji fitur ini secara lokal tetapi tidak pada produksi.",
-  "enterprise_license_sales": "Untuk meningkatkan ke edisi perusahaan, hubungi tim penjualan kami. Jika kunci lisensi sudah ada, hubungi support@cal.com untuk bantuan.",
+  
   "apply_to_all_event_types": "Terapkan untuk semua, termasuk jenis acara di masa depan"
 }

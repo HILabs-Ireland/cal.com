@@ -5,7 +5,7 @@
   "day_other": "{{count}} 天",
   "second_one": "{{count}} 秒",
   "second_other": "{{count}} 秒",
-  "upgrade_now": "立刻升级",
+  
   "untitled": "未命名",
   "accept_invitation": "接受邀请",
   "max_characters": "最大字符数",
@@ -68,18 +68,18 @@
   "accept_our_license": "请更改 .env 文件下的变量 <1>NEXT_PUBLIC_LICENSE_CONSENT</1> 为 '{{agree}}' 以接受我们的许可协议。",
   "remove_banner_instructions": "若希望不再提示, 请更改您的.env 文件下的 <1>NEXT_PUBLIC_LICENSE_CONSENT</1> 变量为 '{{agree}}'.",
   "error_message": "错误消息：'{{errorMessage}}'",
-  "refund_failed_subject": "退款失败: {{name}} - {{date}} - {{eventType}}",
-  "refund_failed": "{{userName}}在{{date}}的{{eventType}}活动退款失败",
+  
+  
   "check_with_provider_and_user": "请联系您的支付提供商与 {{user}} 来解决该问题。",
-  "a_refund_failed": "退款失败",
-  "awaiting_payment_subject": "等待付款：{{title}} 于 {{date}}",
-  "meeting_awaiting_payment": "您有会议待付款",
+  
+  
+  
   "dark_theme_contrast_error": "暗黑模式未能通过对比度检测。我们建议您修改当前的颜色设置以便使您的按钮更容易分辨。",
   "light_theme_contrast_error": "浅色模式未能通过对比度检测。我们建议您修改当前的颜色设置以便使您的按钮更容易分辨。",
   "event_type_color_light_theme_contrast_error": "浅色主题颜色未通过对比度检查。我们建议您更改此颜色，以便您的事件类型颜色更明显。",
   "event_type_color_dark_theme_contrast_error": "深色主题颜色未通过对比度检查。我们建议您更改此颜色，以便您的事件类型颜色更明显。",
-  "payment_not_created_error": "付款创建失败",
-  "couldnt_charge_card_error": "无法修改支付卡",
+  
+  
   "no_available_users_found_error": "找不到可用时间。请尝试另一个时间段。",
   "request_body_end_time_internal_error": "内部错误。请求主体不包含结束时间",
   "create_calendar_event_error": "无法在组织者的日历中建立新的日历项目",
@@ -88,12 +88,12 @@
   "already_signed_up_for_this_booking_error": "您已经注册了此预订。",
   "hosts_unavailable_for_booking": "有些主持人无法预订。",
   "help": "帮助",
-  "price": "价格",
-  "paid": "已付款",
-  "refunded": "已退款",
-  "payment": "支付",
-  "missing_card_fields": "卡片信息不全",
-  "pay_now": "立即付款",
+  
+  
+  
+  
+  
+  
   "general_prompt": "一般提示",
   "begin_message": "开始消息",
   "codebase_has_to_stay_opensource": "无论代码是否被修改，它必须保持开源",
@@ -179,17 +179,17 @@
   "hidden_team_member_message": "您的位置尚未付费，请升级到专业版或通知团队管理员为您付费。",
   "hidden_team_owner_message": "需要一个专业版账户才能使用团队，在升级前您将一直被隐藏。",
   "link_expires": "另外，它将在 {{expiresIn}} 小时后过期。",
-  "upgrade_to_per_seat": "升级到每个位置",
+  
   "seat_options_doesnt_support_confirmation": "位置选项不支持确认要求",
   "multilocation_doesnt_support_seats": "多地点不支持座位选项",
-  "no_show_fee_doesnt_support_seats": "未到场费用不支持座位选项",
+  
   "seats_option_doesnt_support_multi_location": "座位选项不支持多地点",
-  "team_upgrade_seats_details": "您团队中一共 {{memberCount}} 人, 其中 {{unpaidCount}} 个位置未付费. 按 ${{seatPrice}}/月/人 来估算您的花费为 ${{totalCost}}/月",
-  "team_upgrade_banner_description": "感谢您试用我们的新团队计划。我们注意到您的团队“{{teamName}}”需要升级。",
-  "upgrade_banner_action": "在此处升级",
-  "team_upgraded_successfully": "您的团队升级成功！",
-  "org_upgrade_banner_description": "感谢您试用我们的 Organization 计划。我们注意到您的组织“{{teamName}}”需要升级。",
-  "org_upgraded_successfully": "您的 Organization 已成功升级！",
+  
+  
+  
+  
+  
+  
   "use_link_to_reset_password": "使用下面的链接重置您的密码",
   "hey_there": "您好",
   "forgot_your_password_calcom": "忘记密码？- {{appName}}",
@@ -208,8 +208,8 @@
   "webhook_created_successfully": "Webhook 创建成功！",
   "webhook_updated_successfully": "Webhook 更新成功！",
   "webhook_removed_successfully": "Webhook 删除成功！",
-  "subscription_needed": "需要订阅",
-  "subscription_needed_description": "您尚未订阅平台计划。",
+  
+  
   "payload_template": "传输内容模板",
   "dismiss": "关闭",
   "no_data_yet": "暂无数据",
@@ -374,8 +374,8 @@
   "booking_submitted_recurring": "您的定期会议已提交",
   "booking_confirmed": "您的预约已经确认",
   "booking_confirmed_recurring": "您的定期会议已被确认",
-  "warning_recurring_event_payment": "定期活动尚不支持支付",
-  "warning_payment_recurring_event": "支付尚不支持定期活动",
+  
+  
   "enter_new_password": "输入您想要的新密码。",
   "reset_password": "重置密码",
   "change_your_password": "更改您的密码",
@@ -504,15 +504,15 @@
   "booking_created": "预约已创建",
   "booking_rejected": "预约被拒绝",
   "booking_requested": "预约已请求",
-  "booking_payment_initiated": "预约付款已发起",
+  
   "meeting_ended": "会议已结束",
   "form_submitted": "表格已提交",
   "form_submitted_no_event": "表单已提交，未预订活动",
-  "booking_paid": "预约已付款",
+  
   "ooo_created": "已创建外出通知",
   "booking_no_show_updated": "预订未到场已更新",
   "event_triggers": "事件触发",
-  "subscriber_url": "订阅者链接",
+  
   "create_new_webhook": "创建一个新的 Webhook",
   "webhooks": "Webhook",
   "team_webhooks": "团队 Webhook",
@@ -773,10 +773,10 @@
   "readonly": "只读",
   "one_time_link": "一次性链接",
   "plan_description": "您目前正在使用 {{plan}} 套餐。",
-  "plan_upgrade_invitation": "升级您的账户到专业版来解锁我们提供的所有功能。",
-  "plan_upgrade": "您需要升级您的套餐才能有多个活动类型。",
-  "plan_upgrade_teams": "您需要升级您的套餐才能创建一个团队。",
-  "plan_upgrade_instructions": "您可以点击 <1>此处升级</1>.",
+  
+  
+  
+  
   "event_types_page_title": "活动类型",
   "event_types_page_subtitle": "创建活动以让他人在您的日历上预约。",
   "new": "新",
@@ -833,8 +833,8 @@
   "teams": "团队",
   "team": "团队",
   "organization": "组织",
-      "upgrade_to_flexible_pro_title": "我们更改了团队的计费方式",
-  "upgrade_to_flexible_pro_message": "您的团队中有没有位置的成员。升级到专业版来获得更多位置。",
+      
+  
     "create_manage_teams_collaborative": "创建并管理团队以使用协作功能。",
   "only_available_on_pro_plan": "此功能仅在 Pro 套餐中可用",
   "remove_cal_branding_description": "若想从您的预约页面中去掉 {{appName}} 的品牌标志，您需要升级到专业版账户。",
@@ -843,8 +843,8 @@
   "little_something_about": "一些关于你自己的描述。",
   "profile_updated_successfully": "个人资料更新成功",
   "your_user_profile_updated_successfully": "您的用户资料更新成功。",
-  "your_upgrade_is_here": "升级已就绪",
-  "your_upgrade_is_here_description": "升级到新计划以改善您的日程安排体验，享受全新功能。",
+  
+  
   "you_are_all_set": "一切就绪",
   "you_are_all_set_description": "您已经使用最新的计划。无需升级。尽情享受新功能，如有任何问题请随时联系我们！",
   "user_cannot_found_db": "用户似乎已登录，但无法在数据库中找到",
@@ -889,8 +889,8 @@
   "recurring_event": "定期活动",
   "recurring_event_description": "人们可以订阅定期活动",
   "connect_and_join": "连接并加入",
-  "cannot_be_used_with_paid_event_types": "不能用于付费的活动类型",
-  "warning_payment_instant_meeting_event": "即时会议暂不支持定期活动和支付应用程序",
+  
+  
   "warning_instant_meeting_experimental": "测试提示：即时会议活动目前正在测试中。",
   "starting": "开始时间",
   "disable_guests": "禁用访客",
@@ -921,7 +921,7 @@
   "cal_provide_jitsi_meeting_url": "{{appName}} 将提供 Jitsi Meet 视频会议链接",
   "cal_provide_huddle01_meeting_url": "{{appName}} 将提供 Huddle01 视频会议链接",
   "cal_provide_teams_meeting_url": "{{appName}} 将提供 MS Teams 会议 URL。注意: 须拥有工作或学校帐户",
-  "require_payment": "需要付款",
+  
   "you_need_to_add_a_name": "您需要添加名称",
   "commission_per_transaction": "每笔交易的佣金",
   "event_type_updated_successfully_description": "您的活动类型更新成功。",
@@ -965,7 +965,7 @@
   "next_step": "跳过步骤",
   "prev_step": "上一步",
   "install": "安装",
-  "start_paid_trial": "开始免费试用",
+  
   "installed": "已安装",
   "active_install_one": "{{count}} 个活动安装",
   "active_install_other": "{{count}} 个活动安装",
@@ -983,7 +983,7 @@
   "check_here": "点此查看",
   "conferencing": "会议",
   "calendar": "日历",
-  "payments": "付款",
+  
   "not_installed": "未安装",
   "error_password_mismatch": "密码不匹配。",
   "error_required_field": "此字段是必填项。",
@@ -1025,14 +1025,14 @@
   "all_apps": "所有应用",
   "no_category_apps_description_calendar": "添加日历应用以检查冲突，防止重复预约",
   "no_category_apps_description_conferencing": "尝试添加一个会议应用，以便与客户进行视频通话",
-  "no_category_apps_description_payment": "添加支付应用以简化您和客户之间的交易",
+  
   "no_category_apps_description_analytics": "为您的预约页面添加分析应用",
   "no_category_apps_description_automation": "添加要使用的自动化应用",
   "no_category_apps_description_other": "添加任何其他类型的应用以执行各种操作",
   "no_category_apps_description_messaging": "添加一个消息应用，以设置自定义通知和提醒",
   "no_category_apps_description_crm": "添加一个 CRM 应用，以记录您见过的人",
   "installed_app_calendar_description": "设置日历以检查冲突，防止重复预约。",
-  "installed_app_payment_description": "配置向客户收费时要使用的支付处理服务。",
+  
   "installed_app_analytics_description": "配置将用于您的预约页面的分析应用",
   "installed_app_other_description": "所有属于其他类别的已安装应用。",
   "installed_app_conferencing_description": "配置要使用的会议应用",
@@ -1049,7 +1049,7 @@
   "permissions": "权限",
   "terms_and_privacy": "条款和隐私",
   "published_by": "由 {{author}} 发布",
-  "subscribe": "订阅",
+  
   "buy": "购买",
   "install_app": "安装应用",
   "categories": "类别",
@@ -1064,14 +1064,14 @@
   "create_events_on": "活动创建于：",
   "enterprise_license": "这是一个商业功能",
   "enterprise_license_locally": "您可以在本地测试此功能，但不能在生产环境中。",
-  "enterprise_license_sales": "如需购买商业许可证，请联系我们的销售团队。如果您已经有许可证密钥，请联系 support@cal.com 获取帮助。",
+  
   "missing_license": "缺少许可证",
   "next_steps": "下一步",
   "acquire_commercial_license": "获取商业许可证",
   "the_infrastructure_plan": "基础设施计划是按用量计费的，并对初创公司有优惠。",
   "prisma_studio_tip": "通过 Prisma Studio 创建账户",
   "prisma_studio_tip_description": "学习如何设置您的第一个用户",
-  "contact_sales": "联系销售",
+  
   "error_404": "错误 404",
   "default": "默认值",
   "set_to_default": "设置为默认值",
@@ -1231,7 +1231,7 @@
   "developer_documentation": "开发人员文档",
   "get_in_touch": "保持联系",
   "contact_support": "联系支持",
-  "premium_support": "高级支持",
+  
   "community_support": "社区支持",
   "feedback": "反馈",
   "submitted_feedback": "感谢您的反馈！",
@@ -1290,14 +1290,14 @@
   "new_workflow_description": "工作流程可让您自动发送提醒和通知。",
   "active_on": "活跃于",
   "workflow_updated_successfully": "{{workflowName}} 工作流程已成功更新",
-    "premium_username": "这是高级用户名，支付 {{price}} 即可获得您的高级用户名",
+    
   "current": "当前",
-  "premium": "高级",
+  
   "standard": "标准",
   "confirm_username_change_dialog_title": "确认用户名更改",
-  "change_username_standard_to_premium": "当您从标准用户名更改为高级用户名后，您将被引导至账单页面进行升级。",
-  "change_username_premium_to_standard": "当您从高级用户名更改为标准用户名后，您将被引到至账单页面进行降级。",
-    "stripe_description": "需要为预约付款（0.5% + 每笔交易 €0.10 佣金）",
+  
+  
+    
   "trial_expired": "您的试用已到期",
   "remove_app": "移除应用",
   "yes_remove_app": "是，移除应用",
@@ -1366,16 +1366,16 @@
   "event_date_variable": "活动日期",
   "event_time_variable": "活动时间",
   "organizer_name_variable": "组织者姓名",
-  "app_upgrade_description": "要使用此功能，您需要升级到专业版帐户。",
+  
   "invalid_number": "电话号码无效",
   "invalid_url_error_message": "{{label}} 的链接无效。示例链接：{{sampleUrl}}",
   "navigate": "导航",
   "open": "打开",
   "close": "关闭",
-  "upgrade": "升级",
-  "upgrade_to_access_recordings_title": "升级以访问录制",
-  "upgrade_to_access_recordings_description": "录制只作为团队计划的一部分提供。升级以开始录制通话",
-  "upgrade_to_cal_ai_phone_number_description": "升级到企业版以生成可以呼叫客人安排电话的人工智能代理电话号码",
+  
+  
+  
+  
   "recordings_are_part_of_the_teams_plan": "录制是团队计划的一部分",
   "team_feature_teams": "这是团队版功能。升级到团队版可查看您团队的可预约时间。",
   "team_feature_workflows": "这是团队版功能。升级到团队版可使用工作流程将活动通知和提醒自动化。",
@@ -1389,7 +1389,7 @@
   "company_size": "公司规模",
   "what_help_needed": "您需要什么帮助？",
   "variable_format": "变量格式",
-  "webhook_subscriber_url_reserved": "Webhook 订阅者 url 已定义",
+  
   "custom_input_as_variable_info": "忽略附加输入标签的所有特殊字符（仅使用字母和数字），所有字母均使用大写，并将空格替换为下划线。",
   "using_booking_questions_as_variables": "如何将预约问题用作变量?",
   "download_desktop_app": "下载桌面应用",
@@ -1413,8 +1413,8 @@
   "event_limit_tab_description": "您多久可被预约一次",
   "event_advanced_tab_description": "日历设置及更多...",
   "event_advanced_tab_title": "高级",
-  "event_payments_tab_title": "支付",
-  "event_payments_tab_description": "设置活动的支付方式",
+  
+  
   "event_setup_multiple_duration_error": "活动设置: 多个时长需要至少 1 个选项。",
   "event_setup_multiple_duration_default_error": "活动设置: 请选择有效的默认时长。",
   "event_setup_booking_limits_error": "预约限制必须按升序排列：[日、周、月、年]",
@@ -1499,7 +1499,7 @@
   "connect_calendars_from_app_store": "您可以从 App Store 添加更多日历",
   "connect_conference_apps": "连接会议应用",
   "connect_calendar_apps": "连接日历应用",
-  "connect_payment_apps": "连接付款应用",
+  
   "connect_automation_apps": "连接自动化应用",
   "connect_analytics_apps": "连接分析应用",
   "connect_other_apps": "连接其他应用",
@@ -1621,7 +1621,7 @@
   "password_reset_email": "正在将包含重设密码说明的电子邮件发送至 {{email}}。",
   "password_reset_leading": "如果您没有很快收到该电子邮件，请检查您输入的电子邮件地址是否正确，如果问题仍然存在，请检查垃圾邮件文件夹或联系支持。",
   "password_updated": "密码已更新！",
-  "pending_payment": "待付款",
+  
   "pending_invites": "待定邀请",
   "pending_organization_invites": "待处理的组织邀请",
   "not_on_cal": "不在 {{appName}} 上",
@@ -1734,7 +1734,7 @@
   "route_to": "根据途径找到",
   "test_preview_description": "测试途径表格而不提交任何数据",
   "test_routing": "测试途径",
-  "payment_app_disabled": "管理员已禁用支付应用",
+  
   "edit_event_type": "编辑活动类型",
   "only_admin_can_see_members_of_org": "该组织是私有的，只有该组织的管理员或所有者才能查看其成员。",
   "only_admin_can_manage_sso_org": "只有组织的管理员或所有者才能管理 SSO 设置",
@@ -1755,8 +1755,8 @@
   "email_body_slug_replacement_notice": "<strong>{{teamName}}</strong> 团队的一位管理员已将您的活动类型 <strong>{{slug}}</strong> 替换为他们控制的托管活动类型。",
   "email_body_slug_replacement_info": "您的链接将继续有效，但其某些设置可能已更改。您可以在活动类型中进行查看。",
   "email_body_slug_replacement_suggestion": "如果您对活动类型有任何疑问，请联系您的管理员。<br /><br />祝日程安排愉快，<br />Cal.com 团队",
-  "disable_payment_app": "管理员已禁用{{appName}}，这会影响您的活动类型{{title}}。参与者仍然可以预订此类活动，但不会被提示付款。您可以隐藏此活动类型以防止这种情况，直到管理员重新启用您的支付方式。",
-  "payment_disabled_still_able_to_book": "参与者仍然可以预订此类活动，但不会被提示付款。您可以隐藏此活动类型以防止这种情况，直到管理员重新启用您的支付方式。",
+  
+  
   "app_disabled_with_event_type": "管理员已禁用会影响活动类型 {{title}} 的 {{appName}}。",
   "app_disabled_video": "管理员已禁用可能会影响您的活动类型的 {{appName}}。如果您有将 {{appName}} 作为位置的活动类型，则默认为 Cal Video。",
   "app_disabled_subject": "{{appName}} 已被禁用",
@@ -1842,8 +1842,8 @@
   "round_robin_hosts": "轮流主持人",
   "minimum_round_robin_hosts_count": "需要参加的主持人数目",
   "hosts": "主持人",
-  "upgrade_to_enable_feature": "您需要创建一个团队才能启用此功能。点击此处创建团队。",
-  "orgs_upgrade_to_enable_feature": "您需要升级到我们的企业计划才能启用此功能。",
+  
+  
   "new_attendee": "新参与者",
   "awaiting_approval": "待批准",
   "requires_google_calendar": "此应用需要 Google 日历连接",
@@ -1944,9 +1944,9 @@
   "add_a_booking_question": "添加问题",
   "identifier": "标识符",
   "duplicate_email": "电子邮件重复",
-  "booking_with_payment_cancelled": "无法再为此活动付费",
-  "booking_with_payment_cancelled_already_paid": "此预约的退款正在进行中。",
-  "booking_with_payment_cancelled_refunded": "此预约已退款。",
+  
+  
+  
   "booking_confirmation_failed": "预约确认失败",
   "not_enough_seats": "位置不足",
   "form_builder_field_already_exists": "具有此名称的字段已存在",
@@ -2079,31 +2079,31 @@
   "clear_filters": "清除筛选器",
   "clear": "清除",
   "hold": "保留",
-  "on_booking_option": "预约时收款",
-  "hold_option": "收取失约费",
-  "card_held": "卡已保留",
-  "charge_card": "从卡中扣款",
-  "card_charged": "卡已扣款",
-  "no_show_fee_amount": "{{amount, currency}} 失约费",
-  "no_show_fee": "失约费",
-  "submit_card": "提交卡",
-  "submit_payment_information": "提交付款信息",
-  "meeting_awaiting_payment_method": "您的会议正在等待付款方式",
-  "no_show_fee_charged_email_subject": "已针对 {{date}} 的 {{title}} 收取 {{amount, currency}} 的失约费",
-  "no_show_fee_charged_text_body": "已收取失约费",
-  "no_show_fee_charged_subtitle": "已针对以下活动收取 {{amount, currency}} 的失约费",
-  "error_charging_card": "收取失约费时出错。请稍后再试。",
-  "collect_no_show_fee": "收取失约费",
-  "no_show_fee_charged": "已收取失约费",
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   "insights": "洞察",
   "routing_forms": "路由表单",
   "testing_workflow_info_message": "测试此工作流程时请注意，电子邮件和短信必须提前至少 1 小时安排",
   "insights_no_data_found_for_filter": "未找到所选筛选器或所选日期的数据。",
-  "acknowledge_booking_no_show_fee": "我同意，如果我不参加此活动，将从我的卡中收取 {{amount, currency}} 的失约费。",
-  "card_details": "卡详细信息",
+  
+  
   "something_went_wrong_on_our_end": "我们这边出了点问题。请联系我们的支持团队，我们将立即为您解决。",
   "please_provide_following_text_to_suppport": "联系支持时请提供以下文本，以便更好地帮助您",
-  "seats_and_no_show_fee_error": "当前无法启用位置和收取失约费",
+  
   "complete_your_booking": "完成您的预约",
   "complete_your_booking_subject": "完成您的预约: {{date}} 的 {{title}}",
   "confirm_your_details": "确认您的详细信息",
@@ -2121,12 +2121,12 @@
   "one_year": "1 年",
   "team_invite_received": "您已被邀请加入 {{teamName}}",
   "currency_string": "{{amount, currency}}",
-  "charge_card_dialog_body": "您即将向参与者收取费用 {{amount, currency}}。确定要继续吗？",
+  
   "charge_attendee": "向参与者收取费用 {{amount, currency}}",
-  "payment_app_commission": "需要付款（{{paymentFeePercentage}}% + 每笔交易 {{fee, currency}} 佣金）",
+  
   "email_invite_team": "{{email}} 已被邀请",
   "email_invite_team_bulk": "已邀请 {{userCount}} 名用户",
-  "error_collecting_card": "收集卡时出错",
+  
   "image_size_limit_exceed": "上传的图像不应超过 5MB 大小限制",
   "unauthorized_workflow_error_message": "{{errorCode}}：您无权启用或禁用此工作流程",
   "inline_embed": "内联嵌入",
@@ -2395,7 +2395,7 @@
   "unlocked": "已解锁",
   "lock_timezone_toggle_on_booking_page": "在预约页面上锁定时区",
   "description_lock_timezone_toggle_on_booking_page": "在预约页面上锁定时区，这对面对面活动非常有用。",
-  "event_setup_multiple_payment_apps_error": "每种事件类型只能启用一个支付应用程序。",
+  
   "number_in_international_format": "请输入国际格式的号码。",
   "install_calendar": "安装日历",
   "branded_subdomain": "品牌子域名",
@@ -2412,7 +2412,7 @@
   "enterprise_description": "升级到企业版以创建您的组织",
   "create_your_org": "创建您的组织",
     "create_your_enterprise_description": "升级到企业版，获取Active Directory同步、SCIM自动用户配置、Cal.ai语音代理、管理员API等功能！",
-  "other_payment_app_enabled": "每种事件类型只能启用一个支付应用程序",
+  
   "admin_delete_organization_description": "<ul><li>属于该组织的团队及其事件类型也将被删除</li><li>曾属于该组织的用户不会被删除，他们的事件类型也将保持不变。</li><li>用户名将被更改，以允许他们在组织之外存在</li></ul>",
   "admin_delete_organization_title": "是否删除 {{organizationName}}？",
   "published": "已发布",
@@ -2432,12 +2432,12 @@
   "uprade_to_create_instant_bookings": "升级到企业版，让访客加入与会者可以直接进入的即时通话。这仅适用于团队事件类型",
   "dont_want_to_wait": "不想等待？",
   "meeting_started": "会议开始",
-  "pay_and_book": "付费预订",
+  
   "cal_ai_event_tab_description": "让 AI 代理为您预订",
   "booking_not_found_error": "找不到预订信息",
   "booking_seats_full_error": "预订座位已满",
-  "missing_payment_credential_error": "缺少付款凭据",
-  "missing_payment_app_id_error": "缺少支付应用 ID",
+  
+  
   "not_enough_available_seats_error": "预订中没有足够的可用座位",
   "user_redirect_title": "{{username}} 目前暂时离开。",
   "user_redirect_description": "同时，{{profile.username}} 将代表 {{username}} 负责所有新安排的会议。",
@@ -2534,7 +2534,7 @@
   "email|existing_user_added_link_changed": "您的链接已经从 <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> 修改为 <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>。但是别担心，所有以前的链接仍然有效并适当重定向。<br /><br />请注意：您的所有个人活动类型均已移至 <strong>{teamName}</strong> 组织中，其中可能还包含潜在的个人链接。<br /><br />请登录并确保您的新组织帐户中没有私人事件。<br /><br />对于个人活动，我们建议使用个人电子邮件地址创建一个新帐户。<br /><br />享受新的干净链接：<a href= {`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "您的组织已创建完成",
   "your_current_plan": "您当前的计划",
-  "organization_price_per_user_month": "$37 每用户每月（最低 30 个席位）",
+  
   "privacy_organization_description": "管理您团队的隐私设置",
   "privacy": "隐私",
   "team_will_be_under_org": "新团队会在您的组织之下",
@@ -2631,7 +2631,7 @@
   "proceeding_agreement": "继续即表示您同意我们的",
   "terms": "条款",
   "always_show_x_days": "始终显示{{x}}天的可用时间",
-  "unable_to_subscribe_to_the_platform": "尝试订阅平台计划时发生错误，请稍后再试",
+  
   "updating_oauth_client_error": "更新OAuth客户端时发生错误，请稍后再试",
   "creating_oauth_client_error": "创建OAuth客户端时发生错误，请稍后再试",
   "event_type_color": "事件类型颜色",
@@ -2692,9 +2692,9 @@
   "outlook_connect_atom_label": "连接Outlook日历",
   "outlook_connect_atom_already_connected_label": "已连接的 Outlook 日历",
   "outlook_connect_atom_loading_label": "正在检查 Outlook 日历",
-  "stripe_connect_atom_label": "连接到Stripe",
-  "stripe_connect_atom_already_connected_label": "已连接到Stripe",
-  "stripe_connect_atom_loading_label": "正在检查Stripe凭证",
+  
+  
+  
   "booking_question_response_variables": "预订问题响应变量",
   "managed_by_teamAdmins": "由 {{teamAdmins}} 管理",
   "number_of_options": "{{count}} 个选项",
@@ -2718,10 +2718,10 @@
   "month_to_date": "本月至今",
   "year_to_date": "今年至今",
   "custom_range": "自定义范围",
-  "refund_policy": "退款政策",
+  
   "always": "总是",
   "never": "从不",
-  "payment_option": "支付选项",
+  
   "if_cancelled": "如果取消",
   "before": "之前",
   "show_all_columns": "显示所有列",

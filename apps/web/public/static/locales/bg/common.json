@@ -5,7 +5,7 @@
   "day_other": "{{count}} дни",
   "second_one": "{{count}} секунда",
   "second_other": "{{count}} секунди",
-  "upgrade_now": "Обновяване сега",
+  
   "untitled": "Без заглавие",
   "accept_invitation": "Приемане на покана",
   "max_characters": "Макс. символи",
@@ -68,18 +68,18 @@
   "accept_our_license": "Приемете нашия лиценз като промените .env променливата <1>NEXT_PUBLIC_LICENSE_CONSENT</1> на '{{agree}}'.",
   "remove_banner_instructions": "За да премахнете този банер, моля отворете вашия .env файл и променете <1>NEXT_PUBLIC_LICENSE_CONSENT</1> променливата на '{{agree}}'.",
   "error_message": "Съобщението за грешка беше: '{{errorMessage}}'",
-  "refund_failed_subject": "Неуспешно възстановяване на сума: {{name}} - {{date}} - {{eventType}}",
-  "refund_failed": "Възстановяването на сумата за събитието {{eventType}} с {{userName}} на {{date}} не беше успешно.",
+  
+  
   "check_with_provider_and_user": "Моля, свържете се с вашия доставчик на платежни услуги и {{user}} за начина на обработка на този случай.",
-  "a_refund_failed": "Възстановяване на сума не беше успешно",
-  "awaiting_payment_subject": "Очаква се плащане: {{title}} на {{date}}",
-  "meeting_awaiting_payment": "Вашата среща очаква плащане",
+  
+  
+  
   "dark_theme_contrast_error": "Цветът на тъмната тема не преминава проверката за контраст. Препоръчваме да промените този цвят, за да бъдат бутоните ви по-видими.",
   "light_theme_contrast_error": "Цветът на светлата тема не преминава проверката за контраст. Препоръчваме да промените този цвят, за да бъдат бутоните ви по-видими.",
   "event_type_color_light_theme_contrast_error": "Цветът на светлата тема не преминава проверката за контраст. Препоръчваме да промените този цвят, за да бъдат типовете събития по-видими.",
   "event_type_color_dark_theme_contrast_error": "Цветът на тъмната тема не преминава проверката за контраст. Препоръчваме да промените този цвят, за да бъдат типовете събития по-видими.",
-  "payment_not_created_error": "Плащането не можа да бъде създадено",
-  "couldnt_charge_card_error": "Не можа да се извърши плащане с картата",
+  
+  
   "no_available_users_found_error": "Не са намерени свободни потребители. Бихте ли опитали друг времеви интервал?",
   "request_body_end_time_internal_error": "Вътрешна грешка. Заявката не съдържа краен час",
   "create_calendar_event_error": "Не може да се създаде събитие в календара на организатора",
@@ -88,12 +88,12 @@
   "already_signed_up_for_this_booking_error": "Вече сте записани за тази резервация.",
   "hosts_unavailable_for_booking": "Някои от домакините не са налични за резервация.",
   "help": "Помощ",
-  "price": "Цена",
-  "paid": "Платено",
-  "refunded": "Възстановено",
-  "payment": "Плащане",
-  "missing_card_fields": "Липсващи полета за картата",
-  "pay_now": "Плати сега",
+  
+  
+  
+  
+  
+  
   "general_prompt": "Общ шаблон",
   "begin_message": "Начално съобщение",
   "codebase_has_to_stay_opensource": "Кодовата база трябва да остане с отворен код, независимо дали е модифицирана или не",
@@ -179,17 +179,17 @@
   "hidden_team_member_message": "Вашето място не е платено. Или преминете към PRO, или уведомете собственика на екипа, че може да плати за вашето място.",
   "hidden_team_owner_message": "Нуждаете се от про акаунт, за да използвате екипи. Ще останете скрити, докато не направите ъпгрейд.",
   "link_expires": "П.П. Линкът изтича след {{expiresIn}} часа.",
-  "upgrade_to_per_seat": "Преминете към тарифа на място",
+  
   "seat_options_doesnt_support_confirmation": "Опцията за места не поддържа изискване за потвърждение",
   "multilocation_doesnt_support_seats": "Множество локации не поддържа опцията за места",
-  "no_show_fee_doesnt_support_seats": "Таксата за неявяване не поддържа опцията за места",
+  
   "seats_option_doesnt_support_multi_location": "Опцията за места не поддържа множество локации",
-  "team_upgrade_seats_details": "От {{memberCount}} членове във вашия екип, {{unpaidCount}} място/места са неплатени. При ${{seatPrice}}/месец на място, очакваната обща цена на вашето членство е ${{totalCost}}/месец.",
-  "team_upgrade_banner_description": "Не сте завършили настройката на вашия екип. Вашият екип \"{{teamName}}\" трябва да бъде ъпгрейднат.",
-  "upgrade_banner_action": "Ъпгрейднете тук",
-  "team_upgraded_successfully": "Вашият екип беше успешно ъпгрейднат!",
-  "org_upgrade_banner_description": "Благодарим ви, че изпробвахте нашия Организационен план. Забелязахме, че вашата организация \"{{teamName}}\" се нуждае от ъпгрейд.",
-  "org_upgraded_successfully": "Вашата организация беше успешно ъпгрейдната!",
+  
+  
+  
+  
+  
+  
   "use_link_to_reset_password": "Използвайте линка по-долу, за да възстановите паролата си",
   "hey_there": "Здравейте",
   "forgot_your_password_calcom": "Забравена парола? - {{appName}}",
@@ -208,8 +208,8 @@
   "webhook_created_successfully": "Уебхукът е създаден успешно!",
   "webhook_updated_successfully": "Уебхукът е актуализиран успешно!",
   "webhook_removed_successfully": "Уебхукът е премахнат успешно!",
-  "subscription_needed": "Необходим е абонамент",
-  "subscription_needed_description": "Нямате абонамент за платформен план.",
+  
+  
   "payload_template": "Шаблон на данните",
   "dismiss": "Отхвърли",
   "no_data_yet": "Все още няма данни",
@@ -374,8 +374,8 @@
   "booking_submitted_recurring": "Вашата повтаряща се среща е изпратена",
   "booking_confirmed": "Вашата резервация е потвърдена",
   "booking_confirmed_recurring": "Вашата периодична среща е потвърдена",
-  "warning_recurring_event_payment": "Плащанията все още не се поддържат при периодични събития",
-  "warning_payment_recurring_event": "Периодичните събития все още не се поддържат с плащания",
+  
+  
   "enter_new_password": "Въведете новата парола, която искате за вашия акаунт.",
   "reset_password": "Нулиране на парола",
   "change_your_password": "Променете паролата си",
@@ -504,15 +504,15 @@
   "booking_created": "Резервацията е създадена",
   "booking_rejected": "Резервацията е отхвърлена",
   "booking_requested": "Заявена е резервация",
-  "booking_payment_initiated": "Плащането за резервацията е инициирано",
+  
   "meeting_ended": "Срещата приключи",
   "form_submitted": "Формулярът е изпратен",
   "form_submitted_no_event": "Формулярът е изпратен, няма резервирано събитие",
-  "booking_paid": "Резервацията е платена",
+  
   "ooo_created": "Създаден е статус \"Извън офиса\"",
   "booking_no_show_updated": "Статусът за неявяване е актуализиран",
   "event_triggers": "Тригери за събития",
-  "subscriber_url": "URL на абоната",
+  
   "create_new_webhook": "Създаване на нов уебхук",
   "webhooks": "Уебхуци",
   "team_webhooks": "Екипни уебхуци",
@@ -773,10 +773,10 @@
   "readonly": "Само за четене",
   "one_time_link": "Еднократна връзка",
   "plan_description": "В момента сте на план {{plan}}.",
-  "plan_upgrade_invitation": "Надградете акаунта си до PRO план, за да отключите всички функции, които предлагаме.",
-  "plan_upgrade": "Трябва да надградите плана си, за да имате повече от един активен тип събитие.",
-  "plan_upgrade_teams": "Трябва да надградите плана си, за да създадете екип.",
-  "plan_upgrade_instructions": "Можете да <1>надградите тук</1>.",
+  
+  
+  
+  
   "event_types_page_title": "Типове събития",
   "event_types_page_subtitle": "Създайте събития, които да споделите, за да могат хората да запазват час в календара ви.",
   "new": "Ново",
@@ -833,8 +833,8 @@
   "teams": "Екипи",
   "team": "Екип",
   "organization": "Организация",
-      "upgrade_to_flexible_pro_title": "Променихме начина на фактуриране за екипите",
-  "upgrade_to_flexible_pro_message": "Има членове във вашия екип без място. Надградете про плана си, за да покриете липсващите места.",
+      
+  
     "create_manage_teams_collaborative": "Създавайте и управлявайте екипи, за да използвате функциите за съвместна работа.",
   "only_available_on_pro_plan": "Тази функция е достъпна само в Pro план",
   "remove_cal_branding_description": "За да премахнете {{appName}} брандирането от страниците си за резервации, трябва да надградите до Pro акаунт.",
@@ -843,8 +843,8 @@
   "little_something_about": "Малко нещо за вас.",
   "profile_updated_successfully": "Профилът е актуализиран успешно",
   "your_user_profile_updated_successfully": "Потребителският ви профил беше актуализиран успешно.",
-  "your_upgrade_is_here": "Вашата надстройка е тук",
-  "your_upgrade_is_here_description": "Подобрете изживяването си при планиране, като преминете към новия план и се възползвате от новите функции.",
+  
+  
   "you_are_all_set": "Всичко е готово",
   "you_are_all_set_description": "Вече сте на най-новия план. Няма нужда от надстройка. Насладете се на новите функции и не се колебайте да се свържете с нас при въпроси!",
   "user_cannot_found_db": "Потребителят изглежда е влязъл, но не може да бъде намерен в базата данни",
@@ -889,8 +889,8 @@
   "recurring_event": "Повтарящо се събитие",
   "recurring_event_description": "Хората могат да се абонират за повтарящи се събития",
   "connect_and_join": "Свържи се и се присъедини",
-  "cannot_be_used_with_paid_event_types": "Не може да се използва с платени типове събития",
-  "warning_payment_instant_meeting_event": "Моментални срещи все още не се поддържат с повтарящи се събития и приложения за плащане",
+  
+  
   "warning_instant_meeting_experimental": "Експериментално: Моменталните срещи са в експериментална фаза.",
   "starting": "Започва",
   "disable_guests": "Деактивирай гости",
@@ -921,7 +921,7 @@
   "cal_provide_jitsi_meeting_url": "Ще генерираме Jitsi Meet URL адрес за теб.",
   "cal_provide_huddle01_meeting_url": "{{appName}} ще предостави Huddle01 URL адрес за видео среща.",
   "cal_provide_teams_meeting_url": "{{appName}} ще предостави MS Teams URL адрес за срещата. ЗАБЕЛЕЖКА: ТРЯБВА ДА ИМАТЕ РАБОТЕН ИЛИ УЧИЛИЩЕН АКАУНТ",
-  "require_payment": "Изисквай плащане",
+  
   "you_need_to_add_a_name": "Трябва да добавиш име",
   "commission_per_transaction": "комисиона за транзакция",
   "event_type_updated_successfully_description": "Типът събитие беше успешно актуализиран.",
@@ -965,7 +965,7 @@
   "next_step": "Пропусни стъпката",
   "prev_step": "Предишна стъпка",
   "install": "Инсталирай",
-  "start_paid_trial": "Започни безплатен пробен период",
+  
   "installed": "Инсталирано",
   "active_install_one": "{{count}} активна инсталация",
   "active_install_other": "{{count}} активни инсталации",
@@ -983,7 +983,7 @@
   "check_here": "Проверете тук",
   "conferencing": "Конферентна връзка",
   "calendar": "Календар",
-  "payments": "Плащания",
+  
   "not_installed": "Не е инсталирано",
   "error_password_mismatch": "Паролите не съвпадат.",
   "error_required_field": "Това поле е задължително.",
@@ -1025,14 +1025,14 @@
   "all_apps": "Всички приложения",
   "no_category_apps_description_calendar": "Добавете приложение за календар, за да проверявате за конфликти и да предотвратите двойни резервации",
   "no_category_apps_description_conferencing": "Опитайте да добавите приложение за конферентна връзка за видео разговори с вашите клиенти",
-  "no_category_apps_description_payment": "Добавете приложение за плащания, за да улесните транзакциите между вас и вашите клиенти",
+  
   "no_category_apps_description_analytics": "Добавете приложение за анализ на вашите страници за резервации",
   "no_category_apps_description_automation": "Добавете приложение за автоматизация",
   "no_category_apps_description_other": "Добавете всякакъв друг тип приложения за различни цели",
   "no_category_apps_description_messaging": "Добавете приложение за съобщения, за да настроите персонализирани известия и напомняния",
   "no_category_apps_description_crm": "Добавете CRM приложение, за да следите с кого сте се срещали",
   "installed_app_calendar_description": "Задайте календарите, които да се проверяват за конфликти, за да се предотвратят двойни резервации.",
-  "installed_app_payment_description": "Конфигурирайте кои платежни услуги да използвате при таксуване на клиентите си.",
+  
   "installed_app_analytics_description": "Конфигурирайте кои приложения за анализ да използвате за вашите страници за резервации",
   "installed_app_other_description": "Всички ваши инсталирани приложения от други категории.",
   "installed_app_conferencing_description": "Конфигурирайте кои приложения за конферентна връзка да използвате",
@@ -1049,7 +1049,7 @@
   "permissions": "Разрешения",
   "terms_and_privacy": "Условия и поверителност",
   "published_by": "Публикувано от {{author}}",
-  "subscribe": "Абонирайте се",
+  
   "buy": "Купи",
   "install_app": "Инсталирай",
   "categories": "Категории",
@@ -1064,14 +1064,14 @@
   "create_events_on": "Създай събития в",
   "enterprise_license": "Това е търговска функция",
   "enterprise_license_locally": "Можете да тествате тази функция локално, но не в производството.",
-  "enterprise_license_sales": "За да се ъпгрейднете до корпоративното издание, моля, се свържете с нашия отбор за продажби. Ако лицензният ключ вече е наличен, моля, свържете се с support@cal.com за помощ.",
+  
   "missing_license": "Липсващ лиценз",
   "next_steps": "Следващи стъпки",
   "acquire_commercial_license": "Придобий търговски лиценз",
   "the_infrastructure_plan": "Инфраструктурният план е базиран на използването и предлага отстъпки, подходящи за стартъпи",
   "prisma_studio_tip": "Създай акаунт чрез Prisma Studio",
   "prisma_studio_tip_description": "Научи как да настроиш първия си потребител",
-  "contact_sales": "Свържи се с отдел продажби",
+  
   "error_404": "Грешка 404",
   "default": "По подразбиране",
   "set_to_default": "Задай по подразбиране",
@@ -1231,7 +1231,7 @@
   "developer_documentation": "Документация за разработчици",
   "get_in_touch": "Свържете се с нас",
   "contact_support": "Връзка с поддръжката",
-  "premium_support": "Премиум поддръжка",
+  
   "community_support": "Поддръжка от общността",
   "feedback": "Обратна връзка",
   "submitted_feedback": "Благодарим за обратната връзка!",
@@ -1290,14 +1290,14 @@
   "new_workflow_description": "Работните процеси ви позволяват да автоматизирате изпращането на напомняния и известия.",
   "active_on": "Активно на",
   "workflow_updated_successfully": "Работен процес {{workflowName}} е актуализиран успешно",
-    "premium_username": "Това е премиум потребителско име, вземете вашето за {{price}}",
+    
   "current": "Текущ",
-  "premium": "премиум",
+  
   "standard": "стандартен",
   "confirm_username_change_dialog_title": "Потвърдете промяната на потребителското име",
-  "change_username_standard_to_premium": "Тъй като преминавате от стандартно към премиум потребителско име, ще бъдете пренасочени към плащане за ъпгрейд.",
-  "change_username_premium_to_standard": "Тъй като преминавате от премиум към стандартно потребителско име, ще бъдете пренасочени към плащане за даунгрейд.",
-    "stripe_description": "Изисквайте плащане за резервации (0.5% + €0.10 комисиона на транзакция)",
+  
+  
+    
   "trial_expired": "Пробният ви период изтече",
   "remove_app": "Премахни приложението",
   "yes_remove_app": "Да, премахни приложението",
@@ -1366,16 +1366,16 @@
   "event_date_variable": "Дата на събитието",
   "event_time_variable": "Час на събитието",
   "organizer_name_variable": "Име на организатора",
-  "app_upgrade_description": "За да използвате тази функция, трябва да надградите до Pro акаунт.",
+  
   "invalid_number": "Невалиден телефонен номер",
   "invalid_url_error_message": "Невалиден URL за {{label}}. Примерен URL: {{sampleUrl}}",
   "navigate": "Навигирай",
   "open": "Отвори",
   "close": "Затвори",
-  "upgrade": "Надгради",
-  "upgrade_to_access_recordings_title": "Надградете, за да получите достъп до записи",
-  "upgrade_to_access_recordings_description": "Записите са достъпни само като част от нашия екипен план. Надградете, за да започнете да записвате разговорите си",
-  "upgrade_to_cal_ai_phone_number_description": "Надградете до Enterprise, за да генерирате телефонен номер на AI агент, който може да се обажда на гости за насрочване на разговори",
+  
+  
+  
+  
   "recordings_are_part_of_the_teams_plan": "Записите са част от екипния план",
   "team_feature_teams": "Това е функция за екипи. Надградете до Team, за да видите наличността на вашия екип.",
   "team_feature_workflows": "Това е функция за екипи. Надградете до Team, за да автоматизирате известията и напомнянията за събития с Workflows.",
@@ -1389,7 +1389,7 @@
   "company_size": "Размер на компанията",
   "what_help_needed": "С какво имате нужда от помощ?",
   "variable_format": "Формат на променливата",
-  "webhook_subscriber_url_reserved": "URL адресът за webhook абонамент вече е дефиниран",
+  
   "custom_input_as_variable_info": "Игнорирайте всички специални символи от етикета на допълнителното поле (използвайте само букви и цифри), използвайте главни букви и заменете интервалите с долни черти.",
   "using_booking_questions_as_variables": "Как да използвам въпросите за резервация като променливи?",
   "download_desktop_app": "Изтеглете десктоп приложението",
@@ -1413,8 +1413,8 @@
   "event_limit_tab_description": "Колко често можете да бъдете резервиран",
   "event_advanced_tab_description": "Настройки на календара и още...",
   "event_advanced_tab_title": "Разширени",
-  "event_payments_tab_title": "Плащания",
-  "event_payments_tab_description": "Настройка на плащания за събитие",
+  
+  
   "event_setup_multiple_duration_error": "Настройка на събитие: Множество продължителности изискват поне 1 опция.",
   "event_setup_multiple_duration_default_error": "Настройка на събитие: Моля, изберете валидна продължителност по подразбиране.",
   "event_setup_booking_limits_error": "Лимитите за резервации трябва да са във възходящ ред [ден, седмица, месец, година]",
@@ -1499,7 +1499,7 @@
   "connect_calendars_from_app_store": "Можете да добавите още календари от магазина за приложения",
   "connect_conference_apps": "Свържете приложения за конференции",
   "connect_calendar_apps": "Свържете календарни приложения",
-  "connect_payment_apps": "Свържете приложения за плащания",
+  
   "connect_automation_apps": "Свържете приложения за автоматизация",
   "connect_analytics_apps": "Свържете приложения за анализ",
   "connect_other_apps": "Свържете други приложения",
@@ -1621,7 +1621,7 @@
   "password_reset_email": "Изпратен е имейл до {{email}} с инструкции за възстановяване на паролата ви.",
   "password_reset_leading": "Ако не получите имейл скоро, проверете дали въведеният имейл адрес е правилен, проверете папката със спам или се свържете с поддръжката, ако проблемът продължава.",
   "password_updated": "Паролата е обновена!",
-  "pending_payment": "Чакаща плащане",
+  
   "pending_invites": "Чакащи покани",
   "pending_organization_invites": "Чакащи покани за организация",
   "not_on_cal": "Не е в {{appName}}",
@@ -1734,7 +1734,7 @@
   "route_to": "Маршрут към",
   "test_preview_description": "Тествайте вашия формуляр за маршрутизиране без да изпращате данни",
   "test_routing": "Тестване на маршрутизиране",
-  "payment_app_disabled": "Администратор е деактивирал приложение за плащане",
+  
   "edit_event_type": "Редактиране на тип събитие",
   "only_admin_can_see_members_of_org": "Тази организация е частна и само администраторът или собственикът на организацията може да вижда нейните членове.",
   "only_admin_can_manage_sso_org": "Само администраторът или собственикът на организацията може да управлява SSO настройките",
@@ -1755,8 +1755,8 @@
   "email_body_slug_replacement_notice": "Администратор от екип <strong>{{teamName}}</strong> замени вашия тип събитие <strong>/{{slug}}</strong> с управляван тип събитие, който те контролират.",
   "email_body_slug_replacement_info": "Вашата връзка ще продължи да работи, но някои настройки може да са се променили. Можете да ги прегледате в типовете събития.",
   "email_body_slug_replacement_suggestion": "Ако имате въпроси относно типа събитие, моля, свържете се с вашия администратор.<br /><br />Успешно планиране, <br />Екипът на Cal.com",
-  "disable_payment_app": "Администраторът деактивира {{appName}}, което засяга вашия тип събитие {{title}}. Участниците все още могат да запазват този тип събитие, но няма да бъдат подканени да платят. Можете да скриете типа събитие, докато администраторът не активира отново метода ви за плащане.",
-  "payment_disabled_still_able_to_book": "Участниците все още могат да запазват този тип събитие, но няма да бъдат подканени да платят. Можете да скриете типа събитие, докато администраторът не активира отново метода ви за плащане.",
+  
+  
   "app_disabled_with_event_type": "Администраторът деактивира {{appName}}, което засяга вашия тип събитие {{title}}.",
   "app_disabled_video": "Администраторът деактивира {{appName}}, което може да засегне вашите типове събития. Ако имате типове събития с {{appName}} като локация, те ще преминат по подразбиране към Cal Video.",
   "app_disabled_subject": "{{appName}} беше деактивирано",
@@ -1842,8 +1842,8 @@
   "round_robin_hosts": "Round-Robin домакини",
   "minimum_round_robin_hosts_count": "Необходим брой домакини за участие",
   "hosts": "Домакини",
-  "upgrade_to_enable_feature": "Трябва да създадете екип, за да активирате тази функция. Кликнете тук, за да създадете екип.",
-  "orgs_upgrade_to_enable_feature": "Трябва да преминете към корпоративния ни план, за да активирате тази функция.",
+  
+  
   "new_attendee": "Нов участник",
   "awaiting_approval": "Очаква одобрение",
   "requires_google_calendar": "Това приложение изисква връзка с Google Calendar",
@@ -1944,9 +1944,9 @@
   "add_a_booking_question": "Добави въпрос",
   "identifier": "Идентификатор",
   "duplicate_email": "Имейлът е дублиран",
-  "booking_with_payment_cancelled": "Плащането за това събитие вече не е възможно",
-  "booking_with_payment_cancelled_already_paid": "Възстановяването на сумата за тази резервация е в процес на обработка.",
-  "booking_with_payment_cancelled_refunded": "Плащането за тази резервация е възстановено.",
+  
+  
+  
   "booking_confirmation_failed": "Потвърждението на резервацията е неуспешно",
   "not_enough_seats": "Няма достатъчно места",
   "form_builder_field_already_exists": "Поле с това име вече съществува",
@@ -2079,31 +2079,31 @@
   "clear_filters": "Изчисти филтрите",
   "clear": "Изчисти",
   "hold": "Задръж",
-  "on_booking_option": "Събиране на плащане при резервация",
-  "hold_option": "Таксуване при неявяване",
-  "card_held": "Картата е задържана",
-  "charge_card": "Таксувай картата",
-  "card_charged": "Картата е таксувана",
-  "no_show_fee_amount": "{{amount, currency}} такса за неявяване",
-  "no_show_fee": "Такса за неявяване",
-  "submit_card": "Въведи карта",
-  "submit_payment_information": "Въведи информация за плащане",
-  "meeting_awaiting_payment_method": "Вашата среща очаква метод на плащане",
-  "no_show_fee_charged_email_subject": "Таксувана е такса за неявяване от {{amount, currency}} за {{title}} на {{date}}",
-  "no_show_fee_charged_text_body": "Таксата за неявяване беше начислена",
-  "no_show_fee_charged_subtitle": "Такса за неявяване в размер на {{amount, currency}} беше начислена за следното събитие",
-  "error_charging_card": "Възникна проблем при начисляването на таксата за неявяване. Моля, опитайте отново по-късно.",
-  "collect_no_show_fee": "Събиране на такса за неявяване",
-  "no_show_fee_charged": "Начислена такса за неявяване",
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   "insights": "Анализи",
   "routing_forms": "Формуляри за маршрутизиране",
   "testing_workflow_info_message": "Когато тествате този работен процес, имайте предвид, че имейлите и SMS съобщенията могат да бъдат планирани само поне 1 час предварително",
   "insights_no_data_found_for_filter": "Не са намерени данни за избрания филтър или избраните дати.",
-  "acknowledge_booking_no_show_fee": "Потвърждавам, че ако не присъствам на това събитие, ще бъде начислена такса за неявяване в размер на {{amount, currency}} на моята карта.",
-  "card_details": "Данни на картата",
+  
+  
   "something_went_wrong_on_our_end": "Възникна проблем от наша страна. Свържете се с екипа ни за поддръжка и ще го отстраним веднага.",
   "please_provide_following_text_to_suppport": "Моля, предоставете следния текст при контакт с поддръжката за по-добра помощ",
-  "seats_and_no_show_fee_error": "В момента не е възможно да се активират места и да се начислява такса за неявяване",
+  
   "complete_your_booking": "Завършете резервацията си",
   "complete_your_booking_subject": "Завършете резервацията си: {{title}} на {{date}}",
   "confirm_your_details": "Потвърдете данните си",
@@ -2121,12 +2121,12 @@
   "one_year": "1 година",
   "team_invite_received": "Получихте покана да се присъедините към {{teamName}}",
   "currency_string": "{{amount, currency}}",
-  "charge_card_dialog_body": "На път сте да таксувате участника с {{amount, currency}}. Сигурни ли сте, че искате да продължите?",
+  
   "charge_attendee": "Таксуване на участник {{amount, currency}}",
-  "payment_app_commission": "Изискване на плащане ({{paymentFeePercentage}}% + {{fee, currency}} комисионна на транзакция)",
+  
   "email_invite_team": "{{email}} е поканен/а",
   "email_invite_team_bulk": "{{userCount}} потребители са поканени",
-  "error_collecting_card": "Грешка при обработка на картата",
+  
   "image_size_limit_exceed": "Качената снимка не трябва да надвишава лимита от 5mb",
   "unauthorized_workflow_error_message": "{{errorCode}}: Нямате права да активирате или деактивирате този работен процес",
   "inline_embed": "Вграждане в страницата",
@@ -2395,7 +2395,7 @@
   "unlocked": "Отключено",
   "lock_timezone_toggle_on_booking_page": "Заключване на часовата зона на страницата за резервации",
   "description_lock_timezone_toggle_on_booking_page": "За заключване на часовата зона на страницата за резервации, полезно за събития на място.",
-  "event_setup_multiple_payment_apps_error": "Можете да имате само едно активно приложение за плащане за всеки тип събитие.",
+  
   "number_in_international_format": "Моля, въведете номера в международен формат.",
   "install_calendar": "Инсталиране на календар",
   "branded_subdomain": "Брандиран поддомейн",
@@ -2412,7 +2412,7 @@
   "enterprise_description": "Надградете до корпоративен план, за да създадете своята организация",
   "create_your_org": "Създайте своята организация",
     "create_your_enterprise_description": "Надградете до Enterprise и получете достъп до Active Directory Sync, SCIM автоматично осигуряване на потребители, Cal.ai гласови агенти, Admin APIs и още!",
-  "other_payment_app_enabled": "Можете да активирате само едно приложение за плащане за всеки тип събитие",
+  
   "admin_delete_organization_description": "<ul><li>Екипите, които са членове на тази организация, също ще бъдат изтрити заедно с техните типове събития</li><li>Потребителите, които са били част от организацията, няма да бъдат изтрити, но техните потребителски имена ще бъдат променени, за да могат да съществуват извън организацията</li><li>Потребителските типове събития, създадени след като потребителят е бил в организацията, ще бъдат изтрити</li><li>Мигрираните потребителски типове събития няма да бъдат изтрити</li></ul>",
   "admin_delete_organization_title": "Изтриване на {{organizationName}}?",
   "published": "Публикувано",
@@ -2432,12 +2432,12 @@
   "uprade_to_create_instant_bookings": "Надградете до Enterprise и позволете на гостите да се присъединят към моментално обаждане, към което участниците могат да се включат директно. Това е само за екипни типове събития",
   "dont_want_to_wait": "Не искате да чакате?",
   "meeting_started": "Срещата започна",
-  "pay_and_book": "Платете, за да резервирате",
+  
   "cal_ai_event_tab_description": "Оставете AI агентите да резервират вместо вас",
   "booking_not_found_error": "Резервацията не беше намерена",
   "booking_seats_full_error": "Местата за резервация са запълнени",
-  "missing_payment_credential_error": "Липсват данни за плащане",
-  "missing_payment_app_id_error": "Липсва идентификатор на приложението за плащане",
+  
+  
   "not_enough_available_seats_error": "Резервацията няма достатъчно свободни места",
   "user_redirect_title": "{{username}} отсъства за кратък период от време.",
   "user_redirect_description": "Междувременно {{profile.username}} ще отговаря за всички нови планирани срещи от името на {{username}}.",
@@ -2534,7 +2534,7 @@
   "email|existing_user_added_link_changed": "Вашият линк е променен от <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> на <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>, но не се притеснявайте - всички предишни линкове продължават да работят и пренасочват правилно. <br /><br />Моля, обърнете внимание: Всички ваши лични типове събития са преместени в организацията <strong>{teamName}</strong>, което може да включва и потенциални лични линкове.<br /><br />Моля, влезте в профила си и се уверете, че нямате лични събития в новия си организационен акаунт.<br /><br />За лични събития препоръчваме да създадете нов акаунт с личен имейл адрес.<br /><br />Насладете се на новия си изчистен линк: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Вашата организация е създадена",
   "your_current_plan": "Вашият текущ план",
-  "organization_price_per_user_month": "$37 на потребител на месец (минимум 30 места)",
+  
   "privacy_organization_description": "Управлявайте настройките за поверителност на вашата организация",
   "privacy": "Поверителност",
   "team_will_be_under_org": "Новите екипи ще бъдат под вашата организация",
@@ -2631,7 +2631,7 @@
   "proceeding_agreement": "С продължаването си, вие се съгласявате с нашите",
   "terms": "Условия",
   "always_show_x_days": "Винаги показвай {{x}} свободни дни",
-  "unable_to_subscribe_to_the_platform": "Възникна грешка при опит за абониране за плана на платформата, моля опитайте отново по-късно",
+  
   "updating_oauth_client_error": "Възникна грешка при актуализиране на OAuth клиента, моля опитайте отново по-късно",
   "creating_oauth_client_error": "Възникна грешка при създаване на OAuth клиента, моля опитайте отново по-късно",
   "event_type_color": "Цвят на типа събитие",
@@ -2692,9 +2692,9 @@
   "outlook_connect_atom_label": "Свързване с Outlook календар",
   "outlook_connect_atom_already_connected_label": "Свързан Outlook календар",
   "outlook_connect_atom_loading_label": "Проверка на Outlook календар",
-  "stripe_connect_atom_label": "Свързване със Stripe",
-  "stripe_connect_atom_already_connected_label": "Свързан Stripe",
-  "stripe_connect_atom_loading_label": "Проверка на Stripe идентификационни данни",
+  
+  
+  
   "booking_question_response_variables": "Променливи за отговори на въпроси за резервация",
   "managed_by_teamAdmins": "Управлявано от {{teamAdmins}}",
   "number_of_options": "{{count}} опции",
@@ -2718,10 +2718,10 @@
   "month_to_date": "от началото на месеца",
   "year_to_date": "от началото на годината",
   "custom_range": "персонализиран период",
-  "refund_policy": "Политика за възстановяване",
+  
   "always": "Винаги",
   "never": "Никога",
-  "payment_option": "Опция за плащане",
+  
   "if_cancelled": "При отказ",
   "before": "преди",
   "show_all_columns": "Покажи всички колони",

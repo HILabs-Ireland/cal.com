@@ -5,7 +5,7 @@
   "day_other": "{{count}} nap",
   "second_one": "{{count}} másodperc",
   "second_other": "{{count}} másodperc",
-  "upgrade_now": "Frissíts most",
+  
   "untitled": "Névtelen",
   "accept_invitation": "Meghívó elfogadása",
   "max_characters": "Max. karakterek",
@@ -68,18 +68,18 @@
   "accept_our_license": "Fogadja el licencünket az .env változó <1>NEXT_PUBLIC_LICENSE_CONSENT</1> módosításával a következőre: „{{agree}}”.",
   "remove_banner_instructions": "A szalaghirdetés eltávolításához nyissa meg az .env fájlt, és módosítsa a <1>NEXT_PUBLIC_LICENSE_CONSENT</1> változót a következőre: „{{agree}}”.",
   "error_message": "A hibaüzenet a következő volt: '{{errorMessage}}'",
-  "refund_failed_subject": "Sikertelen visszatérítés: {{name}} - {{date}} - {{eventType}}",
-  "refund_failed": "Sikertelen visszatérítés ezért: {{eventType}}, {{userName}}, {{date}}.",
+  
+  
   "check_with_provider_and_user": "Kérjük, érdeklődjön fizetési szolgáltatójánál és {{user}}-nál, hogyan kezelheti ezt.",
-  "a_refund_failed": "Sikertelen visszatérítés",
-  "awaiting_payment_subject": "Fizetésre vár: {{title}}, {{date}}",
-  "meeting_awaiting_payment": "A találkozó fizetésre vár",
+  
+  
+  
   "dark_theme_contrast_error": "A sötét téma színe nem megy át a kontrasztellenőrzésen. Javasoljuk, hogy változtassa meg ezt a színt, hogy a gombok jobban láthatóak legyenek.",
   "light_theme_contrast_error": "A világos téma színe nem megy át a kontrasztellenőrzésen. Javasoljuk, hogy változtassa meg ezt a színt, hogy a gombok jobban láthatóak legyenek.",
   "event_type_color_light_theme_contrast_error": "A világos téma színe nem felel meg a kontrasztellenőrzésnek. Javasoljuk, hogy változtassa meg ezt a színt, hogy az eseménytípus színe jobban látható legyen.",
   "event_type_color_dark_theme_contrast_error": "A sötét téma színe nem felel meg a kontrasztellenőrzésnek. Javasoljuk, hogy változtassa meg ezt a színt, hogy az eseménytípus színe jobban látható legyen.",
-  "payment_not_created_error": "A fizetést nem sikerült létrehozni",
-  "couldnt_charge_card_error": "Nem sikerült megterhelni a kártyát a fizetésért",
+  
+  
   "no_available_users_found_error": "Nem található elérhető felhasználó. Kipróbálhatnál egy másik időpontot?",
   "request_body_end_time_internal_error": "Belső hiba. A kérelem törzse nem tartalmazza a befejezési időt",
   "create_calendar_event_error": "Nem lehet naptári eseményt létrehozni a Szervező naptárában",
@@ -88,12 +88,12 @@
   "already_signed_up_for_this_booking_error": "Már jelentkeztél erre a foglalásra.",
   "hosts_unavailable_for_booking": "Valaki a szervezők közül nem elérhető foglalásra.",
   "help": "Segítség",
-  "price": "Ár",
-  "paid": "Fizetett",
-  "refunded": "Visszatérítve",
-  "payment": "Fizetés",
-  "missing_card_fields": "Hiányzó kártya adatok",
-  "pay_now": "Fizetés most",
+  
+  
+  
+  
+  
+  
   "general_prompt": "Általános Prompt",
   "begin_message": "Üzenet indítása",
   "codebase_has_to_stay_opensource": "A kódbázisnak nyílt forráskódúnak kell maradnia, akár módosították, akár nem",
@@ -179,17 +179,17 @@
   "hidden_team_member_message": "A helyedért nem fizetnek, vagy frissíts PRO-ra, vagy tudasd a csapat tulajdonosával, hogy kifizethetik-e a helyedet.",
   "hidden_team_owner_message": "A csapatok használatához PRO fiókra van szüksége, a frissítésig rejtve marad.",
   "link_expires": "u.i. {{expiresIn}} órán belül lejár.",
-  "upgrade_to_per_seat": "Frissítés Per-Hely-re",
+  
   "seat_options_doesnt_support_confirmation": "A hely opció nem támogatja a megerősítési követelményt",
   "multilocation_doesnt_support_seats": "A több helyszín nem támogatja az ülőhelyek opciót",
-  "no_show_fee_doesnt_support_seats": "A nem megjelenési díj nem támogatja az ülőhelyek opciót",
+  
   "seats_option_doesnt_support_multi_location": "Az ülőhelyek opció nem támogatja a több helyszínt",
-  "team_upgrade_seats_details": "A csapatod {{memberCount}} tagja közül {{unpaidCount}} hely nem fizetett. A tagság becsült összköltsége ${{seatPrice}} USD/hónap.",
-  "team_upgrade_banner_description": "Még nem fejezte be a csapat összeállítását. \"{{teamName}}\" csapatát frissíteni kell.",
-  "upgrade_banner_action": "Frissítés itt",
-  "team_upgraded_successfully": "Csapatát sikeresen frissítettük!",
-  "org_upgrade_banner_description": "Köszönjük, hogy kipróbálta Szervezeti csomagunkat. Észrevettük, hogy a(z) „{{teamName}}” szervezetet frissíteni kell.",
-  "org_upgraded_successfully": "Szervezete sikeresen frissítve!",
+  
+  
+  
+  
+  
+  
   "use_link_to_reset_password": "Jelszó visszaállításához használja az alábbi linket",
   "hey_there": "Szia",
   "forgot_your_password_calcom": "Elfelejtette a jelszavát? - {{appName}}",
@@ -208,8 +208,8 @@
   "webhook_created_successfully": "Webhook sikeresen létrehozva!",
   "webhook_updated_successfully": "Webhook sikeresen frissítve!",
   "webhook_removed_successfully": "Webhook sikeresen eltévolítva!",
-  "subscription_needed": "Előfizetés szükséges",
-  "subscription_needed_description": "Nem rendelkezel Platform előfizetéssel.",
+  
+  
   "payload_template": "Payload sablon",
   "dismiss": "Elvetés",
   "no_data_yet": "Még nincs adat",
@@ -374,8 +374,8 @@
   "booking_submitted_recurring": "Ismétlődő találkozóját elküldtük",
   "booking_confirmed": "A foglalásod vissza lett igazolva",
   "booking_confirmed_recurring": "Ismétlődő találkozóját megerősítették",
-  "warning_recurring_event_payment": "A fizetések még nem támogatottak ismétlődő események esetén",
-  "warning_payment_recurring_event": "Az ismétlődő eseményeket a fizetés még nincs támogatva",
+  
+  
   "enter_new_password": "Adja meg a fiókjához kívánt új jelszót.",
   "reset_password": "Jelszó visszaállítása",
   "change_your_password": "Változtasd meg a jelszavadat",
@@ -504,15 +504,15 @@
   "booking_created": "Foglalás létrehozva",
   "booking_rejected": "Foglalás visszautasítva",
   "booking_requested": "Foglalás kérvényezve",
-  "booking_payment_initiated": "Foglalási fizetés elindítva",
+  
   "meeting_ended": "A találkozó véget ért",
   "form_submitted": "Űrlap elküldve",
   "form_submitted_no_event": "Űrlap beküldve, esemény nem lett foglalva",
-  "booking_paid": "Foglalás kifizetve",
+  
   "ooo_created": "Távolléti üzenet létrehozva",
   "booking_no_show_updated": "Foglalás nem megjelent frissítve",
   "event_triggers": "Eseményindítók",
-  "subscriber_url": "Feliratkozói URL",
+  
   "create_new_webhook": "Hozzon létre egy új webhookot",
   "webhooks": "Webhookok",
   "team_webhooks": "Csapat Webhookok",
@@ -773,10 +773,10 @@
   "readonly": "Csak olvasható",
   "one_time_link": "Egyszeri link",
   "plan_description": "Jelenleg a {{plan}} csomagot használja.",
-  "plan_upgrade_invitation": "Frissítse fiókját PRO csomagra, hogy feloldja az általunk kínált összes funkciót.",
-  "plan_upgrade": "Frissítenie kell a tervét, hogy egynél több aktív eseménytípus legyen.",
-  "plan_upgrade_teams": "A csapat létrehozásához frissítenie kell előfizetését.",
-  "plan_upgrade_instructions": "<1>Itt frissíthet</1>.",
+  
+  
+  
+  
   "event_types_page_title": "Eseménytípusok",
   "event_types_page_subtitle": "Hozzon létre eseményeket, amelyeket megoszthat a naptárában.",
   "new": "Új",
@@ -833,8 +833,8 @@
   "teams": "Csapatok",
   "team": "Csapat",
   "organization": "Szervezet",
-      "upgrade_to_flexible_pro_title": "Módosítottuk a csapatok számlázását",
-  "upgrade_to_flexible_pro_message": "Vannak olyan tagok a csapatban, akiknek nincs helye. Frissítse profi tervét, hogy fedezze a hiányzó helyeket.",
+      
+  
     "create_manage_teams_collaborative": "Hozzon létre és kezeljen csapatokat az együttműködési funkciók használatához.",
   "only_available_on_pro_plan": "Ez a funkció csak a PRO csomagban érhető el",
   "remove_cal_branding_description": "Ha el szeretné távolítani a(z) {{appName}} márkajelzést a foglalási oldalairól, PRO-fiókra kell frissítenie.",
@@ -843,8 +843,8 @@
   "little_something_about": "Egy kicsit magadról.",
   "profile_updated_successfully": "A profil sikeresen frissítve",
   "your_user_profile_updated_successfully": "Felhasználói profilja sikeresen frissült.",
-  "your_upgrade_is_here": "Megérkezett a frissítésed",
-  "your_upgrade_is_here_description": "Fejleszd a naptárkezelési élményed az új csomagra való frissítéssel és élvezd az új funkciókat.",
+  
+  
   "you_are_all_set": "Minden készen áll",
   "you_are_all_set_description": "Már a legújabb csomagot használod. Nincs szükség frissítésre. Élvezd az új funkciókat, és kérdés esetén keress minket bizalommal!",
   "user_cannot_found_db": "A felhasználó be van jelentkezve, de nem található az adatbázisban",
@@ -889,8 +889,8 @@
   "recurring_event": "Ismétlődő esemény",
   "recurring_event_description": "Az emberek előfizethetnek az ismétlődő eseményekre",
   "connect_and_join": "Csatlakozás",
-  "cannot_be_used_with_paid_event_types": "Fizetett eseménytípusokkal nem használható",
-  "warning_payment_instant_meeting_event": "Az azonnali értekezletek még nem támogatottak az ismétlődő eseményekkel és fizetőalkalmazásokkal",
+  
+  
   "warning_instant_meeting_experimental": "Kísérleti: Az azonnali találkozó események jelenleg kísérleti jellegűek.",
   "starting": "Kezdés",
   "disable_guests": "Vendégek letiltása",
@@ -921,7 +921,7 @@
   "cal_provide_jitsi_meeting_url": "Létrehozunk Önnek egy Jitsi Meet URL-t.",
   "cal_provide_huddle01_meeting_url": "{{appName}} megadja a Huddle01 videomegbeszélés URL-jét.",
   "cal_provide_teams_meeting_url": "A(z) {{appName}} megadja az MS Teams megbeszélés URL-jét. MEGJEGYZÉS: MUNKA- VAGY ISKOLAI SZÁMLÁVAL KELL RENDELNI",
-  "require_payment": "Fizetést igényel",
+  
   "you_need_to_add_a_name": "Meg kell adni egy nevet",
   "commission_per_transaction": "tranzakciónkénti jutalék",
   "event_type_updated_successfully_description": "Az eseménytípus frissítése sikeresen megtörtént.",
@@ -965,7 +965,7 @@
   "next_step": "Lépés kihagyása",
   "prev_step": "Előző lépés",
   "install": "Telepítés",
-  "start_paid_trial": "Ingyenes próba indítása",
+  
   "installed": "Telepített",
   "active_install_one": "{{count}} aktív telepítés",
   "active_install_other": "{{count}} aktív telepítés",
@@ -983,7 +983,7 @@
   "check_here": "Ellenőrizze itt",
   "conferencing": "Konferencia",
   "calendar": "Naptár",
-  "payments": "Fizetési lehetőségek",
+  
   "not_installed": "Nem telepített",
   "error_password_mismatch": "A jelszavak nem egyeznek.",
   "error_required_field": "Ez a mező kötelező.",
@@ -1025,14 +1025,14 @@
   "all_apps": "Minden alkalmazás",
   "no_category_apps_description_calendar": "Adjon hozzá egy naptáralkalmazást, hogy ellenőrizze az ütközéseket a dupla foglalások elkerülése érdekében",
   "no_category_apps_description_conferencing": "Próbáljon meg konferencialkalmazást hozzáadni az ügyfelekkel folytatott videohívásokhoz",
-  "no_category_apps_description_payment": "Adjon hozzá egy fizetési alkalmazást, hogy megkönnyítse a tranzakciókat Ön és ügyfelei között",
+  
   "no_category_apps_description_analytics": "Adjon hozzá egy elemző alkalmazást a foglalási oldalaihoz",
   "no_category_apps_description_automation": "Adjon hozzá egy használni kívánt automatizálási alkalmazást",
   "no_category_apps_description_other": "Adjon hozzá bármilyen más típusú alkalmazást mindenféle tevékenység elvégzéséhez",
   "no_category_apps_description_messaging": "Adjon hozzá egy üzenetküldő alkalmazást egyéni értesítések és emlékeztetők beállításához",
   "no_category_apps_description_crm": "Adjon hozzá egy CRM-alkalmazást, hogy nyomon kövesse, kivel találkozott",
   "installed_app_calendar_description": "Állítsa be a naptárakat az ütközések ellenőrzésére a dupla foglalások elkerülése érdekében.",
-  "installed_app_payment_description": "Konfigurálja, hogy mely fizetési feldolgozási szolgáltatásokat használja az ügyfelek terhelése során.",
+  
   "installed_app_analytics_description": "Konfigurálja, hogy mely analitikai alkalmazásokat használja a foglalási oldalain",
   "installed_app_other_description": "Az összes telepített alkalmazása más kategóriákból.",
   "installed_app_conferencing_description": "Konfigurálja a használni kívánt konferencia-alkalmazásokat",
@@ -1049,7 +1049,7 @@
   "permissions": "Engedélyek",
   "terms_and_privacy": "Felhasználási Feltételek és Adatvédelem",
   "published_by": "Közzétette: {{author}}",
-  "subscribe": "Feliratkozás",
+  
   "buy": "Vásárlás",
   "install_app": "Alkalmazás telepítése",
   "categories": "Kategóriák",
@@ -1064,14 +1064,14 @@
   "create_events_on": "Események létrehozása",
   "enterprise_license": "Ez egy kereskedelmi funkció",
   "enterprise_license_locally": "Ezt a funkciót helyben tesztelheti, éles környezetben azonban nem.",
-  "enterprise_license_sales": "Kereskedelmi licenc vásárlásához kérjük, vegye fel a kapcsolatot értékesítési csapatunkkal. Ha már rendelkezik licenckulccsal, kérjük, lépjen kapcsolatba a support@cal.com címen segítségért.",
+  
   "missing_license": "Hiányzó licenc",
   "next_steps": "Következő lépések",
   "acquire_commercial_license": "Szerezzen kereskedelmi licenc-et",
   "the_infrastructure_plan": "Az infrastruktúra csomag használat alapú, és indulóbarát kedvezményeket tartalmaz.",
   "prisma_studio_tip": "Hozzon létre fiókot a Prisma Studio segítségével",
   "prisma_studio_tip_description": "Ismerje meg, hogyan állíthatja be első felhasználóját",
-  "contact_sales": "Lépjen kapcsolatba az értékesítéssel",
+  
   "error_404": "404-es hiba",
   "default": "Alapértelmezett",
   "set_to_default": "Állítsa alapértelmezettre",
@@ -1231,7 +1231,7 @@
   "developer_documentation": "Fejlesztői dokumentáció",
   "get_in_touch": "Vegye fel a kapcsolatot",
   "contact_support": "Lépjen kapcsolatba az ügyfélszolgálattal",
-  "premium_support": "Prémium támogatás",
+  
   "community_support": "Közösségi támogatás",
   "feedback": "Visszajelzés",
   "submitted_feedback": "Köszönjük a visszajelzést!",
@@ -1290,14 +1290,14 @@
   "new_workflow_description": "A munkafolyamatok lehetővé teszik az emlékeztetők és értesítések küldésének automatizálását.",
   "active_on": "Aktív ezen:",
   "workflow_updated_successfully": "A {{workflowName}} munkafolyamat sikeresen frissítve",
-    "premium_username": "Ez egy prémium felhasználónév, szerezze be a sajátját {{price}} áron",
+    
   "current": "Jelenlegi",
-  "premium": "prémium",
+  
   "standard": "alap",
   "confirm_username_change_dialog_title": "Erősítse meg a felhasználónév módosítását",
-  "change_username_standard_to_premium": "Ahogy a szabványos felhasználónévről prémium felhasználónévre vált, a pénztárhoz kerül a frissítéshez.",
-  "change_username_premium_to_standard": "Amikor prémium felhasználónévről normál felhasználónévre vált, a pénztárhoz kerül, hogy alacsonyabb verzióra váltson.",
-    "stripe_description": "Foglalás esetén fizetés szükséges (0,5% + 0,10 € jutalék tranzakciónként)",
+  
+  
+    
   "trial_expired": "A próbaidőszak lejárt",
   "remove_app": "Alkalmazás eltávolítása",
   "yes_remove_app": "Igen, távolítsd el az alkalmazást",
@@ -1366,16 +1366,16 @@
   "event_date_variable": "Esemény dátuma",
   "event_time_variable": "Esemény ideje",
   "organizer_name_variable": "Szervező név",
-  "app_upgrade_description": "A funkció használatához frissítenie kell egy PRO-fiókra.",
+  
   "invalid_number": "Érvénytelen telefonszám",
   "invalid_url_error_message": "Érvénytelen URL a következőhöz: {{label}}. Minta URL: {{sampleUrl}}",
   "navigate": "Navigálás",
   "open": "Megnyitás",
   "close": "Bezárás",
-  "upgrade": "Frissítés",
-  "upgrade_to_access_recordings_title": "Frissítsen a felvételek eléréséhez",
-  "upgrade_to_access_recordings_description": "A felvételek csak csapat-előfizetés részeként érhetők el. Frissítsen a hívások rögzítésének megkezdéséhez",
-  "upgrade_to_cal_ai_phone_number_description": "Frissítsen Vállalati csomagra egy mesterséges intelligencia-ügynök telefonszám létrehozásához, amely felhívhatja a vendégeket a hívások ütemezéséhez",
+  
+  
+  
+  
   "recordings_are_part_of_the_teams_plan": "A felvételek a csapat-előfizetés részét képezik",
   "team_feature_teams": "Ez egy csapat funkció. Frissítsen csapatra, hogy megtekinthesse csapata elérhetőségét.",
   "team_feature_workflows": "Ez egy csapat funkció. Frissítsen csapatra, hogy automatizálja eseményértesítéseit és emlékeztetőit a munkafolyamatokkal.",
@@ -1389,7 +1389,7 @@
   "company_size": "Cég méret",
   "what_help_needed": "Mivel kapcsolatban van szükséged segítségre?",
   "variable_format": "Változó formátum",
-  "webhook_subscriber_url_reserved": "A Webhook előfizetői URL-je már meg lett határozva",
+  
   "custom_input_as_variable_info": "Hagyja figyelmen kívül a kiegészítő beviteli címke összes speciális karakterét (csak betűket és számokat használjon), használjon nagybetűt minden betűhöz, és cserélje ki a szóközöket aláhúzásjelre.",
   "using_booking_questions_as_variables": "Hogyan használhatom a foglalási kérdéseket változóként?",
   "download_desktop_app": "Töltse le az asztali alkalmazást",
@@ -1413,8 +1413,8 @@
   "event_limit_tab_description": "Milyen gyakran vagy foglalható",
   "event_advanced_tab_description": "A naptárbeállítások és egyebek...",
   "event_advanced_tab_title": "Haladó",
-  "event_payments_tab_title": "Fizetések",
-  "event_payments_tab_description": "Fizetések beállítása az eseményhez",
+  
+  
   "event_setup_multiple_duration_error": "Esemény beállítása: Több időtartamhoz legalább 1 opció szükséges.",
   "event_setup_multiple_duration_default_error": "Esemény beállítása: Válasszon érvényes alapértelmezett időtartamot.",
   "event_setup_booking_limits_error": "A foglalási limiteknek növekvő sorrendben kell lenniük. [nap, hét, hónap, év]",
@@ -1499,7 +1499,7 @@
   "connect_calendars_from_app_store": "További naptárakat is hozzáadhat az App Store-ból",
   "connect_conference_apps": "Konferencia-alkalmazások csatlakoztatása",
   "connect_calendar_apps": "Csatlakoztassa a naptáralkalmazásokat",
-  "connect_payment_apps": "Csatlakoztassa a fizetési alkalmazásokat",
+  
   "connect_automation_apps": "Automatizálási alkalmazások csatlakoztatása",
   "connect_analytics_apps": "Elemző alkalmazások csatlakoztatása",
   "connect_other_apps": "Egyéb alkalmazások csatlakoztatása",
@@ -1621,7 +1621,7 @@
   "password_reset_email": "Útközben érkezik egy e-mail a(z) {{email}} címre a jelszó visszaállításához szükséges utasításokkal.",
   "password_reset_leading": "Ha hamarosan nem kap e-mailt, ellenőrizze, hogy a megadott e-mail cím helyes-e, ellenőrizze a spam mappát, vagy forduljon az ügyfélszolgálathoz, ha a probléma továbbra is fennáll.",
   "password_updated": "Jelszó frissítve!",
-  "pending_payment": "Függő fizetés",
+  
   "pending_invites": "Függőben lévő meghívók",
   "pending_organization_invites": "Függőben lévő szervezeti meghívók",
   "not_on_cal": "Nincs a(z) {{appName}} alkalmazásban",
@@ -1734,7 +1734,7 @@
   "route_to": "Útvonal ide",
   "test_preview_description": "Tesztelje az útválasztási űrlapot adatok elküldése nélkül",
   "test_routing": "Teszt útvonal",
-  "payment_app_disabled": "Egy rendszergazda letiltott egy fizetési alkalmazást",
+  
   "edit_event_type": "Eseménytípus szerkesztése",
   "only_admin_can_see_members_of_org": "Ez a szervezet privát, és csak a szervezet adminisztrátora vagy tulajdonosa láthatja a tagjait.",
   "only_admin_can_manage_sso_org": "Csak a szervezet rendszergazdája vagy tulajdonosa kezelheti az egyszeri bejelentkezési beállításokat",
@@ -1755,8 +1755,8 @@
   "email_body_slug_replacement_notice": "A <strong>{{teamName}}</strong> csapat egyik adminisztrátora lecserélte az Ön <strong>/{{slug}}</strong> eseménytípusát egy általa irányított kezelt eseménytípusra.",
   "email_body_slug_replacement_info": "A link továbbra is működni fog, de egyes beállításai módosulhattak. Eseménytípusokban tekintheti át.",
   "email_body_slug_replacement_suggestion": "Ha kérdése van az esemény típusával kapcsolatban, forduljon a rendszergazdához.<br /><br />Kellemes ütemezést, <br />A Cal.com csapata",
-  "disable_payment_app": "Az adminisztrátor letiltotta a(z) {{appName}} alkalmazást, ami érinti az Ön {{title}} eseménytípusát. A résztvevők továbbra is foglalhatnak ilyen típusú eseményt, de nem kéri tőlük a fizetést. Elrejtheti az eseménytípust, amíg az adminisztrátor újra nem engedélyezi a fizetési módszert.",
-  "payment_disabled_still_able_to_book": "A résztvevők továbbra is foglalhatnak ilyen típusú eseményt, de nem kéri tőlük a fizetést. Elrejtheti az eseménytípust, amíg az adminisztrátor újra nem engedélyezi a fizetési módszert.",
+  
+  
   "app_disabled_with_event_type": "Az adminisztrátor letiltotta a(z) {{appName}} alkalmazást, ami hatással van a(z) {{title}} eseménytípusra.",
   "app_disabled_video": "Az adminisztrátor letiltotta a(z) {{appName}} alkalmazást, ami hatással lehet az eseménytípusokra. Ha olyan eseménytípusokat használ, amelyek helye a(z) {{appName}}, akkor alapértelmezés szerint a Cal Video lesz.",
   "app_disabled_subject": "{{appName}} le lett tiltva",
@@ -1842,8 +1842,8 @@
   "round_robin_hosts": "Round-Robin házigazdák",
   "minimum_round_robin_hosts_count": "A részvételhez szükséges házigazdák száma",
   "hosts": "Házigazdák",
-  "upgrade_to_enable_feature": "Csapatot kell létrehoznia ennek a funkciónak az engedélyezéséhez. Kattintson ide egy csapat létrehozásához.",
-  "orgs_upgrade_to_enable_feature": "A funkció engedélyezéséhez frissítenie kell vállalati csomagunkra.",
+  
+  
   "new_attendee": "Új résztvevő",
   "awaiting_approval": "Jóváhagyásra vár",
   "requires_google_calendar": "Ehhez az alkalmazáshoz Google Naptár-kapcsolat szükséges",
@@ -1944,9 +1944,9 @@
   "add_a_booking_question": "Kérdés hozzáadása",
   "identifier": "Azonosító",
   "duplicate_email": "Az e-mail duplikált",
-  "booking_with_payment_cancelled": "Fizetés ezért az eseményért már nem lehetséges",
-  "booking_with_payment_cancelled_already_paid": "A visszatérítés ehhez a foglaláshoz úton van.",
-  "booking_with_payment_cancelled_refunded": "Ez a kifizetett foglalás már vissza lett térítve.",
+  
+  
+  
   "booking_confirmation_failed": "A foglalás megerősítése nem sikerült",
   "not_enough_seats": "Nincs elég hely",
   "form_builder_field_already_exists": "Már létezik ilyen nevű mező",
@@ -2079,31 +2079,31 @@
   "clear_filters": "Szűrők törlése",
   "clear": "Törlés",
   "hold": "Tartás",
-  "on_booking_option": "Fizetés beszedése foglaláskor",
-  "hold_option": "Meg nem jelenés díja",
-  "card_held": "Kártya foglalásban",
-  "charge_card": "Kártya terhelése",
-  "card_charged": "Kártya terhelve",
-  "no_show_fee_amount": "{{amount, currency}} meg nem jelenési díj",
-  "no_show_fee": "Meg nem jelenési díj",
-  "submit_card": "Kártya benyújtása",
-  "submit_payment_information": "Adja meg a fizetési információkat",
-  "meeting_awaiting_payment_method": "A találkozó fizetési módra vár",
-  "no_show_fee_charged_email_subject": "Meg nem jelenési díj {{amount, currency}} levonva a következőért: {{title}}, {{date}}",
-  "no_show_fee_charged_text_body": "Meg nem jelenés díjat számítottak fel",
-  "no_show_fee_charged_subtitle": "{{amount, currency}} meg nem jelenési díjat számítottunk fel a következő eseményért",
-  "error_charging_card": "Hiba történt a meg nem jelenési díj felszámítása során. Kérlek, próbáld újra később.",
-  "collect_no_show_fee": "Szedje be a meg nem jelenési díjat",
-  "no_show_fee_charged": "Meg nem jelenés díja levonva",
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   "insights": "Betekintés",
   "routing_forms": "Irányító űrlapok",
   "testing_workflow_info_message": "A munkafolyamat tesztelésekor ügyeljen arra, hogy az e-mailek és SMS-ek legalább 1 órával későbbre ütemezhetők",
   "insights_no_data_found_for_filter": "Nem található adat a kiválasztott szűrőhöz vagy a kiválasztott dátumokhoz.",
-  "acknowledge_booking_no_show_fee": "Tudomásul veszem, hogy ha nem veszek részt ezen az eseményen, {{amount, currency}} meg nem jelenési díj kerül felszámításra.",
-  "card_details": "Kártya adatai",
+  
+  
   "something_went_wrong_on_our_end": "Valami elromlott a mi oldalunkon. Lépjen kapcsolatba ügyfélszolgálatunkkal, és azonnal megjavítjuk.",
   "please_provide_following_text_to_suppport": "Kérjük, adja meg a következő szöveget, amikor kapcsolatba lép az ügyfélszolgálattal, hogy jobban segíthessünk",
-  "seats_and_no_show_fee_error": "Jelenleg nem lehet helyet biztosítani, és meg nem jelenési díjat számítani fel",
+  
   "complete_your_booking": "Fejezze be a foglalást",
   "complete_your_booking_subject": "Fejezd be a foglalásod: {{title}}, {{date}}",
   "confirm_your_details": "Erősítse meg adatait",
@@ -2121,12 +2121,12 @@
   "one_year": "1 év",
   "team_invite_received": "Meghívtak a(z) {{teamName}} csapatába",
   "currency_string": "{{amount, currency}}",
-  "charge_card_dialog_body": "Arra készül, hogy megterhelje a résztvevőt {{amount, currency}}. Biztos vagy benne, hogy folytatni akarod?",
+  
   "charge_attendee": "A résztvevő felszámítása: {{amount, currency}}",
-  "payment_app_commission": "Fizetést igényel ({{paymentFeePercentage}}% + {{fee, currency}} jutalék tranzakciónként)",
+  
   "email_invite_team": "{{email}} meghívást kapott",
   "email_invite_team_bulk": "{{userCount}} felhasználó kapott meghívást",
-  "error_collecting_card": "Hiba a kártya begyűjtése során",
+  
   "image_size_limit_exceed": "A feltöltött kép mérete nem haladhatja meg az 5 MB-ot",
   "unauthorized_workflow_error_message": "{{errorCode}}: Ön nem jogosult a munkafolyamat engedélyezésére vagy letiltására",
   "inline_embed": "Soron belüli beágyazás",
@@ -2395,7 +2395,7 @@
   "unlocked": "Feloldott",
   "lock_timezone_toggle_on_booking_page": "Az időzóna zárolása a foglalási oldalon",
   "description_lock_timezone_toggle_on_booking_page": "Az időzóna zárolása a foglalási oldalon, személyes események esetén hasznos.",
-  "event_setup_multiple_payment_apps_error": "Eseménytípusonként csak egy fizetési alkalmazás engedélyezhető.",
+  
   "number_in_international_format": "Kérjük, írja be a számot nemzetközi formátumban.",
   "install_calendar": "Telepítse a naptárat",
   "branded_subdomain": "Márkás aldomain",
@@ -2412,7 +2412,7 @@
   "enterprise_description": "Szervezete létrehozásához frissítsen Vállalati-ra",
   "create_your_org": "Hozd létre a szervezetedet",
     "create_your_enterprise_description": "Frissítsen Enterprise-ra, és szerezzen hozzáférést az Active Directory Sync-hez, az SCIM automatikus felhasználói kiépítéshez, a Cal.ai Voice Agents-hez, az Admin API-khoz és még sok máshoz!",
-  "other_payment_app_enabled": "Eseménytípusonként csak egy fizetési alkalmazást engedélyezhet",
+  
   "admin_delete_organization_description": "<ul><li>A szervezethez tartozó csapatok is törlésre kerülnek az eseménytípusukkal együtt.</li><li>A szervezethez tartozó felhasználók nem törlődnek, és eseménytípusaik is érintetlenül maradnak .</li><li>A felhasználónevek módosulnak, hogy a szervezeten kívül is létezhessenek</li></ul>",
   "admin_delete_organization_title": "Törli a következőt: {{organizationName}}?",
   "published": "Közzétett",
@@ -2432,12 +2432,12 @@
   "uprade_to_create_instant_bookings": "Frissítsen Vállalati csomagra, és engedélyezze, hogy a vendégek csatlakozzanak egy azonnali híváshoz, amelybe a résztvevők azonnal bekapcsolódhatnak. Ez csak a csapateseményekre vonatkozik",
   "dont_want_to_wait": "Nem akarsz várni?",
   "meeting_started": "Találkozó elkezdődött",
-  "pay_and_book": "Foglalás fizetése",
+  
   "cal_ai_event_tab_description": "Engedje, hogy az MI-ügynökök foglalják",
   "booking_not_found_error": "Nem található foglalás",
   "booking_seats_full_error": "A foglalható helyek megteltek",
-  "missing_payment_credential_error": "Hiányzó fizetési hitelesítő adatok",
-  "missing_payment_app_id_error": "Hiányzik a fizetési alkalmazás azonosítója",
+  
+  
   "not_enough_available_seats_error": "A foglalásban nincs elég szabad hely",
   "user_redirect_title": "{{username}} jelenleg rövid ideig távol van.",
   "user_redirect_description": "Addig is {{profile.username}} lesz a felelős az összes új ütemezett megbeszélésért {{username}} nevében.",
@@ -2534,7 +2534,7 @@
   "email|existing_user_added_link_changed": "Az Ön linkje <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> helyett <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>, de ne aggódjon, az összes korábbi link továbbra is működik, és megfelelően átirányít. <br /><br />Kérjük, vegye figyelembe: Minden személyes eseménytípusát áthelyeztük a <strong>{teamName}</strong> szervezetbe, amely potenciális személyes linket is tartalmazhat.<br /><br /> Kérjük, jelentkezzen be, és győződjön meg arról, hogy nincs privát eseménye az új szervezeti fiókjában.<br /><br />Személyes eseményekhez javasoljuk, hogy hozzon létre új fiókot személyes e-mail címmel.<br /><br />Új tiszta link: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Szervezete létrejött",
   "your_current_plan": "A jelenlegi előfizetése",
-  "organization_price_per_user_month": "37 USD felhasználónként havonta (minimum 30 hely)",
+  
   "privacy_organization_description": "Kezelje szervezete adatvédelmi beállításait",
   "privacy": "Adatvédelem",
   "team_will_be_under_org": "Új csapatok a szervezeted alá fognak tartozni",
@@ -2631,7 +2631,7 @@
   "proceeding_agreement": "A folytatással elfogadod a",
   "terms": "Feltételeinket",
   "always_show_x_days": "Mindig {{x}} nap áll rendelkezésre",
-  "unable_to_subscribe_to_the_platform": "Hiba történt a platformcsomagra való előfizetés során. Kérjük, próbálja újra később",
+  
   "updating_oauth_client_error": "Hiba történt az OAuth-kliens frissítésekor. Kérjük, próbálja újra később",
   "creating_oauth_client_error": "Hiba történt az OAuth-kliens létrehozásakor. Kérjük, próbálja újra később",
   "event_type_color": "Eseménytípus színe",
@@ -2692,9 +2692,9 @@
   "outlook_connect_atom_label": "Outlook Naptár csatlakoztatása",
   "outlook_connect_atom_already_connected_label": "Outlook Naptár csatlakoztatva",
   "outlook_connect_atom_loading_label": "Outlook Naptár ellenőrzése",
-  "stripe_connect_atom_label": "Csatlakozás a Stripe-hoz",
-  "stripe_connect_atom_already_connected_label": "Stripe csatlakoztatva",
-  "stripe_connect_atom_loading_label": "Stripe hitelesítő adatok ellenőrzése",
+  
+  
+  
   "booking_question_response_variables": "Foglalási kérdés válaszváltozók",
   "managed_by_teamAdmins": "{{teamAdmins}} által kezelve",
   "number_of_options": "{{count}} lehetőség",
@@ -2718,10 +2718,10 @@
   "month_to_date": "hónap elejétől",
   "year_to_date": "év elejétől",
   "custom_range": "egyéni tartomány",
-  "refund_policy": "Visszatérítési szabályzat",
+  
   "always": "Mindig",
   "never": "Soha",
-  "payment_option": "Fizetési opció",
+  
   "if_cancelled": "Ha lemondva",
   "before": "előtt",
   "show_all_columns": "Összes oszlop megjelenítése",

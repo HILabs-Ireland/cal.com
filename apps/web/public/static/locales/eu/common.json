@@ -5,7 +5,7 @@
   "day_other": "{{count}} egun",
   "second_one": "segundo {{count}}",
   "second_other": "{{count}} segundo",
-  "upgrade_now": "Eguneratu orain",
+  
   "untitled": "Izenbururik gabe",
   "accept_invitation": "Onartu gonbidapena",
   "max_characters": "Gehienezko karaktereak",
@@ -68,18 +68,18 @@
   "accept_our_license": "Onartu gure lizentzia <1>NEXT_PUBLIC_LICENSE_CONSENT</1> .env aldagaia aldatuz honakora: '{{agree}}'.",
   "remove_banner_instructions": "Baner hau ezabatzeko, mesedez zabaldu zure .env fitxategia eta aldatu <1>NEXT_PUBLIC_LICENSE_CONSENT</1> aldagaia honakora: '{{agree}}'.",
   "error_message": "Errore-mezua honakoa ian da: '{{errorMessage}}'",
-  "refund_failed_subject": "Itzulketak huts egin du: {{name}} - {{date}} - {{eventType}}",
-  "refund_failed": "Huts egin du itzulketak {{eventType}} gertaerarako, {{userName}}(r)ekin {{date}}(e)an.",
+  
+  
   "check_with_provider_and_user": "Mesedez, kontsultatu zure ordainketa hornitzailearekin eta {{user}}-rekin nola kudeatu hau.",
-  "a_refund_failed": "Itzulketa batek huts egin du",
-  "awaiting_payment_subject": "Ordainketaren zain: {{title}} {{date}}(e)an",
-  "meeting_awaiting_payment": "Zure bilera ordainketa zain dago",
+  
+  
+  
   "dark_theme_contrast_error": "Gai ilunaren koloreak ez du kontraste egiaztapena gainditzen. Kolore hau aldatzea gomendatzen dizugu zure botoiak hobeto ikusteko.",
   "light_theme_contrast_error": "Gai argiaren koloreak ez du kontraste egiaztapena gainditzen. Kolore hau aldatzea gomendatzen dizugu zure botoiak hobeto ikusteko.",
   "event_type_color_light_theme_contrast_error": "Gai argiaren koloreak ez du kontraste egiaztapena gainditzen. Kolore hau aldatzea gomendatzen dizugu zure gertaera moten koloreak hobeto ikusteko.",
   "event_type_color_dark_theme_contrast_error": "Gai ilunaren koloreak ez du kontraste egiaztapena gainditzen. Kolore hau aldatzea gomendatzen dizugu zure gertaera moten koloreak hobeto ikusteko.",
-  "payment_not_created_error": "Ezin izan da ordainketa sortu",
-  "couldnt_charge_card_error": "Ezin izan da txartela kobratu ordainketarako",
+  
+  
   "no_available_users_found_error": "Ez da erabiltzaile eskuragarririk aurkitu. Beste denbora tarte bat probatu nahi duzu?",
   "request_body_end_time_internal_error": "Barne errorea. Eskaeraren gorputzak ez du amaiera ordua",
   "create_calendar_event_error": "Ezin izan da egutegiko gertaera sortu antolatzailearen egutegian",
@@ -88,12 +88,12 @@
   "already_signed_up_for_this_booking_error": "Dagoeneko izena emanda zaude erreserba honetarako",
   "hosts_unavailable_for_booking": "Ostalari batzuk ez daude eskuragarri erreserbatzeko",
   "help": "Laguntza",
-  "price": "Prezioa",
-  "paid": "Ordainduta",
-  "refunded": "Itzulita",
-  "payment": "Ordainketa",
-  "missing_card_fields": "Txartelaren eremuak falta dira",
-  "pay_now": "Ordaindu orain",
+  
+  
+  
+  
+  
+  
   "general_prompt": "Prompt orokorra",
   "begin_message": "Hasi mezua",
   "codebase_has_to_stay_opensource": "Kode-basea kode irekia izan behar da, aldatuta egon ala ez",
@@ -179,17 +179,17 @@
   "hidden_team_member_message": "Zure eserlekua ez dago ordainduta. PRO bertsiora igo edo jakinarazi taldearen jabeari zure eserlekua ordain dezakeela.",
   "hidden_team_owner_message": "Pro kontu bat behar duzu taldeak erabiltzeko, ezkutuan geratuko zara bitartean.",
   "link_expires": "Oharra: {{expiresIn}} ordutan iraungitzen da.",
-  "upgrade_to_per_seat": "Igo eserlekuko bertsiora",
+  
   "seat_options_doesnt_support_confirmation": "Eserleku aukerak ez du baieztapen betekizuna onartzen",
   "multilocation_doesnt_support_seats": "Kokapen anitzak ez du eserleku aukera onartzen",
-  "no_show_fee_doesnt_support_seats": "Ez agertzeko tasak ez du eserleku aukera onartzen",
+  
   "seats_option_doesnt_support_multi_location": "Eserleku aukerak ez du kokapen anitza onartzen",
-  "team_upgrade_seats_details": "Zure taldeko {{memberCount}} kideetatik, {{unpaidCount}} eserleku ordaindu gabe daude. ${{seatPrice}}/hilabeteko eserleku bakoitzeko, zure kidetasunaren kostu osoa ${{totalCost}}/hilabeteko izango dela kalkulatzen da.",
-  "team_upgrade_banner_description": "Ez duzu taldea konfiguratzen bukatu. Zure \"{{teamName}}\" taldea bertsio-berritu behar duzu.",
-  "upgrade_banner_action": "Bertsio-berritu hemen",
-  "team_upgraded_successfully": "Zure taldea zuzen bertsio-berritu da!",
-  "org_upgrade_banner_description": "Eskerrik asko gure Erakunde plana probatzeagatik. Ikusi dugu zure \"{{teamName}}\" erakundea eguneratu behar dela.",
-  "org_upgraded_successfully": "Zure erakundea arrakastaz eguneratu da!",
+  
+  
+  
+  
+  
+  
   "use_link_to_reset_password": "Erabili beheko esteka pasahitza berrezartzeko",
   "hey_there": "Kaixo,",
   "forgot_your_password_calcom": "Pasahitza ahaztu duzu? - {{appName}}",
@@ -208,8 +208,8 @@
   "webhook_created_successfully": "Webhook-a ongi sortu da!",
   "webhook_updated_successfully": "Webhook-a ongi eguneratu da!",
   "webhook_removed_successfully": "Webhook-a ongi ezabatu da!",
-  "subscription_needed": "Harpidetza beharrezkoa",
-  "subscription_needed_description": "Ez zaude Platform planera harpidetuta.",
+  
+  
   "payload_template": "Payload txantiloia",
   "dismiss": "Alde batera utzi",
   "no_data_yet": "Ez dago daturik",
@@ -374,8 +374,8 @@
   "booking_submitted_recurring": "Zure bilera errepikaria bidali da",
   "booking_confirmed": "Zure erreserba baieztatu da",
   "booking_confirmed_recurring": "Zure bilera errepikaria baieztatu da",
-  "warning_recurring_event_payment": "Oraindik ez da ordainketarik onartzen errepikatzen diren gertaeretan",
-  "warning_payment_recurring_event": "Oraindik ez da errepikatzen diren gertaerarik onartzen ordainketetan",
+  
+  
   "enter_new_password": "Sartu zure konturako nahi duzun pasahitz berria.",
   "reset_password": "Berrezarri pasahitza",
   "change_your_password": "Aldatu zure pasahitza",
@@ -504,15 +504,15 @@
   "booking_created": "Erreserba sortuta",
   "booking_rejected": "Erreserba ez onartua",
   "booking_requested": "Erreserba eskatua",
-  "booking_payment_initiated": "Erreserba ordainketa hasita",
+  
   "meeting_ended": "Bilera amaitu da",
   "form_submitted": "Galdetegia bidali da",
   "form_submitted_no_event": "Inprimakia bidali da, ez da gertaerarik erreserbatu",
-  "booking_paid": "Erreserba ordainduta",
+  
   "ooo_created": "Bulegotik kanpo sortuta",
   "booking_no_show_updated": "Ez agertzea eguneratuta",
   "event_triggers": "Gertaera aktibatzaileak",
-  "subscriber_url": "Harpidedunaren URLa",
+  
   "create_new_webhook": "Sortu webhook berria",
   "webhooks": "Webhook-ak",
   "team_webhooks": "Taldearen webhook-ak",
@@ -773,10 +773,10 @@
   "readonly": "Irakurtzeko bakarrik",
   "one_time_link": "Aldi bakarreko esteka",
   "plan_description": "Une honetan {{plan}} planean zaude",
-  "plan_upgrade_invitation": "Eguneratu zure kontua PRO planera eskaintzen ditugun ezaugarri guztiak desblokeatzeko",
-  "plan_upgrade": "Zure plana eguneratu behar duzu gertaera mota aktibo bat baino gehiago izateko",
-  "plan_upgrade_teams": "Zure plana eguneratu behar duzu talde bat sortzeko",
-  "plan_upgrade_instructions": "<1>Hemen eguneratu</1> dezakezu",
+  
+  
+  
+  
   "event_types_page_title": "Gertaera motak",
   "event_types_page_subtitle": "Sortu gertaerak zure egutegian hitzorduak hartzeko partekatzeko",
   "new": "Berria",
@@ -833,8 +833,8 @@
   "teams": "Taldeak",
   "team": "Taldea",
   "organization": "Erakundea",
-      "upgrade_to_flexible_pro_title": "Taldeen fakturazioa aldatu dugu",
-  "upgrade_to_flexible_pro_message": "Eserlekurik gabeko kideak daude zure taldean. Eguneratu zure pro plana falta diren eserlekuak estaltzeko",
+      
+  
     "create_manage_teams_collaborative": "Sortu eta kudeatu taldeak lankidetza-funtzioak erabiltzeko.",
   "only_available_on_pro_plan": "Funtzio hau Pro planean soilik dago eskuragarri",
   "remove_cal_branding_description": "{{appName}} marka zure erreserba-orrietatik kentzeko, Pro kontu batera igo behar duzu.",
@@ -843,8 +843,8 @@
   "little_something_about": "Kontatu zuri buruzko zerbait.",
   "profile_updated_successfully": "Profila egoki eguneratu da",
   "your_user_profile_updated_successfully": "Zure erabiltzaile profila egoki eguneratu da.",
-  "your_upgrade_is_here": "Zure eguneratzea hemen dago",
-  "your_upgrade_is_here_description": "Hobetu zure programazio-esperientzia plan berrira eguneratuz eta gozatu ezaugarri berriez.",
+  
+  
   "you_are_all_set": "Dena prest duzu",
   "you_are_all_set_description": "Dagoeneko plan berrian zaude. Ez dago zer eguneratu. Gozatu ezaugarri berriez eta jarri gurekin harremanetan edozein zalantza izanez gero!",
   "user_cannot_found_db": "Erabiltzailea saioa hasita dagoela dirudi baina ezin da datu-basean aurkitu",
@@ -889,8 +889,8 @@
   "recurring_event": "Gertaera errepikaria",
   "recurring_event_description": "Jendeak gertaera errepikakorretarako izena eman dezake",
   "connect_and_join": "Konektatu eta batu",
-  "cannot_be_used_with_paid_event_types": "Ezin da ordaindutako gertaera motekin erabili",
-  "warning_payment_instant_meeting_event": "Berehalako bilerak ez dira oraindik bateragarriak gertaera errepikakor eta ordainketa aplikazioekin",
+  
+  
   "warning_instant_meeting_experimental": "Esperimentala: Berehalako bilera gertaerak esperimentalak dira oraindik.",
   "starting": "Hasiera",
   "disable_guests": "Ezgaitu gonbidatuak",
@@ -921,7 +921,7 @@
   "cal_provide_jitsi_meeting_url": "Jitsi Meet URL bat sortuko dugu zuretzat.",
   "cal_provide_huddle01_meeting_url": "{{appName}}-k Huddle01 bideo-bilera URL bat eskainiko du.",
   "cal_provide_teams_meeting_url": "{{appName}}-k MS Teams bilera URL bat eskainiko du. OHARRA: LAN EDO IKASKETA KONTUA IZAN BEHAR DUZU",
-  "require_payment": "Ordainketa eskatu",
+  
   "you_need_to_add_a_name": "Izena gehitu behar duzu",
   "commission_per_transaction": "komisio transakzio bakoitzeko",
   "event_type_updated_successfully_description": "Zure gertaera mota arrakastaz eguneratu da.",
@@ -965,7 +965,7 @@
   "next_step": "Saltatu pausoa",
   "prev_step": "Aurreko pausoa",
   "install": "Instalatu",
-  "start_paid_trial": "Hasi doako proba",
+  
   "installed": "Instalatua",
   "active_install_one": "{{count}} instalazio aktibo",
   "active_install_other": "{{count}} instalazio aktibo",
@@ -983,7 +983,7 @@
   "check_here": "Egiaztatu hemen",
   "conferencing": "Bideo-konferentziak",
   "calendar": "Egutegia",
-  "payments": "Ordainketak",
+  
   "not_installed": "Instalatu gabe",
   "error_password_mismatch": "Pasahitzak ez datoz bat.",
   "error_required_field": "Eremu hau nahitaezkoa da.",
@@ -1025,14 +1025,14 @@
   "all_apps": "Aplikazio guztiak",
   "no_category_apps_description_calendar": "Gehitu egutegi aplikazio bat bikoiztutako erreserbak saihesteko",
   "no_category_apps_description_conferencing": "Saiatu bideokonferentzia aplikazio bat gehitzen zure bezeroekin bideo-deiak egiteko",
-  "no_category_apps_description_payment": "Gehitu ordainketa aplikazio bat zure eta zure bezeroen arteko transakzioak errazteko",
+  
   "no_category_apps_description_analytics": "Gehitu analitika aplikazio bat zure erreserba orrietarako",
   "no_category_apps_description_automation": "Gehitu automatizazio aplikazio bat erabiltzeko",
   "no_category_apps_description_other": "Gehitu beste edozein motatako aplikazio gauza desberdinak egiteko",
   "no_category_apps_description_messaging": "Gehitu mezularitza aplikazio bat jakinarazpen eta oroigarri pertsonalizatuak konfiguratzeko",
   "no_category_apps_description_crm": "Gehitu CRM aplikazio bat norekin bildu zaren jarraipena egiteko",
   "installed_app_calendar_description": "Konfiguratu zein egutegi begiratu behar diren bikoiztutako erreserbak saihesteko.",
-  "installed_app_payment_description": "Konfiguratu zein ordainketa zerbitzu erabili bezeroak kobratzeko.",
+  
   "installed_app_analytics_description": "Konfiguratu zein analitika aplikazio erabili zure erreserba orrietarako",
   "installed_app_other_description": "Beste kategorietako instalatutako aplikazio guztiak.",
   "installed_app_conferencing_description": "Konfiguratu zein bideokonferentzia aplikazio erabili",
@@ -1049,7 +1049,7 @@
   "permissions": "Baimenak",
   "terms_and_privacy": "Baldintzak eta pribatutasuna",
   "published_by": "{{author}}-k argitaratua",
-  "subscribe": "Harpidetu",
+  
   "buy": "Erosi",
   "install_app": "Instalatu aplikazioa",
   "categories": "Kategoriak",
@@ -1064,14 +1064,14 @@
   "create_events_on": "Sortu gertaerak hemen:",
   "enterprise_license": "Hau merkataritza-eginbide bat da",
   "enterprise_license_locally": "Ezaugarri hau probatu dezakezu tokian, baina ez ekoizpen-inguruan.",
-  "enterprise_license_sales": "Enpresako bertsioraigoaz, jarri harremana gure salmenta taldearekin. Lizentzia-giltza dagoeneko badago, jarri harremana support@cal.com-era laguntza lortzeko.",
+  
   "missing_license": "Lizentzia falta da",
   "next_steps": "Hurrengo pausoak",
   "acquire_commercial_license": "Eskuratu lizentzia komertziala",
   "the_infrastructure_plan": "Azpiegitura plana erabileraren araberakoa da eta startup-entzako deskontuak ditu.",
   "prisma_studio_tip": "Sortu kontu bat Prisma Studio bidez",
   "prisma_studio_tip_description": "Ikasi nola konfiguratu zure lehen erabiltzailea",
-  "contact_sales": "Jarri harremanetan salmenta taldearekin",
+  
   "error_404": "404 errorea",
   "default": "Lehenetsitakoa",
   "set_to_default": "Ezarri lehenetsitako gisa",
@@ -1231,7 +1231,7 @@
   "developer_documentation": "Garatzaileentzako dokumentazioa",
   "get_in_touch": "Jar zaitez harremanetan",
   "contact_support": "Jarri harremanetan laguntzarekin",
-  "premium_support": "Premium laguntza",
+  
   "community_support": "Komunitatearen laguntza",
   "feedback": "Iritzia",
   "submitted_feedback": "Eskerrik asko zure iritzia emateagatik!",
@@ -1290,14 +1290,14 @@
   "new_workflow_description": "Workflowekin jakinarazpenak eta oroigarriak automatikoki bidaltzea ahalbidetzen duzu.",
   "active_on": "Aktibo",
   "workflow_updated_successfully": "{{workflowName}} workflowa ondo eguneratu da",
-    "premium_username": "Hau premium erabiltzaile-izena da, lortu zurea {{price}}-gatik",
+    
   "current": "Unekoa",
-  "premium": "premium",
+  
   "standard": "estandar",
   "confirm_username_change_dialog_title": "Baieztatu erabiltzaile-izenaren aldaketa",
-  "change_username_standard_to_premium": "Erabiltzaile-izen estandarretik premium-era aldatzen ari zarenez, ordainketara eramango zaitugu maila igotzeko.",
-  "change_username_premium_to_standard": "Premium erabiltzaile-izenetik estandarrera aldatzen ari zarenez, ordainketara eramango zaitugu maila jaisteko.",
-    "stripe_description": "Eskatu ordainketa erreserbentzat (0.5% + 0.10€ komisio transakzio bakoitzeko)",
+  
+  
+    
   "trial_expired": "Zure proba epea amaitu da",
   "remove_app": "Kendu aplikazioa",
   "yes_remove_app": "Bai, kendu aplikazioa",
@@ -1366,16 +1366,16 @@
   "event_date_variable": "Gertaeraren data",
   "event_time_variable": "Gertaeraren ordua",
   "organizer_name_variable": "Antolatzailearen izena",
-  "app_upgrade_description": "Funtzionalitate hau erabiltzeko, Pro kontura eguneratu behar duzu.",
+  
   "invalid_number": "Telefono zenbaki baliogabea",
   "invalid_url_error_message": "URL baliogabea {{label}}-rako. URL adibidea: {{sampleUrl}}",
   "navigate": "Nabigatu",
   "open": "Ireki",
   "close": "Itxi",
-  "upgrade": "Bertsio-berritu",
-  "upgrade_to_access_recordings_title": "Bertsio-berritu grabaketetarako sarbidea izateko",
-  "upgrade_to_access_recordings_description": "Grabazioak taldeen planaren parte dira soilik. Eguneratu zure deiak grabatzen hasteko",
-  "upgrade_to_cal_ai_phone_number_description": "Eguneratu Enterprise-ra AI agente telefono zenbaki bat sortzeko, gonbidatuei deitu ahal izateko deiak programatzeko",
+  
+  
+  
+  
   "recordings_are_part_of_the_teams_plan": "Grabazioak taldeen planaren parte dira",
   "team_feature_teams": "Hau talde-funtzionalitate bat da. Eguneratu Team-era zure taldearen eskuragarritasuna ikusteko.",
   "team_feature_workflows": "Hau talde-funtzionalitate bat da. Eguneratu Team-era zure ekitaldien jakinarazpenak eta oroigarriak Workflows-ekin automatizatzeko.",
@@ -1389,7 +1389,7 @@
   "company_size": "Enpresaren tamaina",
   "what_help_needed": "Zerekin behar duzu laguntza?",
   "variable_format": "Aldagaiaren formatua",
-  "webhook_subscriber_url_reserved": "Webhook harpidedunaren URLa dagoeneko definituta dago",
+  
   "custom_input_as_variable_info": "Ez ikusi egin gehigarrien etiketaren karaktere bereziei (letrak eta zenbakiak soilik erabili), letra guztiak maiuskulaz idatzi eta hutsuneak azpimarra bidez ordezkatu.",
   "using_booking_questions_as_variables": "Nola erabili erreserba galderak aldagai gisa?",
   "download_desktop_app": "Deskargatu mahaigaineko aplikazioa",
@@ -1413,8 +1413,8 @@
   "event_limit_tab_description": "Zenbatetan erreserbatu zaitzaketen",
   "event_advanced_tab_description": "Egutegiaren ezarpenak eta gehiago...",
   "event_advanced_tab_title": "Aurreratua",
-  "event_payments_tab_title": "Ordainketak",
-  "event_payments_tab_description": "Konfiguratu ordainketak gertaerarako",
+  
+  
   "event_setup_multiple_duration_error": "Gertaeraren konfigurazioa: Iraupen anitzek gutxienez aukera 1 behar dute.",
   "event_setup_multiple_duration_default_error": "Gertaeraren konfigurazioa: Hautatu baliozko iraupen lehenetsia.",
   "event_setup_booking_limits_error": "Erreserba mugak goranzko ordenan egon behar dira. [eguna, astea, hilabetea, urtea]",
@@ -1499,7 +1499,7 @@
   "connect_calendars_from_app_store": "Egutegi gehiago gehitu ditzakezu app store-tik",
   "connect_conference_apps": "Konektatu konferentzia aplikazioak",
   "connect_calendar_apps": "Konektatu egutegi aplikazioak",
-  "connect_payment_apps": "Konektatu ordainketa aplikazioak",
+  
   "connect_automation_apps": "Konektatu automatizazio aplikazioak",
   "connect_analytics_apps": "Konektatu analitika aplikazioak",
   "connect_other_apps": "Konektatu beste aplikazioak",
@@ -1621,7 +1621,7 @@
   "password_reset_email": "Mezu bat bidean dago {{email}} helbidera pasahitza berrezartzeko argibideekin",
   "password_reset_leading": "Ez baduzu mezurik jasotzen laster, egiaztatu sartutako helbide elektronikoa zuzena dela, begiratu spam karpetan edo jarri harremanetan laguntzarekin arazoak jarraitzen badu",
   "password_updated": "Pasahitza eguneratuta!",
-  "pending_payment": "Ordainketa egiteke",
+  
   "pending_invites": "Zain dauden gonbidapenak",
   "pending_organization_invites": "Erakundearen gonbidapen zain daudenak",
   "not_on_cal": "Ez dago {{appName}}-en",
@@ -1734,7 +1734,7 @@
   "route_to": "Bideratu hona",
   "test_preview_description": "Probatu zure bideratze-formularioa daturik bidali gabe",
   "test_routing": "Probatu bideratzea",
-  "payment_app_disabled": "Administratzaile batek ordainketa-aplikazioa desgaitu du",
+  
   "edit_event_type": "Editatu gertaera mota",
   "only_admin_can_see_members_of_org": "Erakunde hau pribatua da, eta erakundeko administratzaileak edo jabeak soilik ikus ditzake kideak",
   "only_admin_can_manage_sso_org": "Erakundeko administratzaileak edo jabeak soilik kudeatu ditzake SSO ezarpenak",
@@ -1755,8 +1755,8 @@
   "email_body_slug_replacement_notice": "<strong>{{teamName}}</strong> taldeko administratzaile batek zure <strong>/{{slug}}</strong> gertaera mota berak kontrolatzen duen gertaera mota kudeatu batekin ordezkatu du",
   "email_body_slug_replacement_info": "Zure estekak funtzionatzen jarraituko du, baina ezarpen batzuk aldatu ahal izan dira. Gertaera motetan berrikusi dezakezu",
   "email_body_slug_replacement_suggestion": "Gertaera motari buruzko galderarik baduzu, jar zaitez harremanetan zure administratzailearekin.<br /><br />Antolaketa zoriontsua,<br />Cal.com taldea",
-  "disable_payment_app": "Administratzaileak {{appName}} desgaitu du, eta horrek {{title}} gertaera motari eragiten dio. Parte-hartzaileek oraindik ere erreserbatu dezakete gertaera mota hau, baina ez zaie ordainketarik eskatuko. Gertaera mota ezkutatu dezakezu administratzaileak ordainketa metodoa berriro gaitu arte.",
-  "payment_disabled_still_able_to_book": "Parte-hartzaileek oraindik ere erreserbatu dezakete gertaera mota hau, baina ez zaie ordainketarik eskatuko. Gertaera mota ezkutatu dezakezu administratzaileak ordainketa metodoa berriro gaitu arte.",
+  
+  
   "app_disabled_with_event_type": "Administratzaileak {{appName}} desgaitu du, eta horrek {{title}} gertaera motari eragiten dio.",
   "app_disabled_video": "Administratzaileak {{appName}} desgaitu du, eta horrek zure gertaera motei eragin diezaieke. {{appName}} kokaleku gisa duten gertaera motak badituzu, Cal Video-ra aldatuko dira lehenetsita.",
   "app_disabled_subject": "{{appName}} desgaitu egin da",
@@ -1842,8 +1842,8 @@
   "round_robin_hosts": "Round-Robin ostalariak",
   "minimum_round_robin_hosts_count": "Beharrezkoak diren ostalari kopurua",
   "hosts": "Ostalariak",
-  "upgrade_to_enable_feature": "Talde bat sortu behar duzu funtzio hau gaitzeko. Egin klik hemen talde bat sortzeko.",
-  "orgs_upgrade_to_enable_feature": "Enterprise planera igo behar duzu funtzio hau gaitzeko.",
+  
+  
   "new_attendee": "Parte-hartzaile berria",
   "awaiting_approval": "Onarpenaren zain",
   "requires_google_calendar": "App honek Google Calendar konexioa behar du",
@@ -1944,9 +1944,9 @@
   "add_a_booking_question": "Gehitu galdera bat",
   "identifier": "Identifikatzailea",
   "duplicate_email": "Posta elektronikoa bikoiztuta dago",
-  "booking_with_payment_cancelled": "Ezin da ekitaldi honengatik ordaindu",
-  "booking_with_payment_cancelled_already_paid": "Erreserba honen ordainketaren itzulketa bidean dago.",
-  "booking_with_payment_cancelled_refunded": "Erreserba honen ordainketa itzuli da.",
+  
+  
+  
   "booking_confirmation_failed": "Erreserba berrespena huts egin du",
   "not_enough_seats": "Ez dago nahikoa eserleku",
   "form_builder_field_already_exists": "Izen hori duen eremu bat existitzen da dagoeneko",
@@ -2079,31 +2079,31 @@
   "clear_filters": "Garbitu iragazkiak",
   "clear": "Garbitu",
   "hold": "Atxiki",
-  "on_booking_option": "Ordainketa erreserba egitean jaso",
-  "hold_option": "Ez agertzeko tarifa kobratu",
-  "card_held": "Txartela atxikita",
-  "charge_card": "Txartela kobratu",
-  "card_charged": "Txartela kobratuta",
-  "no_show_fee_amount": "{{amount, currency}} ez agertzeagatiko tarifa",
-  "no_show_fee": "Ez agertzeagatiko tarifa",
-  "submit_card": "Txartela bidali",
-  "submit_payment_information": "Ordainketa informazioa bidali",
-  "meeting_awaiting_payment_method": "Zure bilerak ordainketa metodoaren zain dago",
-  "no_show_fee_charged_email_subject": "{{amount, currency}}-ko ez agertzeagatiko tarifa kobratu da {{title}}-rako {{date}}-ean",
-  "no_show_fee_charged_text_body": "Ez agertzeagatiko tarifa kobratu da",
-  "no_show_fee_charged_subtitle": "{{amount, currency}}-ko ez agertzeagatiko tarifa kobratu da hurrengo ekitaldirako",
-  "error_charging_card": "Zerbait gaizki joan da ez agertzeagatiko tarifa kobratzean. Saiatu berriro geroago.",
-  "collect_no_show_fee": "Ez agertzeagatiko tarifa kobratu",
-  "no_show_fee_charged": "Ez agertzeagatiko tarifa kobratuta",
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   "insights": "Ikuspegiak",
   "routing_forms": "Bideratze-formularioak",
   "testing_workflow_info_message": "Lan-fluxu hau probatzean, kontuan izan e-mailak eta SMSak gutxienez ordubete lehenago soilik programa daitezkeela",
   "insights_no_data_found_for_filter": "Ez da daturik aurkitu hautatutako iragazkirako edo hautatutako datetan.",
-  "acknowledge_booking_no_show_fee": "Onartzen dut ekitaldi honetara ez joatekotan nire txartelean {{amount, currency}}-ko ez agertzeagatiko tarifa kobratuko zaidala.",
-  "card_details": "Txartelaren xehetasunak",
+  
+  
   "something_went_wrong_on_our_end": "Zerbait gaizki joan da gure aldetik. Jarri harremanetan gure laguntza-taldearekin, eta berehala konponduko dizugu.",
   "please_provide_following_text_to_suppport": "Mesedez, eman ondorengo testua laguntzarekin harremanetan jartzerakoan hobeto lagundu ahal izateko",
-  "seats_and_no_show_fee_error": "Momentuz ezin dira eserlekuak gaitu eta ez agertzeagatiko tarifa kobratu",
+  
   "complete_your_booking": "Osatu zure erreserba",
   "complete_your_booking_subject": "Osatu zure erreserba: {{title}} {{date}}-ean",
   "confirm_your_details": "Berretsi zure xehetasunak",
@@ -2121,12 +2121,12 @@
   "one_year": "Urte 1",
   "team_invite_received": "{{teamName}}-era batzeko gonbidapena jaso duzu",
   "currency_string": "{{amount, currency}}",
-  "charge_card_dialog_body": "Parte-hartzaileari {{amount, currency}} kobratzear zaude. Ziur zaude jarraitu nahi duzula?",
+  
   "charge_attendee": "Kobratu parte-hartzaileari {{amount, currency}}",
-  "payment_app_commission": "Ordainketa eskatu ({{paymentFeePercentage}}% + {{fee, currency}} komisio transakzio bakoitzeko)",
+  
   "email_invite_team": "{{email}} gonbidatua izan da",
   "email_invite_team_bulk": "{{userCount}} erabiltzaile gonbidatu dira",
-  "error_collecting_card": "Errorea txartela prozesatzean",
+  
   "image_size_limit_exceed": "Igotako irudiak ezin du 5mb-ko muga gainditu",
   "unauthorized_workflow_error_message": "{{errorCode}}: Ez duzu lan-fluxu hau gaitu edo desgaitzeko baimenik",
   "inline_embed": "Lineako txertaketa",
@@ -2395,7 +2395,7 @@
   "unlocked": "Desblokeatuta",
   "lock_timezone_toggle_on_booking_page": "Ordu-zona blokeatu erreserba orrian",
   "description_lock_timezone_toggle_on_booking_page": "Ordu-zona erreserba orrian blokeatzeko, aurrez aurreko gertaeretarako erabilgarria.",
-  "event_setup_multiple_payment_apps_error": "Gertaera mota bakoitzeko ordainketa aplikazio bakarra izan dezakezu gaituta.",
+  
   "number_in_international_format": "Mesedez, sartu zenbakia nazioarteko formatuan.",
   "install_calendar": "Egutegia instalatu",
   "branded_subdomain": "Marka duen azpidomeinua",
@@ -2412,7 +2412,7 @@
   "enterprise_description": "Igo Enterprise mailara zure erakundea sortzeko",
   "create_your_org": "Sortu zure erakundea",
     "create_your_enterprise_description": "Enterprise-ra igo eta eskuratu Active Directory Sync, SCIM erabiltzaile hornidura automatikoa, Cal.ai ahots-agenteak, Admin APIak eta gehiago!",
-  "other_payment_app_enabled": "Ordainketa aplikazio bakarra gaitu dezakezu gertaera mota bakoitzeko",
+  
   "admin_delete_organization_description": "<ul><li>Erakunde honetako kide diren taldeak ere ezabatuko dira beraien gertaera-motarekin batera</li><li>Erakundeko erabiltzaileak ez dira ezabatuko baina beraien erabiltzaile-izenak aldatuko dira erakundetik kanpo existitu ahal izateko</li><li>Erabiltzailea erakundean egon ondoren sortutako erabiltzaile-gertaerak ezabatuko dira</li><li>Migratutako erabiltzaile-gertaerak ez dira ezabatuko</li></ul>",
   "admin_delete_organization_title": "{{organizationName}} ezabatu?",
   "published": "Argitaratuta",
@@ -2432,12 +2432,12 @@
   "uprade_to_create_instant_bookings": "Igo Enterprise-ra eta utzi gonbidatuei berehalako dei batera batzea, parte-hartzaileak zuzenean sartu daitezkeen tokian. Hau talde gertaera motetarako bakarrik da",
   "dont_want_to_wait": "Ez duzu itxaron nahi?",
   "meeting_started": "Bilera hasi da",
-  "pay_and_book": "Ordaindu erreserbatzeko",
+  
   "cal_ai_event_tab_description": "Utzi AI Agenteei zu erreserbatzen",
   "booking_not_found_error": "Ezin izan da erreserba aurkitu",
   "booking_seats_full_error": "Erreserbako eserleku guztiak beteta daude",
-  "missing_payment_credential_error": "Ordainketa kredentzialak falta dira",
-  "missing_payment_app_id_error": "Ordainketa aplikazioaren IDa falta da",
+  
+  
   "not_enough_available_seats_error": "Erreserban ez daude nahikoa eserleku libre",
   "user_redirect_title": "{{username}} denboraldi labur batez kanpoan dago.",
   "user_redirect_description": "Bitartean, {{profile.username}} arduratuko da {{username}}-ren izenean programatutako bilera berri guztiez.",
@@ -2534,7 +2534,7 @@
   "email|existing_user_added_link_changed": "Zure esteka aldatu da <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a>-tik <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>-ra, baina lasai egon, aurreko esteka guztiek funtzionatzen jarraitzen dute eta behar bezala birbideratzen dira. <br /><br />Kontuan izan: Zure gertaera pertsonal guztiak <strong>{teamName}</strong> erakundera eraman dira, esteka pertsonalak barne egon daitezkeelarik.<br /><br />Mesedez, hasi saioa eta egiaztatu ez duzula gertaera pribaturik zure erakunde-kontu berrian.<br /><br />Gertaera pertsonaletarako, helbide elektroniko pertsonal batekin kontu berri bat sortzea gomendatzen dizugu.<br /><br />Gozatu zure esteka garbi berriarekin: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Zure erakundea sortu da",
   "your_current_plan": "Zure oraingo plana",
-  "organization_price_per_user_month": "37$ erabiltzaile bakoitzeko hilabetean (gutxienez 30 erabiltzaile)",
+  
   "privacy_organization_description": "Kudeatu zure erakundearen pribatutasun-ezarpenak",
   "privacy": "Pribatutasuna",
   "team_will_be_under_org": "Talde berriak zure erakundearen barruan egongo dira",
@@ -2631,7 +2631,7 @@
   "proceeding_agreement": "Jarraituz gero, gure honekin ados zaudela adierazten duzu",
   "terms": "Baldintzak",
   "always_show_x_days": "Beti {{x}} egun erabilgarri",
-  "unable_to_subscribe_to_the_platform": "Errore bat gertatu da plataformaren planera harpidetzen saiatzean, saiatu berriro geroago",
+  
   "updating_oauth_client_error": "Errore bat gertatu da OAuth bezeroa eguneratzean, saiatu berriro geroago",
   "creating_oauth_client_error": "Errore bat gertatu da OAuth bezeroa sortzean, saiatu berriro geroago",
   "event_type_color": "Ekitaldi motaren kolorea",
@@ -2692,9 +2692,9 @@
   "outlook_connect_atom_label": "Konektatu Outlook egutegia",
   "outlook_connect_atom_already_connected_label": "Outlook egutegia konektatuta",
   "outlook_connect_atom_loading_label": "Outlook egutegia egiaztatzen",
-  "stripe_connect_atom_label": "Konektatu Stripe-ra",
-  "stripe_connect_atom_already_connected_label": "Stripe konektatuta",
-  "stripe_connect_atom_loading_label": "Stripe kredentzialak egiaztatzen",
+  
+  
+  
   "booking_question_response_variables": "Erreserba galderen erantzunen aldagaiak",
   "managed_by_teamAdmins": "{{teamAdmins}}-k kudeatua",
   "number_of_options": "{{count}} aukera",
@@ -2718,10 +2718,10 @@
   "month_to_date": "hilabetea gaur arte",
   "year_to_date": "urtea gaur arte",
   "custom_range": "pertsonalizatutako tartea",
-  "refund_policy": "Itzulketa politika",
+  
   "always": "Beti",
   "never": "Inoiz ez",
-  "payment_option": "Ordainketa aukera",
+  
   "if_cancelled": "Bertan behera utziz gero",
   "before": "aurretik",
   "show_all_columns": "Erakutsi zutabe guztiak",

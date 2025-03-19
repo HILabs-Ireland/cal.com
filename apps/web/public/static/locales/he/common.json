@@ -5,7 +5,7 @@
   "day_other": "{{count}} ימים",
   "second_one": "שנייה {{count}}",
   "second_other": "{{count}} שניות",
-  "upgrade_now": "לשדרג עכשיו",
+  
   "untitled": "ללא כותרת",
   "accept_invitation": "אישור הזמנה",
   "max_characters": "מקסימום תווים",
@@ -68,18 +68,18 @@
   "accept_our_license": "יש לאשר את תנאי הרישיון שלנו על ידי שינוי המשתנה מסוג ‎.env בשם <1>NEXT_PUBLIC_LICENSE_CONSENT</1> ל-'{{agree}}'.",
   "remove_banner_instructions": "להסרת הבאנר, יש לפתוח את קובץ ה-‎.env ולשנות את המשתנה <1>NEXT_PUBLIC_LICENSE_CONSENT</1> ל-'{{agree}}'.",
   "error_message": "הודעת השגיאה הייתה: '{{errorMessage}}'",
-  "refund_failed_subject": "ההחזר הכספי נכשל: {{name}} - {{date}} - {{eventType}}",
-  "refund_failed": "ההחזר הכספי עבור האירוע {{eventType}} עם {{userName}} בתאריך {{date}} נכשל.",
+  
+  
   "check_with_provider_and_user": "יש לברר עם ספק התשלום ועם {{user}} כיצד לטפל בעניין.",
-  "a_refund_failed": "ההחזר הכספי נכשל",
-  "awaiting_payment_subject": "ממתין לתשלום: {{title}} ב- {{date}}",
-  "meeting_awaiting_payment": "התשלום על הפגישה שלך טרם בוצע",
+  
+  
+  
   "dark_theme_contrast_error": "צבע ערכת עיצוב כהה ללא עובר בדיקת ניגודיות. אנו ממליצים לשנות את הצבע הזה כדי שהכפתורים שלך יהיו יותר בולטים.",
   "light_theme_contrast_error": "צבע ערכת עיצוב בהירה ללא עובר בדיקת ניגודיות. אנו ממליצים לשנות את הצבע הזה כדי שהכפתורים שלך יהיו יותר בולטים.",
   "event_type_color_light_theme_contrast_error": "צבע נושא בהיר לא עובר בדיקת ניגודיות. אנו ממליצים לשנות צבע זה כדי שצבע סוג האירוע שלך יהיה יותר נראה.",
   "event_type_color_dark_theme_contrast_error": "צבע נושא כהה לא עובר בדיקת ניגודיות. אנו ממליצים לשנות צבע זה כדי שצבע סוג האירוע שלך יהיה יותר נראה.",
-  "payment_not_created_error": "אי אפשר ליצור תשלום",
-  "couldnt_charge_card_error": "לא ניתן לחייב את התשלום בכרטיס",
+  
+  
   "no_available_users_found_error": "לא נמצאו משתמשים זמינים. אפשר לנסות ליצור חלון זמן נוסף?",
   "request_body_end_time_internal_error": "שגיאה פנימית. גוף הבקשה לא מכיל זמן סיום",
   "create_calendar_event_error": "לא ניתן ליצור אירוע לוח שנה בלוח השנה של הגוף המארגן",
@@ -88,12 +88,12 @@
   "already_signed_up_for_this_booking_error": "כבר נרשמת להזמנה הזאת.",
   "hosts_unavailable_for_booking": "חלק מהמארחים לא פנויים להזמנות.",
   "help": "עזרה",
-  "price": "מחיר",
-  "paid": "שולם",
-  "refunded": "ההחזר הכספי נשלח",
-  "payment": "תשלום",
-  "missing_card_fields": "שדות פרטי כרטיס חסרים",
-  "pay_now": "לשלם עכשיו",
+  
+  
+  
+  
+  
+  
   "general_prompt": "בקשה כללית",
   "begin_message": "התחלת הודעה",
   "codebase_has_to_stay_opensource": "בין אם בוצעו שינויים בבסיס הקוד ובין אם לא, הקוד חייב להישאר פתוח",
@@ -179,17 +179,17 @@
   "hidden_team_member_message": "לא בוצע תשלום עבור המקום שלך. ניתן לשדרג ל-PRO או ליידע את הבעלים של הצוות שהוא או היא יכולים לשלם עבור המקום שלך.",
   "hidden_team_owner_message": "נדרש חשבון Pro כדי להשתמש בתכונות הצוותים. תהיה מוסתר עד שתבצע שידרוג.",
   "link_expires": "נ.ב. תוקף הקישור יפוג תוך {{expiresIn}} שעות.",
-  "upgrade_to_per_seat": "שדרג למינוי לפי מקום",
+  
   "seat_options_doesnt_support_confirmation": "אפשרויות המושבים אינם תומכים בדרישת האישור",
   "multilocation_doesnt_support_seats": "אפשרות מיקומים מרובים לא תומכת באפשרות מושבים",
-  "no_show_fee_doesnt_support_seats": "עמלת אי-הופעה לא תומכת באפשרות מושבים",
+  
   "seats_option_doesnt_support_multi_location": "אפשרות מושבים לא תומכת במיקומים מרובים",
-  "team_upgrade_seats_details": "לא התבצע תשלום עבור {{unpaidCount}} מקומות מתוך {{memberCount}} חברי הצוות שלך. תמורת ${{seatPrice}} לחודש למקום, עלות המינוי הכוללת המשוערת שלך היא ${{totalCost}} לחודש.",
-  "team_upgrade_banner_description": "אנחנו מודים לך על כך שניסית את החבילה החדשה שלנו לצוותים. שמנו לב שהצוות שלך, \"{{teamName}}\", זקוק לשדרוג.",
-  "upgrade_banner_action": "כאן משדרגים",
-  "team_upgraded_successfully": "הצוות שלך שודרג בהצלחה!",
-  "org_upgrade_banner_description": "אנחנו מודים לך על כך שניסית את חבילת Organization החדשה שלנו. שמנו לב שה-Organization שלך, ״{{teamName}}״, זקוק לשדרוג.",
-  "org_upgraded_successfully": "ה-Organization שלך שודרג בהצלחה!",
+  
+  
+  
+  
+  
+  
   "use_link_to_reset_password": "נא להשתמש בקישור הבא כדי לאפס את הסיסמה",
   "hey_there": "היי שם",
   "forgot_your_password_calcom": "שכחתה את הסיסמה? - {{appName}}",
@@ -208,8 +208,8 @@
   "webhook_created_successfully": "יצירת ה-Webhook בוצעה בהצלחה!",
   "webhook_updated_successfully": "עדכון ה-Webhook בוצע בהצלחה!",
   "webhook_removed_successfully": "הסרת ה-Webhook בוצעה בהצלחה!",
-  "subscription_needed": "נדרש מנוי",
-  "subscription_needed_description": "אינך מנוי לתוכנית פלטפורמה.",
+  
+  
   "payload_template": "תבנית מטען ייעודי (payload)",
   "dismiss": "ביטול",
   "no_data_yet": "עדיין אין נתונים",
@@ -374,8 +374,8 @@
   "booking_submitted_recurring": "הפגישה החוזרת נשלחה",
   "booking_confirmed": "ההזמנה שלך אושרה",
   "booking_confirmed_recurring": "הפגישה החוזרת אושרה",
-  "warning_recurring_event_payment": "עדיין אין תמיכה בתשלומים עבור אירועים חוזרים",
-  "warning_payment_recurring_event": "עדיין אין תמיכה בתשלומים עבור אירועים חוזרים",
+  
+  
   "enter_new_password": "נא להזין את הסיסמה החדשה שבה ברצונך להשתמש עבור החשבון.",
   "reset_password": "איפוס סיסמה",
   "change_your_password": "שינוי סיסמה",
@@ -504,15 +504,15 @@
   "booking_created": "ההזמנה נוצרה",
   "booking_rejected": "ההזמנה נדחתה",
   "booking_requested": "התקבלה בקשת הזמנה",
-  "booking_payment_initiated": "הופעל תשלום על ההזמנה",
+  
   "meeting_ended": "הפגישה הסתיימה",
   "form_submitted": "הטופס נשלח",
   "form_submitted_no_event": "הטופס נשלח, לא נקבע אירוע",
-  "booking_paid": "בוצע תשלום עבור ההזמנה",
+  
   "ooo_created": "נוצר מצב מחוץ למשרד",
   "booking_no_show_updated": "עדכון אי-הופעה בהזמנה",
   "event_triggers": "גורמים מפעילים של אירועים",
-  "subscriber_url": "כתובת URL של המנוי/ה",
+  
   "create_new_webhook": "יצירת Webhook חדש",
   "webhooks": "רכיבי Webhook",
   "team_webhooks": "רכיבי Webhook של הצוות",
@@ -773,10 +773,10 @@
   "readonly": "לקריאה בלבד",
   "one_time_link": "קישור חד-פעמי",
   "plan_description": "כרגע אתה משתמש בחבילת {{plan}}.",
-  "plan_upgrade_invitation": "כדאי לשדרג את החשבון לחבילת Pro כדי ליהנות מכל התכונות שאנחנו מציעים.",
-  "plan_upgrade": "כדי שיהיה לך יותר מסוג אירוע פעיל אחד, עליך לשדרג את החבילה.",
-  "plan_upgrade_teams": "כדי ליצור צוות, עליך לשדרג את החבילה.",
-  "plan_upgrade_instructions": "ניתן <1>לשדרג אותה כאן</1>.",
+  
+  
+  
+  
   "event_types_page_title": "סוגי אירועים",
   "event_types_page_subtitle": "צור אירועים לשיתוף כדי שאנשים יוכלו להזמין פגישות בלוח השנה שלך.",
   "new": "חדש",
@@ -833,8 +833,8 @@
   "teams": "צוותים",
   "team": "צוות",
   "organization": "ארגון",
-      "upgrade_to_flexible_pro_title": "שינינו את החיוב בעבור צוותים",
-  "upgrade_to_flexible_pro_message": "יש בצוות שלך חברים שאין להם מקום. שדרג לחבילת Pro לדאוג למקומות החסרים.",
+      
+  
     "create_manage_teams_collaborative": "צור ונהל צוותים כדי להשתמש בתכונות של שיתוף פעולה.",
   "only_available_on_pro_plan": "תכונה זו זמינה רק בחבילת Pro",
   "remove_cal_branding_description": "כדי להסיר את המיתוג של {{appName}} מדפי הזימון שלך, עליך לשדרג לחשבון Pro.",
@@ -843,8 +843,8 @@
   "little_something_about": "משהו קטן אודותיך.",
   "profile_updated_successfully": "עדכון הפרופיל בוצע בהצלחה",
   "your_user_profile_updated_successfully": "פרופיל המשתמש שלך עודכן בהצלחה.",
-  "your_upgrade_is_here": "השדרוג שלך כאן",
-  "your_upgrade_is_here_description": "שפר את חוויית קביעת הפגישות שלך על ידי שדרוג לתוכנית החדשה ותיהנה מהתכונות החדשות.",
+  
+  
   "you_are_all_set": "הכל מוכן",
   "you_are_all_set_description": "אתה כבר בתוכנית העדכנית ביותר. אין צורך בשדרוג. תיהנה מהתכונות החדשות ופנה אלינו בכל שאלה!",
   "user_cannot_found_db": "נראה שהמשתמש התחבר אבל לא ניתן למצוא אותו במסד הנתונים",
@@ -889,8 +889,8 @@
   "recurring_event": "אירוע חוזר",
   "recurring_event_description": "אנשים יכולים להירשם לאירועים חוזרים",
   "connect_and_join": "התחבר והצטרף",
-  "cannot_be_used_with_paid_event_types": "אי אפשר להשתמש בזה עם סוגי פגישות בתשלום",
-  "warning_payment_instant_meeting_event": "אין תמיכה בפגישות מיידיות עם אירועים מחזוריים ויישומוני תשלום",
+  
+  
   "warning_instant_meeting_experimental": "ניסיוני: פגישות מיידיות הן ניסיוניות כרגע.",
   "starting": "מועד התחלה",
   "disable_guests": "השבתת אורחים",
@@ -921,7 +921,7 @@
   "cal_provide_jitsi_meeting_url": "אנחנו ניצור עבורך כתובת URL לפגישת Jitsi Meet.",
   "cal_provide_huddle01_meeting_url": "{{appName}} יספק כתובת קישור לפגישת וידאו ב- Huddle01.",
   "cal_provide_teams_meeting_url": "{{appName}} יספק כתובת קישור לפגישת MS Teams. הערה: חייב להיות חשבון של מקום עבודה או בית ספר",
-  "require_payment": "דרישת תשלום",
+  
   "you_need_to_add_a_name": "יש להוסיף שם",
   "commission_per_transaction": "עמלה לעסקה",
   "event_type_updated_successfully_description": "סוג האירוע שלך עודכן בהצלחה.",
@@ -965,7 +965,7 @@
   "next_step": "לדלג על שלב זה",
   "prev_step": "לשלב הקודם",
   "install": "התקנה",
-  "start_paid_trial": "התחלת ניסיון בחינם",
+  
   "installed": "מותקן",
   "active_install_one": "התקנה פעילה {{count}}",
   "active_install_other": "{{count}} התקנות פעילות",
@@ -983,7 +983,7 @@
   "check_here": "נא לבדוק כאן",
   "conferencing": "שיחות ועידה",
   "calendar": "לוח שנה",
-  "payments": "תשלומים",
+  
   "not_installed": "לא מותקן",
   "error_password_mismatch": "הסיסמאות אינן זהות.",
   "error_required_field": "שדה זה הוא שדה חובה.",
@@ -1025,14 +1025,14 @@
   "all_apps": "כל האפליקציות",
   "no_category_apps_description_calendar": "הוסף/י אפליקציית לוח שנה כדי לבדוק אם יש התנגשויות על מנת למנוע כפל הזמנות",
   "no_category_apps_description_conferencing": "נסה/י להוסיף אפליקציית שיחות ועידה לצורך ביצוע שיחות וידאו עם הלקוחות",
-  "no_category_apps_description_payment": "הוסף/י אפליקציית תשלומים על מנת להפוך את ביצוע העסקאות בינך לבין הלקוחות לפשוט יותר",
+  
   "no_category_apps_description_analytics": "להוסיף אפליקציה לניתוח נתונים עבור דפי ההזמנות שלך",
   "no_category_apps_description_automation": "להוסיף אפליקציית אוטומציה שברצונך להשתמש בה",
   "no_category_apps_description_other": "הוסף/הוסיפי אפליקציה מכל סוג אחר לביצוע פעולות שונות",
   "no_category_apps_description_messaging": "הוסף/הוסיפי אפליקציית מסרים מידיים כדי להגדיר התראות ותזכורות בהתאמה אישית",
   "no_category_apps_description_crm": "הוסף/י אפליקציית CRM כדי לנהל מעקב אחר האנשים שנפגשת איתם",
   "installed_app_calendar_description": "הגדר/הגדירח את לוחות השנה כדי לבדוק אם יש התנגשויות על מנת למנוע כפל הזמנות.",
-  "installed_app_payment_description": "הגדר/הגידירי את השירותים לעיבוד תשלומים שבהם יש להשתמש לחיוב הלקוחות.",
+  
   "installed_app_analytics_description": "הגדרת האפליקציות לניתוח נתונים שבהן יש להשתמש עבור דפי ההזמנות שלך",
   "installed_app_other_description": "כל האפליקציות המותקנות שלך מקטגוריות אחרות.",
   "installed_app_conferencing_description": "הגדר/הגדירי את האפליקציות לשיחות ועידה שבהן ברצונך להשתמש",
@@ -1049,7 +1049,7 @@
   "permissions": "הרשאות",
   "terms_and_privacy": "תנאים ופרטיות",
   "published_by": "פורסם על ידי {{author}}",
-  "subscribe": "הרשמה למינוי",
+  
   "buy": "רכישה",
   "install_app": "התקנת האפליקציה",
   "categories": "קטגוריות",
@@ -1064,14 +1064,14 @@
   "create_events_on": "ליצור אירועים ב-",
   "enterprise_license": "זוהי תכונה מסחרית",
   "enterprise_license_locally": "אפשר לבדוק את היכולת הזאת מקומית אבל לא בסביבה המבצעית.",
-  "enterprise_license_sales": "כדי לרכוש רישיון מסחרי, אנא פנו לצוות המכירות שלנו. אם מפתח רישיון כבר קיים, אנא צרו קשר עם support@cal.com לקבלת עזרה.",
+  
   "missing_license": "חסר רישיון",
   "next_steps": "השלבים הבאים",
   "acquire_commercial_license": "רכישת רישיון לשימוש מסחרי",
   "the_infrastructure_plan": "חבילת הבסיס מחויבת לפי שימוש ומוצעת בהנחות למתחילים.",
   "prisma_studio_tip": "יצירת חשבון דרך Prisma Studio",
   "prisma_studio_tip_description": "למד כיצד ניתן להגדיר את המשתמש הראשון",
-  "contact_sales": "פנה למחלקת המכירות",
+  
   "error_404": "שגיאת 404",
   "default": "ברירת מחדל",
   "set_to_default": "הגדר לברירת המחדל",
@@ -1231,7 +1231,7 @@
   "developer_documentation": "מסמכי מפתחים",
   "get_in_touch": "יצירת קשר",
   "contact_support": "פנייה לתמיכה",
-  "premium_support": "תמיכת פרימיום",
+  
   "community_support": "תמיכת קהילה",
   "feedback": "משוב",
   "submitted_feedback": "תודה על המשוב!",
@@ -1290,14 +1290,14 @@
   "new_workflow_description": "תהליכי עבודה מאפשרים להפוך את פעולת השליחה של תזכורות ועדכונים לאוטומטית.",
   "active_on": "פעיל ב",
   "workflow_updated_successfully": "עדכון תהליך העבודה {{workflowName}} בוצע בהצלחה",
-    "premium_username": "זהו שם משתמש פרימיום, קבל/י אחד משלך תמורת {{price}}",
+    
   "current": "נוכחי",
-  "premium": "פרימיום",
+  
   "standard": "רגיל",
   "confirm_username_change_dialog_title": "אשר את שינוי שם המשתמש",
-  "change_username_standard_to_premium": "מאחר שאתה משנה את שם המשתמש מסטנדרטי לפרימיום, תועבר אל הקופה לצורך שדרוג.",
-  "change_username_premium_to_standard": "מאחר שאתה משנה את שם המשתמש מפרימיום לסטנדרטי, תועבר אל הקופה לצורך שנמוך.",
-    "stripe_description": "דרישת תשלום עבור הזמנות (0.5% + €0.10 עמלה לכל עסקה)",
+  
+  
+    
   "trial_expired": "התוקף של גרסת הניסיון שלך פג",
   "remove_app": "הסרת האפליקציה",
   "yes_remove_app": "כן, להסיר את האפליקציה",
@@ -1366,16 +1366,16 @@
   "event_date_variable": "תאריך האירוע",
   "event_time_variable": "מועד האירוע",
   "organizer_name_variable": "שם המארגן/ת",
-  "app_upgrade_description": "כדי להשתמש בתכונה זו, עליך לשדרג לחשבון Pro.",
+  
   "invalid_number": "מספר טלפון לא תקין",
   "invalid_url_error_message": "כתובת URL לא חוקית עבור {{label}}. כתובת URL לדוגמה: {{sampleUrl}}",
   "navigate": "ניווט",
   "open": "פתח",
   "close": "סגירה",
-  "upgrade": "שדרוג",
-  "upgrade_to_access_recordings_title": "שדרג/י כדי לגשת להקלטות",
-  "upgrade_to_access_recordings_description": "הקלטות זמינות רק כחלק מהחבילה שלנו לצוותים. כדי להתחיל להקליט את השיחות שלך, צריך לשדרג",
-  "upgrade_to_cal_ai_phone_number_description": "שדרגו ל-Enterprise כדי ליצור מספר טלפון של סוכן AI שיכול להתקשר לאורחים לתיאום שיחות",
+  
+  
+  
+  
   "recordings_are_part_of_the_teams_plan": "הקלטות זמינות כחלק מהחבילה לצוותים",
   "team_feature_teams": "זוהי תכונה של גרסת Team. כדאי לשדרג ל-Team כדי לראות את זמינות חברי הצוות.",
   "team_feature_workflows": "זוהי תכונה של גרסת Team. כדאי לשדרג ל-Team כדי להפוך את התזכורות והעדכונים לגבי אירועים לאוטומטיים באמצעות תהליכי עבודה.",
@@ -1389,7 +1389,7 @@
   "company_size": "גודל החברה",
   "what_help_needed": "במה דרושה לך עזרה?",
   "variable_format": "הפורמט של המשתנה",
-  "webhook_subscriber_url_reserved": "כתובת ה-URL של מנוי Webhook כבר מוגדרת",
+  
   "custom_input_as_variable_info": "התעלמות מכל התווים המיוחדים של תווית הקלט הנוספת (שימוש באותיות ובספרות בלבד), שימוש באותיות רישיות עבור כל האותיות והחלפת רווחים במקפים תחתונים.",
   "using_booking_questions_as_variables": "איך משתמשים בשאלות הזמנה בתור משתנים?",
   "download_desktop_app": "הורדת האפליקציה למחשבים שולחניים",
@@ -1413,8 +1413,8 @@
   "event_limit_tab_description": "באיזו תדירות ניתן להזמין אותך",
   "event_advanced_tab_description": "הגדרות לוח שנה ועוד...",
   "event_advanced_tab_title": "מתקדם",
-  "event_payments_tab_title": "תשלומים",
-  "event_payments_tab_description": "הגדרת תשלומים עבור האירוע",
+  
+  
   "event_setup_multiple_duration_error": "הגדרת אירוע: משכי זמן מרובים מחייבים הגדרה של אפשרות אחת לפחות.",
   "event_setup_multiple_duration_default_error": "הגדרת אירוע: יש לבחור משך זמן חוקי המוגדר כברירת מחדל.",
   "event_setup_booking_limits_error": "מגבלות על תזמונים חייבים להיות מוגדרים בסדר עולה. [יום, שבוע, חודש, שנה]",
@@ -1499,7 +1499,7 @@
   "connect_calendars_from_app_store": "ניתן להוסיף לוחות שנה נוספים מה-App Store",
   "connect_conference_apps": "חיבור אפליקציות של שיחות ועידה",
   "connect_calendar_apps": "חיבור אפליקציות של לוחות שנה",
-  "connect_payment_apps": "חיבור אפליקציות של תשלומים",
+  
   "connect_automation_apps": "קישור אפליקציות אוטומציה",
   "connect_analytics_apps": "קישור אפליקציות ניתוח נתונים",
   "connect_other_apps": "חיבור אפליקציות אחרות",
@@ -1621,7 +1621,7 @@
   "password_reset_email": "שלחנו לך הודעת דוא\"ל עם הוראות לאיפוס הסיסמה לכתובת {{email}}.",
   "password_reset_leading": "אם הודעת המייל לא תגיע בקרוב, ודא שכתובת הדוא\"ל שהזנת נכונה, בדוק אם ההודעה הגיעה לתיקיית דואר הזבל או פנה לתמיכה אם הבעיה נמשכת.",
   "password_updated": "הסיסמה עודכנה!",
-  "pending_payment": "המתנה לתשלום",
+  
   "pending_invites": "הזמנות ממתינות",
   "pending_organization_invites": "הזמנות ממתינות לארגון",
   "not_on_cal": "לא ב-{{appName}}",
@@ -1734,7 +1734,7 @@
   "route_to": "ניתוב אל",
   "test_preview_description": "לבדוק את טופס הניתוב שלך בלי לשלוח נתונים",
   "test_routing": "בדיקת ניתוב",
-  "payment_app_disabled": "מנהל/ת מערכת השבית/ה אפליקציית תשלומים",
+  
   "edit_event_type": "עריכת סוג האירוע",
   "only_admin_can_see_members_of_org": "הארגון הזה פרטי ורק הנהלת ובעלי הארגון יכולים לצפות בחבריו.",
   "only_admin_can_manage_sso_org": "רק הנהלת או בעלי הארגון יכולים לנהל הגדרות SSO",
@@ -1755,8 +1755,8 @@
   "email_body_slug_replacement_notice": "מנהל/ת בצוות <strong>{{teamName}}</strong> החליף/ה את סוג האירוע שלך, <strong>/{{slug}}</strong>, בסוג של אירוע מנוהל שתהיה לו/ה אפשרות לשלוט בו.",
   "email_body_slug_replacement_info": "הקישור שלך ימשיך לעבוד, אבל ייתכן שחלק מההגדרות עבורו השתנו. ניתן לעיין בו בסוגי האירועים.",
   "email_body_slug_replacement_suggestion": "אם יש לך שאלות לגבי סוג האירוע, פנה/י אל מנהל/ת המערכת.<br /><br />שיהיה תזמון נעים, <br />הצוות של Cal.com",
-  "disable_payment_app": "המנהל השבית את {{appName}} מה שמשפיע על סוג האירוע שלך {{title}}. המשתתפים עדיין יכולים להזמין סוג זה של אירוע אך לא יתבקשו לשלם. באפשרותך להסתיר את סוג האירוע כדי למנוע זאת עד שהמנהל יפעיל מחדש את שיטת התשלום שלך.",
-  "payment_disabled_still_able_to_book": "המשתתפים עדיין יכולים להזמין סוג זה של אירוע אך לא יתבקשו לשלם. באפשרותך להסתיר את סוג האירוע כדי למנוע זאת עד שהמנהל יפעיל מחדש את שיטת התשלום שלך.",
+  
+  
   "app_disabled_with_event_type": "מנהל/ת המערכת השבית/ה את {{appName}}, ויש לכך השפעה על האירוע שלך מסוג {{title}}.",
   "app_disabled_video": "מנהל/ת המערכת השבית/ה את {{appName}}, מה שעשוי להשפיע על סוגי האירועים שלך. אם יש לך סוגי אירועים שבהם המיקום הוא {{appName}}, ייעשה שימוש באפשרות ברירת המחדל, Cal Video.",
   "app_disabled_subject": "האפליקציה {{appName}} הושבתה",
@@ -1842,8 +1842,8 @@
   "round_robin_hosts": "מארחים לפי סבב",
   "minimum_round_robin_hosts_count": "מספר המארחים שחייבים להשתתף",
   "hosts": "מארחים",
-  "upgrade_to_enable_feature": "עליך ליצור צוות כדי להפעיל תכונה זו. לחץ כאן ליצירת צוות.",
-  "orgs_upgrade_to_enable_feature": "כדי לאפשר שימוש בתכונה הזו, יש לשדרג לתוכנית שלנו לארגונים.",
+  
+  
   "new_attendee": "משתתף/ת חדש/ה",
   "awaiting_approval": "בהמתנה לאישור",
   "requires_google_calendar": "האפליקציה הזו מחייבת חיבור ל-Google Calendar",
@@ -1944,9 +1944,9 @@
   "add_a_booking_question": "הוסף שאלה",
   "identifier": "מזהה",
   "duplicate_email": "מייל כבר קיים",
-  "booking_with_payment_cancelled": "תשלום עבור ארוע זה כבר אינו נתמך",
-  "booking_with_payment_cancelled_already_paid": "זיכוי עבור התשלום של תזמון זה כבר בדרך.",
-  "booking_with_payment_cancelled_refunded": "התשלום עבור תזמון זה זוכה.",
+  
+  
+  
   "booking_confirmation_failed": "אישור ההזמנה נכשל",
   "not_enough_seats": "אין מספיק מושבים",
   "form_builder_field_already_exists": "שדה עם שם זה כבר קיים",
@@ -2079,31 +2079,31 @@
   "clear_filters": "ניקוי המסננים",
   "clear": "ניקוי",
   "hold": "החזקה",
-  "on_booking_option": "גביית תשלום בעת ההזמנה",
-  "hold_option": "חיוב דמי אי-הגעה",
-  "card_held": "החזקת הסכום בכרטיס",
-  "charge_card": "חיוב הכרטיס",
-  "card_charged": "הכרטיס חויב",
-  "no_show_fee_amount": "דמי אי-הגעה בסך {{amount, currency}}",
-  "no_show_fee": "דמי אי-הגעה",
-  "submit_card": "מסירת כרטיס",
-  "submit_payment_information": "מסירת פרטי כרטיס",
-  "meeting_awaiting_payment_method": "עוד לא צוין אמצעי תשלום עבור הפגישה",
-  "no_show_fee_charged_email_subject": "דמי אי-הגעה בסך {{amount, currency}} חויבו עבור {{title}} ב-{{date}}",
-  "no_show_fee_charged_text_body": "דמי אי-הגעה חויבו",
-  "no_show_fee_charged_subtitle": "דמי אי-הגעה בסך {{amount, currency}} חויבו עבור האירוע הבא",
-  "error_charging_card": "משהו השתבש בעת גביית דמי אי-הגעה. אפשר לנסות שוב מאוחר יותר.",
-  "collect_no_show_fee": "גביית דמי אי-הגעה",
-  "no_show_fee_charged": "דמי אי-הגעה חויבו",
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   "insights": "תובנות",
   "routing_forms": "טפסי ניתוב",
   "testing_workflow_info_message": "במהלך בדיקת תהליך העבודה הזה, קח/י בחשבון שניתן לתזמן הודעות דוא\"ל ו-SMS לפחות שעה אחת מראש",
   "insights_no_data_found_for_filter": "לא נמצאו נתונים עבור המסנן שנבחר או התאריכים שנבחרו.",
-  "acknowledge_booking_no_show_fee": "מובן לי שאם לא אשתתף באירוע הזה, דמי אי-הגעה בסך {{amount, currency}} ינוכו מהכרטיס שלי.",
-  "card_details": "פרטי כרטיס",
+  
+  
   "something_went_wrong_on_our_end": "משהו השתבש בצד שלנו. פנה/י למחלקת התמיכה שלנו, ואנחנו נפתור זאת מיד עבורך.",
   "please_provide_following_text_to_suppport": "כשפונים לתמיכה, יש לספק את הטקסט הבא כדי שנוכל לסייע לך בצורה יעילה יותר",
-  "seats_and_no_show_fee_error": "נכון לעכשיו, אי אפשר להפעיל מקומות ולחייב דמי אי-הגעה",
+  
   "complete_your_booking": "יש להשלים את ההזמנה",
   "complete_your_booking_subject": "יש להשלים את ההזמנה: {{title}} ב-{{date}}",
   "confirm_your_details": "אישור הפרטים שלך",
@@ -2121,12 +2121,12 @@
   "one_year": "שנה אחת",
   "team_invite_received": "הוזמנת להצטרף אל {{teamName}}",
   "currency_string": "{{amount, currency}}",
-  "charge_card_dialog_body": "את/ה עומד/ת לחייב את המשתתף/ת בסכום של {{amount, currency}}. בטוח/ה שברצונך להמשיך?",
+  
   "charge_attendee": "לחייב את המשתתף/ת ב-{{amount, currency}}",
-  "payment_app_commission": "דרישת תשלום (‎{{paymentFeePercentage}}%‎ + ‏{{fee, currency}} עמלה על העסקה)",
+  
   "email_invite_team": "נשלחה הזמנה ל-{{email}}",
   "email_invite_team_bulk": "{{userCount}} משתמשים הוזמנו",
-  "error_collecting_card": "שגיאה בחיוב הכרטיס",
+  
   "image_size_limit_exceed": "גודל התמונה המרבי שניתן להעלות הוא 5MB",
   "unauthorized_workflow_error_message": "{{errorCode}}: אין לך הרשאה להפעיל או להשבית את תהליך העבודה הזה",
   "inline_embed": "הטמעה באתר",
@@ -2395,7 +2395,7 @@
   "unlocked": "משוחרר",
   "lock_timezone_toggle_on_booking_page": "נעילת אזור הזמן בדף ההזמנות",
   "description_lock_timezone_toggle_on_booking_page": "כדי לנעול את אזור הזמן בדף ההזמנות – שימושי לאירועים אישיים.",
-  "event_setup_multiple_payment_apps_error": "יכול להיות רק יישומון תשלום אחד פעיל לכל סוג אירוע.",
+  
   "number_in_international_format": "נא למלא מספר בתבנית בינלאומית.",
   "install_calendar": "התקנת לוח שנה",
   "branded_subdomain": "תת־תחום ממותג",
@@ -2412,7 +2412,7 @@
   "enterprise_description": "יש לשדרג לרישיון תאגידי כדי ליצור את הארגון שלך",
   "create_your_org": "יצירת הארגון שלך",
     "create_your_enterprise_description": "שדרג ל-Enterprise וקבל גישה לסנכרון Active Directory, הקצאת משתמשים אוטומטית באמצעות SCIM, סוכני קול של Cal.ai, APIs למנהלים ועוד!",
-  "other_payment_app_enabled": "אפשר להפעיל רק יישומון תשלום אחד לכל סוג אירוע",
+  
   "admin_delete_organization_description": "<ul><li>צוותים שחברים בארגון הזה יימחקו יחד עם סוגי האירועים שלהם</li><li>משתמשים שהיו חלק מהארגון לא יימחקו וסוג האירועים שלהם יישארו ללא שינוי.</li><li>שמות המשתמשים ישתנו כדי לאפשר להם להתקיים מחוץ לארגון שהיו חברים בו</li></ul>",
   "admin_delete_organization_title": "למחוק את הארגון?",
   "published": "מפורסם",
@@ -2432,12 +2432,12 @@
   "uprade_to_create_instant_bookings": "ניתן לשדג לרישיון התאגידי ולאפשר למשתמשים להצטרף לשיחה מיידית שמשתתפים יכולים לקפוץ ישירות אליה. זה מיועד רק לסוגי אירועים של צוותים",
   "dont_want_to_wait": "לא רוצה להמתין?",
   "meeting_started": "הפגישה החלה",
-  "pay_and_book": "נא לשלם כדי להזמין",
+  
   "cal_ai_event_tab_description": "לאפשר לסוכני בינה מלאכותית להזמין בשבילך",
   "booking_not_found_error": "לא ניתן למצוא הזמנה",
   "booking_seats_full_error": "חלונות ההזמנה מלאים",
-  "missing_payment_credential_error": "פרטי התשלום חסרים",
-  "missing_payment_app_id_error": "מזהה יישום תשלום חסר",
+  
+  
   "not_enough_available_seats_error": "להזמנה אין מספיק חלונות פנויים",
   "user_redirect_title": "{{username}} לא כאן כרגע לזמן קצר.",
   "user_redirect_description": "בינתיים, האחריות על כל ההזמנות המתוזמנות החדשות בשם {{username}} תהיה על כתפי {{profile.username}}.",
@@ -2534,7 +2534,7 @@
   "email|existing_user_added_link_changed": "הקישור שלך שונה מ-<a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> ל-<a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a> אבל אל תדאג, כל הקישורים הקודמים עדיין עובדים ומופנים כראוי.<br /><br />שימו לב: כל סוגי האירועים האישיים שלך הועברו לארגון <strong>{teamName}</strong>, וזה עשוי לכלול גם קישור אישי פוטנציאלי.<br /><br />אנא התחבר וודא שאין לך אירועים פרטיים בחשבון הארגוני החדש שלך.<br /><br />לאירועים אישיים אנו ממליצים ליצור חשבון חדש עם כתובת אימייל אישית.<br /><br />תהנה מהקישור החדש והנקי שלך: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "הארגון שלך נוצר",
   "your_current_plan": "התוכנית הנוכחית שלך",
-  "organization_price_per_user_month": "$37 למשתמש לחודש (30 מקומות לכל הפחות)",
+  
   "privacy_organization_description": "ניהול הגדרות פרטיות לארגון שלך",
   "privacy": "פרטיות",
   "team_will_be_under_org": "צוותים חדשים יהיו תחת הארגון שלך",
@@ -2631,7 +2631,7 @@
   "proceeding_agreement": "בהמשך התהליך, הנך מסכים/ה ל",
   "terms": "תנאי השימוש",
   "always_show_x_days": "תמיד {{x}} ימים זמינים",
-  "unable_to_subscribe_to_the_platform": "אירעה שגיאה בעת ניסיון להירשם לתוכנית הפלטפורמה, אנא נסה שוב מאוחר יותר",
+  
   "updating_oauth_client_error": "אירעה שגיאה בעת עדכון לקוח ה-OAuth, אנא נסה שוב מאוחר יותר",
   "creating_oauth_client_error": "אירעה שגיאה בעת יצירת לקוח ה-OAuth, אנא נסה שוב מאוחר יותר",
   "event_type_color": "צבע סוג האירוע",
@@ -2692,9 +2692,9 @@
   "outlook_connect_atom_label": "חבר את לוח השנה של Outlook",
   "outlook_connect_atom_already_connected_label": "לוח השנה של Outlook מחובר",
   "outlook_connect_atom_loading_label": "בודק את לוח השנה של Outlook",
-  "stripe_connect_atom_label": "התחבר ל-Stripe",
-  "stripe_connect_atom_already_connected_label": "מחובר ל-Stripe",
-  "stripe_connect_atom_loading_label": "בודק אישורי Stripe",
+  
+  
+  
   "booking_question_response_variables": "משתני תגובה לשאלות הזמנה",
   "managed_by_teamAdmins": "מנוהל על ידי {{teamAdmins}}",
   "number_of_options": "{{count}} אפשרויות",
@@ -2718,10 +2718,10 @@
   "month_to_date": "מתחילת החודש",
   "year_to_date": "מתחילת השנה",
   "custom_range": "טווח מותאם אישית",
-  "refund_policy": "מדיניות החזרים",
+  
   "always": "תמיד",
   "never": "לעולם לא",
-  "payment_option": "אפשרות תשלום",
+  
   "if_cancelled": "אם בוטל",
   "before": "לפני",
   "show_all_columns": "הצג את כל העמודות",

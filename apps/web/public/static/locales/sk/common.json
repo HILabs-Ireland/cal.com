@@ -5,7 +5,7 @@
   "day_other": "{{count}} dni",
   "second_one": "{{count}} sekunda",
   "second_other": "{{count}} sekundy",
-  "upgrade_now": "Prejsť na platený program",
+  
   "accept_invitation": "Prijať pozvánku",
   "calcom_explained": "{{appName}} poskytuje plánovaciu infraštruktúru pre každého.",
   "calcom_explained_new_user": "Dokončite nastavenie svojho {{appName}} účtu! Ste už iba niekoľko krokov od vyriešenia všetkých svojich problémov s plánovaním.",
@@ -54,6 +54,6 @@
   "ooo_create_entry_modal": "Odísť z kancelárie",
   "ooo_select_reason": "Vybrať dôvod",
   "enterprise_license_locally": "Túto funkciu môžete otestovať lokálne, ale nie v produkčnom prostredí.",
-  "enterprise_license_sales": "Na upgradovanie na podnikateľskú verziu kontaktujte náš obchodný tím. Ak už je licenčný kľúč na mieste, kontaktujte support@cal.com pre pomoc.",
+  
   "apply_to_all_event_types": "Platí pre všetky, vrátane budúcich typov udalostí"
 }

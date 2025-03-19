@@ -5,7 +5,7 @@
   "day_other": "{{count}} dagar",
   "second_one": "{{count}} sekund",
   "second_other": "{{count}} sekunder",
-  "upgrade_now": "Uppgradera nu",
+  
   "untitled": "Namnlös",
   "accept_invitation": "Acceptera inbjudan",
   "max_characters": "Max. tecken",
@@ -68,18 +68,18 @@
   "accept_our_license": "Acceptera vår licens genom att ändra .env variabeln <1>NEXT_PUBLIC_LICENSE_CONSENT</1> till '{{agree}}'.",
   "remove_banner_instructions": "För att ta bort denna banner, vänligen öppna din .env fil och ändra <1>NEXT_PUBLIC_LICENSE_CONSENT</1> variabeln till '{{agree}}'.",
   "error_message": "Felmeddelandet var: '{{errorMessage}}'",
-  "refund_failed_subject": "Återbetalning misslyckades: {{name}} - {{date}} - {{eventType}}",
-  "refund_failed": "Återbetalningen för bokningen {{eventType}} med {{userName}} den {{date}} misslyckades.",
+  
+  
   "check_with_provider_and_user": "Vänligen kontrollera med din betalningsleverantör och {{user}} hur du hanterar detta.",
-  "a_refund_failed": "Återbetalning misslyckades",
-  "awaiting_payment_subject": "Väntar på betalning: {{title}} den {{date}}",
-  "meeting_awaiting_payment": "Din bokning väntar på betalning",
+  
+  
+  
   "dark_theme_contrast_error": "Mörkt tema-färg klarar inte kontrastkontrollen. Vi rekommenderar att du ändrar denna färg så att dina knappar blir mer synliga.",
   "light_theme_contrast_error": "Ljust tema-färg klarar inte kontrastkontrollen. Vi rekommenderar att du ändrar denna färg så att dina knappar blir mer synliga.",
   "event_type_color_light_theme_contrast_error": "Ljust tema-färg klarar inte kontrastkontrollen. Vi rekommenderar att du ändrar denna färg så att dina händelsetyper blir mer synliga.",
   "event_type_color_dark_theme_contrast_error": "Mörkt tema-färg klarar inte kontrastkontrollen. Vi rekommenderar att du ändrar denna färg så att dina händelsetyper blir mer synliga.",
-  "payment_not_created_error": "Betalning kunde inte skapas",
-  "couldnt_charge_card_error": "Kunde inte debitera kortet för betalning",
+  
+  
   "no_available_users_found_error": "Inga tillgängliga användare hittades. Kan du försöka en annan tidslucka?",
   "request_body_end_time_internal_error": "Internt fel. Begäran innehåller inte sluttid",
   "create_calendar_event_error": "Kunde inte skapa kalenderhändelse i organisatörens kalender",
@@ -88,12 +88,12 @@
   "already_signed_up_for_this_booking_error": "Du är redan anmäld till denna bokning.",
   "hosts_unavailable_for_booking": "Några av värdarna är inte tillgängliga för bokning.",
   "help": "Hjälp",
-  "price": "Pris",
-  "paid": "Betald",
-  "refunded": "Återbetald",
-  "payment": "Betalning",
-  "missing_card_fields": "Kortfält saknas",
-  "pay_now": "Betala nu",
+  
+  
+  
+  
+  
+  
   "general_prompt": "Allmän uppmaning",
   "begin_message": "Börja meddelandet",
   "codebase_has_to_stay_opensource": "Kodebasen måste förbli öppen källkod, oavsett om den ändrades eller inte",
@@ -179,17 +179,17 @@
   "hidden_team_member_message": "Din plats är inte betalad för. Uppgradera till Pro eller låt teamägaren veta att de kan betala för din plats.",
   "hidden_team_owner_message": "Du behöver ett pro-konto för att använda team, du är dold tills du uppgraderar.",
   "link_expires": "p.s. Den går ut om {{expiresIn}} timmar.",
-  "upgrade_to_per_seat": "Uppgradera till Per-Seat",
+  
   "seat_options_doesnt_support_confirmation": "Platsalternativ stöder inte krav på bekräftelse",
   "multilocation_doesnt_support_seats": "Flera platser stöder inte sittalternativet",
-  "no_show_fee_doesnt_support_seats": "Avgift för uteblivet besök stöder inte sittalternativet",
+  
   "seats_option_doesnt_support_multi_location": "Sittalternativet stöder inte flera platser",
-  "team_upgrade_seats_details": "Av {{memberCount}} medlemmar i ditt lag är {{unpaidCount}} plats(er) obetalda. Vid ${{seatPrice}}/m per plats är den uppskattade totala kostnaden för ditt medlemskap ${{totalCost}}/m.",
-  "team_upgrade_banner_description": "Tack för att du testade vår nya teamplan. Vi märkte att ditt team \"{{teamName}}\" måste uppgraderas.",
-  "upgrade_banner_action": "Uppgradera här",
-  "team_upgraded_successfully": "Ditt team har uppgraderats!",
-  "org_upgrade_banner_description": "Tack för att du testade vår nya Organization-plan. Vi märkte att din Organization \"{{teamName}}\" måste uppgraderas.",
-  "org_upgraded_successfully": "Din Organization har uppgraderats!",
+  
+  
+  
+  
+  
+  
   "use_link_to_reset_password": "Använd länken nedan för att återställa ditt lösenord",
   "hey_there": "Hej där",
   "forgot_your_password_calcom": "Glömt ditt lösenord? - {{appName}}",
@@ -208,8 +208,8 @@
   "webhook_created_successfully": "Webhook har skapats!",
   "webhook_updated_successfully": "Webhook har uppdaterats!",
   "webhook_removed_successfully": "Webhook har tagits bort!",
-  "subscription_needed": "Prenumeration krävs",
-  "subscription_needed_description": "Du har ingen aktiv prenumeration på plattformen.",
+  
+  
   "payload_template": "Mall för \"payload\"",
   "dismiss": "Stäng",
   "no_data_yet": "Ingen data ännu",
@@ -374,8 +374,8 @@
   "booking_submitted_recurring": "Ditt återkommande möte har skickats",
   "booking_confirmed": "Din bokning har bekräftats",
   "booking_confirmed_recurring": "Ditt återkommande möte har bekräftats",
-  "warning_recurring_event_payment": "Betalningar stöds ännu inte med återkommande händelser",
-  "warning_payment_recurring_event": "Återkommande händelser stöds ännu inte av Betalningar",
+  
+  
   "enter_new_password": "Ange det nya lösenordet för ditt konto.",
   "reset_password": "Återställ Lösenord",
   "change_your_password": "Ändra ditt lösenord",
@@ -504,15 +504,15 @@
   "booking_created": "Bokning skapad",
   "booking_rejected": "Bokning avvisad",
   "booking_requested": "Bokning begärd",
-  "booking_payment_initiated": "Bokningsbetalning initierad",
+  
   "meeting_ended": "Mötet avslutat",
   "form_submitted": "Formulär skickat",
   "form_submitted_no_event": "Formulär skickat, inget event bokat",
-  "booking_paid": "Bokning betald",
+  
   "ooo_created": "Frånvaro skapad",
   "booking_no_show_updated": "Bokning No-Show uppdaterad",
   "event_triggers": "Händelseutlösare",
-  "subscriber_url": "Prenumerantens URL",
+  
   "create_new_webhook": "Skapa en ny webhook",
   "webhooks": "Webbhookar",
   "team_webhooks": "Team Webbhookar",
@@ -773,10 +773,10 @@
   "readonly": "Skrivskyddad",
   "one_time_link": "Engångslänk",
   "plan_description": "Du är för närvarande på {{plan}} planen.",
-  "plan_upgrade_invitation": "Uppgradera ditt konto till pro-planen för att låsa upp alla funktioner vi har att erbjuda.",
-  "plan_upgrade": "Du måste uppgradera din plan för att ha mer än en aktiv händelsetyp.",
-  "plan_upgrade_teams": "Du behöver uppgradera din plan för att skapa ett team.",
-  "plan_upgrade_instructions": "Du kan <1>uppgradera här</1>.",
+  
+  
+  
+  
   "event_types_page_title": "Händelsetyper",
   "event_types_page_subtitle": "Skapa händelser att dela till personer för att boka i din kalender.",
   "new": "Ny",
@@ -833,8 +833,8 @@
   "teams": "Teams",
   "team": "Team",
   "organization": "Organization",
-      "upgrade_to_flexible_pro_title": "Vi har ändrat fakturering för team",
-  "upgrade_to_flexible_pro_message": "Det finns medlemmar i ditt team utan en plats. Uppgradera din pro plan för att täcka saknade platser.",
+      
+  
     "create_manage_teams_collaborative": "Skapa och hantera team för att använda kollaborativa funktioner.",
   "only_available_on_pro_plan": "Den här funktionen är endast tillgänglig i Pro-planen",
   "remove_cal_branding_description": "Du måste uppgradera till ett Pro-konto för att ta bort {{appName}}-reklam från dina bokningssidor.",
@@ -843,8 +843,8 @@
   "little_something_about": "Lite om dig själv.",
   "profile_updated_successfully": "Profilen har uppdaterats",
   "your_user_profile_updated_successfully": "Din användarprofil har uppdaterats.",
-  "your_upgrade_is_here": "Din uppgradering är här",
-  "your_upgrade_is_here_description": "Förbättra din bokningsupplevelse genom att uppgradera till den nya planen och få tillgång till nya funktioner.",
+  
+  
   "you_are_all_set": "Allt är klart",
   "you_are_all_set_description": "Du har redan den senaste planen. Inget att uppgradera. Njut av de nya funktionerna och kontakta oss om du har några frågor!",
   "user_cannot_found_db": "Användaren verkar vara loggad men kan inte hittas i databasen",
@@ -889,8 +889,8 @@
   "recurring_event": "Återkommande möte",
   "recurring_event_description": "Personer kan prenumerera på återkommande händelser",
   "connect_and_join": "Anslut och gå med",
-  "cannot_be_used_with_paid_event_types": "Det kan inte användas med betalda händelsetyper",
-  "warning_payment_instant_meeting_event": "Omedelbara möten stöds ännu inte med återkommande händelser och betalningsappar",
+  
+  
   "warning_instant_meeting_experimental": "Experimentell: Omedelbara möten är för närvarande experimentella.",
   "starting": "Börjar",
   "disable_guests": "Inaktivera gäster",
@@ -921,7 +921,7 @@
   "cal_provide_jitsi_meeting_url": "Vi kommer att generera en Jitsi Meet URL för dig.",
   "cal_provide_huddle01_meeting_url": "{{appName}} kommer att generera en URL för Huddle01-möte.",
   "cal_provide_teams_meeting_url": "{{appName}} kommer att tillhandahålla en mötes-URL för MS Teams. OBS! MÅSTE HA ETT ARBETS- ELLER SKOLKONTO",
-  "require_payment": "Begär betalning",
+  
   "you_need_to_add_a_name": "Du måste lägga till ett namn",
   "commission_per_transaction": "provision per transaktion",
   "event_type_updated_successfully_description": "Din händelsetyp har uppdaterats.",
@@ -965,7 +965,7 @@
   "next_step": "Hoppa över steg",
   "prev_step": "Föregående steg",
   "install": "Installera",
-  "start_paid_trial": "Starta gratis provperiod",
+  
   "installed": "Installerad",
   "active_install_one": "{{count}} aktiv installation",
   "active_install_other": "{{count}} aktiva installationer",
@@ -983,7 +983,7 @@
   "check_here": "Kontrollera här",
   "conferencing": "Konferenser",
   "calendar": "Kalender",
-  "payments": "Betalningar",
+  
   "not_installed": "Inte installerad",
   "error_password_mismatch": "Lösenorden matchar inte.",
   "error_required_field": "Detta fält är obligatoriskt.",
@@ -1025,14 +1025,14 @@
   "all_apps": "Alla appar",
   "no_category_apps_description_calendar": "Lägg till en kalenderapp för att kontrollera konflikter och förhindra dubbelbokningar",
   "no_category_apps_description_conferencing": "Prova att lägga till en konferensapp för videosamtal med dina kunder",
-  "no_category_apps_description_payment": "Lägg till en betalningsapp för att underlätta transaktionen mellan dig och dina kunder",
+  
   "no_category_apps_description_analytics": "Lägg till en analysapp för dina bokningssidor",
   "no_category_apps_description_automation": "Lägg till en automationsapp att använda",
   "no_category_apps_description_other": "Lägg till en annan typ av app för att göra alla möjliga saker",
   "no_category_apps_description_messaging": "Lägg till en meddelandeapp för att skapa anpassade aviseringar och påminnelser",
   "no_category_apps_description_crm": "Lägg till en CRM-app för att hålla reda på vilka du har träffat",
   "installed_app_calendar_description": "Ställ in kalendrar att söka efter konflikter för att undvika dubbelbokningar.",
-  "installed_app_payment_description": "Konfigurera vilka betalningstjänster som ska användas när du debiterar dina kunder.",
+  
   "installed_app_analytics_description": "Konfigurera vilka analysappar som ska användas för dina bokningssidor",
   "installed_app_other_description": "Alla dina installerade appar från andra kategorier.",
   "installed_app_conferencing_description": "Konfigurera vilka konferensappar som ska användas",
@@ -1049,7 +1049,7 @@
   "permissions": "Behörigheter",
   "terms_and_privacy": "Villkor och sekretess",
   "published_by": "Publicerad av {{author}}",
-  "subscribe": "Prenumerera",
+  
   "buy": "Köp",
   "install_app": "Installera appen",
   "categories": "Kategorier",
@@ -1064,14 +1064,14 @@
   "create_events_on": "Skapa händelser i",
   "enterprise_license": "Detta är en kommersiell funktion",
   "enterprise_license_locally": "Du kan testa denna funktion lokalt men inte i produktion.",
-  "enterprise_license_sales": "För att köpa en kommersiell licens, vänligen kontakta vårt säljteam. Om en licensnyckel redan är på plats, vänligen kontakta support@cal.com för hjälp.",
+  
   "missing_license": "Licens saknas",
   "next_steps": "Kommande steg",
   "acquire_commercial_license": "Skaffa en kommersiell licens",
   "the_infrastructure_plan": "Infrastrukturplanen är användningsbaserad och har start-vänliga rabatter.",
   "prisma_studio_tip": "Skapa ett konto via Prisma Studio",
   "prisma_studio_tip_description": "Lär dig hur du konfigurerar din första användare",
-  "contact_sales": "Kontakta försäljning",
+  
   "error_404": "404 - Sidan kan inte hittas",
   "default": "Standard",
   "set_to_default": "Ange som standard",
@@ -1231,7 +1231,7 @@
   "developer_documentation": "Utvecklardokumentation",
   "get_in_touch": "Kontakta oss",
   "contact_support": "Kontakta support",
-  "premium_support": "Premiumsupport",
+  
   "community_support": "Communitysupport",
   "feedback": "Feedback",
   "submitted_feedback": "Tack för din feedback!",
@@ -1290,14 +1290,14 @@
   "new_workflow_description": "I arbetsflöden kan du skicka påminnelser och aviseringar automatiskt.",
   "active_on": "Aktiv på",
   "workflow_updated_successfully": "{{workflowName}} uppdaterades framgångsrikt",
-    "premium_username": "Detta är ett premiumanvändarnamn, få ditt för {{price}}",
+    
   "current": "Nuvarande",
-  "premium": "premium",
+  
   "standard": "standard",
   "confirm_username_change_dialog_title": "Bekräfta ändring av användarnamn",
-  "change_username_standard_to_premium": "När du ändrar från ett standard- till ett premium-användarnamn, kommer du att tas till kassan för att uppgradera.",
-  "change_username_premium_to_standard": "När du ändrar från ett premium- till ett standard-användarnamn, kommer du att tas till kassan för att nedgradera.",
-    "stripe_description": "Kräver betalning för bokningar (0,5 % + 0,10 € provision per transaktion)",
+  
+  
+    
   "trial_expired": "Din provperiod har gått ut",
   "remove_app": "Ta bort app",
   "yes_remove_app": "Ja, ta bort appen",
@@ -1366,16 +1366,16 @@
   "event_date_variable": "Händelsedatum",
   "event_time_variable": "Händelsetid",
   "organizer_name_variable": "Arrangörens namn",
-  "app_upgrade_description": "För att kunna använda den här funktionen måste du uppgradera till ett Pro-konto.",
+  
   "invalid_number": "Ogiltigt telefonnummer",
   "invalid_url_error_message": "Ogiltig URL för {{label}}. Exempel-URL: {{sampleUrl}}",
   "navigate": "Navigera",
   "open": "Öppna",
   "close": "Stäng",
-  "upgrade": "Uppgradera",
-  "upgrade_to_access_recordings_title": "Uppgradera för att komma åt inspelningar",
-  "upgrade_to_access_recordings_description": "Inspelningar är endast tillgängliga i vår teamprenumeration. Uppgradera för att börja spela in dina samtal",
-  "upgrade_to_cal_ai_phone_number_description": "Uppgradera till Enterprise för att generera ett AI-agent telefonnummer som kan ringa gäster för att boka samtal",
+  
+  
+  
+  
   "recordings_are_part_of_the_teams_plan": "Inspelningar ingår i teamplanen",
   "team_feature_teams": "Detta är en Team-funktion. Uppgradera till Team för att se teamets tillgänglighet.",
   "team_feature_workflows": "Detta är en Team-funktion. Uppgradera till Team för att automatisera dina händelseaviseringar och påminnelser med arbetsflöden.",
@@ -1389,7 +1389,7 @@
   "company_size": "Företagets storlek",
   "what_help_needed": "Vad behöver du hjälp med?",
   "variable_format": "Variabelformat",
-  "webhook_subscriber_url_reserved": "Webhook-prenumerantens url är redan definierad",
+  
   "custom_input_as_variable_info": "Ignorera alla specialtecken i etiketten för ytterligare indata (använd endast bokstäver och siffror), använd versaler för alla bokstäver och ersätt blanktecken med understreck.",
   "using_booking_questions_as_variables": "Hur använder jag bokningsfrågor som variabler?",
   "download_desktop_app": "Ladda ned skrivbordsappen",
@@ -1413,8 +1413,8 @@
   "event_limit_tab_description": "Hur ofta du kan bokas",
   "event_advanced_tab_description": "Kalenderinställningar och mer...",
   "event_advanced_tab_title": "Avancerat",
-  "event_payments_tab_title": "Betalningar",
-  "event_payments_tab_description": "Ställ in betalningar för evenemang",
+  
+  
   "event_setup_multiple_duration_error": "Konfiguration av händelse: Flera varaktigheter kräver minst 1 alternativ.",
   "event_setup_multiple_duration_default_error": "Konfiguration av händelse: Välj en giltig standardvaraktighet.",
   "event_setup_booking_limits_error": "Bokningsgränserna ska vara i stigande ordning. [dag,vecka,månad,år]",
@@ -1499,7 +1499,7 @@
   "connect_calendars_from_app_store": "Du kan lägga till fler kalendrar från appbutiken",
   "connect_conference_apps": "Anslut konferensappar",
   "connect_calendar_apps": "Anslut kalenderappar",
-  "connect_payment_apps": "Anslut betalningsappar",
+  
   "connect_automation_apps": "Anslut automationsappar",
   "connect_analytics_apps": "Anslut analysappar",
   "connect_other_apps": "Anslut andra appar",
@@ -1621,7 +1621,7 @@
   "password_reset_email": "Ett e-postmeddelande är på väg till {{email}} med anvisningar för att återställa ditt lösenord.",
   "password_reset_leading": "Om du inte fick e-postmeddelandet snart, kontrollera att e-postadressen du angav är korrekt, kontrollera din skräppostmapp eller kontakta kundsupport om problemet kvarstår.",
   "password_updated": "Lösenord uppdaterat!",
-  "pending_payment": "Väntande betalning",
+  
   "pending_invites": "Väntande inbjudningar",
   "pending_organization_invites": "Väntande organisationsinbjudningar",
   "not_on_cal": "Inte på {{appName}}",
@@ -1734,7 +1734,7 @@
   "route_to": "Dirigera till",
   "test_preview_description": "Testa ditt omdirigeringsformulär utan att skicka data",
   "test_routing": "Testa routing",
-  "payment_app_disabled": "En administratör har inaktiverat en betalningsapp",
+  
   "edit_event_type": "Redigera händelsetyp",
   "only_admin_can_see_members_of_org": "Denna organisation är privat, och endast organisationens administratör eller ägare kan se dess medlemmar.",
   "only_admin_can_manage_sso_org": "Endast organisationens administratör eller ägare kan hantera SSO-inställningar",
@@ -1755,8 +1755,8 @@
   "email_body_slug_replacement_notice": "En administratör i <strong>{{teamName}}</strong>-teamet har ersatt din händelsetyp <strong>/{{slug}}</strong> med en hanterad händelsetyp som hen kontrollerar.",
   "email_body_slug_replacement_info": "Din länk fortsätter att fungera, men vissa inställningar för den kan ha ändrats. Du kan granska den i händelsetyper.",
   "email_body_slug_replacement_suggestion": "Kontakta din administratör om du har några frågor om händelsetypen.<br /><br />Lycka till med schemaläggningen! <br />Cal.com-teamet",
-  "disable_payment_app": "Administratören har inaktiverat {{appName}} vilket påverkar din eventtyp {{title}}. Deltagare kan fortfarande boka denna typ av event men kommer inte att uppmanas att betala. Du kan dölja eventtypen för att förhindra detta tills din administratör återaktiverar din betalningsmetod.",
-  "payment_disabled_still_able_to_book": "Deltagare kan fortfarande boka denna typ av event men kommer inte att uppmanas att betala. Du kan dölja eventtypen för att förhindra detta tills din administratör återaktiverar din betalningsmetod.",
+  
+  
   "app_disabled_with_event_type": "Administratören har inaktiverat {{appName}} vilket påverkar din händelsetyp {{title}}.",
   "app_disabled_video": "Administratören har inaktiverat {{appName}} vilket kan påverka dina händelsetyper. Om du har händelsetyper med {{appName}} som plats, används Cal Video som standard.",
   "app_disabled_subject": "{{appName}} har inaktiverats",
@@ -1842,8 +1842,8 @@
   "round_robin_hosts": "Round Robin-värdar",
   "minimum_round_robin_hosts_count": "Antal värdar som krävs för att delta",
   "hosts": "Värdar",
-  "upgrade_to_enable_feature": "Du behöver skapa ett team för att aktivera denna funktion. Klicka här för att skapa ett team.",
-  "orgs_upgrade_to_enable_feature": "Du behöver uppgradera till vår företagsplan för att aktivera den här funktionen.",
+  
+  
   "new_attendee": "Ny deltagare",
   "awaiting_approval": "Väntar på godkännande",
   "requires_google_calendar": "Den här appen kräver en Google Kalender-anslutning",
@@ -1944,9 +1944,9 @@
   "add_a_booking_question": "Lägg till en fråga",
   "identifier": "Identifierare",
   "duplicate_email": "E-postadressen är duplicerad",
-  "booking_with_payment_cancelled": "Det går inte längre att betala för den här händelsen",
-  "booking_with_payment_cancelled_already_paid": "En återbetalning för den här bokningsbetalningen är på väg.",
-  "booking_with_payment_cancelled_refunded": "Den här bokningsbetalningen har återbetalats.",
+  
+  
+  
   "booking_confirmation_failed": "Bokningsbekräftelsen misslyckades",
   "not_enough_seats": "Inte tillräckligt med platser",
   "form_builder_field_already_exists": "Det finns redan ett fält med det här namnet",
@@ -2079,31 +2079,31 @@
   "clear_filters": "Rensa filter",
   "clear": "Rensa",
   "hold": "Spärr",
-  "on_booking_option": "Samla in betalning vid bokning",
-  "hold_option": "Avgift för utebliven närvaro",
-  "card_held": "Kort spärrat",
-  "charge_card": "Debitera kort",
-  "card_charged": "Kort debiterat",
-  "no_show_fee_amount": "Avgift på {{amount, currency}} för utebliven närvaro",
-  "no_show_fee": "Avgift för utebliven närvaro",
-  "submit_card": "Använd kort",
-  "submit_payment_information": "Ange betalningsinformation",
-  "meeting_awaiting_payment_method": "Ditt möte väntar på en betalningsmetod",
-  "no_show_fee_charged_email_subject": "Avgift på {{amount, currency}} för utebliven närvaro debiteras för {{title}} {{date}}",
-  "no_show_fee_charged_text_body": "Avgift för utebliven närvaro har debiterats",
-  "no_show_fee_charged_subtitle": "Avgift på {{amount, currency}} för utebliven närvaro har debiterats för följande händelse",
-  "error_charging_card": "Något gick fel när avgiften för utebliven närvaro debiterades. Försök igen senare.",
-  "collect_no_show_fee": "Samla in avgift för utebliven närvaro",
-  "no_show_fee_charged": "Avgift för utebliven närvaro har debiterats",
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   "insights": "Insikter",
   "routing_forms": "Routningsformulär",
   "testing_workflow_info_message": "När det här arbetsflödet testas ska du vara medveten om att e-postmeddelanden och SMS endast kan schemaläggas minst en timme i förväg",
   "insights_no_data_found_for_filter": "Inga data hittades för valt filter eller valda datum.",
-  "acknowledge_booking_no_show_fee": "Jag bekräftar att en avgift på {{amount, currency}} för utebliven närvaro debiteras mitt kort om jag inte deltar i händelsen.",
-  "card_details": "Kortuppgifter",
+  
+  
   "something_went_wrong_on_our_end": "Något gick fel från vår sida. Kontakta vårt supportteam så fixar vi det åt dig direkt.",
   "please_provide_following_text_to_suppport": "Ange följande text när du kontaktar supporten så att vi kan hjälpa dig bättre",
-  "seats_and_no_show_fee_error": "För närvarande går det inte att aktivera platser och ta ut en avgift för utebliven närvaro",
+  
   "complete_your_booking": "Slutför din bokning",
   "complete_your_booking_subject": "Slutför din bokning: {{title}} {{date}}",
   "confirm_your_details": "Bekräfta dina uppgifter",
@@ -2121,12 +2121,12 @@
   "one_year": "1 år",
   "team_invite_received": "Du har blivit inbjuden att gå med i {{teamName}}",
   "currency_string": "{{amount, currency}}",
-  "charge_card_dialog_body": "Du är på väg att debitera deltagaren {{amount, currency}}. Vill du verkligen fortsätta?",
+  
   "charge_attendee": "Debitera deltagare {{amount, currency}}",
-  "payment_app_commission": "Kräv betalning ({{paymentFeePercentage}} % + {{fee, currency}} provision per transaktion)",
+  
   "email_invite_team": "{{email}} har bjudits in",
   "email_invite_team_bulk": "{{userCount}} användare har bjudits in",
-  "error_collecting_card": "Fel vid hantering av kort",
+  
   "image_size_limit_exceed": "Uppladdad bild får inte överstiga 5 MB",
   "unauthorized_workflow_error_message": "{{errorCode}}: Du har inte behörighet att aktivera eller inaktivera detta arbetsflöde",
   "inline_embed": "Enhetligt inbäddad",
@@ -2395,7 +2395,7 @@
   "unlocked": "Olåst",
   "lock_timezone_toggle_on_booking_page": "Lås tidszon på bokningssidan",
   "description_lock_timezone_toggle_on_booking_page": "För att låsa tidszonen på bokningssidan, användbart för personliga händelser.",
-  "event_setup_multiple_payment_apps_error": "Du kan bara ha en betalningsapp aktiverad per händelsetyp.",
+  
   "number_in_international_format": "Vänligen ange nummer i internationellt format.",
   "install_calendar": "Installera kalender",
   "branded_subdomain": "Varumärkesunderdomän",
@@ -2412,7 +2412,7 @@
   "enterprise_description": "Uppgradera till Enterprise för att skapa din organisation",
   "create_your_org": "Skapa din Organisation",
     "create_your_enterprise_description": "Uppgradera till Enterprise och få tillgång till Active Directory Sync, SCIM Automatisk Användarprovisionering, Cal.ai Röstagenter, Admin API:er och mer!",
-  "other_payment_app_enabled": "Du kan bara aktivera en betalningsapp per eventtyp",
+  
   "admin_delete_organization_description": "<ul><li>Team som är medlemmar i denna organisation kommer också att raderas tillsammans med deras eventtyper</li><li>Användare som var en del av organisationen kommer inte att raderas men deras användarnamn kommer att ändras för att tillåta dem att existera utanför organisationen</li><li>Användareventtyper skapade efter att användaren var i organisationen kommer att raderas</li><li>Migrerade användareventtyper kommer inte att raderas</li></ul>",
   "admin_delete_organization_title": "Radera {{organizationName}}?",
   "published": "Publicerad",
@@ -2432,12 +2432,12 @@
   "uprade_to_create_instant_bookings": "Uppgradera till Enterprise och låt gäster delta i ett omedelbart samtal som deltagarna kan hoppa rakt in i. Detta är endast för teamhändelsetyper",
   "dont_want_to_wait": "Vill du inte vänta?",
   "meeting_started": "Mötet har startat",
-  "pay_and_book": "Betala för att boka",
+  
   "cal_ai_event_tab_description": "Låt AI-agenter boka åt dig",
   "booking_not_found_error": "Kunde inte hitta bokningen",
   "booking_seats_full_error": "Bokningsplatserna är fulla",
-  "missing_payment_credential_error": "Saknar betalningsuppgifter",
-  "missing_payment_app_id_error": "Saknar betalningsapp-ID",
+  
+  
   "not_enough_available_seats_error": "Bokningen har inte tillräckligt med tillgängliga platser",
   "user_redirect_title": "{{username}} är för närvarande borta en kort stund.",
   "user_redirect_description": "Under tiden kommer {{profile.username}} att ansvara för alla nya schemalagda möten på uppdrag av {{username}}.",
@@ -2534,7 +2534,7 @@
   "email|existing_user_added_link_changed": "Din länk har ändrats från <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> till <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>, men oroa dig inte, alla tidigare länkar fungerar fortfarande och omdirigeras korrekt.<br /><br />Observera: Alla dina personliga eventtyper har flyttats till <strong>{{teamName}}</strong>-organisationen, vilket även kan inkludera potentiella personliga länkar.<br /><br />Logga in och se till att du inte har några privata event på ditt nya organisationskonto.<br /><br />För personliga event rekommenderar vi att skapa ett nytt konto med en personlig e-postadress.<br /><br />Njut av din nya rena länk: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Din organisation har skapats",
   "your_current_plan": "Din nuvarande plan",
-  "organization_price_per_user_month": "$37 per användare per månad (minst 30 platser)",
+  
   "privacy_organization_description": "Hantera sekretessinställningar för din organisation",
   "privacy": "Sekretess",
   "team_will_be_under_org": "Nya team kommer att vara under din organisation",
@@ -2631,7 +2631,7 @@
   "proceeding_agreement": "Genom att fortsätta godkänner du våra",
   "terms": "Villkor",
   "always_show_x_days": "Visa alltid {{x}} dagar tillgängliga",
-  "unable_to_subscribe_to_the_platform": "Ett fel uppstod vid försök att prenumerera på plattformen, försök igen senare",
+  
   "updating_oauth_client_error": "Ett fel uppstod vid uppdatering av OAuth-klienten, försök igen senare",
   "creating_oauth_client_error": "Ett fel uppstod vid skapande av OAuth-klienten, försök igen senare",
   "event_type_color": "Färg på händelsetyp",
@@ -2692,9 +2692,9 @@
   "outlook_connect_atom_label": "Anslut Outlook Kalender",
   "outlook_connect_atom_already_connected_label": "Ansluten Outlook Kalender",
   "outlook_connect_atom_loading_label": "Kontrollerar Outlook Kalender",
-  "stripe_connect_atom_label": "Anslut till Stripe",
-  "stripe_connect_atom_already_connected_label": "Stripe ansluten",
-  "stripe_connect_atom_loading_label": "Kontrollerar Stripe-uppgifter",
+  
+  
+  
   "booking_question_response_variables": "Variabler för bokningsfrågesvar",
   "managed_by_teamAdmins": "Hanteras av {{teamAdmins}}",
   "number_of_options": "{{count}} alternativ",
@@ -2718,10 +2718,10 @@
   "month_to_date": "månad till datum",
   "year_to_date": "år till datum",
   "custom_range": "anpassat intervall",
-  "refund_policy": "Återbetalningspolicy",
+  
   "always": "Alltid",
   "never": "Aldrig",
-  "payment_option": "Betalningsalternativ",
+  
   "if_cancelled": "Om avbokad",
   "before": "före",
   "show_all_columns": "Visa alla kolumner",
