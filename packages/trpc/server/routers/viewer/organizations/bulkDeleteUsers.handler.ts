@@ -1,4 +1,3 @@
-import { TeamBilling } from "@calcom/ee/billing/teams";
 import { isOrganisationAdmin } from "@calcom/lib/server/queries/organisations";
 import { ProfileRepository } from "@calcom/lib/server/repository/profile";
 import { prisma } from "@calcom/prisma";
@@ -106,9 +105,6 @@ export async function bulkDeleteUsersHandler({ ctx, input }: BulkDeleteUsersHand
     removeManagedEventTypes,
     removeHostAssignment,
   ]);
-
-  const teamBilling = await TeamBilling.findAndInit(currentUserOrgId);
-  await teamBilling.updateQuantity();
 
   return {
     success: true,

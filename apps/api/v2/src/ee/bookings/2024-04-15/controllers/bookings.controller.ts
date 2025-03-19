@@ -11,7 +11,6 @@ import { GetUser } from "@/modules/auth/decorators/get-user/get-user.decorator";
 import { Permissions } from "@/modules/auth/decorators/permissions/permissions.decorator";
 import { ApiAuthGuard } from "@/modules/auth/guards/api-auth/api-auth.guard";
 import { PermissionsGuard } from "@/modules/auth/guards/permissions/permissions.guard";
-import { BillingService } from "@/modules/billing/services/billing.service";
 import { OAuthClientRepository } from "@/modules/oauth-clients/oauth-client.repository";
 import { OAuthFlowService } from "@/modules/oauth-clients/services/oauth-flow.service";
 import { PrismaReadService } from "@/modules/prisma/prisma-read.service";
@@ -95,7 +94,6 @@ export class BookingsController_2024_04_15 {
     private readonly oAuthFlowService: OAuthFlowService,
     private readonly prismaReadService: PrismaReadService,
     private readonly oAuthClientRepository: OAuthClientRepository,
-    private readonly billingService: BillingService,
     private readonly config: ConfigService,
     private readonly apiKeyRepository: ApiKeyRepository
   ) {}
@@ -171,13 +169,6 @@ export class BookingsController_2024_04_15 {
       const booking = await handleNewBooking(
         await this.createNextApiBookingRequest(req, oAuthClientId, locationUrl, isEmbed)
       );
-      if (booking.userId && booking.uid && booking.startTime) {
-        void (await this.billingService.increaseUsageByUserId(booking.userId, {
-          uid: booking.uid,
-          startTime: booking.startTime,
-          fromReschedule: booking.fromReschedule,
-        }));
-      }
       return {
         status: SUCCESS_STATUS,
         data: booking,
@@ -203,9 +194,6 @@ export class BookingsController_2024_04_15 {
         const res = await handleCancelBooking(
           await this.createNextApiBookingRequest(req, oAuthClientId, undefined, isEmbed)
         );
-        if (!res.onlyRemovedAttendee) {
-          void (await this.billingService.cancelUsageByBookingUid(res.bookingUid));
-        }
         return {
           status: SUCCESS_STATUS,
           data: {
@@ -266,15 +254,6 @@ export class BookingsController_2024_04_15 {
         await this.createNextApiRecurringBookingRequest(req, oAuthClientId, undefined, isEmbed)
       );
 
-      createdBookings.forEach(async (booking) => {
-        if (booking.userId && booking.uid && booking.startTime) {
-          void (await this.billingService.increaseUsageByUserId(booking.userId, {
-            uid: booking.uid,
-            startTime: booking.startTime,
-          }));
-        }
-      });
-
       return {
         status: SUCCESS_STATUS,
         data: createdBookings,
@@ -303,10 +282,6 @@ export class BookingsController_2024_04_15 {
         const now = new Date();
         // add a 10 secondes delay to the usage incrementation to give some time to cancel the booking if needed
         now.setSeconds(now.getSeconds() + 10);
-        void (await this.billingService.increaseUsageByUserId(instantMeeting.userId, {
-          uid: instantMeeting.bookingUid,
-          startTime: now,
-        }));
       }
 
       return {

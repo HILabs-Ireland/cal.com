@@ -1,6 +1,5 @@
-export const PREMIUM_MONTHLY_PLAN_PRICE = process.env.NEXT_PUBLIC_STRIPE_PREMIUM_PLAN_PRICE_MONTHLY || "";
+/* eslint-disable turbo/no-undeclared-env-vars */
 export const PREMIUM_PLAN_PRODUCT_ID = process.env.NEXT_PUBLIC_STRIPE_PREMIUM_PLAN_PRODUCT_ID || "";
-export const STRIPE_TEAM_MONTHLY_PRICE_ID = process.env.NEXT_PUBLIC_STRIPE_TEAM_MONTHLY_PRICE_ID || "";
 
 export const paymentOptions = [
   {

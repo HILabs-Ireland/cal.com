@@ -1,8 +1,6 @@
 import { API_VERSIONS_VALUES } from "@/lib/api-versions";
-import { PlatformPlan } from "@/modules/auth/decorators/billing/platform-plan.decorator";
 import { Roles } from "@/modules/auth/decorators/roles/roles.decorator";
 import { ApiAuthGuard } from "@/modules/auth/guards/api-auth/api-auth.guard";
-import { PlatformPlanGuard } from "@/modules/auth/guards/billing/platform-plan.guard";
 import { IsAdminAPIEnabledGuard } from "@/modules/auth/guards/organizations/is-admin-api-enabled.guard";
 import { IsOrgGuard } from "@/modules/auth/guards/organizations/is-org.guard";
 import { RolesGuard } from "@/modules/auth/guards/roles/roles.guard";
@@ -37,13 +35,12 @@ import { SkipTakePagination } from "@calcom/platform-types";
   path: "/v2/organizations/:orgId",
   version: API_VERSIONS_VALUES,
 })
-@UseGuards(ApiAuthGuard, IsOrgGuard, RolesGuard, PlatformPlanGuard, IsAdminAPIEnabledGuard)
+@UseGuards(ApiAuthGuard, IsOrgGuard, RolesGuard, IsAdminAPIEnabledGuard)
 @DocsTags("Orgs / Attributes")
 export class OrganizationsAttributesController {
   constructor(private readonly organizationsAttributesService: OrganizationAttributesService) {}
   // Gets all attributes for an organization
   @Roles("ORG_MEMBER")
-  @PlatformPlan("ESSENTIALS")
   @Get("/attributes")
   @ApiOperation({ summary: "Get all attributes" })
   async getOrganizationAttributes(
@@ -61,7 +58,6 @@ export class OrganizationsAttributesController {
 
   // Gets a single attribute for an organization
   @Roles("ORG_MEMBER")
-  @PlatformPlan("ESSENTIALS")
   @Get("/attributes/:attributeId")
   @ApiOperation({ summary: "Get an attribute" })
   async getOrganizationAttribute(
@@ -77,7 +73,6 @@ export class OrganizationsAttributesController {
 
   // Creates an attribute for an organization
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @Post("/attributes")
   @ApiOperation({ summary: "Create an attribute" })
   async createOrganizationAttribute(
@@ -96,7 +91,6 @@ export class OrganizationsAttributesController {
 
   // Updates an attribute for an organization
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @Patch("/attributes/:attributeId")
   @ApiOperation({ summary: "Update an attribute" })
   async updateOrganizationAttribute(
@@ -117,7 +111,6 @@ export class OrganizationsAttributesController {
 
   // Deletes an attribute for an organization
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @Delete("/attributes/:attributeId")
   @ApiOperation({ summary: "Delete an attribute" })
   async deleteOrganizationAttribute(

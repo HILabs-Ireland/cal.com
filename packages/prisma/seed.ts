@@ -159,10 +159,6 @@ async function createPlatformAndSetupUser({
 
   const platformUser = await setupPlatformUser(user);
 
-  console.log(
-    `👤 Upserted '${user.username}' with email "${user.email}" & password "${user.password}". Booking page 👉 ${process.env.NEXT_PUBLIC_WEBAPP_URL}/${user.username}`
-  );
-
   const { role = MembershipRole.OWNER, username } = platformUser;
 
   if (!!team) {
@@ -171,15 +167,6 @@ async function createPlatformAndSetupUser({
       userId: platformUser.id,
       role: role as MembershipRole,
       username: user.username,
-    });
-
-    await prisma.platformBilling.create({
-      data: {
-        id: team?.id,
-        plan: "STARTER",
-        customerId: "cus_123",
-        subscriptionId: "sub_123",
-      },
     });
 
     await prisma.platformOAuthClient.create({
@@ -240,10 +227,6 @@ async function createTeamAndAddUsers(
     return;
   }
 
-  console.log(
-    `🏢 Created team '${teamInput.name}' - ${process.env.NEXT_PUBLIC_WEBAPP_URL}/team/${team.slug}`
-  );
-
   for (const user of users) {
     const { role = MembershipRole.OWNER, id, username } = user;
     await prisma.membership.create({
@@ -259,6 +242,17 @@ async function createTeamAndAddUsers(
 
   return team;
 }
+
+const generatePassword = (existingPassword: string | undefined): string => {
+  if (existingPassword) return existingPassword; // Use existing hash if available
+  const length = 16;
+  const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    password += charset[Math.floor(Math.random() * charset.length)];
+  }
+  return password;
+};
 
 async function createOrganizationAndAddMembersAndTeams({
   org: { orgData, members: orgMembers },
@@ -305,10 +299,16 @@ async function createOrganizationAndAddMembersAndTeams({
 
       const batchResults = await Promise.all(
         batch.map(async (member) => {
+          const theme =
+            member.memberData.theme === "dark" || member.memberData.theme === "light"
+              ? member.memberData.theme
+              : undefined;
+
           const newUser = await createUserAndEventType({
             user: {
               ...member.memberData,
-              password: member.memberData.password.create?.hash,
+              theme: theme,
+              password: generatePassword(member.memberData.password.create?.hash),
             },
             eventTypes: [
               {

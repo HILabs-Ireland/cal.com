@@ -107,8 +107,10 @@ export const viewerTeamsRouter = router({
     return handler(opts);
   }),
   publish: authedProcedure.input(ZPublishInputSchema).mutation(async (opts) => {
-    const handler = await importHandler(namespaced("publish"), () => import("./publish.handler"));
-    return handler(opts);
+    return {
+      url: "null",
+      message: "This endpoint is deprecated",
+    };
   }),
   /** This is a temporal endpoint so we can progressively upgrade teams to the new billing system. */
   getUpgradeable: authedProcedure.query(async ({ ctx }) => {

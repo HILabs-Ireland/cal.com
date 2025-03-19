@@ -1,8 +1,6 @@
 import { API_VERSIONS_VALUES } from "@/lib/api-versions";
-import { PlatformPlan } from "@/modules/auth/decorators/billing/platform-plan.decorator";
 import { Roles } from "@/modules/auth/decorators/roles/roles.decorator";
 import { ApiAuthGuard } from "@/modules/auth/guards/api-auth/api-auth.guard";
-import { PlatformPlanGuard } from "@/modules/auth/guards/billing/platform-plan.guard";
 import { IsAdminAPIEnabledGuard } from "@/modules/auth/guards/organizations/is-admin-api-enabled.guard";
 import { IsOrgGuard } from "@/modules/auth/guards/organizations/is-org.guard";
 import { RolesGuard } from "@/modules/auth/guards/roles/roles.guard";
@@ -28,13 +26,12 @@ import { SUCCESS_STATUS } from "@calcom/platform-constants";
   path: "/v2/organizations/:orgId",
   version: API_VERSIONS_VALUES,
 })
-@UseGuards(ApiAuthGuard, IsOrgGuard, RolesGuard, PlatformPlanGuard, IsAdminAPIEnabledGuard)
+@UseGuards(ApiAuthGuard, IsOrgGuard, RolesGuard, IsAdminAPIEnabledGuard)
 @DocsTags("Orgs / Attributes / Options")
 export class OrganizationsOptionsAttributesController {
   constructor(private readonly organizationsAttributesOptionsService: OrganizationAttributeOptionService) {}
 
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @Post("/attributes/:attributeId/options")
   @ApiOperation({ summary: "Create an attribute option" })
   async createOrganizationAttributeOption(
@@ -55,7 +52,6 @@ export class OrganizationsOptionsAttributesController {
   }
 
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @Delete("/attributes/:attributeId/options/:optionId")
   @ApiOperation({ summary: "Delete an attribute option" })
   async deleteOrganizationAttributeOption(
@@ -76,7 +72,6 @@ export class OrganizationsOptionsAttributesController {
   }
 
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @Patch("/attributes/:attributeId/options/:optionId")
   @ApiOperation({ summary: "Update an attribute option" })
   async updateOrganizationAttributeOption(
@@ -99,7 +94,6 @@ export class OrganizationsOptionsAttributesController {
   }
 
   @Roles("ORG_MEMBER")
-  @PlatformPlan("ESSENTIALS")
   @Get("/attributes/:attributeId/options")
   @ApiOperation({ summary: "Get all attribute options" })
   async getOrganizationAttributeOptions(
@@ -117,7 +111,6 @@ export class OrganizationsOptionsAttributesController {
   }
 
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @Post("/attributes/options/:userId")
   @ApiOperation({ summary: "Assign an attribute to a user" })
   async assignOrganizationAttributeOptionToUser(
@@ -138,7 +131,6 @@ export class OrganizationsOptionsAttributesController {
   }
 
   @Roles("ORG_MEMBER")
-  @PlatformPlan("ESSENTIALS")
   @Delete("/attributes/options/:userId/:attributeOptionId")
   @ApiOperation({ summary: "Unassign an attribute from a user" })
   async unassignOrganizationAttributeOptionFromUser(
@@ -159,7 +151,6 @@ export class OrganizationsOptionsAttributesController {
   }
 
   @Roles("ORG_MEMBER")
-  @PlatformPlan("ESSENTIALS")
   @Get("/attributes/options/:userId")
   @ApiOperation({ summary: "Get all attribute options for a user" })
   async getOrganizationAttributeOptionsForUser(

@@ -367,21 +367,12 @@ export default async function main() {
   }
 
   // Payment apps
-  if (
-    process.env.STRIPE_CLIENT_ID &&
-    process.env.STRIPE_PRIVATE_KEY &&
-    process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY &&
-    process.env.STRIPE_WEBHOOK_SECRET &&
-    process.env.PAYMENT_FEE_FIXED &&
-    process.env.PAYMENT_FEE_PERCENTAGE
-  ) {
+  if (process.env.PAYMENT_FEE_FIXED && process.env.PAYMENT_FEE_PERCENTAGE) {
     await createApp("stripe", "stripepayment", ["payment"], "stripe_payment", {
-      client_id: process.env.STRIPE_CLIENT_ID,
-      client_secret: process.env.STRIPE_PRIVATE_KEY,
+      client_id: "",
+      client_secret: "",
       payment_fee_fixed: Number(process.env.PAYMENT_FEE_FIXED),
       payment_fee_percentage: Number(process.env.PAYMENT_FEE_PERCENTAGE),
-      public_key: process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY,
-      webhook_secret: process.env.STRIPE_WEBHOOK_SECRET,
     });
   }
 

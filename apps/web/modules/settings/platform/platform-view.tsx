@@ -1,7 +1,6 @@
 "use client";
 
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { useState, useEffect } from "react";
 
 import Shell from "@calcom/features/shell/Shell";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
@@ -10,23 +9,16 @@ import { showToast } from "@calcom/ui";
 import { useOAuthClients } from "@lib/hooks/settings/platform/oauth-clients/useOAuthClients";
 import { useDeleteOAuthClient } from "@lib/hooks/settings/platform/oauth-clients/usePersistOAuthClient";
 
-import { HelpCards } from "@components/settings/platform/dashboard/HelpCards";
-import NoPlatformPlan from "@components/settings/platform/dashboard/NoPlatformPlan";
 import { OAuthClientsList } from "@components/settings/platform/dashboard/oauth-clients-list";
 import { useGetUserAttributes } from "@components/settings/platform/hooks/useGetUserAttributes";
-import { PlatformPricing } from "@components/settings/platform/pricing/platform-pricing";
 
 const queryClient = new QueryClient();
 
 export default function Platform() {
   const { t } = useLocale();
-  const [initialClientId, setInitialClientId] = useState("");
-  const [initialClientName, setInitialClientName] = useState("");
-
   const { data, isLoading: isOAuthClientLoading, refetch: refetchClients } = useOAuthClients();
 
-  const { isUserLoading, isUserBillingDataLoading, isPlatformUser, isPaidUser, userBillingData, userOrgId } =
-    useGetUserAttributes();
+  const { isUserLoading, isPlatformUser } = useGetUserAttributes();
 
   const { mutateAsync, isPending: isDeleting } = useDeleteOAuthClient({
     onSuccess: () => {
@@ -39,28 +31,7 @@ export default function Platform() {
     await mutateAsync({ id: id });
   };
 
-  useEffect(() => {
-    setInitialClientId(data[0]?.id);
-    setInitialClientName(data[0]?.name);
-  }, [data]);
-
   if (isUserLoading || isOAuthClientLoading) return <div className="m-5">Loading...</div>;
-
-  if (isUserBillingDataLoading && !userBillingData) {
-    return <div className="m-5">Loading...</div>;
-  }
-
-  if (isPlatformUser && !isPaidUser)
-    return (
-      <PlatformPricing
-        teamId={userOrgId}
-        heading={
-          <div className="mb-5 text-center text-2xl font-semibold">
-            <h1>Subscribe to Platform</h1>
-          </div>
-        }
-      />
-    );
 
   if (isPlatformUser) {
     return (
@@ -75,7 +46,6 @@ export default function Platform() {
             withoutSeo={true}
             withoutMain={false}
             isPlatformUser={true}>
-            <HelpCards />
             <OAuthClientsList oauthClients={data} isDeleting={isDeleting} handleDelete={handleDelete} />
           </Shell>
         </div>
@@ -92,9 +62,8 @@ export default function Platform() {
         hideHeadingOnMobile
         withoutMain={false}
         withoutSeo={true}
-        SidebarContainer={<></>}>
-        <NoPlatformPlan />
-      </Shell>
+        SidebarContainer={<></>}
+      />
     </div>
   );
 }
