@@ -1605,14 +1605,17 @@ enum SMSLockState {
 }
 
 model PlatformBilling {
-  id                Int      @id @unique // team id
-  customerId        String   @unique
-  subscriptionId    String?
-  plan              String   @default("none")
+  id Int @id @unique // team id
+
+  customerId     String  @unique
+  subscriptionId String?
+  plan           String  @default("none")
+
   billingCycleStart Int?
   billingCycleEnd   Int?
   overdue           Boolean? @default(false)
-  team              Team     @relation(fields: [id], references: [id], onDelete: Cascade)
+
+  team Team @relation(fields: [id], references: [id], onDelete: Cascade)
 }
 
 enum AttributeType {
