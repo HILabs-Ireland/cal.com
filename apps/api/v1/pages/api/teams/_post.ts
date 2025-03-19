@@ -1,10 +1,5 @@
 import type { NextApiRequest } from "next";
 
-import { getStripeCustomerIdFromUserId } from "@calcom/app-store/stripepayment/lib/customer";
-import stripe from "@calcom/app-store/stripepayment/lib/server";
-import { getDubCustomer } from "@calcom/features/auth/lib/dub";
-import { IS_PRODUCTION } from "@calcom/lib/constants";
-import { WEBAPP_URL } from "@calcom/lib/constants";
 import { HttpError } from "@calcom/lib/http-error";
 import { defaultResponder } from "@calcom/lib/server";
 import prisma from "@calcom/prisma";
@@ -132,45 +127,22 @@ async function postHandler(req: NextApiRequest) {
     metadata: data.metadata === null ? {} : data.metadata || undefined,
   };
 
-  if (data.parentId) {
-    const team = await prisma.team.create({
-      data: {
-        ...cloneData,
-        members: {
-          create: { userId: effectiveUserId, role: MembershipRole.OWNER, accepted: true },
-        },
-      },
-      include: { members: true },
-    });
-
-    req.statusCode = 201;
-
-    return {
-      team: schemaTeamReadPublic.parse(team),
-      owner: schemaMembershipPublic.parse(team.members[0]),
-      message: `Team created successfully. We also made user with ID=${effectiveUserId} the owner of this team.`,
-    };
-  }
-
-  const pendingPaymentTeam = await prisma.team.create({
+  const team = await prisma.team.create({
     data: {
       ...cloneData,
-      pendingPayment: true,
+      members: {
+        create: { userId: effectiveUserId, role: MembershipRole.OWNER, accepted: true },
+      },
     },
+    include: { members: true },
   });
 
-  const checkoutSession = await generateTeamCheckoutSession({
-    pendingPaymentTeamId: pendingPaymentTeam.id,
-    ownerId: effectiveUserId,
-  });
+  req.statusCode = 201;
 
   return {
-    message:
-      "Your team will be created once we receive your payment. Please complete the payment using the payment link.",
-    paymentLink: checkoutSession.url,
-    pendingTeam: {
-      ...schemaTeamReadPublic.parse(pendingPaymentTeam),
-    },
+    team: schemaTeamReadPublic.parse(team),
+    owner: schemaMembershipPublic.parse(team.members[0]),
+    message: `Team created successfully. We also made user with ID=${effectiveUserId} the owner of this team.`,
   };
 }
 
@@ -185,65 +157,5 @@ async function checkPermissions(req: NextApiRequest) {
       message: "ADMIN required for `ownerId`",
     });
 }
-
-const generateTeamCheckoutSession = async ({
-  pendingPaymentTeamId,
-  ownerId,
-}: {
-  pendingPaymentTeamId: number;
-  ownerId: number;
-}) => {
-  const [customer, dubCustomer] = await Promise.all([
-    getStripeCustomerIdFromUserId(ownerId),
-    getDubCustomer(ownerId.toString()),
-  ]);
-
-  const session = await stripe.checkout.sessions.create({
-    customer,
-    mode: "subscription",
-    ...(dubCustomer?.discount?.couponId
-      ? {
-          discounts: [
-            {
-              coupon:
-                process.env.NODE_ENV !== "production" && dubCustomer.discount.couponTestId
-                  ? dubCustomer.discount.couponTestId
-                  : dubCustomer.discount.couponId,
-            },
-          ],
-        }
-      : { allow_promotion_codes: true }),
-    success_url: `${WEBAPP_URL}/api/teams/api/create?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${WEBAPP_URL}/settings/my-account/profile`,
-    line_items: [
-      {
-        /** We only need to set the base price and we can upsell it directly on Stripe's checkout  */
-        price: 0,
-        /**Initially it will be just the team owner */
-        quantity: 1,
-      },
-    ],
-    customer_update: {
-      address: "auto",
-    },
-    // Disabled when testing locally as usually developer doesn't setup Tax in Stripe Test mode
-    automatic_tax: {
-      enabled: IS_PRODUCTION,
-    },
-    metadata: {
-      pendingPaymentTeamId,
-      ownerId,
-      dubCustomerId: ownerId, // pass the userId during checkout creation for sales conversion tracking: https://d.to/conversions/stripe
-    },
-  });
-
-  if (!session.url)
-    throw new HttpError({
-      statusCode: 500,
-      message: "Failed generating a checkout session URL.",
-    });
-
-  return session;
-};
 
 export default defaultResponder(postHandler);
