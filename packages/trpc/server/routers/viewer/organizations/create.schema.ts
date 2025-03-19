@@ -11,7 +11,6 @@ export const ZCreateInputSchema = z.object({
   seats: z.number().optional(),
   pricePerSeat: z.number().optional(),
   isPlatform: z.boolean().default(false),
-  creationSource: z.nativeEnum(CreationSource),
 });
 
 export type TCreateInputSchema = z.infer<typeof ZCreateInputSchema>;

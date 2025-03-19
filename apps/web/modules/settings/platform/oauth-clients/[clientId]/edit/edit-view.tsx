@@ -35,7 +35,7 @@ export default function EditOAuthClient() {
   const params = useParams<{ clientId: string }>();
   const clientId = params?.clientId || "";
 
-  const { isUserLoading, isPlatformUser, isPaidUser } = useGetUserAttributes();
+  const { isUserLoading, isPlatformUser } = useGetUserAttributes();
 
   const { data, isFetched, isFetching, isError, refetch } = useOAuthClient(clientId);
   const { mutateAsync: update, isPending: isUpdating } = useUpdateOAuthClient({
@@ -51,6 +51,7 @@ export default function EditOAuthClient() {
   });
 
   const onSubmit = (data: FormValues) => {
+    let userPermissions = 0;
     const userRedirectUris = data.redirectUris.map((uri) => uri.uri).filter((uri) => !!uri);
 
     Object.keys(PERMISSIONS_GROUPED_MAP).forEach((key) => {
@@ -75,7 +76,7 @@ export default function EditOAuthClient() {
 
   if (isUserLoading) return <div className="m-5">Loading...</div>;
 
-  if (isPlatformUser && isPaidUser) {
+  if (isPlatformUser) {
     return (
       <div>
         <Shell withoutSeo={true} title={t("oAuth_client_updation_form")} isPlatformUser={true}>

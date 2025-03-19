@@ -20,7 +20,7 @@ export default function CreateOAuthClient() {
   const router = useRouter();
   const { t } = useLocale();
 
-  const { isUserLoading, isPlatformUser, isPaidUser } = useGetUserAttributes();
+  const { isUserLoading, isPlatformUser } = useGetUserAttributes();
 
   const { mutateAsync: save, isPending: isSaving } = useCreateOAuthClient({
     onSuccess: () => {
@@ -59,7 +59,7 @@ export default function CreateOAuthClient() {
 
   if (isUserLoading) return <div className="m-5">Loading...</div>;
 
-  if (isPlatformUser && isPaidUser) {
+  if (isPlatformUser) {
     return (
       <div>
         <Shell title={t("oAuth_client_creation_form")} isPlatformUser={true} withoutSeo={true}>

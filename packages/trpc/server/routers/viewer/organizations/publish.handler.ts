@@ -51,7 +51,7 @@ export const publishHandler = async ({ ctx }: PublishOptions) => {
       },
     });
   } catch (error) {
-    const { message } = error;
+    const message = error instanceof Error ? error.message : "Failed to update team";
     throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message });
   }
 

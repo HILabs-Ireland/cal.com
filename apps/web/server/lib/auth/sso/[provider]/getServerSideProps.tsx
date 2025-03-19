@@ -131,7 +131,7 @@ const getStripePremiumUsernameUrl = async ({
     customer: customer.id,
     line_items: [
       {
-        price: 0,
+        price: "0",
         quantity: 1,
       },
     ],

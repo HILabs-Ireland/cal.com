@@ -23,7 +23,7 @@ export default function EditOAuthClientWebhooks() {
   const params = useParams<{ clientId: string }>();
   const clientId = params?.clientId || "";
 
-  const { isUserLoading, isPlatformUser, isPaidUser } = useGetUserAttributes();
+  const { isUserLoading, isPlatformUser } = useGetUserAttributes();
 
   const {
     data: webhooks,
@@ -38,7 +38,7 @@ export default function EditOAuthClientWebhooks() {
 
   if (isUserLoading) return <div className="m-5">Loading...</div>;
 
-  if (isPlatformUser && isPaidUser) {
+  if (isPlatformUser) {
     return (
       <div>
         <Shell withoutSeo={true} title={t("webhook_update_form")} isPlatformUser={true}>

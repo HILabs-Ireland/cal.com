@@ -21,5 +21,4 @@ The [/ee](https://github.com/calcom/cal.com/tree/main/apps/web/ee) subfolder is 
 2. Open [Stripe ApiKeys](https://dashboard.stripe.com/apikeys) save the token starting with `pk_...` to `NEXT_PUBLIC_STRIPE_PUBLIC_KEY` in the .env file.
 3. Open [Stripe Connect Settings](https://dashboard.stripe.com/settings/connect) and activate OAuth for Standard Accounts
 4. Add `<CALENDSO URL>/api/integrations/stripepayment/callback` as redirect URL.
-5. Open [Stripe Webhooks](https://dashboard.stripe.com/webhooks) and add `<CALENDSO URL>/api/integrations/stripepayment/webhook` as webhook for connected applications.
-6. Select all `payment_intent` events for the webhook.
+5. Select all `payment_intent` events for the webhook.

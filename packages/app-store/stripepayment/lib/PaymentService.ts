@@ -1,4 +1,5 @@
 import type { Booking, Payment, PaymentOption, Prisma } from "@prisma/client";
+import Stripe from "stripe";
 import { v4 as uuidv4 } from "uuid";
 import z from "zod";
 
@@ -42,6 +43,9 @@ export class PaymentService implements IAbstractPaymentService {
     } else {
       this.credentials = null;
     }
+    this.stripe = new Stripe("", {
+      apiVersion: "2020-08-27",
+    });
   }
 
   private async getPayment(where: Prisma.PaymentWhereInput) {

@@ -7,11 +7,10 @@ import { MembershipRole } from "@calcom/prisma/enums";
 import { trpc } from "@calcom/trpc/react";
 import { Button } from "@calcom/ui";
 import { useGetUserAttributes } from "@calcom/web/components/settings/platform/hooks/useGetUserAttributes";
-import { PlatformPricing } from "@calcom/web/components/settings/platform/pricing/platform-pricing/index";
 
 const PlatformMembersView = () => {
   const { t } = useLocale();
-  const { isUserLoading, isPlatformUser, isPaidUser, userOrgId } = useGetUserAttributes();
+  const { isUserLoading, isPlatformUser, userOrgId } = useGetUserAttributes();
   const { data: currentOrg, isPending } = trpc.viewer.organizations.listCurrent.useQuery();
 
   const isOrgAdminOrOwner =
@@ -24,18 +23,6 @@ const PlatformMembersView = () => {
   if (isUserLoading) {
     return <div className="m-5">Loading...</div>;
   }
-
-  if (isPlatformUser && !isPaidUser)
-    return (
-      <PlatformPricing
-        teamId={userOrgId}
-        heading={
-          <div className="mb-5 text-center text-2xl font-semibold">
-            <h1>Subscribe to Platform</h1>
-          </div>
-        }
-      />
-    );
 
   if (!isPlatformUser)
     return (

@@ -114,7 +114,7 @@ async function handler(req: RequestWithUsernameStatus, res: NextApiResponse) {
       customer: customer.id,
       line_items: [
         {
-          price: 0,
+          price: "0",
           quantity: 1,
         },
       ],

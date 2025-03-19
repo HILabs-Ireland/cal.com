@@ -32,8 +32,6 @@ export const hasActiveTeamPlanHandler = async ({ input, ctx }: HasActiveTeamPlan
   });
   if (!team) return false;
 
-  if (!teams.length) return false;
-
   return false;
 };
 

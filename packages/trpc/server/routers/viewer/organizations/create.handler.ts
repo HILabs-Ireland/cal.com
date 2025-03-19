@@ -80,7 +80,7 @@ const getIPAddress = async (url: string): Promise<string> => {
 };
 
 export const createHandler = async ({ input, ctx }: CreateOptions) => {
-  const { slug, name, orgOwnerEmail, seats, pricePerSeat, isPlatform, creationSource } = input;
+  const { slug, name, orgOwnerEmail, seats, pricePerSeat, isPlatform } = input;
 
   const loggedInUser = await prisma.user.findUnique({
     where: {
