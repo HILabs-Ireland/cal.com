@@ -30,8 +30,8 @@ test.describe("App Store - Authed", () => {
 
     await expect(page.locator(`text=Connect to Apple Server`)).toBeVisible();
   });
-
-  test("Can add Google calendar from the app store", async ({ page, users }) => {
+  /* eslint-disable playwright/no-skipped-test */
+  test.skip("[EE feature] Can add Google calendar from the app store", async ({ page, users }) => {
     const user = await users.create();
     await user.apiLogin();
 

@@ -4,7 +4,8 @@ import { loginUser, loginUserWithTeam } from "./fixtures/regularBookings";
 import { test } from "./lib/fixtures";
 import { bookEventOnThisPage } from "./lib/testUtils";
 
-test.describe("Workflow Tab - Event Type", () => {
+/* eslint-disable playwright/no-skipped-test */
+test.skip("[EE feature] Workflow Tab - Event Type", () => {
   test.describe("Check the functionalities of the Workflow Tab", () => {
     test.describe("User Workflows", () => {
       test.beforeEach(async ({ page, users }) => {

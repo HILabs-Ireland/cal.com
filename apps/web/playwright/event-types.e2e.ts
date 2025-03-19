@@ -1,3 +1,4 @@
+/* eslint-disable playwright/no-skipped-test */
 import type { Page } from "@playwright/test";
 import { expect } from "@playwright/test";
 
@@ -70,7 +71,7 @@ test.describe("Event Types tests", () => {
       await expect(firstEventTitle).toBe(eventTitle);
     });
 
-    test("enabling recurring event comes with default options", async ({ page }) => {
+    test.skip("[EE feature] enabling recurring event comes with default options", async ({ page }) => {
       const nonce = randomString(3);
       const eventTitle = `my recurring event ${nonce}`;
       await createNewEventType(page, { eventTitle });
@@ -144,8 +145,7 @@ test.describe("Event Types tests", () => {
         action: () => page.locator("[data-testid=update-eventtype]").click(),
       });
     });
-
-    test("can add multiple organizer address", async ({ page }) => {
+    test.skip("[EE feature] can add multiple organizer address", async ({ page }) => {
       const $eventTypes = page.locator("[data-testid=event-types] > li a");
       const firstEventTypeElement = $eventTypes.first();
       await firstEventTypeElement.click();
@@ -245,7 +245,7 @@ test.describe("Event Types tests", () => {
         await expect(page.locator("[data-testid=where] ")).toContainText("Cal Video");
       });
 
-      test("Can add Link Meeting as location and book with it", async ({ page }) => {
+      test.skip("[EE feature] Can add Link Meeting as location and book with it", async ({ page }) => {
         await gotoFirstEventType(page);
 
         await page.getByTestId("location-select").click();

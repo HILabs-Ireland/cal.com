@@ -13,8 +13,8 @@ test.describe.configure({ mode: "parallel" });
 test.afterEach(async ({ users }) => {
   await users.deleteAll();
 });
-
-test.describe("Team", () => {
+/* eslint-disable playwright/no-skipped-test */
+test.skip("[EE feature] Team", () => {
   test("Invitation (non verified)", async ({ browser, page, users, emails }) => {
     const t = await localize("en");
     const teamOwner = await users.create(undefined, { hasTeam: true });

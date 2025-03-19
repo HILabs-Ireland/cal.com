@@ -37,7 +37,7 @@ describe("Cancel Booking", () => {
 
     const organizer = getOrganizer({
       name: "Organizer",
-      email: "organizer@example.com",
+      email: "dXNlckBleGFtcGxlLmNvbQ==",
       id: 101,
       schedules: [TestData.schedules.IstWorkHours],
       credentials: [getGoogleCalendarCredential()],
@@ -149,7 +149,7 @@ describe("Cancel Booking", () => {
 
     const organizer = getOrganizer({
       name: "Organizer",
-      email: "organizer@example.com",
+      email: "dXNlckBleGFtcGxlLmNvbQ==",
       id: 101,
       schedules: [TestData.schedules.IstWorkHours],
       credentials: [getGoogleCalendarCredential()],

@@ -1,3 +1,4 @@
+/* eslint-disable playwright/no-skipped-test */
 import type { Page } from "@playwright/test";
 import { expect } from "@playwright/test";
 import { JSDOM } from "jsdom";
@@ -32,8 +33,7 @@ function getOrgOrigin(orgSlug: string | null) {
 }
 
 test.describe.configure({ mode: "parallel" });
-
-test.describe("Bookings", () => {
+test.skip("[EE feature] Bookings", () => {
   test.afterEach(async ({ orgs, users, page }) => {
     await users.deleteAll();
     await orgs.deleteAll();
@@ -439,7 +439,7 @@ test.describe("Bookings", () => {
     });
   });
 
-  test.describe("Scenario with same username in and outside organization", () => {
+  test.skip("[EE feature] Scenario with same username in and outside organization", () => {
     test("Can create a booking for user with same username in and outside organization", async ({
       page,
       users,

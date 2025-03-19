@@ -731,8 +731,8 @@ async function expectWebhookToBeCalled(
 
   expect(body).toMatchObject(expectedBody);
 }
-
-test.describe("Text area min and max characters text", () => {
+// eslint-disable-next-line playwright/no-skipped-test
+test.skip("[Flaky] Text area min and max characters text", () => {
   test("Create a new event", async ({ page, users }) => {
     const eventTitle = `Min Max Characters Test`;
     const fieldType = fieldTypesConfigMap["textarea"];

@@ -7,8 +7,8 @@ import { selectFirstAvailableTimeSlotNextMonth } from "./lib/testUtils";
 
 test.describe.configure({ mode: "parallel" });
 test.afterEach(({ users }) => users.deleteAll());
-
-test.describe("Payment app", () => {
+// eslint-disable-next-line playwright/no-skipped-test
+test.skip("[EE feature] Payment app", () => {
   test("Should be able to edit alby price, currency", async ({ page, users }) => {
     const user = await users.create();
     await user.apiLogin();

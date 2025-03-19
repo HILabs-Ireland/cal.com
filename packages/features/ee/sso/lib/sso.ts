@@ -1,7 +1,5 @@
-import createUsersAndConnectToOrg from "@calcom/features/ee/dsync/lib/users/createUsersAndConnectToOrg";
 import { HOSTED_CAL_FEATURES } from "@calcom/lib/constants";
 import type { PrismaClient } from "@calcom/prisma";
-import { IdentityProvider } from "@calcom/prisma/enums";
 import { TRPCError } from "@calcom/trpc/server";
 
 import jackson from "./jackson";
@@ -62,15 +60,6 @@ export const ssoTenantProduct = async (prisma: PrismaClient, email: string) => {
         message: "no_account_exists",
       });
 
-    const organizationId = organization.id;
-    const createUsersAndConnectToOrgProps = {
-      emailsToCreate: [email],
-      organizationId,
-      identityProvider: IdentityProvider.SAML,
-      identityProviderId: email,
-    };
-
-    await createUsersAndConnectToOrg(createUsersAndConnectToOrgProps);
     memberships = await getAllAcceptedMemberships({ prisma, email });
 
     if (!memberships || memberships.length === 0)

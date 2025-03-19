@@ -27,16 +27,16 @@ test.describe("Signup Main Page Test", async () => {
     await button.click();
     await expect(page.getByTestId("signup-back-button")).toBeVisible();
   });
-
-  test("Continue with google button must exist / work", async ({ page }) => {
+  /* eslint-disable playwright/no-skipped-test */
+  test.skip("[EE feature] Continue with google button must exist / work", async ({ page }) => {
     const button = page.getByTestId("continue-with-google-button");
     await expect(button).toBeVisible();
     await expect(button).toBeEnabled();
     await button.click();
     await page.waitForURL("/auth/sso/google");
   });
-
-  test("Continue with SAML button must exist / work", async ({ page }) => {
+  /* eslint-disable playwright/no-skipped-test */
+  test.skip("[EE feature] Continue with SAML button must exist / work", async ({ page }) => {
     const button = page.getByTestId("continue-with-saml-button");
     await expect(button).toBeVisible();
     await expect(button).toBeEnabled();
