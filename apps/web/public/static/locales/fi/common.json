@@ -1788,7 +1788,6 @@
   "already_have_account": "Onko sinulla jo tili?",
   "already_have_key": "Minulla on jo avain:",
   "already_have_key_suggestion": "Kopioi olemassa oleva CALCOM_LICENSE_KEY-ympäristömuuttuja tähän.",
-  "create_license_key": "Luo lisenssiavain",
   "app_is_enabled": "{{appName}} on käytössä",
   "app_is_disabled": "{{appName}} on poistettu käytöstä",
   "keys_have_been_saved": "Avaimet on tallennettu",

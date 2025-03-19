@@ -155,9 +155,6 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
     if (tab.name === "admin" && IS_CALCOM) {
       tab.children?.push({ name: "create_your_org", href: "/settings/organizations/new" });
     }
-    if (tab.name === "admin" && IS_CALCOM) {
-      tab.children?.push({ name: "create_license_key", href: "/settings/license-key/new" });
-    }
   });
 
   return tabs;

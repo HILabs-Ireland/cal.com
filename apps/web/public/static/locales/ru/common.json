@@ -1788,7 +1788,6 @@
   "already_have_account": "Уже есть аккаунт?",
   "already_have_key": "У меня уже есть ключ:",
   "already_have_key_suggestion": "Скопируйте сюда переменную окружения CALCOM_LICENSE_KEY.",
-  "create_license_key": "Создать лицензионный ключ",
   "app_is_enabled": "{{appName}} включено",
   "app_is_disabled": "{{appName}} отключено",
   "keys_have_been_saved": "Ключи сохранены",
