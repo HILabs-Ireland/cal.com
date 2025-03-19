@@ -92,6 +92,14 @@ export async function patchHandler(req: NextApiRequest) {
       });
   }
 
+  if (_team.slug === null && data.slug) {
+    data.metadata = {
+      ...(_team.metadata as Prisma.JsonObject),
+      requestedSlug: data.slug,
+    };
+    delete data.slug;
+  }
+
   // TODO: Perhaps there is a better fix for this?
   const cloneData: typeof data & {
     metadata: NonNullable<typeof data.metadata> | undefined;
@@ -106,6 +114,7 @@ export async function patchHandler(req: NextApiRequest) {
   const result = {
     team: schemaTeamReadPublic.parse(team),
   };
+
   return result;
 }
 
