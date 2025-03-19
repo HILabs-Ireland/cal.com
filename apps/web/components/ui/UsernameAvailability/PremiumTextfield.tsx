@@ -7,8 +7,6 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { RefCallback } from "react";
 import { useEffect, useState } from "react";
 
-import { getPremiumPlanPriceValue } from "@calcom/app-store/stripepayment/lib/utils";
-import { WEBAPP_URL } from "@calcom/lib/constants";
 import { fetchUsername } from "@calcom/lib/fetchUsername";
 import hasKeyInMetadata from "@calcom/lib/hasKeyInMetadata";
 import { useDebounce } from "@calcom/lib/hooks/useDebounce";
@@ -67,7 +65,6 @@ const PremiumTextfield = (props: ICustomUsernameProps) => {
   const [user] = trpc.viewer.me.useSuspenseQuery();
   const [usernameIsAvailable, setUsernameIsAvailable] = useState(false);
   const [markAsError, setMarkAsError] = useState(false);
-  const recentAttemptPaymentStatus = searchParams?.get("recentAttemptPaymentStatus");
   const [openDialogSaveUsername, setOpenDialogSaveUsername] = useState(false);
   const { data: stripeCustomer } = trpc.viewer.stripeCustomer.useQuery();
   const isCurrentUsernamePremium =
@@ -110,36 +107,13 @@ const PremiumTextfield = (props: ICustomUsernameProps) => {
     },
   });
 
-  // when current username isn't set - Go to stripe to check what username he wanted to buy and was it a premium and was it paid for
-  const paymentRequired = !currentUsername && stripeCustomer?.isPremium;
-
   const usernameChangeCondition = obtainNewUsernameChangeCondition({
     userIsPremium: isCurrentUsernamePremium,
     isNewUsernamePremium: isInputUsernamePremium,
     stripeCustomer,
   });
 
-  const usernameFromStripe = stripeCustomer?.username;
-
-  const paymentLink = `/api/integrations/stripepayment/subscription?intentUsername=${
-    inputUsernameValue || usernameFromStripe
-  }&action=${usernameChangeCondition}&callbackUrl=${WEBAPP_URL}${pathname}`;
-
   const ActionButtons = () => {
-    if (paymentRequired) {
-      return (
-        <div className="flex flex-row">
-          <Button
-            type="button"
-            color="primary"
-            className="mx-2"
-            href={paymentLink}
-            data-testid="reserve-username-btn">
-            {t("Reserve")}
-          </Button>
-        </div>
-      );
-    }
     if ((usernameIsAvailable || isInputUsernamePremium) && currentUsername !== inputUsernameValue) {
       return (
         <div className="flex flex-row">
@@ -176,20 +150,6 @@ const PremiumTextfield = (props: ICustomUsernameProps) => {
     }
   };
 
-  let paymentMsg = !currentUsername ? (
-    <span className="text-xs text-orange-400">
-      You need to reserve your premium username for {getPremiumPlanPriceValue()}
-    </span>
-  ) : null;
-
-  if (recentAttemptPaymentStatus && recentAttemptPaymentStatus !== "paid") {
-    paymentMsg = (
-      <span className="text-sm text-red-500">
-        Your payment could not be completed. Your username is still not reserved
-      </span>
-    );
-  }
-
   return (
     <div>
       <div className="flex justify-items-center">
@@ -225,12 +185,6 @@ const PremiumTextfield = (props: ICustomUsernameProps) => {
             value={inputUsernameValue}
             onChange={(event) => {
               event.preventDefault();
-              // Reset payment status
-              const _searchParams = new URLSearchParams(searchParams ?? undefined);
-              _searchParams.delete("paymentStatus");
-              if (searchParams?.toString() !== _searchParams.toString()) {
-                router.replace(`${pathname}?${_searchParams.toString()}`);
-              }
               setInputUsernameValue(event.target.value);
             }}
             data-testid="username-input"
@@ -262,7 +216,6 @@ const PremiumTextfield = (props: ICustomUsernameProps) => {
           </div>
         )}
       </div>
-      {paymentMsg}
       {markAsError && <p className="mt-1 text-xs text-red-500">{t("username_already_taken")}</p>}
 
       <Dialog open={openDialogSaveUsername}>

@@ -225,10 +225,6 @@ class GetBookingsDataEntry {
   @ApiProperty({ type: Boolean })
   paid!: boolean;
 
-  @IsArray()
-  @ApiProperty()
-  payment!: any[];
-
   @ValidateNested()
   @Type(() => Reference)
   @IsArray()

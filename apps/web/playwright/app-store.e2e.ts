@@ -49,8 +49,6 @@ test.describe("App Store - Authed", () => {
     await user.apiLogin();
     await page.goto("/apps/installed");
     await page.waitForSelector('[data-testid="connect-calendar-apps"]');
-    await page.click('[data-testid="vertical-tab-payment"]');
-    await page.waitForSelector('[data-testid="connect-payment-apps"]');
     await page.click('[data-testid="vertical-tab-automation"]');
     await page.waitForSelector('[data-testid="connect-automation-apps"]');
   });

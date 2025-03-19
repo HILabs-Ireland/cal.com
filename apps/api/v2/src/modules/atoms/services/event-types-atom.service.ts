@@ -2,9 +2,9 @@ import { EventTypesService_2024_06_14 } from "@/ee/event-types/event-types_2024_
 import { AtomsRepository } from "@/modules/atoms/atoms.repository";
 import { CredentialsRepository } from "@/modules/credentials/credentials.repository";
 import { MembershipsRepository } from "@/modules/memberships/memberships.repository";
-import { TeamsEventTypesService } from "@/modules/teams/event-types/services/teams-event-types.service";
 import { PrismaReadService } from "@/modules/prisma/prisma-read.service";
 import { PrismaWriteService } from "@/modules/prisma/prisma-write.service";
+import { TeamsEventTypesService } from "@/modules/teams/event-types/services/teams-event-types.service";
 import { UsersService } from "@/modules/users/services/users.service";
 import { UserWithProfile } from "@/modules/users/users.repository";
 import { Injectable, NotFoundException, ForbiddenException } from "@nestjs/common";
@@ -18,7 +18,6 @@ import {
   getAppFromSlug,
   MembershipRole,
   EventTypeMetaDataSchema,
-  getClientSecretFromPayment,
   getBulkEventTypes,
   bulkUpdateEventsToDefaultLocation,
 } from "@calcom/platform-libraries";
@@ -247,7 +246,7 @@ export class EventTypesAtomService {
                   };
                 })
             );
-            const isSetupAlready = credential && app.categories.includes("payment") ? true : undefined;
+            const isSetupAlready = credential ? true : undefined;
             let dependencyData: TDependencyData = [];
             if (app.dependencies?.length) {
               dependencyData = app.dependencies.map((dependency) => {
@@ -281,45 +280,6 @@ export class EventTypesAtomService {
         )
     );
     return apps[0];
-  }
-
-  async getUserPaymentInfo(uid: string) {
-    const rawPayment = await this.atomsRepository.getRawPayment(uid);
-    if (!rawPayment) throw new NotFoundException(`Payment with uid ${uid} not found`);
-    const { data, booking: _booking, ...restPayment } = rawPayment;
-    const payment = {
-      ...restPayment,
-      data: data as Record<string, unknown>,
-    };
-    if (!_booking) throw new NotFoundException(`Booking with uid ${uid} not found`);
-    const { startTime, endTime, eventType, ...restBooking } = _booking;
-    const booking = {
-      ...restBooking,
-      startTime: startTime.toString(),
-      endTime: endTime.toString(),
-    };
-    if (!eventType) throw new NotFoundException(`Event type with uid ${uid} not found`);
-    if (eventType.users.length === 0 && !!!eventType.team)
-      throw new NotFoundException(`No users found or no team present for event type with uid ${uid}`);
-    const [user] = eventType?.users.length
-      ? eventType.users
-      : [{ name: null, theme: null, hideBranding: null, username: null }];
-    const profile = {
-      name: eventType.team?.name || user?.name || null,
-      theme: (!eventType.team?.name && user?.theme) || null,
-      hideBranding: eventType.team?.hideBranding || user?.hideBranding || null,
-    };
-    return {
-      user,
-      eventType: {
-        ...eventType,
-        metadata: EventTypeMetaDataSchema.parse(eventType.metadata),
-      },
-      booking,
-      payment,
-      clientSecret: getClientSecretFromPayment(payment),
-      profile,
-    };
   }
 
   async bulkUpdateEventTypesDefaultLocation(user: UserWithProfile, eventTypeIds: number[]) {

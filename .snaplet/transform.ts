@@ -144,18 +144,6 @@ export default defineConfig({
           }),
         };
       },
-      Payment({ row }) {
-        return {
-          amount: c.int(row.amount, {
-            min: 0,
-            max: Math.pow(4, 8) - 1,
-          }),
-          currency: c.sentence(row.currency),
-          data: {
-            [c.word(row.data)]: c.words(row.data),
-          },
-        };
-      },
       ResetPasswordRequest: ({ row }) => ({
         email: c.email(row.email),
       }),

@@ -13,7 +13,6 @@ import { createEmbedsFixture } from "../fixtures/embeds";
 import { createEventTypeFixture } from "../fixtures/eventTypes";
 import { createFeatureFixture } from "../fixtures/features";
 import { createOrgsFixture } from "../fixtures/orgs";
-import { createPaymentsFixture } from "../fixtures/payments";
 import { createBookingPageFixture } from "../fixtures/regularBookings";
 import { createRoutingFormsFixture } from "../fixtures/routingForms";
 import { createServersFixture } from "../fixtures/servers";
@@ -26,7 +25,6 @@ export interface Fixtures {
   orgs: ReturnType<typeof createOrgsFixture>;
   users: ReturnType<typeof createUsersFixture>;
   bookings: ReturnType<typeof createBookingsFixture>;
-  payments: ReturnType<typeof createPaymentsFixture>;
   embeds: ReturnType<typeof createEmbedsFixture>;
   servers: ReturnType<typeof createServersFixture>;
   prisma: typeof prisma;
@@ -71,10 +69,6 @@ export const test = base.extend<Fixtures>({
   bookings: async ({ page }, use, workerInfo) => {
     const bookingsFixture = createBookingsFixture(page, workerInfo);
     await use(bookingsFixture);
-  },
-  payments: async ({ page }, use) => {
-    const payemntsFixture = createPaymentsFixture(page);
-    await use(payemntsFixture);
   },
   embeds: async ({ page }, use) => {
     const embedsFixture = createEmbedsFixture(page);

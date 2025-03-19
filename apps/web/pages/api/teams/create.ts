@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import type Stripe from "stripe";
 import { z } from "zod";
 
-import stripe from "@calcom/features/ee/payments/server/stripe";
 import { HttpError } from "@calcom/lib/http-error";
 import { defaultHandler, defaultResponder } from "@calcom/lib/server";
 import prisma from "@calcom/prisma";
@@ -31,9 +30,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!checkoutSession) throw new HttpError({ statusCode: 404, message: "Checkout session not found" });
 
   const subscription = checkoutSession.subscription as Stripe.Subscription;
-
-  if (checkoutSession.payment_status !== "paid")
-    throw new HttpError({ statusCode: 402, message: "Payment required" });
 
   // Let's query to ensure that the team metadata carried over from the checkout session.
   const parseCheckoutSessionMetadata = checkoutSessionMetadataSchema.safeParse(checkoutSession.metadata);

@@ -4,8 +4,6 @@ import { _generateMetadata } from "app/_utils";
 import { WithLayout } from "app/layoutHOC";
 import { z } from "zod";
 
-import { StripeService } from "@calcom/lib/server/service/stripe";
-
 import { getServerSideProps } from "@server/lib/auth/verify/getServerSideProps";
 
 import type { PageProps } from "~/auth/verify-view";
@@ -28,16 +26,8 @@ export const generateMetadata = async ({ params, searchParams }: _PageProps) => 
     );
   }
 
-  const data = await StripeService.getCheckoutSession({
-    stripeCustomerId,
-    checkoutSessionId: sessionId,
-  });
-
-  const { hasPaymentFailed } = data;
-
   return await _generateMetadata(
-    () =>
-      hasPaymentFailed ? "Your payment failed" : sessionId ? "Payment successful!" : `Verify your email`,
+    () => `Verify your email`,
     () => ""
   );
 };

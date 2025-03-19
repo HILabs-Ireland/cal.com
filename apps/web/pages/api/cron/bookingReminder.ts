@@ -37,11 +37,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           {
             payment: { none: {} },
           },
-          // paid but awaiting approval
-          {
-            payment: { some: {} },
-            paid: true,
-          },
         ],
       },
       select: {

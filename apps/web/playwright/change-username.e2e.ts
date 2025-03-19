@@ -1,6 +1,5 @@
 import { expect } from "@playwright/test";
 
-import stripe from "@calcom/features/ee/payments/server/stripe";
 import { WEBAPP_URL } from "@calcom/lib/constants";
 import { MembershipRole } from "@calcom/prisma/enums";
 
@@ -62,7 +61,6 @@ test.describe("Change username on settings", () => {
     test.skip(IS_SELF_HOSTED, "It shouldn't run on self hosted");
 
     const user = await users.create();
-    await stripe.customers.create({ email: `${user?.username}@example.com` });
 
     await user.apiLogin();
     await page.goto("/settings/my-account/profile");

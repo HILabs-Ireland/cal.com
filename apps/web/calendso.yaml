@@ -263,8 +263,6 @@ paths:
                   type: string
                 location:
                   type: string
-                paymentUid:
-                  type: string
       responses:
         "204":
           description: No Content

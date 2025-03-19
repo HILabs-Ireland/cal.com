@@ -11,7 +11,6 @@ import "@calcom/dayjs/locales";
 import ViewRecordingsDialog from "@calcom/features/ee/video/ViewRecordingsDialog";
 import classNames from "@calcom/lib/classNames";
 import { formatTime } from "@calcom/lib/date-fns";
-import { getPaymentAppData } from "@calcom/lib/getPaymentAppData";
 import { useCopy } from "@calcom/lib/hooks/useCopy";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { useGetTheme } from "@calcom/lib/hooks/useTheme";
@@ -49,7 +48,6 @@ import {
 import assignmentReasonBadgeTitleMap from "@lib/booking/assignmentReasonBadgeTitleMap";
 
 import { AddGuestsDialog } from "@components/dialog/AddGuestsDialog";
-import { ChargeCardDialog } from "@components/dialog/ChargeCardDialog";
 import { EditLocationDialog } from "@components/dialog/EditLocationDialog";
 import { ReassignDialog } from "@components/dialog/ReassignDialog";
 import { RerouteDialog } from "@components/dialog/RerouteDialog";
@@ -118,7 +116,6 @@ function BookingListItem(booking: BookingItemProps) {
   const [chargeCardDialogIsOpen, setChargeCardDialogIsOpen] = useState(false);
   const [viewRecordingsDialogIsOpen, setViewRecordingsDialogIsOpen] = useState<boolean>(false);
   const [isNoShowDialogOpen, setIsNoShowDialogOpen] = useState<boolean>(false);
-  const cardCharged = booking?.payment[0]?.success;
   const mutation = trpc.viewer.bookings.confirm.useMutation({
     onSuccess: (data) => {
       if (data?.status === BookingStatus.REJECTED) {
@@ -145,8 +142,6 @@ function BookingListItem(booking: BookingItemProps) {
   const isRecurring = booking.recurringEventId !== null;
   const isTabRecurring = booking.listingStatus === "recurring";
   const isTabUnconfirmed = booking.listingStatus === "unconfirmed";
-
-  const paymentAppData = getPaymentAppData(booking.eventType);
 
   const location = booking.location as ReturnType<typeof getEventLocationValue>;
   const locationVideoCallUrl = parsedBooking.metadata?.videoCallUrl;
@@ -198,8 +193,7 @@ function BookingListItem(booking: BookingItemProps) {
       disabled: mutation.isPending,
     },
     // For bookings with payment, only confirm if the booking is paid for
-    ...((isPending && !paymentAppData.enabled) ||
-    (paymentAppData.enabled && !!paymentAppData.price && booking.paid)
+    ...(isPending || booking.paid
       ? [
           {
             id: "confirm",
@@ -308,18 +302,6 @@ function BookingListItem(booking: BookingItemProps) {
     },
   ];
 
-  const chargeCardActions: ActionType[] = [
-    {
-      id: "charge_card",
-      label: cardCharged ? t("no_show_fee_charged") : t("collect_no_show_fee"),
-      disabled: cardCharged,
-      onClick: () => {
-        setChargeCardDialogIsOpen(true);
-      },
-      icon: "credit-card" as const,
-    },
-  ];
-
   if (isTabRecurring && isRecurring) {
     bookedActions = bookedActions.filter((action) => action.id !== "edit_booking");
   }
@@ -420,7 +402,6 @@ function BookingListItem(booking: BookingItemProps) {
     },
   ];
 
-  const showPendingPayment = paymentAppData.enabled && booking.payment.length && !booking.paid;
   const attendeeList = booking.attendees.map((attendee) => {
     return {
       name: attendee.name,
@@ -458,15 +439,6 @@ function BookingListItem(booking: BookingItemProps) {
         setIsOpenDialog={setIsOpenAddGuestsDialog}
         bookingId={booking.id}
       />
-      {booking.paid && booking.payment[0] && (
-        <ChargeCardDialog
-          isOpenDialog={chargeCardDialogIsOpen}
-          setIsOpenDialog={setChargeCardDialogIsOpen}
-          bookingId={booking.id}
-          paymentAmount={booking.payment[0].amount}
-          paymentCurrency={booking.payment[0].currency}
-        />
-      )}
       {(showViewRecordingsButton || showCheckRecordingButton) && (
         <ViewRecordingsDialog
           booking={booking}
@@ -598,11 +570,6 @@ function BookingListItem(booking: BookingItemProps) {
                     {booking.eventType.team.name}
                   </Badge>
                 )}
-                {showPendingPayment && (
-                  <Badge className="ltr:mr-2 rtl:ml-2 sm:hidden" variant="orange">
-                    {t("pending_payment")}
-                  </Badge>
-                )}
                 {recurringDates !== undefined && (
                   <div className="text-muted text-sm sm:hidden">
                     <RecurringBookingsTooltip
@@ -624,12 +591,6 @@ function BookingListItem(booking: BookingItemProps) {
                   )}>
                   {title}
                   <span> </span>
-
-                  {showPendingPayment && (
-                    <Badge className="hidden sm:inline-flex" variant="orange">
-                      {t("pending_payment")}
-                    </Badge>
-                  )}
                 </div>
                 {booking.description && (
                   <div
@@ -673,13 +634,6 @@ function BookingListItem(booking: BookingItemProps) {
                 <RequestSentMessage />
               </div>
             )}
-            {booking.status === "ACCEPTED" &&
-              booking.paid &&
-              booking.payment[0]?.paymentOption === "HOLD" && (
-                <div className="ml-2">
-                  <TableActions actions={chargeCardActions} />
-                </div>
-              )}
           </div>
         </div>
         <BookingItemBadges
@@ -732,15 +686,6 @@ const BookingItemBadges = ({
       {booking?.assignmentReason.length > 0 && (
         <AssignmentReasonTooltip assignmentReason={booking.assignmentReason[0]} />
       )}
-      {booking.paid && !booking.payment[0] ? (
-        <Badge className="ltr:mr-2 rtl:ml-2" variant="orange">
-          {t("error_collecting_card")}
-        </Badge>
-      ) : booking.paid ? (
-        <Badge className="ltr:mr-2 rtl:ml-2" variant="green" data-testid="paid_badge">
-          {booking.payment[0].paymentOption === "HOLD" ? t("card_held") : t("paid")}
-        </Badge>
-      ) : null}
       {recurringDates !== undefined && (
         <div className="text-muted mt-2 text-sm">
           <RecurringBookingsTooltip

@@ -14,8 +14,6 @@ import { useForm, useFormContext } from "react-hook-form";
 import { Toaster } from "react-hot-toast";
 import { z } from "zod";
 
-import getStripe from "@calcom/app-store/stripepayment/lib/client";
-import { getPremiumPlanPriceValue } from "@calcom/app-store/stripepayment/lib/utils";
 import { getOrgUsernameFromEmail } from "@calcom/features/auth/signup/utils/getOrgUsernameFromEmail";
 import { getOrgFullOrigin } from "@calcom/features/ee/organizations/lib/orgDomains";
 import { classNames } from "@calcom/lib";
@@ -145,15 +143,6 @@ function UsernameField({
               <div className="text-error flex items-center">
                 <Icon name="info" className="mr-1 inline-block h-4 w-4" />
                 <p>{t("already_in_use_error")}</p>
-              </div>
-            ) : premium ? (
-              <div data-testid="premium-username-warning" className="flex items-center">
-                <Icon name="star" className="mr-1 inline-block h-4 w-4" />
-                <p>
-                  {t("premium_username", {
-                    price: getPremiumPlanPriceValue(),
-                  })}
-                </p>
               </div>
             ) : null}
           </div>

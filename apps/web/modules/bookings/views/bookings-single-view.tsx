@@ -24,7 +24,6 @@ import {
   useIsBackgroundTransparent,
   useIsEmbed,
 } from "@calcom/embed-core/embed-iframe";
-import { Price } from "@calcom/features/bookings/components/event-meta/Price";
 import {
   SMS_REMINDER_NUMBER_FIELD,
   SystemField,
@@ -501,19 +500,6 @@ export default function Success(props: PageProps) {
                       <div className="mt-3">
                         <p className="text-default">{getTitle()}</p>
                       </div>
-                      {props.paymentStatus &&
-                        (bookingInfo.status === BookingStatus.CANCELLED ||
-                          bookingInfo.status === BookingStatus.REJECTED) && (
-                          <h4>
-                            {!props.paymentStatus.success &&
-                              !props.paymentStatus.refunded &&
-                              t("booking_with_payment_cancelled")}
-                            {props.paymentStatus.success &&
-                              !props.paymentStatus.refunded &&
-                              t("booking_with_payment_cancelled_already_paid")}
-                            {props.paymentStatus.refunded && t("booking_with_payment_cancelled_refunded")}
-                          </h4>
-                        )}
 
                       <div className="border-subtle text-default mt-8 grid grid-cols-3 border-t pt-8 text-left rtl:text-right">
                         {(isCancelled || reschedule) && cancellationReason && (
@@ -617,21 +603,8 @@ export default function Success(props: PageProps) {
                             </div>
                           </>
                         )}
-                        {props.paymentStatus && (
-                          <>
-                            <div className="mt-3 font-medium">
-                              {props.paymentStatus.paymentOption === "HOLD"
-                                ? t("complete_your_booking")
-                                : t("payment")}
-                            </div>
-                            <div className="col-span-2 mb-2 mt-3">
-                              <Price
-                                currency={props.paymentStatus.currency}
-                                price={props.paymentStatus.amount}
-                              />
-                            </div>
-                          </>
-                        )}
+
+                        <div className="mt-3 font-medium">{t("payment")}</div>
 
                         {rescheduledToUid ? <RescheduledToLink rescheduledToUid={rescheduledToUid} /> : null}
 

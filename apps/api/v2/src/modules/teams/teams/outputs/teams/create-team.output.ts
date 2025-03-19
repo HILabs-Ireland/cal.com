@@ -11,10 +11,6 @@ class Output {
   message!: string;
 
   @Expose()
-  @IsUrl()
-  paymentLink!: string;
-
-  @Expose()
   @ValidateNested()
   pendingTeam!: TeamOutputDto;
 }

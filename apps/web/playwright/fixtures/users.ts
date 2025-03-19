@@ -8,7 +8,6 @@ import { uuid } from "short-uuid";
 import { v4 } from "uuid";
 
 import updateChildrenEventTypes from "@calcom/features/ee/managed-event-types/lib/handleChildrenEventTypes";
-import stripe from "@calcom/features/ee/payments/server/stripe";
 import { DEFAULT_SCHEDULE, getAvailabilityFromSchedule } from "@calcom/lib/availability";
 import { WEBAPP_URL } from "@calcom/lib/constants";
 import { ProfileRepository } from "@calcom/lib/server/repository/profile";
@@ -841,7 +840,6 @@ const createUserFixture = (user: UserWithIncludes, page: Page) => {
       setupEventWithPrice(eventType, slug, store.page),
     bookAndPayEvent: async (eventType: Pick<Prisma.EventType, "slug">) =>
       bookAndPayEvent(user, eventType, store.page),
-    makePaymentUsingStripe: async () => makePaymentUsingStripe(store.page),
     installStripePersonal: async (params: InstallStripeParamsUnion) =>
       installStripePersonal({ page: store.page, ...params }),
     installStripeTeam: async (params: InstallStripeParamsUnion & { teamId: number }) =>
@@ -854,7 +852,6 @@ const createUserFixture = (user: UserWithIncludes, page: Page) => {
       });
     },
     delete: async () => await prisma.user.delete({ where: { id: store.user.id } }),
-    confirmPendingPayment: async () => confirmPendingPayment(store.page),
     getFirstProfile: async () => {
       return prisma.profile.findFirstOrThrow({
         where: {
@@ -996,37 +993,6 @@ const createUser = (
   }
 };
 
-async function confirmPendingPayment(page: Page) {
-  await page.waitForURL(new RegExp("/booking/*"));
-
-  const url = page.url();
-
-  const params = new URLSearchParams(url.split("?")[1]);
-
-  const id = params.get("payment_intent");
-
-  if (!id) throw new Error(`Payment intent not found in url ${url}`);
-
-  const payload = JSON.stringify(
-    { type: "payment_intent.succeeded", data: { object: { id } }, account: "e2e_test" },
-    null,
-    2
-  );
-
-  const signature = stripe.webhooks.generateTestHeaderString({
-    payload,
-    secret: "",
-  });
-
-  const response = await page.request.post("/api/integrations/stripepayment/webhook", {
-    data: payload,
-    headers: { "stripe-signature": signature },
-  });
-
-  if (response.status() !== 200)
-    throw new Error(`Failed to confirm payment. Response: ${await response.text()}`);
-}
-
 // login using a replay of an E2E routine.
 export async function login(
   user: Pick<Prisma.User, "username"> & Partial<Pick<Prisma.User, "email">> & { password?: string | null },
@@ -1090,24 +1056,6 @@ export async function bookAndPayEvent(
   // --- fill form
   await page.fill('[name="name"]', "Stripe Stripeson");
   await page.fill('[name="email"]', "test@example.com");
-
-  await Promise.all([page.waitForURL("/payment/*"), page.press('[name="email"]', "Enter")]);
-
-  await makePaymentUsingStripe(page);
-}
-
-export async function makePaymentUsingStripe(page: Page) {
-  const stripeElement = await page.locator(".StripeElement").first();
-  const stripeFrame = stripeElement.frameLocator("iframe").first();
-  await stripeFrame.locator('[name="number"]').fill("4242 4242 4242 4242");
-  const now = new Date();
-  await stripeFrame.locator('[name="expiry"]').fill(`${now.getMonth() + 1} / ${now.getFullYear() + 1}`);
-  await stripeFrame.locator('[name="cvc"]').fill("111");
-  const postcalCodeIsVisible = await stripeFrame.locator('[name="postalCode"]').isVisible();
-  if (postcalCodeIsVisible) {
-    await stripeFrame.locator('[name="postalCode"]').fill("111111");
-  }
-  await page.click('button:has-text("Pay now")');
 }
 
 const installStripePersonal = async (params: InstallStripePersonalPramas) => {
