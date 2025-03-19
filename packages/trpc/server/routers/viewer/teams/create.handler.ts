@@ -1,4 +1,3 @@
-import { generateTeamCheckoutSession } from "@calcom/features/ee/teams/lib/payments";
 import { WEBAPP_URL } from "@calcom/lib/constants";
 import { uploadLogo } from "@calcom/lib/server/avatar";
 import { ProfileRepository } from "@calcom/lib/server/repository/profile";
@@ -16,29 +15,6 @@ type CreateOptions = {
     user: NonNullable<TrpcSessionUser>;
   };
   input: TCreateInputSchema;
-};
-
-const generateCheckoutSession = async ({
-  teamSlug,
-  teamName,
-  userId,
-}: {
-  teamSlug: string;
-  teamName: string;
-  userId: number;
-}) => {
-  const checkoutSession = await generateTeamCheckoutSession({
-    teamSlug,
-    teamName,
-    userId,
-  });
-
-  if (!checkoutSession.url)
-    throw new TRPCError({
-      code: "INTERNAL_SERVER_ERROR",
-      message: "Failed retrieving a checkout session URL.",
-    });
-  return { url: checkoutSession.url, message: "Payment required to publish team" };
 };
 
 export const createHandler = async ({ ctx, input }: CreateOptions) => {
@@ -68,23 +44,6 @@ export const createHandler = async ({ ctx, input }: CreateOptions) => {
     });
 
     if (nameCollisions) throw new TRPCError({ code: "BAD_REQUEST", message: "team_slug_exists_as_user" });
-  }
-
-  // If the user is not a part of an org, then make them pay before creating the team
-  if (!isOrgChildTeam) {
-    const checkoutSession = await generateCheckoutSession({
-      teamSlug: slug,
-      teamName: name,
-      userId: user.id,
-    });
-
-    // If there is a checkout session, return it. Otherwise, it means it's disabled.
-    if (checkoutSession)
-      return {
-        url: checkoutSession.url,
-        message: checkoutSession.message,
-        team: null,
-      };
   }
 
   const createdTeam = await prisma.team.create({
