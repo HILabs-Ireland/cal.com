@@ -19,10 +19,6 @@ export const dateNotInPast = function (date: Date) {
 
 // This verifies the apiKey and sets the user if it is valid.
 export const verifyApiKey: NextMiddleware = async (req, res, next) => {
-  req.isSystemWideAdmin = true;
-  await next();
-
-  return;
   const licenseKeyService = await LicenseKeySingleton.getInstance();
   const hasValidLicense = await licenseKeyService.checkLicense();
 
@@ -61,4 +57,6 @@ export const verifyApiKey: NextMiddleware = async (req, res, next) => {
 
   req.isSystemWideAdmin = isAdmin && scope === ScopeOfAdmin.SystemWide;
   req.isOrganizationOwnerOrAdmin = isAdmin && scope === ScopeOfAdmin.OrgOwnerOrAdmin;
+
+  await next();
 };
