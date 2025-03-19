@@ -150,7 +150,7 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
 // The following keys are assigned to admin only
 const adminRequiredKeys = ["admin"];
 const organizationRequiredKeys = ["organization"];
-const organizationAdminKeys = ["privacy", "OAuth Clients", "SSO", "directory_sync"];
+const organizationAdminKeys = ["privacy", "OAuth Clients", "SSO"];
 
 const useTabs = () => {
   const session = useSession();
@@ -252,11 +252,12 @@ const TeamListCollapsible = () => {
   const [teamMenuState, setTeamMenuState] =
     useState<{ teamId: number | undefined; teamMenuOpen: boolean }[]>();
   const searchParams = useCompatSearchParams();
+  const id = searchParams?.get("id");
   useEffect(() => {
     if (teams) {
       const teamStates = teams?.map((team) => ({
         teamId: team.id,
-        teamMenuOpen: String(team.id) === searchParams?.get("id"),
+        teamMenuOpen: String(team.id) === id,
       }));
       setTeamMenuState(teamStates);
       setTimeout(() => {
@@ -267,7 +268,7 @@ const TeamListCollapsible = () => {
         tabMembers?.scrollIntoView({ behavior: "smooth" });
       }, 100);
     }
-  }, [searchParams, teams]);
+  }, [id, teams]);
 
   return (
     <>

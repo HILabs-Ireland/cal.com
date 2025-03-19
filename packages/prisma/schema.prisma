@@ -193,8 +193,9 @@ model Credential {
   appId  String?
 
   // paid apps
-  subscriptionId String?
-  paymentStatus  String?
+  subscriptionId    String?
+  paymentStatus     String?
+  billingCycleStart Int?
 
   destinationCalendars DestinationCalendar[]
   selectedCalendars    SelectedCalendar[]
@@ -462,6 +463,7 @@ model Team {
   createdByOAuthClient   PlatformOAuthClient?    @relation("CreatedByOAuthClient", fields: [createdByOAuthClientId], references: [id], onDelete: Cascade)
   createdByOAuthClientId String?
   smsLockState           SMSLockState            @default(UNLOCKED)
+  platformBilling        PlatformBilling?
   activeOrgWorkflows     WorkflowsOnTeams[]
   attributes             Attribute[]
   smsLockReviewedByAdmin Boolean                 @default(false)
@@ -1600,6 +1602,17 @@ enum SMSLockState {
   LOCKED
   UNLOCKED
   REVIEW_NEEDED
+}
+
+model PlatformBilling {
+  id                Int      @id @unique // team id
+  customerId        String   @unique
+  subscriptionId    String?
+  plan              String   @default("none")
+  billingCycleStart Int?
+  billingCycleEnd   Int?
+  overdue           Boolean? @default(false)
+  team              Team     @relation(fields: [id], references: [id], onDelete: Cascade)
 }
 
 enum AttributeType {

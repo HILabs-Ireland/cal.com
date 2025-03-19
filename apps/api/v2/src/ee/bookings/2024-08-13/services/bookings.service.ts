@@ -387,28 +387,6 @@ export class BookingsService_2024_08_13 {
     return this.outputService.getOutputBooking(booking);
   }
 
-  async billBookings(bookings: CreatedBooking[]) {
-    for (const booking of bookings) {
-      await this.billBooking(booking);
-    }
-  }
-
-  async billBooking(booking: CreatedBooking) {
-    const hostId = booking.hosts?.[0]?.id;
-    if (!hostId) {
-      this.logger.error(`Booking with uid=${booking.uid} has no host`);
-      return;
-    }
-  }
-
-  async billRescheduledBooking(newBooking: CreatedBooking, oldBookingUid: string) {
-    const hostId = newBooking.hosts[0].id;
-    if (!hostId) {
-      this.logger.error(`Booking with uid=${newBooking.uid} has no host`);
-      return;
-    }
-  }
-
   async reassignBooking(bookingUid: string, requestUser: UserWithProfile) {
     const booking = await this.bookingsRepository.getByUid(bookingUid);
     if (!booking) {
