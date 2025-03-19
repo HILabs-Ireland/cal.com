@@ -197,7 +197,6 @@ export const purchaseTeamOrOrgSubscription = async (input: {
         unit_amount: yearlyPrice, // Stripe expects the amount in cents
         // Use the same currency as in the fixed price to avoid hardcoding it.
         currency: currency,
-        recurring: "year",
         product: typeof product === "string" ? product : product.id,
         tax_behavior: "exclusive",
       });
