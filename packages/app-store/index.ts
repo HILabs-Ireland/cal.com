@@ -1,6 +1,5 @@
 const appStore = {
   // example: () => import("./example"),
-  alby: () => import("./alby"),
   applecalendar: () => import("./applecalendar"),
   aroundvideo: () => import("./around"),
   caldavcalendar: () => import("./caldavcalendar"),
@@ -19,7 +18,6 @@ const appStore = {
   office365calendar: () => import("./office365calendar"),
   office365video: () => import("./office365video"),
   plausible: () => import("./plausible"),
-  paypal: () => import("./paypal"),
   "pipedrive-crm": () => import("./pipedrive-crm"),
   salesforce: () => import("./salesforce"),
   zohocrm: () => import("./zohocrm"),
@@ -42,7 +40,6 @@ const appStore = {
   basecamp3: () => import("./basecamp3"),
   telegramvideo: () => import("./telegram"),
   shimmervideo: () => import("./shimmervideo"),
-  hitpay: () => import("./hitpay"),
 };
 
 const exportedAppStore: typeof appStore = appStore;

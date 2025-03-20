@@ -35,7 +35,6 @@ import { metadata as googlecalendar__metadata_ts } from "./googlecalendar/_metad
 import { metadata as googlevideo__metadata_ts } from "./googlevideo/_metadata";
 import granola_config_json from "./granola/config.json";
 import gtm_config_json from "./gtm/config.json";
-import hitpay_config_json from "./hitpay/config.json";
 import horizon_workrooms_config_json from "./horizon-workrooms/config.json";
 import { metadata as hubspot__metadata_ts } from "./hubspot/_metadata";
 import { metadata as huddle01video__metadata_ts } from "./huddle01video/_metadata";
@@ -50,12 +49,10 @@ import make_config_json from "./make/config.json";
 import matomo_config_json from "./matomo/config.json";
 import metapixel_config_json from "./metapixel/config.json";
 import mirotalk_config_json from "./mirotalk/config.json";
-import mock_payment_app_config_json from "./mock-payment-app/config.json";
 import n8n_config_json from "./n8n/config.json";
 import nextcloudtalk_config_json from "./nextcloudtalk/config.json";
 import { metadata as office365calendar__metadata_ts } from "./office365calendar/_metadata";
 import office365video_config_json from "./office365video/config.json";
-import paypal_config_json from "./paypal/config.json";
 import ping_config_json from "./ping/config.json";
 import pipedream_config_json from "./pipedream/config.json";
 import pipedrive_crm_config_json from "./pipedrive-crm/config.json";
@@ -74,7 +71,6 @@ import shimmervideo_config_json from "./shimmervideo/config.json";
 import signal_config_json from "./signal/config.json";
 import sirius_video_config_json from "./sirius_video/config.json";
 import skype_config_json from "./skype/config.json";
-import { metadata as stripepayment__metadata_ts } from "./stripepayment/_metadata";
 import sylapsvideo_config_json from "./sylapsvideo/config.json";
 import synthflow_config_json from "./synthflow/config.json";
 import { metadata as tandemvideo__metadata_ts } from "./tandemvideo/_metadata";
@@ -137,7 +133,6 @@ export const appStoreMetadata = {
   googlevideo: googlevideo__metadata_ts,
   granola: granola_config_json,
   gtm: gtm_config_json,
-  hitpay: hitpay_config_json,
   "horizon-workrooms": horizon_workrooms_config_json,
   hubspot: hubspot__metadata_ts,
   huddle01video: huddle01video__metadata_ts,
@@ -152,12 +147,10 @@ export const appStoreMetadata = {
   matomo: matomo_config_json,
   metapixel: metapixel_config_json,
   mirotalk: mirotalk_config_json,
-  "mock-payment-app": mock_payment_app_config_json,
   n8n: n8n_config_json,
   nextcloudtalk: nextcloudtalk_config_json,
   office365calendar: office365calendar__metadata_ts,
   office365video: office365video_config_json,
-  paypal: paypal_config_json,
   ping: ping_config_json,
   pipedream: pipedream_config_json,
   "pipedrive-crm": pipedrive_crm_config_json,
@@ -176,7 +169,6 @@ export const appStoreMetadata = {
   signal: signal_config_json,
   sirius_video: sirius_video_config_json,
   skype: skype_config_json,
-  stripepayment: stripepayment__metadata_ts,
   sylapsvideo: sylapsvideo_config_json,
   synthflow: synthflow_config_json,
   tandemvideo: tandemvideo__metadata_ts,

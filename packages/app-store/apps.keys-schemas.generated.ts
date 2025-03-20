@@ -13,7 +13,6 @@ import { appKeysSchema as giphy_zod_ts } from "./giphy/zod";
 import { appKeysSchema as googlecalendar_zod_ts } from "./googlecalendar/zod";
 import { appKeysSchema as googlevideo_zod_ts } from "./googlevideo/zod";
 import { appKeysSchema as gtm_zod_ts } from "./gtm/zod";
-import { appKeysSchema as hitpay_zod_ts } from "./hitpay/zod";
 import { appKeysSchema as hubspot_zod_ts } from "./hubspot/zod";
 import { appKeysSchema as insihts_zod_ts } from "./insihts/zod";
 import { appKeysSchema as intercom_zod_ts } from "./intercom/zod";
@@ -23,11 +22,9 @@ import { appKeysSchema as larkcalendar_zod_ts } from "./larkcalendar/zod";
 import { appKeysSchema as make_zod_ts } from "./make/zod";
 import { appKeysSchema as matomo_zod_ts } from "./matomo/zod";
 import { appKeysSchema as metapixel_zod_ts } from "./metapixel/zod";
-import { appKeysSchema as mock_payment_app_zod_ts } from "./mock-payment-app/zod";
 import { appKeysSchema as nextcloudtalk_zod_ts } from "./nextcloudtalk/zod";
 import { appKeysSchema as office365calendar_zod_ts } from "./office365calendar/zod";
 import { appKeysSchema as office365video_zod_ts } from "./office365video/zod";
-import { appKeysSchema as paypal_zod_ts } from "./paypal/zod";
 import { appKeysSchema as pipedrive_crm_zod_ts } from "./pipedrive-crm/zod";
 import { appKeysSchema as plausible_zod_ts } from "./plausible/zod";
 import { appKeysSchema as posthog_zod_ts } from "./posthog/zod";
@@ -35,7 +32,6 @@ import { appKeysSchema as qr_code_zod_ts } from "./qr_code/zod";
 import { appKeysSchema as routing_forms_zod_ts } from "./routing-forms/zod";
 import { appKeysSchema as salesforce_zod_ts } from "./salesforce/zod";
 import { appKeysSchema as shimmervideo_zod_ts } from "./shimmervideo/zod";
-import { appKeysSchema as stripepayment_zod_ts } from "./stripepayment/zod";
 import { appKeysSchema as tandemvideo_zod_ts } from "./tandemvideo/zod";
 import { appKeysSchema as booking_pages_tag_zod_ts } from "./templates/booking-pages-tag/zod";
 import { appKeysSchema as event_type_app_card_zod_ts } from "./templates/event-type-app-card/zod";
@@ -62,7 +58,6 @@ export const appKeysSchemas = {
   googlecalendar: googlecalendar_zod_ts,
   googlevideo: googlevideo_zod_ts,
   gtm: gtm_zod_ts,
-  hitpay: hitpay_zod_ts,
   hubspot: hubspot_zod_ts,
   insihts: insihts_zod_ts,
   intercom: intercom_zod_ts,
@@ -72,11 +67,9 @@ export const appKeysSchemas = {
   make: make_zod_ts,
   matomo: matomo_zod_ts,
   metapixel: metapixel_zod_ts,
-  "mock-payment-app": mock_payment_app_zod_ts,
   nextcloudtalk: nextcloudtalk_zod_ts,
   office365calendar: office365calendar_zod_ts,
   office365video: office365video_zod_ts,
-  paypal: paypal_zod_ts,
   "pipedrive-crm": pipedrive_crm_zod_ts,
   plausible: plausible_zod_ts,
   posthog: posthog_zod_ts,
@@ -84,7 +77,6 @@ export const appKeysSchemas = {
   "routing-forms": routing_forms_zod_ts,
   salesforce: salesforce_zod_ts,
   shimmervideo: shimmervideo_zod_ts,
-  stripe: stripepayment_zod_ts,
   tandemvideo: tandemvideo_zod_ts,
   "booking-pages-tag": booking_pages_tag_zod_ts,
   "event-type-app-card": event_type_app_card_zod_ts,
