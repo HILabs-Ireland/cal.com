@@ -20,7 +20,7 @@ To create a new webhook subscription, visit `/settings/developer/webhooks` and p
 
 1. Subscriber URL: The listener URL where the payload will be sent to, when an event trigger is triggered.
 
-2. Event triggers: You can decide which triggers specifically to listen to. Currently, we offer listening to `Booking Cancelled`, `Booking Created`, `Booking Rescheduled`, `Booking Rejected`, `Booking Requested`, `Booking Payment Initiated`, `Booking Paid`, `Meeting Started`, `Recording Ready`, `Form Submitted`, `Meeting Ended` and `Instant Meeting Created`.
+2. Event triggers: You can decide which triggers specifically to listen to. Currently, we offer listening to `Booking Cancelled`, `Booking Created`, `Booking Rescheduled`, `Booking Rejected`, `Booking Requested`, `Booking Paid`, `Meeting Started`, `Recording Ready`, `Form Submitted`, `Meeting Ended` and `Instant Meeting Created`.
 
 3. Secret: You can provide a secret key with this webhook and then [verify it](/docs/core-features/webhooks#verifying-the-authenticity-of-the-received-payload) on the subscriber URL when receiving a payload to confirm if the payload is authentic or adulterated. You can leave it blank, if you don't wish to secure the webhook with a secret key.
 
@@ -158,7 +158,7 @@ where `{{type}}` represents the event type slug and `{{title}}` represents the t
 
 | Variable           | Type      | Description                                                                                                                                                                                                                                         |
 | ------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| triggerEvent       | String    | The name of the trigger event \[BOOKING\_CREATED, BOOKING\_RESCHEDULED, BOOKING\_CANCELLED, MEETING\_ENDED, BOOKING\_REJECTED, BOOKING\_REQUESTED, BOOKING\_PAYMENT\_INITIATED, BOOKING\_PAID, MEETING\_STARTED, RECORDING\_READY, FORM\_SUBMITTED] |
+| triggerEvent       | String    | The name of the trigger event \[BOOKING\_CREATED, BOOKING\_RESCHEDULED, BOOKING\_CANCELLED, MEETING\_ENDED, BOOKING\_REJECTED, BOOKING\_REQUESTED, BOOKING\_PAID, MEETING\_STARTED, RECORDING\_READY, FORM\_SUBMITTED] |
 | createdAt          | Datetime  | The Time of the webhook                                                                                                                                                                                                                             |
 | type               | String    | The event type slug                                                                                                                                                                                                                                 |
 | title              | String    | The event type name                                                                                                                                                                                                                                 |

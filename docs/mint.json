@@ -197,7 +197,6 @@
             "platform/atoms/booker",
             "platform/atoms/event-type",
             "platform/atoms/calendar-settings",
-            "platform/atoms/payment-form",
             "platform/atoms/conferencing-apps"
           ]
         },

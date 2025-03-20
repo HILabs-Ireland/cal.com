@@ -800,27 +800,6 @@ export function expectSuccesfulLocationChangeEmails({
   );
 }
 
-export function expectAwaitingPaymentEmails({
-  emails,
-  booker,
-  subject,
-}: {
-  emails: Fixtures["emails"];
-  organizer: { email: string; name: string };
-  booker: { email: string; name: string };
-  subject?: string;
-}) {
-  expect(emails).toHaveEmail(
-    {
-      titleTag: "awaiting_payment_subject",
-      to: `${booker.name} <${booker.email}>`,
-      noIcs: true,
-    },
-    `${booker.email}`,
-    subject
-  );
-}
-
 export function expectBookingRequestedEmails({
   emails,
   organizer,
@@ -1132,38 +1111,6 @@ export function expectBookingCancelledWebhookToHaveBeenFired({
         location: {
           label: "location",
           value: { optionValue: "", value: location },
-        },
-      },
-    },
-  });
-}
-
-export function expectBookingPaymentIntiatedWebhookToHaveBeenFired({
-  booker,
-  location,
-  subscriberUrl,
-  paymentId,
-}: {
-  organizer: { email: string; name: string };
-  booker: { email: string; name: string };
-  subscriberUrl: string;
-  location: string;
-  paymentId: number;
-}) {
-  expectWebhookToHaveBeenCalledWith(subscriberUrl, {
-    triggerEvent: "BOOKING_PAYMENT_INITIATED",
-    payload: {
-      paymentId: paymentId,
-      metadata: {
-        // In a Pending Booking Request, we don't send the video call url
-      },
-      responses: {
-        name: { label: "your_name", value: booker.name, isHidden: false },
-        email: { label: "email_address", value: booker.email, isHidden: false },
-        location: {
-          label: "location",
-          value: { optionValue: "", value: location },
-          isHidden: false,
         },
       },
     },
