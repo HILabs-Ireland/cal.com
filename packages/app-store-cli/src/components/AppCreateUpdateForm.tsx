@@ -92,7 +92,6 @@ export const AppForm = ({
         { label: "Conferencing", value: "conferencing" },
         { label: "CRM", value: "crm" },
         { label: "Messaging", value: "messaging" },
-        { label: "Payment", value: "payment" },
         { label: "Other", value: "other" },
       ],
       defaultValue: "",

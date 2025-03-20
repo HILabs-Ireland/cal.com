@@ -28,7 +28,6 @@ describe("pagesAndRewritePaths", () => {
       "event-types",
       "icons",
       "org",
-      "payment",
       "routing-forms",
       "signup",
       "team",

@@ -28,8 +28,6 @@ describe("getCalendarsEvents", () => {
       userId: 808,
       teamId: null,
       appId: "exampleApp",
-      subscriptionId: null,
-      paymentStatus: null,
       invalid: false,
     };
   });
