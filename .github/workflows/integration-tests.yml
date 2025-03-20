@@ -33,9 +33,6 @@ env:
   PAYMENT_FEE_PERCENTAGE: ${{ vars.CI_PAYMENT_FEE_PERCENTAGE }}
   SAML_ADMINS: ${{ secrets.CI_SAML_ADMINS }}
   SAML_DATABASE_URL: ${{ secrets.CI_SAML_DATABASE_URL }}
-  STRIPE_PRIVATE_KEY: ${{ secrets.CI_STRIPE_PRIVATE_KEY }}
-  STRIPE_CLIENT_ID: ${{ secrets.CI_STRIPE_CLIENT_ID }}
-  STRIPE_WEBHOOK_SECRET: ${{ secrets.CI_STRIPE_WEBHOOK_SECRET }}
   SENDGRID_API_KEY: ${{ secrets.CI_SENDGRID_API_KEY }}
   SENDGRID_EMAIL: ${{ secrets.CI_SENDGRID_EMAIL }}
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -44,7 +41,7 @@ jobs:
   integration:
     timeout-minutes: 20
     name: Integration
-    runs-on: buildjet-8vcpu-ubuntu-2204
+    runs-on: ubuntu-latest
     services:
       postgres:
         image: postgres:13

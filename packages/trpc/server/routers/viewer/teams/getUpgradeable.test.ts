@@ -6,10 +6,6 @@ import { MembershipRole } from "@calcom/prisma/enums";
 
 import getUpgradeableHandler from "./getUpgradeable.handler";
 
-vi.mock("@calcom/lib/constants", () => ({
-  IS_TEAM_BILLING_ENABLED: true,
-}));
-
 describe("getUpgradeableHandler", () => {
   const ctx = {
     userId: 1137,

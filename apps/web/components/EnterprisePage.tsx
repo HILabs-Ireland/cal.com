@@ -30,11 +30,6 @@ export default function EnterprisePage() {
       description: t("unlimited_teams_description"),
     },
     {
-      icon: <Icon name="credit-card" className="h-5 w-5 text-green-500" />,
-      title: t("unified_billing"),
-      description: t("unified_billing_description"),
-    },
-    {
       icon: <Icon name="lock" className="h-5 w-5 text-purple-500" />,
       title: t("advanced_managed_events"),
       description: t("advanced_managed_events_description"),

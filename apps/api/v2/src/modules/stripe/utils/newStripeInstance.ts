@@ -1,6 +1,5 @@
 import Stripe from "stripe";
 
-const stripeApiKey = process.env.STRIPE_API_KEY || "";
-export const stripeInstance = new Stripe(stripeApiKey, {
+export const stripeInstance = new Stripe("", {
   apiVersion: "2020-08-27",
 });

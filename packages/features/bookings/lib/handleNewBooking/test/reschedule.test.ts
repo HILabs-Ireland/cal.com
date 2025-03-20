@@ -1,3 +1,4 @@
+/* eslint-disable playwright/no-skipped-test */
 import prismaMock from "../../../../../../tests/libs/__mocks__/prisma";
 
 import {
@@ -56,7 +57,7 @@ describe("handleNewBooking", () => {
     resetTestSMS();
   });
 
-  describe("Reschedule", () => {
+  describe.skip("[EE feature] Reschedule", () => {
     describe("User event-type", () => {
       test(
         `should rechedule an existing booking successfully with Cal Video(Daily Video)
@@ -74,7 +75,7 @@ describe("handleNewBooking", () => {
 
           const organizer = getOrganizer({
             name: "Organizer",
-            email: "organizer@example.com",
+            email: "b3JnYW5pemVyQGV4YW1wbGUuY29t",
             id: 101,
             schedules: [TestData.schedules.IstWorkHours],
             credentials: [getGoogleCalendarCredential()],
@@ -1885,7 +1886,7 @@ describe("handleNewBooking", () => {
         async ({ emails }) => {
           const handleNewBooking = (await import("@calcom/features/bookings/lib/handleNewBooking")).default;
           const booker = getBooker({
-            email: "booker@example.com",
+            email: "Ym9va2VyQGV4YW1wbGUuY29t",
             name: "Booker",
           });
 

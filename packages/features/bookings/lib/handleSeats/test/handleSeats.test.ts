@@ -2572,7 +2572,7 @@ describe("handleSeats", () => {
 
         const organizer = getOrganizer({
           name: "Organizer",
-          email: "organizer@example.com",
+          email: "dXNlckBleGFtcGxlLmNvbQ==",
           id: 101,
           schedules: [TestData.schedules.IstWorkHours],
         });

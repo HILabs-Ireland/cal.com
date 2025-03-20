@@ -32,7 +32,6 @@ export type AppPageProps = {
   author: string;
   pro?: boolean;
   price?: number;
-  commission?: number;
   feeType?: AppType["feeType"];
   docs?: string;
   website?: string;
@@ -59,7 +58,6 @@ export const AppPage = ({
   categories,
   author,
   price = 0,
-  commission,
   isGlobal = false,
   feeType,
   docs,
@@ -311,13 +309,6 @@ export const AppPage = ({
           ) : (
             <SkeletonButton className="mt-6 h-20 grow" />
           ))}
-
-        {price !== 0 && !paid && (
-          <span className="block text-right">
-            {feeType === "usage-based" ? `${commission}% + ${priceInDollar}/booking` : priceInDollar}
-            {feeType === "monthly" && `/${t("month")}`}
-          </span>
-        )}
 
         <div className="prose-sm prose prose-a:text-default prose-headings:text-emphasis prose-code:text-default prose-strong:text-default text-default mt-8">
           {body}

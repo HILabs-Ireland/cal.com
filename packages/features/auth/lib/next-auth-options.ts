@@ -1,3 +1,4 @@
+/* eslint-disable @calcom/eslint/no-prisma-include-true */
 import { calendar_v3 } from "@googleapis/calendar";
 import type { Membership, Team, UserPermissionRole } from "@prisma/client";
 import { waitUntil } from "@vercel/functions";
@@ -13,17 +14,11 @@ import GoogleProvider from "next-auth/providers/google";
 import { updateProfilePhotoGoogle } from "@calcom/app-store/_utils/oauth/updateProfilePhotoGoogle";
 import GoogleCalendarService from "@calcom/app-store/googlecalendar/lib/CalendarService";
 import { LicenseKeySingleton } from "@calcom/ee/common/server/LicenseKeyService";
-import createUsersAndConnectToOrg from "@calcom/features/ee/dsync/lib/users/createUsersAndConnectToOrg";
 import { getOrgFullOrigin, subdomainSuffix } from "@calcom/features/ee/organizations/lib/orgDomains";
 import { clientSecretVerifier, hostedCal, isSAMLLoginEnabled } from "@calcom/features/ee/sso/lib/saml";
 import { checkRateLimitAndThrowError } from "@calcom/lib/checkRateLimitAndThrowError";
-import {
-  GOOGLE_CALENDAR_SCOPES,
-  GOOGLE_OAUTH_SCOPES,
-  HOSTED_CAL_FEATURES,
-  IS_CALCOM,
-} from "@calcom/lib/constants";
-import { ENABLE_PROFILE_SWITCHER, IS_TEAM_BILLING_ENABLED, WEBAPP_URL } from "@calcom/lib/constants";
+import { GOOGLE_CALENDAR_SCOPES, GOOGLE_OAUTH_SCOPES, IS_CALCOM } from "@calcom/lib/constants";
+import { ENABLE_PROFILE_SWITCHER, WEBAPP_URL } from "@calcom/lib/constants";
 import { symmetricDecrypt, symmetricEncrypt } from "@calcom/lib/crypto";
 import { defaultCookies } from "@calcom/lib/default-cookies";
 import { isENVDev } from "@calcom/lib/env";
@@ -54,21 +49,6 @@ const ORGANIZATIONS_AUTOLINK =
   process.env.ORGANIZATIONS_AUTOLINK === "1" || process.env.ORGANIZATIONS_AUTOLINK === "true";
 
 const usernameSlug = (username: string) => `${slugify(username)}-${randomString(6).toLowerCase()}`;
-const getDomainFromEmail = (email: string): string => email.split("@")[1];
-const getVerifiedOrganizationByAutoAcceptEmailDomain = async (domain: string) => {
-  const existingOrg = await prisma.team.findFirst({
-    where: {
-      organizationSettings: {
-        isOrganizationVerified: true,
-        orgAutoAcceptEmail: domain,
-      },
-    },
-    select: {
-      id: true,
-    },
-  });
-  return existingOrg?.id;
-};
 const loginWithTotp = async (email: string) =>
   `/auth/login?totp=${await (await import("./signJwt")).default({ email })}`;
 
@@ -80,10 +60,6 @@ type UserTeams = {
 
 export const checkIfUserBelongsToActiveTeam = <T extends UserTeams>(user: T) =>
   user.teams.some((m: { team: { metadata: unknown } }) => {
-    if (!IS_TEAM_BILLING_ENABLED) {
-      return true;
-    }
-
     const metadata = teamMetadataSchema.safeParse(m.team.metadata);
 
     return metadata.success && metadata.data?.subscriptionId;
@@ -359,29 +335,12 @@ if (isSAMLLoginEnabled) {
 
         const { id, firstName, lastName } = userInfo;
         const email = userInfo.email.toLowerCase();
-        let user = !email
+        const user = !email
           ? undefined
           : await UserRepository.findByEmailAndIncludeProfilesAndPassword({ email });
-        if (!user) {
-          const hostedCal = Boolean(HOSTED_CAL_FEATURES);
-          if (hostedCal && email) {
-            const domain = getDomainFromEmail(email);
-            const organizationId = await getVerifiedOrganizationByAutoAcceptEmailDomain(domain);
-            if (organizationId) {
-              const createUsersAndConnectToOrgProps = {
-                emailsToCreate: [email],
-                organizationId,
-                identityProvider: IdentityProvider.SAML,
-                identityProviderId: email,
-              };
-              await createUsersAndConnectToOrg(createUsersAndConnectToOrgProps);
-              user = await UserRepository.findByEmailAndIncludeProfilesAndPassword({
-                email: email,
-              });
-            }
-          }
-          if (!user) throw new Error(ErrorCode.UserNotFound);
-        }
+
+        if (!user) throw new Error(ErrorCode.UserNotFound);
+
         const [userProfile] = user?.allProfiles;
         return {
           id: id as unknown as number,

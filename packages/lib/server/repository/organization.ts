@@ -1,5 +1,4 @@
 import { getOrgUsernameFromEmail } from "@calcom/features/auth/signup/utils/getOrgUsernameFromEmail";
-import { IS_TEAM_BILLING_ENABLED } from "@calcom/lib/constants";
 import logger from "@calcom/lib/logger";
 import { safeStringify } from "@calcom/lib/safeStringify";
 import { prisma } from "@calcom/prisma";
@@ -31,7 +30,6 @@ export class OrganizationRepository {
       seats: number | null;
       pricePerSeat: number | null;
       isPlatform: boolean;
-      billingPeriod?: "MONTHLY" | "ANNUALLY";
     };
     owner: {
       id: number;
@@ -72,7 +70,6 @@ export class OrganizationRepository {
       isOrganizationAdminReviewed: boolean;
       autoAcceptEmail: string;
       seats: number | null;
-      billingPeriod?: "MONTHLY" | "ANNUALLY";
       pricePerSeat: number | null;
       isPlatform: boolean;
     };
@@ -114,7 +111,6 @@ export class OrganizationRepository {
     isOrganizationAdminReviewed: boolean;
     autoAcceptEmail: string;
     seats: number | null;
-    billingPeriod?: "MONTHLY" | "ANNUALLY";
     pricePerSeat: number | null;
     isPlatform: boolean;
   }) {
@@ -122,7 +118,7 @@ export class OrganizationRepository {
       data: {
         name: orgData.name,
         isOrganization: true,
-        ...(!IS_TEAM_BILLING_ENABLED ? { slug: orgData.slug } : {}),
+        slug: orgData.slug,
         organizationSettings: {
           create: {
             isAdminReviewed: orgData.isOrganizationAdminReviewed,
@@ -132,11 +128,10 @@ export class OrganizationRepository {
           },
         },
         metadata: {
-          ...(IS_TEAM_BILLING_ENABLED ? { requestedSlug: orgData.slug } : {}),
+          requestedSlug: orgData.slug,
           orgSeats: orgData.seats,
           orgPricePerSeat: orgData.pricePerSeat,
           isPlatform: orgData.isPlatform,
-          billingPeriod: orgData.billingPeriod,
         },
         isPlatform: orgData.isPlatform,
       },

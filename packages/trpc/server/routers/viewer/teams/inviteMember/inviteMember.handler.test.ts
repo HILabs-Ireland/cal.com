@@ -4,7 +4,6 @@ import {
   inviteMemberutilsScenarios as inviteMemberUtilsScenarios,
   default as inviteMemberUtilsMock,
 } from "./__mocks__/inviteMemberUtils";
-import { constantsScenarios } from "@calcom/lib/__mocks__/constants";
 
 import { describe, it, expect, beforeEach, vi } from "vitest";
 
@@ -90,7 +89,6 @@ describe("inviteMemberHandler", () => {
     checkRateLimitAndThrowErrorScenarios.fakeRateLimitPassed();
     getTranslationMock.fakeIdentityFn();
     inviteMemberUtilsScenarios.checkPermissions.fakePassed();
-    constantsScenarios.enableTeamBilling();
   });
 
   describe("Regular Team", () => {
