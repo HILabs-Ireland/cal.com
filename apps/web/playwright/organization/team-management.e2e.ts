@@ -1,11 +1,9 @@
 import { expect } from "@playwright/test";
 
-import { IS_TEAM_BILLING_ENABLED } from "@calcom/lib/constants";
 import { prisma } from "@calcom/prisma";
 import { MembershipRole } from "@calcom/prisma/enums";
 
 import { test } from "../lib/fixtures";
-import { fillStripeTestCheckout } from "../lib/testUtils";
 
 // eslint-disable-next-line playwright/no-skipped-test
 test.skip("[EE feature] Teams", () => {
@@ -35,8 +33,6 @@ test.skip("[EE feature] Teams", () => {
       // Click text=Continue
       await page.click("[type=submit]");
       // TODO: Figure out a way to make this more reliable
-      // eslint-disable-next-line playwright/no-conditional-in-test
-      if (IS_TEAM_BILLING_ENABLED) await fillStripeTestCheckout(page);
       await expect(page).toHaveURL(/\/settings\/teams\/(\d+)\/onboard-members.*$/i);
       await page.waitForSelector('[data-testid="pending-member-list"]');
       await expect(page.getByTestId("pending-member-item")).toHaveCount(1);

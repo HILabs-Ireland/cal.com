@@ -2,18 +2,9 @@ import prismaMock from "../../../../tests/libs/__mocks__/prismaMock";
 
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 
-import { TeamBilling } from "@calcom/features/ee/billing/teams";
-
 import { TRPCError } from "@trpc/server";
 
 import { TeamRepository } from "./team";
-
-vi.mock("@calcom/features/ee/billing/teams", () => ({
-  TeamBilling: {
-    findAndInit: vi.fn(),
-    findAndInitMany: vi.fn(),
-  },
-}));
 
 vi.mock("@calcom/lib/domainManager/organization", () => ({
   deleteDomain: vi.fn(),
@@ -65,9 +56,6 @@ describe("TeamRepository", () => {
       const mockDeletedTeam = { id: 1, name: "Deleted Team", isOrganization: true, slug: "deleted-team" };
       prismaMock.team.delete.mockResolvedValue(mockDeletedTeam);
 
-      const mockTeamBilling = { cancel: vi.fn() };
-      TeamBilling.findAndInit.mockResolvedValue(mockTeamBilling);
-
       // Mock the Prisma transaction
       const mockTransaction = {
         eventType: { deleteMany: vi.fn() },
@@ -97,7 +85,6 @@ describe("TeamRepository", () => {
         },
       });
 
-      expect(mockTeamBilling.cancel).toHaveBeenCalled();
       expect(result).toEqual(mockDeletedTeam);
     });
   });
@@ -106,31 +93,6 @@ describe("TeamRepository", () => {
     it("should throw error if verification token is not found", async () => {
       prismaMock.verificationToken.findFirst.mockResolvedValue(null);
       await expect(TeamRepository.inviteMemberByToken("invalid-token", 1)).rejects.toThrow(TRPCError);
-    });
-
-    it("should create membership and update billing", async () => {
-      const mockToken = { teamId: 1, team: { name: "Test Team" } };
-      prismaMock.verificationToken.findFirst.mockResolvedValue(mockToken);
-
-      const mockTeamBilling = { updateQuantity: vi.fn() };
-      TeamBilling.findAndInit.mockResolvedValue(mockTeamBilling);
-
-      const result = await TeamRepository.inviteMemberByToken("valid-token", 1);
-
-      expect(prismaMock.membership.create).toHaveBeenCalled();
-      expect(mockTeamBilling.updateQuantity).toHaveBeenCalled();
-      expect(result).toBe("Test Team");
-    });
-  });
-
-  describe("publish", () => {
-    it("should call publish on TeamBilling", async () => {
-      const mockTeamBilling = { publish: vi.fn() };
-      TeamBilling.findAndInit.mockResolvedValue(mockTeamBilling);
-
-      await TeamRepository.publish(1);
-
-      expect(mockTeamBilling.publish).toHaveBeenCalled();
     });
   });
 });

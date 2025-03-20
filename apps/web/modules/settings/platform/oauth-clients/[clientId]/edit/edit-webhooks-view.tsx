@@ -15,7 +15,6 @@ import {
   useUpdateOAuthClientWebhook,
 } from "@lib/hooks/settings/platform/oauth-clients/useOAuthClientWebhooks";
 
-import NoPlatformPlan from "@components/settings/platform/dashboard/NoPlatformPlan";
 import { useGetUserAttributes } from "@components/settings/platform/hooks/useGetUserAttributes";
 
 export default function EditOAuthClientWebhooks() {
@@ -24,7 +23,7 @@ export default function EditOAuthClientWebhooks() {
   const params = useParams<{ clientId: string }>();
   const clientId = params?.clientId || "";
 
-  const { isUserLoading, isPlatformUser, isPaidUser } = useGetUserAttributes();
+  const { isUserLoading, isPlatformUser } = useGetUserAttributes();
 
   const {
     data: webhooks,
@@ -39,7 +38,7 @@ export default function EditOAuthClientWebhooks() {
 
   if (isUserLoading) return <div className="m-5">Loading...</div>;
 
-  if (isPlatformUser && isPaidUser) {
+  if (isPlatformUser) {
     return (
       <div>
         <Shell withoutSeo={true} title={t("webhook_update_form")} isPlatformUser={true}>
@@ -126,14 +125,7 @@ export default function EditOAuthClientWebhooks() {
 
   return (
     <div>
-      <Shell
-        withoutSeo={true}
-        isPlatformUser={true}
-        hideHeadingOnMobile
-        withoutMain={false}
-        SidebarContainer={<></>}>
-        <NoPlatformPlan />
-      </Shell>
+      <Shell withoutSeo={true} isPlatformUser={true} withoutMain={false} SidebarContainer={<></>} />
     </div>
   );
 }

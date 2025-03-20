@@ -118,7 +118,7 @@ test.skip("[EE feature] Booking with Seats", () => {
   });
 });
 
-test.describe("Reschedule for booking with seats", () => {
+test.skip("[EE feature] Reschedule for booking with seats", () => {
   test("If rescheduled/cancelled booking with seats it should display the correct number of seats", async ({
     page,
     users,

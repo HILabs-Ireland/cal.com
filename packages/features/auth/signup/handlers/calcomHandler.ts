@@ -1,7 +1,9 @@
+/* eslint-disable @calcom/eslint/no-prisma-include-true */
+
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { NextApiResponse } from "next";
 
 import stripe from "@calcom/app-store/stripepayment/lib/server";
-import { getPremiumMonthlyPlanPriceId } from "@calcom/app-store/stripepayment/lib/utils";
 import { hashPassword } from "@calcom/features/auth/lib/hashPassword";
 import { sendEmailVerification } from "@calcom/features/auth/lib/verifyEmail";
 import { createOrUpdateMemberships } from "@calcom/features/auth/signup/utils/createOrUpdateMemberships";
@@ -112,7 +114,7 @@ async function handler(req: RequestWithUsernameStatus, res: NextApiResponse) {
       customer: customer.id,
       line_items: [
         {
-          price: getPremiumMonthlyPlanPriceId(),
+          price: "0",
           quantity: 1,
         },
       ],

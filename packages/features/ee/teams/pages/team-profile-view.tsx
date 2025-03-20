@@ -10,7 +10,7 @@ import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
 import SectionBottomActions from "@calcom/features/settings/SectionBottomActions";
-import { IS_TEAM_BILLING_ENABLED, WEBAPP_URL } from "@calcom/lib/constants";
+import { WEBAPP_URL } from "@calcom/lib/constants";
 import { getPlaceholderAvatar } from "@calcom/lib/defaultAvatarImage";
 import { trackFormbricksAction } from "@calcom/lib/formbricks-client";
 import { getTeamUrlSync } from "@calcom/lib/getBookerUrl/client";
@@ -415,19 +415,17 @@ const TeamProfileForm = ({ team }: TeamProfileFormProps) => {
         <Button color="primary" type="submit" loading={mutation.isPending} disabled={isDisabled}>
           {t("update")}
         </Button>
-        {IS_TEAM_BILLING_ENABLED &&
-          team.slug === null &&
-          (team.metadata as Prisma.JsonObject)?.requestedSlug && (
-            <Button
-              color="secondary"
-              className="ml-2"
-              type="button"
-              onClick={() => {
-                publishMutation.mutate({ teamId: team.id });
-              }}>
-              {t("team_publish")}
-            </Button>
-          )}
+        {team.slug === null && (team.metadata as Prisma.JsonObject)?.requestedSlug && (
+          <Button
+            color="secondary"
+            className="ml-2"
+            type="button"
+            onClick={() => {
+              publishMutation.mutate({ teamId: team.id });
+            }}>
+            {t("team_publish")}
+          </Button>
+        )}
       </SectionBottomActions>
     </Form>
   );

@@ -30,7 +30,6 @@ describe("getCalendarsEvents", () => {
       appId: "exampleApp",
       subscriptionId: null,
       paymentStatus: null,
-      billingCycleStart: null,
       invalid: false,
     };
   });

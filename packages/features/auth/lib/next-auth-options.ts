@@ -1,3 +1,4 @@
+/* eslint-disable @calcom/eslint/no-prisma-include-true */
 import { calendar_v3 } from "@googleapis/calendar";
 import type { Membership, Team, UserPermissionRole } from "@prisma/client";
 import { waitUntil } from "@vercel/functions";
@@ -17,7 +18,7 @@ import { getOrgFullOrigin, subdomainSuffix } from "@calcom/features/ee/organizat
 import { clientSecretVerifier, hostedCal, isSAMLLoginEnabled } from "@calcom/features/ee/sso/lib/saml";
 import { checkRateLimitAndThrowError } from "@calcom/lib/checkRateLimitAndThrowError";
 import { GOOGLE_CALENDAR_SCOPES, GOOGLE_OAUTH_SCOPES, IS_CALCOM } from "@calcom/lib/constants";
-import { ENABLE_PROFILE_SWITCHER, IS_TEAM_BILLING_ENABLED, WEBAPP_URL } from "@calcom/lib/constants";
+import { ENABLE_PROFILE_SWITCHER, WEBAPP_URL } from "@calcom/lib/constants";
 import { symmetricDecrypt, symmetricEncrypt } from "@calcom/lib/crypto";
 import { defaultCookies } from "@calcom/lib/default-cookies";
 import { isENVDev } from "@calcom/lib/env";
@@ -59,10 +60,6 @@ type UserTeams = {
 
 export const checkIfUserBelongsToActiveTeam = <T extends UserTeams>(user: T) =>
   user.teams.some((m: { team: { metadata: unknown } }) => {
-    if (!IS_TEAM_BILLING_ENABLED) {
-      return true;
-    }
-
     const metadata = teamMetadataSchema.safeParse(m.team.metadata);
 
     return metadata.success && metadata.data?.subscriptionId;

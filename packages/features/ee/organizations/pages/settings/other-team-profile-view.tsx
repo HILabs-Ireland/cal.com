@@ -9,7 +9,7 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { IS_TEAM_BILLING_ENABLED_CLIENT, WEBAPP_URL } from "@calcom/lib/constants";
+import { WEBAPP_URL } from "@calcom/lib/constants";
 import { getPlaceholderAvatar } from "@calcom/lib/defaultAvatarImage";
 import { trackFormbricksAction } from "@calcom/lib/formbricks-client";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
@@ -95,7 +95,7 @@ const OtherTeamProfileView = () => {
         router.replace("/enterprise");
       }
     },
-    [teamError]
+    [router, teamError]
   );
 
   useEffect(
@@ -110,7 +110,7 @@ const OtherTeamProfileView = () => {
         }
       }
     },
-    [team]
+    [form, team]
   );
 
   // This page can only be accessed by team admins (owner/admin)
@@ -154,14 +154,6 @@ const OtherTeamProfileView = () => {
 
   function deleteTeam() {
     if (team?.id) deleteTeamMutation.mutate({ teamId: team.id });
-  }
-
-  function leaveTeam() {
-    if (team?.id && session.data)
-      removeMemberMutation.mutate({
-        teamIds: [team.id],
-        memberIds: [session.data.user.id],
-      });
   }
 
   if (!team) return null;
@@ -260,19 +252,17 @@ const OtherTeamProfileView = () => {
               <Button color="primary" className="mt-8" type="submit" loading={mutation.isPending}>
                 {t("update")}
               </Button>
-              {IS_TEAM_BILLING_ENABLED_CLIENT &&
-                team.slug === null &&
-                (team.metadata as Prisma.JsonObject)?.requestedSlug && (
-                  <Button
-                    color="secondary"
-                    className="ml-2 mt-8"
-                    type="button"
-                    onClick={() => {
-                      publishMutation.mutate({ teamId: team.id });
-                    }}>
-                    Publish
-                  </Button>
-                )}
+              {team.slug === null && (team.metadata as Prisma.JsonObject)?.requestedSlug && (
+                <Button
+                  color="secondary"
+                  className="ml-2 mt-8"
+                  type="button"
+                  onClick={() => {
+                    publishMutation.mutate({ teamId: team.id });
+                  }}>
+                  Publish
+                </Button>
+              )}
             </Form>
           ) : (
             <div className="flex">

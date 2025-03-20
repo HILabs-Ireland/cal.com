@@ -1,3 +1,4 @@
+/* eslint-disable turbo/no-undeclared-env-vars */
 import classNames from "classnames";
 // eslint-disable-next-line no-restricted-imports
 import { noop } from "lodash";
@@ -295,18 +296,6 @@ const PremiumTextfield = (props: ICustomUsernameProps) => {
           </div>
 
           <DialogFooter className="mt-4">
-            {/* redirect to checkout */}
-            {usernameChangeCondition === UsernameChangeStatusEnum.UPGRADE && (
-              <Button
-                type="button"
-                loading={updateUsername.isPending}
-                data-testid="go-to-billing"
-                href={paymentLink}>
-                <>
-                  {t("go_to_stripe_billing")} <Icon name="external-link" className="ml-1 h-4 w-4" />
-                </>
-              </Button>
-            )}
             {/* Normal save */}
             {usernameChangeCondition !== UsernameChangeStatusEnum.UPGRADE && (
               <Button

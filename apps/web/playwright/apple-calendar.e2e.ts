@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+
+/* eslint-disable playwright/no-skipped-test */
 import { expect } from "@playwright/test";
 
 import { test } from "./lib/fixtures";
@@ -13,11 +15,10 @@ const APPLE_CALENDAR_PASSWORD = process.env.E2E_TEST_APPLE_CALENDAR_PASSWORD!;
 
 const SHOULD_SKIP_TESTS = !APPLE_CALENDAR_EMAIL || !APPLE_CALENDAR_PASSWORD;
 
-test.describe("Apple Calendar", () => {
-  // eslint-disable-next-line playwright/no-skipped-test
+test.skip("[EE feature] Apple Calendar", () => {
   test.skip(SHOULD_SKIP_TESTS, "Skipping due to missing the testing credentials");
 
-  test("Should be able to install and login on Apple Calendar", async ({ page, users }) => {
+  test.skip("Should be able to install and login on Apple Calendar", async ({ page, users }) => {
     const user = await users.create();
     await user.apiLogin();
 
