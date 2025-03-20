@@ -4,7 +4,8 @@
   "day_one": "{{count}} diena",
   "day_other": "{{count}} dienas",
   "second_one": "{{count}} sekunde",
-  "second_other": "{{count}} sekundes","accept_invitation": "Apstiprināt Uzaicinājumu",
+  "second_other": "{{count}} sekundes",
+  "accept_invitation": "Apstiprināt Uzaicinājumu",
   "calcom_explained": "{{appName}} nodrošina plānošanas infrastruktūru pilnīgi visiem.",
   "calcom_explained_new_user": "Pabeidziet sava {{appName}} konta iestatīšanu! Jūs esat tikai dažu soļu attālumā no visu plānošanas problēmu atrisināšanas.",
   "have_any_questions": "Jums ir jautājumi? Mēs esam šeit, lai palīdzētu.",
@@ -48,7 +49,8 @@
   "accept_our_license": "Akceptējiet mūsu licensi, izmainot .env mainīgo <1>NEXT_PUBLIC_LICENSE_CONSENT</1> uz '{{agree}}'.",
   "remove_banner_instructions": "Lai noņemtu šo baneri, lūdzu atveriet .env failu un nomainat <1>NEXT_PUBLIC_LICENSE_CONSENT</1> mainīgo uz '{{agree}}'.",
   "error_message": "Kļūmes paziņojums bija: '{{errorMessage}}'",
-  "help": "Palīdzība","enter_meeting": "Pievienoties Tikšanās",
+  "help": "Palīdzība",
+  "enter_meeting": "Pievienoties Tikšanās",
   "video_call_provider": "Video zvanu nodrošinātājs",
   "meeting_id": "Tikšanās ID",
   "meeting_password": "Tikšanās Parole",
@@ -65,7 +67,8 @@
   "hidden_team_member_title": "Jūs esat paslēpts šajā komandā",
   "hidden_team_member_message": "Jūsu vieta nav apmaksāta. Vai nu Jauniniet savu plānu uz PRO, vai paziņojat komandas īpašniekam, lai apmaksā jūsu vietu.",
   "hidden_team_owner_message": "Jums ir nepieciešams Pro konts, lai izmantotu komandas. Līdz jaunināšanai, jūs esat paslēpts.",
-  "link_expires": "p.s. Tas beidzas pēc {{expiresIn}} stundām.","seat_options_doesnt_support_confirmation": "Vietu opcija neatbalsta apstiprinājuma prasību",
+  "link_expires": "p.s. Tas beidzas pēc {{expiresIn}} stundām.",
+  "seat_options_doesnt_support_confirmation": "Vietu opcija neatbalsta apstiprinājuma prasību",
   "use_link_to_reset_password": "Izmantojiet saiti zemāk, lai atiestatītu savu paroli",
   "hey_there": "Sveiks,",
   "forgot_your_password_calcom": "Aizmirsi savu paroli? - {{appName}}",
@@ -127,5 +130,6 @@
   "ooo_slots_book_with": "Rezervējiet {{displayName}}",
   "ooo_create_entry_modal": "Iet ārpus biroja",
   "ooo_select_reason": "Izvēlieties iemeslu",
-  "enterprise_license_locally": "Jūs varat testēt šo funkciju vietēji, bet ne ražošanas vidē.","apply_to_all_event_types": "Piemēroties visiem, ieskaitot arī nākotnes notikumu veidus"
+  "enterprise_license_locally": "Jūs varat testēt šo funkciju vietēji, bet ne ražošanas vidē.",
+  "apply_to_all_event_types": "Piemēroties visiem, ieskaitot arī nākotnes notikumu veidus"
 }

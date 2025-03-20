@@ -4,7 +4,8 @@
   "day_one": "{{count}} deň",
   "day_other": "{{count}} dni",
   "second_one": "{{count}} sekunda",
-  "second_other": "{{count}} sekundy","accept_invitation": "Prijať pozvánku",
+  "second_other": "{{count}} sekundy",
+  "accept_invitation": "Prijať pozvánku",
   "calcom_explained": "{{appName}} poskytuje plánovaciu infraštruktúru pre každého.",
   "calcom_explained_new_user": "Dokončite nastavenie svojho {{appName}} účtu! Ste už iba niekoľko krokov od vyriešenia všetkých svojich problémov s plánovaním.",
   "have_any_questions": "Máte otázky? Sme tu, aby sme vám pomohli.",
@@ -51,5 +52,6 @@
   "ooo_slots_book_with": "Rezervovať {{displayName}}",
   "ooo_create_entry_modal": "Odísť z kancelárie",
   "ooo_select_reason": "Vybrať dôvod",
-  "enterprise_license_locally": "Túto funkciu môžete otestovať lokálne, ale nie v produkčnom prostredí.","apply_to_all_event_types": "Platí pre všetky, vrátane budúcich typov udalostí"
+  "enterprise_license_locally": "Túto funkciu môžete otestovať lokálne, ale nie v produkčnom prostredí.",
+  "apply_to_all_event_types": "Platí pre všetky, vrátane budúcich typov udalostí"
 }

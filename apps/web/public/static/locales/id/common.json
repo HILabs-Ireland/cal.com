@@ -3,7 +3,8 @@
   "day_one": "{{count}} hari",
   "day_other": "{{count}} hari",
   "second_one": "{{count}} detik",
-  "second_other": "{{count}} detik","accept_invitation": "Terima undangan",
+  "second_other": "{{count}} detik",
+  "accept_invitation": "Terima undangan",
   "calcom_explained": "{{appName}} menyediakan infrastruktur penjadwalan untuk semua orang.",
   "calcom_explained_new_user": "Selesaikan pengaturan akun {{appName}}! Tinggal selangkah lagi untuk solusi penjadwalan kamu.",
   "have_any_questions": "Punya pertanyaan? Kami siap membantu.",
@@ -63,7 +64,8 @@
   "hidden_team_member_title": "Kamu tersembunyi di tim ini",
   "hidden_team_member_message": "Kamu tidak dibayari, upgrade ke PRO atau beritahu pemilik tim bahwa mereka bisa membayari kamu.",
   "hidden_team_owner_message": "Kamu perlu akun pro untuk menggunakan tim, kamu disembunyikan sementara hingga kamu upgrade.",
-  "link_expires": "oya, ini hangus dalam {{expiresIn}} jam.","use_link_to_reset_password": "Gunakan link di bawah ini untuk mengatur ulang kata sandi kamu",
+  "link_expires": "oya, ini hangus dalam {{expiresIn}} jam.",
+  "use_link_to_reset_password": "Gunakan link di bawah ini untuk mengatur ulang kata sandi kamu",
   "hey_there": "Halo,",
   "forgot_your_password_calcom": "Lupa kata sandi? - {{appName}}",
   "delete_webhook_confirmation_message": "Apakah kamu yakin untuk menghapus webhook ini? Kamu tidak akan lagi menerima data pertemuan {{appName}} di URL tersebut secara langsung, pada saat acara terjadwal atau dibatalkan.",
@@ -132,5 +134,6 @@
   "ooo_slots_book_with": "Pesan {{displayName}}",
   "ooo_create_entry_modal": "Keluar dari kantor",
   "ooo_select_reason": "Pilih alasan",
-  "enterprise_license_locally": "Anda dapat menguji fitur ini secara lokal tetapi tidak pada produksi.","apply_to_all_event_types": "Terapkan untuk semua, termasuk jenis acara di masa depan"
+  "enterprise_license_locally": "Anda dapat menguji fitur ini secara lokal tetapi tidak pada produksi.",
+  "apply_to_all_event_types": "Terapkan untuk semua, termasuk jenis acara di masa depan"
 }
