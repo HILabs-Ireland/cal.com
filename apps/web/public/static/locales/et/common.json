@@ -4,9 +4,7 @@
   "day_one": "{{count}} päev",
   "day_other": "{{count}} päeva",
   "second_one": "{{count}} sekund",
-  "second_other": "{{count}} sekundit",
-  
-  "untitled": "Pealkirjata",
+  "second_other": "{{count}} sekundit","untitled": "Pealkirjata",
   "accept_invitation": "Võta kutse vastu",
   "max_characters": "Maks. tähemärgid",
   "min_characters": "Min. tähemärgid",
@@ -68,18 +66,10 @@
   "accept_our_license": "Nõustuge meie litsentsiga, muutes .env muutuja <1>NEXT_PUBLIC_LICENSE_CONSENT</1> väärtuseks '{{agree}}'.",
   "remove_banner_instructions": "Selle bänneri eemaldamiseks avage oma .env-fail ja muutke muutuja <1>NEXT_PUBLIC_LICENSE_CONSENT</1> väärtuseks '{{agree}}'.",
   "error_message": "Veateade oli: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Pöörduge oma makseteenuse pakkuja ja {{user}} poole, kuidas seda käsitleda.",
-  
-  
-  
   "dark_theme_contrast_error": "Tumeda teema värv ei läbi kontrasti kontrolli. Soovitame teil seda värvi muuta, et nupud oleksid paremini nähtavad.",
   "light_theme_contrast_error": "Heleda teema värv ei läbi kontrasti kontrolli. Soovitame teil seda värvi muuta, et teie nupud oleksid paremini nähtavad.",
   "event_type_color_light_theme_contrast_error": "Hele teema värv ei vasta kontrastinõuetele. Soovitame seda värvi muuta, et sündmuse tüüp oleks paremini nähtav.",
   "event_type_color_dark_theme_contrast_error": "Tume teema värv ei vasta kontrastinõuetele. Soovitame seda värvi muuta, et sündmuse tüüp oleks paremini nähtav.",
-  
-  
   "no_available_users_found_error": "Saadaolevaid kasutajaid ei leitud. Kas saaksite proovida teist ajavahemikku?",
   "request_body_end_time_internal_error": "Sisemine viga. Taotluse sisu ei sisalda lõpuaega",
   "create_calendar_event_error": "Korraldaja kalendrisse ei olnud võimalik üritust luua",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "Olete selle broneeringu jaoks juba registreerunud.",
   "hosts_unavailable_for_booking": "Mõned võõrustajad pole broneerimiseks saadaval.",
   "help": "Abi",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Üldine viip",
   "begin_message": "Alusta sõnumit",
   "codebase_has_to_stay_opensource": "Koodibaas peab jääma avatud lähtekoodiga, olenemata sellest, kas seda muudeti või mitte",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "Sa oled selles meeskonnas varjatud",
   "hidden_team_member_message": "Teie koha eest ei maksta, minge üle PRO paketile või andke meeskonna omanikule teada, et nad võivad teie koha eest maksta.",
   "hidden_team_owner_message": "Meeskondade kasutamiseks vajate PRO paketiga kontot, olete varjatud kuni vahetate paketti.",
-  "link_expires": "NB! See aegub {{expiresIn}} tunni pärast.",
-  
-  "seat_options_doesnt_support_confirmation": "Istekoha broneerimise valik ei ole toeta kinnitust nõudvate broneeringute puhul.",
-  "multilocation_doesnt_support_seats": "Mitme asukoha valik ei toeta istekoha broneerimise valikut",
-  
-  "seats_option_doesnt_support_multi_location": "Istekoha broneerimise valik ei toeta mitme asukoha valikut",
-  
-  
-  
-  
-  
-  
+  "link_expires": "NB! See aegub {{expiresIn}} tunni pärast.","seat_options_doesnt_support_confirmation": "Istekoha broneerimise valik ei ole toeta kinnitust nõudvate broneeringute puhul.",
+  "multilocation_doesnt_support_seats": "Mitme asukoha valik ei toeta istekoha broneerimise valikut","seats_option_doesnt_support_multi_location": "Istekoha broneerimise valik ei toeta mitme asukoha valikut",
   "use_link_to_reset_password": "Kasutage oma parooli lähtestamiseks allolevat linki",
   "hey_there": "Tere",
   "forgot_your_password_calcom": "Unustasite oma parooli? - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Veebihaagi loomine õnnestus!",
   "webhook_updated_successfully": "Veebihaagi värskendamine õnnestus!",
   "webhook_removed_successfully": "Veebihaagi eemaldamine õnnestus!",
-  
-  
   "payload_template": "Laengu mall",
   "dismiss": "Ignoreeri",
   "no_data_yet": "Andmeid veel pole",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "Teie korduv koosolek on esitatud",
   "booking_confirmed": "Teie broneering on kinnitatud",
   "booking_confirmed_recurring": "Teie korduv kohtumine on kinnitatud",
-  
-  
   "enter_new_password": "Sisestage oma konto jaoks soovitud uus parool.",
   "reset_password": "Parooli lähtestamine",
   "change_your_password": "Muuda oma parooli",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Transkriptsioon loodud",
   "booking_created": "Broneering loodud",
   "booking_rejected": "Broneering tagasi lükatud",
-  "booking_requested": "Broneering on taotletud",
-  
-  "meeting_ended": "Koosolek lõppes",
+  "booking_requested": "Broneering on taotletud","meeting_ended": "Koosolek lõppes",
   "form_submitted": "Vorm on esitatud",
-  "form_submitted_no_event": "Vorm esitatud, ühtegi sündmust ei broneeritud",
-  
-  "ooo_created": "Väljaspool kontorit loodud",
+  "form_submitted_no_event": "Vorm esitatud, ühtegi sündmust ei broneeritud","ooo_created": "Väljaspool kontorit loodud",
   "booking_no_show_updated": "Ei ilmunud broneering uuendatud",
-  "event_triggers": "Sündmuste käivitajad",
-  
-  "create_new_webhook": "Loo uus veebihaak",
+  "event_triggers": "Sündmuste käivitajad","create_new_webhook": "Loo uus veebihaak",
   "webhooks": "Veebihaagid",
   "team_webhooks": "Meeskonna veebihaagid",
   "create_new_webhook_to_account": "Loo oma kontole uus veebihaak",
@@ -529,9 +493,7 @@
   "iframe_embed": "iframe Embed",
   "embed_calcom": "Lihtsaim viis rakenduse {{appName}} manustamiseks oma veebisaidile.",
   "integrate_using_embed_or_webhooks": "Integreerige oma veebisaidiga meie manustamisvalikute abil või hankige reaalajas broneerimisteavet kohandatud veebihaagide abil.",
-  "schedule_a_meeting": "Leppige kokku kohtumine",
-        "need_anything_else": "Kas on veel midagi vaja?",
-    "contact": "Kontakt",
+  "schedule_a_meeting": "Leppige kokku kohtumine",    "need_anything_else": "Kas on veel midagi vaja?","contact": "Kontakt",
   "our_support_team": "meie tugimeeskond",
   "contact_our_support_team": "Võtke ühendust meie tugimeeskonnaga",
   "uh_oh": "Oh!",
@@ -773,10 +735,6 @@
   "readonly": "Loe ainult",
   "one_time_link": "Ühekordne link",
   "plan_description": "Kasutate praegu plaani {{plan}}.",
-  
-  
-  
-  
   "event_types_page_title": "Sündmuste tüübid",
   "event_types_page_subtitle": "Loo sündmusi, mida jagada, et inimesed saaksid teie kalendris broneerida.",
   "new": "Uus",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Alustamiseks looge meeskond",
   "teams": "Meeskonnad",
   "team": "Meeskond",
-  "organization": "Organisatsioon",
-      
-  
-    "create_manage_teams_collaborative": "Looge ja hallake meeskondi, et kasutada koostööfunktsioone.",
+  "organization": "Organisatsioon",    "create_manage_teams_collaborative": "Looge ja hallake meeskondi, et kasutada koostööfunktsioone.",
   "only_available_on_pro_plan": "See funktsioon on saadaval ainult Pro paketis",
   "remove_cal_branding_description": "Brändi {{appName}} broneerimislehtedelt eemaldamiseks peate minema üle Pro-kontole.",
   "edit_profile_info_description": "Muutke oma profiiliteavet, mis kuvatakse teie ajakava lingil.",
@@ -843,16 +798,13 @@
   "little_something_about": "Veidi midagi endast.",
   "profile_updated_successfully": "Profiili värskendamine õnnestus",
   "your_user_profile_updated_successfully": "Teie kasutajaprofiili värskendamine õnnestus.",
-  
-  
   "you_are_all_set": "Kõik on valmis",
   "you_are_all_set_description": "Sa kasutad juba uusimat paketti. Pole vaja uuendada. Naudi uusi funktsioone ja kui sul on küsimusi, võta meiega ühendust!",
   "user_cannot_found_db": "Kasutaja näib olevat sisse logitud, kuid teda ei leitud andmebaasist",
   "embed_and_webhooks": "Manustamine ja veebihaagid",
   "enabled": "Lubatud",
   "disabled": "Puuetega",
-  "disable": "Keela",
-      "availability": "Saadaval",
+  "disable": "Keela",  "availability": "Saadaval",
   "edit_availability": "Muuda saadavust",
   "configure_availability": "Seadista ajad, millal olete broneerimiseks saadaval.",
   "copy_times_to": "Kopeeri ajad asukohta",
@@ -889,8 +841,6 @@
   "recurring_event": "Korduv sündmus",
   "recurring_event_description": "Inimesed saavad tellida korduvaid sündmusi",
   "connect_and_join": "Ühenda ja liitu",
-  
-  
   "warning_instant_meeting_experimental": "Eksperimentaalne: kiirkohtumise sündmused on praegu katselised.",
   "starting": "Algus",
   "disable_guests": "Külaliste keelamine",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "{{appName}} annab videokoosoleku URL-i.",
   "cal_provide_jitsi_meeting_url": "Loome teie jaoks Jitsi Meeti URL-i.",
   "cal_provide_huddle01_meeting_url": "{{appName}} pakub Huddle01 videokoosoleku URL-i.",
-  "cal_provide_teams_meeting_url": "{{appName}} annab MS Teamsi koosoleku URL-i. MÄRKUS: PEAB OLEMA TÖÖ- VÕI KOOLIKONTO",
-  
-  "you_need_to_add_a_name": "Peate nime lisama",
+  "cal_provide_teams_meeting_url": "{{appName}} annab MS Teamsi koosoleku URL-i. MÄRKUS: PEAB OLEMA TÖÖ- VÕI KOOLIKONTO","you_need_to_add_a_name": "Peate nime lisama",
   "commission_per_transaction": "vahendustasu tehingu kohta",
   "event_type_updated_successfully_description": "Teie sündmuse tüüpi on edukalt värskendatud.",
   "hide_event_type": "Peida sündmuse tüüp",
@@ -964,9 +912,7 @@
   "next_step_text": "Järgmine samm",
   "next_step": "Jäta samm vahele",
   "prev_step": "Eelmine samm",
-  "install": "Install",
-  
-  "installed": "Paigaldatud",
+  "install": "Install","installed": "Paigaldatud",
   "active_install_one": "{{count}} aktiivne installimine",
   "active_install_other": "{{count}} aktiivset installimist",
   "globally_install": "Ülemaailmselt paigaldatud",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Kalendrit värskendati edukalt",
   "check_here": "Kontrolli siit",
   "conferencing": "Konverents",
-  "calendar": "Kalender",
-  
-  "not_installed": "Ei ole installeeritud",
+  "calendar": "Kalender","not_installed": "Ei ole installeeritud",
   "error_password_mismatch": "Paroolid ei sobi.",
   "error_required_field": "Selle välja täitmine on kohustuslik.",
   "status": "Olek",
@@ -1024,16 +968,12 @@
   "no_category_apps": "Pole {{category}} rakendusi",
   "all_apps": "Kõik rakendused",
   "no_category_apps_description_calendar": "Lisa kalendrirakendus konfliktide kontrollimiseks, et vältida topeltbroneeringuid",
-  "no_category_apps_description_conferencing": "Proovige lisada oma klientidega videokõnede jaoks konverentsirakendus",
-  
-  "no_category_apps_description_analytics": "Lisage oma broneerimislehtedele analüüsirakendus",
+  "no_category_apps_description_conferencing": "Proovige lisada oma klientidega videokõnede jaoks konverentsirakendus","no_category_apps_description_analytics": "Lisage oma broneerimislehtedele analüüsirakendus",
   "no_category_apps_description_automation": "Lisa kasutamiseks automatiseerimisrakendus",
   "no_category_apps_description_other": "Lisage mis tahes muud tüüpi rakendusi igasuguste toimingute tegemiseks",
   "no_category_apps_description_messaging": "Lisa sõnumsiderakendus kohandatud märguannete ja meeldetuletuste seadistamiseks",
   "no_category_apps_description_crm": "Lisa CRM-i rakendus, et jälgida, kellega olete kohtunud",
-  "installed_app_calendar_description": "Määrake kalendrid konfliktide kontrollimiseks, et vältida topeltbroneeringuid.",
-  
-  "installed_app_analytics_description": "Seadistage, milliseid analüüsirakendusi broneerimislehtede jaoks kasutada",
+  "installed_app_calendar_description": "Määrake kalendrid konfliktide kontrollimiseks, et vältida topeltbroneeringuid.","installed_app_analytics_description": "Seadistage, milliseid analüüsirakendusi broneerimislehtede jaoks kasutada",
   "installed_app_other_description": "Kõik teie installitud rakendused teistest kategooriatest.",
   "installed_app_conferencing_description": "Seadistage, milliseid konverentsirakendusi kasutada",
   "installed_app_automation_description": "Konfigureerige, milliseid automatiseerimisrakendusi kasutada",
@@ -1048,9 +988,7 @@
   "features": "Funktsioonid",
   "permissions": "Load",
   "terms_and_privacy": "Tingimused ja privaatsus",
-  "published_by": "Avaldanud {{author}}",
-  
-  "buy": "Osta",
+  "published_by": "Avaldanud {{author}}","buy": "Osta",
   "install_app": "Installi äpp",
   "categories": "Kategooriad",
   "pricing": "Hinnakujundus",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Kinnita rahakott",
   "create_events_on": "Loo sündmusi",
   "enterprise_license": "See on ärifunktsioon",
-  "enterprise_license_locally": "Saate seda funktsiooni kohapeal testida, kuid mitte tootmises.",
-  
-  "missing_license": "Puuduv litsents",
+  "enterprise_license_locally": "Saate seda funktsiooni kohapeal testida, kuid mitte tootmises.","missing_license": "Puuduv litsents",
   "next_steps": "Järgmised sammud",
   "acquire_commercial_license": "Oma ärilitsents",
   "the_infrastructure_plan": "Infrastruktuuri plaan on kasutuspõhine ja sellel on käivitussõbralikud allahindlused.",
   "prisma_studio_tip": "Loo konto Prisma Studio kaudu",
-  "prisma_studio_tip_description": "Õppige oma esimest kasutajat seadistama",
-  
-  "error_404": "Viga 404",
+  "prisma_studio_tip_description": "Õppige oma esimest kasutajat seadistama","error_404": "Viga 404",
   "default": "Vaikimisi",
   "set_to_default": "Set to Default",
   "new_schedule_btn": "Uus ajakava",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Tugidokumentatsioon",
   "developer_documentation": "Arendaja dokumentatsioon",
   "get_in_touch": "Ühendust võtma",
-  "contact_support": "Võtke ühendust toega",
-  
-  "community_support": "Kogukonna tugi",
+  "contact_support": "Võtke ühendust toega","community_support": "Kogukonna tugi",
   "feedback": "Tagasiside",
   "submitted_feedback": "Aitäh tagasiside eest!",
   "feedback_error": "Viga tagasiside saatmisel",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "Töövood võimaldavad teil meeldetuletuste ja teatiste saatmist automatiseerida.",
   "active_on": "Aktiivne sees",
   "workflow_updated_successfully": "{{workflowName}} töövoo värskendamine õnnestus",
-    
-  "current": "Praegune",
-  
-  "standard": "standard",
+  "current": "Praegune","standard": "standard",
   "confirm_username_change_dialog_title": "Kinnita kasutajanime muudatus",
-  
-  
-    
   "trial_expired": "Teie prooviperiood on aegunud",
   "remove_app": "Eemalda rakendus",
   "yes_remove_app": "Jah, eemalda rakendus",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "osaleja",
   "event_date_variable": "Ürituse kuupäev",
   "event_time_variable": "Sündmuse aeg",
-  "organizer_name_variable": "Korraldaja nimi",
-  
-  "invalid_number": "Vale telefoninumber",
+  "organizer_name_variable": "Korraldaja nimi","invalid_number": "Vale telefoninumber",
   "invalid_url_error_message": "Invalid URL for {{label}}. Näidis-URL: {{sampleUrl}}",
   "navigate": "Navigeeri",
   "open": "Avatud",
   "close": "Sulge",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Salvestised on osa meeskonnaplaanist",
   "team_feature_teams": "See on meeskonna funktsioon. Minge üle meeskonnale, et näha oma meeskonna saadavust.",
   "team_feature_workflows": "See on meeskonna funktsioon. Minge üle meeskonnale, et automatiseerida oma sündmuste märguandeid ja meeldetuletusi töövoogude abil.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Broneerimisküsimuse identifikaator",
   "company_size": "Ettevõtte suurus",
   "what_help_needed": "Millega sa abi vajad?",
-  "variable_format": "Muutuva formaat",
-  
-  "custom_input_as_variable_info": "Ignoreerige kõiki täiendava sisestussildi erimärke (kasutage ainult tähti ja numbreid), kasutage kõigi tähtede jaoks suurtähti ja asendage tühikud alakriipsudega.",
+  "variable_format": "Muutuva formaat","custom_input_as_variable_info": "Ignoreerige kõiki täiendava sisestussildi erimärke (kasutage ainult tähti ja numbreid), kasutage kõigi tähtede jaoks suurtähti ja asendage tühikud alakriipsudega.",
   "using_booking_questions_as_variables": "Kuidas kasutada broneerimisküsimusi muutujatena?",
   "download_desktop_app": "Laadi alla töölauarakendus",
   "set_ping_link": "Määra Ping link",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "Kui sageli saate broneerida",
   "event_advanced_tab_description": "Kalendri seaded ja muu...",
   "event_advanced_tab_title": "Täpsem",
-  
-  
   "event_setup_multiple_duration_error": "Sündmuse seadistamine: mitu kestust nõuab vähemalt ühte valikut.",
   "event_setup_multiple_duration_default_error": "Sündmuse seadistamine: valige kehtiv vaikekestus.",
   "event_setup_booking_limits_error": "Broneerimislimiidid peavad olema kasvavas järjekorras. [päev, nädal, kuu, aasta]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "Saate seda kõike hiljem saadavuse lehel kohandada.",
   "connect_calendars_from_app_store": "Saate lisada rohkem kalendreid rakenduste poest",
   "connect_conference_apps": "Ühenda konverentsirakendused",
-  "connect_calendar_apps": "Ühenda kalendrirakendused",
-  
-  "connect_automation_apps": "Ühenda automatiseerimisrakendused",
+  "connect_calendar_apps": "Ühenda kalendrirakendused","connect_automation_apps": "Ühenda automatiseerimisrakendused",
   "connect_analytics_apps": "Ühenda analüüsirakendused",
   "connect_other_apps": "Ühenda teisi rakendusi",
   "connect_messaging_apps": "Ühenda sõnumsiderakendused",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Lähtesta link saadetud",
   "password_reset_email": "E-kiri on teel aadressile {{email}} koos juhistega parooli lähtestamiseks.",
   "password_reset_leading": "Kui te ei saa peagi e-kirja, kontrollige, kas sisestatud e-posti aadress on õige, kontrollige oma rämpsposti kausta või pöörduge toe poole, kui probleem püsib.",
-  "password_updated": "Parool uuendatud!",
-  
-  "pending_invites": "Ootel kutsed",
+  "password_updated": "Parool uuendatud!","pending_invites": "Ootel kutsed",
   "pending_organization_invites": "Ootel organisatsiooni kutsed",
   "not_on_cal": "Pole rakenduses {{appName}}",
   "no_calendar_installed": "Kalendrit pole installitud",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "Kasuta kõigi tähtede jaoks suurtähti",
   "replace_whitespaces_underscores": "Asenda tühikud alakriipsudega",
   "platform_members": "Platvormi liikmed",
-  "platform_members_description": "Halda oma platvormi meeskonna administraatoreid ja liikmeid",
-                  "ignore_special_characters_booking_questions": "Ignoreeri broneeringuküsimuse identifikaatoris erimärke. Kasutage ainult tähti ja numbreid",
+  "platform_members_description": "Halda oma platvormi meeskonna administraatoreid ja liikmeid",              "ignore_special_characters_booking_questions": "Ignoreeri broneeringuküsimuse identifikaatoris erimärke. Kasutage ainult tähti ja numbreid",
   "retry": "Uuesti proovima",
   "fetching_calendars_error": "Teie kalendrite toomisel ilmnes probleem. <1>Proovige uuesti</1> või võtke ühendust klienditoega.",
   "calendar_connection_fail": "Kalendri ühendus ebaõnnestus",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Piira tulevasi broneeringuid",
   "limit_future_bookings_description": "Piira, kui kaugele tulevikus saab seda üritust broneerida",
   "no_event_types": "Sündmuste tüüpide seadistamine puudub",
-  "no_event_types_description": "{{name}} ei ole teile broneerimiseks seadistanud ühtegi sündmusetüüpi.",
-    "monthly": "Igakuine",
+  "no_event_types_description": "{{name}} ei ole teile broneerimiseks seadistanud ühtegi sündmusetüüpi.","monthly": "Igakuine",
   "yearly": "Iga-aastane",
   "weekly": "Iganädalane",
   "checkout": "Kassasse",
@@ -1733,9 +1643,7 @@
   "test_preview": "Testi eelvaade",
   "route_to": "Route to",
   "test_preview_description": "Testige oma marsruutimisvormi ilma andmeid esitamata",
-  "test_routing": "Testi marsruutimist",
-  
-  "edit_event_type": "Muuda sündmuse tüüpi",
+  "test_routing": "Testi marsruutimist","edit_event_type": "Muuda sündmuse tüüpi",
   "only_admin_can_see_members_of_org": "See organisatsioon on privaatne ja selle liikmeid saavad vaadata ainult organisatsiooni administraator või omanik.",
   "only_admin_can_manage_sso_org": "Ainult organisatsiooni administraator või omanik saab hallata SSO seadeid",
   "collective_scheduling": "Kollektiivne ajakava",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "Tiimi <strong>{{teamName}}</strong> administraator asendas teie sündmuse tüübi <strong>/{{slug}}</strong> hallatava sündmuse tüübiga, mida nad juhivad.",
   "email_body_slug_replacement_info": "Teie link töötab edasi, kuid mõned selle seaded võivad olla muutunud. Saate selle üle vaadata sündmuste tüüpides.",
   "email_body_slug_replacement_suggestion": "Kui teil on sündmuse tüübi kohta küsimusi, võtke ühendust oma administraatoriga.<br /><br />Head ajakava koostamist, <br />Cal.com-i meeskond",
-  
-  
   "app_disabled_with_event_type": "Administraator keelas rakenduse {{appName}}, mis mõjutab teie sündmuse tüüpi {{title}}.",
   "app_disabled_video": "Administraator on keelanud rakenduse {{appName}}, mis võib mõjutada teie sündmuste tüüpe. Kui teil on sündmuse tüübid, mille asukoht on {{appName}}, siis vaikimisi on see Cal Video.",
   "app_disabled_subject": "{{appName}} on keelatud",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Ring-Robini võõrustajad",
   "minimum_round_robin_hosts_count": "Osalemiseks vajalik võõrustajate arv",
   "hosts": "Võõrustajad",
-  
-  
   "new_attendee": "Uus osaleja",
   "awaiting_approval": "Ootan heakskiitu",
   "requires_google_calendar": "See rakendus nõuab Google'i kalendri ühendust",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Kohanda broneerimislehel küsitavaid küsimusi",
   "add_a_booking_question": "Lisa küsimus",
   "identifier": "Identifitseerija",
-  "duplicate_email": "E-post on duplikaat",
-  
-  
-  
-  "booking_confirmation_failed": "Broneeringu kinnitamine ebaõnnestus",
+  "duplicate_email": "E-post on duplikaat","booking_confirmation_failed": "Broneeringu kinnitamine ebaõnnestus",
   "not_enough_seats": "Pole piisavalt kohti",
   "form_builder_field_already_exists": "Selle nimega väli on juba olemas",
   "show_on_booking_page": "Näita broneerimislehel",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Tühjenda filtrid",
   "clear": "Tühjenda",
   "hold": "Hoia",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Teadmisi",
   "routing_forms": "Suunamise vormid",
   "testing_workflow_info_message": "Selle töövoo testimisel pidage meeles, et e-kirju ja SMS-e saab ajastada ainult vähemalt 1 tund ette",
   "insights_no_data_found_for_filter": "Valitud filtri või valitud kuupäevade kohta andmeid ei leitud.",
-  
-  
   "something_went_wrong_on_our_end": "Meil läks midagi valesti. Võtke ühendust meie tugitiimiga ja me parandame selle teie jaoks kohe ära.",
-  "please_provide_following_text_to_suppport": "Teid paremaks abistamiseks esitage tugiteenusega ühenduse võtmisel järgmine tekst",
-  
-  "complete_your_booking": "Lõpetage broneering",
+  "please_provide_following_text_to_suppport": "Teid paremaks abistamiseks esitage tugiteenusega ühenduse võtmisel järgmine tekst","complete_your_booking": "Lõpetage broneering",
   "complete_your_booking_subject": "Lõpetage broneering: {{title}} kuupäeval {{date}}",
   "confirm_your_details": "Kinnitage oma andmed",
   "copy_invite_link": "Kopeeri kutse link",
@@ -2120,14 +2000,8 @@
   "three_months": "3 kuud",
   "one_year": "1 aasta",
   "team_invite_received": "Teid on kutsutud liituma meeskonnaga {{teamName}}",
-  "currency_string": "{{summa, valuuta}}",
-  
-  "charge_attendee": "Tasuta osaleja {{summa, valuuta}}",
-  
-  "email_invite_team": "{{email}} on kutsutud",
-  "email_invite_team_bulk": "{{userCount}} kasutajat on kutsutud",
-  
-  "image_size_limit_exceed": "Üleslaaditud pildi suurus ei tohiks ületada 5 MB",
+  "currency_string": "{{summa, valuuta}}","charge_attendee": "Tasuta osaleja {{summa, valuuta}}","email_invite_team": "{{email}} on kutsutud",
+  "email_invite_team_bulk": "{{userCount}} kasutajat on kutsutud","image_size_limit_exceed": "Üleslaaditud pildi suurus ei tohiks ületada 5 MB",
   "unauthorized_workflow_error_message": "{{errorCode}}: teil ei ole luba seda töövoogu lubada ega keelata",
   "inline_embed": "Inline Embed",
   "load_inline_content": "Laadib teie sündmuse tüübi otse koos teie veebisaidi muu sisuga.",
@@ -2394,9 +2268,7 @@
   "locked": "Lukus",
   "unlocked": "Avatud",
   "lock_timezone_toggle_on_booking_page": "Lukusta ajavöönd broneerimislehel",
-  "description_lock_timezone_toggle_on_booking_page": "Ajavööndi lukustamiseks broneerimislehel, kasulik isiklikuks sündmuseks.",
-  
-  "number_in_international_format": "Palun sisestage number rahvusvahelises vormingus.",
+  "description_lock_timezone_toggle_on_booking_page": "Ajavööndi lukustamiseks broneerimislehel, kasulik isiklikuks sündmuseks.","number_in_international_format": "Palun sisestage number rahvusvahelises vormingus.",
   "install_calendar": "Installi kalender",
   "branded_subdomain": "Kaubamärgiga alamdomeen",
   "branded_subdomain_description": "Hankige oma kaubamärgiga alamdomeen, nt acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Laiaulatuslik märgistamine",
   "extensive_whitelabeling_description": "Kohandage oma ajastamiskogemust oma logo, värvide ja muuga",
   "unlimited_teams": "Piiramatu arv meeskondi",
-  "unlimited_teams_description": "Lisage oma organisatsiooni nii palju alammeeskondi kui vaja",
-      "advanced_managed_events": "Täpsemad hallatud sündmuste tüübid",
+  "unlimited_teams_description": "Lisage oma organisatsiooni nii palju alammeeskondi kui vaja",  "advanced_managed_events": "Täpsemad hallatud sündmuste tüübid",
   "advanced_managed_events_description": "Lisage kõigi oma meeskonna tellimuste eest tasumiseks üks krediitkaart",
   "enterprise": "Ettevõte",
   "enterprise_description": "Oma organisatsiooni loomiseks minge üle ettevõttele",
-  "create_your_org": "Loo oma organisatsioon",
-    "create_your_enterprise_description": "Minge üle ettevõtte versioonile ja hankige juurdepääs Active Directory sünkroonimisele, SCIM-i automaatsele kasutajate ettevalmistamisele, Cal.ai häälagentidele, administraatori API-dele ja muule!",
-  
-  "admin_delete_organization_description": "<ul><li>Sellesse organisatsiooni kuuluvad meeskonnad kustutatakse ka koos nende sündmuste tüüpidega.</li><li>Organisatsiooni kuulunud kasutajaid ei kustutata, kuid nende kasutajanimesid muudetakse, et lubada need eksisteerivad väljaspool organisatsiooni</li><li>Kasutaja sündmuste tüübid, mis on loodud pärast seda, kui kasutaja oli organisatsioonis, kustutatakse</li><li>Migreeritud kasutajate sündmuste tüüpe ei kustutata</li></ ul>",
+  "create_your_org": "Loo oma organisatsioon","create_your_enterprise_description": "Minge üle ettevõtte versioonile ja hankige juurdepääs Active Directory sünkroonimisele, SCIM-i automaatsele kasutajate ettevalmistamisele, Cal.ai häälagentidele, administraatori API-dele ja muule!","admin_delete_organization_description": "<ul><li>Sellesse organisatsiooni kuuluvad meeskonnad kustutatakse ka koos nende sündmuste tüüpidega.</li><li>Organisatsiooni kuulunud kasutajaid ei kustutata, kuid nende kasutajanimesid muudetakse, et lubada need eksisteerivad väljaspool organisatsiooni</li><li>Kasutaja sündmuste tüübid, mis on loodud pärast seda, kui kasutaja oli organisatsioonis, kustutatakse</li><li>Migreeritud kasutajate sündmuste tüüpe ei kustutata</li></ ul>",
   "admin_delete_organization_title": "Kas kustutada {{organizationName}}?",
   "published": "Avaldatud",
   "unpublished": "Avaldamata",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "Las inimestel kohe broneerida",
   "uprade_to_create_instant_bookings": "Minge üle Enterprise'ile ja lubage külalistel liituda kiirkõnega, kuhu osalejad saavad otse sisse hüpata. See on ainult meeskonnaürituste tüüpide jaoks",
   "dont_want_to_wait": "Kas te ei taha oodata?",
-  "meeting_started": "Koosolek algas",
-  
-  "cal_ai_event_tab_description": "Las tehisintellekti agentidel teid broneerida",
+  "meeting_started": "Koosolek algas","cal_ai_event_tab_description": "Las tehisintellekti agentidel teid broneerida",
   "booking_not_found_error": "Ei leidnud broneeringut",
   "booking_seats_full_error": "Broneeritavad kohad on täis",
-  
-  
   "not_enough_available_seats_error": "Broneeringus ei ole piisavalt vabu kohti",
   "user_redirect_title": "{{username}} on praegu lühikest aega eemal.",
   "user_redirect_description": "Seni vastutab {{profile.username}} kasutaja {{username}} nimel kõigi uute ajastatud koosolekute eest.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "Kutse vastuvõtmisel muutub teie link teie organisatsiooni domeeniks, kuid ärge muretsege, kõik eelmised lingid töötavad endiselt ja suunavad need ümber.<br /><br />Pange tähele: kõik teie isikliku sündmuse tüübid teisaldatakse organisatsiooni <strong>{teamName}</strong>, mis võib sisaldada ka potentsiaalset isiklikku linki. <br /><br />Isiklike sündmuste jaoks soovitame luua uue konto isikliku e-posti aadressiga.",
   "email|existing_user_added_link_changed": "Teie link on muudetud lingist <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> linki <a href={`https://${newLink}`}>{ newLinkWithoutProtocol}</a>, kuid ärge muretsege, kõik eelmised lingid töötavad endiselt ja suunavad asjakohaselt ümber. <br /><br />Pange tähele: kõik teie isiklikud sündmusetüübid on teisaldatud kausta <strong>{teamName}<. /strong> organisatsioon, mis võib sisaldada ka potentsiaalset isiklikku linki.<br /><br />Logige sisse ja veenduge, et teie uuel organisatsioonikontol poleks privaatseid sündmusi.<br /><br />Isiklike sündmuste puhul me soovitame luua uue konto isikliku e-posti aadressiga.<br /><br />Nautige oma uut puhast linki: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Teie organisatsioon on loodud",
-  "your_current_plan": "Teie praegune plaan",
-  
-  "privacy_organization_description": "Oma organisatsiooni privaatsusseadete haldamine",
+  "your_current_plan": "Teie praegune plaan","privacy_organization_description": "Oma organisatsiooni privaatsusseadete haldamine",
   "privacy": "Privaatsus",
   "team_will_be_under_org": "Teie organisatsiooni alla kuuluvad uued meeskonnad",
   "add_group_name": "Lisa rühma nimi",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "Jätkamisel nõustute meie <0>tingimuste</0> ja <1>privaatsuspoliitikaga</1>.",
   "proceeding_agreement": "Jätkates nõustute meie",
   "terms": "Tingimustega",
-  "always_show_x_days": "Alati {{x}} päeva saadaval",
-  
-  "updating_oauth_client_error": "OAuthi kliendi värskendamisel ilmnes viga, proovige hiljem uuesti",
+  "always_show_x_days": "Alati {{x}} päeva saadaval","updating_oauth_client_error": "OAuthi kliendi värskendamisel ilmnes viga, proovige hiljem uuesti",
   "creating_oauth_client_error": "OAuthi kliendi loomisel ilmnes viga, proovige hiljem uuesti",
   "event_type_color": "Sündmuse tüübi värv",
   "event_type_color_description": "Seda kasutatakse ainult rakenduses sündmuse tüübi ja broneeringu eristamiseks. See ei ole broneerijatele nähtav.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Kontrollin Google Kalendrit",
   "outlook_connect_atom_label": "Ühenda Outlooki kalender",
   "outlook_connect_atom_already_connected_label": "Outlooki kalender on ühendatud",
-  "outlook_connect_atom_loading_label": "Outlooki kalendri kontrollimine",
-  
-  
-  
-  "booking_question_response_variables": "Broneerimisküsimuste vastuse muutujad",
+  "outlook_connect_atom_loading_label": "Outlooki kalendri kontrollimine","booking_question_response_variables": "Broneerimisküsimuste vastuse muutujad",
   "managed_by_teamAdmins": "Haldab {{teamAdmins}}",
   "number_of_options": "{{count}} valikut",
   "reschedule_with_same_round_robin_host_title": "Planeeri ümber sama Round-Robin hostiga",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "viimased {{count}} päeva",
   "month_to_date": "kuu algusest tänaseni",
   "year_to_date": "aasta algusest tänaseni",
-  "custom_range": "kohandatud vahemik",
-  
-  "always": "Alati",
-  "never": "Mitte kunagi",
-  
-  "if_cancelled": "Kui tühistatud",
+  "custom_range": "kohandatud vahemik","always": "Alati",
+  "never": "Mitte kunagi","if_cancelled": "Kui tühistatud",
   "before": "enne",
   "show_all_columns": "Näita kõiki veerge",
   "toggle_columns": "Lülita veerud sisse/välja",

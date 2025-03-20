@@ -4,9 +4,7 @@
   "day_one": "{{count}} zi",
   "day_other": "{{count}} (de) zile",
   "second_one": "{{count}} secundă",
-  "second_other": "{{count}} (de) secunde",
-  
-  "untitled": "Fără titlu",
+  "second_other": "{{count}} (de) secunde","untitled": "Fără titlu",
   "accept_invitation": "Acceptați invitația",
   "max_characters": "Max. caractere",
   "min_characters": "Min. caractere",
@@ -68,18 +66,10 @@
   "accept_our_license": "Acceptați licența noastră schimbând variabila .env <1>URMĂTOAREA_LICENȚĂ_PUBLICĂ</1> în.",
   "remove_banner_instructions": "Pentru a elimina acest banner, deschideți fișierul .env și modificați variabila <1>URMĂTOAREA_LICENȚĂ_PUBLICĂ</1> în „{{agree}}”.",
   "error_message": "Mesajul de eroare a fost: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Vă rugăm să verificați cu furnizorul dvs. de plăți și cu {{userName}} cum să gestionați această activitate.",
-  
-  
-  
   "dark_theme_contrast_error": "Culoarea temei întunecate nu trece verificarea contrastului. Îți recomandăm să schimbi această culoare pentru ca butoanele să fie mai vizibile.",
   "light_theme_contrast_error": "Culoarea temei luminoase nu trece verificarea contrastului. Îți recomandăm să schimbi această culoare pentru ca butoanele să fie mai vizibile.",
   "event_type_color_light_theme_contrast_error": "Culoarea temei luminoase nu trece verificarea contrastului. Îți recomandăm să schimbi această culoare pentru ca tipurile de evenimente să fie mai vizibile.",
   "event_type_color_dark_theme_contrast_error": "Culoarea temei întunecate nu trece verificarea contrastului. Îți recomandăm să schimbi această culoare pentru ca tipurile de evenimente să fie mai vizibile.",
-  
-  
   "no_available_users_found_error": "Nu au fost găsiți utilizatori disponibili. Poți încerca un alt interval orar?",
   "request_body_end_time_internal_error": "Eroare internă. Corpul cererii nu conține ora de sfârșit",
   "create_calendar_event_error": "Nu s-a putut crea evenimentul în calendarul organizatorului",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "Ești deja înscris pentru această rezervare.",
   "hosts_unavailable_for_booking": "Unii dintre gazde nu sunt disponibile pentru rezervare.",
   "help": "Ajutor",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Prompt General",
   "begin_message": "Începe Mesajul",
   "codebase_has_to_stay_opensource": "Codul trebuie să rămână open source, indiferent dacă a fost modificat sau nu",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "Sunteți ascuns în această echipă",
   "hidden_team_member_message": "Licența dvs. nu este plătită. Fie faceți upgrade la Pro, fie anunțați proprietarul echipei că vă poate plăti licența.",
   "hidden_team_owner_message": "Aveți nevoie de un cont Pro pentru a utiliza echipe. Sunteți ascuns până când faceți upgrade.",
-  "link_expires": "p.s. Expiră în {{expiresIn}} ore.",
-  
-  "seat_options_doesnt_support_confirmation": "Opțiunea cu locuri nu este disponibilă dacă rezervarea necesită confirmare",
-  "multilocation_doesnt_support_seats": "Opțiunea de Locații Multiple nu suportă opțiunea de locuri",
-  
-  "seats_option_doesnt_support_multi_location": "Opțiunea de locuri nu suportă Locații Multiple",
-  
-  
-  
-  
-  
-  
+  "link_expires": "p.s. Expiră în {{expiresIn}} ore.","seat_options_doesnt_support_confirmation": "Opțiunea cu locuri nu este disponibilă dacă rezervarea necesită confirmare",
+  "multilocation_doesnt_support_seats": "Opțiunea de Locații Multiple nu suportă opțiunea de locuri","seats_option_doesnt_support_multi_location": "Opțiunea de locuri nu suportă Locații Multiple",
   "use_link_to_reset_password": "Utilizați linkul de mai jos pentru a vă reseta parola",
   "hey_there": "Salut",
   "forgot_your_password_calcom": "Ți-ai uitat parola? - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Webhook creat cu succes!",
   "webhook_updated_successfully": "Webhook actualizat cu succes!",
   "webhook_removed_successfully": "Webhook eliminat cu succes!",
-  
-  
   "payload_template": "Șablon payload",
   "dismiss": "Renunță",
   "no_data_yet": "Încă nu există date",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "Întâlnirea dvs. recurentă a fost trimisă",
   "booking_confirmed": "Rezervare confirmată",
   "booking_confirmed_recurring": "Întâlnirea dvs. recurentă a fost confirmată",
-  
-  
   "enter_new_password": "Introduceți noua parolă pe care ați dori pentru contul dvs.",
   "reset_password": "Resetează parola",
   "change_your_password": "Schimbă-ți parola",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Transcriere generată",
   "booking_created": "Rezervare creată",
   "booking_rejected": "Rezervare respinsă",
-  "booking_requested": "Rezervare solicitată",
-  
-  "meeting_ended": "Ședință încheiată",
+  "booking_requested": "Rezervare solicitată","meeting_ended": "Ședință încheiată",
   "form_submitted": "Formular trimis",
-  "form_submitted_no_event": "Formular trimis, niciun eveniment programat",
-  
-  "ooo_created": "Creat Absență de la Birou",
+  "form_submitted_no_event": "Formular trimis, niciun eveniment programat","ooo_created": "Creat Absență de la Birou",
   "booking_no_show_updated": "Rezervarea fără prezentare actualizată",
-  "event_triggers": "Declanșatoare eveniment",
-  
-  "create_new_webhook": "Creează un nou webhook",
+  "event_triggers": "Declanșatoare eveniment","create_new_webhook": "Creează un nou webhook",
   "webhooks": "Webhooks",
   "team_webhooks": "Webhooks de echipă",
   "create_new_webhook_to_account": "Creați un nou webhook pentru contul dvs",
@@ -529,9 +493,7 @@
   "iframe_embed": "iframe Încorporat",
   "embed_calcom": "Cel mai simplu mod de a încorpora {{appName}} pe site-ul dvs.",
   "integrate_using_embed_or_webhooks": "Integrează cu website-ul tău folosind opțiunile noastre încorporate, sau obține informații de rezervare în timp real folosind webhook-uri personalizate.",
-  "schedule_a_meeting": "Programează o ședință",
-        "need_anything_else": "Aveți nevoie de altceva?",
-    "contact": "Contactează",
+  "schedule_a_meeting": "Programează o ședință",    "need_anything_else": "Aveți nevoie de altceva?","contact": "Contactează",
   "our_support_team": "echipa noastră de asistență",
   "contact_our_support_team": "Contactează echipa noastră de suport",
   "uh_oh": "Uh oh!",
@@ -773,10 +735,6 @@
   "readonly": "Needitabil",
   "one_time_link": "Link unic",
   "plan_description": "Aveți momentan planul {{plan}}.",
-  
-  
-  
-  
   "event_types_page_title": "Tipuri de evenimente",
   "event_types_page_subtitle": "Creează evenimente de împărtășire pentru oameni să facă rezervări pe calendarul tău.",
   "new": "Nou",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Creează o echipă pentru a începe",
   "teams": "Echipe",
   "team": "Echipă",
-  "organization": "Organizație",
-      
-  
-    "create_manage_teams_collaborative": "Creați și gestionați echipe pentru a utiliza funcții colaborative.",
+  "organization": "Organizație",    "create_manage_teams_collaborative": "Creați și gestionați echipe pentru a utiliza funcții colaborative.",
   "only_available_on_pro_plan": "Această caracteristică este disponibilă doar în planul Pro",
   "remove_cal_branding_description": "Pentru a elimina branding {{appName}} din paginile dvs. de rezervare, trebuie să faceți upgrade la un cont Pro.",
   "edit_profile_info_description": "Editați informațiile de profil, care sunt afișate pe link-ul dvs. de programare.",
@@ -843,16 +798,13 @@
   "little_something_about": "Un pic despre tine.",
   "profile_updated_successfully": "Profil actualizat cu succes",
   "your_user_profile_updated_successfully": "Profilul dvs. de utilizator a fost actualizat cu succes.",
-  
-  
   "you_are_all_set": "Totul este pregătit",
   "you_are_all_set_description": "Ești deja pe cel mai recent plan. Nu este nevoie de upgrade. Bucură-te de noile funcționalități și contactează-ne dacă ai întrebări!",
   "user_cannot_found_db": "Utilizatorul pare logat dar nu poate fi găsit în db",
   "embed_and_webhooks": "Încorporează și Webhook-uri",
   "enabled": "Activează",
   "disabled": "Dezactivat",
-  "disable": "Dezactivează",
-      "availability": "Disponibilitate",
+  "disable": "Dezactivează",  "availability": "Disponibilitate",
   "edit_availability": "Modificați disponibilitatea",
   "configure_availability": "Configurați orele când sunteți disponibil pentru rezervări.",
   "copy_times_to": "Copiați orele în",
@@ -889,8 +841,6 @@
   "recurring_event": "Eveniment recurent",
   "recurring_event_description": "Persoanele se pot abona la evenimentele recurente",
   "connect_and_join": "Conectează-te și alătură-te",
-  
-  
   "warning_instant_meeting_experimental": "Experimental: Evenimentele de întâlnire instantanee sunt în prezent experimentale.",
   "starting": "Începe",
   "disable_guests": "Dezactivează vizitatorii",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "{{appName}} va oferi un URL pentru ședința de Daily.",
   "cal_provide_jitsi_meeting_url": "Cal va oferi un URL pentru ședința de Jitsi Meet.",
   "cal_provide_huddle01_meeting_url": "{{appName}} va oferi un URL pentru ședința de Huddle01 Web3.",
-  "cal_provide_teams_meeting_url": "{{appName}} va pune la dispoziție un URL pentru ședința prin MS Teams. OBSERVAȚIE: TREBUIE SĂ AVEȚI UN CONT PROFESIONAL SAU ȘCOLAR",
-  
-  "you_need_to_add_a_name": "Trebuie să adăugați un nume",
+  "cal_provide_teams_meeting_url": "{{appName}} va pune la dispoziție un URL pentru ședința prin MS Teams. OBSERVAȚIE: TREBUIE SĂ AVEȚI UN CONT PROFESIONAL SAU ȘCOLAR","you_need_to_add_a_name": "Trebuie să adăugați un nume",
   "commission_per_transaction": "comision per tranzacție",
   "event_type_updated_successfully_description": "Tipul de eveniment a fost actualizat cu succes.",
   "hide_event_type": "Ascunde tipul de eveniment",
@@ -964,9 +912,7 @@
   "next_step_text": "Următorul pas",
   "next_step": "Sari peste",
   "prev_step": "Pas anterior",
-  "install": "Instalați",
-  
-  "installed": "Instalat",
+  "install": "Instalați","installed": "Instalat",
   "active_install_one": "{{count}} instalare activă",
   "active_install_other": "{{count}} (de) instalări active",
   "globally_install": "Instalat la nivel global",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Calendar actualizat cu succes",
   "check_here": "Verifică aici",
   "conferencing": "Conferință",
-  "calendar": "Calendar",
-  
-  "not_installed": "Nu este instalat",
+  "calendar": "Calendar","not_installed": "Nu este instalat",
   "error_password_mismatch": "Parolele nu se potrivesc.",
   "error_required_field": "Acest câmp este obligatoriu.",
   "status": "Stare",
@@ -1024,16 +968,12 @@
   "no_category_apps": "Nicio aplicație {{category}}",
   "all_apps": "Toate aplicațiile",
   "no_category_apps_description_calendar": "Adăugați o aplicație calendar pentru a verifica dacă există conflicte și a evita rezervările suprapuse",
-  "no_category_apps_description_conferencing": "Încercați să adăugați o aplicație de conferință pentru apeluri video cu clienții dvs.",
-  
-  "no_category_apps_description_analytics": "Adăugați o aplicație de analiză pentru paginile dvs. de rezervări",
+  "no_category_apps_description_conferencing": "Încercați să adăugați o aplicație de conferință pentru apeluri video cu clienții dvs.","no_category_apps_description_analytics": "Adăugați o aplicație de analiză pentru paginile dvs. de rezervări",
   "no_category_apps_description_automation": "Adăugați o aplicație de automatizare de utilizat",
   "no_category_apps_description_other": "Adăugați orice alt tip de aplicație pentru a întreprinde diverse acțiuni",
   "no_category_apps_description_messaging": "Adăugați o aplicație de mesagerie pentru a configura notificări și mementouri personalizate",
   "no_category_apps_description_crm": "Adăugați o aplicație CRM pentru a ține evidența persoanelor cu care v-ați întâlnit",
-  "installed_app_calendar_description": "Pentru a evita rezervările suprapuse, configurează calendarele astfel încât să poată verifica existența conflictelor.",
-  
-  "installed_app_analytics_description": "Configurați care aplicații de analiză vor fi utilizate pentru paginile dvs. de rezervări",
+  "installed_app_calendar_description": "Pentru a evita rezervările suprapuse, configurează calendarele astfel încât să poată verifica existența conflictelor.","installed_app_analytics_description": "Configurați care aplicații de analiză vor fi utilizate pentru paginile dvs. de rezervări",
   "installed_app_other_description": "Toate aplicațiile instalate din alte categorii.",
   "installed_app_conferencing_description": "Configurați ce aplicații de conferințe vor fi utilizate",
   "installed_app_automation_description": "Configurați care aplicații de automatizare vor fi utilizate",
@@ -1048,9 +988,7 @@
   "features": "Caracteristici",
   "permissions": "Permisiuni",
   "terms_and_privacy": "Termeni și confidențialitate",
-  "published_by": "Publicat de {{author}}",
-  
-  "buy": "Cumpărați",
+  "published_by": "Publicat de {{author}}","buy": "Cumpărați",
   "install_app": "Instalați aplicația",
   "categories": "Categorii",
   "pricing": "Prețuri",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Verificați portofelul",
   "create_events_on": "Creați evenimente în",
   "enterprise_license": "Aceasta este o funcție comercială",
-  "enterprise_license_locally": "Puteți testa această funcționalitate local, dar nu în producție.",
-  
-  "missing_license": "Licență lipsă",
+  "enterprise_license_locally": "Puteți testa această funcționalitate local, dar nu în producție.","missing_license": "Licență lipsă",
   "next_steps": "Pașii următori",
   "acquire_commercial_license": "Obțineți o licență comercială",
   "the_infrastructure_plan": "Planul de infrastructură este bazat pe utilizare și oferă reduceri atractive companiilor de tip start-up.",
   "prisma_studio_tip": "Creați un cont prin intermediul Prisma Studio",
-  "prisma_studio_tip_description": "Aflați cum să configurați primul utilizator",
-  
-  "error_404": "Eroare 404",
+  "prisma_studio_tip_description": "Aflați cum să configurați primul utilizator","error_404": "Eroare 404",
   "default": "Implicit",
   "set_to_default": "Setare ca implicit",
   "new_schedule_btn": "Program nou",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Documente justificative",
   "developer_documentation": "Documentație pentru programatori",
   "get_in_touch": "Contactați-ne",
-  "contact_support": "Contactați echipa de asistență",
-  
-  "community_support": "Asistență comunitate",
+  "contact_support": "Contactați echipa de asistență","community_support": "Asistență comunitate",
   "feedback": "Feedback",
   "submitted_feedback": "Vă mulțumim pentru feedback!",
   "feedback_error": "Eroare la trimiterea feedbackului",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "Fluxurile de lucru vă permit să automatizați trimiterea mementourilor și a notificărilor.",
   "active_on": "Activ pe",
   "workflow_updated_successfully": "Fluxul de lucru {{workflowName}} a fost actualizat cu succes",
-    
-  "current": "Actual",
-  
-  "standard": "standard",
+  "current": "Actual","standard": "standard",
   "confirm_username_change_dialog_title": "Confirmați modificarea numelui de utilizator",
-  
-  
-    
   "trial_expired": "Perioada dvs. de probă a expirat",
   "remove_app": "Ștergeți aplicația",
   "yes_remove_app": "Da, ștergeți aplicația",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "Participant",
   "event_date_variable": "Dată eveniment",
   "event_time_variable": "Oră eveniment",
-  "organizer_name_variable": "Nume organizator",
-  
-  "invalid_number": "Număr de telefon nevalid",
+  "organizer_name_variable": "Nume organizator","invalid_number": "Număr de telefon nevalid",
   "invalid_url_error_message": "Adresă URL nevalidă pentru {{label}}. Model URL: {{sampleUrl}}",
   "navigate": "Navigare",
   "open": "Deschidere",
   "close": "Închidere",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Înregistrările fac parte din planul pentru echipe",
   "team_feature_teams": "Aceasta este o caracteristică Team. Faceți upgrade la planul Team pentru a vedea disponibilitatea echipei dvs.",
   "team_feature_workflows": "Aceasta este o caracteristică Team. Faceți upgrade la planul Team pentru a automatiza notificările și reamintirile pentru evenimente cu fluxuri de lucru.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Identificator întrebări despre rezervare",
   "company_size": "Mărime companie",
   "what_help_needed": "Pentru ce anume aveți nevoie de ajutor?",
-  "variable_format": "Format variabile",
-  
-  "custom_input_as_variable_info": "Ignorați toate caracterele speciale de pe eticheta de introducere suplimentară (utilizați numai litere și cifre), utilizați majuscule pentru toate literele și înlocuiți spațiile goale cu caractere de subliniere.",
+  "variable_format": "Format variabile","custom_input_as_variable_info": "Ignorați toate caracterele speciale de pe eticheta de introducere suplimentară (utilizați numai litere și cifre), utilizați majuscule pentru toate literele și înlocuiți spațiile goale cu caractere de subliniere.",
   "using_booking_questions_as_variables": "Cum pot utiliza ca variabile întrebările despre rezervare?",
   "download_desktop_app": "Descărcați aplicația pentru desktop",
   "set_ping_link": "Setare link Ping",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "Cât de des puteți fi rezervat",
   "event_advanced_tab_description": "Setări calendar și mai multe...",
   "event_advanced_tab_title": "Avansat",
-  
-  
   "event_setup_multiple_duration_error": "Configurare eveniment: duratele multiple necesită cel puțin o opțiune.",
   "event_setup_multiple_duration_default_error": "Configurare eveniment: selectează o durată implicită validă.",
   "event_setup_booking_limits_error": "Limitele de rezervare trebuie să fie în ordine crescătoare. [zi,săptămână,lună,an]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "Puteți personaliza toate aceste caracteristici mai târziu, pe pagina dedicată disponibilității.",
   "connect_calendars_from_app_store": "Puteți adăuga mai multe calendare din App Store",
   "connect_conference_apps": "Conectați aplicațiile de conferință",
-  "connect_calendar_apps": "Conectați aplicațiile calendar",
-  
-  "connect_automation_apps": "Conectați aplicații de automatizare",
+  "connect_calendar_apps": "Conectați aplicațiile calendar","connect_automation_apps": "Conectați aplicații de automatizare",
   "connect_analytics_apps": "Conectați aplicații de analiză",
   "connect_other_apps": "Conectați alte aplicații",
   "connect_messaging_apps": "Conectați aplicații de mesagerie",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Link de resetare trimis",
   "password_reset_email": "Veți primi în curând un e-mail la adresa {{email}}, cu instrucțiuni de resetare a parolei.",
   "password_reset_leading": "Dacă nu primiți un e-mail în curând, verificați dacă adresa de e-mail pe care ați introdus-o este corectă, verificați folderul de mesaje nedorite sau contactați serviciul de asistență dacă problema persistă.",
-  "password_updated": "Parolă actualizată!",
-  
-  "pending_invites": "Invitații în așteptare",
+  "password_updated": "Parolă actualizată!","pending_invites": "Invitații în așteptare",
   "pending_organization_invites": "Invitații în așteptare pentru organizație",
   "not_on_cal": "Nu este pe {{appName}}",
   "no_calendar_installed": "Niciun calendar instalat",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "Utilizați majuscule pentru toate literele",
   "replace_whitespaces_underscores": "Înlocuiți spațiile cu caractere de subliniere",
   "platform_members": "Membrii platformei",
-  "platform_members_description": "Gestionează administratorii și membrii din echipa platformei tale",
-                  "ignore_special_characters_booking_questions": "Ignorați caracterele speciale în identificatorul întrebării despre rezervare. Utilizați doar litere și cifre",
+  "platform_members_description": "Gestionează administratorii și membrii din echipa platformei tale",              "ignore_special_characters_booking_questions": "Ignorați caracterele speciale în identificatorul întrebării despre rezervare. Utilizați doar litere și cifre",
   "retry": "Reîncercați",
   "fetching_calendars_error": "A survenit o problemă legată de recuperarea calendarelor dvs. <1>Încercați din nou</1> sau contactați serviciul de asistență pentru clienți.",
   "calendar_connection_fail": "Conexiune calendar nereușită",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Limitați rezervările viitoare",
   "limit_future_bookings_description": "Limitați cât de departe în viitor poate fi rezervat acest eveniment",
   "no_event_types": "Niciun tip de eveniment configurat",
-  "no_event_types_description": "{{name}} nu a configurat niciun tip de eveniment pe care să îl rezervați.",
-    "monthly": "Lunar",
+  "no_event_types_description": "{{name}} nu a configurat niciun tip de eveniment pe care să îl rezervați.","monthly": "Lunar",
   "yearly": "Anual",
   "weekly": "Săptămânal",
   "checkout": "Finalizare cumpărături",
@@ -1733,9 +1643,7 @@
   "test_preview": "Testați previzualizarea",
   "route_to": "Direcționați către",
   "test_preview_description": "Testați-vă formularul de redirecționare fără a trimite date",
-  "test_routing": "Testați redirecționarea",
-  
-  "edit_event_type": "Editează tipul de eveniment",
+  "test_routing": "Testați redirecționarea","edit_event_type": "Editează tipul de eveniment",
   "only_admin_can_see_members_of_org": "Această organizație este privată și doar administratorul sau proprietarul organizației poate vedea membrii săi.",
   "only_admin_can_manage_sso_org": "Doar administratorul sau proprietarul organizației poate gestiona setările SSO",
   "collective_scheduling": "Programare colectivă",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "Un administrator din echipa <strong>{{teamName}}</strong> v-a înlocuit tipul de eveniment <strong>/{{slug}}</strong> cu un tip de eveniment configurat pe care îl controlează.",
   "email_body_slug_replacement_info": "Linkul dvs. va funcționa în continuare, dar este posibil ca unele setări să se fi schimbat. Îl puteți consulta în tipurile de evenimente.",
   "email_body_slug_replacement_suggestion": "Dacă aveți întrebări despre tipul de eveniment, luați legătura cu administratorul dvs.<br /><br />Programări cu spor, <br />Echipa Cal.com",
-  
-  
   "app_disabled_with_event_type": "Administratorul a dezactivat {{appName}} care afectează tipul tău de eveniment {{title}}.",
   "app_disabled_video": "Administratorul a dezactivat {{appName}} care poate afecta tipurile tale de evenimente. Dacă ai tipuri de evenimente cu {{appName}} ca locație, atunci setarea implicită va fi Cal Video.",
   "app_disabled_subject": "{{appName}} a fost dezactivat",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Gazde Round-Robin",
   "minimum_round_robin_hosts_count": "Numărul de gazde necesar pentru participare",
   "hosts": "Gazde",
-  
-  
   "new_attendee": "Participant nou",
   "awaiting_approval": "În așteptarea aprobării",
   "requires_google_calendar": "Această aplicație necesită o conexiune cu Google Calendar",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Personalizați întrebările adresate pe pagina de rezervare",
   "add_a_booking_question": "Adăugați o întrebare",
   "identifier": "Identificator",
-  "duplicate_email": "E-mailul este duplicat",
-  
-  
-  
-  "booking_confirmation_failed": "Confirmare rezervare nereușită",
+  "duplicate_email": "E-mailul este duplicat","booking_confirmation_failed": "Confirmare rezervare nereușită",
   "not_enough_seats": "Nu sunt suficiente locuri",
   "form_builder_field_already_exists": "Există deja un câmp cu acest nume",
   "show_on_booking_page": "Afișare pe pagina de rezervare",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Ștergere filtre",
   "clear": "Ștergere",
   "hold": "Reținere",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Informații",
   "routing_forms": "Formulare de Rutare",
   "testing_workflow_info_message": "La testarea acestui flux de lucru, țineți cont de faptul că e-mailurile și SMS-urile pot fi programate doar cu cel puțin o oră în prealabil",
   "insights_no_data_found_for_filter": "Nu s-au găsit date pentru filtrul selectat sau pentru datele selectate.",
-  
-  
   "something_went_wrong_on_our_end": "A survenit o eroare de partea noastră. Contactați echipa de asistență și vom soluționa imediat problema.",
-  "please_provide_following_text_to_suppport": "Furnizați următorul text atunci când contactați echipa de asistență pentru a vă putea ajuta mai bine",
-  
-  "complete_your_booking": "Finalizați rezervarea",
+  "please_provide_following_text_to_suppport": "Furnizați următorul text atunci când contactați echipa de asistență pentru a vă putea ajuta mai bine","complete_your_booking": "Finalizați rezervarea",
   "complete_your_booking_subject": "Finalizați rezervarea: {{title}}, pe {{date}}",
   "confirm_your_details": "Confirmați-vă detaliile",
   "copy_invite_link": "Copiere link de invitație",
@@ -2120,14 +2000,8 @@
   "three_months": "3 luni",
   "one_year": "1 an",
   "team_invite_received": "Ați fost invitat să faceți parte din {{teamName}}",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "Percepeți {{amount, currency}} de la participant",
-  
-  "email_invite_team": "{{email}} a fost invitat",
-  "email_invite_team_bulk": "{{userCount}} (de) utilizatori au fost invitați",
-  
-  "image_size_limit_exceed": "Imaginea încărcată nu trebuie să depășească dimensiunea limită de 5 MB",
+  "currency_string": "{{amount, currency}}","charge_attendee": "Percepeți {{amount, currency}} de la participant","email_invite_team": "{{email}} a fost invitat",
+  "email_invite_team_bulk": "{{userCount}} (de) utilizatori au fost invitați","image_size_limit_exceed": "Imaginea încărcată nu trebuie să depășească dimensiunea limită de 5 MB",
   "unauthorized_workflow_error_message": "{{errorCode}}: nu sunteți autorizat să activați sau să dezactivați acest flux de lucru",
   "inline_embed": "Încorporare în linie",
   "load_inline_content": "Încarcă tipul dvs. de eveniment direct în linie, cu restul conținutului de pe site-ul dvs.",
@@ -2394,9 +2268,7 @@
   "locked": "Blocat",
   "unlocked": "Deblocat",
   "lock_timezone_toggle_on_booking_page": "Blocare fus orar pe pagina de rezervare",
-  "description_lock_timezone_toggle_on_booking_page": "Pentru a bloca fusul orar pe pagina de rezervare, util pentru evenimentele în persoană.",
-  
-  "number_in_international_format": "Vă rugăm să introduceți numărul în format internațional.",
+  "description_lock_timezone_toggle_on_booking_page": "Pentru a bloca fusul orar pe pagina de rezervare, util pentru evenimentele în persoană.","number_in_international_format": "Vă rugăm să introduceți numărul în format internațional.",
   "install_calendar": "Instalați calendarul",
   "branded_subdomain": "Subdomeniu personalizat",
   "branded_subdomain_description": "Obțineți propriul subdomeniu personalizat, cum ar fi acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Asistență dedicată pentru integrare și inginerie",
   "extensive_whitelabeling_description": "Personalizați experiența de programare cu propriul logo, culori și altele",
   "unlimited_teams": "Echipe Nelimitate",
-  "unlimited_teams_description": "Adăugați câte subechipe aveți nevoie în organizația dvs.",
-      "advanced_managed_events": "Tipuri Avansate de Evenimente Gestionate",
+  "unlimited_teams_description": "Adăugați câte subechipe aveți nevoie în organizația dvs.",  "advanced_managed_events": "Tipuri Avansate de Evenimente Gestionate",
   "advanced_managed_events_description": "Adăugați un singur card de credit pentru a plăti toate abonamentele echipei dvs.",
   "enterprise": "Întreprindere",
   "enterprise_description": "Faceți upgrade la Enterprise pentru a crea organizația dvs.",
-  "create_your_org": "Creați-vă Organizația",
-    "create_your_enterprise_description": "Faceți upgrade la Enterprise și obțineți acces la Active Directory Sync, SCIM Automatic User provisioning, Cal.ai Voice Agents, Admin APIs și altele!",
-  
-  "admin_delete_organization_description": "<ul><li>Echipele care sunt membre ale acestei organizații vor fi, de asemenea, șterse împreună cu tipurile lor de evenimente</li><li>Utilizatorii care făceau parte din organizație nu vor fi șterși, dar numele lor de utilizator vor fi schimbate pentru a le permite să existe în afara organizației</li><li>Tipurile de evenimente create de utilizator după ce a fost în organizație vor fi șterse</li><li>Tipurile de evenimente migrate ale utilizatorului nu vor fi șterse</li></ul>",
+  "create_your_org": "Creați-vă Organizația","create_your_enterprise_description": "Faceți upgrade la Enterprise și obțineți acces la Active Directory Sync, SCIM Automatic User provisioning, Cal.ai Voice Agents, Admin APIs și altele!","admin_delete_organization_description": "<ul><li>Echipele care sunt membre ale acestei organizații vor fi, de asemenea, șterse împreună cu tipurile lor de evenimente</li><li>Utilizatorii care făceau parte din organizație nu vor fi șterși, dar numele lor de utilizator vor fi schimbate pentru a le permite să existe în afara organizației</li><li>Tipurile de evenimente create de utilizator după ce a fost în organizație vor fi șterse</li><li>Tipurile de evenimente migrate ale utilizatorului nu vor fi șterse</li></ul>",
   "admin_delete_organization_title": "Ștergeți {{organizationName}}?",
   "published": "Publicat",
   "unpublished": "Nepublicat",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "Permiteți oamenilor să rezerve imediat",
   "uprade_to_create_instant_bookings": "Actualizați la Enterprise și permiteți invitaților să se alăture unui apel instantaneu în care participanții pot intra direct. Acest lucru este valabil doar pentru tipurile de evenimente de echipă",
   "dont_want_to_wait": "Nu vrei să aștepți?",
-  "meeting_started": "Întâlnirea a început",
-  
-  "cal_ai_event_tab_description": "Permiteți agenților AI să rezerve pentru dvs.",
+  "meeting_started": "Întâlnirea a început","cal_ai_event_tab_description": "Permiteți agenților AI să rezerve pentru dvs.",
   "booking_not_found_error": "Nu s-a putut găsi rezervarea",
   "booking_seats_full_error": "Locurile pentru rezervare sunt ocupate",
-  
-  
   "not_enough_available_seats_error": "Rezervarea nu are suficiente locuri disponibile",
   "user_redirect_title": "{{username}} este momentan indisponibil pentru o scurtă perioadă de timp.",
   "user_redirect_description": "Între timp, {{profile.username}} va fi responsabil pentru toate întâlnirile programate noi în numele lui {{username}}.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "Acceptând invitația, linkul tău se va schimba la domeniul organizației tale, dar nu-ți face griji, toate linkurile anterioare vor funcționa în continuare și vor redirecționa corespunzător.<br /><br />Te rugăm să reții: Toate tipurile tale de evenimente personale vor fi mutate în organizația <strong>{{teamName}}</strong>, ceea ce poate include și linkuri personale.<br /><br />Pentru evenimente personale, recomandăm crearea unui nou cont cu o adresă de email personală.",
   "email|existing_user_added_link_changed": "Linkul tău a fost schimbat de la <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> la <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>, dar nu-ți face griji, toate linkurile anterioare funcționează în continuare și redirecționează corespunzător.<br /><br />Te rugăm să reții: Toate tipurile tale de evenimente personale au fost mutate în organizația <strong>{{teamName}}</strong>, ceea ce poate include și linkuri personale.<br /><br />Te rugăm să te autentifici și să te asiguri că nu ai evenimente private în noul tău cont organizațional.<br /><br />Pentru evenimente personale, recomandăm crearea unui nou cont cu o adresă de email personală.<br /><br />Bucură-te de noul tău link curat: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Organizația dvs. a fost creată",
-  "your_current_plan": "Planul dvs. curent",
-  
-  "privacy_organization_description": "Gestionați setările de confidențialitate pentru organizația dvs.",
+  "your_current_plan": "Planul dvs. curent","privacy_organization_description": "Gestionați setările de confidențialitate pentru organizația dvs.",
   "privacy": "Confidențialitate",
   "team_will_be_under_org": "Noile echipe vor fi sub organizația dvs.",
   "add_group_name": "Adăugați numele grupului",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "Continuând, sunteți de acord cu <0>Termele</0> și <1>Politica de confidențialitate<1>",
   "proceeding_agreement": "Continuând, sunteți de acord cu",
   "terms": "Termenii",
-  "always_show_x_days": "Întotdeauna {{x}} zile disponibile",
-  
-  "updating_oauth_client_error": "A apărut o eroare în timpul actualizării clientului OAuth, te rugăm să încerci din nou mai târziu",
+  "always_show_x_days": "Întotdeauna {{x}} zile disponibile","updating_oauth_client_error": "A apărut o eroare în timpul actualizării clientului OAuth, te rugăm să încerci din nou mai târziu",
   "creating_oauth_client_error": "A apărut o eroare în timpul creării clientului OAuth, te rugăm să încerci din nou mai târziu",
   "event_type_color": "Culoarea tipului de eveniment",
   "event_type_color_description": "Aceasta este folosită doar pentru diferențierea tipurilor de evenimente și rezervări în cadrul aplicației. Nu este afișată rezervatorilor.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Verificare Calendar Google",
   "outlook_connect_atom_label": "Conectează Calendar Outlook",
   "outlook_connect_atom_already_connected_label": "Calendar Outlook Conectat",
-  "outlook_connect_atom_loading_label": "Verificare Calendar Outlook",
-  
-  
-  
-  "booking_question_response_variables": "Variabile de răspuns la întrebările de rezervare",
+  "outlook_connect_atom_loading_label": "Verificare Calendar Outlook","booking_question_response_variables": "Variabile de răspuns la întrebările de rezervare",
   "managed_by_teamAdmins": "Gestionat de {{teamAdmins}}",
   "number_of_options": "{{count}} opțiuni",
   "reschedule_with_same_round_robin_host_title": "Reprogramează cu același gazdă Round-Robin",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "ultimele {{count}} zile",
   "month_to_date": "luna până în prezent",
   "year_to_date": "anul până în prezent",
-  "custom_range": "interval personalizat",
-  
-  "always": "Întotdeauna",
-  "never": "Niciodată",
-  
-  "if_cancelled": "Dacă este anulat",
+  "custom_range": "interval personalizat","always": "Întotdeauna",
+  "never": "Niciodată","if_cancelled": "Dacă este anulat",
   "before": "înainte",
   "show_all_columns": "Afișează toate coloanele",
   "toggle_columns": "Comută coloanele",

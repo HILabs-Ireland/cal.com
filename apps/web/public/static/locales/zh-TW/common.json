@@ -4,9 +4,7 @@
   "day_one": "{{count}} 天",
   "day_other": "{{count}} 天",
   "second_one": "{{count}} 秒",
-  "second_other": "{{count}} 秒",
-  
-  "untitled": "未命名",
+  "second_other": "{{count}} 秒","untitled": "未命名",
   "accept_invitation": "接受邀請",
   "max_characters": "最大字數",
   "min_characters": "最小字數",
@@ -68,18 +66,10 @@
   "accept_our_license": "接受授權的方式是修改 .env 變數 <1>NEXT_PUBLIC_LICENSE_CONSENT</1> 為 '{{agree}}'。",
   "remove_banner_instructions": "如果要移除此橫幅訊息，請打開 .env 檔案，把.env 變數 <1>NEXT_PUBLIC_LICENSE_CONSENT</1> 為 '{{agree}}'。",
   "error_message": "錯誤訊息是：'{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "請向付款提供方和 {{user}} 確認要如何處理。",
-  
-  
-  
   "dark_theme_contrast_error": "深色主題顏色未通過對比檢查。我們建議您更改此顏色，以便按鈕更顯眼。",
   "light_theme_contrast_error": "淺色主題顏色未通過對比檢查。我們建議您更改此顏色，以便按鈕更顯眼。",
   "event_type_color_light_theme_contrast_error": "淺色主題顏色未通過對比檢查。我們建議您更改此顏色，以便事件類型顏色更顯眼。",
   "event_type_color_dark_theme_contrast_error": "深色主題顏色未通過對比檢查。我們建議您更改此顏色，以便事件類型顏色更顯眼。",
-  
-  
   "no_available_users_found_error": "未找到可用用戶。您可以嘗試其他時間段嗎？",
   "request_body_end_time_internal_error": "內部錯誤。請求正文不包含結束時間",
   "create_calendar_event_error": "無法在組織者的日曆中創建日曆事件",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "您已經註冊了此預訂。",
   "hosts_unavailable_for_booking": "部分主持人無法預訂。",
   "help": "幫助",
-  
-  
-  
-  
-  
-  
   "general_prompt": "一般提示",
   "begin_message": "開始訊息",
   "codebase_has_to_stay_opensource": "不管是否經過修改，程式碼得要維持開放原始碼",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "在團隊裡是隱藏的",
   "hidden_team_member_message": "此座位尚未付費。請升級至 Pro，或通知團隊主持人協助付費。",
   "hidden_team_owner_message": "要有 Pro 帳號才可以使用團隊，在升級之前都是隱藏的。",
-  "link_expires": "p.s. {{expiresIn}} 小時之後過期。",
-  
-  "seat_options_doesnt_support_confirmation": "座位選項不支援確認要求",
-  "multilocation_doesnt_support_seats": "多地點不支援座位選項",
-  
-  "seats_option_doesnt_support_multi_location": "座位選項不支援多地點",
-  
-  
-  
-  
-  
-  
+  "link_expires": "p.s. {{expiresIn}} 小時之後過期。","seat_options_doesnt_support_confirmation": "座位選項不支援確認要求",
+  "multilocation_doesnt_support_seats": "多地點不支援座位選項","seats_option_doesnt_support_multi_location": "座位選項不支援多地點",
   "use_link_to_reset_password": "使用以下連結重置密碼",
   "hey_there": "嗨，您好",
   "forgot_your_password_calcom": "忘記密碼了？ - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "新增 Webhook 成功！",
   "webhook_updated_successfully": "更新 Webhook 成功！",
   "webhook_removed_successfully": "刪除 Webhook 成功！",
-  
-  
   "payload_template": "Payload 範本",
   "dismiss": "略過",
   "no_data_yet": "還沒有資料",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "您的定期會議已提交",
   "booking_confirmed": "預約已確認",
   "booking_confirmed_recurring": "您的定期會議已確認",
-  
-  
   "enter_new_password": "輸入要用在此帳號的新密碼。",
   "reset_password": "重設密碼",
   "change_your_password": "更改密碼",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "錄音文字稿已生成",
   "booking_created": "已建立預約",
   "booking_rejected": "預約已遭拒",
-  "booking_requested": "預約已提出",
-  
-  "meeting_ended": "會議已結束",
+  "booking_requested": "預約已提出","meeting_ended": "會議已結束",
   "form_submitted": "表單已提交",
-  "form_submitted_no_event": "表單已提交，但未預訂活動",
-  
-  "ooo_created": "已建立外出辦公",
+  "form_submitted_no_event": "表單已提交，但未預訂活動","ooo_created": "已建立外出辦公",
   "booking_no_show_updated": "預約未出席已更新",
-  "event_triggers": "事件發動條件",
-  
-  "create_new_webhook": "建立新的 Webhook",
+  "event_triggers": "事件發動條件","create_new_webhook": "建立新的 Webhook",
   "webhooks": "Webhook",
   "team_webhooks": "團隊 Webhook",
   "create_new_webhook_to_account": "為您的帳號建立一個的新 Webhook",
@@ -529,9 +493,7 @@
   "iframe_embed": "嵌入式 iframe",
   "embed_calcom": "在網站上嵌入 {{appName}} 最簡單的方法。",
   "integrate_using_embed_or_webhooks": "使用嵌入的方法整合進網站，或是以自訂 Webhook 的方式獲取即時預約資訊。",
-  "schedule_a_meeting": "預定會議",
-        "need_anything_else": "還要什麼嗎？",
-    "contact": "聯繫",
+  "schedule_a_meeting": "預定會議",    "need_anything_else": "還要什麼嗎？","contact": "聯繫",
   "our_support_team": "我們的支援團隊",
   "contact_our_support_team": "聯繫支援團隊",
   "uh_oh": "哎呦喂呀！",
@@ -773,10 +735,6 @@
   "readonly": "唯讀",
   "one_time_link": "單次有效連結",
   "plan_description": "目前是 {{plan}} 方案。",
-  
-  
-  
-  
   "event_types_page_title": "活動類型",
   "event_types_page_subtitle": "建立活動，就可以分享出去，讓人在行事曆上預約。",
   "new": "全新",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "從建立團隊開始",
   "teams": "團隊",
   "team": "團隊",
-  "organization": "組織",
-      
-  
-    "create_manage_teams_collaborative": "新增並管理團隊的合作功能。",
+  "organization": "組織",    "create_manage_teams_collaborative": "新增並管理團隊的合作功能。",
   "only_available_on_pro_plan": "此功能只開放給 Pro 方案",
   "remove_cal_branding_description": "如果想要在預約頁面移除 {{appName}}  的品牌識別，得要升級為 Pro 帳號。",
   "edit_profile_info_description": "編輯個人檔案資訊，會在預約連結上顯示。",
@@ -843,16 +798,13 @@
   "little_something_about": "一些關於自己的事。",
   "profile_updated_successfully": "成功更新個人檔案",
   "your_user_profile_updated_successfully": "個人檔案已經成功更新。",
-  
-  
   "you_are_all_set": "一切就緒",
   "you_are_all_set_description": "您已經使用最新方案。無需升級。盡情享受新功能，如有任何問題都歡迎聯繫我們！",
   "user_cannot_found_db": "使用者看起來是登入了，但在資料庫裡找不到",
   "embed_and_webhooks": "嵌入 & Webhook",
   "enabled": "已開啟",
   "disabled": "已關閉",
-  "disable": "關閉",
-      "availability": "開放時間",
+  "disable": "關閉",  "availability": "開放時間",
   "edit_availability": "編輯可預定會議的時間",
   "configure_availability": "設定開放接受預約的時段。",
   "copy_times_to": "將時間複製到",
@@ -889,8 +841,6 @@
   "recurring_event": "定期活動",
   "recurring_event_description": "大家可以訂閱定期活動",
   "connect_and_join": "連結並加入",
-  
-  
   "warning_instant_meeting_experimental": "實驗性：即時會議事件目前處於實驗階段。",
   "starting": "開始時間",
   "disable_guests": "關閉賓客",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "{{appName}}  會提供 Daily 視訊會議網址。",
   "cal_provide_jitsi_meeting_url": "我們會產生一組 Jitsi 會議網址。",
   "cal_provide_huddle01_meeting_url": "{{appName}}  會提供 Huddle01 Web3 視訊會議網址。",
-  "cal_provide_teams_meeting_url": "{{appName}}  會提供 Microsoft Teams 會議網址。提醒您：需擁有工作或學校帳號",
-  
-  "you_need_to_add_a_name": "您需要新增名稱",
+  "cal_provide_teams_meeting_url": "{{appName}}  會提供 Microsoft Teams 會議網址。提醒您：需擁有工作或學校帳號","you_need_to_add_a_name": "您需要新增名稱",
   "commission_per_transaction": "每筆交易的佣金",
   "event_type_updated_successfully_description": "成功更新活動類型。",
   "hide_event_type": "隱藏活動類型",
@@ -964,9 +912,7 @@
   "next_step_text": "下一步",
   "next_step": "跳過步驟",
   "prev_step": "上個步驟",
-  "install": "安裝",
-  
-  "installed": "已安裝",
+  "install": "安裝","installed": "已安裝",
   "active_install_one": "{{count}} 個有效安裝",
   "active_install_other": "{{count}} 個有效安裝",
   "globally_install": "全球安裝",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "成功更新行事曆",
   "check_here": "在此查看",
   "conferencing": "開會",
-  "calendar": "行事曆",
-  
-  "not_installed": "沒有安裝",
+  "calendar": "行事曆","not_installed": "沒有安裝",
   "error_password_mismatch": "密碼不相符。",
   "error_required_field": "此欄位是必填。",
   "status": "狀態",
@@ -1024,16 +968,12 @@
   "no_category_apps": "沒有{{category}}應用程式",
   "all_apps": "所有應用程式",
   "no_category_apps_description_calendar": "新增行事曆應用程式來檢查衝突，以避免重複預約",
-  "no_category_apps_description_conferencing": "試著新增與客戶進行視訊通話時所用的會議應用程式",
-  
-  "no_category_apps_description_analytics": "為您的預約頁面加入分析應用程式",
+  "no_category_apps_description_conferencing": "試著新增與客戶進行視訊通話時所用的會議應用程式","no_category_apps_description_analytics": "為您的預約頁面加入分析應用程式",
   "no_category_apps_description_automation": "加入自動化應用程式來使用",
   "no_category_apps_description_other": "新增任何其他類型的應用程式以完成各種操作",
   "no_category_apps_description_messaging": "新增傳訊應用程式，以設定自訂通知和提醒",
   "no_category_apps_description_crm": "新增 CRM 應用程式，追蹤您已見過面的人",
-  "installed_app_calendar_description": "設定行事曆來檢查衝突，以避免重複預約。",
-  
-  "installed_app_analytics_description": "設定要為您的預約頁面使用哪些分析應用程式",
+  "installed_app_calendar_description": "設定行事曆來檢查衝突，以避免重複預約。","installed_app_analytics_description": "設定要為您的預約頁面使用哪些分析應用程式",
   "installed_app_other_description": "其他類別的所有已安裝應用程式。",
   "installed_app_conferencing_description": "設定要使用哪些會議應用程式",
   "installed_app_automation_description": "設定要使用哪些自動化應用程式",
@@ -1048,9 +988,7 @@
   "features": "功能",
   "permissions": "權限",
   "terms_and_privacy": "條款及隱私權",
-  "published_by": "由 {{author}} 發佈",
-  
-  "buy": "購買",
+  "published_by": "由 {{author}} 發佈","buy": "購買",
   "install_app": "安裝應用程式",
   "categories": "類別",
   "pricing": "定價",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "驗證錢包",
   "create_events_on": "建立活動時間：",
   "enterprise_license": "這是一個商業功能",
-  "enterprise_license_locally": "您可以在本地測試此功能，但不能在生產環境中使用。",
-  
-  "missing_license": "遺失授權",
+  "enterprise_license_locally": "您可以在本地測試此功能，但不能在生產環境中使用。","missing_license": "遺失授權",
   "next_steps": "下一步",
   "acquire_commercial_license": "取得商業授權",
   "the_infrastructure_plan": "基礎架構方案是根據使用量，並提供新創公司友善折扣。",
   "prisma_studio_tip": "透過 Prisma Studio 建立帳號",
-  "prisma_studio_tip_description": "學習如何設定第一位使用者",
-  
-  "error_404": "404 錯誤",
+  "prisma_studio_tip_description": "學習如何設定第一位使用者","error_404": "404 錯誤",
   "default": "預設",
   "set_to_default": "設為預設",
   "new_schedule_btn": "新行程表",
@@ -1230,9 +1164,7 @@
   "support_documentation": "支援文件",
   "developer_documentation": "開發人員文件",
   "get_in_touch": "保持聯絡",
-  "contact_support": "聯絡支援",
-  
-  "community_support": "社群支援",
+  "contact_support": "聯絡支援","community_support": "社群支援",
   "feedback": "回饋意見",
   "submitted_feedback": "感謝您的回饋意見！",
   "feedback_error": "傳送回饋意見時發生錯誤",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "工作流程可讓您自動傳送提醒和通知。",
   "active_on": "啟用類型：",
   "workflow_updated_successfully": "已成功更新 {{workflowName}}",
-    
-  "current": "目前",
-  
-  "standard": "標準",
+  "current": "目前","standard": "標準",
   "confirm_username_change_dialog_title": "確認使用者名稱變更",
-  
-  
-    
   "trial_expired": "您的試用已到期",
   "remove_app": "移除應用程式",
   "yes_remove_app": "是的，移除應用程式",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "與會者姓名",
   "event_date_variable": "活動日期",
   "event_time_variable": "活動時間",
-  "organizer_name_variable": "主辦者姓名",
-  
-  "invalid_number": "電話號碼無效",
+  "organizer_name_variable": "主辦者姓名","invalid_number": "電話號碼無效",
   "invalid_url_error_message": "{{label}} 網址無效。網址範例：{{sampleUrl}}",
   "navigate": "導覽",
   "open": "開啟",
   "close": "關閉",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "錄製功能包含在為團隊方案內",
   "team_feature_teams": "此為團隊功能。升級至團隊即可查看團隊可預定時間。",
   "team_feature_workflows": "此為團隊功能。升級至團隊即可透過工作流程自動處理活動通知與提醒。",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "預約問題識別項",
   "company_size": "公司規模",
   "what_help_needed": "您需要什麼協助？",
-  "variable_format": "變數格式",
-  
-  "custom_input_as_variable_info": "忽略額外輸入標籤的所有特殊字元 (只使用字母和數字)，所有字母一律使用大寫，並以底線取代空格。",
+  "variable_format": "變數格式","custom_input_as_variable_info": "忽略額外輸入標籤的所有特殊字元 (只使用字母和數字)，所有字母一律使用大寫，並以底線取代空格。",
   "using_booking_questions_as_variables": "如何將預約問題當作變數？",
   "download_desktop_app": "下載桌面版應用程式",
   "set_ping_link": "設定 Ping 連結",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "您的可預約頻率",
   "event_advanced_tab_description": "行事曆設定等...",
   "event_advanced_tab_title": "進階",
-  
-  
   "event_setup_multiple_duration_error": "活動設定：多個時間長度需要至少 1 個選項。",
   "event_setup_multiple_duration_default_error": "活動設定：請選擇有效的預設時間長度。",
   "event_setup_booking_limits_error": "預約限制必須按遞增順序排列。[日、週、月、年]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "您可以之後再到預定時間頁面自訂所有相關設定。",
   "connect_calendars_from_app_store": "您可以從 App Store 新增更多行事曆",
   "connect_conference_apps": "連接會議應用程式",
-  "connect_calendar_apps": "連接行事曆應用程式",
-  
-  "connect_automation_apps": "連至自動化應用程式",
+  "connect_calendar_apps": "連接行事曆應用程式","connect_automation_apps": "連至自動化應用程式",
   "connect_analytics_apps": "連至分析應用程式",
   "connect_other_apps": "連接其他應用程式",
   "connect_messaging_apps": "連接傳訊應用程式",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "重設連結已傳送",
   "password_reset_email": "含有密碼重設說明的電子郵件已在前往 {{email}} 的路上。",
   "password_reset_leading": "如果您稍後還是沒有收到電子郵件，請檢查您輸入的電子郵件地址是否正確，並查看您的垃圾郵件資料夾；若問題持續發生，請聯絡支援團隊。",
-  "password_updated": "密碼已更新！",
-  
-  "pending_invites": "待回應的邀請",
+  "password_updated": "密碼已更新！","pending_invites": "待回應的邀請",
   "pending_organization_invites": "待處理的組織邀請",
   "not_on_cal": "不在 {{appName}} 上",
   "no_calendar_installed": "未安裝行事曆",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "一律使用大寫字母",
   "replace_whitespaces_underscores": "以底線取代空格",
   "platform_members": "平台成員",
-  "platform_members_description": "管理您平台團隊中的管理員和成員",
-                  "ignore_special_characters_booking_questions": "忽略預約問題識別項中的特殊字元。只使用字母和數字",
+  "platform_members_description": "管理您平台團隊中的管理員和成員",              "ignore_special_characters_booking_questions": "忽略預約問題識別項中的特殊字元。只使用字母和數字",
   "retry": "重試",
   "fetching_calendars_error": "擷取行事曆時發生問題。請<1>再試一次</1>，或聯絡客服支援團隊。",
   "calendar_connection_fail": "行事曆連線失敗",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "限制日後的預約",
   "limit_future_bookings_description": "限制此活動後續最晚可預約的時間",
   "no_event_types": "未設定活動類型",
-  "no_event_types_description": "{{name}} 尚未設定任何活動類型供您預約。",
-    "monthly": "每月",
+  "no_event_types_description": "{{name}} 尚未設定任何活動類型供您預約。","monthly": "每月",
   "yearly": "每年",
   "weekly": "每週",
   "checkout": "結帳",
@@ -1733,9 +1643,7 @@
   "test_preview": "測試預覽",
   "route_to": "引導至",
   "test_preview_description": "測試引導表單而不提交任何資料",
-  "test_routing": "測試引導",
-  
-  "edit_event_type": "編輯活動類型",
+  "test_routing": "測試引導","edit_event_type": "編輯活動類型",
   "only_admin_can_see_members_of_org": "此組織是私密的，只有組織的管理員或擁有者可以查看其成員。",
   "only_admin_can_manage_sso_org": "只有組織的管理員或擁有者可以管理 SSO 設定",
   "collective_scheduling": "全體預定",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "<strong>{{teamName}}</strong> 團隊管理員已使用其所控管的受管活動類型來取代您的活動類型<strong>/{{slug}}</strong>。",
   "email_body_slug_replacement_info": "您的連結會繼續正常運作，但該連結的某些設定可能已變更。您可以在活動類型中查看。",
   "email_body_slug_replacement_suggestion": "若您對於活動類型有任何疑問，請聯絡您的管理員。<br /><br />祝排程愉快。<br />Cal.com 團隊",
-  
-  
   "app_disabled_with_event_type": "管理員已停用會影響 {{title}} 活動類型的 {{appName}}。",
   "app_disabled_video": "管理員已停用可能會影響您的活動類型的 {{appName}}。如果您有活動類型將 {{appName}} 設為地點，系統就會將地點預設為 Cal Video。",
   "app_disabled_subject": "已停用 {{appName}}",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "輪流主辦人",
   "minimum_round_robin_hosts_count": "須參加的主辦人數",
   "hosts": "主辦人",
-  
-  
   "new_attendee": "新參與者",
   "awaiting_approval": "正在等待核准",
   "requires_google_calendar": "此應用程式需要 Google 日曆連結",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "自訂預約頁面上的提問問題",
   "add_a_booking_question": "新增問題",
   "identifier": "識別項",
-  "duplicate_email": "電子郵件重複",
-  
-  
-  
-  "booking_confirmation_failed": "預約確認失敗",
+  "duplicate_email": "電子郵件重複","booking_confirmation_failed": "預約確認失敗",
   "not_enough_seats": "座位不足",
   "form_builder_field_already_exists": "已存在使用此名稱的欄位",
   "show_on_booking_page": "在預約頁面上顯示",
@@ -2079,32 +1979,12 @@
   "clear_filters": "清除篩選條件",
   "clear": "清除",
   "hold": "保留",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "洞察",
   "routing_forms": "路由表單",
   "testing_workflow_info_message": "測試此工作流程時，請注意電子郵件和簡訊只能提前至少 1 小時預定",
   "insights_no_data_found_for_filter": "找不到所選篩選條件或日期的資料。",
-  
-  
   "something_went_wrong_on_our_end": "我們的系統發生了一點問題。請與支援團隊聯絡，我們會盡快為您修復。",
-  "please_provide_following_text_to_suppport": "聯絡支援團隊時，請提供下列資訊，以便我們進一步協助您",
-  
-  "complete_your_booking": "完成您的預約",
+  "please_provide_following_text_to_suppport": "聯絡支援團隊時，請提供下列資訊，以便我們進一步協助您","complete_your_booking": "完成您的預約",
   "complete_your_booking_subject": "完成您的預約：{{date}} 的 {{title}}",
   "confirm_your_details": "確認詳細資料",
   "copy_invite_link": "複製邀請連結",
@@ -2120,14 +2000,8 @@
   "three_months": "3 個月",
   "one_year": "1 年",
   "team_invite_received": "您已獲邀加入 {{teamName}}",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "向與會者收取 {{amount, currency}}",
-  
-  "email_invite_team": "已邀請 {{email}}",
-  "email_invite_team_bulk": "已邀請 {{userCount}} 位使用者",
-  
-  "image_size_limit_exceed": "上傳的圖片大小不得超過 5MB 限制",
+  "currency_string": "{{amount, currency}}","charge_attendee": "向與會者收取 {{amount, currency}}","email_invite_team": "已邀請 {{email}}",
+  "email_invite_team_bulk": "已邀請 {{userCount}} 位使用者","image_size_limit_exceed": "上傳的圖片大小不得超過 5MB 限制",
   "unauthorized_workflow_error_message": "{{errorCode}}：您未獲得授權，無法啟用或停用此工作流程",
   "inline_embed": "內嵌式嵌入",
   "load_inline_content": "直接載入您的活動類型及內嵌在其他網站的內容。",
@@ -2394,9 +2268,7 @@
   "locked": "已鎖定",
   "unlocked": "已解鎖",
   "lock_timezone_toggle_on_booking_page": "鎖定預約頁面的時區",
-  "description_lock_timezone_toggle_on_booking_page": "鎖定預約頁面的時區，安排實體活動時非常實用。",
-  
-  "number_in_international_format": "請輸入國際格式的號碼。",
+  "description_lock_timezone_toggle_on_booking_page": "鎖定預約頁面的時區，安排實體活動時非常實用。","number_in_international_format": "請輸入國際格式的號碼。",
   "install_calendar": "安裝日曆",
   "branded_subdomain": "品牌子域名",
   "branded_subdomain_description": "獲取您自己的品牌子域名，例如 acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "專屬的入門和工程支援",
   "extensive_whitelabeling_description": "使用您自己的標誌、顏色等自訂您的排程體驗",
   "unlimited_teams": "無限團隊",
-  "unlimited_teams_description": "為您的組織添加所需的子團隊數量",
-      "advanced_managed_events": "高級管理活動類型",
+  "unlimited_teams_description": "為您的組織添加所需的子團隊數量",  "advanced_managed_events": "高級管理活動類型",
   "advanced_managed_events_description": "添加一張信用卡來支付所有團隊的訂閱費用",
   "enterprise": "企業",
   "enterprise_description": "升級到企業版以創建您的組織",
-  "create_your_org": "建立你的組織",
-    "create_your_enterprise_description": "升級到企業版，獲取 Active Directory 同步、SCIM 自動用戶配置、Cal.ai 語音代理、管理 API 等功能！",
-  
-  "admin_delete_organization_description": "<ul><li>屬於此組織的團隊將與其活動類型一起被刪除</li><li>組織中的用戶不會被刪除，但其用戶名將被更改以允許其在組織外存在</li><li>用戶在組織中創建的活動類型將被刪除</li><li>遷移的用戶活動類型不會被刪除</li></ul>",
+  "create_your_org": "建立你的組織","create_your_enterprise_description": "升級到企業版，獲取 Active Directory 同步、SCIM 自動用戶配置、Cal.ai 語音代理、管理 API 等功能！","admin_delete_organization_description": "<ul><li>屬於此組織的團隊將與其活動類型一起被刪除</li><li>組織中的用戶不會被刪除，但其用戶名將被更改以允許其在組織外存在</li><li>用戶在組織中創建的活動類型將被刪除</li><li>遷移的用戶活動類型不會被刪除</li></ul>",
   "admin_delete_organization_title": "刪除 {{organizationName}}？",
   "published": "已發佈",
   "unpublished": "未發佈",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "讓人們立即預訂",
   "uprade_to_create_instant_bookings": "升級到企業版，讓來賓加入即時通話，參與者可以直接進入。這僅適用於團隊事件類型",
   "dont_want_to_wait": "不想等待？",
-  "meeting_started": "會議已開始",
-  
-  "cal_ai_event_tab_description": "讓 AI 代理為您預訂",
+  "meeting_started": "會議已開始","cal_ai_event_tab_description": "讓 AI 代理為您預訂",
   "booking_not_found_error": "找不到預訂",
   "booking_seats_full_error": "預訂座位已滿",
-  
-  
   "not_enough_available_seats_error": "預訂沒有足夠的可用座位",
   "user_redirect_title": "{{username}} 目前暫時離開。",
   "user_redirect_description": "在此期間，{{profile.username}} 將代表 {{username}} 負責所有新安排的會議。",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "接受邀請後，你的連結將更改為你的組織域名，但不用擔心，所有之前的連結仍然有效並會適當重定向。<br /><br />請注意：你所有的個人事件類型將被移動到 <strong>{teamName}</strong> 組織中，這也可能包括潛在的個人連結。<br /><br />對於個人事件，我們建議使用個人電子郵件地址創建一個新帳戶。",
   "email|existing_user_added_link_changed": "你的連結已從 <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> 更改為 <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>，但不用擔心，所有之前的連結仍然有效並會適當重定向。<br /><br />請注意：你所有的個人事件類型已被移動到 <strong>{teamName}</strong> 組織中，這也可能包括潛在的個人連結。<br /><br />請登錄並確保你的新組織帳戶中沒有私人事件。<br /><br />對於個人事件，我們建議使用個人電子郵件地址創建一個新帳戶。<br /><br />享受你的新乾淨連結：<a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "您的組織已建立",
-  "your_current_plan": "您目前的方案",
-  
-  "privacy_organization_description": "管理您的組織隱私設定",
+  "your_current_plan": "您目前的方案","privacy_organization_description": "管理您的組織隱私設定",
   "privacy": "隱私權",
   "team_will_be_under_org": "新的團隊將會在您的組織下。",
   "add_group_name": "新增群組名稱",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "继续使用，即表示您同意我们的<0>使用条款</0>和<1>隐私政策</1>",
   "proceeding_agreement": "繼續即表示您同意我們的",
   "terms": "條款",
-  "always_show_x_days": "總是顯示 {{x}} 天的可用時間",
-  
-  "updating_oauth_client_error": "更新 OAuth 客戶端時發生錯誤，請稍後再試",
+  "always_show_x_days": "總是顯示 {{x}} 天的可用時間","updating_oauth_client_error": "更新 OAuth 客戶端時發生錯誤，請稍後再試",
   "creating_oauth_client_error": "創建 OAuth 客戶端時發生錯誤，請稍後再試",
   "event_type_color": "事件類型顏色",
   "event_type_color_description": "這僅用於應用程式內區分事件類型和預訂，不會顯示給預訂者。",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "正在檢查 Google 日曆",
   "outlook_connect_atom_label": "連接 Outlook 日曆",
   "outlook_connect_atom_already_connected_label": "已連接 Outlook 日曆",
-  "outlook_connect_atom_loading_label": "正在檢查 Outlook 日曆",
-  
-  
-  
-  "booking_question_response_variables": "預訂問題回應變數",
+  "outlook_connect_atom_loading_label": "正在檢查 Outlook 日曆","booking_question_response_variables": "預訂問題回應變數",
   "managed_by_teamAdmins": "由 {{teamAdmins}} 管理",
   "number_of_options": "{{count}} 個選項",
   "reschedule_with_same_round_robin_host_title": "重新安排與相同的 Round-Robin 主機",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "過去 {{count}} 天",
   "month_to_date": "本月至今",
   "year_to_date": "本年至今",
-  "custom_range": "自訂範圍",
-  
-  "always": "總是",
-  "never": "永不",
-  
-  "if_cancelled": "如果取消",
+  "custom_range": "自訂範圍","always": "總是",
+  "never": "永不","if_cancelled": "如果取消",
   "before": "之前",
   "show_all_columns": "顯示所有欄位",
   "toggle_columns": "切換欄位",

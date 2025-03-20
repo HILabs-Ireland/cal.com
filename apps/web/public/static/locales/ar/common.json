@@ -4,9 +4,7 @@
   "day_one": "{{count}} يوم",
   "day_other": "{{count}} يوم",
   "second_one": "{{count}} ثانية",
-  "second_other": "{{count}} ثوانٍ",
-  
-  "untitled": "بدون عنوان",
+  "second_other": "{{count}} ثوانٍ","untitled": "بدون عنوان",
   "accept_invitation": "اقبل الدعوة",
   "max_characters": "الحد الأقصى لعدد الأحرف",
   "min_characters": "الحد الأدنى لعدد الأحرف",
@@ -68,18 +66,10 @@
   "accept_our_license": "اقبل ترخيصنا من خلال تغيير متغير ‎.env المسمى <1>NEXT_PUBLIC_LICENSE_CONSENT</1> إلى '{{agree}}'.",
   "remove_banner_instructions": "لإزالة هذا الشعار، يُرجى فتح ملف ‎.env وتغيير المتغير <1>NEXT_PUBLIC_LICENSE_CONSENT</1> إلى '{{agree}}'.",
   "error_message": "كانت رسالة الخطأ: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "يُرجى التحقق من مزود الدفع لديك و{{user}} بشأن كيفية التعامل مع الأمر.",
-  
-  
-  
   "dark_theme_contrast_error": "لون التصميم الداكن لم يجتز التحقق من التباين. نقترح أن تغير هذا اللون حتى تكون الأزرار ظاهرة بشكل أوضح.",
   "light_theme_contrast_error": "لون التصميم الفاتح لم يجتز التحقق من التباين. نقترح أن تغير هذا اللون حتى تكون الأزرار ظاهرة بشكل أوضح.",
   "event_type_color_light_theme_contrast_error": "لون السمة الفاتحة لا يجتاز فحص التباين. نوصي بتغيير هذا اللون ليكون لون نوع الحدث أكثر وضوحًا.",
   "event_type_color_dark_theme_contrast_error": "لون السمة الداكنة لا يجتاز فحص التباين. نوصي بتغيير هذا اللون ليكون لون نوع الحدث أكثر وضوحًا.",
-  
-  
   "no_available_users_found_error": "لم يتم العثور على مستخدمين متاحين. هل يمكنك تجرِبة وقت آخر؟",
   "request_body_end_time_internal_error": "خطأ داخلي. محتوى الطلب لا يحتوي على وقت النهاية",
   "create_calendar_event_error": "تعذر إنشاء موعد في تقويم المنظم",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "أنت مسجل فعلًا في هذا الحجز.",
   "hosts_unavailable_for_booking": "بعض المستضيفين غير متاحين للحجز.",
   "help": "المساعدة",
-  
-  
-  
-  
-  
-  
   "general_prompt": "التوجيه العام",
   "begin_message": "رسالة البداية",
   "codebase_has_to_stay_opensource": "يجب أن يظل مصدر البرنامج مفتوحًا، سواء تم تعديله أم لا",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "أنت في الوضع الخفي في هذا الفريق",
   "hidden_team_member_message": "لم يتم الدفع مقابل مقعدك. يمكنك الترقية إلى Pro أو إعلام مالك الفريق أنه يستطيع الدفع مقابل مقعدك.",
   "hidden_team_owner_message": "تحتاج إلى حساب Pro لاستخدام خدمة الفرق، وأنت حاليًا في الوضع الخفي حتى تقوم بالترقية.",
-  "link_expires": "ملاحظة: تنتهي الصلاحية في غضون {{expiresIn}} من الساعات.",
-  
-  "seat_options_doesnt_support_confirmation": "الحجز الذي يتطلب التأكيد لا يدعم خيار حجز المقاعد",
-  "multilocation_doesnt_support_seats": "العديد من المواقع لا يدعم خيار المقاعد",
-  
-  "seats_option_doesnt_support_multi_location": "خيار المقاعد لا يدعم العديد من المواقع",
-  
-  
-  
-  
-  
-  
+  "link_expires": "ملاحظة: تنتهي الصلاحية في غضون {{expiresIn}} من الساعات.","seat_options_doesnt_support_confirmation": "الحجز الذي يتطلب التأكيد لا يدعم خيار حجز المقاعد",
+  "multilocation_doesnt_support_seats": "العديد من المواقع لا يدعم خيار المقاعد","seats_option_doesnt_support_multi_location": "خيار المقاعد لا يدعم العديد من المواقع",
   "use_link_to_reset_password": "استخدم الرابط أدناه لإعادة تعيين كلمة المرور",
   "hey_there": "مرحبًا",
   "forgot_your_password_calcom": "نسيت كلمة المرور الخاصة بك؟ - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "تم إنشاء الويبهوك بنجاح!",
   "webhook_updated_successfully": "تم تحديث الويبهوك بنجاح!",
   "webhook_removed_successfully": "تمت إزالة الويبهوك بنجاح!",
-  
-  
   "payload_template": "قالب البيانات",
   "dismiss": "تجاهل",
   "no_data_yet": "لا بيانات حتى الآن",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "تم إرسال الاجتماع المتكرر الخاص بك",
   "booking_confirmed": "تم تأكيد الحجز الخاص بك",
   "booking_confirmed_recurring": "تم تأكيد الاجتماع المتكرر الخاص بك",
-  
-  
   "enter_new_password": "أدخل كلمة المرور الجديدة التي ترغب في تعيينها لحسابك.",
   "reset_password": "إعادة تعيين كلمة المرور",
   "change_your_password": "تغيير كلمة المرور",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "تم إنشاء النص",
   "booking_created": "تم إنشاء الحجز",
   "booking_rejected": "تم رفض الحجز",
-  "booking_requested": "تم طلب الحجز",
-  
-  "meeting_ended": "انتهى الاجتماع",
+  "booking_requested": "تم طلب الحجز","meeting_ended": "انتهى الاجتماع",
   "form_submitted": "تم إرسال النموذج",
-  "form_submitted_no_event": "تم إرسال النموذج، لم يتم حجز أي حدث",
-  
-  "ooo_created": "تم إنشاء خارج المكتب",
+  "form_submitted_no_event": "تم إرسال النموذج، لم يتم حجز أي حدث","ooo_created": "تم إنشاء خارج المكتب",
   "booking_no_show_updated": "تم تحديث حالة عدم الحضور للحجز",
-  "event_triggers": "مشغلات الحدث",
-  
-  "create_new_webhook": "إنشاء ويب هوك جديد",
+  "event_triggers": "مشغلات الحدث","create_new_webhook": "إنشاء ويب هوك جديد",
   "webhooks": "ويبهوكس",
   "team_webhooks": "فريق ويبهوكس",
   "create_new_webhook_to_account": "إنشاء ويب هوك جديد لحسابك",
@@ -529,9 +493,7 @@
   "iframe_embed": "تضمين إطار iframe",
   "embed_calcom": "أسهل طريقة لتضمين {{appName}} على موقع الويب لديك.",
   "integrate_using_embed_or_webhooks": "حقق التكامل مع موقع الويب لديك باستخدام خيارات التضمين لدينا، أو احصل على معلومات الحجز في الوقت الفعلي باستخدام إجراءات الويب هوك المخصصة.",
-  "schedule_a_meeting": "جدولة اجتماع",
-        "need_anything_else": "هل تحتاج إلى أي شيء آخر؟",
-    "contact": "اتصل",
+  "schedule_a_meeting": "جدولة اجتماع",    "need_anything_else": "هل تحتاج إلى أي شيء آخر؟","contact": "اتصل",
   "our_support_team": "بفريق الدعم لدينا",
   "contact_our_support_team": "الاتصال بفريق الدعم لدينا",
   "uh_oh": "عذرًا!",
@@ -773,10 +735,6 @@
   "readonly": "للقراءة فقط",
   "one_time_link": "رابط لمرة واحدة",
   "plan_description": "أنت حاليًا على خطة {{plan}}.",
-  
-  
-  
-  
   "event_types_page_title": "أنواع الحدث",
   "event_types_page_subtitle": "قم بإنشاء أحداث لمشاركتها حتى يتسنى للأشخاص الحجز في التقويم الخاص بك.",
   "new": "جديد",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "قم بإنشاء فريق للبدء",
   "teams": "الفرق",
   "team": "فريق",
-  "organization": "المنظمة",
-      
-  
-    "create_manage_teams_collaborative": "قم بإنشاء الفرق وإدارتها لاستخدام الميزات التعاونية.",
+  "organization": "المنظمة",    "create_manage_teams_collaborative": "قم بإنشاء الفرق وإدارتها لاستخدام الميزات التعاونية.",
   "only_available_on_pro_plan": "لا تتوفر هذه الميزة إلا في خطة Pro",
   "remove_cal_branding_description": "لإزالة علامة {{appName}} التجارية من صفحات عمليات الحجز، تحتاج إلى ترقية حسابك إلى حساب Pro.",
   "edit_profile_info_description": "قم بتعديل معلومات ملفك الشخصي المعروضة على رابط الجدولة.",
@@ -843,16 +798,13 @@
   "little_something_about": "نبذة عن نفسك.",
   "profile_updated_successfully": "تم تحديث الملف الشخصي بنجاح",
   "your_user_profile_updated_successfully": "تم تحديث ملفك الشخصي بنجاح.",
-  
-  
   "you_are_all_set": "كل شيء جاهز",
   "you_are_all_set_description": "أنت بالفعل على أحدث خطة. لا حاجة للترقية. استمتع بالميزات الجديدة وتواصل معنا إذا كان لديك أي أسئلة!",
   "user_cannot_found_db": "يبدو أن المستخدم قد سجل الدخول ولكن لا يمكن العثور عليه في قاعدة البيانات",
   "embed_and_webhooks": "التضمين والويب هوك",
   "enabled": "تم التمكين",
   "disabled": "تم التعطيل",
-  "disable": "تعطيل",
-      "availability": "الأوقات المتاحة",
+  "disable": "تعطيل",  "availability": "الأوقات المتاحة",
   "edit_availability": "تعديل الإتاحة",
   "configure_availability": "اضبط الأوقات التي تكون متاحًا فيها للحجز.",
   "copy_times_to": "نسخ الأوقات إلى",
@@ -889,8 +841,6 @@
   "recurring_event": "حدث متكرر",
   "recurring_event_description": "يمكن للأشخاص الاشتراك في الأحداث المتكررة",
   "connect_and_join": "اتصل وانضم",
-  
-  
   "warning_instant_meeting_experimental": "تجريبي: أحداث الاجتماعات الفورية حاليًا تجريبية.",
   "starting": "يبدأ في",
   "disable_guests": "تعطيل خاصية الضيوف",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "سيوفر {{appName}} رابطًا للاجتماع عبر الفيديو على Daily.",
   "cal_provide_jitsi_meeting_url": "سنوفر لك رابطًا للاجتماع عبر Jitsi Meet.",
   "cal_provide_huddle01_meeting_url": "سيوفر {{appName}} رابطًا للاجتماع عبر الفيديو على Huddle01.",
-  "cal_provide_teams_meeting_url": "سيوفر {{appName}} عنوان URL لاجتماعات MS Teams. ملاحظة: يجب أن يكون لديك حساب عمل أو حساب مدرسة",
-  
-  "you_need_to_add_a_name": "تحتاج إلى إضافة اسم",
+  "cal_provide_teams_meeting_url": "سيوفر {{appName}} عنوان URL لاجتماعات MS Teams. ملاحظة: يجب أن يكون لديك حساب عمل أو حساب مدرسة","you_need_to_add_a_name": "تحتاج إلى إضافة اسم",
   "commission_per_transaction": "عمولة كل معاملة",
   "event_type_updated_successfully_description": "تم تحديث نوع الحدث لديك بنجاح.",
   "hide_event_type": "إخفاء نوع الحدث",
@@ -964,9 +912,7 @@
   "next_step_text": "الخطوة التالية",
   "next_step": "تخطي الخطوة",
   "prev_step": "الخطوة السابقة",
-  "install": "تثبيت",
-  
-  "installed": "تم التثبيت",
+  "install": "تثبيت","installed": "تم التثبيت",
   "active_install_one": "{{count}} تثبيت نشط",
   "active_install_other": "{{count}} تثبيت نشط",
   "globally_install": "تم تثبيته حول العالم",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "تم تحديث التقويم بنجاح",
   "check_here": "تحقق هنا",
   "conferencing": "المؤتمرات عبر الفيديو",
-  "calendar": "التقويم",
-  
-  "not_installed": "لم يتم التثبيت",
+  "calendar": "التقويم","not_installed": "لم يتم التثبيت",
   "error_password_mismatch": "كلمات المرور غير متطابقة.",
   "error_required_field": "هذا الحقل مطلوب.",
   "status": "الحالة",
@@ -1024,16 +968,12 @@
   "no_category_apps": "لا توجد تطبيقات {{category}}",
   "all_apps": "كل التطبيقات",
   "no_category_apps_description_calendar": "إضافة تطبيق تقويم للتحقق من أي تضارب لمنع أي حجوزات مزدوجة",
-  "no_category_apps_description_conferencing": "جرب إضافة تطبيق مؤتمرات لإنشاء مكالمات فيديو مع عملائك",
-  
-  "no_category_apps_description_analytics": "إضافة تطبيق تحليلات لصفحات الحجز الخاصة بك",
+  "no_category_apps_description_conferencing": "جرب إضافة تطبيق مؤتمرات لإنشاء مكالمات فيديو مع عملائك","no_category_apps_description_analytics": "إضافة تطبيق تحليلات لصفحات الحجز الخاصة بك",
   "no_category_apps_description_automation": "إضافة تطبيق أتمتة لاستخدامه",
   "no_category_apps_description_other": "أضف أي نوع آخر من التطبيقات للقيام بأي شيء",
   "no_category_apps_description_messaging": "إضافة تطبيق مراسلة لإعداد الإشعارات والتذكيرات المخصصة",
   "no_category_apps_description_crm": "إضافة تطبيق CRM لتتبع من قابلته",
-  "installed_app_calendar_description": "قم بتعيين التقويمات للتحقق من وجود تعارضات لمنع الحجوزات المزدوجة.",
-  
-  "installed_app_analytics_description": "تهيئة أي تطبيقات تستخدم لصفحات الحجز الخاصة بك",
+  "installed_app_calendar_description": "قم بتعيين التقويمات للتحقق من وجود تعارضات لمنع الحجوزات المزدوجة.","installed_app_analytics_description": "تهيئة أي تطبيقات تستخدم لصفحات الحجز الخاصة بك",
   "installed_app_other_description": "جميع تطبيقاتك المثبتة من الفئات الأخرى.",
   "installed_app_conferencing_description": "تكوين تطبيقات المؤتمرات المراد استخدامها",
   "installed_app_automation_description": "تهيئة تطبيقات الأتمتة التي سيتم استخدامها",
@@ -1048,9 +988,7 @@
   "features": "الميزات",
   "permissions": "الأذونات",
   "terms_and_privacy": "الشروط والخصوصية",
-  "published_by": "نُشر بواسطة {{author}}",
-  
-  "buy": "شراء",
+  "published_by": "نُشر بواسطة {{author}}","buy": "شراء",
   "install_app": "تثبيت التطبيق",
   "categories": "الفئات",
   "pricing": "التسعير",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "تأكيد المحفظة",
   "create_events_on": "إنشاء أحداث في",
   "enterprise_license": "هذه ميزة تجارية",
-  "enterprise_license_locally": "يمكنك تجرِبة هذه المِيزة على جهازك وليس على البيئة الإنتاجية.",
-  
-  "missing_license": "الترخيص مفقود",
+  "enterprise_license_locally": "يمكنك تجرِبة هذه المِيزة على جهازك وليس على البيئة الإنتاجية.","missing_license": "الترخيص مفقود",
   "next_steps": "الخطوات التالية",
   "acquire_commercial_license": "الحصول على ترخيص تجاري",
   "the_infrastructure_plan": "تعتمد خطة البنية التحتية على الاستخدام وتتضمن خصومات مناسبة للأعمال التجارية حديثة الإنشاء.",
   "prisma_studio_tip": "إنشاء حساب عبر Prisma Studio",
-  "prisma_studio_tip_description": "تعرّف على كيفية إعداد مستخدمك الأول",
-  
-  "error_404": "خطأ 404",
+  "prisma_studio_tip_description": "تعرّف على كيفية إعداد مستخدمك الأول","error_404": "خطأ 404",
   "default": "الافتراضي",
   "set_to_default": "تعيين إلى الافتراضي",
   "new_schedule_btn": "جدول جديد",
@@ -1230,9 +1164,7 @@
   "support_documentation": "المستندات الداعمة",
   "developer_documentation": "مستندات المطور",
   "get_in_touch": "تواصل معنا",
-  "contact_support": "الاتصال بالدعم",
-  
-  "community_support": "الدعم المجتمعي",
+  "contact_support": "الاتصال بالدعم","community_support": "الدعم المجتمعي",
   "feedback": "الملاحظات",
   "submitted_feedback": "نشكرك على ملاحظاتك!",
   "feedback_error": "حدث خطأ عند إرسال الملاحظات",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "يُمكّنك سير العمل من أتمتة إرسال التذكير والإشعارات.",
   "active_on": "إجراء في",
   "workflow_updated_successfully": "تم تحديث سير العمل {{workflowName}} بنجاح",
-    
-  "current": "الحالي",
-  
-  "standard": "قياسي",
+  "current": "الحالي","standard": "قياسي",
   "confirm_username_change_dialog_title": "تأكيد تغيير اسم المستخدم",
-  
-  
-    
   "trial_expired": "انتهت صلاحية الفترة التجريبية الخاصة بك",
   "remove_app": "إزالة التطبيق",
   "yes_remove_app": "نعم، قم بإزالة التطبيق",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "الحاضر",
   "event_date_variable": "تاريخ الحدث",
   "event_time_variable": "وقت الحدث",
-  "organizer_name_variable": "اسم المنظم",
-  
-  "invalid_number": "رقم الهاتف غير صالح",
+  "organizer_name_variable": "اسم المنظم","invalid_number": "رقم الهاتف غير صالح",
   "invalid_url_error_message": "عنوان URL غير صالح من أجل {{label}}. عنوان URL للعينة: {{sampleUrl}}",
   "navigate": "تنقّل",
   "open": "فتح",
   "close": "إغلاق",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "التسجيلات هي جزء من خطة \"الفرق\"",
   "team_feature_teams": "هذه ميزة في Team. قم بالترقية إلى Team لرؤية إتاحة فريقك.",
   "team_feature_workflows": "هذه ميزة في Team. قم بالترقية إلى Team لأتمتة إشعارات الحدث والتذكيرات عند استخدام سير العمل.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "معرّف سؤال الحجز",
   "company_size": "حجم الشركة",
   "what_help_needed": "ما الذي تحتاج إلى مساعدة بشأنه؟",
-  "variable_format": "تنسيق المتغير",
-  
-  "custom_input_as_variable_info": "تجاهل جميع الأحرف الخاصة من تسمية الإدخال الإضافي (استخدم الأحرف والأرقام فقط)، واستخدم الحروف الكبيرة لجميع الأحرف واستبدل المساحات البيضاء بالشرط.",
+  "variable_format": "تنسيق المتغير","custom_input_as_variable_info": "تجاهل جميع الأحرف الخاصة من تسمية الإدخال الإضافي (استخدم الأحرف والأرقام فقط)، واستخدم الحروف الكبيرة لجميع الأحرف واستبدل المساحات البيضاء بالشرط.",
   "using_booking_questions_as_variables": "كيف يمكنني استخدام أسئلة الحجز كمتغيرات؟",
   "download_desktop_app": "تحميل تطبيق سطح المكتب",
   "set_ping_link": "تعيين رابط Ping",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "ما تواتر مرات الحجز",
   "event_advanced_tab_description": "إعدادات الرزنامة والمزيد...",
   "event_advanced_tab_title": "متقدم",
-  
-  
   "event_setup_multiple_duration_error": "إعداد الحدث: تستلزم فترات متعددة خيارًا واحدًا على الأقل.",
   "event_setup_multiple_duration_default_error": "إعداد الحدث: الرجاء تحديد مدة افتراضية صالحة.",
   "event_setup_booking_limits_error": "يجب أن تكون حدود الحجز بترتيب تصاعدي. [يوم، أسبوع، شهر، سنة]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "يمكنك تخصيص كل هذا لاحقًا في صفحة الإتاحة.",
   "connect_calendars_from_app_store": "يمكنك إضافة مزيد من التقويمات من متجر التطبيقات",
   "connect_conference_apps": "ربط تطبيقات المؤتمرات",
-  "connect_calendar_apps": "ربط تطبيقات التقويم",
-  
-  "connect_automation_apps": "توصيل تطبيقات الأتمتة",
+  "connect_calendar_apps": "ربط تطبيقات التقويم","connect_automation_apps": "توصيل تطبيقات الأتمتة",
   "connect_analytics_apps": "توصيل تطبيقات التحليلات",
   "connect_other_apps": "ربط تطبيقات أخرى",
   "connect_messaging_apps": "ربط تطبيقات المراسلة",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "تم إرسال رابط إعادة الضبط",
   "password_reset_email": "تم إرسال بريد إلكتروني إلى {{email}} يحتوي على تعليمات لإعادة تعيين كلمة المرور.",
   "password_reset_leading": "إذا لم تستلم رسالة بريد إلكتروني قريبًا، تحقق من أن عنوان البريد الإلكتروني الذي أدخلته صحيح، وتحقق من مجلد البريد المزعج أو اتصل بالدعم إذا استمرت المشكلة.",
-  "password_updated": "تم تحديث كلمة المرور!",
-  
-  "pending_invites": "دعوات معلقة",
+  "password_updated": "تم تحديث كلمة المرور!","pending_invites": "دعوات معلقة",
   "pending_organization_invites": "دعوات المنظمة المعلقة",
   "not_on_cal": "غير موجود على {{appName}}",
   "no_calendar_installed": "لا يوجد تقويم مثبت",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "استخدم الحروف الكبيرة لجميع الأحرف",
   "replace_whitespaces_underscores": "استبدل المساحات البيضاء بالشرطات السفلية",
   "platform_members": "أعضاء المنصة",
-  "platform_members_description": "إدارة المسؤولين والأعضاء في فريق منصتك",
-                  "ignore_special_characters_booking_questions": "تجاهل الأحرف الخاصة في معرف سؤال الحجز لديك. استخدم الأحرف والأرقام فقط",
+  "platform_members_description": "إدارة المسؤولين والأعضاء في فريق منصتك",              "ignore_special_characters_booking_questions": "تجاهل الأحرف الخاصة في معرف سؤال الحجز لديك. استخدم الأحرف والأرقام فقط",
   "retry": "إعادة المحاولة",
   "fetching_calendars_error": "حدثت مشكلة أثناء جلب التقويمات الخاصة بك. يرجى <1>إعادة المحاولة</1> أو الاتصال بدعم العملاء.",
   "calendar_connection_fail": "فشل الاتصال بالتقويم",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "الحد من الحجوزات المستقبلية",
   "limit_future_bookings_description": "الحد من عدد مرات حجز هذا الحدث في المستقبل",
   "no_event_types": "لا يوجد إعداد لأنواع الأحداث",
-  "no_event_types_description": "لم يتم إعداد أي نوع من الأحداث لك من قِبل {{name}}.",
-    "monthly": "شهريًا",
+  "no_event_types_description": "لم يتم إعداد أي نوع من الأحداث لك من قِبل {{name}}.","monthly": "شهريًا",
   "yearly": "سنويًا",
   "weekly": "أسبوعيًا",
   "checkout": "الدفع",
@@ -1733,9 +1643,7 @@
   "test_preview": "اختبار المعاينة",
   "route_to": "التوجيه إلى",
   "test_preview_description": "اختبار نموذج التوجيه الخاص بك دون تقديم أي بيانات",
-  "test_routing": "اختبار التوجيه",
-  
-  "edit_event_type": "تعديل نوع الحدث",
+  "test_routing": "اختبار التوجيه","edit_event_type": "تعديل نوع الحدث",
   "only_admin_can_see_members_of_org": "هذه المنظمة خاصة، ولا يمكن إلا لمسؤول المنظمة أو مالكها رؤية أعضائها.",
   "only_admin_can_manage_sso_org": "فقط مسؤول المنظمة أو مالكها يمكنه إدارة إعدادات SSO",
   "collective_scheduling": "جدولة جماعية",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "استبدل مشرف في فريق <strong>{{teamName}}</strong> نوع الحدث لديك<strong>/{{slug}}</strong> بنوع الحدث المُدار الذي يتحكم فيه.",
   "email_body_slug_replacement_info": "سيستمر الرابط في العمل، ولكن ربما تم تغيير بعض إعداداته. يمكنك مراجعتها في أنواع الأحداث.",
   "email_body_slug_replacement_suggestion": "يرجى الاتصال بالمشرف إذا كان لديك أي أسئلة حول نوع الحدث.<br/><br/>جدولة سعيدة، <br/>فريق Cal.com",
-  
-  
   "app_disabled_with_event_type": "عطّل المشرف {{appName}} مما يؤثر على نوع الحدث {{title}} لديك.",
   "app_disabled_video": "عطّل المشرف {{appName}} الذي قد يؤثر على أنواع الأحداث لديك. إذا كان لديك أنواع من الأحداث بها {{appName}} كموقع، فسيتم تعيين Cal Video بشكل افتراضي.",
   "app_disabled_subject": "تم تعطيل {{appName}}",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "مضيفون بنظام دوار",
   "minimum_round_robin_hosts_count": "عدد المضيفين المطلوب حضورهم",
   "hosts": "المضيفون",
-  
-  
   "new_attendee": "حضور جديد",
   "awaiting_approval": "في انتظار الموافقة",
   "requires_google_calendar": "يتطلب هذا التطبيق اتصال تقويم Google",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "يمكنك تخصيص الأسئلة المطروحة في صفحة الحجز",
   "add_a_booking_question": "اطرح سؤالاً",
   "identifier": "المُعرِّف",
-  "duplicate_email": "البريد الإلكتروني مكرر",
-  
-  
-  
-  "booking_confirmation_failed": "فشل تأكيد الحجز",
+  "duplicate_email": "البريد الإلكتروني مكرر","booking_confirmation_failed": "فشل تأكيد الحجز",
   "not_enough_seats": "لا توجد مقاعد كافية",
   "form_builder_field_already_exists": "يوجد حقل بهذا الاسم بالفعل",
   "show_on_booking_page": "إظهار في صفحة الحجز",
@@ -2079,32 +1979,12 @@
   "clear_filters": "مسح عوامل التصفية",
   "clear": "مسح",
   "hold": "تعليق",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "رؤى",
   "routing_forms": "نماذج التوجيه",
   "testing_workflow_info_message": "عند اختبار سير العمل هذا، يجب أن تدرك أنه لا يمكن جدولة رسائل البريد الإلكتروني والرسائل القصيرة إلا قبل ساعة واحدة على الأقل",
   "insights_no_data_found_for_filter": "لم يتم العثور على بيانات لعامل التصفية المحدد أو التواريخ المحددة.",
-  
-  
   "something_went_wrong_on_our_end": "حدث خطأ ما من طرفنا. اتصل بفريق الدعم لدينا، وسنُصلحه لك فوراً.",
-  "please_provide_following_text_to_suppport": "يرجى تقديم النص التالي عند الاتصال بالدعم لمساعدتك بشكل أفضل",
-  
-  "complete_your_booking": "أكمل الحجز",
+  "please_provide_following_text_to_suppport": "يرجى تقديم النص التالي عند الاتصال بالدعم لمساعدتك بشكل أفضل","complete_your_booking": "أكمل الحجز",
   "complete_your_booking_subject": "أكمل الحجز: {{title}} في {{date}}",
   "confirm_your_details": "تأكيد التفاصيل الخاصة بك",
   "copy_invite_link": "نسخ رابط الدعوة",
@@ -2120,14 +2000,8 @@
   "three_months": "3 أشهر",
   "one_year": "1 سنة",
   "team_invite_received": "تمت دعوتك للانضمام إلى {{teamName}}",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "تحصيل مبلغ {{amount, currency}} من أحد الحضور",
-  
-  "email_invite_team": "تم دعوة {{email}}",
-  "email_invite_team_bulk": "تم دعوة {{userCount}} من المستخدمين",
-  
-  "image_size_limit_exceed": "يجب ألا يتجاوز حجم الصورة التي تم تحميلها 5 ميغابايت",
+  "currency_string": "{{amount, currency}}","charge_attendee": "تحصيل مبلغ {{amount, currency}} من أحد الحضور","email_invite_team": "تم دعوة {{email}}",
+  "email_invite_team_bulk": "تم دعوة {{userCount}} من المستخدمين","image_size_limit_exceed": "يجب ألا يتجاوز حجم الصورة التي تم تحميلها 5 ميغابايت",
   "unauthorized_workflow_error_message": "{{errorCode}}: غير مصرح لك بتمكين سير العمل هذا أو تعطيله",
   "inline_embed": "التضمين",
   "load_inline_content": "تحميل نوع الحدث مع محتوى آخر من موقعكبشكل مباشر.",
@@ -2394,9 +2268,7 @@
   "locked": "مقفل",
   "unlocked": "مفتوح",
   "lock_timezone_toggle_on_booking_page": "قفل المنطقة الزمنية في صفحة الحجز",
-  "description_lock_timezone_toggle_on_booking_page": "تقفل المنطقة الزمنية على صفحة الحجز، وهذا مفيد للأحداث وجهاً لوجه.",
-  
-  "number_in_international_format": "يرجى إدخال الرقم بالتنسيق الدولي.",
+  "description_lock_timezone_toggle_on_booking_page": "تقفل المنطقة الزمنية على صفحة الحجز، وهذا مفيد للأحداث وجهاً لوجه.","number_in_international_format": "يرجى إدخال الرقم بالتنسيق الدولي.",
   "install_calendar": "تثبيت التقويم",
   "branded_subdomain": "النطاق الفرعي المخصص",
   "branded_subdomain_description": "احصل على نطاق فرعي مخصص خاص بك، مثل acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "عملية انضمام ودعم هندسي مخصصين",
   "extensive_whitelabeling_description": "خصص تجربة الجدولة الخاصة بك باستخدام شعارك وألوانك والمزيد",
   "unlimited_teams": "فرق غير محدودة",
-  "unlimited_teams_description": "أضف عددًا غير محدود من الفرق الفرعية إلى مؤسستك حسب الحاجة",
-      "advanced_managed_events": "أنواع الأحداث المدارة المتقدمة",
+  "unlimited_teams_description": "أضف عددًا غير محدود من الفرق الفرعية إلى مؤسستك حسب الحاجة",  "advanced_managed_events": "أنواع الأحداث المدارة المتقدمة",
   "advanced_managed_events_description": "أضف بطاقة ائتمان واحدة لدفع جميع اشتراكات فريقك",
   "enterprise": "المؤسسة",
   "enterprise_description": "قم بالترقية إلى Enterprise لإنشاء مؤسستك",
-  "create_your_org": "أنشئ مؤسستك",
-    "create_your_enterprise_description": "قم بالترقية إلى Enterprise واحصل على الوصول إلى مزامنة Active Directory، وتوفير المستخدم التلقائي SCIM، ووكلاء الصوت Cal.ai، وواجهات برمجة التطبيقات الإدارية والمزيد!",
-  
-  "admin_delete_organization_description": "<ul><li>سيتم حذف الفرق التي هي عضو في هذه المنظمة مع أنواع الأحداث الخاصة بها</li><li>لن يتم حذف المستخدمين الذين كانوا جزءًا من المنظمة ولكن سيتم تغيير أسماء المستخدمين الخاصة بهم للسماح لهم بالوجود خارج المنظمة</li><li>سيتم حذف أنواع الأحداث التي أنشأها المستخدم بعد أن كان في المنظمة</li><li>لن يتم حذف أنواع الأحداث التي تم نقلها للمستخدم</li></ul>",
+  "create_your_org": "أنشئ مؤسستك","create_your_enterprise_description": "قم بالترقية إلى Enterprise واحصل على الوصول إلى مزامنة Active Directory، وتوفير المستخدم التلقائي SCIM، ووكلاء الصوت Cal.ai، وواجهات برمجة التطبيقات الإدارية والمزيد!","admin_delete_organization_description": "<ul><li>سيتم حذف الفرق التي هي عضو في هذه المنظمة مع أنواع الأحداث الخاصة بها</li><li>لن يتم حذف المستخدمين الذين كانوا جزءًا من المنظمة ولكن سيتم تغيير أسماء المستخدمين الخاصة بهم للسماح لهم بالوجود خارج المنظمة</li><li>سيتم حذف أنواع الأحداث التي أنشأها المستخدم بعد أن كان في المنظمة</li><li>لن يتم حذف أنواع الأحداث التي تم نقلها للمستخدم</li></ul>",
   "admin_delete_organization_title": "حذف {{organizationName}}؟",
   "published": "منشور",
   "unpublished": "غير منشور",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "دع الناس يحجزون على الفور",
   "uprade_to_create_instant_bookings": "قم بالترقية إلى Enterprise ودع الضيوف ينضمون إلى مكالمة فورية يمكن للمشاركين الدخول إليها مباشرة. هذا مخصص لأنواع الأحداث الجماعية فقط",
   "dont_want_to_wait": "لا تريد الانتظار؟",
-  "meeting_started": "بدأ الاجتماع",
-  
-  "cal_ai_event_tab_description": "دع وكلاء الذكاء الاصطناعي يحجزون لك",
+  "meeting_started": "بدأ الاجتماع","cal_ai_event_tab_description": "دع وكلاء الذكاء الاصطناعي يحجزون لك",
   "booking_not_found_error": "لم يتم العثور على الحجز",
   "booking_seats_full_error": "مقاعد الحجز ممتلئة",
-  
-  
   "not_enough_available_seats_error": "لا توجد مقاعد كافية متاحة للحجز",
   "user_redirect_title": "{{username}} بعيد حاليًا لفترة قصيرة.",
   "user_redirect_description": "في هذه الأثناء، سيكون {{profile.username}} مسؤولاً عن جميع الاجتماعات المجدولة الجديدة نيابة عن {{username}}.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "عند قبول الدعوة، سيتغير رابطك إلى نطاق مؤسستك ولكن لا تقلق، جميع الروابط السابقة ستظل تعمل وتعيد التوجيه بشكل مناسب.<br /><br />يرجى ملاحظة: سيتم نقل جميع أنواع الأحداث الشخصية الخاصة بك إلى منظمة <strong>{teamName}</strong>، والتي قد تشمل أيضًا رابطًا شخصيًا محتملاً.<br /><br />للأحداث الشخصية نوصي بإنشاء حساب جديد باستخدام عنوان بريد إلكتروني شخصي.",
   "email|existing_user_added_link_changed": "تم تغيير رابطك من <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> إلى <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a> ولكن لا تقلق، جميع الروابط السابقة لا تزال تعمل وتعيد التوجيه بشكل مناسب.<br /><br />يرجى ملاحظة: تم نقل جميع أنواع الأحداث الشخصية الخاصة بك إلى منظمة <strong>{teamName}</strong>، والتي قد تشمل أيضًا رابطًا شخصيًا محتملاً.<br /><br />يرجى تسجيل الدخول والتأكد من عدم وجود أحداث خاصة على حسابك التنظيمي الجديد.<br /><br />للأحداث الشخصية نوصي بإنشاء حساب جديد باستخدام عنوان بريد إلكتروني شخصي.<br /><br />استمتع برابطك الجديد النظيف: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "تم إنشاء مؤسستك",
-  "your_current_plan": "خطتك الحالية",
-  
-  "privacy_organization_description": "إدارة إعدادات الخصوصية لمؤسستك",
+  "your_current_plan": "خطتك الحالية","privacy_organization_description": "إدارة إعدادات الخصوصية لمؤسستك",
   "privacy": "الخصوصية",
   "team_will_be_under_org": "الفرق الجديدة ستكون تحت مؤسستك",
   "add_group_name": "أضف اسم المجموعة",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "بالمتابعة فإنك توافق على <1>الشروط</1> و <2>سياسة الخصوصية</2> الخاصة بنا.",
   "proceeding_agreement": "بالمتابعة، فإنك توافق على",
   "terms": "الشروط",
-  "always_show_x_days": "دائمًا {{x}} أيام متاحة",
-  
-  "updating_oauth_client_error": "حدث خطأ أثناء تحديث عميل OAuth، يرجى المحاولة مرة أخرى لاحقًا",
+  "always_show_x_days": "دائمًا {{x}} أيام متاحة","updating_oauth_client_error": "حدث خطأ أثناء تحديث عميل OAuth، يرجى المحاولة مرة أخرى لاحقًا",
   "creating_oauth_client_error": "حدث خطأ أثناء إنشاء عميل OAuth، يرجى المحاولة مرة أخرى لاحقًا",
   "event_type_color": "لون نوع الحدث",
   "event_type_color_description": "يستخدم هذا فقط للتمييز بين نوع الحدث والحجز داخل التطبيق. لا يتم عرضه للمستخدمين.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "جارٍ التحقق من تقويم Google",
   "outlook_connect_atom_label": "اتصال بتقويم Outlook",
   "outlook_connect_atom_already_connected_label": "تم الاتصال بتقويم Outlook",
-  "outlook_connect_atom_loading_label": "جارٍ التحقق من تقويم Outlook",
-  
-  
-  
-  "booking_question_response_variables": "متغيرات استجابة أسئلة الحجز",
+  "outlook_connect_atom_loading_label": "جارٍ التحقق من تقويم Outlook","booking_question_response_variables": "متغيرات استجابة أسئلة الحجز",
   "managed_by_teamAdmins": "يدار بواسطة {{teamAdmins}}",
   "number_of_options": "{{count}} خيارات",
   "reschedule_with_same_round_robin_host_title": "إعادة الجدولة مع نفس مضيف round-robin",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "آخر {{count}} يوم",
   "month_to_date": "منذ بداية الشهر",
   "year_to_date": "منذ بداية السنة",
-  "custom_range": "نطاق مخصص",
-  
-  "always": "دائماً",
-  "never": "أبداً",
-  
-  "if_cancelled": "في حالة الإلغاء",
+  "custom_range": "نطاق مخصص","always": "دائماً",
+  "never": "أبداً","if_cancelled": "في حالة الإلغاء",
   "before": "قبل",
   "show_all_columns": "عرض جميع الأعمدة",
   "toggle_columns": "تبديل الأعمدة",

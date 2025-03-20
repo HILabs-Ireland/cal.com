@@ -4,9 +4,7 @@
   "day_one": "{{count}} gün",
   "day_other": "{{count}} gün",
   "second_one": "{{count}} saniyə",
-  "second_other": "{{count}} saniyə",
-  
-  "untitled": "Başlıqsız",
+  "second_other": "{{count}} saniyə","untitled": "Başlıqsız",
   "accept_invitation": "Dəvəti qəbul edin",
   "max_characters": "Maks. Simvollar",
   "min_characters": "Min. Simvollar",
@@ -68,18 +66,10 @@
   "accept_our_license": ".env faylında <1>NEXT_PUBLIC_LICENSE_CONSENT</1> dəyişənini '{{agree}}' olaraq dəyişdirərək lisenziyamızı qəbul edin.",
   "remove_banner_instructions": "Bu banneri silmək üçün .env faylınızı açın və <1>NEXT_PUBLIC_LICENSE_CONSENT</1> dəyişənini '{{agree}}' olaraq dəyişdirin.",
   "error_message": "Xəta mesajı: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Ödəniş provayderiniz və {{user}} ilə bu məsələnin necə həll olunacağını yoxlayın.",
-  
-  
-  
   "dark_theme_contrast_error": "Qaranlıq Tema rəngi kontrast yoxlamasından keçmir. Düymələrinizin daha görünən olması üçün bu rəngi dəyişdirməyi tövsiyə edirik.",
   "light_theme_contrast_error": "Açıq Tema rəngi kontrast yoxlamasından keçmir. Düymələrinizin daha görünən olması üçün bu rəngi dəyişdirməyi tövsiyə edirik.",
   "event_type_color_light_theme_contrast_error": "Açıq Tema rəngi kontrast yoxlamasından keçmir. Tədbir növlərinizin rənginin daha görünən olması üçün bu rəngi dəyişdirməyi tövsiyə edirik.",
   "event_type_color_dark_theme_contrast_error": "Qaranlıq Tema rəngi kontrast yoxlamasından keçmir. Tədbir növlərinizin rənginin daha görünən olması üçün bu rəngi dəyişdirməyi tövsiyə edirik.",
-  
-  
   "no_available_users_found_error": "Mövcud istifadəçilər tapılmadı. Başqa bir vaxt aralığını yoxlaya bilərsinizmi?",
   "request_body_end_time_internal_error": "Daxili səhv. Sorğu bədənində bitmə vaxtı yoxdur",
   "create_calendar_event_error": "Təşkilatçının təqvimində Təqvim hadisəsi yaradıla bilmir",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "Siz artıq bu rezervasiya üçün qeydiyyatdan keçmisiniz.",
   "hosts_unavailable_for_booking": "Bəzi ev sahibləri rezervasiya üçün mövcud deyil.",
   "help": "Kömək",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Ümumi sorğu",
   "begin_message": "Mesaja başla",
   "codebase_has_to_stay_opensource": "Kod bazası dəyişdirilsə də, açıq mənbə olaraq qalmalıdır",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "Bu komandada gizlisiniz",
   "hidden_team_member_message": "Oturacağınız ödənilməyib, ya PRO-ya yüksəldin, ya da komanda sahibinə oturacağınız üçün ödəniş edə biləcəyini bildirin.",
   "hidden_team_owner_message": "Komandalardan istifadə etmək üçün pro hesabına ehtiyacınız var, yüksəldənə qədər gizlisiniz.",
-  "link_expires": "p.s. Bu link {{expiresIn}} saat ərzində bitir.",
-  
-  "seat_options_doesnt_support_confirmation": "Oturacaq seçimi təsdiq tələbini dəstəkləmir",
-  "multilocation_doesnt_support_seats": "Çoxsaylı yerlər oturacaq seçimini dəstəkləmir",
-  
-  "seats_option_doesnt_support_multi_location": "Oturacaq seçimi Çoxlu Məkanları dəstəkləmir",
-  
-  
-  
-  
-  
-  
+  "link_expires": "p.s. Bu link {{expiresIn}} saat ərzində bitir.","seat_options_doesnt_support_confirmation": "Oturacaq seçimi təsdiq tələbini dəstəkləmir",
+  "multilocation_doesnt_support_seats": "Çoxsaylı yerlər oturacaq seçimini dəstəkləmir","seats_option_doesnt_support_multi_location": "Oturacaq seçimi Çoxlu Məkanları dəstəkləmir",
   "use_link_to_reset_password": "Şifrənizi sıfırlamaq üçün aşağıdakı linkdən istifadə edin",
   "hey_there": "Salam",
   "forgot_your_password_calcom": "Şifrənizi unutmusunuz? - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Webhook uğurla yaradıldı!",
   "webhook_updated_successfully": "Webhook uğurla yeniləndi!",
   "webhook_removed_successfully": "Webhook uğurla silindi!",
-  
-  
   "payload_template": "Yük Şablonu",
   "dismiss": "Bağla",
   "no_data_yet": "Hələ məlumat yoxdur",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "Təkrarlanan görüşünüz təqdim edilib",
   "booking_confirmed": "Rezervasiyanız təsdiqlənib",
   "booking_confirmed_recurring": "Təkrarlanan görüşünüz təsdiqlənib",
-  
-  
   "enter_new_password": "Hesabınız üçün yeni parolu daxil edin.",
   "reset_password": "Parolu sıfırlayın",
   "change_your_password": "Parolunuzu dəyişin",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Transkript Yaradıldı",
   "booking_created": "Rezervasiya yaradıldı",
   "booking_rejected": "Rezervasiya rədd edildi",
-  "booking_requested": "Rezervasiya istənildi",
-  
-  "meeting_ended": "Görüş bitdi",
+  "booking_requested": "Rezervasiya istənildi","meeting_ended": "Görüş bitdi",
   "form_submitted": "Form göndərildi",
-  "form_submitted_no_event": "Form göndərildi, tədbir rezerv edilmədi",
-  
-  "ooo_created": "Ofis xaricində yaradıldı",
+  "form_submitted_no_event": "Form göndərildi, tədbir rezerv edilmədi","ooo_created": "Ofis xaricində yaradıldı",
   "booking_no_show_updated": "Rezervasiya gəlməmə yeniləndi",
-  "event_triggers": "Hadisə tetikleyiciləri",
-  
-  "create_new_webhook": "Yeni webhook yarat",
+  "event_triggers": "Hadisə tetikleyiciləri","create_new_webhook": "Yeni webhook yarat",
   "webhooks": "Webhooks",
   "team_webhooks": "Komanda webhooks",
   "create_new_webhook_to_account": "Hesabınıza yeni webhook yarat",
@@ -529,9 +493,7 @@
   "iframe_embed": "iframe Əlavə",
   "embed_calcom": "{{appName}}-i veb saytınıza əlavə etməyin ən asan yolu.",
   "integrate_using_embed_or_webhooks": "Veb saytınıza yerləşdirmə seçimlərimizdən istifadə edərək inteqrasiya edin və ya xüsusi vebhoklar vasitəsilə real vaxtda rezervasiya məlumatlarını əldə edin.",
-  "schedule_a_meeting": "Görüş təyin edin",
-        "need_anything_else": "Başqa bir şeyə ehtiyacınız var?",
-    "contact": "Əlaqə",
+  "schedule_a_meeting": "Görüş təyin edin",    "need_anything_else": "Başqa bir şeyə ehtiyacınız var?","contact": "Əlaqə",
   "our_support_team": "dəstək komandamız",
   "contact_our_support_team": "Dəstək komandamızla əlaqə saxlayın",
   "uh_oh": "Vay!",
@@ -773,10 +735,6 @@
   "readonly": "Yalnız oxumaq üçün",
   "one_time_link": "Bir dəfəlik keçid",
   "plan_description": "Hazırda {{plan}} planındasınız.",
-  
-  
-  
-  
   "event_types_page_title": "Tədbir Növləri",
   "event_types_page_subtitle": "Təqviminizdə görüşlər üçün paylaşmaq üçün tədbirlər yaradın.",
   "new": "Yeni",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Başlamaq üçün komanda yaradın",
   "teams": "Komandalar",
   "team": "Komanda",
-  "organization": "Təşkilat",
-      
-  
-    "create_manage_teams_collaborative": "Əməkdaşlıq xüsusiyyətlərindən istifadə etmək üçün komandalar yaradın və idarə edin.",
+  "organization": "Təşkilat",    "create_manage_teams_collaborative": "Əməkdaşlıq xüsusiyyətlərindən istifadə etmək üçün komandalar yaradın və idarə edin.",
   "only_available_on_pro_plan": "Bu xüsusiyyət yalnız Pro planında mövcuddur",
   "remove_cal_branding_description": "Rezervasiya səhifələrinizdən {{appName}} markasını çıxarmaq üçün Pro hesabına yüksəltməlisiniz.",
   "edit_profile_info_description": "Planlaşdırma linkinizdə göstərilən profil məlumatlarını redaktə edin.",
@@ -843,16 +798,13 @@
   "little_something_about": "Özünüz haqqında qısa məlumat.",
   "profile_updated_successfully": "Profil uğurla yeniləndi",
   "your_user_profile_updated_successfully": "İstifadəçi profiliniz uğurla yeniləndi.",
-  
-  
   "you_are_all_set": "Hər şey hazırdır",
   "you_are_all_set_description": "Siz artıq ən son plandasınız. Təkmilləşdirməyə ehtiyac yoxdur. Yeni funksiyalardan həzz alın və hər hansı sualınız olarsa, bizimlə əlaqə saxlayın!",
   "user_cannot_found_db": "İstifadəçi daxil olub, amma verilənlər bazasında tapılmır",
   "embed_and_webhooks": "Daxiletmə və Webhooks",
   "enabled": "Aktiv",
   "disabled": "Deaktiv",
-  "disable": "Deaktiv et",
-      "availability": "Mövcudluq",
+  "disable": "Deaktiv et",  "availability": "Mövcudluq",
   "edit_availability": "Mövcudluğu redaktə et",
   "configure_availability": "Rezervasiyalar üçün mövcud olduğunuz vaxtları konfiqurasiya edin.",
   "copy_times_to": "Vaxtları kopyala",
@@ -889,8 +841,6 @@
   "recurring_event": "Təkrarlanan Tədbir",
   "recurring_event_description": "İnsanlar təkrarlanan tədbirlərə abunə ola bilərlər",
   "connect_and_join": "Qoşul və iştirak et",
-  
-  
   "warning_instant_meeting_experimental": "Eksperimental: Dərhal Görüş Tədbirləri hazırda eksperimental mərhələdədir.",
   "starting": "Başlayır",
   "disable_guests": "Qonaqları Deaktiv Et",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "{{appName}} video görüşmə URL-i təmin edəcək.",
   "cal_provide_jitsi_meeting_url": "Sizin üçün Jitsi Meet URL-i yaradacağıq.",
   "cal_provide_huddle01_meeting_url": "{{appName}} Huddle01 video görüşmə URL-i təmin edəcək.",
-  "cal_provide_teams_meeting_url": "{{appName}} MS Teams görüşmə URL-i təmin edəcək. QEYD: İŞ VƏ YA MƏKTƏB HESABI OLMALIDIR",
-  
-  "you_need_to_add_a_name": "Ad əlavə etməlisiniz",
+  "cal_provide_teams_meeting_url": "{{appName}} MS Teams görüşmə URL-i təmin edəcək. QEYD: İŞ VƏ YA MƏKTƏB HESABI OLMALIDIR","you_need_to_add_a_name": "Ad əlavə etməlisiniz",
   "commission_per_transaction": "əməliyyat başına komissiya",
   "event_type_updated_successfully_description": "Tədbir növü uğurla yeniləndi.",
   "hide_event_type": "Tədbir növünü gizlət",
@@ -964,9 +912,7 @@
   "next_step_text": "Növbəti Addım",
   "next_step": "Addımı keç",
   "prev_step": "Əvvəlki addım",
-  "install": "Quraşdır",
-  
-  "installed": "Quraşdırılıb",
+  "install": "Quraşdır","installed": "Quraşdırılıb",
   "active_install_one": "{{count}} aktiv quraşdırma",
   "active_install_other": "{{count}} aktiv quraşdırmalar",
   "globally_install": "Qlobal olaraq quraşdırılıb",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Təqvim uğurla yeniləndi",
   "check_here": "Burada yoxlayın",
   "conferencing": "Konfrans",
-  "calendar": "Təqvim",
-  
-  "not_installed": "Quraşdırılmayıb",
+  "calendar": "Təqvim","not_installed": "Quraşdırılmayıb",
   "error_password_mismatch": "Şifrələr uyğun gəlmir.",
   "error_required_field": "Bu sahə tələb olunur.",
   "status": "Status",
@@ -1024,16 +968,12 @@
   "no_category_apps": "Heç bir {{category}} tətbiqi yoxdur",
   "all_apps": "Bütün tətbiqlər",
   "no_category_apps_description_calendar": "İkiqat rezervasiyaların qarşısını almaq üçün təqvim tətbiqi əlavə edin",
-  "no_category_apps_description_conferencing": "Müştərilərinizlə video zənglər üçün konfrans tətbiqi əlavə etməyə çalışın",
-  
-  "no_category_apps_description_analytics": "Rezervasiya səhifələriniz üçün analitika tətbiqi əlavə edin",
+  "no_category_apps_description_conferencing": "Müştərilərinizlə video zənglər üçün konfrans tətbiqi əlavə etməyə çalışın","no_category_apps_description_analytics": "Rezervasiya səhifələriniz üçün analitika tətbiqi əlavə edin",
   "no_category_apps_description_automation": "İstifadə etmək üçün avtomatlaşdırma tətbiqi əlavə edin",
   "no_category_apps_description_other": "Müxtəlif işlər üçün hər hansı digər növ tətbiqi əlavə edin",
   "no_category_apps_description_messaging": "Xüsusi bildirişlər və xatırlatmalar qurmaq üçün mesajlaşma tətbiqi əlavə edin",
   "no_category_apps_description_crm": "Görüşdüyünüz şəxsləri izləmək üçün CRM tətbiqi əlavə edin",
-  "installed_app_calendar_description": "İkiqat rezervasiyaların qarşısını almaq üçün təqvimləri yoxlayın.",
-  
-  "installed_app_analytics_description": "Rezervasiya səhifələriniz üçün hansı analitika tətbiqlərindən istifadə edəcəyinizi konfiqurasiya edin",
+  "installed_app_calendar_description": "İkiqat rezervasiyaların qarşısını almaq üçün təqvimləri yoxlayın.","installed_app_analytics_description": "Rezervasiya səhifələriniz üçün hansı analitika tətbiqlərindən istifadə edəcəyinizi konfiqurasiya edin",
   "installed_app_other_description": "Digər kateqoriyalardan quraşdırılmış bütün tətbiqləriniz.",
   "installed_app_conferencing_description": "Hansı konfrans tətbiqlərindən istifadə edəcəyinizi konfiqurasiya edin",
   "installed_app_automation_description": "Hansı avtomatlaşdırma tətbiqlərindən istifadə edəcəyinizi konfiqurasiya edin",
@@ -1048,9 +988,7 @@
   "features": "Xüsusiyyətlər",
   "permissions": "İcazələr",
   "terms_and_privacy": "Şərtlər və Məxfilik",
-  "published_by": "{{author}} tərəfindən nəşr olunub",
-  
-  "buy": "Al",
+  "published_by": "{{author}} tərəfindən nəşr olunub","buy": "Al",
   "install_app": "Tətbiqi Yüklə",
   "categories": "Kateqoriyalar",
   "pricing": "Qiymətlər",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Cüzdanı Təsdiqlə",
   "create_events_on": "Tədbirləri yarat",
   "enterprise_license": "Bu kommersiya xüsusiyyətidir",
-  "enterprise_license_locally": "Bu xüsusiyyəti yerli olaraq sınaqdan keçirə bilərsiniz, lakin istehsalda deyil.",
-  
-  "missing_license": "Lisenziya yoxdur",
+  "enterprise_license_locally": "Bu xüsusiyyəti yerli olaraq sınaqdan keçirə bilərsiniz, lakin istehsalda deyil.","missing_license": "Lisenziya yoxdur",
   "next_steps": "Növbəti Addımlar",
   "acquire_commercial_license": "Kommersiya lisenziyası əldə edin",
   "the_infrastructure_plan": "İnfrastruktur planı istifadəyə əsaslanır və startaplar üçün endirimlər təklif edir.",
   "prisma_studio_tip": "Prisma Studio vasitəsilə hesab yaradın",
-  "prisma_studio_tip_description": "İlk istifadəçinizi necə quracağınızı öyrənin",
-  
-  "error_404": "404 Xətası",
+  "prisma_studio_tip_description": "İlk istifadəçinizi necə quracağınızı öyrənin","error_404": "404 Xətası",
   "default": "Varsayılan",
   "set_to_default": "Varsayılan olaraq təyin et",
   "new_schedule_btn": "Yeni cədvəl",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Dəstək sənədləri",
   "developer_documentation": "İnkişaf etdirici sənədləri",
   "get_in_touch": "Əlaqə saxlayın",
-  "contact_support": "Dəstək ilə əlaqə",
-  
-  "community_support": "İcma Dəstəyi",
+  "contact_support": "Dəstək ilə əlaqə","community_support": "İcma Dəstəyi",
   "feedback": "Rəy",
   "submitted_feedback": "Rəyiniz üçün təşəkkür edirik!",
   "feedback_error": "Rəy göndərilərkən səhv baş verdi",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "İş axınları xatırlatmaları və bildirişləri avtomatlaşdırmağa imkan verir.",
   "active_on": "Aktivdir",
   "workflow_updated_successfully": "{{workflowName}} iş axını uğurla yeniləndi",
-    
-  "current": "Cari",
-  
-  "standard": "standart",
+  "current": "Cari","standard": "standart",
   "confirm_username_change_dialog_title": "İstifadəçi adının dəyişdirilməsini təsdiqləyin",
-  
-  
-    
   "trial_expired": "Sınaq müddətiniz bitib",
   "remove_app": "Tətbiqi sil",
   "yes_remove_app": "Bəli, tətbiqi sil",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "İştirakçının adı",
   "event_date_variable": "Tədbirin tarixi",
   "event_time_variable": "Tədbirin vaxtı",
-  "organizer_name_variable": "Təşkilatçının adı",
-  
-  "invalid_number": "Yanlış telefon nömrəsi",
+  "organizer_name_variable": "Təşkilatçının adı","invalid_number": "Yanlış telefon nömrəsi",
   "invalid_url_error_message": "{{label}} üçün yanlış URL. Nümunə URL: {{sampleUrl}}",
   "navigate": "Naviqasiya",
   "open": "Aç",
   "close": "Bağla",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Qeydlər komandalar planının bir hissəsidir",
   "team_feature_teams": "Bu, Komanda xüsusiyyətidir. Komandanızın mövcudluğunu görmək üçün Komandaya yüksəldin.",
   "team_feature_workflows": "Bu, Komanda xüsusiyyətidir. Tədbir bildirişlərinizi və xatırlatmalarınızı Avtomatlaşdırma ilə avtomatlaşdırmaq üçün Komandaya yüksəldin.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Rezervasiya Sualı İdentifikatoru",
   "company_size": "Şirkətin ölçüsü",
   "what_help_needed": "Nə kömək lazımdır?",
-  "variable_format": "Dəyişən formatı",
-  
-  "custom_input_as_variable_info": "Əlavə giriş etiketinin bütün xüsusi simvollarını nəzərə almayın (yalnız hərflər və rəqəmlərdən istifadə edin), bütün hərfləri böyük hərflərlə yazın və boşluqları alt xətlərlə əvəz edin.",
+  "variable_format": "Dəyişən formatı","custom_input_as_variable_info": "Əlavə giriş etiketinin bütün xüsusi simvollarını nəzərə almayın (yalnız hərflər və rəqəmlərdən istifadə edin), bütün hərfləri böyük hərflərlə yazın və boşluqları alt xətlərlə əvəz edin.",
   "using_booking_questions_as_variables": "Rezervasiya suallarını dəyişən kimi necə istifadə etmək olar?",
   "download_desktop_app": "Masaüstü tətbiqini yükləyin",
   "set_ping_link": "Ping linkini təyin edin",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "Nə qədər tez-tez rezervasiya edilə bilərsiniz",
   "event_advanced_tab_description": "Təqvim parametrləri və daha çox...",
   "event_advanced_tab_title": "İrəli",
-  
-  
   "event_setup_multiple_duration_error": "Tədbir Quraşdırması: Bir neçə müddət üçün ən azı 1 seçim tələb olunur.",
   "event_setup_multiple_duration_default_error": "Tədbir Quraşdırması: Zəhmət olmasa, etibarlı bir standart müddət seçin.",
   "event_setup_booking_limits_error": "Rezervasiya limitləri artan qaydada olmalıdır. [gün, həftə, ay, il]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "Bunları daha sonra mövcudluq səhifəsində fərdiləşdirə bilərsiniz.",
   "connect_calendars_from_app_store": "Tətbiq mağazasından daha çox təqvim əlavə edə bilərsiniz",
   "connect_conference_apps": "Konfrans tətbiqlərini qoşun",
-  "connect_calendar_apps": "Təqvim tətbiqlərini qoşun",
-  
-  "connect_automation_apps": "Avtomatlaşdırma tətbiqlərini qoşun",
+  "connect_calendar_apps": "Təqvim tətbiqlərini qoşun","connect_automation_apps": "Avtomatlaşdırma tətbiqlərini qoşun",
   "connect_analytics_apps": "Analitika tətbiqlərini qoşun",
   "connect_other_apps": "Digər tətbiqləri qoşun",
   "connect_messaging_apps": "Mesajlaşma tətbiqlərini qoşun",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Sıfırlama linki göndərildi",
   "password_reset_email": "{{email}} ünvanına parolunuzu sıfırlamaq üçün təlimatlarla bir e-poçt göndərildi.",
   "password_reset_leading": "Tezliklə e-poçt almırsınızsa, daxil etdiyiniz e-poçt ünvanının düzgün olduğundan əmin olun, spam qovluğunu yoxlayın və ya problem davam edərsə dəstək ilə əlaqə saxlayın.",
-  "password_updated": "Parol yeniləndi!",
-  
-  "pending_invites": "Gözləyən dəvətlər",
+  "password_updated": "Parol yeniləndi!","pending_invites": "Gözləyən dəvətlər",
   "pending_organization_invites": "Gözləyən təşkilat dəvətləri",
   "not_on_cal": "{{appName}} üzərində deyil",
   "no_calendar_installed": "Quraşdırılmış təqvim yoxdur",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "Bütün hərfləri böyük hərflərlə yaz",
   "replace_whitespaces_underscores": "Boşluqları alt xətlərlə əvəz et",
   "platform_members": "Platforma üzvləri",
-  "platform_members_description": "Platforma komandasındakı admin və üzvləri idarə edin",
-                  "ignore_special_characters_booking_questions": "Rezervasiya sual identifikatorunda xüsusi simvolları nəzərə almayın. Yalnız hərflər və rəqəmlər istifadə edin",
+  "platform_members_description": "Platforma komandasındakı admin və üzvləri idarə edin",              "ignore_special_characters_booking_questions": "Rezervasiya sual identifikatorunda xüsusi simvolları nəzərə almayın. Yalnız hərflər və rəqəmlər istifadə edin",
   "retry": "Yenidən cəhd et",
   "fetching_calendars_error": "Təqvimlərinizi yükləməkdə problem oldu. Zəhmət olmasa <1>yenidən cəhd edin</1> və ya müştəri dəstəyi ilə əlaqə saxlayın.",
   "calendar_connection_fail": "Təqvim bağlantısı uğursuz oldu",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Gələcək rezervasiyaları məhdudlaşdır",
   "limit_future_bookings_description": "Bu tədbirin nə qədər gələcəkdə rezervasiya edilə biləcəyini məhdudlaşdır",
   "no_event_types": "Tədbir növləri qurulmayıb",
-  "no_event_types_description": "{{name}} sizin üçün heç bir tədbir növü qurmayıb.",
-    "monthly": "Aylıq",
+  "no_event_types_description": "{{name}} sizin üçün heç bir tədbir növü qurmayıb.","monthly": "Aylıq",
   "yearly": "İllik",
   "weekly": "Həftəlik",
   "checkout": "Ödəniş",
@@ -1733,9 +1643,7 @@
   "test_preview": "Test Önizləmə",
   "route_to": "Marşrutlaşdır",
   "test_preview_description": "Heç bir məlumat göndərmədən marşrutlaşdırma formanızı test edin",
-  "test_routing": "Marşrutlaşdırmanı Test Et",
-  
-  "edit_event_type": "Tədbir növünü redaktə et",
+  "test_routing": "Marşrutlaşdırmanı Test Et","edit_event_type": "Tədbir növünü redaktə et",
   "only_admin_can_see_members_of_org": "Bu Təşkilat özəldir və yalnız təşkilatın admini və ya sahibi üzvlərini görə bilər.",
   "only_admin_can_manage_sso_org": "Yalnız təşkilatın admini və ya sahibi SSO parametrlərini idarə edə bilər",
   "collective_scheduling": "Kollektiv Planlaşdırma",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "<strong>{{teamName}}</strong> komandasının administratoru tədbir növünüzü <strong>/{{slug}}</strong> idarə olunan tədbir növü ilə əvəz edib.",
   "email_body_slug_replacement_info": "Linkiniz işləməyə davam edəcək, lakin bəzi parametrlər dəyişə bilər. Tədbir növlərində bunu nəzərdən keçirə bilərsiniz.",
   "email_body_slug_replacement_suggestion": "Tədbir növü ilə bağlı hər hansı sualınız varsa, administratorunuzla əlaqə saxlayın.<br /><br />Uğurlu planlaşdırma, <br />Cal.com komandası",
-  
-  
   "app_disabled_with_event_type": "Admin {{appName}}-i deaktiv edib, bu da tədbir növünüzə təsir edir {{title}}.",
   "app_disabled_video": "Admin {{appName}}-i deaktiv edib, bu da tədbir növlərinizə təsir edə bilər. Əgər {{appName}}-i məkan olaraq istifadə edən tədbir növləriniz varsa, o zaman bu, Cal Video-ya keçəcək.",
   "app_disabled_subject": "{{appName}} deaktiv edilib",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Round-Robin Hostlar",
   "minimum_round_robin_hosts_count": "Tələb olunan host sayı",
   "hosts": "Hostlar",
-  
-  
   "new_attendee": "Yeni İştirakçı",
   "awaiting_approval": "Təsdiq gözləyir",
   "requires_google_calendar": "Bu tətbiq Google Calendar bağlantısı tələb edir",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Rezervasiya səhifəsində soruşulan sualları fərdiləşdirin",
   "add_a_booking_question": "Sual əlavə et",
   "identifier": "İdentifikator",
-  "duplicate_email": "E-poçt təkrarlanır",
-  
-  
-  
-  "booking_confirmation_failed": "Rezervasiya təsdiqi uğursuz oldu",
+  "duplicate_email": "E-poçt təkrarlanır","booking_confirmation_failed": "Rezervasiya təsdiqi uğursuz oldu",
   "not_enough_seats": "Kifayət qədər oturacaq yoxdur",
   "form_builder_field_already_exists": "Bu adla bir sahə artıq mövcuddur",
   "show_on_booking_page": "Rezervasiya səhifəsində göstər",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Filtrləri təmizlə",
   "clear": "Təmizlə",
   "hold": "Saxla",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Görüşlər",
   "routing_forms": "Marşrutlaşdırma Formları",
   "testing_workflow_info_message": "Bu iş axınını sınaqdan keçirərkən, e-poçtların və SMS-lərin ən azı 1 saat əvvəl planlaşdırıla biləcəyini unutmayın",
   "insights_no_data_found_for_filter": "Seçilmiş filtr və ya tarixlər üçün məlumat tapılmadı.",
-  
-  
   "something_went_wrong_on_our_end": "Bizim tərəfimizdə bir şey səhv getdi. Dəstək komandamızla əlaqə saxlayın, və biz bunu dərhal düzəldəcəyik.",
-  "please_provide_following_text_to_suppport": "Dəstək ilə əlaqə saxlayarkən aşağıdakı mətni təqdim edin ki, sizə daha yaxşı kömək edə bilək",
-  
-  "complete_your_booking": "Rezervasiyanızı tamamlayın",
+  "please_provide_following_text_to_suppport": "Dəstək ilə əlaqə saxlayarkən aşağıdakı mətni təqdim edin ki, sizə daha yaxşı kömək edə bilək","complete_your_booking": "Rezervasiyanızı tamamlayın",
   "complete_your_booking_subject": "Rezervasiyanızı tamamlayın: {{title}} {{date}} tarixində",
   "confirm_your_details": "Məlumatlarınızı təsdiq edin",
   "copy_invite_link": "Dəvət linkini kopyalayın",
@@ -2120,14 +2000,8 @@
   "three_months": "3 ay",
   "one_year": "1 il",
   "team_invite_received": "Siz {{teamName}} komandasına qoşulmağa dəvət olunmusunuz",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "İştirakçıya ödəniş edin {{amount, currency}}",
-  
-  "email_invite_team": "{{email}} dəvət olunub",
-  "email_invite_team_bulk": "{{userCount}} istifadəçi dəvət olunub",
-  
-  "image_size_limit_exceed": "Yüklənmiş şəkil 5mb ölçü limitini keçməməlidir",
+  "currency_string": "{{amount, currency}}","charge_attendee": "İştirakçıya ödəniş edin {{amount, currency}}","email_invite_team": "{{email}} dəvət olunub",
+  "email_invite_team_bulk": "{{userCount}} istifadəçi dəvət olunub","image_size_limit_exceed": "Yüklənmiş şəkil 5mb ölçü limitini keçməməlidir",
   "unauthorized_workflow_error_message": "{{errorCode}}: Bu iş axınını aktivləşdirmək və ya deaktivləşdirmək üçün icazəniz yoxdur",
   "inline_embed": "Daxili Əlavə",
   "load_inline_content": "Tədbir növünüzü birbaşa digər veb sayt məzmununuzla birlikdə yükləyir.",
@@ -2394,9 +2268,7 @@
   "locked": "Kilidlənmiş",
   "unlocked": "Kilidsiz",
   "lock_timezone_toggle_on_booking_page": "Rezervasiya səhifəsində saat qurşağını kilidləyin",
-  "description_lock_timezone_toggle_on_booking_page": "Rezervasiya səhifəsində saat qurşağını kilidləmək üçün, şəxsən iştirak edilən tədbirlər üçün faydalıdır.",
-  
-  "number_in_international_format": "Nömrəni beynəlxalq formatda daxil edin.",
+  "description_lock_timezone_toggle_on_booking_page": "Rezervasiya səhifəsində saat qurşağını kilidləmək üçün, şəxsən iştirak edilən tədbirlər üçün faydalıdır.","number_in_international_format": "Nömrəni beynəlxalq formatda daxil edin.",
   "install_calendar": "Təqvimi Quraşdır",
   "branded_subdomain": "Brendli Subdomen",
   "branded_subdomain_description": "Öz brendli subdomeninizi əldə edin, məsələn, acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Geniş Ağ Etiketləmə",
   "extensive_whitelabeling_description": "Öz loqonuz, rəngləriniz və daha çoxu ilə planlaşdırma təcrübənizi fərdiləşdirin",
   "unlimited_teams": "Limitsiz Komandalar",
-  "unlimited_teams_description": "Təşkilatınıza lazım olduğu qədər alt komanda əlavə edin",
-      "advanced_managed_events": "İrəli Səviyyəli İdarə Edilən Tədbir Növləri",
+  "unlimited_teams_description": "Təşkilatınıza lazım olduğu qədər alt komanda əlavə edin",  "advanced_managed_events": "İrəli Səviyyəli İdarə Edilən Tədbir Növləri",
   "advanced_managed_events_description": "Bütün komandanızın abunəliklərini ödəmək üçün bir kredit kartı əlavə edin",
   "enterprise": "Müəssisə",
   "enterprise_description": "Təşkilatınızı yaratmaq üçün Enterprise-ə yüksəldin",
-  "create_your_org": "Təşkilatınızı Yaradın",
-    "create_your_enterprise_description": "Enterprise-ə yüksəlin və Active Directory Sync, SCIM Avtomatik İstifadəçi təminatı, Cal.ai Səs Agentləri, Admin API-ləri və daha çoxuna giriş əldə edin!",
-  
-  "admin_delete_organization_description": "<ul><li>Bu təşkilatın üzvü olan komandalar da tədbir növləri ilə birlikdə silinəcək</li><li>Təşkilatın bir hissəsi olan istifadəçilər silinməyəcək, lakin onların istifadəçi adları təşkilatdan kənarda mövcud olmalarına imkan vermək üçün dəyişdiriləcək</li><li>İstifadəçi təşkilatda olduqdan sonra yaradılan tədbir növləri silinəcək</li><li>Köçürülmüş istifadəçi tədbir növləri silinməyəcək</li></ul>",
+  "create_your_org": "Təşkilatınızı Yaradın","create_your_enterprise_description": "Enterprise-ə yüksəlin və Active Directory Sync, SCIM Avtomatik İstifadəçi təminatı, Cal.ai Səs Agentləri, Admin API-ləri və daha çoxuna giriş əldə edin!","admin_delete_organization_description": "<ul><li>Bu təşkilatın üzvü olan komandalar da tədbir növləri ilə birlikdə silinəcək</li><li>Təşkilatın bir hissəsi olan istifadəçilər silinməyəcək, lakin onların istifadəçi adları təşkilatdan kənarda mövcud olmalarına imkan vermək üçün dəyişdiriləcək</li><li>İstifadəçi təşkilatda olduqdan sonra yaradılan tədbir növləri silinəcək</li><li>Köçürülmüş istifadəçi tədbir növləri silinməyəcək</li></ul>",
   "admin_delete_organization_title": "{{organizationName}} silinsin?",
   "published": "Dərc Edildi",
   "unpublished": "Dərc Edilmədi",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "İnsanların dərhal rezervasiya etməsinə icazə verin",
   "uprade_to_create_instant_bookings": "Enterprise-a yüksəldin və qonaqların dərhal qoşula biləcəyi ani zənglərə qoşulmasına icazə verin. Bu yalnız komanda tədbir növləri üçündür",
   "dont_want_to_wait": "Gözləmək istəmirsiniz?",
-  "meeting_started": "Görüş başladı",
-  
-  "cal_ai_event_tab_description": "AI Agentlərinin sizin üçün rezervasiya etməsinə icazə verin",
+  "meeting_started": "Görüş başladı","cal_ai_event_tab_description": "AI Agentlərinin sizin üçün rezervasiya etməsinə icazə verin",
   "booking_not_found_error": "Rezervasiya tapılmadı",
   "booking_seats_full_error": "Rezervasiya yerləri doludur",
-  
-  
   "not_enough_available_seats_error": "Rezervasiyada kifayət qədər boş yer yoxdur",
   "user_redirect_title": "{{username}} qısa müddətə uzaqdadır.",
   "user_redirect_description": "Bu arada, {{profile.username}} {{username}} adından bütün yeni planlaşdırılmış görüşlərə cavabdeh olacaq.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "Dəvəti qəbul etdikdən sonra, linkiniz təşkilat domeninizə dəyişəcək, lakin narahat olmayın, əvvəlki linklər hələ də işləyəcək və müvafiq olaraq yönləndiriləcək.<br /><br />Qeyd: Bütün şəxsi tədbir növləriniz <strong>{{teamName}}</strong> təşkilatına köçürüləcək, bu da potensial şəxsi linki əhatə edə bilər.<br /><br />Şəxsi tədbirlər üçün şəxsi e-poçt ünvanı ilə yeni hesab yaratmağı tövsiyə edirik.",
   "email|existing_user_added_link_changed": "Linkiniz <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> ünvanından <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a> ünvanına dəyişdirilib, lakin narahat olmayın, bütün əvvəlki linklər hələ də işləyir və müvafiq olaraq yönləndirilir. <br /><br />Zəhmət olmasa qeyd edin: Bütün şəxsi tədbir növləriniz <strong>{teamName}</strong> təşkilatına köçürülüb, bu da potensial şəxsi linki əhatə edə bilər.<br /><br />Zəhmət olmasa daxil olun və yeni təşkilati hesabınızda heç bir şəxsi tədbirinizin olmadığından əmin olun.<br /><br />Şəxsi tədbirlər üçün şəxsi e-poçt ünvanı ilə yeni hesab yaratmağı tövsiyə edirik.<br /><br />Yeni təmiz linkinizdən zövq alın: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Təşkilatınız yaradıldı",
-  "your_current_plan": "Cari planınız",
-  
-  "privacy_organization_description": "Təşkilatınız üçün məxfilik parametrlərini idarə edin",
+  "your_current_plan": "Cari planınız","privacy_organization_description": "Təşkilatınız üçün məxfilik parametrlərini idarə edin",
   "privacy": "Məxfilik",
   "team_will_be_under_org": "Yeni komandalar təşkilatınızın tərkibində olacaq",
   "add_group_name": "Qrup adını əlavə edin",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "Davam etməklə, <0>Şərtlərimizə</0> və <1>Məxfilik Siyasətimizə</1> razı olduğunuzu qəbul edirsiniz.",
   "proceeding_agreement": "Davam etməklə, bizim",
   "terms": "Şərtlər",
-  "always_show_x_days": "Həmişə {{x}} gün mövcuddur",
-  
-  "updating_oauth_client_error": "OAuth müştərisini yeniləyərkən bir səhv baş verdi, zəhmət olmasa bir az sonra yenidən cəhd edin",
+  "always_show_x_days": "Həmişə {{x}} gün mövcuddur","updating_oauth_client_error": "OAuth müştərisini yeniləyərkən bir səhv baş verdi, zəhmət olmasa bir az sonra yenidən cəhd edin",
   "creating_oauth_client_error": "OAuth müştərisi yaradılarkən bir səhv baş verdi, zəhmət olmasa bir az sonra yenidən cəhd edin",
   "event_type_color": "Tədbir növünün rəngi",
   "event_type_color_description": "Bu yalnız tətbiq daxilində tədbir növü və rezervasiya fərqləndirilməsi üçün istifadə olunur. Rezervasiya edənlərə göstərilmir.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Google Təqvimi Yoxlanılır",
   "outlook_connect_atom_label": "Outlook Təqvimini Bağla",
   "outlook_connect_atom_already_connected_label": "Bağlı Outlook Təqvimi",
-  "outlook_connect_atom_loading_label": "Outlook Təqvimi Yoxlanılır",
-  
-  
-  
-  "booking_question_response_variables": "Rezervasiya sual cavab dəyişənləri",
+  "outlook_connect_atom_loading_label": "Outlook Təqvimi Yoxlanılır","booking_question_response_variables": "Rezervasiya sual cavab dəyişənləri",
   "managed_by_teamAdmins": "{{teamAdmins}} tərəfindən idarə olunur",
   "number_of_options": "{{count}} seçim",
   "reschedule_with_same_round_robin_host_title": "Eyni Round-Robin ev sahibi ilə yenidən planlaşdır",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "son {{count}} gün",
   "month_to_date": "bu ayın tarixinə qədər",
   "year_to_date": "bu ilin tarixinə qədər",
-  "custom_range": "xüsusi aralıq",
-  
-  "always": "Həmişə",
-  "never": "Heç vaxt",
-  
-  "if_cancelled": "Ləğv edilərsə",
+  "custom_range": "xüsusi aralıq","always": "Həmişə",
+  "never": "Heç vaxt","if_cancelled": "Ləğv edilərsə",
   "before": "əvvəl",
   "show_all_columns": "Bütün sütunları göstər",
   "toggle_columns": "Sütunları dəyiş",

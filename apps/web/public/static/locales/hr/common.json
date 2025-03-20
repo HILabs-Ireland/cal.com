@@ -4,9 +4,7 @@
   "day_one": "{{count}} dan",
   "day_other": "{{count}} dana",
   "second_one": "{{count}} sekunda",
-  "second_other": "{{count}} sek.",
-  
-  "accept_invitation": "Prihvati poziv",
+  "second_other": "{{count}} sek.","accept_invitation": "Prihvati poziv",
   "calcom_explained": "{{appName}} pruža infrastrukturu za zakazivanje apsolutno svima.",
   "calcom_explained_new_user": "Dovršite postavljanje svog {{appName}} računa! Samo vas nekoliko koraka dijeli od rješenja svih vaših problema s rasporedom.",
   "have_any_questions": "Imate pitanja? Tu smo da pomognemo.",
@@ -56,16 +54,8 @@
   "accept_our_license": "Prihvatite našu licencu tako što ćete promijeniti .env varijablu <1>NEXT_PUBLIC_LICENSE_CONSENT</1> u '{{agree}}'.",
   "remove_banner_instructions": "Da bi uklonili baner, molimo otvorite vašu .env datoteku i promijenite <1>NEXT_PUBLIC_LICENSE_CONSENT</1> varijablu u '{{agree}}'.",
   "error_message": "Poruka o grešci je bila: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Molimo vas da provjerite sa vašim pružateljem usluge plaćanja i {{user}} kako riješiti ovo.",
-  
-  
-  
   "dark_theme_contrast_error": "Boja tamne teme ne prolazi provjeru kontrasta. Preporučujemo da promijenite ovu boju kako bi vaši gumbi bili vidljiviji.",
   "light_theme_contrast_error": "Boja svijetle teme ne prolazi provjeru kontrasta. Preporučujemo da promijenite ovu boju kako bi vaši gumbi bili vidljiviji.",
-  
-  
   "no_available_users_found_error": "Nije pronađen nijedan dostupan korisnik. Možete li pokušati s drugim terminom?",
   "request_body_end_time_internal_error": "Interna pogreška. Tijelo zahtjeva ne sadrži vrijeme završetka",
   "create_calendar_event_error": "Nije moguće stvoriti kalendarski događaj u organizatorovom kalendaru",
@@ -74,12 +64,6 @@
   "already_signed_up_for_this_booking_error": "Već ste prijavljeni za ovu rezervaciju.",
   "hosts_unavailable_for_booking": "Neki od domaćina nisu dostupni za rezervaciju.",
   "help": "Pomoć",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Opći upit",
   "begin_message": "Započnite poruku",
   "codebase_has_to_stay_opensource": "Izvorni kôd mora ostati otvoren, bez obzira da li je izmijenjen ili ne",
@@ -146,13 +130,7 @@
   "hidden_team_member_title": "Sakriveni ste u ovom timu",
   "hidden_team_member_message": "Vaše mjesto nije plaćeno, ili se pretplatite na PRO ili obavijestite vođu tima da plati za vaše mjesto.",
   "hidden_team_owner_message": "Potreban vam je PRO račun za korištenje timova, sakriveni ste dok se ne pretplatite.",
-  "link_expires": "p.s. Ističe za {{expiresIn}} sati.",
-  
-  
-  
-  
-  
-  "use_link_to_reset_password": "Resetirajte lozinku koristeći donji link",
+  "link_expires": "p.s. Ističe za {{expiresIn}} sati.","use_link_to_reset_password": "Resetirajte lozinku koristeći donji link",
   "hey_there": "Pozdrav,",
   "forgot_your_password_calcom": "Zaboravili ste lozinku? - {{appName}}",
   "delete_webhook_confirmation_message": "Jeste li sigurni da želite izbrisati ovaj webhook? Nećete više primati {{appName}} podatke o sastancima preko naznačenog URL-a, u stvarnom vremenu kad je događaj zakazan ili otkazan.",
@@ -302,8 +280,6 @@
   "booking_submitted_recurring": "Vaš ponavljajući sastanak je poslan",
   "booking_confirmed": "Vaša rezervacija je potvrđena",
   "booking_confirmed_recurring": "Vaš ponavljajući sastanak je potvrđen",
-  
-  
   "enter_new_password": "Unesite novu lozinku koju želite za svoj račun.",
   "reset_password": "Resetiraj lozinku",
   "change_your_password": "Promjeni lozinku",
@@ -397,17 +373,13 @@
   "new_team": "Novi tim",
   "teams": "Timovi",
   "team": "Tim",
-  "organization": "Organizacija",
-      
-  
-  "little_something_about": "Nešto o sebi.",
+  "organization": "Organizacija",  "little_something_about": "Nešto o sebi.",
   "profile_updated_successfully": "Profil je uspješno ažuriran",
   "your_user_profile_updated_successfully": "Vaš korisnički profil je uspješno ažuriran.",
   "user_cannot_found_db": "Čini se da je korisnik prijavljen, ali se ne može pronaći u bazi podataka",
   "enabled": "Omogućeno",
   "disabled": "Onemogućeno",
-  "disable": "Onemogući",
-    "logo": "Logo",
+  "disable": "Onemogući","logo": "Logo",
   "error": "Greška",
   "edit_location": "Uredi lokaciju",
   "into_the_future": "u budućnost",
@@ -439,7 +411,5 @@
   "ooo_slots_book_with": "Rezerviraj {{displayName}}",
   "ooo_create_entry_modal": "Izađi iz ureda",
   "ooo_select_reason": "Odaberi razlog",
-  "enterprise_license_locally": "Možete testirati ovu značajku lokalno, ali ne u proizvodnji.",
-  
-  "apply_to_all_event_types": "Primjenjuje se na sve, uključujući buduće vrste događaja"
+  "enterprise_license_locally": "Možete testirati ovu značajku lokalno, ali ne u proizvodnji.","apply_to_all_event_types": "Primjenjuje se na sve, uključujući buduće vrste događaja"
 }

@@ -4,9 +4,7 @@
   "day_one": "{{count}} dag",
   "day_other": "{{count}} dagen",
   "second_one": "{{count}} seconde",
-  "second_other": "{{count}} seconden",
-  
-  "untitled": "Naamloos",
+  "second_other": "{{count}} seconden","untitled": "Naamloos",
   "accept_invitation": "Uitnodiging accepteren",
   "max_characters": "Max. Karakters",
   "min_characters": "Min. Karakters",
@@ -68,18 +66,10 @@
   "accept_our_license": "Accepteer onze licentie door de variable .env <1>NEXT_PUBLIC_LICENSE_CONSENT</1> te veranderen in '{{agree}}'.",
   "remove_banner_instructions": "Om deze banner te verwijderen, opent u het .env bestand en verandert <1>NEXT_PUBLIC_LICENSE_CONSENT</1> in '{{agree}}'.",
   "error_message": "De foutmelding was: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Neem contact op met uw betalingsverwerker en {{user}} om dit op te lossen.",
-  
-  
-  
   "dark_theme_contrast_error": "De kleur van het donkere thema voldoet niet aan de contrastcontrole. We raden aan deze kleur te wijzigen zodat je knoppen beter zichtbaar zijn.",
   "light_theme_contrast_error": "De kleur van het lichte thema voldoet niet aan de contrastcontrole. We raden aan deze kleur te wijzigen zodat je knoppen beter zichtbaar zijn.",
   "event_type_color_light_theme_contrast_error": "De kleur van het lichte thema voldoet niet aan de contrastcontrole. We raden aan deze kleur te wijzigen zodat de kleur van je evenementtypen beter zichtbaar is.",
   "event_type_color_dark_theme_contrast_error": "De kleur van het donkere thema voldoet niet aan de contrastcontrole. We raden aan deze kleur te wijzigen zodat de kleur van je evenementtypen beter zichtbaar is.",
-  
-  
   "no_available_users_found_error": "Geen beschikbare gebruikers gevonden. Kun je een ander tijdslot proberen?",
   "request_body_end_time_internal_error": "Interne fout. Verzoek bevat geen eindtijd",
   "create_calendar_event_error": "Kan geen agenda-evenement aanmaken in de agenda van de organisator",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "Je bent al ingeschreven voor deze boeking.",
   "hosts_unavailable_for_booking": "Sommige hosts zijn niet beschikbaar voor boeking.",
   "help": "Help",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Algemene Prompt",
   "begin_message": "Begin Bericht",
   "codebase_has_to_stay_opensource": "De codebase moet open source blijven, ongeacht of deze is gewijzigd of niet",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "U bent verborgen in dit team",
   "hidden_team_member_message": "Uw plaats is niet betaald. Upgrade naar Pro of laat de teameigenaar weten dat deze uw plaats kan betalen.",
   "hidden_team_owner_message": "U heeft een Pro-account nodig om teams te gebruiken, u bent verborgen tot u upgradet.",
-  "link_expires": "p.s. De uitnodiging verloopt over {{expiresIn}} uur.",
-  
-  "seat_options_doesnt_support_confirmation": "De optie plaatsen optie ondersteunt geen bevestigingseis",
-  "multilocation_doesnt_support_seats": "Meerdere Locaties ondersteunt geen plaatsenoptie",
-  
-  "seats_option_doesnt_support_multi_location": "Plaatsenoptie ondersteunt geen Meerdere Locaties",
-  
-  
-  
-  
-  
-  
+  "link_expires": "p.s. De uitnodiging verloopt over {{expiresIn}} uur.","seat_options_doesnt_support_confirmation": "De optie plaatsen optie ondersteunt geen bevestigingseis",
+  "multilocation_doesnt_support_seats": "Meerdere Locaties ondersteunt geen plaatsenoptie","seats_option_doesnt_support_multi_location": "Plaatsenoptie ondersteunt geen Meerdere Locaties",
   "use_link_to_reset_password": "Gebruik de onderstaande link om uw wachtwoord te resetten",
   "hey_there": "Hoi daar",
   "forgot_your_password_calcom": "Wachtwoord vergeten? - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Webhook succesvol toegevoegd!",
   "webhook_updated_successfully": "Webhook succesvol bijgewerkt!",
   "webhook_removed_successfully": "Webhook succesvol verwijderd!",
-  
-  
   "payload_template": "Gegevenssjabloon",
   "dismiss": "Negeer",
   "no_data_yet": "Nog geen gegevens",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "Uw terugkerende afspraak is verzonden",
   "booking_confirmed": "Afspraak bevestigd",
   "booking_confirmed_recurring": "Uw terugkerende vergadering is bevestigd",
-  
-  
   "enter_new_password": "Voer het nieuwe wachtwoord in dat u wilt gebruiken voor uw account.",
   "reset_password": "Wachtwoord opnieuw instellen",
   "change_your_password": "Uw wachtwoord wijzigen",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Transcriptie gegenereerd",
   "booking_created": "Boeking aangemaakt",
   "booking_rejected": "Boeking geweigerd",
-  "booking_requested": "Boeking aangevraagd",
-  
-  "meeting_ended": "Vergadering beëindigd",
+  "booking_requested": "Boeking aangevraagd","meeting_ended": "Vergadering beëindigd",
   "form_submitted": "Formulier verzonden",
-  "form_submitted_no_event": "Formulier ingediend, geen afspraak geboekt",
-  
-  "ooo_created": "Out of Office aangemaakt",
+  "form_submitted_no_event": "Formulier ingediend, geen afspraak geboekt","ooo_created": "Out of Office aangemaakt",
   "booking_no_show_updated": "Boeking No-Show Bijgewerkt",
-  "event_triggers": "Webhook activaties",
-  
-  "create_new_webhook": "Nieuwe webhook aanmaken",
+  "event_triggers": "Webhook activaties","create_new_webhook": "Nieuwe webhook aanmaken",
   "webhooks": "Webhooks",
   "team_webhooks": "Teamwebhooks",
   "create_new_webhook_to_account": "Maak een nieuwe webhook aan voor uw account",
@@ -529,9 +493,7 @@
   "iframe_embed": "iframe insluiten",
   "embed_calcom": "De makkelijkste manier om {{appName}} op uw website in te sluiten.",
   "integrate_using_embed_or_webhooks": "Integreer met uw eigen website met behulp van onze insluitingsopties, of ontvang informatie over afspraken met behulp van webhooks.",
-  "schedule_a_meeting": "Afspraak maken",
-        "need_anything_else": "Nog iets nodig?",
-    "contact": "Contact",
+  "schedule_a_meeting": "Afspraak maken",    "need_anything_else": "Nog iets nodig?","contact": "Contact",
   "our_support_team": "ons ondersteuningsteam",
   "contact_our_support_team": "Neem contact op met onze klantenservice",
   "uh_oh": "Oeps!",
@@ -773,10 +735,6 @@
   "readonly": "Enkel-lezen",
   "one_time_link": "Eenmalige link",
   "plan_description": "U heeft momenteel het {{plan}}-abonnement.",
-  
-  
-  
-  
   "event_types_page_title": "Evenementen",
   "event_types_page_subtitle": "Maak deelbare evenementen die bezoekers kunnen gebruiken om afspraken in uw agenda te boeken.",
   "new": "Nieuw",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Maak een team aan om aan de slag te gaan",
   "teams": "Teams",
   "team": "Team",
-  "organization": "Organisatie",
-      
-  
-    "create_manage_teams_collaborative": "Maak en beheer teams om gezamenlijke functies te gebruiken.",
+  "organization": "Organisatie",    "create_manage_teams_collaborative": "Maak en beheer teams om gezamenlijke functies te gebruiken.",
   "only_available_on_pro_plan": "Deze functie is alleen beschikbaar in het Pro-pakket",
   "remove_cal_branding_description": "Om de {{appName}} branding van uw boekpagina's te verwijderen, moet u upgraden naar een Pro-account.",
   "edit_profile_info_description": "Bewerk profielgegevens die worden weergegeven op uw boekpagina.",
@@ -843,16 +798,13 @@
   "little_something_about": "Een introductie over uzelf.",
   "profile_updated_successfully": "Profiel bijgewerkt",
   "your_user_profile_updated_successfully": "Uw profiel is is met succes bijgewerkt.",
-  
-  
   "you_are_all_set": "Je bent helemaal klaar",
   "you_are_all_set_description": "Je gebruikt al het nieuwste plan. Geen upgrade nodig. Geniet van de nieuwe functies en neem contact met ons op als je vragen hebt!",
   "user_cannot_found_db": "Gebruiker lijkt ingelogd maar kan niet gevonden worden in de db",
   "embed_and_webhooks": "Insluiten & Webhooks",
   "enabled": "Ingeschakeld",
   "disabled": "Uitgeschakeld",
-  "disable": "Uitschakelen",
-      "availability": "Beschikbaarheid",
+  "disable": "Uitschakelen",  "availability": "Beschikbaarheid",
   "edit_availability": "Beschikbaarheid bewerken",
   "configure_availability": "Configureer tijden wanneer u beschikbaar bent voor afspraken.",
   "copy_times_to": "Tijden kopiëren naar",
@@ -889,8 +841,6 @@
   "recurring_event": "Terugkerende gebeurtenis",
   "recurring_event_description": "Mensen kunnen zich abonneren op terugkerende gebeurtenissen",
   "connect_and_join": "Verbind en doe mee",
-  
-  
   "warning_instant_meeting_experimental": "Experimenteel: Instant Meeting Events zijn momenteel experimenteel.",
   "starting": "Vanaf",
   "disable_guests": "Gasten uitschakelen",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "{{appName}} zal een Daily meeting-URL meegeven in de afspraak bevestiging.",
   "cal_provide_jitsi_meeting_url": "{{appName}} zal een Jitsi Meet meeting-URL meegeven in de afspraak bevestiging.",
   "cal_provide_huddle01_meeting_url": "{{appName}} zal een Huddle01 meeting-URL meegeven in de afspraak bevestiging.",
-  "cal_provide_teams_meeting_url": "{{appName}} geeft een vergaderings-URL voor MS Teams. OPMERKING: MOET EEN WERK- OF SCHOOLACCOUNT HEBBEN",
-  
-  "you_need_to_add_a_name": "U moet een naam toevoegen",
+  "cal_provide_teams_meeting_url": "{{appName}} geeft een vergaderings-URL voor MS Teams. OPMERKING: MOET EEN WERK- OF SCHOOLACCOUNT HEBBEN","you_need_to_add_a_name": "U moet een naam toevoegen",
   "commission_per_transaction": "commissie per transactie",
   "event_type_updated_successfully_description": "Uw evenement is met succes bijgewerkt.",
   "hide_event_type": "Verberg evenement",
@@ -964,9 +912,7 @@
   "next_step_text": "Volgende stap",
   "next_step": "Stap overslaan",
   "prev_step": "Vorige stap",
-  "install": "Installeren",
-  
-  "installed": "Geinstalleerd",
+  "install": "Installeren","installed": "Geinstalleerd",
   "active_install_one": "{{count}} actieve installatie",
   "active_install_other": "{{count}} actieve installaties",
   "globally_install": "Wereldwijd geïnstalleerd",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Agenda bijgewerkt",
   "check_here": "Controleer hier",
   "conferencing": "Confereren",
-  "calendar": "Agenda",
-  
-  "not_installed": "Niet geïnstalleerd",
+  "calendar": "Agenda","not_installed": "Niet geïnstalleerd",
   "error_password_mismatch": "Wachtwoorden komen niet overeen.",
   "error_required_field": "Dit veld is verplicht.",
   "status": "Status",
@@ -1024,16 +968,12 @@
   "no_category_apps": "Geen apps voor {{category}}",
   "all_apps": "Alle apps",
   "no_category_apps_description_calendar": "Voeg een agenda-app toe om te controleren op conflicten om dubbele boekingen te voorkomen",
-  "no_category_apps_description_conferencing": "Probeer een conferentieapp toe te voegen voor videogesprekken met uw klanten",
-  
-  "no_category_apps_description_analytics": "Voeg een analyse-app toe aan uw boekingspagina's",
+  "no_category_apps_description_conferencing": "Probeer een conferentieapp toe te voegen voor videogesprekken met uw klanten","no_category_apps_description_analytics": "Voeg een analyse-app toe aan uw boekingspagina's",
   "no_category_apps_description_automation": "Voeg een automatiseringsapp toe om te gebruiken",
   "no_category_apps_description_other": "Voeg een ander type app toe om allerlei soorten dingen te doen",
   "no_category_apps_description_messaging": "Voeg een berichtenapp toe om aangepaste meldingen en herinneringen in te stellen",
   "no_category_apps_description_crm": "Voeg een CRM-app toe om bij te houden met wie u heeft ontmoet",
-  "installed_app_calendar_description": "Stel de agenda('s) in om te controleren op conflicten om dubbele boekingen te voorkomen.",
-  
-  "installed_app_analytics_description": "Configureer welke analyse-apps moeten worden gebruikt voor uw boekingspagina's",
+  "installed_app_calendar_description": "Stel de agenda('s) in om te controleren op conflicten om dubbele boekingen te voorkomen.","installed_app_analytics_description": "Configureer welke analyse-apps moeten worden gebruikt voor uw boekingspagina's",
   "installed_app_other_description": "Alle geïnstalleerde apps uit andere categorieën.",
   "installed_app_conferencing_description": "Configureer welke conferentieapps moeten worden gebruikt",
   "installed_app_automation_description": "Configureer welke automatiseringsapps moeten worden gebruikt",
@@ -1048,9 +988,7 @@
   "features": "Functies",
   "permissions": "Machtigingen",
   "terms_and_privacy": "Voorwaarden en privacy",
-  "published_by": "Gepubliceerd door {{author}}",
-  
-  "buy": "Kopen",
+  "published_by": "Gepubliceerd door {{author}}","buy": "Kopen",
   "install_app": "App installeren",
   "categories": "Categorieën",
   "pricing": "Prijzen",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Wallet verifiëren",
   "create_events_on": "Maak gebeurtenissen aan in de",
   "enterprise_license": "Dit is een commerciële functie",
-  "enterprise_license_locally": "Je kunt deze functie lokaal testen, maar niet in productie.",
-  
-  "missing_license": "Ontbrekende licentie",
+  "enterprise_license_locally": "Je kunt deze functie lokaal testen, maar niet in productie.","missing_license": "Ontbrekende licentie",
   "next_steps": "Volgende stappen",
   "acquire_commercial_license": "Verkrijg een commerciële licentie",
   "the_infrastructure_plan": "Het infrastructuurabonnement is gebaseerd op gebruik en heeft speciale kortingen voor start-ups.",
   "prisma_studio_tip": "Maak een account aan via Prisma Studio",
-  "prisma_studio_tip_description": "Leer hoe u uw eerste gebruiker instelt",
-  
-  "error_404": "Fout 404",
+  "prisma_studio_tip_description": "Leer hoe u uw eerste gebruiker instelt","error_404": "Fout 404",
   "default": "standaard keuze",
   "set_to_default": "Zet als standaard keuze",
   "new_schedule_btn": "Nieuwe planning",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Ondersteuningsdocumentatie",
   "developer_documentation": "Ontwikkelaarsdocumentatie",
   "get_in_touch": "Neem contact op",
-  "contact_support": "Neem contact op met de ondersteuning",
-  
-  "community_support": "Ondersteuning door de community",
+  "contact_support": "Neem contact op met de ondersteuning","community_support": "Ondersteuning door de community",
   "feedback": "Feedback",
   "submitted_feedback": "Bedankt voor uw feedback!",
   "feedback_error": "Fout bij verzenden van feedback",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "Met werkstromen kunt u het verzenden van herinneringen en meldingen automatiseren.",
   "active_on": "Actief op",
   "workflow_updated_successfully": "Werkstroom {{workflowName}} bijgewerkt",
-    
-  "current": "Huidig",
-  
-  "standard": "standaard",
+  "current": "Huidig","standard": "standaard",
   "confirm_username_change_dialog_title": "Bevestig wijziging gebruikersnaam",
-  
-  
-    
   "trial_expired": "Uw proefperiode is verlopen",
   "remove_app": "App verwijderen",
   "yes_remove_app": "Ja, verwijder app",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "Deelnemer",
   "event_date_variable": "Datum gebeurtenis",
   "event_time_variable": "Tijd gebeurtenis",
-  "organizer_name_variable": "Naam organisator",
-  
-  "invalid_number": "Ongeldig telefoonnummer",
+  "organizer_name_variable": "Naam organisator","invalid_number": "Ongeldig telefoonnummer",
   "invalid_url_error_message": "Ongeldige URL voor {{label}}. Voorbeeld-URL: {{sampleUrl}}",
   "navigate": "Navigeren",
   "open": "Openen",
   "close": "Sluiten",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Opnames zijn onderdeel van het teamsabonnement",
   "team_feature_teams": "Dit is een Team-functie. Upgrade naar Team om de beschikbaarheid van uw team te zien.",
   "team_feature_workflows": "Dit is een Team-functie. Upgrade naar Team om uw meldingen en herinneringen van gebeurtenissen te automatiseren met werkstromen.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Boekingsvraag-ID",
   "company_size": "Bedrijfsgrootte",
   "what_help_needed": "Waar heeft u hulp bij nodig?",
-  "variable_format": "Variabele indeling",
-  
-  "custom_input_as_variable_info": "Negeer alle speciale tekens van het label voor aanvullende invoer (gebruik alleen letters en cijfers) en gebruik hoofdletters voor alle letters en vervang spaties door onderstrepingstekens.",
+  "variable_format": "Variabele indeling","custom_input_as_variable_info": "Negeer alle speciale tekens van het label voor aanvullende invoer (gebruik alleen letters en cijfers) en gebruik hoofdletters voor alle letters en vervang spaties door onderstrepingstekens.",
   "using_booking_questions_as_variables": "Hoe gebruik ik boekingsvragen als variabelen?",
   "download_desktop_app": "Desktop-app downloaden",
   "set_ping_link": "Ping-link instellen",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "Hoe vaak u geboekt kunt worden",
   "event_advanced_tab_description": "Agenda-instellingen en meer...",
   "event_advanced_tab_title": "Geavanceerd",
-  
-  
   "event_setup_multiple_duration_error": "Gebeurtenisconfiguratie: voor meerdere duren is minimaal 1 optie vereist.",
   "event_setup_multiple_duration_default_error": "Gebeurtenisconfiguratie: selecteer een geldige standaardduur.",
   "event_setup_booking_limits_error": "Reserveringslimieten moeten in oplopende volgorde zijn. [dag, week, maand, jaar]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "U kunt dit allemaal later aanpassen op de beschikbaarheidspagina.",
   "connect_calendars_from_app_store": "U kunt meer agenda's toevoegen vanuit de App Store",
   "connect_conference_apps": "Conferentieapps koppelen",
-  "connect_calendar_apps": "Agenda-apps koppelen",
-  
-  "connect_automation_apps": "Koppel automatiseringsapps",
+  "connect_calendar_apps": "Agenda-apps koppelen","connect_automation_apps": "Koppel automatiseringsapps",
   "connect_analytics_apps": "Koppel analyse-apps",
   "connect_other_apps": "Andere apps koppelen",
   "connect_messaging_apps": "Berichtenapps koppelen",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Link om opnieuw in te stellen is verzonden",
   "password_reset_email": "Een e-mail is onderweg naar {{email}} met instructies om uw wachtwoord opnieuw in te stellen.",
   "password_reset_leading": "Als u niet spoedig een e-mail ontvangt, controleer dan of het ingevoerde e-mailadres correct is, controleer uw spamfolder of neem contact op met de ondersteuning als het probleem zich blijft voordoen.",
-  "password_updated": "Wachtwoord bijgewerkt!",
-  
-  "pending_invites": "Openstaande uitnodigingen",
+  "password_updated": "Wachtwoord bijgewerkt!","pending_invites": "Openstaande uitnodigingen",
   "pending_organization_invites": "Openstaande organisatie-uitnodigingen",
   "not_on_cal": "Niet op {{appName}}",
   "no_calendar_installed": "Geen agenda geïnstalleerd",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "Gebruik hoofdletters voor alle letters",
   "replace_whitespaces_underscores": "Vervang spaties door onderstrepingstekens",
   "platform_members": "Platformleden",
-  "platform_members_description": "Beheer de beheerders en leden in je platformteam",
-                  "ignore_special_characters_booking_questions": "Negeer speciale tekens in uw boekingsvraag-ID. Gebruik alleen letters en cijfers",
+  "platform_members_description": "Beheer de beheerders en leden in je platformteam",              "ignore_special_characters_booking_questions": "Negeer speciale tekens in uw boekingsvraag-ID. Gebruik alleen letters en cijfers",
   "retry": "Opnieuw proberen",
   "fetching_calendars_error": "Er is een probleem opgetreden bij het ophalen van uw agenda's. <1>Probeer het opnieuw</1> of neem contact op met de klantenservice.",
   "calendar_connection_fail": "Agendaverbinding mislukt",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Toekomstige boekingen beperken",
   "limit_future_bookings_description": "Beperk hoe ver in de toekomst dezew gebeurtenis kan worden geboekt",
   "no_event_types": "Geen gebeurtenistype ingesteld",
-  "no_event_types_description": "{{name}} heeft geen gebeurtenistypen ingesteld die u kunt boeken.",
-    "monthly": "Maandelijks",
+  "no_event_types_description": "{{name}} heeft geen gebeurtenistypen ingesteld die u kunt boeken.","monthly": "Maandelijks",
   "yearly": "Jaarlijks",
   "weekly": "Wekelijks",
   "checkout": "Kassa",
@@ -1733,9 +1643,7 @@
   "test_preview": "Voorbeeld testen",
   "route_to": "Routeren naar",
   "test_preview_description": "Test uw routeringsformulier zonder gegevens te versturen",
-  "test_routing": "Routering testen",
-  
-  "edit_event_type": "Gebeurtenistype bewerken",
+  "test_routing": "Routering testen","edit_event_type": "Gebeurtenistype bewerken",
   "only_admin_can_see_members_of_org": "Deze organisatie is privé, en alleen de beheerder of eigenaar van de organisatie kan de leden zien.",
   "only_admin_can_manage_sso_org": "Alleen de beheerder of eigenaar van de organisatie kan SSO-instellingen beheren",
   "collective_scheduling": "Collectieve planning",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "Een beheerder van het team <strong>{{teamName}}</strong> heeft uw gebeurtenistype <strong>/{{slug}}</strong> vervangen door een type beheerde gebeurtenis dat deze beheert.",
   "email_body_slug_replacement_info": "Uw link blijft werken, maar sommige instellingen ervoor kunnen gewijzigd zijn. U kunt deze bekijken in gebeurtenistypen.",
   "email_body_slug_replacement_suggestion": "Neem contact op met uw beheerder als u vragen hebt over het gebeurtenistype.<br /><br />Veel plezier met plannen, <br />Het Cal.com-team",
-  
-  
   "app_disabled_with_event_type": "De beheerder heeft {{appName}} uitgeschakeld die van invloed is op uw gebeurtenistype {{title}}.",
   "app_disabled_video": "De beheerder heeft {{appName}} uitgeschakeld, wat van invloed kan zijn op uw gebeurtenistypes. Als u gebeurtenistypes heeft met {{appName}} als locatie, is het standaard Cal Video.",
   "app_disabled_subject": "{{appName}} is uitgeschakeld",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Round-robin-hosts",
   "minimum_round_robin_hosts_count": "Aantal vereiste hosts voor deelname",
   "hosts": "Hosts",
-  
-  
   "new_attendee": "Nieuwe deelnemer",
   "awaiting_approval": "In afwachting van goedkeuring",
   "requires_google_calendar": "Deze app vereist een Google Agenda-koppeling",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Pas de gestelde vragen op de boekingspagina aan",
   "add_a_booking_question": "Vraag toevoegen",
   "identifier": "ID",
-  "duplicate_email": "E-mailadres dubbel",
-  
-  
-  
-  "booking_confirmation_failed": "Boekingsbevestiging mislukt",
+  "duplicate_email": "E-mailadres dubbel","booking_confirmation_failed": "Boekingsbevestiging mislukt",
   "not_enough_seats": "Onvoldoende plaatsen",
   "form_builder_field_already_exists": "Een veld met deze naam bestaat al",
   "show_on_booking_page": "Weergeven op boekingspagina",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Filters wissen",
   "clear": "Wissen",
   "hold": "Vasthouden",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Inzichten",
   "routing_forms": "Routeringsformulieren",
   "testing_workflow_info_message": "Let er bij het testen van deze werkstroom op dat e-mails en sms minimaal 1 uur van tevoren kunnen gepland moeten worden",
   "insights_no_data_found_for_filter": "Geen gegevens gevonden voor het geselecteerde filter of de geselecteerde datums.",
-  
-  
   "something_went_wrong_on_our_end": "Er is iets misgegaan aan onze kant. Neem contact op met ons ondersteuningsteam en we lossen het meteen voor u op.",
-  "please_provide_following_text_to_suppport": "Vermeld de volgende tekst wanneer u contact opneemt met ondersteuning, zodat we u beter kunnen helpen",
-  
-  "complete_your_booking": "Voltooi uw boeking",
+  "please_provide_following_text_to_suppport": "Vermeld de volgende tekst wanneer u contact opneemt met ondersteuning, zodat we u beter kunnen helpen","complete_your_booking": "Voltooi uw boeking",
   "complete_your_booking_subject": "Voltooi uw boeking: {{title}} op {{date}}",
   "confirm_your_details": "Bevestig uw gegevens",
   "copy_invite_link": "Uitnodigingslink kopiëren",
@@ -2120,14 +2000,8 @@
   "three_months": "3 maanden",
   "one_year": "1 jaar",
   "team_invite_received": "U bent uitgenodigd om lid te worden van {{teamName}}",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "Deelnemer {{amount, currency}} in rekening brengen",
-  
-  "email_invite_team": "{{email}} is uitgenodigd",
-  "email_invite_team_bulk": "{{userCount}} gebruikers zijn uitgenodigd",
-  
-  "image_size_limit_exceed": "De geüploade afbeelding mag niet groter zijn dan 5 MB",
+  "currency_string": "{{amount, currency}}","charge_attendee": "Deelnemer {{amount, currency}} in rekening brengen","email_invite_team": "{{email}} is uitgenodigd",
+  "email_invite_team_bulk": "{{userCount}} gebruikers zijn uitgenodigd","image_size_limit_exceed": "De geüploade afbeelding mag niet groter zijn dan 5 MB",
   "unauthorized_workflow_error_message": "{{errorCode}}: u bent niet geautoriseerd om deze werkstroom in of uit te schakelen",
   "inline_embed": "Inline insluiting",
   "load_inline_content": "Laadt uw gebeurtenistype rechtstreeks inline met uw andere websitecontent.",
@@ -2394,9 +2268,7 @@
   "locked": "Vergrendeld",
   "unlocked": "Ontgrendeld",
   "lock_timezone_toggle_on_booking_page": "Tijdzone vergrendelen op boekingspagina",
-  "description_lock_timezone_toggle_on_booking_page": "Om de tijdzone op de boekingspagina te vergrendelen, handig voor persoonlijke gebeurtenissen.",
-  
-  "number_in_international_format": "Voer het nummer in internationaal formaat in.",
+  "description_lock_timezone_toggle_on_booking_page": "Om de tijdzone op de boekingspagina te vergrendelen, handig voor persoonlijke gebeurtenissen.","number_in_international_format": "Voer het nummer in internationaal formaat in.",
   "install_calendar": "Kalender installeren",
   "branded_subdomain": "Gemerkt subdomein",
   "branded_subdomain_description": "Krijg je eigen gemerkte subdomein, zoals acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Speciale onboarding en technische ondersteuning",
   "extensive_whitelabeling_description": "Pas je planningservaring aan met je eigen logo, kleuren en meer",
   "unlimited_teams": "Onbeperkte teams",
-  "unlimited_teams_description": "Voeg zoveel subteams toe als je nodig hebt voor je organisatie",
-      "advanced_managed_events": "Geavanceerde beheerde evenementtypes",
+  "unlimited_teams_description": "Voeg zoveel subteams toe als je nodig hebt voor je organisatie",  "advanced_managed_events": "Geavanceerde beheerde evenementtypes",
   "advanced_managed_events_description": "Voeg een enkele creditcard toe om voor alle abonnementen van je team te betalen",
   "enterprise": "Onderneming",
   "enterprise_description": "Upgrade naar Enterprise om je Organisatie te creëren",
-  "create_your_org": "Creëer je Organisatie",
-    "create_your_enterprise_description": "Upgrade naar Enterprise en krijg toegang tot Active Directory Sync, SCIM Automatische Gebruikersprovisioning, Cal.ai Voice Agents, Admin API's en meer!",
-  
-  "admin_delete_organization_description": "<ul><li>Teams die lid zijn van deze organisatie worden ook verwijderd, samen met hun evenementtypes</li><li>Gebruikers die deel uitmaakten van de organisatie worden niet verwijderd, maar hun gebruikersnamen worden gewijzigd zodat ze buiten de organisatie kunnen bestaan</li><li>Gebruikersevenementtypes die zijn aangemaakt nadat de gebruiker in de organisatie zat, worden verwijderd</li><li>Gemigreerde gebruikersevenementtypes worden niet verwijderd</li></ul>",
+  "create_your_org": "Creëer je Organisatie","create_your_enterprise_description": "Upgrade naar Enterprise en krijg toegang tot Active Directory Sync, SCIM Automatische Gebruikersprovisioning, Cal.ai Voice Agents, Admin API's en meer!","admin_delete_organization_description": "<ul><li>Teams die lid zijn van deze organisatie worden ook verwijderd, samen met hun evenementtypes</li><li>Gebruikers die deel uitmaakten van de organisatie worden niet verwijderd, maar hun gebruikersnamen worden gewijzigd zodat ze buiten de organisatie kunnen bestaan</li><li>Gebruikersevenementtypes die zijn aangemaakt nadat de gebruiker in de organisatie zat, worden verwijderd</li><li>Gemigreerde gebruikersevenementtypes worden niet verwijderd</li></ul>",
   "admin_delete_organization_title": "{{organizationName}} verwijderen?",
   "published": "Gepubliceerd",
   "unpublished": "Niet gepubliceerd",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "Laat mensen direct boeken",
   "uprade_to_create_instant_bookings": "Upgrade naar Enterprise en laat gasten deelnemen aan een direct gesprek waar deelnemers meteen in kunnen springen. Dit is alleen voor team evenementtypes",
   "dont_want_to_wait": "Wil je niet wachten?",
-  "meeting_started": "Vergadering gestart",
-  
-  "cal_ai_event_tab_description": "Laat AI-agenten voor je boeken",
+  "meeting_started": "Vergadering gestart","cal_ai_event_tab_description": "Laat AI-agenten voor je boeken",
   "booking_not_found_error": "Boeking niet gevonden",
   "booking_seats_full_error": "Boekingsplaatsen zijn vol",
-  
-  
   "not_enough_available_seats_error": "Niet genoeg beschikbare plaatsen voor de boeking",
   "user_redirect_title": "{{username}} is momenteel even weg.",
   "user_redirect_description": "In de tussentijd zal {{profile.username}} alle nieuwe geplande vergaderingen namens {{username}} beheren.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "Bij het accepteren van de uitnodiging zal je link veranderen naar je organisatiedomein, maar maak je geen zorgen, alle eerdere links blijven werken en worden correct doorgestuurd.<br /><br />Let op: Al je persoonlijke evenementtypes worden verplaatst naar de <strong>{{teamName}}</strong> organisatie, wat ook een mogelijke persoonlijke link kan omvatten. <br /><br />Voor persoonlijke evenementen raden we aan een nieuw account aan te maken met een persoonlijk e-mailadres.",
   "email|existing_user_added_link_changed": "Uw link is gewijzigd van <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> naar <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>, maar maak u geen zorgen, alle eerdere links werken nog steeds en worden correct doorgestuurd. <br /><br />Let op: Al uw persoonlijke evenementtypes zijn verplaatst naar de <strong>{teamName}</strong> organisatie, wat ook een mogelijke persoonlijke link kan omvatten.<br /><br />Log in en zorg ervoor dat u geen privé-evenementen heeft op uw nieuwe organisatorische account.<br /><br />Voor persoonlijke evenementen raden we aan een nieuw account aan te maken met een persoonlijk e-mailadres.<br /><br />Geniet van uw nieuwe schone link: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Uw organisatie is aangemaakt",
-  "your_current_plan": "Uw huidige plan",
-  
-  "privacy_organization_description": "Beheer privacy-instellingen voor uw organisatie",
+  "your_current_plan": "Uw huidige plan","privacy_organization_description": "Beheer privacy-instellingen voor uw organisatie",
   "privacy": "Privacy",
   "team_will_be_under_org": "Nieuwe teams vallen onder uw organisatie",
   "add_group_name": "Groepsnaam toevoegen",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "Door verder te gaan, ga je akkoord met onze <0>Voorwaarden</0> en <1>Privacybeleid</1>.",
   "proceeding_agreement": "Door verder te gaan ga je akkoord met onze",
   "terms": "Voorwaarden",
-  "always_show_x_days": "Altijd {{x}} dagen beschikbaar",
-  
-  "updating_oauth_client_error": "Er is een fout opgetreden bij het bijwerken van de OAuth-client, probeer het later opnieuw",
+  "always_show_x_days": "Altijd {{x}} dagen beschikbaar","updating_oauth_client_error": "Er is een fout opgetreden bij het bijwerken van de OAuth-client, probeer het later opnieuw",
   "creating_oauth_client_error": "Er is een fout opgetreden bij het aanmaken van de OAuth-client, probeer het later opnieuw",
   "event_type_color": "Kleur van evenementtype",
   "event_type_color_description": "Dit wordt alleen gebruikt voor het onderscheiden van evenementtypes en boekingen binnen de app. Het wordt niet getoond aan boekers.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Google Agenda controleren",
   "outlook_connect_atom_label": "Outlook Agenda verbinden",
   "outlook_connect_atom_already_connected_label": "Verbonden Outlook-agenda",
-  "outlook_connect_atom_loading_label": "Outlook-agenda controleren",
-  
-  
-  
-  "booking_question_response_variables": "Variabelen voor boekingsvraagreacties",
+  "outlook_connect_atom_loading_label": "Outlook-agenda controleren","booking_question_response_variables": "Variabelen voor boekingsvraagreacties",
   "managed_by_teamAdmins": "Beheerd door {{teamAdmins}}",
   "number_of_options": "{{count}} opties",
   "reschedule_with_same_round_robin_host_title": "Opnieuw plannen met dezelfde Round-Robin host",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "laatste {{count}} dagen",
   "month_to_date": "maand tot nu toe",
   "year_to_date": "jaar tot nu toe",
-  "custom_range": "aangepast bereik",
-  
-  "always": "Altijd",
-  "never": "Nooit",
-  
-  "if_cancelled": "Indien geannuleerd",
+  "custom_range": "aangepast bereik","always": "Altijd",
+  "never": "Nooit","if_cancelled": "Indien geannuleerd",
   "before": "voor",
   "show_all_columns": "Toon alle kolommen",
   "toggle_columns": "Kolommen wisselen",

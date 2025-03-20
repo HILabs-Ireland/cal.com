@@ -4,9 +4,7 @@
   "day_one": "{{count}} dan",
   "day_other": "{{count}} dana",
   "second_one": "{{count}} sekunda",
-  "second_other": "{{count}} sek.",
-  
-  "untitled": "Bez naslova",
+  "second_other": "{{count}} sek.","untitled": "Bez naslova",
   "accept_invitation": "Prihvati poziv",
   "max_characters": "Maks. karaktera",
   "min_characters": "Min. karaktera",
@@ -68,18 +66,10 @@
   "accept_our_license": "Prihvatite našu dozvolu tako što ćete promeniti .env varijablu <1>NEXT_PUBLIC_LICENSE_CONSENT</1> u '{{agree}}'.",
   "remove_banner_instructions": "Da uklonite baner, molim vas da otvorite vaš .env file i promenite <1>NEXT_PUBLIC_LICENSE_CONSENT</1> varijablu u '{{agree}}'.",
   "error_message": "Poruka o grešci je bila: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Molimo vas proverite sa vašom uslugom plaćanja i {{user}} kako bi rešili ovo.",
-  
-  
-  
   "dark_theme_contrast_error": "Boja tamne teme ne prolazi kontrastnu proveru. Preporučujemo da promenite ovu boju kako bi vaša dugmad bila vidljivija.",
   "light_theme_contrast_error": "Boja svetle teme ne prolazi kontrastnu proveru. Preporučujemo da promenite ovu boju kako bi vaša dugmad bila vidljivija.",
   "event_type_color_light_theme_contrast_error": "Boja svetle teme ne prolazi kontrastnu proveru. Preporučujemo da promenite ovu boju kako bi boje vaših tipova događaja bile vidljivije.",
   "event_type_color_dark_theme_contrast_error": "Boja tamne teme ne prolazi kontrastnu proveru. Preporučujemo da promenite ovu boju kako bi boje vaših tipova događaja bile vidljivije.",
-  
-  
   "no_available_users_found_error": "Nema dostupnih korisnika. Možete li pokušati drugi termin?",
   "request_body_end_time_internal_error": "Interna greška. Zahtev ne sadrži vreme završetka",
   "create_calendar_event_error": "Nije moguće kreirati događaj u kalendaru organizatora",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "Već ste se prijavili za ovu rezervaciju.",
   "hosts_unavailable_for_booking": "Neki od domaćina nisu dostupni za rezervaciju.",
   "help": "Pomoć",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Opšti upit",
   "begin_message": "Početna poruka",
   "codebase_has_to_stay_opensource": "Kodna baza mora ostati otvorena, bilo da je modifikovana ili ne",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "Sakriveni ste u ovom timu",
   "hidden_team_member_message": "Vaše mesto nije plaćeno, ili se pretplatite na Pro ili obavestite vođu tima da plati za vaše mesto.",
   "hidden_team_owner_message": "Potreban je Pro nalog za korišćenje timova, sakriveni ste dok se ne pretplatite.",
-  "link_expires": "p.s. Ističe za {{expiresIn}} sati.",
-  
-  "seat_options_doesnt_support_confirmation": "Opcija mesta ne podržava zahtev za potvrdu",
-  "multilocation_doesnt_support_seats": "Više lokacija ne podržava opciju sedišta",
-  
-  "seats_option_doesnt_support_multi_location": "Opcija sedišta ne podržava više lokacija",
-  
-  
-  
-  
-  
-  
+  "link_expires": "p.s. Ističe za {{expiresIn}} sati.","seat_options_doesnt_support_confirmation": "Opcija mesta ne podržava zahtev za potvrdu",
+  "multilocation_doesnt_support_seats": "Više lokacija ne podržava opciju sedišta","seats_option_doesnt_support_multi_location": "Opcija sedišta ne podržava više lokacija",
   "use_link_to_reset_password": "Resetujte lozinku koristeći link ispod",
   "hey_there": "Zdravo",
   "forgot_your_password_calcom": "Zaboravili ste lozinku? - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Webhook uspešno napravljen!",
   "webhook_updated_successfully": "Webhook upsešno ažuriran!",
   "webhook_removed_successfully": "Webhook uspešno uklonjen!",
-  
-  
   "payload_template": "Šablon Nosivosti",
   "dismiss": "Odbaci",
   "no_data_yet": "Još nema podataka",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "Vaš ponavljajući sastanak je poslat",
   "booking_confirmed": "Vaša rezervacija je upravo potvrdjena",
   "booking_confirmed_recurring": "Vaš ponavljajući sastanak je potvrđen",
-  
-  
   "enter_new_password": "Unesite novu lozinku koju želite za vaš nalog.",
   "reset_password": "Resetuj Lozinku",
   "change_your_password": "Promeni lozinku",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Transkript generisan",
   "booking_created": "Rezervacija Napravljena",
   "booking_rejected": "Rezevacija je odbijena",
-  "booking_requested": "Zahtev za rezervaciju je poslat",
-  
-  "meeting_ended": "Sastanak se završio",
+  "booking_requested": "Zahtev za rezervaciju je poslat","meeting_ended": "Sastanak se završio",
   "form_submitted": "Formular poslat",
-  "form_submitted_no_event": "Obrazac je poslat, nijedan događaj nije zakazan",
-  
-  "ooo_created": "Kreirano odsustvo iz kancelarije",
+  "form_submitted_no_event": "Obrazac je poslat, nijedan događaj nije zakazan","ooo_created": "Kreirano odsustvo iz kancelarije",
   "booking_no_show_updated": "Ažurirano odsustvo sa rezervacije",
-  "event_triggers": "Okidači Dogadjaja",
-  
-  "create_new_webhook": "Napravite novi webhook",
+  "event_triggers": "Okidači Dogadjaja","create_new_webhook": "Napravite novi webhook",
   "webhooks": "Webhooks",
   "team_webhooks": "Timski Webhooks",
   "create_new_webhook_to_account": "Napravite novi webhook za vaš nalog",
@@ -529,9 +493,7 @@
   "iframe_embed": "Ugradni iframe",
   "embed_calcom": "Najlakši način da ugradite {{appName}} na vaš vebsajt.",
   "integrate_using_embed_or_webhooks": "Integrišite se sa vašim vebsajtom pomoću naše ugradne opcije, ili dobijte instant informacije pomoću kustomiziranih webhooks-a.",
-  "schedule_a_meeting": "Zakažite sastanak",
-        "need_anything_else": "Treba li vam još nešto?",
-    "contact": "Kontakt",
+  "schedule_a_meeting": "Zakažite sastanak",    "need_anything_else": "Treba li vam još nešto?","contact": "Kontakt",
   "our_support_team": "naš tim za podršku",
   "contact_our_support_team": "Kontaktirjate naš tim podrške",
   "uh_oh": "O ne!",
@@ -773,10 +735,6 @@
   "readonly": "Samo za čitanje",
   "one_time_link": "Jednokratni link",
   "plan_description": "Trenutno ste na {{plan}} planu.",
-  
-  
-  
-  
   "event_types_page_title": "Tipovi događaja",
   "event_types_page_subtitle": "Napravite događaje koji će biti vidljivi ljudima da ih rezervišu na vašem kalendaru.",
   "new": "Novo",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Napravite tim da biste počeli",
   "teams": "Timovi",
   "team": "Tim",
-  "organization": "Organizacija",
-      
-  
-    "create_manage_teams_collaborative": "Napravite i upravljajte timovima da koristite funkcije sarađivanja.",
+  "organization": "Organizacija",    "create_manage_teams_collaborative": "Napravite i upravljajte timovima da koristite funkcije sarađivanja.",
   "only_available_on_pro_plan": "Ova funkcija je dostupna samo za korisnike Pro plana",
   "remove_cal_branding_description": "Da uklonite {{appName}} brending sa vaših stranica za rezervaciju, morate da se pretplatite na Pro nalog.",
   "edit_profile_info_description": "Uredite informacije svog profila, koje su prikazane na linku za rezervaciju.",
@@ -843,16 +798,13 @@
   "little_something_about": "Nešto kratko o vama.",
   "profile_updated_successfully": "Profil uspešno ažuriran",
   "your_user_profile_updated_successfully": "Korisnički profil je uspešno ažuriran.",
-  
-  
   "you_are_all_set": "Sve je spremno",
   "you_are_all_set_description": "Već ste na najnovijem planu. Nema potrebe za nadogradnjom. Uživajte u novim funkcionalnostima i javite nam se ako imate pitanja!",
   "user_cannot_found_db": "Korisnik je izgleda ulogovan ali nije pronađen u bazi podataka",
   "embed_and_webhooks": "Ugrađivanje & Webhooks",
   "enabled": "Omogućeno",
   "disabled": "Onemogućeno",
-  "disable": "Onemogući",
-      "availability": "Dostupnost",
+  "disable": "Onemogući",  "availability": "Dostupnost",
   "edit_availability": "Uredi dostupnost",
   "configure_availability": "Konfigurišite vreme kada ste dostupni za rezervacije.",
   "copy_times_to": "Kopiraj vremena u",
@@ -889,8 +841,6 @@
   "recurring_event": "Ponavljajući događaj",
   "recurring_event_description": "Ljudi mogu da se pretplate na ponavljajuće događaje",
   "connect_and_join": "Poveži se i pridruži",
-  
-  
   "warning_instant_meeting_experimental": "Eksperimentalno: Instant sastanci su trenutno eksperimentalni.",
   "starting": "Počev od",
   "disable_guests": "Onemogući Goste",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "{{appName}} će obezbediti Daily video meeting URL.",
   "cal_provide_jitsi_meeting_url": "Mi ćemo generisati Jitsi Meet URL za vas.",
   "cal_provide_huddle01_meeting_url": "{{appName}} će obezbediti Huddle01 video meeting URL.",
-  "cal_provide_teams_meeting_url": "{{appName}} će dostaviti URL adresu MS Teams sastanka. NAPOMENA: NEOPHODAN JE POSLOVNI ILI ŠKOLSKI NALOG",
-  
-  "you_need_to_add_a_name": "Potrebno je da dodate ime",
+  "cal_provide_teams_meeting_url": "{{appName}} će dostaviti URL adresu MS Teams sastanka. NAPOMENA: NEOPHODAN JE POSLOVNI ILI ŠKOLSKI NALOG","you_need_to_add_a_name": "Potrebno je da dodate ime",
   "commission_per_transaction": "provizija po transakciji",
   "event_type_updated_successfully_description": "Vaš tip događaja je uspešno ažuriran.",
   "hide_event_type": "Sakrij tip događaja",
@@ -964,9 +912,7 @@
   "next_step_text": "Sledeći korak",
   "next_step": "Preskoči korak",
   "prev_step": "Prethodni korak",
-  "install": "Instaliraj",
-  
-  "installed": "Instalirano",
+  "install": "Instaliraj","installed": "Instalirano",
   "active_install_one": "{{count}} aktivna instalacija",
   "active_install_other": "{{count}} aktivnih instalacija",
   "globally_install": "Globalno instalirano",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Kalendar je uspešno ažuriran",
   "check_here": "Proverite ovde",
   "conferencing": "Konferencija",
-  "calendar": "Kalendar",
-  
-  "not_installed": "Nije instalirano",
+  "calendar": "Kalendar","not_installed": "Nije instalirano",
   "error_password_mismatch": "Lozinke se ne podudaraju.",
   "error_required_field": "Ovo polje je obavezno.",
   "status": "Status",
@@ -1024,16 +968,12 @@
   "no_category_apps": "Nema {{category}} aplikacija",
   "all_apps": "Sve aplikacije",
   "no_category_apps_description_calendar": "Dodajte kalendar aplikaciju da biste proverili da li postoje konflikti i time sprečili dvostruka zakazivanja",
-  "no_category_apps_description_conferencing": "Pokušajte da dodate aplikaciju za konferenciju za video pozive sa svojim klijentima",
-  
-  "no_category_apps_description_analytics": "Dodajte analitičku aplikaciju za vaše stranice za rezervacije",
+  "no_category_apps_description_conferencing": "Pokušajte da dodate aplikaciju za konferenciju za video pozive sa svojim klijentima","no_category_apps_description_analytics": "Dodajte analitičku aplikaciju za vaše stranice za rezervacije",
   "no_category_apps_description_automation": "Dodajte aplikaciju za automatizaciju za korišćenje",
   "no_category_apps_description_other": "Dodajte bilo koju vrstu aplikacije da biste uradili svakakve stvari",
   "no_category_apps_description_messaging": "Dodajte aplikaciju za poruke da biste podesili uobičajena obaveštenja i podsetnike",
   "no_category_apps_description_crm": "Dodajte aplikaciju za CRM da biste pratili sa kim ste se sreli",
-  "installed_app_calendar_description": "Podesite kalendar(e) da biste proverili da li postoje konflikti i time sprečili dvostruka zakazivanja.",
-  
-  "installed_app_analytics_description": "Konfigurišite koje ćete analitičke aplikacije da koristite za vaše stranice za rezervacije",
+  "installed_app_calendar_description": "Podesite kalendar(e) da biste proverili da li postoje konflikti i time sprečili dvostruka zakazivanja.","installed_app_analytics_description": "Konfigurišite koje ćete analitičke aplikacije da koristite za vaše stranice za rezervacije",
   "installed_app_other_description": "Sve vaše instalirane aplikacije iz drugih kategorija.",
   "installed_app_conferencing_description": "Konfigurišite koje aplikacije ćete koristiti za konferencije",
   "installed_app_automation_description": "Konfigurišite koje ćete aplikacije za automatizaciju da koristite",
@@ -1048,9 +988,7 @@
   "features": "Funkcije",
   "permissions": "Dozvole",
   "terms_and_privacy": "Uslovi i privatnost",
-  "published_by": "Objavio/la {{author}}",
-  
-  "buy": "Kupi",
+  "published_by": "Objavio/la {{author}}","buy": "Kupi",
   "install_app": "Instaliraj aplikaciju",
   "categories": "Kategorije",
   "pricing": "Cene",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Verifikuj Wallet",
   "create_events_on": "Kreiraj događaje na",
   "enterprise_license": "Ovo je komercijalna funkcija",
-  "enterprise_license_locally": "Možete testirati ovu funkciju lokalno, ali ne u proizvodnji.",
-  
-  "missing_license": "Nedostaje Licenca",
+  "enterprise_license_locally": "Možete testirati ovu funkciju lokalno, ali ne u proizvodnji.","missing_license": "Nedostaje Licenca",
   "next_steps": "Sledeći koraci",
   "acquire_commercial_license": "Steknite komercijalnu licencu",
   "the_infrastructure_plan": "Plan infrastrukture je na osnovu upotrebe i ima popuste pogdne za startup.",
   "prisma_studio_tip": "Napravite nalog pomoću Prisma Studio",
-  "prisma_studio_tip_description": "Naučite kako da podesite svog prvog korisnika",
-  
-  "error_404": "Greška 404",
+  "prisma_studio_tip_description": "Naučite kako da podesite svog prvog korisnika","error_404": "Greška 404",
   "default": "Podrazumevano",
   "set_to_default": "Postavi na Podrazumevano",
   "new_schedule_btn": "Novi raspored",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Dokumentacija za podršku",
   "developer_documentation": "Dokumentacija za razvojne programere",
   "get_in_touch": "Kontaktirajte nas",
-  "contact_support": "Obratite se podršci",
-  
-  "community_support": "Podrška zajednice",
+  "contact_support": "Obratite se podršci","community_support": "Podrška zajednice",
   "feedback": "Povratne informacije",
   "submitted_feedback": "Hvala vam na povratnim informacijama!",
   "feedback_error": "Greška pri slanju povratnih informacija",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "Radni tokovi vam omogućavaju da automatizujete slanje podsetnika i obaveštenja.",
   "active_on": "Aktivan uključen",
   "workflow_updated_successfully": "Radni tok {{workflowName}} je uspešno ažuriran",
-    
-  "current": "Trenutno",
-  
-  "standard": "standardno",
+  "current": "Trenutno","standard": "standardno",
   "confirm_username_change_dialog_title": "Potvrdite promenu korisničkog imena",
-  
-  
-    
   "trial_expired": "Vaš probni period je istekao",
   "remove_app": "Ukloniti aplikaciju",
   "yes_remove_app": "Da, ukloni aplikaciju",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "Učesnik",
   "event_date_variable": "Datum događaja",
   "event_time_variable": "Vreme događaja",
-  "organizer_name_variable": "Ime organizatora",
-  
-  "invalid_number": "Neispravan broj telefona",
+  "organizer_name_variable": "Ime organizatora","invalid_number": "Neispravan broj telefona",
   "invalid_url_error_message": "Neispravan URL za {{label}}. Primer URL-a: {{sampleUrl}}",
   "navigate": "Navigacija",
   "open": "Otvori",
   "close": "Zatvori",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Snimci su deo timskog plana",
   "team_feature_teams": "Ovo je Tim funkcija. Nadogradite na Tim verziju da biste videli dostupnost vašeg tima.",
   "team_feature_workflows": "Ovo je Tim funkcija. Nadogradite na Tim verziju da biste automatizovali notifikacije svojih događaja i podsetnike sa radnim tokovima.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Identifikator pitanja o zakazivanju",
   "company_size": "Veličina kompanije",
   "what_help_needed": "U vezi sa čim vam je potrebna pomoć?",
-  "variable_format": "Format promenljive",
-  
-  "custom_input_as_variable_info": "Zanemarite sve specijalne znakove za dodatne oznake unosa (koristite samo slova i brojeve), koristite samo velika slova i zamenite razmake donjim crtama.",
+  "variable_format": "Format promenljive","custom_input_as_variable_info": "Zanemarite sve specijalne znakove za dodatne oznake unosa (koristite samo slova i brojeve), koristite samo velika slova i zamenite razmake donjim crtama.",
   "using_booking_questions_as_variables": "Kako da koristim pitanja o zakazivanju kao promenljivu?",
   "download_desktop_app": "Preuzmite aplikaciju za stoni računar",
   "set_ping_link": "Podesi Ping vezu",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "Koliko često možete da budete rezervisani",
   "event_advanced_tab_description": "Podešavanja kalendara i više...",
   "event_advanced_tab_title": "Napredno",
-  
-  
   "event_setup_multiple_duration_error": "Podešavanje događaja: Višestruka trajanja zahteva najmanje 1 opciju.",
   "event_setup_multiple_duration_default_error": "Podešavanje događaja: Izaberite važeće podrazumevano trajanje.",
   "event_setup_booking_limits_error": "Ograničenja zakazivanja moraju da budu u rastućem nizu. [dan,nedelja,mesec,godina]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "Možete da prilagodite sve ovo kasnije na strani za dostupnost.",
   "connect_calendars_from_app_store": "Možete da dodate još kalendara sa App Store",
   "connect_conference_apps": "Povežite aplikacije za konferenciju",
-  "connect_calendar_apps": "Povežite aplikacije za kalendar",
-  
-  "connect_automation_apps": "Povežite aplikacije za automatizaciju",
+  "connect_calendar_apps": "Povežite aplikacije za kalendar","connect_automation_apps": "Povežite aplikacije za automatizaciju",
   "connect_analytics_apps": "Povežite analitičke aplikacije",
   "connect_other_apps": "Povežite druge aplikacije",
   "connect_messaging_apps": "Povežite aplikacije za razmenu poruka",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Veza za resetovanje je poslata",
   "password_reset_email": "Imejl je na putu do {{email}} sa instrukcijama za resetovanje vaše lozinke.",
   "password_reset_leading": "Ako uskoro ne primite imejl, proverite da li ste uneli ispravnu imejl adresu, proverite vašu fasciklu za neželjenu poštu ili se obratite podršci ako se problem nastavi.",
-  "password_updated": "Lozinka je ažurirana!",
-  
-  "pending_invites": "Pozivi na čekanju",
+  "password_updated": "Lozinka je ažurirana!","pending_invites": "Pozivi na čekanju",
   "pending_organization_invites": "Pozivnice za organizaciju na čekanju",
   "not_on_cal": "Nije na {{appName}}",
   "no_calendar_installed": "Nije instaliran kalendar",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "Koristite velika slova za sva slova",
   "replace_whitespaces_underscores": "Zamenite prazna mesta donjom crtom",
   "platform_members": "Članovi platforme",
-  "platform_members_description": "Upravljajte administratorima i članovima vašeg platformskog tima",
-                  "ignore_special_characters_booking_questions": "Ignorišite specijalne znakove u vašim identifikatorima pitanja o zakazivanju. Koristite samo slova i brojeve",
+  "platform_members_description": "Upravljajte administratorima i članovima vašeg platformskog tima",              "ignore_special_characters_booking_questions": "Ignorišite specijalne znakove u vašim identifikatorima pitanja o zakazivanju. Koristite samo slova i brojeve",
   "retry": "Pokušajte ponovo",
   "fetching_calendars_error": "Došlo je do problema prilikom dobavljanja vaših kalendara. <1>Pokušajte ponovo</1> ili se obratite korisničkoj podršci.",
   "calendar_connection_fail": "Povezivanje sa kalendarom nije uspelo",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Ograničenje budućih rezervacija",
   "limit_future_bookings_description": "Ograničite koliko daleko u budućnosti ovaj događaj može da se rezerviše",
   "no_event_types": "Nema podešavanja za vrstu događaja",
-  "no_event_types_description": "{{name}} još uvek nije podesio(la) bilo koju vrstu događaja za bukiranje.",
-    "monthly": "Mesečno",
+  "no_event_types_description": "{{name}} još uvek nije podesio(la) bilo koju vrstu događaja za bukiranje.","monthly": "Mesečno",
   "yearly": "Godišnje",
   "weekly": "Недељно",
   "checkout": "Kasa",
@@ -1733,9 +1643,7 @@
   "test_preview": "Pregled testa",
   "route_to": "Usmeri na",
   "test_preview_description": "Proverite obrazac za usmeravanje bez slanja bilo kog podatka",
-  "test_routing": "Testiranje usmeravanja",
-  
-  "edit_event_type": "Izmenite tip događaja",
+  "test_routing": "Testiranje usmeravanja","edit_event_type": "Izmenite tip događaja",
   "only_admin_can_see_members_of_org": "Ova organizacija je privatna i samo administrator ili vlasnik organizacije može videti njene članove.",
   "only_admin_can_manage_sso_org": "Samo administrator ili vlasnik organizacije može upravljati SSO podešavanjima",
   "collective_scheduling": "Kolektivno zakazivanje",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "Administrator iz <strong>{{teamName}}</strong> tima je zamenio vaš tip događaja <strong>{{slug}}</strong> tipom događaja kojim on upravlja.",
   "email_body_slug_replacement_info": "Vaš link će nastaviti da funkcioniše, ali neka od njegovih podešavanja su se možda promenila. Možete da ih pregledate u tipovima događaja.",
   "email_body_slug_replacement_suggestion": "Ako imate bilo kakvih pitanja u vezi sa tipom događaja, obratite se svom administratoru.<br /><br />Srećno planiranje, <br />Cal.com tim",
-  
-  
   "app_disabled_with_event_type": "Administrator je onemogućio {{appName}}, što utiče na vaš tip događaja {{title}}.",
   "app_disabled_video": "Administrator je onemogućio {{appName}}, što može da utiče na vaš tip događaja. Ako imate tipove događaja sa {{appName}} kao lokacijom, onda će oni biti podrazumevano usmereni na Cal Video.",
   "app_disabled_subject": "Aplikacija {{appName}} je onemogućena",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Kružno dodeljeni domaćini",
   "minimum_round_robin_hosts_count": "Broj domaćina potrebnih da učestvuju",
   "hosts": "Domaćini",
-  
-  
   "new_attendee": "Novi učesnik",
   "awaiting_approval": "Čeka na odobrenje",
   "requires_google_calendar": "Ova aplikacija zahteva vezu sa Google kalendarom",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Prilagodite pitanja postavljana na stranici za zakazivanje",
   "add_a_booking_question": "Dodajte pitanje",
   "identifier": "Identifikator",
-  "duplicate_email": "Imejl je duplikat",
-  
-  
-  
-  "booking_confirmation_failed": "Potvrda rezervacije nije uspela",
+  "duplicate_email": "Imejl je duplikat","booking_confirmation_failed": "Potvrda rezervacije nije uspela",
   "not_enough_seats": "Nema dovoljno mesta",
   "form_builder_field_already_exists": "Polje sa ovim imenom već postoji",
   "show_on_booking_page": "Prikaži na stranici zakazivanja",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Izbriši filtere",
   "clear": "Očisti",
   "hold": "Zadrži",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Uvidi",
   "routing_forms": "Obrasci za usmeravanje",
   "testing_workflow_info_message": "Kada testirate ovaj radni tok, imajte na umu da imejlovi i SMS-ovi mogu da budu zakazani najmanje 1 sat unapred",
   "insights_no_data_found_for_filter": "Nisu pronađeni podaci za izabrani filter ili izabrane datume.",
-  
-  
   "something_went_wrong_on_our_end": "Nešto kod nas nije u redu. Obratite se korisničkoj podršci i mi ćemo to odmah popraviti za vas.",
-  "please_provide_following_text_to_suppport": "Prilikom kontaktiranja sa korisničkom službom, dostavite sledeći tekst kako bi vam bolje pomogli",
-  
-  "complete_your_booking": "Završite svoje zakazivanje",
+  "please_provide_following_text_to_suppport": "Prilikom kontaktiranja sa korisničkom službom, dostavite sledeći tekst kako bi vam bolje pomogli","complete_your_booking": "Završite svoje zakazivanje",
   "complete_your_booking_subject": "Završite svoje zakazivanje: {{title}} dana {{date}}",
   "confirm_your_details": "Potvrdite svoje podatke",
   "copy_invite_link": "Kopiraj link pozivnice",
@@ -2120,14 +2000,8 @@
   "three_months": "3 meseca",
   "one_year": "1 godina",
   "team_invite_received": "Pozvani ste da se pridružite timu {{teamName}}",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "Naplatite učesniku {{amount, currency}}",
-  
-  "email_invite_team": "{{email}} je pozvan/a",
-  "email_invite_team_bulk": "Pozvano je {{userCount}} korisnika",
-  
-  "image_size_limit_exceed": "Otpremljena slika ne sme da prevazilazi ograničenje od 5mb",
+  "currency_string": "{{amount, currency}}","charge_attendee": "Naplatite učesniku {{amount, currency}}","email_invite_team": "{{email}} je pozvan/a",
+  "email_invite_team_bulk": "Pozvano je {{userCount}} korisnika","image_size_limit_exceed": "Otpremljena slika ne sme da prevazilazi ograničenje od 5mb",
   "unauthorized_workflow_error_message": "{{errorCode}}: Niste ovlašćeni da omogućite ili onemogućite ovaj radni tok",
   "inline_embed": "Ugradi neposredno",
   "load_inline_content": "Direktno učitava vaš tip događaja neposredno sa vašim ostalim sadržajem na veb sajtu.",
@@ -2394,9 +2268,7 @@
   "locked": "Zaključano",
   "unlocked": "Otključano",
   "lock_timezone_toggle_on_booking_page": "Zaključajte vremensku zonu na stranici za zakazivanja",
-  "description_lock_timezone_toggle_on_booking_page": "Za zaključavanje vremenske zone na stranici za zakazivanja, korisno za događaje licem u lice.",
-  
-  "number_in_international_format": "Molimo unesite broj u međunarodnom formatu.",
+  "description_lock_timezone_toggle_on_booking_page": "Za zaključavanje vremenske zone na stranici za zakazivanja, korisno za događaje licem u lice.","number_in_international_format": "Molimo unesite broj u međunarodnom formatu.",
   "install_calendar": "Instalirajte kalendar",
   "branded_subdomain": "Brendirani poddomen",
   "branded_subdomain_description": "Dobijte svoj brendirani poddomen, kao što je acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Posvećena podrška za uvodnu obuku i inženjering",
   "extensive_whitelabeling_description": "Prilagodite svoje iskustvo zakazivanja sa sopstvenim logotipom, bojama i još mnogo toga",
   "unlimited_teams": "Neograničeni timovi",
-  "unlimited_teams_description": "Dodajte koliko god podtimova želite svojoj organizaciji",
-      "advanced_managed_events": "Napredni tipovi upravljanih događaja",
+  "unlimited_teams_description": "Dodajte koliko god podtimova želite svojoj organizaciji",  "advanced_managed_events": "Napredni tipovi upravljanih događaja",
   "advanced_managed_events_description": "Dodajte jednu kreditnu karticu za plaćanje svih pretplata vašeg tima",
   "enterprise": "Preduzeće",
   "enterprise_description": "Nadogradite na Enterprise da biste kreirali svoju organizaciju",
-  "create_your_org": "Kreirajte svoju organizaciju",
-    "create_your_enterprise_description": "Nadogradite na Enterprise i dobijte pristup Active Directory Sync, SCIM automatskom provisioningu korisnika, Cal.ai glasovnim agentima, Admin API-jevima i još mnogo toga!",
-  
-  "admin_delete_organization_description": "<ul><li>Timovi koji su članovi ove organizacije takođe će biti obrisani zajedno sa njihovim tipovima događaja</li><li>Korisnici koji su bili deo organizacije neće biti obrisani, ali će njihova korisnička imena biti promenjena kako bi mogli da postoje van organizacije</li><li>Tipovi događaja korisnika kreirani nakon što je korisnik bio u organizaciji biće obrisani</li><li>Migrirani tipovi događaja korisnika neće biti obrisani</li></ul>",
+  "create_your_org": "Kreirajte svoju organizaciju","create_your_enterprise_description": "Nadogradite na Enterprise i dobijte pristup Active Directory Sync, SCIM automatskom provisioningu korisnika, Cal.ai glasovnim agentima, Admin API-jevima i još mnogo toga!","admin_delete_organization_description": "<ul><li>Timovi koji su članovi ove organizacije takođe će biti obrisani zajedno sa njihovim tipovima događaja</li><li>Korisnici koji su bili deo organizacije neće biti obrisani, ali će njihova korisnička imena biti promenjena kako bi mogli da postoje van organizacije</li><li>Tipovi događaja korisnika kreirani nakon što je korisnik bio u organizaciji biće obrisani</li><li>Migrirani tipovi događaja korisnika neće biti obrisani</li></ul>",
   "admin_delete_organization_title": "Obrisati {{organizationName}}?",
   "published": "Objavljeno",
   "unpublished": "Neobjavljeno",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "Dozvolite ljudima da odmah rezervišu",
   "uprade_to_create_instant_bookings": "Nadogradite na Enterprise i omogućite gostima da se pridruže instant pozivu u koji učesnici mogu odmah da uđu. Ovo je samo za timske tipove događaja",
   "dont_want_to_wait": "Ne želite da čekate?",
-  "meeting_started": "Sastanak je počeo",
-  
-  "cal_ai_event_tab_description": "Dozvolite AI agentima da rezervišu za vas",
+  "meeting_started": "Sastanak je počeo","cal_ai_event_tab_description": "Dozvolite AI agentima da rezervišu za vas",
   "booking_not_found_error": "Rezervacija nije pronađena",
   "booking_seats_full_error": "Sva mesta za rezervaciju su popunjena",
-  
-  
   "not_enough_available_seats_error": "Nema dovoljno slobodnih mesta za rezervaciju",
   "user_redirect_title": "{{username}} je trenutno odsutan na kratko vreme.",
   "user_redirect_description": "U međuvremenu, {{profile.username}} će biti zadužen za sve nove zakazane sastanke u ime {{username}}.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "Prihvatanjem poziva, vaš link će se promeniti na domen vaše organizacije, ali ne brinite, svi prethodni linkovi će i dalje raditi i preusmeravati ispravno.<br /><br />Napomena: Svi vaši lični tipovi događaja biće premešteni u organizaciju <strong>{{teamName}}</strong>, što može uključivati i potencijalni lični link.<br /><br />Za lične događaje preporučujemo kreiranje novog naloga sa ličnom email adresom.",
   "email|existing_user_added_link_changed": "Vaš link je promenjen sa <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> na <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>, ali ne brinite, svi prethodni linkovi i dalje rade i preusmeravaju ispravno.<br /><br />Napomena: Svi vaši lični tipovi događaja su premešteni u organizaciju <strong>{{teamName}}</strong>, što može uključivati i potencijalni lični link.<br /><br />Molimo vas da se prijavite i proverite da li imate privatne događaje na svom novom organizacionom nalogu.<br /><br />Za lične događaje preporučujemo kreiranje novog naloga sa ličnom email adresom.<br /><br />Uživajte u svom novom čistom linku: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Vaša organizacija je kreirana",
-  "your_current_plan": "Vaš trenutni plan",
-  
-  "privacy_organization_description": "Upravljajte postavkama privatnosti za vašu organizaciju",
+  "your_current_plan": "Vaš trenutni plan","privacy_organization_description": "Upravljajte postavkama privatnosti za vašu organizaciju",
   "privacy": "Privatnost",
   "team_will_be_under_org": "Novi timovi će biti pod vašom organizacijom",
   "add_group_name": "Dodajte ime grupe",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "Nastavljajući, slažete se sa našim <0>Uslovima korišćenja</0> i <1>Pravilima o privatnosti</1>",
   "proceeding_agreement": "Nastavljanjem prihvatate naše",
   "terms": "Uslove korišćenja",
-  "always_show_x_days": "Uvek dostupno {{x}} dana",
-  
-  "updating_oauth_client_error": "Došlo je do greške prilikom ažuriranja OAuth klijenta, molimo pokušajte ponovo kasnije",
+  "always_show_x_days": "Uvek dostupno {{x}} dana","updating_oauth_client_error": "Došlo je do greške prilikom ažuriranja OAuth klijenta, molimo pokušajte ponovo kasnije",
   "creating_oauth_client_error": "Došlo je do greške prilikom kreiranja OAuth klijenta, molimo pokušajte ponovo kasnije",
   "event_type_color": "Boja tipa događaja",
   "event_type_color_description": "Ovo se koristi samo za razlikovanje tipova događaja i rezervacija unutar aplikacije. Nije prikazano korisnicima koji rezervišu.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Provera Google kalendara",
   "outlook_connect_atom_label": "Poveži Outlook kalendar",
   "outlook_connect_atom_already_connected_label": "Outlook kalendar povezan",
-  "outlook_connect_atom_loading_label": "Provera Outlook kalendara",
-  
-  
-  
-  "booking_question_response_variables": "Varijable odgovora na pitanja za rezervaciju",
+  "outlook_connect_atom_loading_label": "Provera Outlook kalendara","booking_question_response_variables": "Varijable odgovora na pitanja za rezervaciju",
   "managed_by_teamAdmins": "Upravljaju {{teamAdmins}}",
   "number_of_options": "{{count}} opcija",
   "reschedule_with_same_round_robin_host_title": "Ponovo zakaži sa istim Round-Robin domaćinom",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "poslednjih {{count}} dana",
   "month_to_date": "od početka meseca do danas",
   "year_to_date": "od početka godine do danas",
-  "custom_range": "prilagođeni opseg",
-  
-  "always": "Uvek",
-  "never": "Nikada",
-  
-  "if_cancelled": "Ako je otkazano",
+  "custom_range": "prilagođeni opseg","always": "Uvek",
+  "never": "Nikada","if_cancelled": "Ako je otkazano",
   "before": "pre",
   "show_all_columns": "Прикажи све колоне",
   "toggle_columns": "Укључи/искључи колоне",

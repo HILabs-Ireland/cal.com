@@ -4,9 +4,7 @@
   "day_one": "{{count}} dag",
   "day_other": "{{count}} dage",
   "second_one": "{{count}} sekund",
-  "second_other": "{{count}} sekunder",
-  
-  "untitled": "Uden titel",
+  "second_other": "{{count}} sekunder","untitled": "Uden titel",
   "accept_invitation": "Acceptér Invitation",
   "max_characters": "Maks. tegn",
   "min_characters": "Min. tegn",
@@ -68,18 +66,10 @@
   "accept_our_license": "Acceptér vores licens ved at ændre .env variablen <1>NEXT_PUBLIC_LICENSE_CONSENT</1> til '{{agree}}'.",
   "remove_banner_instructions": "For at fjerne dette banner, skal du åbne filen .env og ændre variablen <1>NEXT_PUBLIC_LICENSE_CONSENT</1> til '{{agree}}'.",
   "error_message": "Fejlmeddelelsen var: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Tjek venligst med din betalingsudbyder og {{user}} om hvordan du håndterer dette.",
-  
-  
-  
   "dark_theme_contrast_error": "Mørkt tema farve overholder ikke kontrastkravet. Vi anbefaler, at du ændrer denne farve, så dine knapper bliver mere synlige.",
   "light_theme_contrast_error": "Lyst tema farve overholder ikke kontrastkravet. Vi anbefaler, at du ændrer denne farve, så dine knapper bliver mere synlige.",
   "event_type_color_light_theme_contrast_error": "Lyst tema farve overholder ikke kontrastkravet. Vi anbefaler, at du ændrer denne farve, så dine begivenhedstyper bliver mere synlige.",
   "event_type_color_dark_theme_contrast_error": "Mørkt tema farve overholder ikke kontrastkravet. Vi anbefaler, at du ændrer denne farve, så dine begivenhedstyper bliver mere synlige.",
-  
-  
   "no_available_users_found_error": "Ingen tilgængelige brugere fundet. Kan du prøve et andet tidsrum?",
   "request_body_end_time_internal_error": "Intern fejl. Anmodningskroppen indeholder ikke sluttidspunkt",
   "create_calendar_event_error": "Kan ikke oprette kalenderbegivenhed i arrangørens kalender",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "Du er allerede tilmeldt denne booking.",
   "hosts_unavailable_for_booking": "Nogle af værterne er ikke tilgængelige for booking.",
   "help": "Hjælp",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Generel prompt",
   "begin_message": "Begynd besked",
   "codebase_has_to_stay_opensource": "Kodebasen skal forblive open source, uanset om den blev ændret eller ej",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "Du er skjult i dette team",
   "hidden_team_member_message": "Din plads er ikke betalt for, enten Opgradér til PRO eller lad teamejeren vide, at de kan betale for din plads.",
   "hidden_team_owner_message": "Du skal bruge en pro-konto for at bruge teams, du er skjult indtil du opgraderer.",
-  "link_expires": "p.s. Det udløber om {{expiresIn}} timer.",
-  
-  "seat_options_doesnt_support_confirmation": "Sædeindstillinger understøtter ikke bekræftelseskrav",
-  "multilocation_doesnt_support_seats": "Flere lokationer understøtter ikke sædeindstillinger",
-  
-  "seats_option_doesnt_support_multi_location": "Sædeindstillinger understøtter ikke flere lokationer",
-  
-  
-  
-  
-  
-  
+  "link_expires": "p.s. Det udløber om {{expiresIn}} timer.","seat_options_doesnt_support_confirmation": "Sædeindstillinger understøtter ikke bekræftelseskrav",
+  "multilocation_doesnt_support_seats": "Flere lokationer understøtter ikke sædeindstillinger","seats_option_doesnt_support_multi_location": "Sædeindstillinger understøtter ikke flere lokationer",
   "use_link_to_reset_password": "Brug nedenstående link for at nulstille din adgangskode",
   "hey_there": "Hej der",
   "forgot_your_password_calcom": "Glemt din adgangskode? - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Webhook blev oprettet!",
   "webhook_updated_successfully": "Webhook blev opdateret!",
   "webhook_removed_successfully": "Webhook blev fjernet!",
-  
-  
   "payload_template": "Payload Skabelon",
   "dismiss": "Ignorer",
   "no_data_yet": "Endnu ingen data",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "Dit tilbagevendende møde er blevet indsendt",
   "booking_confirmed": "Din booking er blevet bekræftet",
   "booking_confirmed_recurring": "Dit tilbagevendende møde er blevet bekræftet",
-  
-  
   "enter_new_password": "Indtast den nye adgangskode du ønsker til din konto.",
   "reset_password": "Nulstil Adgangskode",
   "change_your_password": "Skift din adgangskode",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Transskription genereret",
   "booking_created": "Booking Oprettet",
   "booking_rejected": "Booking afvist",
-  "booking_requested": "Booking anmodet",
-  
-  "meeting_ended": "Møde Afsluttet",
+  "booking_requested": "Booking anmodet","meeting_ended": "Møde Afsluttet",
   "form_submitted": "Formular Indsendt",
-  "form_submitted_no_event": "Formular indsendt, ingen begivenhed booket",
-  
-  "ooo_created": "Fravær oprettet",
+  "form_submitted_no_event": "Formular indsendt, ingen begivenhed booket","ooo_created": "Fravær oprettet",
   "booking_no_show_updated": "Booking no-show opdateret",
-  "event_triggers": "Begivenheds Udløser",
-  
-  "create_new_webhook": "Opret en ny webhook",
+  "event_triggers": "Begivenheds Udløser","create_new_webhook": "Opret en ny webhook",
   "webhooks": "Webhooks",
   "team_webhooks": "Team Webhooks",
   "create_new_webhook_to_account": "Opret en ny webhook til din konto",
@@ -529,9 +493,7 @@
   "iframe_embed": "iframe Indlejret",
   "embed_calcom": "Den nemmeste måde at integrere {{appName}} på din hjemmeside.",
   "integrate_using_embed_or_webhooks": "Integrer med dit websted ved hjælp af vores indlejrede muligheder, eller få real-time booking oplysninger ved hjælp af brugerdefinerede webhooks.",
-  "schedule_a_meeting": "Planlæg et møde",
-        "need_anything_else": "Brug for noget andet?",
-    "contact": "Kontakt",
+  "schedule_a_meeting": "Planlæg et møde",    "need_anything_else": "Brug for noget andet?","contact": "Kontakt",
   "our_support_team": "vores supportteam",
   "contact_our_support_team": "Kontakt vores supportteam",
   "uh_oh": "Uh oh!",
@@ -773,10 +735,6 @@
   "readonly": "Læsebeskyttet",
   "one_time_link": "Engangslink",
   "plan_description": "Du er i øjeblikket på {{plan}} planen.",
-  
-  
-  
-  
   "event_types_page_title": "Begivenhedstyper",
   "event_types_page_subtitle": "Opret begivenheder til deling, for folk der kan booke i din kalender.",
   "new": "Ny",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Opret et team for at komme i gang",
   "teams": "Teams",
   "team": "Team",
-  "organization": "Organisation",
-      
-  
-    "create_manage_teams_collaborative": "Opret og administrer teams for at bruge samarbejdsfunktioner.",
+  "organization": "Organisation",    "create_manage_teams_collaborative": "Opret og administrer teams for at bruge samarbejdsfunktioner.",
   "only_available_on_pro_plan": "Denne funktion er kun tilgængelig i Pro plan",
   "remove_cal_branding_description": "For at fjerne {{appName}} branding fra dine bookingsider, skal du opgradere til en Pro-konto.",
   "edit_profile_info_description": "Redigér dine profiloplysninger, der vises på dit planlægningslink.",
@@ -843,16 +798,13 @@
   "little_something_about": "Lidt om dig selv.",
   "profile_updated_successfully": "Profilen blev opdateret",
   "your_user_profile_updated_successfully": "Din brugerprofil er blevet opdateret.",
-  
-  
   "you_are_all_set": "Du er klar",
   "you_are_all_set_description": "Du har allerede den nyeste plan. Intet at opgradere. Nyd de nye funktioner og kontakt os hvis du har spørgsmål!",
   "user_cannot_found_db": "Bruger ser ud til at være logget ind, men kan ikke findes i db",
   "embed_and_webhooks": "Indlejr & Webhooks",
   "enabled": "Aktiveret",
   "disabled": "Deaktiveret",
-  "disable": "Deaktivér",
-      "availability": "Tilgængelighed",
+  "disable": "Deaktivér",  "availability": "Tilgængelighed",
   "edit_availability": "Redigér tilgængelighed",
   "configure_availability": "Indstil tidspunkter, hvor du er tilgængelig for bookinger.",
   "copy_times_to": "Kopiér tidspunkter til",
@@ -889,8 +841,6 @@
   "recurring_event": "Tilbagevendende Begivenhed",
   "recurring_event_description": "Folk kan abonnere på tilbagevendende begivenheder",
   "connect_and_join": "Forbind og deltag",
-  
-  
   "warning_instant_meeting_experimental": "Eksperimentel: Øjeblikkelige mødebegivenheder er i øjeblikket eksperimentelle.",
   "starting": "Starter",
   "disable_guests": "Deaktivér Gæster",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "{{appName}} angiver en URL-adresse for videomødet.",
   "cal_provide_jitsi_meeting_url": "Vi genererer en Jitsi Meet URL til dig.",
   "cal_provide_huddle01_meeting_url": "{{appName}} vil levere en Huddle01 videomøde-URL.",
-  "cal_provide_teams_meeting_url": "{{appName}} vil levere en MS Teams møde URL. BEMÆRK: SKAL HA EN ARBEJDS- ELLER SKOLE KONTO",
-  
-  "you_need_to_add_a_name": "Du skal tilføje et navn",
+  "cal_provide_teams_meeting_url": "{{appName}} vil levere en MS Teams møde URL. BEMÆRK: SKAL HA EN ARBEJDS- ELLER SKOLE KONTO","you_need_to_add_a_name": "Du skal tilføje et navn",
   "commission_per_transaction": "provision pr. transaktion",
   "event_type_updated_successfully_description": "Din begivenhedstype er blevet opdateret.",
   "hide_event_type": "Skjul begivenhedstype",
@@ -964,9 +912,7 @@
   "next_step_text": "Næste Trin",
   "next_step": "Spring trin over",
   "prev_step": "Forrige trin",
-  "install": "Installér",
-  
-  "installed": "Installeret",
+  "install": "Installér","installed": "Installeret",
   "active_install_one": "{{count}} aktiv installation",
   "active_install_other": "{{count}} aktive installationer",
   "globally_install": "Globalt installeret",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Kalenderen blev opdateret",
   "check_here": "Tjek her",
   "conferencing": "Konferencer",
-  "calendar": "Kalender",
-  
-  "not_installed": "Ikke installeret",
+  "calendar": "Kalender","not_installed": "Ikke installeret",
   "error_password_mismatch": "Adgangskoderne er ikke ens.",
   "error_required_field": "Dette felt er påkrævet.",
   "status": "Status",
@@ -1024,16 +968,12 @@
   "no_category_apps": "Ingen {{category}} apps",
   "all_apps": "Alle apps",
   "no_category_apps_description_calendar": "Tilføj en kalenderapp for at tjekke for konflikter og forhindre dobbeltbookinger",
-  "no_category_apps_description_conferencing": "Prøv at tilføje en konferenceapp til videoopkald med dine klienter",
-  
-  "no_category_apps_description_analytics": "Tilføj en analyseapp til dine bookingsider",
+  "no_category_apps_description_conferencing": "Prøv at tilføje en konferenceapp til videoopkald med dine klienter","no_category_apps_description_analytics": "Tilføj en analyseapp til dine bookingsider",
   "no_category_apps_description_automation": "Tilføj en automatiseringsapp til brug",
   "no_category_apps_description_other": "Tilføj enhver anden type app for at gøre alle mulige ting",
   "no_category_apps_description_messaging": "Tilføj en beskedapp for at opsætte tilpassede meddelelser og påmindelser",
   "no_category_apps_description_crm": "Tilføj en CRM-app for at holde styr på, hvem du har mødt med",
-  "installed_app_calendar_description": "Indstil kalenderne til at tjekke for konflikter, for at forhindre dobbeltbookinger.",
-  
-  "installed_app_analytics_description": "Indstil hvilke analyseapps der skal bruges til dine bookingsider",
+  "installed_app_calendar_description": "Indstil kalenderne til at tjekke for konflikter, for at forhindre dobbeltbookinger.","installed_app_analytics_description": "Indstil hvilke analyseapps der skal bruges til dine bookingsider",
   "installed_app_other_description": "Alle dine installerede apps fra andre kategorier.",
   "installed_app_conferencing_description": "Konfigurer hvilke konferenceapps, der skal bruges",
   "installed_app_automation_description": "Indstil hvilke automatiseringsapps der skal bruges",
@@ -1048,9 +988,7 @@
   "features": "Funktioner",
   "permissions": "Tilladelser",
   "terms_and_privacy": "Vilkår og privatliv",
-  "published_by": "Publiceret af {{author}}",
-  
-  "buy": "Køb",
+  "published_by": "Publiceret af {{author}}","buy": "Køb",
   "install_app": "Installér App",
   "categories": "Kategorier",
   "pricing": "Priser",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Verificér Wallet",
   "create_events_on": "Opret begivenheder på",
   "enterprise_license": "Dette er en kommerciel funktion",
-  "enterprise_license_locally": "Du kan teste denne funktion lokalt, men ikke i produktion.",
-  
-  "missing_license": "Manglende Licens",
+  "enterprise_license_locally": "Du kan teste denne funktion lokalt, men ikke i produktion.","missing_license": "Manglende Licens",
   "next_steps": "Næste Trin",
   "acquire_commercial_license": "Erhverv en kommerciel licens",
   "the_infrastructure_plan": "Infrastrukturplanen er brugerbaseret og har startup-venlige rabatter.",
   "prisma_studio_tip": "Opret en konto via Prisma Studio",
-  "prisma_studio_tip_description": "Lær hvordan du konfigurerer din første bruger",
-  
-  "error_404": "Fejl 404",
+  "prisma_studio_tip_description": "Lær hvordan du konfigurerer din første bruger","error_404": "Fejl 404",
   "default": "Standard",
   "set_to_default": "Angiv som standard",
   "new_schedule_btn": "Ny tidsplan",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Support Dokumentation",
   "developer_documentation": "Udvikler Dokumentation",
   "get_in_touch": "Kontakt os",
-  "contact_support": "Kontakt Support",
-  
-  "community_support": "Community Support",
+  "contact_support": "Kontakt Support","community_support": "Community Support",
   "feedback": "Feedback",
   "submitted_feedback": "Tak for din feedback!",
   "feedback_error": "Fejl ved afsendelse af feedback",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "Workflows gør det muligt for dig at automatisere afsendelse af påmindelser og notifikationer.",
   "active_on": "Aktiv på",
   "workflow_updated_successfully": "{{workflowName}} workflow opdateret",
-    
-  "current": "Nuværende",
-  
-  "standard": "standard",
+  "current": "Nuværende","standard": "standard",
   "confirm_username_change_dialog_title": "Bekræft ændring af brugernavn",
-  
-  
-    
   "trial_expired": "Din prøveversion er udløbet",
   "remove_app": "Fjern App",
   "yes_remove_app": "Ja, fjern app",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "Deltager",
   "event_date_variable": "Dato for begivenhed",
   "event_time_variable": "Tidspunkt for begivenhed",
-  "organizer_name_variable": "Arrangørens navn",
-  
-  "invalid_number": "Ugyldigt telefonnummer",
+  "organizer_name_variable": "Arrangørens navn","invalid_number": "Ugyldigt telefonnummer",
   "invalid_url_error_message": "Ugyldig URL for {{label}}. Eksempel URL: {{sampleUrl}}",
   "navigate": "Navigér",
   "open": "Åbn",
   "close": "Luk",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Optagelser er en del af teams planen",
   "team_feature_teams": "Dette er en Team funktion. Opgradér til Team for at se dit teams tilgængelighed.",
   "team_feature_workflows": "Dette er en Team funktion. Opgradér til Team for at automatisere dine begivenhedsnotifikationer og påmindelser med Workflows.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Booking Spørgsmål Identifikator",
   "company_size": "Firma størrelse",
   "what_help_needed": "Hvad har du brug for hjælp til?",
-  "variable_format": "Variabelt format",
-  
-  "custom_input_as_variable_info": "Ignorér alle specialtegn i den ekstra input label (brug kun bogstaver og tal), brug store bogstaver for alle bogstaver og erstat blanke tegn med understregninger.",
+  "variable_format": "Variabelt format","custom_input_as_variable_info": "Ignorér alle specialtegn i den ekstra input label (brug kun bogstaver og tal), brug store bogstaver for alle bogstaver og erstat blanke tegn med understregninger.",
   "using_booking_questions_as_variables": "Hvordan bruger jeg booking-spørgsmål som variabler?",
   "download_desktop_app": "Download desktop app",
   "set_ping_link": "Angiv Ping link",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "Hvor ofte du kan bookes",
   "event_advanced_tab_description": "Kalenderindstillinger & mere...",
   "event_advanced_tab_title": "Avanceret",
-  
-  
   "event_setup_multiple_duration_error": "Opsætning af begivenheder: Flere varigheder kræver mindst 1 mulighed.",
   "event_setup_multiple_duration_default_error": "Opsætning af begivenheder: Vælg venligst en gyldig standardvarighed.",
   "event_setup_booking_limits_error": "Bookinggrænser skal være i stigende rækkefølge. [dag,uge,måned,år]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "Du kan tilpasse alt dette senere på tilgængelighedssiden.",
   "connect_calendars_from_app_store": "Du kan tilføje flere kalendere fra App Store",
   "connect_conference_apps": "Tilslut konferenceapps",
-  "connect_calendar_apps": "Tilslut kalenderapps",
-  
-  "connect_automation_apps": "Tilslut automatiseringsapps",
+  "connect_calendar_apps": "Tilslut kalenderapps","connect_automation_apps": "Tilslut automatiseringsapps",
   "connect_analytics_apps": "Tilslut analyseapps",
   "connect_other_apps": "Tilslut andre apps",
   "connect_messaging_apps": "Forbind beskedapps",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Link til nulstilling blev sendt",
   "password_reset_email": "En e-mail er på vej til {{email}} med instruktioner om at nulstille din adgangskode.",
   "password_reset_leading": "Hvis du ikke modtager en e-mail snart, skal du kontrollere, at den e-mail-adresse, du har indtastet, er korrekt, tjekke din spam-mappe eller kontakte support, hvis problemet fortsætter.",
-  "password_updated": "Adgangskode opdateret!",
-  
-  "pending_invites": "Afventende Invitationer",
+  "password_updated": "Adgangskode opdateret!","pending_invites": "Afventende Invitationer",
   "pending_organization_invites": "Ventende organisationsinvitationer",
   "not_on_cal": "Ikke på {{appName}}",
   "no_calendar_installed": "Ingen kalender installeret",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "Brug store bogstaver for alle bogstaver",
   "replace_whitespaces_underscores": "Erstat blanke tegn med understregninger",
   "platform_members": "Platformmedlemmer",
-  "platform_members_description": "Administrer administratorer og medlemmer i dit platformteam",
-                  "ignore_special_characters_booking_questions": "Ignorer specialtegn i dit booking spørgsmål identifikator. Brug kun bogstaver og tal",
+  "platform_members_description": "Administrer administratorer og medlemmer i dit platformteam",              "ignore_special_characters_booking_questions": "Ignorer specialtegn i dit booking spørgsmål identifikator. Brug kun bogstaver og tal",
   "retry": "Prøv igen",
   "fetching_calendars_error": "Der opstod et problem med at hente dine kalendere. Venligst <1>prøv igen</1> eller kontakt kundeservice.",
   "calendar_connection_fail": "Forbindelse til kalender mislykkedes",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Begræns fremtidige bookinger",
   "limit_future_bookings_description": "Begræns hvor langt i fremtiden denne begivenhed kan bookes",
   "no_event_types": "Ingen begivenhedstyper opsat",
-  "no_event_types_description": "{{name}} har ikke opsat nogen begivenhedstyper som du kan booke.",
-    "monthly": "Månedligt",
+  "no_event_types_description": "{{name}} har ikke opsat nogen begivenhedstyper som du kan booke.","monthly": "Månedligt",
   "yearly": "Årligt",
   "weekly": "Ugentligt",
   "checkout": "Checkout",
@@ -1733,9 +1643,7 @@
   "test_preview": "Test Forhåndsvisning",
   "route_to": "Rute til",
   "test_preview_description": "Test din ruteformular uden at indsende data",
-  "test_routing": "Test Routing",
-  
-  "edit_event_type": "Redigér begivenhedstype",
+  "test_routing": "Test Routing","edit_event_type": "Redigér begivenhedstype",
   "only_admin_can_see_members_of_org": "Denne organisation er privat, og kun organisationens administrator eller ejer kan se dens medlemmer.",
   "only_admin_can_manage_sso_org": "Kun organisationens administrator eller ejer kan administrere SSO-indstillinger",
   "collective_scheduling": "Kollektiv Planlægning",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "En administrator på <strong>{{teamName}}</strong> teamet har erstattet din begivenhedstype <strong>/{{slug}}</strong> med en administreret begivenhedstype, som de kontrollerer.",
   "email_body_slug_replacement_info": "Dit link vil fortsat fungere, men nogle indstillinger for det kan være ændret. Du kan gennemgå det i begivenhedstyper.",
   "email_body_slug_replacement_suggestion": "Hvis du har spørgsmål om begivenhedstypen, bedes du kontakte din administrator.<br /><br />God planlægning, <br />Cal.com teamet",
-  
-  
   "app_disabled_with_event_type": "Administratoren har deaktiveret {{appName}}, hvilket påvirker din begivenhedstype {{title}}.",
   "app_disabled_video": "Administratoren har deaktiveret {{appName}}, hvilket kan påvirke dine begivenhedstyper. Hvis du har begivenhedstyper med {{appName}} som placering, vil den som standard gå til Cal Video.",
   "app_disabled_subject": "{{appName}} er blevet deaktiveret",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Round-Robin Værter",
   "minimum_round_robin_hosts_count": "Antallet af værter, der skal deltage",
   "hosts": "Værter",
-  
-  
   "new_attendee": "Ny Deltager",
   "awaiting_approval": "Afventer Godkendelse",
   "requires_google_calendar": "Denne app kræver en Google Calendar-forbindelse",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Tilpas spørgsmålene på bookingsiden",
   "add_a_booking_question": "Tilføj et spørgsmål",
   "identifier": "Identifikator",
-  "duplicate_email": "E-mail er duplikat",
-  
-  
-  
-  "booking_confirmation_failed": "Reservationsbekræftelse mislykkedes",
+  "duplicate_email": "E-mail er duplikat","booking_confirmation_failed": "Reservationsbekræftelse mislykkedes",
   "not_enough_seats": "Ikke nok pladser",
   "form_builder_field_already_exists": "Et felt med dette navn findes allerede",
   "show_on_booking_page": "Vis på bookingsiden",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Ryd filtre",
   "clear": "Ryd",
   "hold": "Hold",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Indsigter",
   "routing_forms": "Ruteformularer",
   "testing_workflow_info_message": "Når du tester denne arbejdsgang, skal du være opmærksom på, at e-mails og SMS'er kun kan planlægges mindst 1 time i forvejen",
   "insights_no_data_found_for_filter": "Ingen data fundet for det valgte filter eller de valgte datoer.",
-  
-  
   "something_went_wrong_on_our_end": "Noget gik galt på vores side. Kontakt vores supportteam, så løser vi det med det samme for dig.",
-  "please_provide_following_text_to_suppport": "Angiv venligst følgende tekst, når du kontakter support, for at hjælpe os bedre",
-  
-  "complete_your_booking": "Fuldfør din booking",
+  "please_provide_following_text_to_suppport": "Angiv venligst følgende tekst, når du kontakter support, for at hjælpe os bedre","complete_your_booking": "Fuldfør din booking",
   "complete_your_booking_subject": "Fuldfør din booking: {{title}} den {{date}}",
   "confirm_your_details": "Bekræft dine oplysninger",
   "copy_invite_link": "Kopiér invitationslink",
@@ -2120,14 +2000,8 @@
   "three_months": "3 måneder",
   "one_year": "1 år",
   "team_invite_received": "Du er blevet inviteret til at deltage i {{teamName}}",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "Opkræv deltager {{amount, currency}}",
-  
-  "email_invite_team": "{{email}} er blevet inviteret",
-  "email_invite_team_bulk": "{{userCount}} brugere er blevet inviteret",
-  
-  "image_size_limit_exceed": "Uploadet billede må ikke overstige 5 MB størrelsesgrænsen",
+  "currency_string": "{{amount, currency}}","charge_attendee": "Opkræv deltager {{amount, currency}}","email_invite_team": "{{email}} er blevet inviteret",
+  "email_invite_team_bulk": "{{userCount}} brugere er blevet inviteret","image_size_limit_exceed": "Uploadet billede må ikke overstige 5 MB størrelsesgrænsen",
   "unauthorized_workflow_error_message": "{{errorCode}}: Du er ikke autoriseret til at aktivere eller deaktivere denne arbejdsgang",
   "inline_embed": "Inline indlejring",
   "load_inline_content": "Indlæser din begivenhedstype direkte inline med dit andet webstedsindhold.",
@@ -2394,9 +2268,7 @@
   "locked": "Låst",
   "unlocked": "Ulåst",
   "lock_timezone_toggle_on_booking_page": "Lås tidszone på bookingsiden",
-  "description_lock_timezone_toggle_on_booking_page": "For at låse tidszonen på bookingsiden, nyttigt til personlige begivenheder.",
-  
-  "number_in_international_format": "Indtast venligst nummer i internationalt format.",
+  "description_lock_timezone_toggle_on_booking_page": "For at låse tidszonen på bookingsiden, nyttigt til personlige begivenheder.","number_in_international_format": "Indtast venligst nummer i internationalt format.",
   "install_calendar": "Installer kalender",
   "branded_subdomain": "Branded subdomæne",
   "branded_subdomain_description": "Få dit eget branded subdomæne, såsom acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Omfattende whitelabeling",
   "extensive_whitelabeling_description": "Tilpas din planlægningsoplevelse med dit eget logo, farver og mere",
   "unlimited_teams": "Ubegrænsede Teams",
-  "unlimited_teams_description": "Tilføj så mange underteams, som du har brug for i din organisation",
-      "advanced_managed_events": "Avancerede Administrerede Begivenhedstyper",
+  "unlimited_teams_description": "Tilføj så mange underteams, som du har brug for i din organisation",  "advanced_managed_events": "Avancerede Administrerede Begivenhedstyper",
   "advanced_managed_events_description": "Tilføj et enkelt kreditkort for at betale for alle dine teams' abonnementer",
   "enterprise": "Virksomhed",
   "enterprise_description": "Opgrader til Enterprise for at oprette din organisation",
-  "create_your_org": "Opret din Organisation",
-    "create_your_enterprise_description": "Opgrader til Enterprise og få adgang til Active Directory Sync, SCIM Automatisk Brugerprovisionering, Cal.ai Voice Agents, Admin API'er og mere!",
-  
-  "admin_delete_organization_description": "<ul><li>Teams, der er medlem af denne organisation, vil også blive slettet sammen med deres begivenhedstyper</li><li>Brugere, der var en del af organisationen, vil ikke blive slettet, men deres brugernavne vil blive ændret for at tillade dem at eksistere uden for organisationen</li><li>Brugerbegivenhedstyper oprettet efter, at brugeren var i organisationen, vil blive slettet</li><li>Migrerede brugerbegivenhedstyper vil ikke blive slettet</li></ul>",
+  "create_your_org": "Opret din Organisation","create_your_enterprise_description": "Opgrader til Enterprise og få adgang til Active Directory Sync, SCIM Automatisk Brugerprovisionering, Cal.ai Voice Agents, Admin API'er og mere!","admin_delete_organization_description": "<ul><li>Teams, der er medlem af denne organisation, vil også blive slettet sammen med deres begivenhedstyper</li><li>Brugere, der var en del af organisationen, vil ikke blive slettet, men deres brugernavne vil blive ændret for at tillade dem at eksistere uden for organisationen</li><li>Brugerbegivenhedstyper oprettet efter, at brugeren var i organisationen, vil blive slettet</li><li>Migrerede brugerbegivenhedstyper vil ikke blive slettet</li></ul>",
   "admin_delete_organization_title": "Slet {{organizationName}}?",
   "published": "Udgivet",
   "unpublished": "Ikke udgivet",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "Lad folk booke med det samme",
   "uprade_to_create_instant_bookings": "Opgrader til Enterprise og lad gæster deltage i et øjeblikkeligt opkald, som deltagerne kan hoppe direkte ind i. Dette er kun for team-begivenhedstyper",
   "dont_want_to_wait": "Vil du ikke vente?",
-  "meeting_started": "Mødet er startet",
-  
-  "cal_ai_event_tab_description": "Lad AI-agenter booke for dig",
+  "meeting_started": "Mødet er startet","cal_ai_event_tab_description": "Lad AI-agenter booke for dig",
   "booking_not_found_error": "Kunne ikke finde booking",
   "booking_seats_full_error": "Alle pladser er optaget",
-  
-  
   "not_enough_available_seats_error": "Der er ikke nok ledige pladser",
   "user_redirect_title": "{{username}} er midlertidigt væk.",
   "user_redirect_description": "I mellemtiden vil {{profile.username}} tage sig af alle nye planlagte møder på vegne af {{username}}.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "Når du accepterer invitationen, vil dit link ændre sig til dit organisationsdomæne, men bare rolig, alle tidligere links vil stadig fungere og omdirigere korrekt.<br /><br />Bemærk venligst: Alle dine personlige begivenhedstyper vil blive flyttet til <strong>{{teamName}}</strong>-organisationen, hvilket også kan inkludere potentielle personlige links.<br /><br />For personlige begivenheder anbefaler vi at oprette en ny konto med en personlig e-mailadresse.",
   "email|existing_user_added_link_changed": "Dit link er blevet ændret fra <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> til <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>, men bare rolig, alle tidligere links fungerer stadig og omdirigerer korrekt.<br /><br />Bemærk venligst: Alle dine personlige begivenhedstyper er blevet flyttet til <strong>{{teamName}}</strong>-organisationen, hvilket også kan inkludere potentielle personlige links.<br /><br />Log venligst ind og sørg for, at du ikke har private begivenheder på din nye organisationskonto.<br /><br />For personlige begivenheder anbefaler vi at oprette en ny konto med en personlig e-mailadresse.<br /><br />Nyd dit nye rene link: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Din organisation er blevet oprettet",
-  "your_current_plan": "Din nuværende plan",
-  
-  "privacy_organization_description": "Administrer privatlivsindstillinger for din organisation",
+  "your_current_plan": "Din nuværende plan","privacy_organization_description": "Administrer privatlivsindstillinger for din organisation",
   "privacy": "Privatliv",
   "team_will_be_under_org": "Nye teams vil være under din organisation",
   "add_group_name": "Tilføj gruppenavn",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "Ved at fortsætte accepterer du vores <0>Vilkår</0> og <1>Privatlivspolitik</1>.",
   "proceeding_agreement": "Ved at fortsætte accepterer du vores",
   "terms": "Vilkår",
-  "always_show_x_days": "Vis altid {{x}} dage tilgængelige",
-  
-  "updating_oauth_client_error": "Der opstod en fejl under opdatering af OAuth-klienten, prøv venligst igen senere",
+  "always_show_x_days": "Vis altid {{x}} dage tilgængelige","updating_oauth_client_error": "Der opstod en fejl under opdatering af OAuth-klienten, prøv venligst igen senere",
   "creating_oauth_client_error": "Der opstod en fejl under oprettelse af OAuth-klienten, prøv venligst igen senere",
   "event_type_color": "Begivenhedstype farve",
   "event_type_color_description": "Dette bruges kun til at skelne mellem begivenhedstyper og booking i appen. Det vises ikke for bookere.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Kontrollerer Google Kalender",
   "outlook_connect_atom_label": "Forbind Outlook Kalender",
   "outlook_connect_atom_already_connected_label": "Forbundet Outlook Kalender",
-  "outlook_connect_atom_loading_label": "Kontrollerer Outlook Kalender",
-  
-  
-  
-  "booking_question_response_variables": "Booking spørgsmål svar variabler",
+  "outlook_connect_atom_loading_label": "Kontrollerer Outlook Kalender","booking_question_response_variables": "Booking spørgsmål svar variabler",
   "managed_by_teamAdmins": "Administreret af {{teamAdmins}}",
   "number_of_options": "{{count}} muligheder",
   "reschedule_with_same_round_robin_host_title": "Omlæg med samme Round-Robin vært",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "sidste {{count}} dage",
   "month_to_date": "måned til dato",
   "year_to_date": "år til dato",
-  "custom_range": "tilpasset interval",
-  
-  "always": "Altid",
-  "never": "Aldrig",
-  
-  "if_cancelled": "Hvis annulleret",
+  "custom_range": "tilpasset interval","always": "Altid",
+  "never": "Aldrig","if_cancelled": "Hvis annulleret",
   "before": "før",
   "show_all_columns": "Vis alle kolonner",
   "toggle_columns": "Skift kolonner",

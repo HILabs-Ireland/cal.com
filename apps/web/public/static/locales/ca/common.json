@@ -4,9 +4,7 @@
   "day_one": "{{count}} dia",
   "day_other": "{{count}} dies",
   "second_one": "{{count}} segon",
-  "second_other": "{{count}} segons",
-  
-  "untitled": "Sense títol",
+  "second_other": "{{count}} segons","untitled": "Sense títol",
   "accept_invitation": "Accepta la invitació",
   "max_characters": "Màx. caràcters",
   "min_characters": "Mín. caràcters",
@@ -68,18 +66,10 @@
   "accept_our_license": "Accepta la nostra llicència canviant la variable .env <1>NEXT_PUBLIC_LICENSE_CONSENT</1> a '{{agree}}'.",
   "remove_banner_instructions": "Per eliminar aquest banner, obre el teu fitxer .env i canvia la variable <1>NEXT_PUBLIC_LICENSE_CONSENT</1> a '{{agree}}'.",
   "error_message": "El missatge d'error ha estat: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Si us plau, consulta amb el teu proveïdor de pagaments i {{user}} com gestionar això.",
-  
-  
-  
   "dark_theme_contrast_error": "El color del tema fosc no passa la comprovació de contrast. Et recomanem canviar aquest color perquè els teus botons siguin més visibles.",
   "light_theme_contrast_error": "El color del tema clar no passa la comprovació de contrast. Et recomanem canviar aquest color perquè els teus botons siguin més visibles.",
   "event_type_color_light_theme_contrast_error": "El color del tema clar no passa la comprovació de contrast. Et recomanem canviar aquest color perquè el color dels tipus d'esdeveniments sigui més visible.",
   "event_type_color_dark_theme_contrast_error": "El color del tema fosc no passa la comprovació de contrast. Et recomanem canviar aquest color perquè el color dels tipus d'esdeveniments sigui més visible.",
-  
-  
   "no_available_users_found_error": "No s'han trobat usuaris disponibles. Podries provar una altra franja horària?",
   "request_body_end_time_internal_error": "Error intern. El cos de la sol·licitud no conté l'hora de finalització",
   "create_calendar_event_error": "No s'ha pogut crear l'esdeveniment al calendari de l'organitzador",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "Ja t'has registrat per a aquesta reserva",
   "hosts_unavailable_for_booking": "Alguns dels amfitrions no estan disponibles per a la reserva",
   "help": "Ajuda",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Indicació general",
   "begin_message": "Començar missatge",
   "codebase_has_to_stay_opensource": "El codi font ha de seguir com codi obert, tant si s'ha modificat com si no",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "Estàs ocult en aquest equip",
   "hidden_team_member_message": "El teu seient no està pagat, actualitza a PRO o informa al propietari de l'equip que pot pagar pel teu seient.",
   "hidden_team_owner_message": "Necessites un compte pro per utilitzar els equips, estaràs ocult fins que facis l'actualització.",
-  "link_expires": "p.d. Caduca en {{expiresIn}} hores.",
-  
-  "seat_options_doesnt_support_confirmation": "L'opció de seients no admet el requisit de confirmació",
-  "multilocation_doesnt_support_seats": "Les ubicacions múltiples no admeten l'opció de seients",
-  
-  "seats_option_doesnt_support_multi_location": "L'opció de seients no admet ubicacions múltiples",
-  
-  
-  
-  
-  
-  
+  "link_expires": "p.d. Caduca en {{expiresIn}} hores.","seat_options_doesnt_support_confirmation": "L'opció de seients no admet el requisit de confirmació",
+  "multilocation_doesnt_support_seats": "Les ubicacions múltiples no admeten l'opció de seients","seats_option_doesnt_support_multi_location": "L'opció de seients no admet ubicacions múltiples",
   "use_link_to_reset_password": "Utilitza l'enllaç següent per restablir la teva contrasenya",
   "hey_there": "Hola",
   "forgot_your_password_calcom": "Has oblidat la teva contrasenya? - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Webhook creat correctament!",
   "webhook_updated_successfully": "Webhook actualitzat correctament!",
   "webhook_removed_successfully": "Webhook eliminat correctament!",
-  
-  
   "payload_template": "Plantilla de payload",
   "dismiss": "Descarta",
   "no_data_yet": "Encara no hi ha dades",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "La teva reunió recurrent s'ha enviat",
   "booking_confirmed": "La teva reserva s'ha confirmat",
   "booking_confirmed_recurring": "La teva reunió recurrent s'ha confirmat",
-  
-  
   "enter_new_password": "Introdueix la nova contrasenya que vols per al teu compte.",
   "reset_password": "Restablir contrasenya",
   "change_your_password": "Canvia la teva contrasenya",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Transcripció generada",
   "booking_created": "Reserva creada",
   "booking_rejected": "Reserva rebutjada",
-  "booking_requested": "Reserva sol·licitada",
-  
-  "meeting_ended": "Reunió finalitzada",
+  "booking_requested": "Reserva sol·licitada","meeting_ended": "Reunió finalitzada",
   "form_submitted": "Formulari enviat",
-  "form_submitted_no_event": "Formulari enviat, sense esdeveniment reservat",
-  
-  "ooo_created": "Fora de l'oficina creat",
+  "form_submitted_no_event": "Formulari enviat, sense esdeveniment reservat","ooo_created": "Fora de l'oficina creat",
   "booking_no_show_updated": "No presentació a la reserva actualitzada",
-  "event_triggers": "Activadors d'esdeveniments",
-  
-  "create_new_webhook": "Crea un nou webhook",
+  "event_triggers": "Activadors d'esdeveniments","create_new_webhook": "Crea un nou webhook",
   "webhooks": "Webhooks",
   "team_webhooks": "Webhooks d'equip",
   "create_new_webhook_to_account": "Crea un nou webhook al teu compte",
@@ -529,9 +493,7 @@
   "iframe_embed": "Incrustació d'iframe",
   "embed_calcom": "La manera més fàcil d'incrustar {{appName}} al teu lloc web.",
   "integrate_using_embed_or_webhooks": "Integra amb el teu lloc web utilitzant les nostres opcions d'incrustació, o rep informació de reserves en temps real mitjançant webhooks personalitzats.",
-  "schedule_a_meeting": "Programa una reunió",
-        "need_anything_else": "Necessites alguna cosa més?",
-    "contact": "Contacta",
+  "schedule_a_meeting": "Programa una reunió",    "need_anything_else": "Necessites alguna cosa més?","contact": "Contacta",
   "our_support_team": "el nostre equip de suport",
   "contact_our_support_team": "Contacta amb el nostre equip de suport",
   "uh_oh": "Ui ui!",
@@ -773,10 +735,6 @@
   "readonly": "Només lectura",
   "one_time_link": "Enllaç d'un sol ús",
   "plan_description": "Actualment estàs al pla {{plan}}.",
-  
-  
-  
-  
   "event_types_page_title": "Tipus d'esdeveniments",
   "event_types_page_subtitle": "Crea esdeveniments per compartir perquè altres persones puguin reservar al teu calendari.",
   "new": "Nou",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Crea un equip per començar",
   "teams": "Equips",
   "team": "Equip",
-  "organization": "Organització",
-      
-  
-    "create_manage_teams_collaborative": "Crea i gestiona equips per utilitzar funcions col·laboratives.",
+  "organization": "Organització",    "create_manage_teams_collaborative": "Crea i gestiona equips per utilitzar funcions col·laboratives.",
   "only_available_on_pro_plan": "Aquesta funció només està disponible al pla Pro",
   "remove_cal_branding_description": "Per eliminar la marca {{appName}} de les teves pàgines de reserva, has d'actualitzar a un compte Pro.",
   "edit_profile_info_description": "Edita la informació del teu perfil, que es mostra a l'enllaç de programació.",
@@ -843,16 +798,13 @@
   "little_something_about": "Una mica sobre tu.",
   "profile_updated_successfully": "Perfil actualitzat correctament",
   "your_user_profile_updated_successfully": "El teu perfil d'usuari s'ha actualitzat correctament.",
-  
-  
   "you_are_all_set": "Tot està llest",
   "you_are_all_set_description": "Ja tens el pla més recent. No cal actualitzar. Gaudeix de les noves funcionalitats i contacta'ns si tens alguna pregunta!",
   "user_cannot_found_db": "Sembla que l'usuari ha iniciat sessió però no es troba a la base de dades",
   "embed_and_webhooks": "Incrustació i Webhooks",
   "enabled": "Activat",
   "disabled": "Desactivat",
-  "disable": "Desactivar",
-      "availability": "Disponibilitat",
+  "disable": "Desactivar",  "availability": "Disponibilitat",
   "edit_availability": "Editar disponibilitat",
   "configure_availability": "Configura les hores en què estàs disponible per a reserves.",
   "copy_times_to": "Copiar horaris a",
@@ -889,8 +841,6 @@
   "recurring_event": "Esdeveniment recurrent",
   "recurring_event_description": "La gent pot subscriure's a esdeveniments recurrents",
   "connect_and_join": "Connecta i uneix-te",
-  
-  
   "warning_instant_meeting_experimental": "Experimental: Els esdeveniments de reunió instantània són actualment experimentals.",
   "starting": "Començant",
   "disable_guests": "Desactivar convidats",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "{{appName}} proporcionarà una URL de reunió per videoconferència.",
   "cal_provide_jitsi_meeting_url": "Generarem una URL de Jitsi Meet per a tu.",
   "cal_provide_huddle01_meeting_url": "{{appName}} proporcionarà una URL de reunió per videoconferència de Huddle01.",
-  "cal_provide_teams_meeting_url": "{{appName}} proporcionarà una URL de reunió de MS Teams. NOTA: CAL TENIR UN COMPTE DE TREBALL O ESCOLAR",
-  
-  "you_need_to_add_a_name": "Has d'afegir un nom",
+  "cal_provide_teams_meeting_url": "{{appName}} proporcionarà una URL de reunió de MS Teams. NOTA: CAL TENIR UN COMPTE DE TREBALL O ESCOLAR","you_need_to_add_a_name": "Has d'afegir un nom",
   "commission_per_transaction": "comissió per transacció",
   "event_type_updated_successfully_description": "El teu tipus d'esdeveniment s'ha actualitzat correctament.",
   "hide_event_type": "Amagar tipus d'esdeveniment",
@@ -964,9 +912,7 @@
   "next_step_text": "Següent pas",
   "next_step": "Salta el pas",
   "prev_step": "Pas anterior",
-  "install": "Instal·la",
-  
-  "installed": "Instal·lat",
+  "install": "Instal·la","installed": "Instal·lat",
   "active_install_one": "{{count}} instal·lació activa",
   "active_install_other": "{{count}} instal·lacions actives",
   "globally_install": "Instal·lat globalment",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Calendari actualitzat correctament",
   "check_here": "Comprova-ho aquí",
   "conferencing": "Videoconferència",
-  "calendar": "Calendari",
-  
-  "not_installed": "No instal·lat",
+  "calendar": "Calendari","not_installed": "No instal·lat",
   "error_password_mismatch": "Les contrasenyes no coincideixen",
   "error_required_field": "Aquest camp és obligatori",
   "status": "Estat",
@@ -1024,16 +968,12 @@
   "no_category_apps": "Cap aplicació de {{category}}",
   "all_apps": "Totes les aplicacions",
   "no_category_apps_description_calendar": "Afegeix una aplicació de calendari per comprovar conflictes i evitar reserves duplicades",
-  "no_category_apps_description_conferencing": "Prova d'afegir una aplicació de conferència per a videotrucades amb els teus clients",
-  
-  "no_category_apps_description_analytics": "Afegeix una aplicació d'analítiques per a les teves pàgines de reserves",
+  "no_category_apps_description_conferencing": "Prova d'afegir una aplicació de conferència per a videotrucades amb els teus clients","no_category_apps_description_analytics": "Afegeix una aplicació d'analítiques per a les teves pàgines de reserves",
   "no_category_apps_description_automation": "Afegeix una aplicació d'automatització per utilitzar",
   "no_category_apps_description_other": "Afegeix qualsevol altre tipus d'aplicació per fer tot tipus de coses",
   "no_category_apps_description_messaging": "Afegeix una aplicació de missatgeria per configurar notificacions i recordatoris personalitzats",
   "no_category_apps_description_crm": "Afegeix una aplicació de CRM per fer seguiment de les persones amb qui t'has reunit",
-  "installed_app_calendar_description": "Configura els calendaris per comprovar conflictes i evitar reserves duplicades.",
-  
-  "installed_app_analytics_description": "Configura quines aplicacions d'analítica utilitzar per a les teves pàgines de reserves",
+  "installed_app_calendar_description": "Configura els calendaris per comprovar conflictes i evitar reserves duplicades.","installed_app_analytics_description": "Configura quines aplicacions d'analítica utilitzar per a les teves pàgines de reserves",
   "installed_app_other_description": "Totes les aplicacions instal·lades d'altres categories.",
   "installed_app_conferencing_description": "Configura quines aplicacions de videoconferència utilitzar",
   "installed_app_automation_description": "Configura quines aplicacions d'automatització utilitzar",
@@ -1048,9 +988,7 @@
   "features": "Característiques",
   "permissions": "Permisos",
   "terms_and_privacy": "Termes i privacitat",
-  "published_by": "Publicat per {{author}}",
-  
-  "buy": "Compra",
+  "published_by": "Publicat per {{author}}","buy": "Compra",
   "install_app": "Instal·la l'aplicació",
   "categories": "Categories",
   "pricing": "Preus",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Verifica la cartera",
   "create_events_on": "Crea esdeveniments a",
   "enterprise_license": "Aquesta és una característica comercial",
-  "enterprise_license_locally": "Pots provar aquesta característica localment però no en producció.",
-  
-  "missing_license": "Llicència no disponible",
+  "enterprise_license_locally": "Pots provar aquesta característica localment però no en producció.","missing_license": "Llicència no disponible",
   "next_steps": "Següents passos",
   "acquire_commercial_license": "Adquireix una llicència comercial",
   "the_infrastructure_plan": "El pla d'infraestructura es basa en l'ús i té descomptes per a startups.",
   "prisma_studio_tip": "Crea un compte mitjançant Prisma Studio",
-  "prisma_studio_tip_description": "Aprèn com configurar el teu primer usuari",
-  
-  "error_404": "Error 404",
+  "prisma_studio_tip_description": "Aprèn com configurar el teu primer usuari","error_404": "Error 404",
   "default": "Per defecte",
   "set_to_default": "Estableix per defecte",
   "new_schedule_btn": "Nou horari",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Documentació de suport",
   "developer_documentation": "Documentació per a desenvolupadors",
   "get_in_touch": "Contacta'ns",
-  "contact_support": "Contactar amb suport",
-  
-  "community_support": "Suport de la comunitat",
+  "contact_support": "Contactar amb suport","community_support": "Suport de la comunitat",
   "feedback": "Comentaris",
   "submitted_feedback": "Gràcies pels teus comentaris!",
   "feedback_error": "Error en enviar els comentaris",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "Els fluxos de treball et permeten automatitzar l'enviament de recordatoris i notificacions.",
   "active_on": "Actiu a",
   "workflow_updated_successfully": "El flux de treball {{workflowName}} s'ha actualitzat correctament",
-    
-  "current": "Actual",
-  
-  "standard": "estàndard",
+  "current": "Actual","standard": "estàndard",
   "confirm_username_change_dialog_title": "Confirma el canvi de nom d'usuari",
-  
-  
-    
   "trial_expired": "El teu període de prova ha expirat",
   "remove_app": "Eliminar aplicació",
   "yes_remove_app": "Sí, eliminar aplicació",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "Nom de l'assistent",
   "event_date_variable": "Data de l'esdeveniment",
   "event_time_variable": "Hora de l'esdeveniment",
-  "organizer_name_variable": "Nom de l'organitzador",
-  
-  "invalid_number": "Número de telèfon no vàlid",
+  "organizer_name_variable": "Nom de l'organitzador","invalid_number": "Número de telèfon no vàlid",
   "invalid_url_error_message": "URL no vàlida per a {{label}}. URL d'exemple: {{sampleUrl}}",
   "navigate": "Navega",
   "open": "Obre",
   "close": "Tanca",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Les gravacions són part del pla d'equips",
   "team_feature_teams": "Aquesta és una funcionalitat d'Equip. Actualitza a Equip per veure la disponibilitat del teu equip.",
   "team_feature_workflows": "Aquesta és una funcionalitat d'Equip. Actualitza a Equip per automatitzar les notificacions i recordatoris d'esdeveniments amb Workflows.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Identificador de la pregunta de reserva",
   "company_size": "Mida de l'empresa",
   "what_help_needed": "Amb què necessites ajuda?",
-  "variable_format": "Format de variable",
-  
-  "custom_input_as_variable_info": "Ignora tots els caràcters especials de l'etiqueta d'entrada addicional (utilitza només lletres i números), usa majúscules per a totes les lletres i substitueix els espais amb guions baixos.",
+  "variable_format": "Format de variable","custom_input_as_variable_info": "Ignora tots els caràcters especials de l'etiqueta d'entrada addicional (utilitza només lletres i números), usa majúscules per a totes les lletres i substitueix els espais amb guions baixos.",
   "using_booking_questions_as_variables": "Com puc utilitzar les preguntes de reserva com a variables?",
   "download_desktop_app": "Descarrega l'aplicació d'escriptori",
   "set_ping_link": "Configura l'enllaç de Ping",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "Amb quina freqüència et poden reservar",
   "event_advanced_tab_description": "Configuració del calendari i més...",
   "event_advanced_tab_title": "Avançat",
-  
-  
   "event_setup_multiple_duration_error": "Configuració de l'esdeveniment: Les durades múltiples requereixen almenys 1 opció.",
   "event_setup_multiple_duration_default_error": "Configuració de l'esdeveniment: Si us plau, selecciona una durada predeterminada vàlida.",
   "event_setup_booking_limits_error": "Els límits de reserva han d'estar en ordre ascendent. [dia, setmana, mes, any]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "Pots personalitzar tot això més tard a la pàgina de disponibilitat",
   "connect_calendars_from_app_store": "Pots afegir més calendaris des de la botiga d'aplicacions",
   "connect_conference_apps": "Connecta aplicacions de conferència",
-  "connect_calendar_apps": "Connecta aplicacions de calendari",
-  
-  "connect_automation_apps": "Connecta aplicacions d'automatització",
+  "connect_calendar_apps": "Connecta aplicacions de calendari","connect_automation_apps": "Connecta aplicacions d'automatització",
   "connect_analytics_apps": "Connecta aplicacions d'analítica",
   "connect_other_apps": "Connecta altres aplicacions",
   "connect_messaging_apps": "Connecta aplicacions de missatgeria",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Enllaç de restabliment enviat",
   "password_reset_email": "S'ha enviat un correu a {{email}} amb instruccions per restablir la teva contrasenya",
   "password_reset_leading": "Si no reps un correu aviat, comprova que l'adreça de correu que has introduït és correcta, revisa la carpeta de spam o contacta amb suport si el problema persisteix",
-  "password_updated": "Contrasenya actualitzada!",
-  
-  "pending_invites": "Invitacions pendents",
+  "password_updated": "Contrasenya actualitzada!","pending_invites": "Invitacions pendents",
   "pending_organization_invites": "Invitacions d'organització pendents",
   "not_on_cal": "No està a {{appName}}",
   "no_calendar_installed": "Cap calendari instal·lat",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "Utilitza majúscules per a totes les lletres",
   "replace_whitespaces_underscores": "Substitueix els espais en blanc per guions baixos",
   "platform_members": "Membres de la plataforma",
-  "platform_members_description": "Gestiona els administradors i membres del teu equip de plataforma",
-                  "ignore_special_characters_booking_questions": "Ignora els caràcters especials en l'identificador de la pregunta de reserva. Utilitza només lletres i números",
+  "platform_members_description": "Gestiona els administradors i membres del teu equip de plataforma",              "ignore_special_characters_booking_questions": "Ignora els caràcters especials en l'identificador de la pregunta de reserva. Utilitza només lletres i números",
   "retry": "Tornar a provar",
   "fetching_calendars_error": "Hi ha hagut un problema en obtenir els teus calendaris. Si us plau, <1>torna-ho a provar</1> o contacta amb el suport al client.",
   "calendar_connection_fail": "Ha fallat la connexió del calendari",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Limitar reserves futures",
   "limit_future_bookings_description": "Limita fins quan es pot reservar aquest esdeveniment en el futur",
   "no_event_types": "No hi ha tipus d'esdeveniments configurats",
-  "no_event_types_description": "{{name}} no ha configurat cap tipus d'esdeveniment per reservar.",
-    "monthly": "Mensual",
+  "no_event_types_description": "{{name}} no ha configurat cap tipus d'esdeveniment per reservar.","monthly": "Mensual",
   "yearly": "Anual",
   "weekly": "Setmanal",
   "checkout": "Pagament",
@@ -1733,9 +1643,7 @@
   "test_preview": "Prova la previsualització",
   "route_to": "Redirigir a",
   "test_preview_description": "Prova el teu formulari de redirecció sense enviar cap dada",
-  "test_routing": "Prova la redirecció",
-  
-  "edit_event_type": "Edita el tipus d'esdeveniment",
+  "test_routing": "Prova la redirecció","edit_event_type": "Edita el tipus d'esdeveniment",
   "only_admin_can_see_members_of_org": "Aquesta organització és privada i només l'administrador o propietari de l'organització pot veure els seus membres",
   "only_admin_can_manage_sso_org": "Només l'administrador o propietari de l'organització pot gestionar la configuració SSO",
   "collective_scheduling": "Programació col·lectiva",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "Un administrador de l'equip <strong>{{teamName}}</strong> ha reemplaçat el teu tipus d'esdeveniment <strong>/{{slug}}</strong> amb un tipus d'esdeveniment gestionat que ells controlen",
   "email_body_slug_replacement_info": "El teu enllaç continuarà funcionant però algunes configuracions poden haver canviat. Pots revisar-ho als tipus d'esdeveniments",
   "email_body_slug_replacement_suggestion": "Si tens alguna pregunta sobre el tipus d'esdeveniment, contacta amb el teu administrador.<br /><br />Feliç programació,<br />L'equip de Cal.com",
-  
-  
   "app_disabled_with_event_type": "L'administrador ha desactivat {{appName}}, cosa que afecta el teu tipus d'esdeveniment {{title}}",
   "app_disabled_video": "L'administrador ha desactivat {{appName}}, cosa que pot afectar els teus tipus d'esdeveniments. Si tens tipus d'esdeveniments amb {{appName}} com a ubicació, es canviarà per defecte a Cal Video",
   "app_disabled_subject": "S'ha desactivat {{appName}}",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Amfitrions Round-Robin",
   "minimum_round_robin_hosts_count": "Nombre mínim d'amfitrions necessaris per assistir",
   "hosts": "Amfitrions",
-  
-  
   "new_attendee": "Nou assistent",
   "awaiting_approval": "Pendent d'aprovació",
   "requires_google_calendar": "Aquesta aplicació requereix una connexió amb Google Calendar",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Personalitza les preguntes que es fan a la pàgina de reserva",
   "add_a_booking_question": "Afegeix una pregunta",
   "identifier": "Identificador",
-  "duplicate_email": "El correu electrònic està duplicat",
-  
-  
-  
-  "booking_confirmation_failed": "La confirmació de la reserva ha fallat",
+  "duplicate_email": "El correu electrònic està duplicat","booking_confirmation_failed": "La confirmació de la reserva ha fallat",
   "not_enough_seats": "No hi ha prou places",
   "form_builder_field_already_exists": "Ja existeix un camp amb aquest nom",
   "show_on_booking_page": "Mostra a la pàgina de reserva",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Esborra filtres",
   "clear": "Esborra",
   "hold": "Retenir",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Estadístiques",
   "routing_forms": "Formularis de redirecció",
   "testing_workflow_info_message": "Quan provis aquest flux de treball, tingues en compte que els correus electrònics i SMS només es poden programar amb almenys 1 hora d'antelació",
   "insights_no_data_found_for_filter": "No s'han trobat dades per al filtre seleccionat o les dates seleccionades.",
-  
-  
   "something_went_wrong_on_our_end": "Hi ha hagut un error per la nostra part. Contacta amb el nostre equip de suport i ho solucionarem de seguida.",
-  "please_provide_following_text_to_suppport": "Si us plau, proporciona el següent text quan contactis amb suport per ajudar-te millor",
-  
-  "complete_your_booking": "Completa la teva reserva",
+  "please_provide_following_text_to_suppport": "Si us plau, proporciona el següent text quan contactis amb suport per ajudar-te millor","complete_your_booking": "Completa la teva reserva",
   "complete_your_booking_subject": "Completa la teva reserva: {{title}} el {{date}}",
   "confirm_your_details": "Confirma les teves dades",
   "copy_invite_link": "Copiar enllaç d'invitació",
@@ -2120,14 +2000,8 @@
   "three_months": "3 mesos",
   "one_year": "1 any",
   "team_invite_received": "Has estat convidat a unir-te a {{teamName}}",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "Cobrar {{amount, currency}} a l'assistent",
-  
-  "email_invite_team": "S'ha convidat a {{email}}",
-  "email_invite_team_bulk": "S'han convidat {{userCount}} usuaris",
-  
-  "image_size_limit_exceed": "La imatge pujada no ha de superar el límit de 5mb",
+  "currency_string": "{{amount, currency}}","charge_attendee": "Cobrar {{amount, currency}} a l'assistent","email_invite_team": "S'ha convidat a {{email}}",
+  "email_invite_team_bulk": "S'han convidat {{userCount}} usuaris","image_size_limit_exceed": "La imatge pujada no ha de superar el límit de 5mb",
   "unauthorized_workflow_error_message": "{{errorCode}}: No estàs autoritzat per habilitar o deshabilitar aquest flux de treball",
   "inline_embed": "Incrustació en línia",
   "load_inline_content": "Carrega el teu tipus d'esdeveniment directament en línia amb el contingut del teu lloc web",
@@ -2394,9 +2268,7 @@
   "locked": "Bloquejat",
   "unlocked": "Desbloquejat",
   "lock_timezone_toggle_on_booking_page": "Bloquejar zona horària a la pàgina de reserves",
-  "description_lock_timezone_toggle_on_booking_page": "Per bloquejar la zona horària a la pàgina de reserves, útil per a esdeveniments presencials.",
-  
-  "number_in_international_format": "Si us plau, introdueix el número en format internacional.",
+  "description_lock_timezone_toggle_on_booking_page": "Per bloquejar la zona horària a la pàgina de reserves, útil per a esdeveniments presencials.","number_in_international_format": "Si us plau, introdueix el número en format internacional.",
   "install_calendar": "Instal·lar calendari",
   "branded_subdomain": "Subdomini personalitzat",
   "branded_subdomain_description": "Obtén el teu propi subdomini personalitzat, com ara acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Personalització extensa",
   "extensive_whitelabeling_description": "Personalitza la teva experiència de programació amb el teu propi logotip, colors i més",
   "unlimited_teams": "Equips il·limitats",
-  "unlimited_teams_description": "Afegeix tants subequips com necessitis a la teva organització",
-      "advanced_managed_events": "Tipus d'esdeveniments gestionats avançats",
+  "unlimited_teams_description": "Afegeix tants subequips com necessitis a la teva organització",  "advanced_managed_events": "Tipus d'esdeveniments gestionats avançats",
   "advanced_managed_events_description": "Afegiu una única targeta de crèdit per pagar totes les subscripcions del vostre equip",
   "enterprise": "Enterprise",
   "enterprise_description": "Actualitzeu a Enterprise per crear la vostra organització",
-  "create_your_org": "Creeu la vostra organització",
-    "create_your_enterprise_description": "Actualitzeu a Enterprise i obteniu accés a sincronització amb Active Directory, aprovisionament automàtic d'usuaris SCIM, agents de veu Cal.ai, APIs d'administració i més!",
-  
-  "admin_delete_organization_description": "<ul><li>Els equips que són membres d'aquesta organització també s'eliminaran juntament amb els seus tipus d'esdeveniments</li><li>Els usuaris que formaven part de l'organització no s'eliminaran, però els seus noms d'usuari es canviaran per permetre'ls existir fora de l'organització</li><li>Els tipus d'esdeveniments d'usuari creats després que l'usuari estigués a l'organització s'eliminaran</li><li>Els tipus d'esdeveniments d'usuari migrats no s'eliminaran</li></ul>",
+  "create_your_org": "Creeu la vostra organització","create_your_enterprise_description": "Actualitzeu a Enterprise i obteniu accés a sincronització amb Active Directory, aprovisionament automàtic d'usuaris SCIM, agents de veu Cal.ai, APIs d'administració i més!","admin_delete_organization_description": "<ul><li>Els equips que són membres d'aquesta organització també s'eliminaran juntament amb els seus tipus d'esdeveniments</li><li>Els usuaris que formaven part de l'organització no s'eliminaran, però els seus noms d'usuari es canviaran per permetre'ls existir fora de l'organització</li><li>Els tipus d'esdeveniments d'usuari creats després que l'usuari estigués a l'organització s'eliminaran</li><li>Els tipus d'esdeveniments d'usuari migrats no s'eliminaran</li></ul>",
   "admin_delete_organization_title": "Voleu eliminar {{organizationName}}?",
   "published": "Publicat",
   "unpublished": "No publicat",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "Permet que la gent reservi immediatament",
   "uprade_to_create_instant_bookings": "Actualitza a Enterprise i permet que els convidats s'uneixin a una trucada instantània a la qual els assistents poden entrar directament. Això només és per a tipus d'esdeveniments d'equip",
   "dont_want_to_wait": "No vols esperar?",
-  "meeting_started": "Reunió iniciada",
-  
-  "cal_ai_event_tab_description": "Deixa que els agents d'IA facin les reserves per tu",
+  "meeting_started": "Reunió iniciada","cal_ai_event_tab_description": "Deixa que els agents d'IA facin les reserves per tu",
   "booking_not_found_error": "No s'ha trobat la reserva",
   "booking_seats_full_error": "Els seients de la reserva estan plens",
-  
-  
   "not_enough_available_seats_error": "La reserva no té prou seients disponibles",
   "user_redirect_title": "{{username}} està temporalment absent durant un breu període de temps.",
   "user_redirect_description": "Mentrestant, {{profile.username}} s'encarregarà de totes les noves reunions programades en nom de {{username}}.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "En acceptar la invitació, el teu enllaç canviarà al domini de la teva organització, però no et preocupis, tots els enllaços anteriors seguiran funcionant i redirigint correctament.<br /><br />Tingues en compte: Tots els teus tipus d'esdeveniments personals es mouran a l'organització <strong>{teamName}</strong>, que també pot incloure enllaços personals potencials.<br /><br />Per a esdeveniments personals, recomanem crear un nou compte amb un correu electrònic personal.",
   "email|existing_user_added_link_changed": "El teu enllaç ha canviat de <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> a <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a> però no et preocupis, tots els enllaços anteriors segueixen funcionant i redirigint correctament.<br /><br />Tingues en compte: Tots els teus tipus d'esdeveniments personals s'han mogut a l'organització <strong>{teamName}</strong>, que també pot incloure enllaços personals potencials.<br /><br />Si us plau, inicia sessió i assegura't que no tens esdeveniments privats al teu nou compte organitzatiu.<br /><br />Per a esdeveniments personals, recomanem crear un nou compte amb un correu electrònic personal.<br /><br />Gaudeix del teu nou enllaç net: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "S'ha creat la teva organització",
-  "your_current_plan": "El teu pla actual",
-  
-  "privacy_organization_description": "Gestiona la configuració de privacitat de la teva organització",
+  "your_current_plan": "El teu pla actual","privacy_organization_description": "Gestiona la configuració de privacitat de la teva organització",
   "privacy": "Privadesa",
   "team_will_be_under_org": "Els nous equips estaran sota la vostra organització",
   "add_group_name": "Afegeix el nom del grup",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "En procedir, accepteu els nostres <0>Termes</0> i <1>Política de privacitat</1>",
   "proceeding_agreement": "En continuar, acceptes les nostres",
   "terms": "Condicions",
-  "always_show_x_days": "Sempre {{x}} dies disponibles",
-  
-  "updating_oauth_client_error": "S'ha produït un error en actualitzar el client OAuth, torna-ho a provar més tard",
+  "always_show_x_days": "Sempre {{x}} dies disponibles","updating_oauth_client_error": "S'ha produït un error en actualitzar el client OAuth, torna-ho a provar més tard",
   "creating_oauth_client_error": "S'ha produït un error en crear el client OAuth, torna-ho a provar més tard",
   "event_type_color": "Color del tipus d'esdeveniment",
   "event_type_color_description": "Això només s'utilitza per diferenciar els tipus d'esdeveniments i reserves dins de l'aplicació. No es mostra als usuaris.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Comprovant calendari de Google",
   "outlook_connect_atom_label": "Connectar calendari d'Outlook",
   "outlook_connect_atom_already_connected_label": "Calendari d'Outlook connectat",
-  "outlook_connect_atom_loading_label": "Comprovant calendari d'Outlook",
-  
-  
-  
-  "booking_question_response_variables": "Variables de resposta de les preguntes de reserva",
+  "outlook_connect_atom_loading_label": "Comprovant calendari d'Outlook","booking_question_response_variables": "Variables de resposta de les preguntes de reserva",
   "managed_by_teamAdmins": "Gestionat per {{teamAdmins}}",
   "number_of_options": "{{count}} opcions",
   "reschedule_with_same_round_robin_host_title": "Reprogramar amb el mateix amfitrió de Round-Robin",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "últims {{count}} dies",
   "month_to_date": "mes fins avui",
   "year_to_date": "any fins avui",
-  "custom_range": "rang personalitzat",
-  
-  "always": "Sempre",
-  "never": "Mai",
-  
-  "if_cancelled": "Si es cancel·la",
+  "custom_range": "rang personalitzat","always": "Sempre",
+  "never": "Mai","if_cancelled": "Si es cancel·la",
   "before": "abans",
   "show_all_columns": "Mostra totes les columnes",
   "toggle_columns": "Commuta columnes",

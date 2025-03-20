@@ -4,9 +4,7 @@
   "day_one": "{{count}} நாள்",
   "day_other": "{{count}} நாட்கள்",
   "second_one": "{{count}} நொடி",
-  "second_other": "{{count}} நொடிகள்",
-  
-  "accept_invitation": "அழைப்பை ஏற்கவும்",
+  "second_other": "{{count}} நொடிகள்","accept_invitation": "அழைப்பை ஏற்கவும்",
   "calcom_explained": "{{appName}} அனைவருக்கும் திட்டமிடல் உள்கட்டமைப்பை வழங்குகிறது.",
   "calcom_explained_new_user": "உங்கள் {{appName}} கணக்கை அமைக்கவும்! உங்கள் திட்டமிடல் சிக்கல்கள் அனைத்தையும் தீர்க்க சில படிகள் மட்டுமே உள்ளன.",
   "have_any_questions": "கேள்விகள் உள்ளதா? நாங்கள் உதவ தயாராக இருக்கிறோம்.",
@@ -29,19 +27,7 @@
   "your_event_has_been_scheduled_recurring": "உங்கள் தொடர் நிகழ்வு திட்டமிடப்பட்டுள்ளது",
   "accept_our_license": ".env மாறியை மாற்றுவதன் மூலம் எங்கள் உரிமத்தை ஏற்கவும்\n<1>NEXT_PUBLIC_LICENSE_CONSENT</1> to '{{agree}}'.",
   "error_message": "பிழை செய்தி: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "உங்கள் கட்டண வழங்குநர் மற்றும் {{user}} உடன் இனைந்து இதை எவ்வாறு கையாள்வது என்பதைச் சரிபார்க்கவும்.",
-  
-  
-  
   "help": "உதவி",
-  
-  
-  
-  
-  
-  
   "codebase_has_to_stay_opensource": "கோட்பேஸ் மாற்றப்பட்டாலும் இல்லாவிட்டாலும் திறந்த மூலமாக இருக்க வேண்டும்",
   "cannot_repackage_codebase": "நீங்கள் கோட்பேஸை மீண்டும் பேக்கேஜ் செய்யவோ விற்கவோ முடியாது",
   "acquire_license": "மின்னஞ்சல்மூலம் இந்த விதிமுறைகளை அகற்ற வணிக உரிமத்தைப் பெறவும்",
@@ -74,9 +60,7 @@
   "request_reschedule_title_organizer": "நீங்கள் {{attendee}} ஐ மறுஅட்டவணைக்குக் கோரியுள்ளீர்கள்",
   "rescheduled_event_type_subject": "மறுஅட்டவணைக்கான கோரிக்கை அனுப்பப்பட்டது: {{eventType}} உடன் {{name}} உடன் {{date}}",
   "requested_to_reschedule_subject_attendee": "மறுஅட்டவணை செயல் தேவை: {{eventType}} க்கு {{name}} உடன் புதிய நேரத்தை முன்பதிவு செய்யவும்",
-  "hi_user_name": "வணக்கம் {{name}}",
-  
-  "turn_on": "இயக்கவும்",
+  "hi_user_name": "வணக்கம் {{name}}","turn_on": "இயக்கவும்",
   "already_in_use_error": "பயனர் பெயர் முன்னரே உபயோகத்தில் உள்ளது",
   "email_no_user_invite_subheading": "{{invitedBy}} உங்களை {{appName}} குழுவில் சேர அழைத்துள்ளார். {{appName}} என்பது ஈமெயில் இல்லாமலேயே உங்களையும் உங்கள் குழுவையும் கூட்டங்களைத் திட்டமிடுவதற்கு உதவும் திட்டமிடல் பயன்பாடு.",
   "email_no_user_step_one": "உங்கள் பயனர்பெயரை தேர்வு செய்யவும்",
@@ -106,11 +90,7 @@
   "booking_questions_title": "முன்பதிவு கேள்விகள்",
   "booking_questions_description": "முன்பதிவு பக்கத்தில் கேட்கப்படும் கேள்விகளைத் தனிப்பயனாக்கவும்",
   "add_a_booking_question": "ஒரு கேள்வியைச் சேர்க்கவும்",
-  "duplicate_email": "மின்னஞ்சல் நகல்",
-  
-  
-  
-  "booking_confirmation_failed": "முன்பதிவு உறுதிப்படுத்தல் தோல்வியடைந்தது",
+  "duplicate_email": "மின்னஞ்சல் நகல்","booking_confirmation_failed": "முன்பதிவு உறுதிப்படுத்தல் தோல்வியடைந்தது",
   "not_enough_seats": "போதுமான இருக்கைகள் இல்லை",
   "form_builder_field_already_exists": "இந்தப் பெயரில் ஒரு புலம் ஏற்கனவே உள்ளது",
   "get_started_zapier_templates": "ஜாப்பியர் டெம்ப்ளேட்களுடன் தொடங்கவும்",
@@ -197,7 +177,5 @@
   "ooo_slots_book_with": "{{displayName}} பதிவேற்று",
   "ooo_create_entry_modal": "வேலை முடிவில் வெளியேறு",
   "ooo_select_reason": "காரணம் தேர்ந்தெடு",
-  "enterprise_license_locally": "இந்த சாதனையை நீங்கள் உள்ளூரில் சோதிக்கலாம் ஆனால் தயாரிப்பில் இல்லை.",
-  
-  "apply_to_all_event_types": "எல்லா நிகழ்வுகள் தொடர்புகளிலும் பயன்படுத்துங்கள், எதிர்கால நிகழ்வுகள் தொடர்புகள் உட்பட."
+  "enterprise_license_locally": "இந்த சாதனையை நீங்கள் உள்ளூரில் சோதிக்கலாம் ஆனால் தயாரிப்பில் இல்லை.","apply_to_all_event_types": "எல்லா நிகழ்வுகள் தொடர்புகளிலும் பயன்படுத்துங்கள், எதிர்கால நிகழ்வுகள் தொடர்புகள் உட்பட."
 }

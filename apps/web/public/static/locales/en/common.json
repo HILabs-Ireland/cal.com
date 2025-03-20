@@ -4,9 +4,7 @@
   "day_one": "{{count}} day",
   "day_other": "{{count}} days",
   "second_one": "{{count}} second",
-  "second_other": "{{count}} seconds",
-  
-  "untitled": "Untitled",
+  "second_other": "{{count}} seconds","untitled": "Untitled",
   "accept_invitation": "Accept Invitation",
   "max_characters": "Max. Characters",
   "min_characters": "Min. Characters",
@@ -68,18 +66,10 @@
   "accept_our_license": "Accept our license by changing the .env variable <1>NEXT_PUBLIC_LICENSE_CONSENT</1> to '{{agree}}'.",
   "remove_banner_instructions": "To remove this banner, please open your .env file and change the <1>NEXT_PUBLIC_LICENSE_CONSENT</1> variable to '{{agree}}'.",
   "error_message": "The error message was: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Please check with your payment provider and {{user}} how to handle this.",
-  
-  
-  
   "dark_theme_contrast_error": "Dark Theme color doesn't pass contrast check. We recommend you change this colour so your buttons will be more visible.",
   "light_theme_contrast_error": "Light Theme color doesn't pass contrast check. We recommend you change this colour so your buttons will be more visible.",
   "event_type_color_light_theme_contrast_error": "Light Theme color doesn't pass contrast check. We recommend you change this color so your event types color will be more visible.",
   "event_type_color_dark_theme_contrast_error": "Dark Theme color doesn't pass contrast check. We recommend you change this color so your event types color will be more visible.",
-  
-  
   "no_available_users_found_error": "No available users found. Could you try another time slot?",
   "request_body_end_time_internal_error": "Internal Error. Request body does not contain end time",
   "create_calendar_event_error": "Unable to create Calendar event in Organizer's calendar",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "You are already signed up for this booking.",
   "hosts_unavailable_for_booking": "Some of the hosts are unavailable for booking.",
   "help": "Help",
-  
-  
-  
-  
-  
-  
   "general_prompt": "General Prompt",
   "begin_message": "Begin Message",
   "codebase_has_to_stay_opensource": "The codebase has to stay open source, whether it was modified or not",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "You are hidden in this team",
   "hidden_team_member_message": "Your seat is not paid for, either Upgrade to PRO or let the team owner know they can pay for your seat.",
   "hidden_team_owner_message": "You need a pro account to use teams, you are hidden until you upgrade.",
-  "link_expires": "p.s. It expires in {{expiresIn}} hours.",
-  
-  "seat_options_doesnt_support_confirmation": "Seats option doesn't support confirmation requirement",
-  "multilocation_doesnt_support_seats": "Multiple Locations doesn't support seats option",
-  
-  "seats_option_doesnt_support_multi_location": "Seats option doesn't support Multiple Locations",
-  
-  
-  
-  
-  
-  
+  "link_expires": "p.s. It expires in {{expiresIn}} hours.","seat_options_doesnt_support_confirmation": "Seats option doesn't support confirmation requirement",
+  "multilocation_doesnt_support_seats": "Multiple Locations doesn't support seats option","seats_option_doesnt_support_multi_location": "Seats option doesn't support Multiple Locations",
   "use_link_to_reset_password": "Use the link below to reset your password",
   "hey_there": "Hey there",
   "forgot_your_password_calcom": "Forgot your password? - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Webhook created successfully!",
   "webhook_updated_successfully": "Webhook updated successfully!",
   "webhook_removed_successfully": "Webhook removed successfully!",
-  
-  
   "payload_template": "Payload Template",
   "dismiss": "Dismiss",
   "no_data_yet": "No data yet",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "Your recurring meeting has been submitted",
   "booking_confirmed": "Your booking has been confirmed",
   "booking_confirmed_recurring": "Your recurring meeting has been confirmed",
-  
-  
   "enter_new_password": "Enter the new password you'd like for your account.",
   "reset_password": "Reset Password",
   "change_your_password": "Change your password",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Transcript Generated",
   "booking_created": "Booking Created",
   "booking_rejected": "Booking Rejected",
-  "booking_requested": "Booking Requested",
-  
-  "meeting_ended": "Meeting Ended",
+  "booking_requested": "Booking Requested","meeting_ended": "Meeting Ended",
   "form_submitted": "Form Submitted",
-  "form_submitted_no_event": "Form submitted, no event booked",
-  
-  "ooo_created": "Out of Office Created",
+  "form_submitted_no_event": "Form submitted, no event booked","ooo_created": "Out of Office Created",
   "booking_no_show_updated": "Booking No-Show Updated",
-  "event_triggers": "Event Triggers",
-  
-  "create_new_webhook": "Create a new webhook",
+  "event_triggers": "Event Triggers","create_new_webhook": "Create a new webhook",
   "webhooks": "Webhooks",
   "team_webhooks": "Team Webhooks",
   "create_new_webhook_to_account": "Create a new webhook to your account",
@@ -529,9 +493,7 @@
   "iframe_embed": "iframe Embed",
   "embed_calcom": "The easiest way to embed {{appName}} on your website.",
   "integrate_using_embed_or_webhooks": "Integrate with your website using our embed options, or get real-time booking information using custom webhooks.",
-  "schedule_a_meeting": "Schedule a meeting",
-        "need_anything_else": "Need anything else?",
-    "contact": "Contact",
+  "schedule_a_meeting": "Schedule a meeting",    "need_anything_else": "Need anything else?","contact": "Contact",
   "our_support_team": "our support team",
   "contact_our_support_team": "Contact our support team",
   "uh_oh": "Uh oh!",
@@ -773,10 +735,6 @@
   "readonly": "Readonly",
   "one_time_link": "One-time link",
   "plan_description": "You're currently on the {{plan}} plan.",
-  
-  
-  
-  
   "event_types_page_title": "Event Types",
   "event_types_page_subtitle": "Create events to share for people to book on your calendar.",
   "new": "New",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Create a team to get started",
   "teams": "Teams",
   "team": "Team",
-  "organization": "Organization",
-      
-  
-    "create_manage_teams_collaborative": "Create and manage teams to use collaborative features.",
+  "organization": "Organization",    "create_manage_teams_collaborative": "Create and manage teams to use collaborative features.",
   "only_available_on_pro_plan": "This feature is only available in Pro plan",
   "remove_cal_branding_description": "In order to remove the {{appName}} branding from your booking pages, you need to upgrade to a Pro account.",
   "edit_profile_info_description": "Edit your profile information, which shows on your scheduling link.",
@@ -843,16 +798,13 @@
   "little_something_about": "A little something about yourself.",
   "profile_updated_successfully": "Profile updated successfully",
   "your_user_profile_updated_successfully": "Your user profile has been updated successfully.",
-  
-  
   "you_are_all_set": "You are all set",
   "you_are_all_set_description": "You are already on the latest plan. Nothing to upgrade. Enjoy the new features and reach out to us with any questions!",
   "user_cannot_found_db": "User seems logged in but cannot be found in the db",
   "embed_and_webhooks": "Embed & Webhooks",
   "enabled": "Enabled",
   "disabled": "Disabled",
-  "disable": "Disable",
-      "availability": "Availability",
+  "disable": "Disable",  "availability": "Availability",
   "edit_availability": "Edit availability",
   "configure_availability": "Configure times when you are available for bookings.",
   "copy_times_to": "Copy times to",
@@ -889,8 +841,6 @@
   "recurring_event": "Recurring Event",
   "recurring_event_description": "People can subscribe for recurring events",
   "connect_and_join": "Connect and Join",
-  
-  
   "warning_instant_meeting_experimental": "Experimental: Instant Meeting Events are currently experimental.",
   "starting": "Starting",
   "disable_guests": "Disable Guests",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "{{appName}} will provide a video meeting URL.",
   "cal_provide_jitsi_meeting_url": "We will generate a Jitsi Meet URL for you.",
   "cal_provide_huddle01_meeting_url": "{{appName}} will provide a Huddle01 video meeting URL.",
-  "cal_provide_teams_meeting_url": "{{appName}} will provide a MS Teams meeting URL. NOTE: MUST HAVE A WORK OR SCHOOL ACCOUNT",
-  
-  "you_need_to_add_a_name": "You need to add a name",
+  "cal_provide_teams_meeting_url": "{{appName}} will provide a MS Teams meeting URL. NOTE: MUST HAVE A WORK OR SCHOOL ACCOUNT","you_need_to_add_a_name": "You need to add a name",
   "commission_per_transaction": "commission per transaction",
   "event_type_updated_successfully_description": "Your event type has been updated successfully.",
   "hide_event_type": "Hide event type",
@@ -964,9 +912,7 @@
   "next_step_text": "Next Step",
   "next_step": "Skip step",
   "prev_step": "Prev step",
-  "install": "Install",
-  
-  "installed": "Installed",
+  "install": "Install","installed": "Installed",
   "active_install_one": "{{count}} active install",
   "active_install_other": "{{count}} active installs",
   "globally_install": "Globally installed",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Calendar updated successfully",
   "check_here": "Check here",
   "conferencing": "Conferencing",
-  "calendar": "Calendar",
-  
-  "not_installed": "Not installed",
+  "calendar": "Calendar","not_installed": "Not installed",
   "error_password_mismatch": "Passwords don't match.",
   "error_required_field": "This field is required.",
   "status": "Status",
@@ -1024,16 +968,12 @@
   "no_category_apps": "No {{category}} apps",
   "all_apps": "All apps",
   "no_category_apps_description_calendar": "Add a calendar app to check for conflicts to prevent double bookings",
-  "no_category_apps_description_conferencing": "Try adding a conference app for video calls with your clients",
-  
-  "no_category_apps_description_analytics": "Add an analytics app for your booking pages",
+  "no_category_apps_description_conferencing": "Try adding a conference app for video calls with your clients","no_category_apps_description_analytics": "Add an analytics app for your booking pages",
   "no_category_apps_description_automation": "Add an automation app to use",
   "no_category_apps_description_other": "Add any other type of app to do all sorts of things",
   "no_category_apps_description_messaging": "Add a messaging app to set up custom notifications & reminders",
   "no_category_apps_description_crm": "Add a CRM app to keep track of who you've met with",
-  "installed_app_calendar_description": "Set the calendars to check for conflicts to prevent double bookings.",
-  
-  "installed_app_analytics_description": "Configure which analytics apps to use for your booking pages",
+  "installed_app_calendar_description": "Set the calendars to check for conflicts to prevent double bookings.","installed_app_analytics_description": "Configure which analytics apps to use for your booking pages",
   "installed_app_other_description": "All your installed apps from other categories.",
   "installed_app_conferencing_description": "Configure which conferencing apps to use",
   "installed_app_automation_description": "Configure which automation apps to use",
@@ -1048,9 +988,7 @@
   "features": "Features",
   "permissions": "Permissions",
   "terms_and_privacy": "Terms and Privacy",
-  "published_by": "Published by {{author}}",
-  
-  "buy": "Buy",
+  "published_by": "Published by {{author}}","buy": "Buy",
   "install_app": "Install App",
   "categories": "Categories",
   "pricing": "Pricing",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Verify Wallet",
   "create_events_on": "Create events on",
   "enterprise_license": "This is a commercial feature",
-  "enterprise_license_locally": "You can test this feature locally but not on production.",
-  
-  "missing_license": "Missing License",
+  "enterprise_license_locally": "You can test this feature locally but not on production.","missing_license": "Missing License",
   "next_steps": "Next Steps",
   "acquire_commercial_license": "Acquire a commercial license",
   "the_infrastructure_plan": "The infrastructure plan is usage-based and has startup-friendly discounts.",
   "prisma_studio_tip": "Create an account via Prisma Studio",
-  "prisma_studio_tip_description": "Learn how to set up your first user",
-  
-  "error_404": "Error 404",
+  "prisma_studio_tip_description": "Learn how to set up your first user","error_404": "Error 404",
   "default": "Default",
   "set_to_default": "Set to Default",
   "new_schedule_btn": "New schedule",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Support Documentation",
   "developer_documentation": "Developer Documentation",
   "get_in_touch": "Get in touch",
-  "contact_support": "Contact Support",
-  
-  "community_support": "Community Support",
+  "contact_support": "Contact Support","community_support": "Community Support",
   "feedback": "Feedback",
   "submitted_feedback": "Thank you for your feedback!",
   "feedback_error": "Error sending feedback",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "Workflows enable you to automate sending reminders and notifications.",
   "active_on": "Active on",
   "workflow_updated_successfully": "{{workflowName}} workflow updated successfully",
-    
-  "current": "Current",
-  
-  "standard": "standard",
+  "current": "Current","standard": "standard",
   "confirm_username_change_dialog_title": "Confirm username change",
-  
-  
-    
   "trial_expired": "Your trial has expired",
   "remove_app": "Remove App",
   "yes_remove_app": "Yes, remove app",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "Attendee",
   "event_date_variable": "Event date",
   "event_time_variable": "Event time",
-  "organizer_name_variable": "Organizer name",
-  
-  "invalid_number": "Invalid phone number",
+  "organizer_name_variable": "Organizer name","invalid_number": "Invalid phone number",
   "invalid_url_error_message": "Invalid URL for {{label}}. Sample URL: {{sampleUrl}}",
   "navigate": "Navigate",
   "open": "Open",
   "close": "Close",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Recordings are part of the teams plan",
   "team_feature_teams": "This is a Team feature. Upgrade to Team to see your team's availability.",
   "team_feature_workflows": "This is a Team feature. Upgrade to Team to automate your event notifications and reminders with Workflows.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Booking Question Identifier",
   "company_size": "Company size",
   "what_help_needed": "What do you need help with?",
-  "variable_format": "Variable format",
-  
-  "custom_input_as_variable_info": "Ignore all special characters of the additional input label (use only letters and numbers), use uppercase for all letters and replace whitespaces with underscores.",
+  "variable_format": "Variable format","custom_input_as_variable_info": "Ignore all special characters of the additional input label (use only letters and numbers), use uppercase for all letters and replace whitespaces with underscores.",
   "using_booking_questions_as_variables": "How do I use booking questions as variables?",
   "download_desktop_app": "Download desktop app",
   "set_ping_link": "Set Ping link",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "How often you can be booked",
   "event_advanced_tab_description": "Calendar settings & more...",
   "event_advanced_tab_title": "Advanced",
-  
-  
   "event_setup_multiple_duration_error": "Event Setup: Multiple durations requires at least 1 option.",
   "event_setup_multiple_duration_default_error": "Event Setup: Please select a valid default duration.",
   "event_setup_booking_limits_error": "Booking limits must be in ascending order. [day, week, month, year]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "You can customise all of this later in the availability page.",
   "connect_calendars_from_app_store": "You can add more calendars from the app store",
   "connect_conference_apps": "Connect conference apps",
-  "connect_calendar_apps": "Connect calendar apps",
-  
-  "connect_automation_apps": "Connect automation apps",
+  "connect_calendar_apps": "Connect calendar apps","connect_automation_apps": "Connect automation apps",
   "connect_analytics_apps": "Connect analytics apps",
   "connect_other_apps": "Connect other apps",
   "connect_messaging_apps": "Connect messaging apps",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Reset link sent",
   "password_reset_email": "An email is on it’s way to {{email}} with instructions to reset your password.",
   "password_reset_leading": "If you don't receive an email soon, check that the email address you entered is correct, check your spam folder or reach out to support if the issue persists.",
-  "password_updated": "Password updated!",
-  
-  "pending_invites": "Pending Invites",
+  "password_updated": "Password updated!","pending_invites": "Pending Invites",
   "pending_organization_invites": "Pending Organization Invites",
   "not_on_cal": "Not on {{appName}}",
   "no_calendar_installed": "No calendar installed",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "Use uppercase for all letters",
   "replace_whitespaces_underscores": "Replace whitespaces with underscores",
   "platform_members": "Platform members",
-  "platform_members_description": "Manage the admins and members in your platform team",
-                  "ignore_special_characters_booking_questions": "Ignore special characters in your booking question identifier. Use only letters and numbers",
+  "platform_members_description": "Manage the admins and members in your platform team",              "ignore_special_characters_booking_questions": "Ignore special characters in your booking question identifier. Use only letters and numbers",
   "retry": "Retry",
   "fetching_calendars_error": "There was a problem fetching your calendars. Please <1>try again</1> or reach out to customer support.",
   "calendar_connection_fail": "Calendar connection failed",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Limit future bookings",
   "limit_future_bookings_description": "Limit how far in the future this event can be booked",
   "no_event_types": "No event types setup",
-  "no_event_types_description": "{{name}} has not setup any event types for you to book.",
-    "monthly": "Monthly",
+  "no_event_types_description": "{{name}} has not setup any event types for you to book.","monthly": "Monthly",
   "yearly": "Yearly",
   "weekly": "Weekly",
   "checkout": "Checkout",
@@ -1733,9 +1643,7 @@
   "test_preview": "Test Preview",
   "route_to": "Route to",
   "test_preview_description": "Test your routing form without submitting any data",
-  "test_routing": "Test Routing",
-  
-  "edit_event_type": "Edit event type",
+  "test_routing": "Test Routing","edit_event_type": "Edit event type",
   "only_admin_can_see_members_of_org": "This Organization is private, and only the organization's admin or owner can view its members.",
   "only_admin_can_manage_sso_org": "Only the organization's admin or owner can manage SSO settings",
   "collective_scheduling": "Collective Scheduling",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "An administrator on the <strong>{{teamName}}</strong> team has replaced your event type <strong>/{{slug}}</strong> with a managed event type that they control.",
   "email_body_slug_replacement_info": "Your link will continue to work but some settings for it may have changed. You can review it in event types.",
   "email_body_slug_replacement_suggestion": "If you have any questions about the event type, please reach out to your administrator.<br /><br />Happy scheduling, <br />The Cal.com team",
-  
-  
   "app_disabled_with_event_type": "The admin has disabled {{appName}} which affects your event type {{title}}.",
   "app_disabled_video": "The admin has disabled {{appName}} which may affect your event types. If you have event types with {{appName}} as the location then it will default to Cal Video.",
   "app_disabled_subject": "{{appName}} has been disabled",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Round-Robin Hosts",
   "minimum_round_robin_hosts_count": "Number of hosts required to attend",
   "hosts": "Hosts",
-  
-  
   "new_attendee": "New Attendee",
   "awaiting_approval": "Awaiting Approval",
   "requires_google_calendar": "This app requires a Google Calendar connection",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Customize the questions asked on the booking page",
   "add_a_booking_question": "Add a question",
   "identifier": "Identifier",
-  "duplicate_email": "Email is duplicate",
-  
-  
-  
-  "booking_confirmation_failed": "Booking confirmation failed",
+  "duplicate_email": "Email is duplicate","booking_confirmation_failed": "Booking confirmation failed",
   "not_enough_seats": "Not enough seats",
   "form_builder_field_already_exists": "A field with this name already exists",
   "show_on_booking_page": "Show on booking page",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Clear Filters",
   "clear": "Clear",
   "hold": "Hold",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Insights",
   "routing_forms": "Routing Forms",
   "testing_workflow_info_message": "When testing this workflow, be aware that Emails and SMS can only be scheduled at least 1 hour in advance",
   "insights_no_data_found_for_filter": "No data found for the selected filter or selected dates.",
-  
-  
   "something_went_wrong_on_our_end": "Something went wrong on our end. Get in touch with our support team, and we’ll get it fixed right away for you.",
-  "please_provide_following_text_to_suppport": "Please provide the following text when contacting support to better help you",
-  
-  "complete_your_booking": "Complete your booking",
+  "please_provide_following_text_to_suppport": "Please provide the following text when contacting support to better help you","complete_your_booking": "Complete your booking",
   "complete_your_booking_subject": "Complete your booking: {{title}} on {{date}}",
   "confirm_your_details": "Confirm your details",
   "copy_invite_link": "Copy invite link",
@@ -2120,14 +2000,8 @@
   "three_months": "3 months",
   "one_year": "1 year",
   "team_invite_received": "You have been invited to join {{teamName}}",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "Charge attendee {{amount, currency}}",
-  
-  "email_invite_team": "{{email}} has been invited",
-  "email_invite_team_bulk": "{{userCount}} users have been invited",
-  
-  "image_size_limit_exceed": "Uploaded image shouldn't exceed 5mb size limit",
+  "currency_string": "{{amount, currency}}","charge_attendee": "Charge attendee {{amount, currency}}","email_invite_team": "{{email}} has been invited",
+  "email_invite_team_bulk": "{{userCount}} users have been invited","image_size_limit_exceed": "Uploaded image shouldn't exceed 5mb size limit",
   "unauthorized_workflow_error_message": "{{errorCode}}: You are not authorized to enable or disable this workflow",
   "inline_embed": "Inline Embed",
   "load_inline_content": "Loads your event type directly inline with your other website content.",
@@ -2394,9 +2268,7 @@
   "locked": "Locked",
   "unlocked": "Unlocked",
   "lock_timezone_toggle_on_booking_page": "Lock timezone on booking page",
-  "description_lock_timezone_toggle_on_booking_page": "To lock the timezone on booking page, useful for in-person events.",
-  
-  "number_in_international_format": "Please enter number in international format.",
+  "description_lock_timezone_toggle_on_booking_page": "To lock the timezone on booking page, useful for in-person events.","number_in_international_format": "Please enter number in international format.",
   "install_calendar": "Install Calendar",
   "branded_subdomain": "Branded Subdomain",
   "branded_subdomain_description": "Get your own branded subdomain, such as acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Extensive Whitelabeling",
   "extensive_whitelabeling_description": "Customize your scheduling experience with your own logo, colors, and more",
   "unlimited_teams": "Unlimited Teams",
-  "unlimited_teams_description": "Add as many subteams as you need to your organization",
-      "advanced_managed_events": "Advanced Managed Event Types",
+  "unlimited_teams_description": "Add as many subteams as you need to your organization",  "advanced_managed_events": "Advanced Managed Event Types",
   "advanced_managed_events_description": "Add a single credit card to pay for all your team's subscriptions",
   "enterprise": "Enterprise",
   "enterprise_description": "Upgrade to Enterprise to create your Organization",
-  "create_your_org": "Create your Organization",
-    "create_your_enterprise_description": "Upgrade to Enterprise and get access to Active Directory Sync, SCIM Automatic User provisioning, Cal.ai Voice Agents, Admin APIs and more!",
-  
-  "admin_delete_organization_description": "<ul><li>Teams that are member of this organization will also be deleted along with their event-types</li><li>Users that were part of the organization will not be deleted but their usernames would be changed to allow them to exist outside the organization</li><li>User event-types created after the user was in the organization will be deleted</li><li>Migrated user event-types will not be deleted</li></ul>",
+  "create_your_org": "Create your Organization","create_your_enterprise_description": "Upgrade to Enterprise and get access to Active Directory Sync, SCIM Automatic User provisioning, Cal.ai Voice Agents, Admin APIs and more!","admin_delete_organization_description": "<ul><li>Teams that are member of this organization will also be deleted along with their event-types</li><li>Users that were part of the organization will not be deleted but their usernames would be changed to allow them to exist outside the organization</li><li>User event-types created after the user was in the organization will be deleted</li><li>Migrated user event-types will not be deleted</li></ul>",
   "admin_delete_organization_title": "Delete {{organizationName}}?",
   "published": "Published",
   "unpublished": "Unpublished",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "Let people book immediately",
   "uprade_to_create_instant_bookings": "Upgrade to Enterprise and let guests join an instant call that attendees can jump straight into. This is only for team event types",
   "dont_want_to_wait": "Don't want to wait?",
-  "meeting_started": "Meeting Started",
-  
-  "cal_ai_event_tab_description": "Let AI Agents book you",
+  "meeting_started": "Meeting Started","cal_ai_event_tab_description": "Let AI Agents book you",
   "booking_not_found_error": "Could not find booking",
   "booking_seats_full_error": "Booking seats are full",
-  
-  
   "not_enough_available_seats_error": "Booking does not have enough available seats",
   "user_redirect_title": "{{username}} is currently away for a brief period of time.",
   "user_redirect_description": "In the meantime, {{profile.username}} will be in charge of all the new scheduled meetings on behalf of {{username}}.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "On accepting the invite, your link will change to your organization domain but don&apos;t worry, all previous links will still work and redirect appropriately.<br /><br />Please note: All of your personal event types will be moved into the <strong>{teamName}</strong> organization, which may also include potential personal link.  <br /><br />For personal events we recommend creating a new account with a personal email address.",
   "email|existing_user_added_link_changed": "Your link has been changed from <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> to <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a> but don&apos;t worry, all previous links still work and redirect appropriately. <br /><br />Please note: All of your personal event types have been moved into the <strong>{teamName}</strong> organisation, which may also include potential personal link.<br /><br />Please log in and make sure you have no private events on your new organisational account.<br /><br />For personal events we recommend creating a new account with a personal email address.<br /><br />Enjoy your new clean link: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Your organization has been created",
-  "your_current_plan": "Your current plan",
-  
-  "privacy_organization_description": "Manage privacy settings for your organization",
+  "your_current_plan": "Your current plan","privacy_organization_description": "Manage privacy settings for your organization",
   "privacy": "Privacy",
   "team_will_be_under_org": "New teams will be under your organization",
   "add_group_name": "Add group name",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "By proceeding, you agree to our <0>Terms</0> and <1>Privacy Policy</1>.",
   "proceeding_agreement": "By proceeding, you agree to our",
   "terms": "Terms",
-  "always_show_x_days": "Always {{x}} days available",
-  
-  "updating_oauth_client_error": "An error occurred while updating the OAuth client, please try again later",
+  "always_show_x_days": "Always {{x}} days available","updating_oauth_client_error": "An error occurred while updating the OAuth client, please try again later",
   "creating_oauth_client_error": "An error occurred while creating the OAuth client, please try again later",
   "event_type_color": "Event type color",
   "event_type_color_description": "This is only used for event type & booking differentiation within the app. It is not displayed to bookers.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Checking Google Calendar",
   "outlook_connect_atom_label": "Connect Outlook Calendar",
   "outlook_connect_atom_already_connected_label": "Connected Outlook Calendar",
-  "outlook_connect_atom_loading_label": "Checking Outlook Calendar",
-  
-  
-  
-  "booking_question_response_variables": "Booking question response variables",
+  "outlook_connect_atom_loading_label": "Checking Outlook Calendar","booking_question_response_variables": "Booking question response variables",
   "managed_by_teamAdmins": "Managed by {{teamAdmins}}",
   "number_of_options": "{{count}} options",
   "reschedule_with_same_round_robin_host_title": "Reschedule with same Round-Robin host",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "last {{count}} days",
   "month_to_date": "month to date",
   "year_to_date": "year to date",
-  "custom_range": "custom range",
-  
-  "always": "Always",
-  "never": "Never",
-  
-  "if_cancelled": "If cancelled",
+  "custom_range": "custom range","always": "Always",
+  "never": "Never","if_cancelled": "If cancelled",
   "before": "before",
   "show_all_columns": "Show all columns",
   "toggle_columns": "Toggle columns",

@@ -4,9 +4,7 @@
   "day_one": "{{count}} ngày",
   "day_other": "{{count}} ngày",
   "second_one": "{{count}} giây",
-  "second_other": "{{count}} giây",
-  
-  "untitled": "Chưa đặt tên",
+  "second_other": "{{count}} giây","untitled": "Chưa đặt tên",
   "accept_invitation": "Chấp Nhận Lời Mời",
   "max_characters": "Số ký tự tối đa",
   "min_characters": "Số ký tự tối thiểu",
@@ -68,18 +66,10 @@
   "accept_our_license": "Chấp nhận giấy phép của chúng tôi bằng cách thay đổi biến .env <1>NEXT_PUBLIC_LICENSE_CONSENT</1> thành '{{agree}}'.",
   "remove_banner_instructions": "Để xóa banner này, vui lòng mở tệp .env của bạn và thay đổi biến <1> NEXT_PUBLIC_LICENSE_CONSENT </1> thành '{{agree}}'.",
   "error_message": "Thông báo lỗi là: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Hãy kiểm tra với nhà cung cấp thanh toán và {{user}} phương thức xử lý.",
-  
-  
-  
   "dark_theme_contrast_error": "Màu chủ đề tối không đạt kiểm tra độ tương phản. Chúng tôi khuyên bạn nên thay đổi màu này để các nút của bạn dễ nhìn hơn.",
   "light_theme_contrast_error": "Màu chủ đề sáng không đạt kiểm tra độ tương phản. Chúng tôi khuyên bạn nên thay đổi màu này để các nút của bạn dễ nhìn hơn.",
   "event_type_color_light_theme_contrast_error": "Màu chủ đề sáng không đạt kiểm tra độ tương phản. Chúng tôi khuyên bạn nên thay đổi màu này để màu của các loại sự kiện dễ nhìn hơn.",
   "event_type_color_dark_theme_contrast_error": "Màu chủ đề tối không đạt kiểm tra độ tương phản. Chúng tôi khuyên bạn nên thay đổi màu này để màu của các loại sự kiện dễ nhìn hơn.",
-  
-  
   "no_available_users_found_error": "Không tìm thấy người dùng khả dụng. Bạn có thể thử một khung giờ khác không?",
   "request_body_end_time_internal_error": "Lỗi nội bộ. Yêu cầu không chứa thời gian kết thúc",
   "create_calendar_event_error": "Không thể tạo sự kiện trên lịch của người tổ chức",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "Bạn đã đăng ký cho lần đặt chỗ này.",
   "hosts_unavailable_for_booking": "Một số người tổ chức không khả dụng để đặt chỗ.",
   "help": "Trợ giúp",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Nhắc nhở chung",
   "begin_message": "Bắt đầu tin nhắn",
   "codebase_has_to_stay_opensource": "Codebase phải duy trì nguồn mở, cho dù nó đã được sửa đổi hay không",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "Bạn đã bị ẩn trong nhóm này",
   "hidden_team_member_message": "Ghế ngồi của bạn không được thanh toán bởi nhóm, hãy nâng cấp lên PRO hoặc thông báo cho người quản lý nhóm để họ có thể thanh toán cho ghế ngồi của bạn.",
   "hidden_team_owner_message": "Bạn cần tài khoản Pro để sử dụng nhóm, bạn sẽ bị ẩn cho đến khi bạn thanh toán.",
-  "link_expires": "p.s. Link hết hạn trong vòng {{expiresIn}} tiếng.",
-  
-  "seat_options_doesnt_support_confirmation": "Tuỳ chọn chỗ ngồi không hỗ trợ yêu cầu xác nhận",
-  "multilocation_doesnt_support_seats": "Nhiều địa điểm không hỗ trợ tùy chọn chỗ ngồi",
-  
-  "seats_option_doesnt_support_multi_location": "Tùy chọn chỗ ngồi không hỗ trợ Nhiều địa điểm",
-  
-  
-  
-  
-  
-  
+  "link_expires": "p.s. Link hết hạn trong vòng {{expiresIn}} tiếng.","seat_options_doesnt_support_confirmation": "Tuỳ chọn chỗ ngồi không hỗ trợ yêu cầu xác nhận",
+  "multilocation_doesnt_support_seats": "Nhiều địa điểm không hỗ trợ tùy chọn chỗ ngồi","seats_option_doesnt_support_multi_location": "Tùy chọn chỗ ngồi không hỗ trợ Nhiều địa điểm",
   "use_link_to_reset_password": "Sử dụng đường link dưới đây để thay đổi mật khẩu của bạn",
   "hey_there": "Chào bạn",
   "forgot_your_password_calcom": "Quên mật khẩu của bạn? - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Webhook đã được tạo thành công!",
   "webhook_updated_successfully": "Webhook đã được cập nhật!",
   "webhook_removed_successfully": "Webhook đã được xoá!",
-  
-  
   "payload_template": "Biểu mẫu Payload",
   "dismiss": "Bỏ qua",
   "no_data_yet": "Chưa có dữ liệu",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "Cuộc họp định kỳ của bạn đã được gửi đi",
   "booking_confirmed": "Lịch hẹn của bạn đã được xác nhận",
   "booking_confirmed_recurring": "Cuộc họp định kỳ của bạn đã được xác nhận",
-  
-  
   "enter_new_password": "Nhập mật khẩu mới bạn muốn cho tài khoản của mình.",
   "reset_password": "Đặt lại mật khẩu",
   "change_your_password": "Thay đổi mật khẩu của bạn",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Bản ghi đã được tạo",
   "booking_created": "Lịch hẹn đã được tạo",
   "booking_rejected": "Lịch hẹn đã bị từ chối",
-  "booking_requested": "Lịch hẹn đã được yêu cầu",
-  
-  "meeting_ended": "Cuộc họp đã kết thúc",
+  "booking_requested": "Lịch hẹn đã được yêu cầu","meeting_ended": "Cuộc họp đã kết thúc",
   "form_submitted": "Biểu mẫu đã được gửi",
-  "form_submitted_no_event": "Đã gửi biểu mẫu, không có sự kiện nào được đặt",
-  
-  "ooo_created": "Đã tạo chế độ Vắng mặt",
+  "form_submitted_no_event": "Đã gửi biểu mẫu, không có sự kiện nào được đặt","ooo_created": "Đã tạo chế độ Vắng mặt",
   "booking_no_show_updated": "Đã cập nhật tình trạng không xuất hiện",
-  "event_triggers": "Sự kiện kích hoạt",
-  
-  "create_new_webhook": "Tạo một webhook mới",
+  "event_triggers": "Sự kiện kích hoạt","create_new_webhook": "Tạo một webhook mới",
   "webhooks": "Webhooks",
   "team_webhooks": "Webhooks Nhóm",
   "create_new_webhook_to_account": "Tạo một webhook mới cho tài khoản của bạn",
@@ -529,9 +493,7 @@
   "iframe_embed": "iframe nhúng",
   "embed_calcom": "Cách dễ nhất để nhúng {{appName}} vào trang web của bạn.",
   "integrate_using_embed_or_webhooks": "Tích hợp với trang web của bạn bằng cách sử dụng các tùy chọn nhúng của chúng tôi hoặc nhận thông tin lịch hẹn theo thời gian thực bằng cách sử dụng webhooks.",
-  "schedule_a_meeting": "Sắp xếp một cuộc họp",
-        "need_anything_else": "Cần gì nữa không?",
-    "contact": "Liên hệ",
+  "schedule_a_meeting": "Sắp xếp một cuộc họp",    "need_anything_else": "Cần gì nữa không?","contact": "Liên hệ",
   "our_support_team": "nhóm hỗ trợ",
   "contact_our_support_team": "Liên hệ với nhóm hỗ trợ của chúng tôi",
   "uh_oh": "\bÔi không!",
@@ -773,10 +735,6 @@
   "readonly": "Chỉ đọc",
   "one_time_link": "Liên kết dùng một lần",
   "plan_description": "Bạn hiện đang sử dụng gói {{plan}}.",
-  
-  
-  
-  
   "event_types_page_title": "Các loại sự kiện",
   "event_types_page_subtitle": "Tạo sự kiện và cho mọi người đặt trên lịch của bạn.",
   "new": "Mới",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Tạo một nhóm để bắt đầu",
   "teams": "Các nhóm",
   "team": "Nhóm",
-  "organization": "Tổ chức",
-      
-  
-    "create_manage_teams_collaborative": "Tạo và quản lý các nhóm để sử dụng các tính năng cộng tác.",
+  "organization": "Tổ chức",    "create_manage_teams_collaborative": "Tạo và quản lý các nhóm để sử dụng các tính năng cộng tác.",
   "only_available_on_pro_plan": "Tính năng này chỉ có sẵn trong gói Pro",
   "remove_cal_branding_description": "Để xóa nhãn hiệu {{appName}} khỏi các trang đặt lịch hẹn của bạn, bạn cần nâng cấp lên tài khoản Pro.",
   "edit_profile_info_description": "Chỉnh sửa thông tin hồ sơ của bạn mà sẽ hiển thị trên liên kết lập lịch của bạn.",
@@ -843,16 +798,13 @@
   "little_something_about": "Một chút gì đó về bản thân bạn.",
   "profile_updated_successfully": "Hô sơ được cập nhật thành công",
   "your_user_profile_updated_successfully": "Hồ sơ người dùng của bạn đã được cập nhật thành công.",
-  
-  
   "you_are_all_set": "Mọi thứ đã sẵn sàng",
   "you_are_all_set_description": "Bạn đang sử dụng gói mới nhất. Không cần nâng cấp thêm. Hãy tận hưởng các tính năng mới và liên hệ với chúng tôi nếu có bất kỳ câu hỏi nào!",
   "user_cannot_found_db": "Người dùng dường như đã đăng nhập nhưng không thể tìm thấy trong cơ sở dữ liệu",
   "embed_and_webhooks": "Nhúng & Webhook",
   "enabled": "Đã bật",
   "disabled": "Đã tắt",
-  "disable": "Tắt",
-      "availability": "Lịch khả dụng",
+  "disable": "Tắt",  "availability": "Lịch khả dụng",
   "edit_availability": "Sửa tình trạng trống lịch",
   "configure_availability": "Định cấu hình thời gian mà mọi người có thể đặt lịch hẹn.",
   "copy_times_to": "Sao chép thời gian đến",
@@ -889,8 +841,6 @@
   "recurring_event": "Sự kiện định kỳ",
   "recurring_event_description": "Mọi người có thể ghi danh sự kiện định kỳ",
   "connect_and_join": "Kết nối và tham gia",
-  
-  
   "warning_instant_meeting_experimental": "Thử nghiệm: Sự Kiện Cuộc Họp Tức Thì hiện đang thử nghiệm.",
   "starting": "Bắt đầu",
   "disable_guests": "Vô hiệu hóa Khách",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "{{appName}} sẽ cung cấp URL cuộc họp video.",
   "cal_provide_jitsi_meeting_url": "Chúng tôi sẽ tạo một URL Jitsi Meet cho bạn.",
   "cal_provide_huddle01_meeting_url": "{{appName}} sẽ cung cấp URL cuộc họp video Huddle01.",
-  "cal_provide_teams_meeting_url": "{{appName}} sẽ cung cấp URL cuộc họp MS Teams. LƯU Ý: PHẢI CÓ TÀI KHOẢN CÔNG VIỆC HOẶC TRƯỜNG HỌC",
-  
-  "you_need_to_add_a_name": "Bạn cần thêm vào một tên",
+  "cal_provide_teams_meeting_url": "{{appName}} sẽ cung cấp URL cuộc họp MS Teams. LƯU Ý: PHẢI CÓ TÀI KHOẢN CÔNG VIỆC HOẶC TRƯỜNG HỌC","you_need_to_add_a_name": "Bạn cần thêm vào một tên",
   "commission_per_transaction": "hoa hồng cho mỗi giao dịch",
   "event_type_updated_successfully_description": "Loại sự kiện của bạn đã được cập nhật thành công.",
   "hide_event_type": "Ẩn loại sự kiện",
@@ -964,9 +912,7 @@
   "next_step_text": "Bước tiếp theo",
   "next_step": "Bỏ qua bước",
   "prev_step": "Bước trước",
-  "install": "Cài đặt",
-  
-  "installed": "Đã cài đặt",
+  "install": "Cài đặt","installed": "Đã cài đặt",
   "active_install_one": "{{count}} cài đặt hoạt động",
   "active_install_other": "{{count}} cài đặt hoạt động",
   "globally_install": "Đã cài đặt tổng quát",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Đã cập nhật lịch thành công",
   "check_here": "Kiểm tra tại đây",
   "conferencing": "Hội nghị",
-  "calendar": "Lịch",
-  
-  "not_installed": "Chưa cài đặt",
+  "calendar": "Lịch","not_installed": "Chưa cài đặt",
   "error_password_mismatch": "Mật khẩu không khớp.",
   "error_required_field": "Trường này là bắt buộc.",
   "status": "Trạng thái",
@@ -1024,16 +968,12 @@
   "no_category_apps": "Không có ứng dụng {{category}}",
   "all_apps": "Tất cả các ứng dụng",
   "no_category_apps_description_calendar": "Thêm một ứng dụng lịch để kiểm tra xung đột nhằm tránh đặt lịch hẹn trùng",
-  "no_category_apps_description_conferencing": "Thử thêm vào một ứng dụng hội nghị dành cho các cuộc gọi video với khách hàng của bạn",
-  
-  "no_category_apps_description_analytics": "Thêm một ứng dụng phân tích cho những trang lịch hẹn của bạn",
+  "no_category_apps_description_conferencing": "Thử thêm vào một ứng dụng hội nghị dành cho các cuộc gọi video với khách hàng của bạn","no_category_apps_description_analytics": "Thêm một ứng dụng phân tích cho những trang lịch hẹn của bạn",
   "no_category_apps_description_automation": "Thêm một ứng dụng tự động hoá để sử dụng",
   "no_category_apps_description_other": "Thêm loại ứng dụng khác để làm mọi loại công việc",
   "no_category_apps_description_messaging": "Thêm một ứng dụng nhắn tin để thiết lập thông báo & lời nhắc tuỳ chỉnh",
   "no_category_apps_description_crm": "Thêm một ứng dụng CRM để theo dõi người mà bạn đã họp cùng",
-  "installed_app_calendar_description": "Đặt (các) lịch làm nhiệm vụ kiểm tra xung đột nhằm ngăn tình trạng đặt lịch trùng.",
-  
-  "installed_app_analytics_description": "Cấu hình ứng dụng phân tích nào để sử dụng cho những trang lịch hẹn của bạn",
+  "installed_app_calendar_description": "Đặt (các) lịch làm nhiệm vụ kiểm tra xung đột nhằm ngăn tình trạng đặt lịch trùng.","installed_app_analytics_description": "Cấu hình ứng dụng phân tích nào để sử dụng cho những trang lịch hẹn của bạn",
   "installed_app_other_description": "Tất cả những ứng dụng bạn đã cài từ những danh mục khác.",
   "installed_app_conferencing_description": "Cấu hình ứng dụng hội nghị nào nên dùng",
   "installed_app_automation_description": "Cấu hình ứng dụng tự động hoá nên dùng",
@@ -1048,9 +988,7 @@
   "features": "Tính năng",
   "permissions": "Quyền",
   "terms_and_privacy": "Điều khoản và Quyền riêng tư",
-  "published_by": "Được xuất bản bởi {{author}}",
-  
-  "buy": "Mua",
+  "published_by": "Được xuất bản bởi {{author}}","buy": "Mua",
   "install_app": "Cài đặt ứng dụng",
   "categories": "Thể loại",
   "pricing": "Giá",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Xác minh Ví",
   "create_events_on": "Tạo sự kiện trên",
   "enterprise_license": "Đây là một tính năng thương mại",
-  "enterprise_license_locally": "Bạn có thể thử tính năng này tại địa phương nhưng không phải trên môi trường sản xuất.",
-  
-  "missing_license": "Giấy phép bị thiếu",
+  "enterprise_license_locally": "Bạn có thể thử tính năng này tại địa phương nhưng không phải trên môi trường sản xuất.","missing_license": "Giấy phép bị thiếu",
   "next_steps": "Bước tiếp theo",
   "acquire_commercial_license": "Lấy giấy phép thương mại",
   "the_infrastructure_plan": "Gói cơ sở hạ tầng dựa trên mức sử dụng và có chiết khấu thân thiện với startup.",
   "prisma_studio_tip": "Tạo tài khoản qua Prisma Studio",
-  "prisma_studio_tip_description": "Tìm hiểu cách thiết lập người dùng đầu tiên của bạn",
-  
-  "error_404": "Lỗi 404",
+  "prisma_studio_tip_description": "Tìm hiểu cách thiết lập người dùng đầu tiên của bạn","error_404": "Lỗi 404",
   "default": "Mặc định",
   "set_to_default": "Đặt thành Mặc định",
   "new_schedule_btn": "Lịch mới",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Tài liệu hỗ trợ",
   "developer_documentation": "Tài liệu nhà phát triển",
   "get_in_touch": "Liên lạc",
-  "contact_support": "Liên hệ với bộ phận hỗ trợ",
-  
-  "community_support": "Hỗ trợ cộng đồng",
+  "contact_support": "Liên hệ với bộ phận hỗ trợ","community_support": "Hỗ trợ cộng đồng",
   "feedback": "Phản hồi",
   "submitted_feedback": "Cám ơn bạn đã phản hồi!",
   "feedback_error": "Có lỗi khi gửi phản hồi",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "Dòng công việc giúp bạn tự động hóa việc gửi lời nhắc và thông báo.",
   "active_on": "Hoạt động vào",
   "workflow_updated_successfully": "Đã cập nhật thành công tiến độ công việc {{workflowName}}",
-    
-  "current": "Hiện tại",
-  
-  "standard": "tiêu chuẩn",
+  "current": "Hiện tại","standard": "tiêu chuẩn",
   "confirm_username_change_dialog_title": "Xác nhận thay đổi tên người dùng",
-  
-  
-    
   "trial_expired": "Bản dùng thử đã hết hạn",
   "remove_app": "Gỡ bỏ ứng dụng",
   "yes_remove_app": "Có, hãy gỡ bỏ ứng dụng",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "Tên người tham dự",
   "event_date_variable": "Ngày sự kiện",
   "event_time_variable": "Thời gian sự kiện",
-  "organizer_name_variable": "Tên nhà tổ chức",
-  
-  "invalid_number": "Số điện thoại không hợp lệ",
+  "organizer_name_variable": "Tên nhà tổ chức","invalid_number": "Số điện thoại không hợp lệ",
   "invalid_url_error_message": "URL không hợp lệ cho {{label}}. URL mẫu: {{sampleUrl}}",
   "navigate": "Điều hướng",
   "open": "Mở",
   "close": "Đóng",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Những bản ghi là một phần trong gói kế hoạch nhóm",
   "team_feature_teams": "Đây là tính năng Team. Nâng cấp lên Team để xem trạng thái sẵn sàng của nhóm bạn.",
   "team_feature_workflows": "Đây là tính năng Team. Nâng cấp lên Team để tự động hoá thông báo và lời nhắc sự kiện với Tiến độ công việc.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Mã định danh câu hỏi lịch hẹn",
   "company_size": "Quy mô công ty",
   "what_help_needed": "Bạn cần giúp điều gì?",
-  "variable_format": "Định dạng biến số",
-  
-  "custom_input_as_variable_info": "Bỏ qua tất cả các ký tự đặc biệt của nhãn thông tin đầu vào bổ sung (chỉ dùng chữ cái và con số), dùng chữ in hoa cho tất cả các chữ cái và thay thế khoảng trắng bằng dấu gạch dưới.",
+  "variable_format": "Định dạng biến số","custom_input_as_variable_info": "Bỏ qua tất cả các ký tự đặc biệt của nhãn thông tin đầu vào bổ sung (chỉ dùng chữ cái và con số), dùng chữ in hoa cho tất cả các chữ cái và thay thế khoảng trắng bằng dấu gạch dưới.",
   "using_booking_questions_as_variables": "Làm thế nào để tôi có thể dùng những câu hỏi lịch hẹn ở dạng tham số?",
   "download_desktop_app": "Tải ứng dụng trên máy tính bàn",
   "set_ping_link": "Đặt liên kết Ping",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "Bạn có thể được đặt lịch bao lần",
   "event_advanced_tab_description": "Cài đặt cho lịch & nhiều tính năng khác...",
   "event_advanced_tab_title": "Nâng cao",
-  
-  
   "event_setup_multiple_duration_error": "Thiết lập sự kiện: Nhiều khoảng thời gian cần ít nhất 1 tuỳ chọn.",
   "event_setup_multiple_duration_default_error": "Thiết lập sự kiện: Vui lòng chọn một khoảng thời gian mặc định hợp lệ.",
   "event_setup_booking_limits_error": "Giới hạn lịch hẹn phải theo thứ tự tăng dần. [ngày, tuần, tháng, năm]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "Bạn có thể tuỳ chỉnh toàn bộ việc này sau ở trang trình trạng trống lịch.",
   "connect_calendars_from_app_store": "Bạn có thể thêm nhiều lịch khác từ App Store",
   "connect_conference_apps": "Kết nối các ứng dụng hội nghị",
-  "connect_calendar_apps": "Kết nối các ứng dụng lịch",
-  
-  "connect_automation_apps": "Kết nối các ứng dụng tự động hoá",
+  "connect_calendar_apps": "Kết nối các ứng dụng lịch","connect_automation_apps": "Kết nối các ứng dụng tự động hoá",
   "connect_analytics_apps": "Kết nối các ứng dụng phân tích",
   "connect_other_apps": "Kết nối các ứng dụng khác",
   "connect_messaging_apps": "Kết nối các ứng dụng nhắn tin",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Đã gửi liên kết đặt lại",
   "password_reset_email": "Một email đang được gửi tới {{email}} kèm các chỉ dẫn đặt lại mật khẩu.",
   "password_reset_leading": "Nếu sau một lúc mà bạn không nhận được email, hãy kiểm tra liệu bạn có nhập địa chỉ email chính xác không, kiểm tra thư mục spam hoặc liên hệ nhờ hỗ trợ nếu vẫn còn gặp sự cố.",
-  "password_updated": "Mật khẩu đã được cập nhật!",
-  
-  "pending_invites": "Lời mời đang chờ xử lý",
+  "password_updated": "Mật khẩu đã được cập nhật!","pending_invites": "Lời mời đang chờ xử lý",
   "pending_organization_invites": "Lời mời tổ chức đang chờ",
   "not_on_cal": "Không phải trên {{appName}}",
   "no_calendar_installed": "Chưa cài đặt lịch nào",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "In hoa hết tất cả các chữ cái",
   "replace_whitespaces_underscores": "Thay thế khoảng trắng bằng dấu gạch dưới",
   "platform_members": "Thành viên nền tảng",
-  "platform_members_description": "Quản lý quản trị viên và thành viên trong nhóm nền tảng của bạn",
-                  "ignore_special_characters_booking_questions": "Bỏ qua những ký tự đặc biệt trong mã định danh câu hỏi lịch hẹn. Chỉ dùng chữ cái và số",
+  "platform_members_description": "Quản lý quản trị viên và thành viên trong nhóm nền tảng của bạn",              "ignore_special_characters_booking_questions": "Bỏ qua những ký tự đặc biệt trong mã định danh câu hỏi lịch hẹn. Chỉ dùng chữ cái và số",
   "retry": "Thử lại",
   "fetching_calendars_error": "Có vấn đề khi tìm dữ liệu của bạn. Vui lòng <1>thử lại</1> hoặc liên hệ với bộ phận hỗ trợ khách hàng.",
   "calendar_connection_fail": "Kết nối lịch bất thành",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Hạn chế lịch hẹn trong tương lai",
   "limit_future_bookings_description": "Hạn chế khoảng cách trong tương lai mà sự kiện này có thể được đặt lịch hẹn",
   "no_event_types": "Không có thiết lập loại sự kiện nào",
-  "no_event_types_description": "{{name}} đã không thiết lập bất kỳ loại sự kiện nào cho bạn để đặt lịch hẹn.",
-    "monthly": "Hằng tháng",
+  "no_event_types_description": "{{name}} đã không thiết lập bất kỳ loại sự kiện nào cho bạn để đặt lịch hẹn.","monthly": "Hằng tháng",
   "yearly": "Hằng năm",
   "weekly": "Hàng tuần",
   "checkout": "Thanh toán",
@@ -1733,9 +1643,7 @@
   "test_preview": "Kiểm tra Xem trước",
   "route_to": "Định hướng đến",
   "test_preview_description": "Kiểm tra biểu mẫu định hướng mà không cần gửi bất kỳ dữ liệu nào",
-  "test_routing": "Kiểm tra định hướng",
-  
-  "edit_event_type": "Sửa loại sự kiện",
+  "test_routing": "Kiểm tra định hướng","edit_event_type": "Sửa loại sự kiện",
   "only_admin_can_see_members_of_org": "Tổ chức này là riêng tư, chỉ có quản trị viên hoặc chủ sở hữu của tổ chức mới có thể xem các thành viên.",
   "only_admin_can_manage_sso_org": "Chỉ có quản trị viên hoặc chủ sở hữu của tổ chức mới có thể quản lý cài đặt SSO",
   "collective_scheduling": "Lên lịch tập thể",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "Một quản trị viên trên nhóm <strong>{{teamName}}</strong> đã thay thế loại sự kiện của bạn <strong>/{{slug}}</strong> bằng một loại sự kiện được quản lý mà họ kiểm soát.",
   "email_body_slug_replacement_info": "Liên kết của bạn sẽ tiếp tục hoạt động nhưng một số thiết lập cho nó có thể thay đổi. Bạn có thể xem lại nó trong những loại sự kiện.",
   "email_body_slug_replacement_suggestion": "Nếu bạn có thắc mắc gì về loại sự kiện này, vui lòng liên lạc với quản trị viên của bạn. <br /><br />Chúc bạn đặt lịch vui vẻ,<br /> Nhóm Cal.com",
-  
-  
   "app_disabled_with_event_type": "Quản trị viên đã tắt {{appName}} vốn có ảnh hưởng đến loại sự kiện {{title}}.",
   "app_disabled_video": "Quản trị viên đã tắt {{appName}} vốn có ảnh hưởng đến những loại sự kiện của bạn. Nếu bạn có những loại sự kiện với {{appName}} ở dạng vị trí thì nó sẽ mặc định gắn với Cal Video.",
   "app_disabled_subject": "{{appName}} đã được tắt",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Chủ tọa xoay vòng",
   "minimum_round_robin_hosts_count": "Số chủ tọa cần thiết để tham dự",
   "hosts": "Chủ tọa",
-  
-  
   "new_attendee": "Người tham dự mới",
   "awaiting_approval": "Đang chờ duyệt",
   "requires_google_calendar": "Ứng dụng này yêu cầu bạn liên kết với Google Calendar",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Tùy chỉnh các câu hỏi ở trang đặt lịch hẹn",
   "add_a_booking_question": "Thêm một câu hỏi",
   "identifier": "Mã định danh",
-  "duplicate_email": "Email bị trùng",
-  
-  
-  
-  "booking_confirmation_failed": "Xác nhận lịch hẹn không thành công",
+  "duplicate_email": "Email bị trùng","booking_confirmation_failed": "Xác nhận lịch hẹn không thành công",
   "not_enough_seats": "Không đủ chỗ",
   "form_builder_field_already_exists": "Đã tồn tại một trường có tên này",
   "show_on_booking_page": "Hiện trên trang lịch hẹn",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Xóa bộ lọc",
   "clear": "Xóa",
   "hold": "Tạm giữ",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Thông tin chi tiết",
   "routing_forms": "Biểu mẫu Định tuyến",
   "testing_workflow_info_message": "Khi kiểm tra tiến độ công việc này, hãy để ý rằng Email và SMS chỉ có thể được đặt lịch trước ít nhất 1 giờ",
   "insights_no_data_found_for_filter": "Không tìm thấy dữ liệu cho bộ lọc hay ngày đã chọn.",
-  
-  
   "something_went_wrong_on_our_end": "Bên chúng tôi có sự cố. Hãy liên lạc với nhóm hỗ trợ của chúng tôi, và chúng tôi sẽ cho khắc phục ngay cho bạn.",
-  "please_provide_following_text_to_suppport": "Vui lòng cung cấp tin nhắn sau khi liên lạc bộ phận hỗ trợ để được trợ giúp tốt hơn",
-  
-  "complete_your_booking": "Hoàn thành lịch hẹn của bạn",
+  "please_provide_following_text_to_suppport": "Vui lòng cung cấp tin nhắn sau khi liên lạc bộ phận hỗ trợ để được trợ giúp tốt hơn","complete_your_booking": "Hoàn thành lịch hẹn của bạn",
   "complete_your_booking_subject": "Hoàn thành lịch hẹn của bạn: {{title}} vào {{date}}",
   "confirm_your_details": "Xác nhận các chi tiết của bạn",
   "copy_invite_link": "Sao chép liên kết mời",
@@ -2120,14 +2000,8 @@
   "three_months": "3 tháng",
   "one_year": "1 năm",
   "team_invite_received": "Bạn đã được mời để gia nhập {{teamName}}",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "Thu phí người tham gia một khoản {{amount, currency}}",
-  
-  "email_invite_team": "{{email}} đã được mời",
-  "email_invite_team_bulk": "{{userCount}} người dùng đã được mời",
-  
-  "image_size_limit_exceed": "Ảnh tải lên không được vượt quá giới hạn kích cỡ 5mb",
+  "currency_string": "{{amount, currency}}","charge_attendee": "Thu phí người tham gia một khoản {{amount, currency}}","email_invite_team": "{{email}} đã được mời",
+  "email_invite_team_bulk": "{{userCount}} người dùng đã được mời","image_size_limit_exceed": "Ảnh tải lên không được vượt quá giới hạn kích cỡ 5mb",
   "unauthorized_workflow_error_message": "{{errorCode}}: Bạn không được ủy quyền để bật hoặc tắt tiến độ công việc này",
   "inline_embed": "Nhúng inline",
   "load_inline_content": "Tải trực tiếp loại sự kiện của bạn ở dạng nội tuyến với nội dung khác trên website của bạn.",
@@ -2394,9 +2268,7 @@
   "locked": "Đã khóa",
   "unlocked": "Đã mở khóa",
   "lock_timezone_toggle_on_booking_page": "Khoá múi giờ trên trang lịch hẹn",
-  "description_lock_timezone_toggle_on_booking_page": "Để khoá múi giờ trên trang lịch hẹn, hữu dụng cho những sự kiện đích thân tham dự.",
-  
-  "number_in_international_format": "Vui lòng nhập số theo định dạng quốc tế.",
+  "description_lock_timezone_toggle_on_booking_page": "Để khoá múi giờ trên trang lịch hẹn, hữu dụng cho những sự kiện đích thân tham dự.","number_in_international_format": "Vui lòng nhập số theo định dạng quốc tế.",
   "install_calendar": "Cài đặt Lịch",
   "branded_subdomain": "Tên miền phụ có thương hiệu",
   "branded_subdomain_description": "Có tên miền phụ có thương hiệu của riêng bạn, chẳng hạn như acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Hướng dẫn bắt đầu và hỗ trợ kỹ thuật chuyên biệt",
   "extensive_whitelabeling_description": "Tùy chỉnh trải nghiệm lập lịch của bạn với logo, màu sắc và nhiều hơn nữa của riêng bạn",
   "unlimited_teams": "Đội nhóm không giới hạn",
-  "unlimited_teams_description": "Thêm bao nhiêu đội nhóm phụ vào tổ chức của bạn tùy thích",
-      "advanced_managed_events": "Loại sự kiện quản lý nâng cao",
+  "unlimited_teams_description": "Thêm bao nhiêu đội nhóm phụ vào tổ chức của bạn tùy thích",  "advanced_managed_events": "Loại sự kiện quản lý nâng cao",
   "advanced_managed_events_description": "Thêm một thẻ tín dụng để thanh toán cho tất cả các đăng ký của nhóm bạn",
   "enterprise": "Doanh nghiệp",
   "enterprise_description": "Nâng cấp lên Enterprise để tạo Tổ chức của bạn",
-  "create_your_org": "Tạo Tổ chức của bạn",
-    "create_your_enterprise_description": "Nâng cấp lên Enterprise và truy cập vào Đồng bộ Active Directory, SCIM Tự động cung cấp người dùng, Cal.ai Voice Agents, Admin APIs và nhiều hơn nữa!",
-  
-  "admin_delete_organization_description": "<ul><li>Các nhóm là thành viên của tổ chức này cũng sẽ bị xóa cùng với các loại sự kiện của họ</li><li>Người dùng là thành viên của tổ chức sẽ không bị xóa nhưng tên người dùng của họ sẽ được thay đổi để cho phép họ tồn tại ngoài tổ chức</li><li>Các loại sự kiện người dùng tạo sau khi người dùng ở trong tổ chức sẽ bị xóa</li><li>Các loại sự kiện người dùng đã di chuyển sẽ không bị xóa</li></ul>",
+  "create_your_org": "Tạo Tổ chức của bạn","create_your_enterprise_description": "Nâng cấp lên Enterprise và truy cập vào Đồng bộ Active Directory, SCIM Tự động cung cấp người dùng, Cal.ai Voice Agents, Admin APIs và nhiều hơn nữa!","admin_delete_organization_description": "<ul><li>Các nhóm là thành viên của tổ chức này cũng sẽ bị xóa cùng với các loại sự kiện của họ</li><li>Người dùng là thành viên của tổ chức sẽ không bị xóa nhưng tên người dùng của họ sẽ được thay đổi để cho phép họ tồn tại ngoài tổ chức</li><li>Các loại sự kiện người dùng tạo sau khi người dùng ở trong tổ chức sẽ bị xóa</li><li>Các loại sự kiện người dùng đã di chuyển sẽ không bị xóa</li></ul>",
   "admin_delete_organization_title": "Xóa {{organizationName}}?",
   "published": "Đã xuất bản",
   "unpublished": "Chưa xuất bản",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "Để mọi người đặt lịch ngay lập tức",
   "uprade_to_create_instant_bookings": "Nâng cấp lên Enterprise và để khách tham gia một cuộc gọi ngay lập tức mà người tham dự có thể tham gia ngay. Điều này chỉ dành cho các loại sự kiện nhóm",
   "dont_want_to_wait": "Không muốn chờ đợi?",
-  "meeting_started": "Cuộc họp đã bắt đầu",
-  
-  "cal_ai_event_tab_description": "Để AI Agents đặt lịch cho bạn",
+  "meeting_started": "Cuộc họp đã bắt đầu","cal_ai_event_tab_description": "Để AI Agents đặt lịch cho bạn",
   "booking_not_found_error": "Không tìm thấy đặt chỗ",
   "booking_seats_full_error": "Chỗ ngồi đã đầy",
-  
-  
   "not_enough_available_seats_error": "Không đủ chỗ ngồi trống",
   "user_redirect_title": "{{username}} hiện đang vắng mặt trong một thời gian ngắn.",
   "user_redirect_description": "Trong thời gian này, {{profile.username}} sẽ phụ trách tất cả các cuộc họp mới được lên lịch thay cho {{username}}.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "Khi chấp nhận lời mời, liên kết của bạn sẽ thay đổi sang tên miền của tổ chức bạn nhưng đừng lo, tất cả các liên kết trước đây vẫn sẽ hoạt động và chuyển hướng đúng.<br /><br />Lưu ý: Tất cả các loại sự kiện cá nhân của bạn sẽ được chuyển vào tổ chức <strong>{teamName}</strong>, có thể bao gồm cả liên kết cá nhân.<br /><br />Đối với các sự kiện cá nhân, chúng tôi khuyên bạn nên tạo một tài khoản mới với địa chỉ email cá nhân.",
   "email|existing_user_added_link_changed": "Liên kết của bạn đã được thay đổi từ <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> sang <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a> nhưng đừng lo, tất cả các liên kết trước đây vẫn hoạt động và chuyển hướng đúng.<br /><br />Lưu ý: Tất cả các loại sự kiện cá nhân của bạn đã được chuyển vào tổ chức <strong>{teamName}</strong>, có thể bao gồm cả liên kết cá nhân.<br /><br />Vui lòng đăng nhập và đảm bảo rằng bạn không có sự kiện riêng tư nào trên tài khoản tổ chức mới của bạn.<br /><br />Đối với các sự kiện cá nhân, chúng tôi khuyên bạn nên tạo một tài khoản mới với địa chỉ email cá nhân.<br /><br />Hãy tận hưởng liên kết mới sạch sẽ của bạn: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Tổ chức của bạn đã được tạo",
-  "your_current_plan": "Gói hiện tại của bạn",
-  
-  "privacy_organization_description": "Quản lý cài đặt quyền riêng tư cho tổ chức của bạn",
+  "your_current_plan": "Gói hiện tại của bạn","privacy_organization_description": "Quản lý cài đặt quyền riêng tư cho tổ chức của bạn",
   "privacy": "Quyền riêng tư",
   "team_will_be_under_org": "Các nhóm mới sẽ thuộc tổ chức của bạn",
   "add_group_name": "Thêm tên nhóm",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "Bằng cách tiếp tục, bạn đồng ý với <0>Điều khoản sử dụng</0> và <1>Chính sách bảo mật</1> của chúng tôi",
   "proceeding_agreement": "Bằng việc tiếp tục, bạn đồng ý với",
   "terms": "Điều khoản",
-  "always_show_x_days": "Luôn hiển thị {{x}} ngày có sẵn",
-  
-  "updating_oauth_client_error": "Đã xảy ra lỗi khi cập nhật OAuth client, vui lòng thử lại sau",
+  "always_show_x_days": "Luôn hiển thị {{x}} ngày có sẵn","updating_oauth_client_error": "Đã xảy ra lỗi khi cập nhật OAuth client, vui lòng thử lại sau",
   "creating_oauth_client_error": "Đã xảy ra lỗi khi tạo OAuth client, vui lòng thử lại sau",
   "event_type_color": "Màu loại sự kiện",
   "event_type_color_description": "Điều này chỉ được sử dụng để phân biệt loại sự kiện và đặt chỗ trong ứng dụng. Nó không hiển thị cho người đặt chỗ.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Đang kiểm tra Lịch Google",
   "outlook_connect_atom_label": "Kết nối Lịch Outlook",
   "outlook_connect_atom_already_connected_label": "Đã kết nối Lịch Outlook",
-  "outlook_connect_atom_loading_label": "Đang kiểm tra Lịch Outlook",
-  
-  
-  
-  "booking_question_response_variables": "Các biến phản hồi câu hỏi đặt lịch",
+  "outlook_connect_atom_loading_label": "Đang kiểm tra Lịch Outlook","booking_question_response_variables": "Các biến phản hồi câu hỏi đặt lịch",
   "managed_by_teamAdmins": "Được quản lý bởi {{teamAdmins}}",
   "number_of_options": "{{count}} tùy chọn",
   "reschedule_with_same_round_robin_host_title": "Đặt lại lịch với cùng một host Round-Robin",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "{{count}} ngày qua",
   "month_to_date": "từ đầu tháng đến nay",
   "year_to_date": "từ đầu năm đến nay",
-  "custom_range": "phạm vi tùy chỉnh",
-  
-  "always": "Luôn luôn",
-  "never": "Không bao giờ",
-  
-  "if_cancelled": "Nếu hủy",
+  "custom_range": "phạm vi tùy chỉnh","always": "Luôn luôn",
+  "never": "Không bao giờ","if_cancelled": "Nếu hủy",
   "before": "trước",
   "show_all_columns": "Hiển thị tất cả các cột",
   "toggle_columns": "Chuyển đổi cột",

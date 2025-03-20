@@ -4,9 +4,7 @@
   "day_one": "{{count}} dia",
   "day_other": "{{count}} dias",
   "second_one": "{{count}} segundo",
-  "second_other": "{{count}} segundos",
-  
-  "untitled": "Sem título",
+  "second_other": "{{count}} segundos","untitled": "Sem título",
   "accept_invitation": "Aceitar convite",
   "max_characters": "Máx. Caracteres",
   "min_characters": "Mín. Caracteres",
@@ -68,18 +66,10 @@
   "accept_our_license": "Aceite a nossa licença alterando a variável no arquivo .env <1>NEXT_PUBLIC_LICENSE_CONSENT</1> para '{{agree}}'.",
   "remove_banner_instructions": "Para remover este banner, por favor abra seu arquivo .env e altere a variável <1>NEXT_PUBLIC_LICENSE_CONSENT</1> para '{{agree}}'.",
   "error_message": "A mensagem de erro: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Por favor, tente resolver junto do seu fornecedor de pagamentos e com o {{user}}.",
-  
-  
-  
   "dark_theme_contrast_error": "A cor do tema escuro não foi aprovada pela verificação de contraste. Recomendamos que você altere esta cor para que seus botões fiquem mais visíveis.",
   "light_theme_contrast_error": "A cor do tema claro não foi aprovada pela verificação de contraste. Recomendamos que você altere esta cor para que seus botões fiquem mais visíveis.",
   "event_type_color_light_theme_contrast_error": "A cor do Tema Claro não passa na verificação de contraste. Recomendamos que você altere essa cor para que a cor dos seus tipos de eventos seja mais visível.",
   "event_type_color_dark_theme_contrast_error": "A cor do Tema Escuro não passa na verificação de contraste. Recomendamos que você altere essa cor para que a cor dos seus tipos de eventos seja mais visível.",
-  
-  
   "no_available_users_found_error": "Nenhum usuário disponível foi encontrado. Você poderia tentar outra faixa horária?",
   "request_body_end_time_internal_error": "Erro interno. O corpo da solicitação não contém a hora final",
   "create_calendar_event_error": "Não foi possível criar um evento no calendário do organizador",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "Você já está inscrito para esta reserva.",
   "hosts_unavailable_for_booking": "Algum dos anfitriões não está disponível para reserva.",
   "help": "Ajuda",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Solicitação Geral",
   "begin_message": "Inicie a Mensagem",
   "codebase_has_to_stay_opensource": "Todo o código deverá permanecer em código aberto, quer seja modificado ou não",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "Você está oculto nesta equipe",
   "hidden_team_member_message": "Seu assento não é pago, atualize para a versão Pro ou avise o proprietário da equipe de que é possível pagar pelo seu assento.",
   "hidden_team_owner_message": "É preciso ter uma conta Pro para usar equipes, você permanecerá oculto até a atualização.",
-  "link_expires": "P.S.: Expira em {{expiresIn}} horas.",
-  
-  "seat_options_doesnt_support_confirmation": "Não é possível usar reservas com assento quando a reserva exigir confirmação",
-  "multilocation_doesnt_support_seats": "Múltiplas Localizações não suportam a opção de assentos",
-  
-  "seats_option_doesnt_support_multi_location": "A opção de assentos não suporta Múltiplas Localizações",
-  
-  
-  
-  
-  
-  
+  "link_expires": "P.S.: Expira em {{expiresIn}} horas.","seat_options_doesnt_support_confirmation": "Não é possível usar reservas com assento quando a reserva exigir confirmação",
+  "multilocation_doesnt_support_seats": "Múltiplas Localizações não suportam a opção de assentos","seats_option_doesnt_support_multi_location": "A opção de assentos não suporta Múltiplas Localizações",
   "use_link_to_reset_password": "Use o link abaixo para redefinir a sua senha",
   "hey_there": "Olá",
   "forgot_your_password_calcom": "Esqueceu sua senha? - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Webhook criado com sucesso!",
   "webhook_updated_successfully": "Webhook atualizado com sucesso!",
   "webhook_removed_successfully": "Webhook removido com sucesso!",
-  
-  
   "payload_template": "Modelo de carga",
   "dismiss": "Descartar",
   "no_data_yet": "Ainda não há dados",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "Sua reunião recorrente foi enviada",
   "booking_confirmed": "Reserva confirmada",
   "booking_confirmed_recurring": "Sua reunião recorrente foi confirmada",
-  
-  
   "enter_new_password": "Insira a nova senha que você deseja utilizar.",
   "reset_password": "Redefinir senha",
   "change_your_password": "Alterar sua senha",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Transcrição Gerada",
   "booking_created": "Reserva Criada",
   "booking_rejected": "Reserva recusada",
-  "booking_requested": "Reserva solicitada",
-  
-  "meeting_ended": "Reunião encerrada",
+  "booking_requested": "Reserva solicitada","meeting_ended": "Reunião encerrada",
   "form_submitted": "Formulário enviado",
-  "form_submitted_no_event": "Formulário enviado, nenhum evento agendado",
-  
-  "ooo_created": "Fora do Escritório Criado",
+  "form_submitted_no_event": "Formulário enviado, nenhum evento agendado","ooo_created": "Fora do Escritório Criado",
   "booking_no_show_updated": "Não Comparecimento Atualizado",
-  "event_triggers": "Gatilhos de eventos",
-  
-  "create_new_webhook": "Criar um novo webhook",
+  "event_triggers": "Gatilhos de eventos","create_new_webhook": "Criar um novo webhook",
   "webhooks": "Webhooks",
   "team_webhooks": "Webhooks da equipe",
   "create_new_webhook_to_account": "Criar um webhook para sua conta",
@@ -529,9 +493,7 @@
   "iframe_embed": "Incorporar iframe",
   "embed_calcom": "A maneira mais fácil de incorporar o {{appName}} no seu site.",
   "integrate_using_embed_or_webhooks": "Integre em seu site utilizando as nossas opções para embutir ou obtenha informações da reserva em tempo real utilizando webhooks personalizados.",
-  "schedule_a_meeting": "Agende uma Reunião",
-        "need_anything_else": "Precisa de algo mais?",
-    "contact": "Contato",
+  "schedule_a_meeting": "Agende uma Reunião",    "need_anything_else": "Precisa de algo mais?","contact": "Contato",
   "our_support_team": "a nossa equipe de suporte",
   "contact_our_support_team": "Fale com a nossa equipe de suporte",
   "uh_oh": "Oh oh!",
@@ -773,10 +735,6 @@
   "readonly": "Somente leitura",
   "one_time_link": "Link único",
   "plan_description": "Atualmente você está no plano {{plan}}.",
-  
-  
-  
-  
   "event_types_page_title": "Tipos de Eventos",
   "event_types_page_subtitle": "Crie eventos para que as pessoas possam fazer agendamentos em seu calendário.",
   "new": "Novo",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Criar um time para começar",
   "teams": "Times",
   "team": "Equipe",
-  "organization": "Organização",
-      
-  
-    "create_manage_teams_collaborative": "Criar e gerenciar times para usar recursos de colaboração.",
+  "organization": "Organização",    "create_manage_teams_collaborative": "Criar e gerenciar times para usar recursos de colaboração.",
   "only_available_on_pro_plan": "Este recurso só está disponível no plano Pro",
   "remove_cal_branding_description": "Para remover a marca {{appName}} das suas páginas de reservas, você precisar fazer o upgrade para uma conta Pro.",
   "edit_profile_info_description": "Edite as informações do seu perfil, que aparecem na sua página de reservas.",
@@ -843,16 +798,13 @@
   "little_something_about": "Fale um pouco mais sobre você.",
   "profile_updated_successfully": "Perfil atualizado com sucesso",
   "your_user_profile_updated_successfully": "O seu perfil foi atualizado com sucesso.",
-  
-  
   "you_are_all_set": "Está tudo pronto",
   "you_are_all_set_description": "Você já está no plano mais recente. Não há nada para atualizar. Aproveite os novos recursos e entre em contato conosco se tiver alguma dúvida!",
   "user_cannot_found_db": "O usuário parece estar logado, mas não foi encontrado no banco de dados",
   "embed_and_webhooks": "Incorporar & Webhooks",
   "enabled": "Ativado",
   "disabled": "Desativado",
-  "disable": "Desativar",
-      "availability": "Disponibilidade",
+  "disable": "Desativar",  "availability": "Disponibilidade",
   "edit_availability": "Editar disponibilidade",
   "configure_availability": "Configure os horários em que estiver disponível para reservas.",
   "copy_times_to": "Copiar tipos para",
@@ -889,8 +841,6 @@
   "recurring_event": "Evento recorrente",
   "recurring_event_description": "As pessoas podem se inscrever em eventos recorrentes",
   "connect_and_join": "Conecte-se e participe",
-  
-  
   "warning_instant_meeting_experimental": "Experimental: reunião instantânea são atualmente experimentais.",
   "starting": "Iniciando",
   "disable_guests": "Desativar participantes",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "O {{appName}} irá fornecer um URL de reunião do Daily video.",
   "cal_provide_jitsi_meeting_url": "O Cal fornecerá um URL de reunião do Jitsi Meet.",
   "cal_provide_huddle01_meeting_url": "O {{appName}} fornecerá um URL de reunião do Huddle01 Web3 video.",
-  "cal_provide_teams_meeting_url": "O {{appName}} enviará um URL da reunião para o MS Teams. OBSERVAÇÃO: É PRECISO TER UMA CONTA ESCOLAR OU CORPORATIVA",
-  
-  "you_need_to_add_a_name": "Você precisa adicionar um nome",
+  "cal_provide_teams_meeting_url": "O {{appName}} enviará um URL da reunião para o MS Teams. OBSERVAÇÃO: É PRECISO TER UMA CONTA ESCOLAR OU CORPORATIVA","you_need_to_add_a_name": "Você precisa adicionar um nome",
   "commission_per_transaction": "comissão por transação",
   "event_type_updated_successfully_description": "O seu tipo de evento foi atualizado com sucesso.",
   "hide_event_type": "Ocultar Tipo de Evento",
@@ -964,9 +912,7 @@
   "next_step_text": "Próximo Passo",
   "next_step": "Ignorar passo",
   "prev_step": "Passo anterior",
-  "install": "Instalar",
-  
-  "installed": "Instalado",
+  "install": "Instalar","installed": "Instalado",
   "active_install_one": "{{count}} instalação ativa",
   "active_install_other": "{{count}} instalações ativas",
   "globally_install": "Instalado globalmente",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Calendário atualizado com êxito",
   "check_here": "Verifique aqui",
   "conferencing": "Conferência",
-  "calendar": "Calendário",
-  
-  "not_installed": "Não instalado",
+  "calendar": "Calendário","not_installed": "Não instalado",
   "error_password_mismatch": "As senhas inseridas são difererentes.",
   "error_required_field": "Este campo é obrigatório.",
   "status": "Status",
@@ -1024,16 +968,12 @@
   "no_category_apps": "Sem aplicativos de {{category}}",
   "all_apps": "Todos os aplicativos",
   "no_category_apps_description_calendar": "Adicione um aplicativo de calendário para verificar se há conflitos para evitar agendamentos duplos",
-  "no_category_apps_description_conferencing": "Tente adicionar um aplicativo para chamadas de vídeo com seus clientes",
-  
-  "no_category_apps_description_analytics": "Adicione um aplicativo de análise às suas páginas de reservas",
+  "no_category_apps_description_conferencing": "Tente adicionar um aplicativo para chamadas de vídeo com seus clientes","no_category_apps_description_analytics": "Adicione um aplicativo de análise às suas páginas de reservas",
   "no_category_apps_description_automation": "Adicione um aplicativo de automação para usar",
   "no_category_apps_description_other": "Adicione qualquer outro tipo de aplicativo para fazer todos os tipos de coisas",
   "no_category_apps_description_messaging": "Adicione um aplicativo de mensagem para definir lembretes e notificações personalizados",
   "no_category_apps_description_crm": "Adicione um aplicativo CRM para acompanhar todos os integrantes das suas reuniões",
-  "installed_app_calendar_description": "Defina o(s) calendário(s) para verificar se há conflitos e evitar reservas duplas.",
-  
-  "installed_app_analytics_description": "Configure quais aplicativos de análise serão usados nas suas páginas de reservas",
+  "installed_app_calendar_description": "Defina o(s) calendário(s) para verificar se há conflitos e evitar reservas duplas.","installed_app_analytics_description": "Configure quais aplicativos de análise serão usados nas suas páginas de reservas",
   "installed_app_other_description": "Todos os seus aplicativos instalados de outras categorias.",
   "installed_app_conferencing_description": "Configure quais aplicativos de conferência serão usados",
   "installed_app_automation_description": "Configure quais aplicativos de automação serão usados",
@@ -1048,9 +988,7 @@
   "features": "Recursos",
   "permissions": "Permissões",
   "terms_and_privacy": "Termos e privacidade",
-  "published_by": "Publicado por {{author}}",
-  
-  "buy": "Comprar",
+  "published_by": "Publicado por {{author}}","buy": "Comprar",
   "install_app": "Instalar app",
   "categories": "Categorias",
   "pricing": "Preço",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Verificar carteira",
   "create_events_on": "Criar eventos em",
   "enterprise_license": "Este é um recurso comercial",
-  "enterprise_license_locally": "Você pode testar este recurso localmente mas não em produção.",
-  
-  "missing_license": "Falta a licença",
+  "enterprise_license_locally": "Você pode testar este recurso localmente mas não em produção.","missing_license": "Falta a licença",
   "next_steps": "Próximos passos",
   "acquire_commercial_license": "Adquira uma licença comercial",
   "the_infrastructure_plan": "O plano de infraestrutura é baseado no uso e tem descontos acessíveis para novos usuários.",
   "prisma_studio_tip": "Crie uma conta com o Prisma Studio",
-  "prisma_studio_tip_description": "Aprenda a configurar seu primeiro usuário",
-  
-  "error_404": "Erro 404",
+  "prisma_studio_tip_description": "Aprenda a configurar seu primeiro usuário","error_404": "Erro 404",
   "default": "Padrão",
   "set_to_default": "Definir para padrão",
   "new_schedule_btn": "Nova agenda",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Documentação de suporte",
   "developer_documentation": "Documentação do desenvolvedor",
   "get_in_touch": "Entrar em contato",
-  "contact_support": "Fale com o suporte",
-  
-  "community_support": "Suporte da comunidade",
+  "contact_support": "Fale com o suporte","community_support": "Suporte da comunidade",
   "feedback": "Comentário",
   "submitted_feedback": "Agradecemos o seu comentário!",
   "feedback_error": "Erro ao enviar comentário",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "Fluxos de trabalho permitem que você automatize o envio de lembretes e notificações.",
   "active_on": "Ativar em",
   "workflow_updated_successfully": "Fluxo de trabalho {{workflowName}} atualizado com sucesso",
-    
-  "current": "Atual",
-  
-  "standard": "padrão",
+  "current": "Atual","standard": "padrão",
   "confirm_username_change_dialog_title": "Confirmar alteração de nome de usuário",
-  
-  
-    
   "trial_expired": "Seu teste expirou",
   "remove_app": "Remover app",
   "yes_remove_app": "Sim, remover o app",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "Nome do participante",
   "event_date_variable": "Data do evento",
   "event_time_variable": "Horário do evento",
-  "organizer_name_variable": "Nome do organizador",
-  
-  "invalid_number": "Número de telefone inválido",
+  "organizer_name_variable": "Nome do organizador","invalid_number": "Número de telefone inválido",
   "invalid_url_error_message": "URL inválida para {{label}}. URL de amostra: {{sampleUrl}}",
   "navigate": "Navegar",
   "open": "Abrir",
   "close": "Fechar",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Gravações fazem parte do plano Teams",
   "team_feature_teams": "Este é um recurso de Equipe. Atualize para Equipe para ver a disponibilidade da sua equipe.",
   "team_feature_workflows": "Este é um recurso de Equipe. Atualize para a Equipe para automatizar suas notificações de eventos e lembretes com fluxos de trabalho.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Identificador de pergunta de reserva",
   "company_size": "Tamanho da empresa",
   "what_help_needed": "Em que você precisa de ajuda?",
-  "variable_format": "Formato variável",
-  
-  "custom_input_as_variable_info": "Ignore todos os caracteres especiais da etiqueta de entrada adicional (use apenas letras e números), use todas as letras maiúsculas e substitua espaços em branco por sublinhados.",
+  "variable_format": "Formato variável","custom_input_as_variable_info": "Ignore todos os caracteres especiais da etiqueta de entrada adicional (use apenas letras e números), use todas as letras maiúsculas e substitua espaços em branco por sublinhados.",
   "using_booking_questions_as_variables": "Como usar perguntas de reserva como variáveis?",
   "download_desktop_app": "Baixar app para desktop",
   "set_ping_link": "Definir link do Ping",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "Com que frequência você pode receber reserva",
   "event_advanced_tab_description": "Configurações de calendário e muito mais...",
   "event_advanced_tab_title": "Avançado",
-  
-  
   "event_setup_multiple_duration_error": "Configuração do evento: múltiplas durações requerem pelo menos uma opção.",
   "event_setup_multiple_duration_default_error": "Configuração de evento: selecione uma duração padrão válida.",
   "event_setup_booking_limits_error": "Limites de reserva devem estar em ordem crescente. [dia, semana, mês, ano,]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "Você pode personalizar tudo isso mais tarde na página de disponibilidade.",
   "connect_calendars_from_app_store": "Você pode adicionar mais calendários da loja de aplicativos",
   "connect_conference_apps": "Conectar aplicativos de conferência",
-  "connect_calendar_apps": "Conectar aplicativos de calendário",
-  
-  "connect_automation_apps": "Conecte aplicativos de automação",
+  "connect_calendar_apps": "Conectar aplicativos de calendário","connect_automation_apps": "Conecte aplicativos de automação",
   "connect_analytics_apps": "Conecte aplicativos de análise",
   "connect_other_apps": "Conectar outros aplicativos",
   "connect_messaging_apps": "Conectar com aplicativos de mensagem",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Link de redefinição enviado",
   "password_reset_email": "Um e-mail está a caminho de {{email}} com instruções para redefinir sua senha.",
   "password_reset_leading": "Se não receber um e-mail em breve, verifique se o endereço de e-mail digitado está correto, verifique sua pasta de spam ou entre em contato com o suporte se o problema persistir.",
-  "password_updated": "Senha atualizada!",
-  
-  "pending_invites": "Convites pendentes",
+  "password_updated": "Senha atualizada!","pending_invites": "Convites pendentes",
   "pending_organization_invites": "Convites pendentes da organização",
   "not_on_cal": "Não está na {{appName}}",
   "no_calendar_installed": "Nenhum calendário instalado",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "Use letras maiúsculas para todas as letras",
   "replace_whitespaces_underscores": "Substituir espaços em branco com sublinhados",
   "platform_members": "Membros da plataforma",
-  "platform_members_description": "Gerencie os administradores e membros da sua equipe da plataforma",
-                  "ignore_special_characters_booking_questions": "Ignore caracteres especiais no seu identificador de pergunta de reserva. Use apenas letras e números",
+  "platform_members_description": "Gerencie os administradores e membros da sua equipe da plataforma",              "ignore_special_characters_booking_questions": "Ignore caracteres especiais no seu identificador de pergunta de reserva. Use apenas letras e números",
   "retry": "Repetir",
   "fetching_calendars_error": "Houve um problema ao buscar suas agendas. <1>Tente novamente</1> ou entre em contato com o suporte ao cliente.",
   "calendar_connection_fail": "Falha na conexão com a agenda",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Limitar reservas futuras",
   "limit_future_bookings_description": "Limita o tempo de antecedência com que este evento pode ser reservado",
   "no_event_types": "Nenhuma configuração de tipo de evento",
-  "no_event_types_description": "{{name}} não configurou nenhum tipo de evento para você reservar.",
-    "monthly": "Mensal",
+  "no_event_types_description": "{{name}} não configurou nenhum tipo de evento para você reservar.","monthly": "Mensal",
   "yearly": "Anual",
   "weekly": "Semanal",
   "checkout": "Finalizar compra",
@@ -1733,9 +1643,7 @@
   "test_preview": "Visualizar teste",
   "route_to": "Direcionar para",
   "test_preview_description": "Teste seu formulário de roteamento sem enviar dados",
-  "test_routing": "Testar roteamento",
-  
-  "edit_event_type": "Editar tipo de evento",
+  "test_routing": "Testar roteamento","edit_event_type": "Editar tipo de evento",
   "only_admin_can_see_members_of_org": "Esta Organização é privada, e apenas o administrador ou dono da organização podem ver seus membros.",
   "only_admin_can_manage_sso_org": "Apenas o administrador ou dono da organização podem gerenciar configurações de SSO",
   "collective_scheduling": "Programação coletiva",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "Um administrador na equipe <strong>{{teamName}}</strong> substituiu seu tipo de evento <strong>/{{slug}}</strong> por um tipo de evento controlado por ele.",
   "email_body_slug_replacement_info": "Seu link continuará a funcionar, mas algumas configurações podem ter sido alteradas. Você pode revisar nos tipos de evento.",
   "email_body_slug_replacement_suggestion": "Se tiver alguma pergunta sobre o tipo de evento, fale com o seu administrador.<br /><br />Bom agendamento, <br/>Equipe do Cal.com",
-  
-  
   "app_disabled_with_event_type": "O administrador desativou {{appName}}, afetando seu tipo de evento {{title}}.",
   "app_disabled_video": "O administrador desativou {{appName}}, afetando seus tipos de evento. Se você tiver tipos de evento com {{appName}} como localização, Vídeo do Cal será definido como padrão.",
   "app_disabled_subject": "{{appName}} foi desativado",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Anfitriões em Round-Robin",
   "minimum_round_robin_hosts_count": "Número de anfitriões necessários para participar",
   "hosts": "Anfitriões",
-  
-  
   "new_attendee": "Novo participante",
   "awaiting_approval": "Aguardando aprovação",
   "requires_google_calendar": "Este aplicativo requer uma conexão com o Google Calendar",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Personalize as perguntas feitas na página de reservas",
   "add_a_booking_question": "Adicione uma pergunta",
   "identifier": "Identificador",
-  "duplicate_email": "Este e-mail já existe",
-  
-  
-  
-  "booking_confirmation_failed": "Falhar ao confirmar reserva",
+  "duplicate_email": "Este e-mail já existe","booking_confirmation_failed": "Falhar ao confirmar reserva",
   "not_enough_seats": "Sem assentos suficientes",
   "form_builder_field_already_exists": "Já existe um campo com este nome",
   "show_on_booking_page": "Mostrar na página de reservas",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Limpar filtros",
   "clear": "Limpar",
   "hold": "Segurar",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Insights",
   "routing_forms": "Formulários de Roteamento",
   "testing_workflow_info_message": "Ao testar este fluxo de trabalho, não se esqueça de que e-mails e SMS só podem ser reprogramados com pelo menos uma hora de antecedência",
   "insights_no_data_found_for_filter": "Nenhum dado encontrado para o filtro ou dados selecionados.",
-  
-  
   "something_went_wrong_on_our_end": "Algo deu errado da nossa parte. Entre em contato com a equipe de suporte, solucionaremos o problema imediatamente.",
-  "please_provide_following_text_to_suppport": "Para obter mais ajuda, insira o texto a seguir ao entrar em contato com o suporte",
-  
-  "complete_your_booking": "Conclua sua reserva",
+  "please_provide_following_text_to_suppport": "Para obter mais ajuda, insira o texto a seguir ao entrar em contato com o suporte","complete_your_booking": "Conclua sua reserva",
   "complete_your_booking_subject": "Conclua sua reserva: {{title}} à(s) {{date}}",
   "confirm_your_details": "Confirme suas informações",
   "copy_invite_link": "Copiar link de convite",
@@ -2120,14 +2000,8 @@
   "three_months": "3 meses",
   "one_year": "1 ano",
   "team_invite_received": "Você recebeu um convite para ingressar em {{teamName}}",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "Cobrar {{amount, currency}} do participante",
-  
-  "email_invite_team": "{{email}} recebeu um convite",
-  "email_invite_team_bulk": "{{userCount}} usuários foram convidados",
-  
-  "image_size_limit_exceed": "A imagem carregada não deve ultrapassar o limite de 5 MB",
+  "currency_string": "{{amount, currency}}","charge_attendee": "Cobrar {{amount, currency}} do participante","email_invite_team": "{{email}} recebeu um convite",
+  "email_invite_team_bulk": "{{userCount}} usuários foram convidados","image_size_limit_exceed": "A imagem carregada não deve ultrapassar o limite de 5 MB",
   "unauthorized_workflow_error_message": "{{errorCode}}: você não tem autorização para habilidar ou desabilitar este fluxo de trabalho",
   "inline_embed": "Inserção embutida",
   "load_inline_content": "Carrega seu tipo de evento embutido diretamente no conteúdo restante do site.",
@@ -2394,9 +2268,7 @@
   "locked": "Bloqueado",
   "unlocked": "Desbloqueado",
   "lock_timezone_toggle_on_booking_page": "Bloquear fuso horário na página de reserva",
-  "description_lock_timezone_toggle_on_booking_page": "Bloquear o fuso horário na página de reservas, útil para eventos presenciais.",
-  
-  "number_in_international_format": "Insira o número em formato internacional.",
+  "description_lock_timezone_toggle_on_booking_page": "Bloquear o fuso horário na página de reservas, útil para eventos presenciais.","number_in_international_format": "Insira o número em formato internacional.",
   "install_calendar": "Instalar Calendário",
   "branded_subdomain": "Subdomínio próprio",
   "branded_subdomain_description": "Obtenha seu próprio subdomínio, como acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Marca própria abrangente",
   "extensive_whitelabeling_description": "Personalize sua experiência de agendamento com seu próprio logotipo, cores e muito mais",
   "unlimited_teams": "Equipes ilimitadas",
-  "unlimited_teams_description": "Adicione quantas subequipes forem necessárias à sua organização",
-      "advanced_managed_events": "Tipos de eventos gerenciados avançados",
+  "unlimited_teams_description": "Adicione quantas subequipes forem necessárias à sua organização",  "advanced_managed_events": "Tipos de eventos gerenciados avançados",
   "advanced_managed_events_description": "Adicione um único cartão de crédito para pagar todas as assinaturas da sua equipe",
   "enterprise": "Empresa",
   "enterprise_description": "Atualize para Enterprise para criar sua organização",
-  "create_your_org": "Crie sua organização",
-    "create_your_enterprise_description": "Atualize para Enterprise e ganhe acesso à Sincronização de Diretório Ativo, Provisionamento Automático de Usuários SCIM, Agentes de Voz Cal.ai, APIs de Administrador e mais!",
-  
-  "admin_delete_organization_description": "<ul><li>As equipes que são membros desta organização também serão excluídas junto com seus tipos de eventos</li><li> Os usuários que faziam parte da organização não serão excluídos e seus tipos de eventos também permanecerão intactos.</li><li> Os nomes de usuário seriam alterados para que existam fora da organização</li></ul>",
+  "create_your_org": "Crie sua organização","create_your_enterprise_description": "Atualize para Enterprise e ganhe acesso à Sincronização de Diretório Ativo, Provisionamento Automático de Usuários SCIM, Agentes de Voz Cal.ai, APIs de Administrador e mais!","admin_delete_organization_description": "<ul><li>As equipes que são membros desta organização também serão excluídas junto com seus tipos de eventos</li><li> Os usuários que faziam parte da organização não serão excluídos e seus tipos de eventos também permanecerão intactos.</li><li> Os nomes de usuário seriam alterados para que existam fora da organização</li></ul>",
   "admin_delete_organization_title": "Excluir {{organizationName}} ?",
   "published": "Publicado",
   "unpublished": "Não publicado",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "Deixe as pessoas reservarem imediatamente",
   "uprade_to_create_instant_bookings": "Atualize para Enterprise e permita que os convidados participem de uma chamada instantânea na qual os participantes possam participar diretamente. Isso é apenas para tipos de eventos de equipe",
   "dont_want_to_wait": "Não quer esperar?",
-  "meeting_started": "Reunião iniciada",
-  
-  "cal_ai_event_tab_description": "Deixe Assistentes de IA agendarem para você",
+  "meeting_started": "Reunião iniciada","cal_ai_event_tab_description": "Deixe Assistentes de IA agendarem para você",
   "booking_not_found_error": "Não foi possível encontrar a reserva",
   "booking_seats_full_error": "A reserva de assentos está lotada",
-  
-  
   "not_enough_available_seats_error": "A reserva não tem assentos disponíveis suficientes",
   "user_redirect_title": "{{username}} está ausente por um breve período de tempo.",
   "user_redirect_description": "Enquanto isso, {{profile.username}} será responsável por todas as novas reuniões agendadas em nome de {{username}} .",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "Ao aceitar o convite, seu link mudará para o domínio da sua organização, mas não se preocupe, todos os links anteriores ainda funcionarão e redirecionarão corretamente.<br /><br />Atenção: Todos os seus tipos de evento pessoais serão transferidos para a organização <strong>{teamName}</strong>, que também podem incluir links pessoais.<br /><br />Para eventos pessoais, nós recomendamos criar uma nova conta com um endereço de e-mail pessoal.",
   "email|existing_user_added_link_changed": "Seu link mudou de <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> para <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a> mas não se preocupe, todos os links anteriores ainda funcionarão e redirecionarão corretamente. <br /><br />Atenção: Todos os seus tipos de evento pessoais serão transferidos para a organização <strong>{teamName}</strong>, que também podem incluir links pessoais.<br /><br />Por favor, faça login e confira se não há nenhum evento privado na sua conta organizacional.<br /><br />Para eventos pessoais, nós recomendamos criar uma nova conta com um endereço de e-mail pessoal.<br /><br />Aproveite seu novo link: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Sua organização foi criada",
-  "your_current_plan": "Seu plano atual",
-  
-  "privacy_organization_description": "Gerencie as configurações de privacidade da sua organização",
+  "your_current_plan": "Seu plano atual","privacy_organization_description": "Gerencie as configurações de privacidade da sua organização",
   "privacy": "Privacidade",
   "team_will_be_under_org": "Novos times estarão sob sua organização",
   "add_group_name": "Adicionar nome do grupo",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "Ao continuar, você concorda com nossos <0>Termos</0> e <1>Política de Privacidade</1>.",
   "proceeding_agreement": "Ao prosseguir, você concorda com nossos",
   "terms": "Termos",
-  "always_show_x_days": "Sempre {{x}} dias disponíveis",
-  
-  "updating_oauth_client_error": "Um erro ocorreu ao tentar atualizar o cliente OAuth, por favor tente novamente mais tarde",
+  "always_show_x_days": "Sempre {{x}} dias disponíveis","updating_oauth_client_error": "Um erro ocorreu ao tentar atualizar o cliente OAuth, por favor tente novamente mais tarde",
   "creating_oauth_client_error": "Um erro ocorreu ao tentar criar o cliente OAuth, por favor tente novamente mais tarde",
   "event_type_color": "Cor do tipo de evento",
   "event_type_color_description": "Isso é usado apenas para diferenciação de tipo de evento e agendamento dentro do aplicativo. Não é exibido para os agendadores.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Verificando Calendário Google",
   "outlook_connect_atom_label": "Conectar Calendário Outlook",
   "outlook_connect_atom_already_connected_label": "Calendário Outlook conectado",
-  "outlook_connect_atom_loading_label": "Verificando Calendário Outlook",
-  
-  
-  
-  "booking_question_response_variables": "Variáveis de resposta de perguntas de reserva",
+  "outlook_connect_atom_loading_label": "Verificando Calendário Outlook","booking_question_response_variables": "Variáveis de resposta de perguntas de reserva",
   "managed_by_teamAdmins": "Gerenciado por {{teamAdmins}}",
   "number_of_options": "{{count}} opções",
   "reschedule_with_same_round_robin_host_title": "Reagendar com o mesmo anfitrião Round-Robin",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "últimos {{count}} dias",
   "month_to_date": "mês até a data",
   "year_to_date": "ano até a data",
-  "custom_range": "intervalo personalizado",
-  
-  "always": "Sempre",
-  "never": "Nunca",
-  
-  "if_cancelled": "Se cancelado",
+  "custom_range": "intervalo personalizado","always": "Sempre",
+  "never": "Nunca","if_cancelled": "Se cancelado",
   "before": "antes",
   "show_all_columns": "Mostrar todas as colunas",
   "toggle_columns": "Alternar colunas",

@@ -3,9 +3,7 @@
   "day_one": "{{count}} hari",
   "day_other": "{{count}} hari",
   "second_one": "{{count}} detik",
-  "second_other": "{{count}} detik",
-  
-  "accept_invitation": "Terima undangan",
+  "second_other": "{{count}} detik","accept_invitation": "Terima undangan",
   "calcom_explained": "{{appName}} menyediakan infrastruktur penjadwalan untuk semua orang.",
   "calcom_explained_new_user": "Selesaikan pengaturan akun {{appName}}! Tinggal selangkah lagi untuk solusi penjadwalan kamu.",
   "have_any_questions": "Punya pertanyaan? Kami siap membantu.",
@@ -28,19 +26,7 @@
   "accept_our_license": "Setujui lisensi dengan mengganti variabel .env <1>NEXT_PUBLIC_LICENSE_CONSENT</1> menjadi {{agree}}.",
   "remove_banner_instructions": "Untuk menghilangkan spanduk ini, buka file .env kamu dan ganti variabel <1>NEXT_PUBLIC_LICENSE_CONSENT</1> menjadi '{{agree}}'.",
   "error_message": "Pesan kesalahannya adalah: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Silakan periksa kembali dengan penyedia layanan pembayaran kamu dan {{user}} bagaimana untuk menangani ini.",
-  
-  
-  
   "help": "Bantuan",
-  
-  
-  
-  
-  
-  
   "codebase_has_to_stay_opensource": "Basis kode harus tetap sebagau sumber terbuka, walau diubah atau tidak",
   "cannot_repackage_codebase": "Kamu tidak bisa mengemas ulang atau menjual basis kode",
   "acquire_license": "Dapatkan lisensi komersial untuk menghilangkan ketentuan ini dengan mengirimkan email",
@@ -77,13 +63,7 @@
   "hidden_team_member_title": "Kamu tersembunyi di tim ini",
   "hidden_team_member_message": "Kamu tidak dibayari, upgrade ke PRO atau beritahu pemilik tim bahwa mereka bisa membayari kamu.",
   "hidden_team_owner_message": "Kamu perlu akun pro untuk menggunakan tim, kamu disembunyikan sementara hingga kamu upgrade.",
-  "link_expires": "oya, ini hangus dalam {{expiresIn}} jam.",
-  
-  
-  
-  
-  
-  "use_link_to_reset_password": "Gunakan link di bawah ini untuk mengatur ulang kata sandi kamu",
+  "link_expires": "oya, ini hangus dalam {{expiresIn}} jam.","use_link_to_reset_password": "Gunakan link di bawah ini untuk mengatur ulang kata sandi kamu",
   "hey_there": "Halo,",
   "forgot_your_password_calcom": "Lupa kata sandi? - {{appName}}",
   "delete_webhook_confirmation_message": "Apakah kamu yakin untuk menghapus webhook ini? Kamu tidak akan lagi menerima data pertemuan {{appName}} di URL tersebut secara langsung, pada saat acara terjadwal atau dibatalkan.",
@@ -152,7 +132,5 @@
   "ooo_slots_book_with": "Pesan {{displayName}}",
   "ooo_create_entry_modal": "Keluar dari kantor",
   "ooo_select_reason": "Pilih alasan",
-  "enterprise_license_locally": "Anda dapat menguji fitur ini secara lokal tetapi tidak pada produksi.",
-  
-  "apply_to_all_event_types": "Terapkan untuk semua, termasuk jenis acara di masa depan"
+  "enterprise_license_locally": "Anda dapat menguji fitur ini secara lokal tetapi tidak pada produksi.","apply_to_all_event_types": "Terapkan untuk semua, termasuk jenis acara di masa depan"
 }

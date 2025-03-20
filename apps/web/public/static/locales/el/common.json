@@ -4,9 +4,7 @@
   "day_one": "{{count}} ημέρα",
   "day_other": "{{count}} ημέρες",
   "second_one": "{{count}} δευτερόλεπτο",
-  "second_other": "{{count}} δευτερόλεπτα",
-  
-  "untitled": "Χωρίς τίτλο",
+  "second_other": "{{count}} δευτερόλεπτα","untitled": "Χωρίς τίτλο",
   "accept_invitation": "Αποδοχή Πρόσκλησης",
   "max_characters": "Μέγιστος αριθμός χαρακτήρων",
   "min_characters": "Ελάχιστος αριθμός χαρακτήρων",
@@ -68,18 +66,10 @@
   "accept_our_license": "Αποδεχτείτε την άδειά μας αλλάζοντας τη μεταβλητή .env <1>NEXT_PUBLIC_LICENSE_CONSENT</1> σε '{{agree}}'.",
   "remove_banner_instructions": "Για να αφαιρέσετε αυτό το banner, ανοίξτε το αρχείο .env και αλλάξτε τη μεταβλητή <1>NEXT_PUBLIC_LICENSE_CONSENT</1> σε '{{agree}}'.",
   "error_message": "Το μήνυμα σφάλματος ήταν: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Παρακαλούμε επικοινωνήστε με τον πάροχο πληρωμών σας και τον/την {{user}} για το πώς να χειριστείτε αυτό.",
-  
-  
-  
   "dark_theme_contrast_error": "Το χρώμα του σκοτεινού θέματος δεν περνά τον έλεγχο αντίθεσης. Συνιστούμε να αλλάξετε αυτό το χρώμα ώστε τα κουμπιά σας να είναι πιο ορατά.",
   "light_theme_contrast_error": "Το χρώμα του φωτεινού θέματος δεν περνά τον έλεγχο αντίθεσης. Συνιστούμε να αλλάξετε αυτό το χρώμα ώστε τα κουμπιά σας να είναι πιο ορατά.",
   "event_type_color_light_theme_contrast_error": "Το χρώμα του ανοιχτού θέματος δεν περνά τον έλεγχο αντίθεσης. Συνιστούμε να αλλάξετε αυτό το χρώμα ώστε οι τύποι εκδηλώσεων να είναι πιο ορατοί.",
   "event_type_color_dark_theme_contrast_error": "Το χρώμα του σκοτεινού θέματος δεν περνά τον έλεγχο αντίθεσης. Συνιστούμε να αλλάξετε αυτό το χρώμα ώστε οι τύποι εκδηλώσεων να είναι πιο ορατοί.",
-  
-  
   "no_available_users_found_error": "Δεν βρέθηκαν διαθέσιμοι χρήστες. Θα μπορούσατε να δοκιμάσετε άλλη χρονική θυρίδα;",
   "request_body_end_time_internal_error": "Εσωτερικό σφάλμα. Το σώμα του αιτήματος δεν περιέχει ώρα λήξης",
   "create_calendar_event_error": "Δεν είναι δυνατή η δημιουργία συμβάντος στο ημερολόγιο του διοργανωτή",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "Έχετε ήδη εγγραφεί για αυτή την κράτηση",
   "hosts_unavailable_for_booking": "Ορισμένοι από τους οικοδεσπότες δεν είναι διαθέσιμοι για κράτηση",
   "help": "Βοήθεια",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Γενική προτροπή",
   "begin_message": "Έναρξη μηνύματος",
   "codebase_has_to_stay_opensource": "Ο κώδικας πρέπει να παραμείνει ανοιχτού κώδικα, είτε έχει τροποποιηθεί είτε όχι",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "Είστε κρυμμένοι σε αυτήν την ομάδα",
   "hidden_team_member_message": "Η θέση σας δεν έχει πληρωθεί. Αναβαθμίστε σε PRO ή ενημερώστε τον ιδιοκτήτη της ομάδας ότι μπορεί να πληρώσει για τη θέση σας.",
   "hidden_team_owner_message": "Χρειάζεστε λογαριασμό pro για να χρησιμοποιήσετε ομάδες. Είστε κρυμμένος μέχρι να κάνετε αναβάθμιση.",
-  "link_expires": "Υ.Γ. Λήγει σε {{expiresIn}} ώρες.",
-  
-  "seat_options_doesnt_support_confirmation": "Η επιλογή θέσεων δεν υποστηρίζει την απαίτηση επιβεβαίωσης",
-  "multilocation_doesnt_support_seats": "Οι πολλαπλές τοποθεσίες δεν υποστηρίζουν την επιλογή θέσεων",
-  
-  "seats_option_doesnt_support_multi_location": "Η επιλογή θέσεων δεν υποστηρίζει πολλαπλές τοποθεσίες",
-  
-  
-  
-  
-  
-  
+  "link_expires": "Υ.Γ. Λήγει σε {{expiresIn}} ώρες.","seat_options_doesnt_support_confirmation": "Η επιλογή θέσεων δεν υποστηρίζει την απαίτηση επιβεβαίωσης",
+  "multilocation_doesnt_support_seats": "Οι πολλαπλές τοποθεσίες δεν υποστηρίζουν την επιλογή θέσεων","seats_option_doesnt_support_multi_location": "Η επιλογή θέσεων δεν υποστηρίζει πολλαπλές τοποθεσίες",
   "use_link_to_reset_password": "Χρησιμοποιήστε τον παρακάτω σύνδεσμο για να επαναφέρετε τον κωδικό πρόσβασης",
   "hey_there": "Γεια σας,",
   "forgot_your_password_calcom": "Ξεχάσατε τον κωδικό πρόσβασης? - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Το Webhook δημιουργήθηκε επιτυχώς!",
   "webhook_updated_successfully": "Το Webhook ενημερώθηκε επιτυχώς!",
   "webhook_removed_successfully": "Το Webhook αφαιρέθηκε επιτυχώς!",
-  
-  
   "payload_template": "Πρότυπο φορτίου",
   "dismiss": "Παράβλεψη",
   "no_data_yet": "Δεν υπάρχουν δεδομένα ακόμη",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "Η επαναλαμβανόμενη συνάντησή σας έχει υποβληθεί",
   "booking_confirmed": "Η κράτησή σας έχει επιβεβαιωθεί",
   "booking_confirmed_recurring": "Η επαναλαμβανόμενη συνάντησή σας έχει επιβεβαιωθεί",
-  
-  
   "enter_new_password": "Εισάγετε τον νέο κωδικό πρόσβασης που θέλετε για το λογαριασμό σας.",
   "reset_password": "Επαναφορά Κωδικού Πρόσβασης",
   "change_your_password": "Αλλαγή κωδικού πρόσβασης",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Η απομαγνητοφώνηση δημιουργήθηκε",
   "booking_created": "Η κράτηση δημιουργήθηκε",
   "booking_rejected": "Η κράτηση απορρίφθηκε",
-  "booking_requested": "Η κράτηση ζητήθηκε",
-  
-  "meeting_ended": "Η συνάντηση ολοκληρώθηκε",
+  "booking_requested": "Η κράτηση ζητήθηκε","meeting_ended": "Η συνάντηση ολοκληρώθηκε",
   "form_submitted": "Η φόρμα υποβλήθηκε",
-  "form_submitted_no_event": "Η φόρμα υποβλήθηκε, δεν προγραμματίστηκε εκδήλωση",
-  
-  "ooo_created": "Δημιουργήθηκε ειδοποίηση απουσίας",
+  "form_submitted_no_event": "Η φόρμα υποβλήθηκε, δεν προγραμματίστηκε εκδήλωση","ooo_created": "Δημιουργήθηκε ειδοποίηση απουσίας",
   "booking_no_show_updated": "Ενημερώθηκε η μη εμφάνιση στην κράτηση",
-  "event_triggers": "Ενεργοποιητές συμβάντων",
-  
-  "create_new_webhook": "Δημιουργία νέου webhook",
+  "event_triggers": "Ενεργοποιητές συμβάντων","create_new_webhook": "Δημιουργία νέου webhook",
   "webhooks": "Webhooks",
   "team_webhooks": "Webhooks ομάδας",
   "create_new_webhook_to_account": "Δημιουργία νέου webhook στον λογαριασμό σας",
@@ -529,9 +493,7 @@
   "iframe_embed": "Ενσωμάτωση iframe",
   "embed_calcom": "Ο ευκολότερος τρόπος να ενσωματώσετε το {{appName}} στον ιστότοπό σας.",
   "integrate_using_embed_or_webhooks": "Ενσωματώστε στον ιστότοπό σας χρησιμοποιώντας τις επιλογές ενσωμάτωσης ή λάβετε πληροφορίες κρατήσεων σε πραγματικό χρόνο χρησιμοποιώντας προσαρμοσμένα webhooks.",
-  "schedule_a_meeting": "Προγραμματισμός συνάντησης",
-        "need_anything_else": "Χρειάζεστε οτιδήποτε άλλο;",
-    "contact": "Επικοινωνία",
+  "schedule_a_meeting": "Προγραμματισμός συνάντησης",    "need_anything_else": "Χρειάζεστε οτιδήποτε άλλο;","contact": "Επικοινωνία",
   "our_support_team": "την ομάδα υποστήριξής μας",
   "contact_our_support_team": "Επικοινωνήστε με την ομάδα υποστήριξης",
   "uh_oh": "Ωχ όχι!",
@@ -773,10 +735,6 @@
   "readonly": "Μόνο για ανάγνωση",
   "one_time_link": "Σύνδεσμος μιας χρήσης",
   "plan_description": "Αυτή τη στιγμή βρίσκεστε στο πρόγραμμα {{plan}}.",
-  
-  
-  
-  
   "event_types_page_title": "Τύποι εκδηλώσεων",
   "event_types_page_subtitle": "Δημιουργήστε εκδηλώσεις για να τις μοιραστείτε ώστε να μπορούν άλλοι να κλείσουν ραντεβού στο ημερολόγιό σας.",
   "new": "Νέο",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Δημιουργήστε μια ομάδα για να ξεκινήσετε",
   "teams": "Ομάδες",
   "team": "Ομάδα",
-  "organization": "Οργανισμός",
-      
-  
-    "create_manage_teams_collaborative": "Δημιουργήστε και διαχειριστείτε ομάδες για να χρησιμοποιήσετε λειτουργίες συνεργασίας.",
+  "organization": "Οργανισμός",    "create_manage_teams_collaborative": "Δημιουργήστε και διαχειριστείτε ομάδες για να χρησιμοποιήσετε λειτουργίες συνεργασίας.",
   "only_available_on_pro_plan": "Αυτή η λειτουργία είναι διαθέσιμη μόνο στο πρόγραμμα Pro",
   "remove_cal_branding_description": "Για να αφαιρέσετε το branding του {{appName}} από τις σελίδες κράτησης, πρέπει να αναβαθμίσετε σε λογαριασμό Pro.",
   "edit_profile_info_description": "Επεξεργαστείτε τις πληροφορίες του προφίλ σας, που εμφανίζονται στον σύνδεσμο προγραμματισμού σας.",
@@ -843,16 +798,13 @@
   "little_something_about": "Λίγα λόγια για εσάς.",
   "profile_updated_successfully": "Το προφίλ ενημερώθηκε με επιτυχία",
   "your_user_profile_updated_successfully": "Το προφίλ χρήστη σας ενημερώθηκε με επιτυχία.",
-  
-  
   "you_are_all_set": "Είστε έτοιμοι",
   "you_are_all_set_description": "Είστε ήδη στο πιο πρόσφατο πρόγραμμα. Δεν χρειάζεται αναβάθμιση. Απολαύστε τις νέες λειτουργίες και επικοινωνήστε μαζί μας για οποιεσδήποτε ερωτήσεις!",
   "user_cannot_found_db": "Ο χρήστης φαίνεται να είναι συνδεδεμένος αλλά δεν βρέθηκε στη βάση δεδομένων",
   "embed_and_webhooks": "Ενσωμάτωση & Webhooks",
   "enabled": "Ενεργοποιημένο",
   "disabled": "Απενεργοποιημένο",
-  "disable": "Απενεργοποίηση",
-      "availability": "Διαθεσιμότητα",
+  "disable": "Απενεργοποίηση",  "availability": "Διαθεσιμότητα",
   "edit_availability": "Επεξεργασία διαθεσιμότητας",
   "configure_availability": "Διαμορφώστε τις ώρες που είστε διαθέσιμοι για κρατήσεις.",
   "copy_times_to": "Αντιγραφή ωρών σε",
@@ -889,8 +841,6 @@
   "recurring_event": "Επαναλαμβανόμενο συμβάν",
   "recurring_event_description": "Οι χρήστες μπορούν να εγγραφούν σε επαναλαμβανόμενα συμβάντα",
   "connect_and_join": "Σύνδεση και συμμετοχή",
-  
-  
   "warning_instant_meeting_experimental": "Πειραματικό: Τα συμβάντα άμεσων συναντήσεων βρίσκονται σε πειραματικό στάδιο.",
   "starting": "Έναρξη",
   "disable_guests": "Απενεργοποίηση επισκεπτών",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "Το {{appName}} θα παρέχει ένα URL βιντεοσυνάντησης.",
   "cal_provide_jitsi_meeting_url": "Θα δημιουργήσουμε ένα URL Jitsi Meet για εσάς.",
   "cal_provide_huddle01_meeting_url": "Το {{appName}} θα παρέχει ένα URL βιντεοσυνάντησης Huddle01.",
-  "cal_provide_teams_meeting_url": "Το {{appName}} θα παρέχει ένα URL συνάντησης MS Teams. ΣΗΜΕΙΩΣΗ: ΑΠΑΙΤΕΙΤΑΙ ΕΤΑΙΡΙΚΟΣ Ή ΣΧΟΛΙΚΟΣ ΛΟΓΑΡΙΑΣΜΟΣ",
-  
-  "you_need_to_add_a_name": "Πρέπει να προσθέσετε ένα όνομα",
+  "cal_provide_teams_meeting_url": "Το {{appName}} θα παρέχει ένα URL συνάντησης MS Teams. ΣΗΜΕΙΩΣΗ: ΑΠΑΙΤΕΙΤΑΙ ΕΤΑΙΡΙΚΟΣ Ή ΣΧΟΛΙΚΟΣ ΛΟΓΑΡΙΑΣΜΟΣ","you_need_to_add_a_name": "Πρέπει να προσθέσετε ένα όνομα",
   "commission_per_transaction": "προμήθεια ανά συναλλαγή",
   "event_type_updated_successfully_description": "Ο τύπος εκδήλωσης ενημερώθηκε με επιτυχία.",
   "hide_event_type": "Απόκρυψη τύπου εκδήλωσης",
@@ -964,9 +912,7 @@
   "next_step_text": "Επόμενο βήμα",
   "next_step": "Παράλειψη βήματος",
   "prev_step": "Προηγούμενο βήμα",
-  "install": "Εγκατάσταση",
-  
-  "installed": "Εγκατεστημένο",
+  "install": "Εγκατάσταση","installed": "Εγκατεστημένο",
   "active_install_one": "{{count}} ενεργή εγκατάσταση",
   "active_install_other": "{{count}} ενεργές εγκαταστάσεις",
   "globally_install": "Εγκατεστημένο παγκοσμίως",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Το ημερολόγιο ενημερώθηκε με επιτυχία",
   "check_here": "Ελέγξτε εδώ",
   "conferencing": "Τηλεδιασκέψεις",
-  "calendar": "Ημερολόγιο",
-  
-  "not_installed": "Δεν έχει εγκατασταθεί",
+  "calendar": "Ημερολόγιο","not_installed": "Δεν έχει εγκατασταθεί",
   "error_password_mismatch": "Οι κωδικοί πρόσβασης δεν ταιριάζουν.",
   "error_required_field": "Αυτό το πεδίο είναι υποχρεωτικό.",
   "status": "Κατάσταση",
@@ -1024,16 +968,12 @@
   "no_category_apps": "Δεν υπάρχουν εφαρμογές {{category}}",
   "all_apps": "Όλες οι εφαρμογές",
   "no_category_apps_description_calendar": "Προσθέστε μια εφαρμογή ημερολογίου για να ελέγχετε για συγκρούσεις και να αποφεύγετε τις διπλές κρατήσεις",
-  "no_category_apps_description_conferencing": "Δοκιμάστε να προσθέσετε μια εφαρμογή τηλεδιάσκεψης για βιντεοκλήσεις με τους πελάτες σας",
-  
-  "no_category_apps_description_analytics": "Προσθέστε μια εφαρμογή αναλυτικών στοιχείων για τις σελίδες κρατήσεών σας",
+  "no_category_apps_description_conferencing": "Δοκιμάστε να προσθέσετε μια εφαρμογή τηλεδιάσκεψης για βιντεοκλήσεις με τους πελάτες σας","no_category_apps_description_analytics": "Προσθέστε μια εφαρμογή αναλυτικών στοιχείων για τις σελίδες κρατήσεών σας",
   "no_category_apps_description_automation": "Προσθέστε μια εφαρμογή αυτοματισμού για χρήση",
   "no_category_apps_description_other": "Προσθέστε οποιονδήποτε άλλο τύπο εφαρμογής για να κάνετε διάφορα πράγματα",
   "no_category_apps_description_messaging": "Προσθέστε μια εφαρμογή μηνυμάτων για να ρυθμίσετε προσαρμοσμένες ειδοποιήσεις & υπενθυμίσεις",
   "no_category_apps_description_crm": "Προσθέστε μια εφαρμογή CRM για να παρακολουθείτε με ποιους έχετε συναντηθεί",
-  "installed_app_calendar_description": "Ορίστε τα ημερολόγια για έλεγχο συγκρούσεων ώστε να αποφύγετε τις διπλές κρατήσεις.",
-  
-  "installed_app_analytics_description": "Διαμορφώστε ποιες εφαρμογές ανάλυσης θα χρησιμοποιούνται στις σελίδες κρατήσεών σας",
+  "installed_app_calendar_description": "Ορίστε τα ημερολόγια για έλεγχο συγκρούσεων ώστε να αποφύγετε τις διπλές κρατήσεις.","installed_app_analytics_description": "Διαμορφώστε ποιες εφαρμογές ανάλυσης θα χρησιμοποιούνται στις σελίδες κρατήσεών σας",
   "installed_app_other_description": "Όλες οι εγκατεστημένες εφαρμογές σας από άλλες κατηγορίες.",
   "installed_app_conferencing_description": "Διαμορφώστε ποιες εφαρμογές τηλεδιάσκεψης θα χρησιμοποιείτε",
   "installed_app_automation_description": "Διαμορφώστε ποιες εφαρμογές αυτοματισμού θα χρησιμοποιείτε",
@@ -1048,9 +988,7 @@
   "features": "Χαρακτηριστικά",
   "permissions": "Δικαιώματα",
   "terms_and_privacy": "Όροι και απόρρητο",
-  "published_by": "Δημοσιεύτηκε από {{author}}",
-  
-  "buy": "Αγορά",
+  "published_by": "Δημοσιεύτηκε από {{author}}","buy": "Αγορά",
   "install_app": "Εγκατάσταση εφαρμογής",
   "categories": "Κατηγορίες",
   "pricing": "Τιμολόγηση",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Επαλήθευση Πορτοφολιού",
   "create_events_on": "Δημιουργία συμβάντων σε",
   "enterprise_license": "Αυτό είναι ένα εμπορικό χαρακτηριστικό",
-  "enterprise_license_locally": "Μπορείτε να δοκιμάσετε αυτή την δυνατότητα τοπικά αλλά όχι σε παραγωγική εγκατάσταση.",
-  
-  "missing_license": "Λείπει η Άδεια Χρήσης",
+  "enterprise_license_locally": "Μπορείτε να δοκιμάσετε αυτή την δυνατότητα τοπικά αλλά όχι σε παραγωγική εγκατάσταση.","missing_license": "Λείπει η Άδεια Χρήσης",
   "next_steps": "Επόμενα Βήματα",
   "acquire_commercial_license": "Απόκτηση εμπορικής άδειας",
   "the_infrastructure_plan": "Το πλάνο υποδομής βασίζεται στη χρήση και προσφέρει εκπτώσεις φιλικές προς τις νεοφυείς επιχειρήσεις",
   "prisma_studio_tip": "Δημιουργία λογαριασμού μέσω Prisma Studio",
-  "prisma_studio_tip_description": "Μάθετε πώς να ρυθμίσετε τον πρώτο σας χρήστη",
-  
-  "error_404": "Σφάλμα 404",
+  "prisma_studio_tip_description": "Μάθετε πώς να ρυθμίσετε τον πρώτο σας χρήστη","error_404": "Σφάλμα 404",
   "default": "Προεπιλογή",
   "set_to_default": "Ορισμός ως Προεπιλογή",
   "new_schedule_btn": "Νέο πρόγραμμα",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Τεκμηρίωση υποστήριξης",
   "developer_documentation": "Τεκμηρίωση προγραμματιστή",
   "get_in_touch": "Επικοινωνήστε μαζί μας",
-  "contact_support": "Επικοινωνία με την υποστήριξη",
-  
-  "community_support": "Υποστήριξη κοινότητας",
+  "contact_support": "Επικοινωνία με την υποστήριξη","community_support": "Υποστήριξη κοινότητας",
   "feedback": "Σχόλια",
   "submitted_feedback": "Ευχαριστούμε για τα σχόλιά σας!",
   "feedback_error": "Σφάλμα κατά την αποστολή σχολίων",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "Οι ροές εργασίας σας επιτρέπουν να αυτοματοποιήσετε την αποστολή υπενθυμίσεων και ειδοποιήσεων.",
   "active_on": "Ενεργό στις",
   "workflow_updated_successfully": "Η ροή εργασίας {{workflowName}} ενημερώθηκε με επιτυχία",
-    
-  "current": "Τρέχον",
-  
-  "standard": "τυπικό",
+  "current": "Τρέχον","standard": "τυπικό",
   "confirm_username_change_dialog_title": "Επιβεβαίωση αλλαγής ονόματος χρήστη",
-  
-  
-    
   "trial_expired": "Η δοκιμαστική περίοδος έληξε",
   "remove_app": "Αφαίρεση εφαρμογής",
   "yes_remove_app": "Ναι, αφαίρεση εφαρμογής",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "Συμμετέχων",
   "event_date_variable": "Ημερομηνία εκδήλωσης",
   "event_time_variable": "Ώρα εκδήλωσης",
-  "organizer_name_variable": "Όνομα διοργανωτή",
-  
-  "invalid_number": "Μη έγκυρος αριθμός τηλεφώνου",
+  "organizer_name_variable": "Όνομα διοργανωτή","invalid_number": "Μη έγκυρος αριθμός τηλεφώνου",
   "invalid_url_error_message": "Μη έγκυρο URL για {{label}}. Παράδειγμα URL: {{sampleUrl}}",
   "navigate": "Πλοήγηση",
   "open": "Άνοιγμα",
   "close": "Κλείσιμο",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Οι εγγραφές αποτελούν μέρος του προγράμματος ομάδων",
   "team_feature_teams": "Αυτή είναι μια λειτουργία Ομάδας. Αναβαθμίστε σε Ομάδα για να δείτε τη διαθεσιμότητα της ομάδας σας.",
   "team_feature_workflows": "Αυτή είναι μια λειτουργία Ομάδας. Αναβαθμίστε σε Ομάδα για να αυτοματοποιήσετε τις ειδοποιήσεις και υπενθυμίσεις εκδηλώσεων με τα Workflows.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Αναγνωριστικό ερώτησης κράτησης",
   "company_size": "Μέγεθος εταιρείας",
   "what_help_needed": "Με τι χρειάζεστε βοήθεια;",
-  "variable_format": "Μορφή μεταβλητής",
-  
-  "custom_input_as_variable_info": "Αγνοήστε όλους τους ειδικούς χαρακτήρες της επιπλέον ετικέτας εισαγωγής (χρησιμοποιήστε μόνο γράμματα και αριθμούς), χρησιμοποιήστε κεφαλαία για όλα τα γράμματα και αντικαταστήστε τα κενά με κάτω παύλες.",
+  "variable_format": "Μορφή μεταβλητής","custom_input_as_variable_info": "Αγνοήστε όλους τους ειδικούς χαρακτήρες της επιπλέον ετικέτας εισαγωγής (χρησιμοποιήστε μόνο γράμματα και αριθμούς), χρησιμοποιήστε κεφαλαία για όλα τα γράμματα και αντικαταστήστε τα κενά με κάτω παύλες.",
   "using_booking_questions_as_variables": "Πώς χρησιμοποιώ τις ερωτήσεις κράτησης ως μεταβλητές;",
   "download_desktop_app": "Λήψη εφαρμογής για υπολογιστή",
   "set_ping_link": "Ορισμός συνδέσμου Ping",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "Πόσο συχνά μπορείτε να κάνετε κράτηση",
   "event_advanced_tab_description": "Ρυθμίσεις ημερολογίου & περισσότερα...",
   "event_advanced_tab_title": "Προχωρημένες ρυθμίσεις",
-  
-  
   "event_setup_multiple_duration_error": "Ρύθμιση συμβάντος: Οι πολλαπλές διάρκειες απαιτούν τουλάχιστον 1 επιλογή.",
   "event_setup_multiple_duration_default_error": "Ρύθμιση συμβάντος: Παρακαλώ επιλέξτε μια έγκυρη προεπιλεγμένη διάρκεια.",
   "event_setup_booking_limits_error": "Τα όρια κρατήσεων πρέπει να είναι σε αύξουσα σειρά. [ημέρα, εβδομάδα, μήνας, έτος]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "Μπορείτε να προσαρμόσετε όλα αυτά αργότερα στη σελίδα διαθεσιμότητας.",
   "connect_calendars_from_app_store": "Μπορείτε να προσθέσετε περισσότερα ημερολόγια από το app store",
   "connect_conference_apps": "Σύνδεση εφαρμογών τηλεδιάσκεψης",
-  "connect_calendar_apps": "Σύνδεση εφαρμογών ημερολογίου",
-  
-  "connect_automation_apps": "Σύνδεση εφαρμογών αυτοματισμού",
+  "connect_calendar_apps": "Σύνδεση εφαρμογών ημερολογίου","connect_automation_apps": "Σύνδεση εφαρμογών αυτοματισμού",
   "connect_analytics_apps": "Σύνδεση εφαρμογών αναλυτικής",
   "connect_other_apps": "Σύνδεση άλλων εφαρμογών",
   "connect_messaging_apps": "Σύνδεση εφαρμογών μηνυμάτων",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Ο σύνδεσμος επαναφοράς εστάλη",
   "password_reset_email": "Ένα email βρίσκεται καθ' οδόν προς το {{email}} με οδηγίες για την επαναφορά του κωδικού σας.",
   "password_reset_leading": "Εάν δεν λάβετε σύντομα email, ελέγξτε ότι η διεύθυνση email που εισαγάγατε είναι σωστή, ελέγξτε τον φάκελο ανεπιθύμητης αλληλογραφίας ή επικοινωνήστε με την υποστήριξη εάν το πρόβλημα παραμένει.",
-  "password_updated": "Ο κωδικός ενημερώθηκε!",
-  
-  "pending_invites": "Εκκρεμείς προσκλήσεις",
+  "password_updated": "Ο κωδικός ενημερώθηκε!","pending_invites": "Εκκρεμείς προσκλήσεις",
   "pending_organization_invites": "Εκκρεμείς προσκλήσεις οργανισμού",
   "not_on_cal": "Δεν είστε στο {{appName}}",
   "no_calendar_installed": "Δεν έχει εγκατασταθεί ημερολόγιο",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "Χρησιμοποιήστε κεφαλαία για όλα τα γράμματα",
   "replace_whitespaces_underscores": "Αντικαταστήστε τα κενά με κάτω παύλες",
   "platform_members": "Μέλη πλατφόρμας",
-  "platform_members_description": "Διαχειριστείτε τους διαχειριστές και τα μέλη στην ομάδα της πλατφόρμας σας",
-                  "ignore_special_characters_booking_questions": "Αγνοήστε τους ειδικούς χαρακτήρες στο αναγνωριστικό της ερώτησης κράτησης. Χρησιμοποιήστε μόνο γράμματα και αριθμούς",
+  "platform_members_description": "Διαχειριστείτε τους διαχειριστές και τα μέλη στην ομάδα της πλατφόρμας σας",              "ignore_special_characters_booking_questions": "Αγνοήστε τους ειδικούς χαρακτήρες στο αναγνωριστικό της ερώτησης κράτησης. Χρησιμοποιήστε μόνο γράμματα και αριθμούς",
   "retry": "Προσπαθήστε ξανά",
   "fetching_calendars_error": "Υπήρξε ένα πρόβλημα κατά την ανάκτηση των ημερολογίων σας. Παρακαλώ <1>δοκιμάστε ξανά</1> ή επικοινωνήστε με την υποστήριξη πελατών.",
   "calendar_connection_fail": "Η σύνδεση με το ημερολόγιο απέτυχε",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Περιορισμός μελλοντικών κρατήσεων",
   "limit_future_bookings_description": "Περιορίστε πόσο μακριά στο μέλλον μπορεί να γίνει κράτηση για αυτό το συμβάν",
   "no_event_types": "Δεν έχουν ρυθμιστεί τύποι συμβάντων",
-  "no_event_types_description": "Ο/Η {{name}} δεν έχει ρυθμίσει κανέναν τύπο συμβάντος για κράτηση.",
-    "monthly": "Μηνιαία",
+  "no_event_types_description": "Ο/Η {{name}} δεν έχει ρυθμίσει κανέναν τύπο συμβάντος για κράτηση.","monthly": "Μηνιαία",
   "yearly": "Ετήσια",
   "weekly": "Εβδομαδιαία",
   "checkout": "Ολοκλήρωση αγοράς",
@@ -1733,9 +1643,7 @@
   "test_preview": "Δοκιμαστική Προεπισκόπηση",
   "route_to": "Δρομολόγηση προς",
   "test_preview_description": "Δοκιμάστε τη φόρμα δρομολόγησης χωρίς να υποβάλετε δεδομένα",
-  "test_routing": "Δοκιμή Δρομολόγησης",
-  
-  "edit_event_type": "Επεξεργασία τύπου εκδήλωσης",
+  "test_routing": "Δοκιμή Δρομολόγησης","edit_event_type": "Επεξεργασία τύπου εκδήλωσης",
   "only_admin_can_see_members_of_org": "Αυτός ο Οργανισμός είναι ιδιωτικός και μόνο ο διαχειριστής ή ο ιδιοκτήτης του οργανισμού μπορεί να δει τα μέλη του.",
   "only_admin_can_manage_sso_org": "Μόνο ο διαχειριστής ή ο ιδιοκτήτης του οργανισμού μπορεί να διαχειριστεί τις ρυθμίσεις SSO",
   "collective_scheduling": "Συλλογικός προγραμματισμός",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "Ένας διαχειριστής στην ομάδα <strong>{{teamName}}</strong> έχει αντικαταστήσει τον τύπο εκδήλωσής σας <strong>/{{slug}}</strong> με έναν διαχειριζόμενο τύπο εκδήλωσης που ελέγχει.",
   "email_body_slug_replacement_info": "Ο σύνδεσμός σας θα συνεχίσει να λειτουργεί αλλά κάποιες ρυθμίσεις του μπορεί να έχουν αλλάξει. Μπορείτε να τον ελέγξετε στους τύπους εκδηλώσεων.",
   "email_body_slug_replacement_suggestion": "Εάν έχετε απορίες σχετικά με τον τύπο εκδήλωσης, παρακαλούμε επικοινωνήστε με τον διαχειριστή σας.<br /><br />Καλό προγραμματισμό, <br />Η ομάδα του Cal.com",
-  
-  
   "app_disabled_with_event_type": "Ο διαχειριστής έχει απενεργοποιήσει το {{appName}} που επηρεάζει τον τύπο εκδήλωσής σας {{title}}.",
   "app_disabled_video": "Ο διαχειριστής έχει απενεργοποιήσει το {{appName}} που μπορεί να επηρεάσει τους τύπους εκδηλώσεών σας. Εάν έχετε τύπους εκδηλώσεων με το {{appName}} ως τοποθεσία, θα χρησιμοποιηθεί ως προεπιλογή το Cal Video.",
   "app_disabled_subject": "Το {{appName}} έχει απενεργοποιηθεί",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Διοργανωτές Round-Robin",
   "minimum_round_robin_hosts_count": "Απαιτούμενος αριθμός διοργανωτών για συμμετοχή",
   "hosts": "Διοργανωτές",
-  
-  
   "new_attendee": "Νέος συμμετέχων",
   "awaiting_approval": "Σε αναμονή έγκρισης",
   "requires_google_calendar": "Αυτή η εφαρμογή απαιτεί σύνδεση με το Google Calendar",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Προσαρμόστε τις ερωτήσεις που εμφανίζονται στη σελίδα κράτησης",
   "add_a_booking_question": "Προσθήκη ερώτησης",
   "identifier": "Αναγνωριστικό",
-  "duplicate_email": "Το email υπάρχει ήδη",
-  
-  
-  
-  "booking_confirmation_failed": "Η επιβεβαίωση της κράτησης απέτυχε",
+  "duplicate_email": "Το email υπάρχει ήδη","booking_confirmation_failed": "Η επιβεβαίωση της κράτησης απέτυχε",
   "not_enough_seats": "Δεν υπάρχουν αρκετές θέσεις",
   "form_builder_field_already_exists": "Υπάρχει ήδη ένα πεδίο με αυτό το όνομα",
   "show_on_booking_page": "Εμφάνιση στη σελίδα κράτησης",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Εκκαθάριση Φίλτρων",
   "clear": "Εκκαθάριση",
   "hold": "Δέσμευση",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Αναλύσεις",
   "routing_forms": "Φόρμες δρομολόγησης",
   "testing_workflow_info_message": "Κατά τη δοκιμή αυτής της ροής εργασίας, λάβετε υπόψη ότι τα email και τα SMS μπορούν να προγραμματιστούν τουλάχιστον 1 ώρα νωρίτερα",
   "insights_no_data_found_for_filter": "Δεν βρέθηκαν δεδομένα για το επιλεγμένο φίλτρο ή τις επιλεγμένες ημερομηνίες.",
-  
-  
   "something_went_wrong_on_our_end": "Κάτι πήγε στραβά από την πλευρά μας. Επικοινωνήστε με την ομάδα υποστήριξης και θα το διορθώσουμε άμεσα.",
-  "please_provide_following_text_to_suppport": "Παρακαλούμε παρέχετε το ακόλουθο κείμενο όταν επικοινωνείτε με την υποστήριξη για καλύτερη βοήθεια",
-  
-  "complete_your_booking": "Ολοκληρώστε την κράτησή σας",
+  "please_provide_following_text_to_suppport": "Παρακαλούμε παρέχετε το ακόλουθο κείμενο όταν επικοινωνείτε με την υποστήριξη για καλύτερη βοήθεια","complete_your_booking": "Ολοκληρώστε την κράτησή σας",
   "complete_your_booking_subject": "Ολοκληρώστε την κράτησή σας: {{title}} στις {{date}}",
   "confirm_your_details": "Επιβεβαιώστε τα στοιχεία σας",
   "copy_invite_link": "Αντιγραφή συνδέσμου πρόσκλησης",
@@ -2120,14 +2000,8 @@
   "three_months": "3 μήνες",
   "one_year": "1 έτος",
   "team_invite_received": "Έχετε προσκληθεί να συμμετάσχετε στην ομάδα {{teamName}}",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "Χρέωση συμμετέχοντα {{amount, currency}}",
-  
-  "email_invite_team": "Ο/Η {{email}} έχει προσκληθεί",
-  "email_invite_team_bulk": "{{userCount}} χρήστες έχουν προσκληθεί",
-  
-  "image_size_limit_exceed": "Η μεταφορτωμένη εικόνα δεν πρέπει να υπερβαίνει το όριο μεγέθους των 5mb",
+  "currency_string": "{{amount, currency}}","charge_attendee": "Χρέωση συμμετέχοντα {{amount, currency}}","email_invite_team": "Ο/Η {{email}} έχει προσκληθεί",
+  "email_invite_team_bulk": "{{userCount}} χρήστες έχουν προσκληθεί","image_size_limit_exceed": "Η μεταφορτωμένη εικόνα δεν πρέπει να υπερβαίνει το όριο μεγέθους των 5mb",
   "unauthorized_workflow_error_message": "{{errorCode}}: Δεν έχετε εξουσιοδότηση να ενεργοποιήσετε ή να απενεργοποιήσετε αυτή τη ροή εργασίας",
   "inline_embed": "Ενσωμάτωση εντός γραμμής",
   "load_inline_content": "Φορτώνει τον τύπο εκδήλωσής σας απευθείας εντός γραμμής με το υπόλοιπο περιεχόμενο του ιστότοπού σας",
@@ -2394,9 +2268,7 @@
   "locked": "Κλειδωμένο",
   "unlocked": "Ξεκλείδωτο",
   "lock_timezone_toggle_on_booking_page": "Κλείδωμα ζώνης ώρας στη σελίδα κράτησης",
-  "description_lock_timezone_toggle_on_booking_page": "Για κλείδωμα της ζώνης ώρας στη σελίδα κράτησης, χρήσιμο για εκδηλώσεις με φυσική παρουσία.",
-  
-  "number_in_international_format": "Παρακαλώ εισάγετε τον αριθμό σε διεθνή μορφή.",
+  "description_lock_timezone_toggle_on_booking_page": "Για κλείδωμα της ζώνης ώρας στη σελίδα κράτησης, χρήσιμο για εκδηλώσεις με φυσική παρουσία.","number_in_international_format": "Παρακαλώ εισάγετε τον αριθμό σε διεθνή μορφή.",
   "install_calendar": "Εγκατάσταση ημερολογίου",
   "branded_subdomain": "Επώνυμος υποτομέας",
   "branded_subdomain_description": "Αποκτήστε τον δικό σας επώνυμο υποτομέα, όπως acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Εκτεταμένο white-labeling",
   "extensive_whitelabeling_description": "Προσαρμόστε την εμπειρία προγραμματισμού με το δικό σας λογότυπο, χρώματα και άλλα",
   "unlimited_teams": "Απεριόριστες ομάδες",
-  "unlimited_teams_description": "Προσθέστε όσες υποομάδες χρειάζεστε στον οργανισμό σας",
-      "advanced_managed_events": "Προηγμένοι διαχειριζόμενοι τύποι εκδηλώσεων",
+  "unlimited_teams_description": "Προσθέστε όσες υποομάδες χρειάζεστε στον οργανισμό σας",  "advanced_managed_events": "Προηγμένοι διαχειριζόμενοι τύποι εκδηλώσεων",
   "advanced_managed_events_description": "Προσθέστε μία πιστωτική κάρτα για να πληρώνετε όλες τις συνδρομές της ομάδας σας",
   "enterprise": "Enterprise",
   "enterprise_description": "Αναβαθμίστε σε Enterprise για να δημιουργήσετε τον οργανισμό σας",
-  "create_your_org": "Δημιουργήστε τον Οργανισμό σας",
-    "create_your_enterprise_description": "Αναβαθμίστε σε Enterprise και αποκτήστε πρόσβαση σε Συγχρονισμό Active Directory, Αυτόματη παροχή χρηστών SCIM, Φωνητικούς πράκτορες Cal.ai, APIs διαχειριστή και άλλα!",
-  
-  "admin_delete_organization_description": "<ul><li>Οι ομάδες που είναι μέλη αυτού του οργανισμού θα διαγραφούν μαζί με τους τύπους εκδηλώσεών τους</li><li>Οι χρήστες που ήταν μέρος του οργανισμού δεν θα διαγραφούν, αλλά τα ονόματα χρήστη τους θα αλλάξουν ώστε να μπορούν να υπάρχουν εκτός του οργανισμού</li><li>Οι τύποι εκδηλώσεων χρήστη που δημιουργήθηκαν μετά την ένταξη του χρήστη στον οργανισμό θα διαγραφούν</li><li>Οι μεταφερμένοι τύποι εκδηλώσεων χρήστη δεν θα διαγραφούν</li></ul>",
+  "create_your_org": "Δημιουργήστε τον Οργανισμό σας","create_your_enterprise_description": "Αναβαθμίστε σε Enterprise και αποκτήστε πρόσβαση σε Συγχρονισμό Active Directory, Αυτόματη παροχή χρηστών SCIM, Φωνητικούς πράκτορες Cal.ai, APIs διαχειριστή και άλλα!","admin_delete_organization_description": "<ul><li>Οι ομάδες που είναι μέλη αυτού του οργανισμού θα διαγραφούν μαζί με τους τύπους εκδηλώσεών τους</li><li>Οι χρήστες που ήταν μέρος του οργανισμού δεν θα διαγραφούν, αλλά τα ονόματα χρήστη τους θα αλλάξουν ώστε να μπορούν να υπάρχουν εκτός του οργανισμού</li><li>Οι τύποι εκδηλώσεων χρήστη που δημιουργήθηκαν μετά την ένταξη του χρήστη στον οργανισμό θα διαγραφούν</li><li>Οι μεταφερμένοι τύποι εκδηλώσεων χρήστη δεν θα διαγραφούν</li></ul>",
   "admin_delete_organization_title": "Διαγραφή του {{organizationName}};",
   "published": "Δημοσιευμένο",
   "unpublished": "Μη δημοσιευμένο",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "Επιτρέψτε στους χρήστες να κάνουν άμεση κράτηση",
   "uprade_to_create_instant_bookings": "Αναβαθμίστε σε Enterprise και επιτρέψτε στους επισκέπτες να συμμετέχουν σε μια άμεση κλήση στην οποία οι συμμετέχοντες μπορούν να μπουν απευθείας. Αυτό ισχύει μόνο για τύπους εκδηλώσεων ομάδας",
   "dont_want_to_wait": "Δεν θέλετε να περιμένετε;",
-  "meeting_started": "Η συνάντηση ξεκίνησε",
-  
-  "cal_ai_event_tab_description": "Αφήστε τους AI Agents να κάνουν κράτηση για εσάς",
+  "meeting_started": "Η συνάντηση ξεκίνησε","cal_ai_event_tab_description": "Αφήστε τους AI Agents να κάνουν κράτηση για εσάς",
   "booking_not_found_error": "Δεν βρέθηκε η κράτηση",
   "booking_seats_full_error": "Οι θέσεις κράτησης είναι πλήρεις",
-  
-  
   "not_enough_available_seats_error": "Η κράτηση δεν έχει αρκετές διαθέσιμες θέσεις",
   "user_redirect_title": "Ο/Η {{username}} απουσιάζει προσωρινά.",
   "user_redirect_description": "Εν τω μεταξύ, ο/η {{profile.username}} θα είναι υπεύθυνος/η για όλες τις νέες προγραμματισμένες συναντήσεις εκ μέρους του/της {{username}}.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "On accepting the invite, your link will change to your organization domain but don&apos;t worry, all previous links will still work and redirect appropriately.<br /><br />Please note: All of your personal event types will be moved into the <strong>{teamName}</strong> organization, which may also include potential personal link.  <br /><br />For personal events we recommend creating a new account with a personal email address.",
   "email|existing_user_added_link_changed": "Ο σύνδεσμός σας άλλαξε από <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> σε <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>, αλλά μην ανησυχείτε, όλοι οι προηγούμενοι σύνδεσμοι εξακολουθούν να λειτουργούν και να ανακατευθύνουν κατάλληλα. <br /><br />Παρακαλούμε σημειώστε: Όλοι οι προσωπικοί τύποι εκδηλώσεών σας έχουν μεταφερθεί στον οργανισμό <strong>{teamName}</strong>, το οποίο μπορεί επίσης να περιλαμβάνει πιθανό προσωπικό σύνδεσμο.<br /><br />Παρακαλούμε συνδεθείτε και βεβαιωθείτε ότι δεν έχετε ιδιωτικές εκδηλώσεις στον νέο οργανωτικό σας λογαριασμό.<br /><br />Για προσωπικές εκδηλώσεις, συνιστούμε τη δημιουργία νέου λογαριασμού με προσωπική διεύθυνση email.<br /><br />Απολαύστε τον νέο σας καθαρό σύνδεσμο: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Ο οργανισμός σας έχει δημιουργηθεί",
-  "your_current_plan": "Το τρέχον πλάνο σας",
-  
-  "privacy_organization_description": "Διαχειριστείτε τις ρυθμίσεις απορρήτου για τον οργανισμό σας",
+  "your_current_plan": "Το τρέχον πλάνο σας","privacy_organization_description": "Διαχειριστείτε τις ρυθμίσεις απορρήτου για τον οργανισμό σας",
   "privacy": "Απόρρητο",
   "team_will_be_under_org": "Οι νέες ομάδες θα υπάγονται στον οργανισμό σας",
   "add_group_name": "Προσθήκη ονόματος ομάδας",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "Συνεχίζοντας, συμφωνείτε με τους <0>Όρους</0> και την <1>Πολιτική Προστασίας Προσωπικών Δεδομένων</1>.",
   "proceeding_agreement": "Προχωρώντας, συμφωνείτε με τους",
   "terms": "Όρους",
-  "always_show_x_days": "Πάντα {{x}} διαθέσιμες ημέρες",
-  
-  "updating_oauth_client_error": "Παρουσιάστηκε σφάλμα κατά την ενημέρωση του OAuth client, παρακαλώ δοκιμάστε ξανά αργότερα",
+  "always_show_x_days": "Πάντα {{x}} διαθέσιμες ημέρες","updating_oauth_client_error": "Παρουσιάστηκε σφάλμα κατά την ενημέρωση του OAuth client, παρακαλώ δοκιμάστε ξανά αργότερα",
   "creating_oauth_client_error": "Παρουσιάστηκε σφάλμα κατά τη δημιουργία του OAuth client, παρακαλώ δοκιμάστε ξανά αργότερα",
   "event_type_color": "Χρώμα τύπου συμβάντος",
   "event_type_color_description": "Αυτό χρησιμοποιείται μόνο για τη διάκριση τύπων συμβάντων και κρατήσεων εντός της εφαρμογής. Δεν εμφανίζεται στους χρήστες που κάνουν κρατήσεις.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Έλεγχος Google Calendar",
   "outlook_connect_atom_label": "Σύνδεση με Outlook Calendar",
   "outlook_connect_atom_already_connected_label": "Συνδεδεμένο Outlook Calendar",
-  "outlook_connect_atom_loading_label": "Έλεγχος Outlook Calendar",
-  
-  
-  
-  "booking_question_response_variables": "Μεταβλητές απαντήσεων ερωτήσεων κράτησης",
+  "outlook_connect_atom_loading_label": "Έλεγχος Outlook Calendar","booking_question_response_variables": "Μεταβλητές απαντήσεων ερωτήσεων κράτησης",
   "managed_by_teamAdmins": "Διαχείριση από {{teamAdmins}}",
   "number_of_options": "{{count}} επιλογές",
   "reschedule_with_same_round_robin_host_title": "Επαναπρογραμματισμός με τον ίδιο διοργανωτή Round-Robin",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "τελευταίες {{count}} ημέρες",
   "month_to_date": "από την αρχή του μήνα",
   "year_to_date": "από την αρχή του έτους",
-  "custom_range": "προσαρμοσμένο εύρος",
-  
-  "always": "Πάντα",
-  "never": "Ποτέ",
-  
-  "if_cancelled": "Εάν ακυρωθεί",
+  "custom_range": "προσαρμοσμένο εύρος","always": "Πάντα",
+  "never": "Ποτέ","if_cancelled": "Εάν ακυρωθεί",
   "before": "πριν",
   "show_all_columns": "Εμφάνιση όλων των στηλών",
   "toggle_columns": "Εναλλαγή στηλών",

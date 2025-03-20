@@ -4,9 +4,7 @@
   "day_one": "{{count}} gün",
   "day_other": "{{count}} gün",
   "second_one": "{{count}} saniye",
-  "second_other": "{{count}} saniye",
-  
-  "untitled": "Başlıksız",
+  "second_other": "{{count}} saniye","untitled": "Başlıksız",
   "accept_invitation": "Daveti Kabul Et",
   "max_characters": "Maks. Karakter",
   "min_characters": "Min. Karakter",
@@ -68,18 +66,10 @@
   "accept_our_license": "<1>NEXT_PUBLIC_LICENSE_CONSENT</1> .env değişkenini '{{agree}}' olarak değiştirerek lisansımızı kabul edin.",
   "remove_banner_instructions": "Bu banner'ı kaldırmak için lütfen .env dosyanızı açın ve <1>NEXT_PUBLIC_LICENSE_CONSENT</1> değişkenini '{{agree}}' olarak değiştirin.",
   "error_message": "Hata mesajı: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Lütfen ödeme sağlayıcınızla ve {{user}} ile bunu nasıl ele alınacağınızı kontrol edin.",
-  
-  
-  
   "dark_theme_contrast_error": "Koyu Tema rengi kontrast kontrolünden geçemedi. Butonlarınızın daha görünür olması için bu rengi değiştirmenizi öneririz.",
   "light_theme_contrast_error": "Açık Tema rengi kontrast kontrolünden geçemedi. Butonlarınızın daha görünür olması için bu rengi değiştirmenizi öneririz.",
   "event_type_color_light_theme_contrast_error": "Açık Tema rengi kontrast kontrolünden geçemedi. Etkinlik türlerinizin renginin daha görünür olması için bu rengi değiştirmenizi öneririz.",
   "event_type_color_dark_theme_contrast_error": "Koyu Tema rengi kontrast kontrolünden geçemedi. Etkinlik türlerinizin renginin daha görünür olması için bu rengi değiştirmenizi öneririz.",
-  
-  
   "no_available_users_found_error": "Uygun kullanıcı bulunamadı. Başka bir zaman dilimini deneyebilir misiniz?",
   "request_body_end_time_internal_error": "Dahili Hata. İstek gövdesinde bitiş zamanı yok",
   "create_calendar_event_error": "Organizatörün takviminde Takvim etkinliği oluşturulamadı",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "Bu rezervasyon için zaten kaydolmuşsunuz.",
   "hosts_unavailable_for_booking": "Bazı ev sahipleri rezervasyon için müsait değil.",
   "help": "Yardım",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Genel İstek",
   "begin_message": "Mesaja Başla",
   "codebase_has_to_stay_opensource": "Kod temeli, değiştirilmiş olsun ya da olmasın açık kaynak olarak kalmalıdır",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "Bu ekipte gizlisiniz",
   "hidden_team_member_message": "Yeriniz ücretli değil. Hesabınızı Pro'ya yükseltin veya ekip yöneticisinden yeriniz için ödeme yapmasını isteyin.",
   "hidden_team_owner_message": "Ekipler özelliğini kullanmak için bir Pro hesabına ihtiyacınız var. Hesabınızı yükseltene kadar gizli olarak kalacaksınız.",
-  "link_expires": "Not: Süre {{expiresIn}} saat içinde dolacak.",
-  
-  "seat_options_doesnt_support_confirmation": "Koltuklar seçeneği, onay gereksinimini desteklemiyor",
-  "multilocation_doesnt_support_seats": "Birden Fazla Konum, koltuk seçeneğini desteklemiyor",
-  
-  "seats_option_doesnt_support_multi_location": "Koltuk seçeneği, Birden Fazla Konumu desteklemiyor",
-  
-  
-  
-  
-  
-  
+  "link_expires": "Not: Süre {{expiresIn}} saat içinde dolacak.","seat_options_doesnt_support_confirmation": "Koltuklar seçeneği, onay gereksinimini desteklemiyor",
+  "multilocation_doesnt_support_seats": "Birden Fazla Konum, koltuk seçeneğini desteklemiyor","seats_option_doesnt_support_multi_location": "Koltuk seçeneği, Birden Fazla Konumu desteklemiyor",
   "use_link_to_reset_password": "Şifrenizi sıfırlamak için aşağıdaki bağlantıyı kullanın",
   "hey_there": "Merhaba",
   "forgot_your_password_calcom": "Şifrenizi mi unuttunuz? - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Web kancası başarıyla oluşturuldu!",
   "webhook_updated_successfully": "Web kancası başarıyla güncellendi!",
   "webhook_removed_successfully": "Web kancası başarıyla kaldırıldı!",
-  
-  
   "payload_template": "Veri Şablonu",
   "dismiss": "Reddet",
   "no_data_yet": "Henüz veri yok",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "Yinelenen toplantınız gönderildi",
   "booking_confirmed": "Rezervasyonunuz onaylandı",
   "booking_confirmed_recurring": "Yinelenen toplantınız onaylandı",
-  
-  
   "enter_new_password": "Hesabınız için istediğiniz yeni şifreyi girin.",
   "reset_password": "Şifreyi Sıfırla",
   "change_your_password": "Şifrenizi değiştirin",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Transkript Oluşturuldu",
   "booking_created": "Rezervasyon Oluşturuldu",
   "booking_rejected": "Rezervasyon Reddedildi",
-  "booking_requested": "Rezervasyon Talep Edildi",
-  
-  "meeting_ended": "Toplantı Sona Erdi",
+  "booking_requested": "Rezervasyon Talep Edildi","meeting_ended": "Toplantı Sona Erdi",
   "form_submitted": "Form Gönderildi",
-  "form_submitted_no_event": "Form gönderildi, etkinlik rezerve edilmedi",
-  
-  "ooo_created": "Ofis Dışı Oluşturuldu",
+  "form_submitted_no_event": "Form gönderildi, etkinlik rezerve edilmedi","ooo_created": "Ofis Dışı Oluşturuldu",
   "booking_no_show_updated": "Rezervasyon No-Show Güncellendi",
-  "event_triggers": "Etkinlik Tetikleyicileri",
-  
-  "create_new_webhook": "Yeni bir web kancası oluştur",
+  "event_triggers": "Etkinlik Tetikleyicileri","create_new_webhook": "Yeni bir web kancası oluştur",
   "webhooks": "Web kancaları",
   "team_webhooks": "Ekip Web Kancaları",
   "create_new_webhook_to_account": "Hesabınız için yeni bir web kancası oluşturun",
@@ -529,9 +493,7 @@
   "iframe_embed": "iframe Yerleştirme",
   "embed_calcom": "{{appName}}'u web sitenize yerleştirmenin en kolay yolu.",
   "integrate_using_embed_or_webhooks": "Yerleştirme seçeneklerimizi kullanarak web sitenize entegre edin veya özel web kancalarını kullanarak gerçek zamanlı rezervasyon bilgileri alın.",
-  "schedule_a_meeting": "Toplantı planla",
-        "need_anything_else": "Başka bir şeye ihtiyacınız var mı?",
-    "contact": "İletişime geçin",
+  "schedule_a_meeting": "Toplantı planla",    "need_anything_else": "Başka bir şeye ihtiyacınız var mı?","contact": "İletişime geçin",
   "our_support_team": "destek ekibimiz",
   "contact_our_support_team": "Destek ekibimizle iletişime geçin",
   "uh_oh": "Hay aksi!",
@@ -773,10 +735,6 @@
   "readonly": "Salt okunur",
   "one_time_link": "Tek seferlik bağlantı",
   "plan_description": "Şu anda {{plan}} planındasınız.",
-  
-  
-  
-  
   "event_types_page_title": "Etkinlik Türleri",
   "event_types_page_subtitle": "Takviminizde rezervasyon yapacak kişilerle paylaşmak üzere etkinlikler oluşturun.",
   "new": "Yeni",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Başlamak için bir ekip oluşturun",
   "teams": "Ekipler",
   "team": "Ekip",
-  "organization": "Kuruluş",
-      
-  
-    "create_manage_teams_collaborative": "İş birliği özelliklerini kullanmak için ekipler oluşturun ve yönetin.",
+  "organization": "Kuruluş",    "create_manage_teams_collaborative": "İş birliği özelliklerini kullanmak için ekipler oluşturun ve yönetin.",
   "only_available_on_pro_plan": "Bu özellik yalnızca Pro planında mevcuttur",
   "remove_cal_branding_description": "{{appName}} markasını rezervasyon sayfalarınızdan kaldırmak için bir Pro hesabına yükseltmeniz gerekir.",
   "edit_profile_info_description": "Planlama bağlantınızda görünecek olan profil bilgilerinizi düzenleyin.",
@@ -843,16 +798,13 @@
   "little_something_about": "Biraz kendinizden bahsedin.",
   "profile_updated_successfully": "Profil başarıyla güncellendi",
   "your_user_profile_updated_successfully": "Kullanıcı profiliniz başarıyla güncellendi.",
-  
-  
   "you_are_all_set": "Her şey hazır",
   "you_are_all_set_description": "Zaten en son planda bulunuyorsunuz. Yükseltilecek bir şey yok. Yeni özelliklerin keyfini çıkarın ve herhangi bir sorunuz olursa bizimle iletişime geçin!",
   "user_cannot_found_db": "Kullanıcı oturum açmış olarak görünüyor ancak veri tabanında bulunamadı",
   "embed_and_webhooks": "Yerleştirme ve Web Kancaları",
   "enabled": "Etkinleştirildi",
   "disabled": "Devre dışı bırakıldı",
-  "disable": "Devre dışı",
-      "availability": "Müsaitlik",
+  "disable": "Devre dışı",  "availability": "Müsaitlik",
   "edit_availability": "Müsaitlik durumunu düzenle",
   "configure_availability": "Rezervasyon için uygun olduğunuz zamanları yapılandırın.",
   "copy_times_to": "Saatleri şuraya kopyala:",
@@ -889,8 +841,6 @@
   "recurring_event": "Yinelenen Etkinlik",
   "recurring_event_description": "Kişiler yinelenen etkinlikler için abone olabilirler",
   "connect_and_join": "Bağlan ve katıl",
-  
-  
   "warning_instant_meeting_experimental": "Deneysel: Anlık Toplantı Etkinlikleri şu anda deneysel aşamadadır.",
   "starting": "Başlangıç",
   "disable_guests": "Misafirleri Devre Dışı Bırak",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "{{appName}}, bir görüntülü toplantı URL'si sağlayacaktır.",
   "cal_provide_jitsi_meeting_url": "Sizin için bir Jitsi Meet URL'si oluşturacağız.",
   "cal_provide_huddle01_meeting_url": "{{appName}}, bir Huddle01 görüntülü toplantı URL'si sağlayacaktır.",
-  "cal_provide_teams_meeting_url": "{{appName}}, bir MS Teams toplantı URL'si sağlayacaktır. NOT: İŞ VEYA OKUL HESABINIZIN OLMASI GEREKİR",
-  
-  "you_need_to_add_a_name": "Ad eklemeniz gerekiyor",
+  "cal_provide_teams_meeting_url": "{{appName}}, bir MS Teams toplantı URL'si sağlayacaktır. NOT: İŞ VEYA OKUL HESABINIZIN OLMASI GEREKİR","you_need_to_add_a_name": "Ad eklemeniz gerekiyor",
   "commission_per_transaction": "işlem başına komisyon",
   "event_type_updated_successfully_description": "Etkinlik türünüz başarıyla güncellendi.",
   "hide_event_type": "Etkinlik türünü gizle",
@@ -964,9 +912,7 @@
   "next_step_text": "Sonraki Adım",
   "next_step": "Adımı geç",
   "prev_step": "Önceki adım",
-  "install": "Yükle",
-  
-  "installed": "Yüklendi",
+  "install": "Yükle","installed": "Yüklendi",
   "active_install_one": "{{count}} aktif yükleme",
   "active_install_other": "{{count}} aktif yükleme",
   "globally_install": "Küresel olarak yüklendi",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Takvim başarıyla güncellendi",
   "check_here": "Buradan kontrol et",
   "conferencing": "Konferans",
-  "calendar": "Takvim",
-  
-  "not_installed": "Yüklü değil",
+  "calendar": "Takvim","not_installed": "Yüklü değil",
   "error_password_mismatch": "Şifreler eşleşmiyor.",
   "error_required_field": "Bu alan gereklidir.",
   "status": "Durum",
@@ -1024,16 +968,12 @@
   "no_category_apps": "{{category}} uygulaması yok",
   "all_apps": "Tüm uygulamalar",
   "no_category_apps_description_calendar": "Çifte rezervasyonları önlemek amacıyla çakışmaları kontrol etmek için bir takvim uygulaması ekleyin",
-  "no_category_apps_description_conferencing": "Müşterilerinizle görüntülü aramalar yapmak için bir konferans uygulaması eklemeyi deneyin",
-  
-  "no_category_apps_description_analytics": "Rezervasyon sayfalarınız için bir analiz uygulaması ekleyin",
+  "no_category_apps_description_conferencing": "Müşterilerinizle görüntülü aramalar yapmak için bir konferans uygulaması eklemeyi deneyin","no_category_apps_description_analytics": "Rezervasyon sayfalarınız için bir analiz uygulaması ekleyin",
   "no_category_apps_description_automation": "Kullanılacak otomasyon uygulamasını ekleyin",
   "no_category_apps_description_other": "Her türlü işlemi yapmak için farklı bir uygulama ekleyin",
   "no_category_apps_description_messaging": "Özel bildirimler ve hatırlatıcılar ayarlamak için bir mesajlaşma uygulaması ekleyin",
   "no_category_apps_description_crm": "Tanıştığınız kullanıcıları takip etmek için bir CRM uygulaması ekleyin",
-  "installed_app_calendar_description": "Çifte rezervasyonları önlemek amacıyla çakışmaları kontrol etmek için takvimleri ayarlayın.",
-  
-  "installed_app_analytics_description": "Rezervasyon sayfalarınız için hangi analiz uygulamalarını kullanacağınızı yapılandırın",
+  "installed_app_calendar_description": "Çifte rezervasyonları önlemek amacıyla çakışmaları kontrol etmek için takvimleri ayarlayın.","installed_app_analytics_description": "Rezervasyon sayfalarınız için hangi analiz uygulamalarını kullanacağınızı yapılandırın",
   "installed_app_other_description": "Diğer kategorilerdeki tüm yüklü uygulamalarınız.",
   "installed_app_conferencing_description": "Hangi konferans uygulamalarının kullanılacağını belirleyin",
   "installed_app_automation_description": "Kullanılacak otomasyon uygulamalarını yapılandırın",
@@ -1048,9 +988,7 @@
   "features": "Özellikler",
   "permissions": "İzinler",
   "terms_and_privacy": "Koşullar ve Gizlilik",
-  "published_by": "{{author}} tarafınan yayınlandı",
-  
-  "buy": "Satın Al",
+  "published_by": "{{author}} tarafınan yayınlandı","buy": "Satın Al",
   "install_app": "Uygulamayı Yükle",
   "categories": "Kategoriler",
   "pricing": "Fiyatlandırma",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Cüzdanı Doğrula",
   "create_events_on": "Şurada etkinlik oluşturun:",
   "enterprise_license": "Bu ticari bir özelliktir",
-  "enterprise_license_locally": "Bu özelliği yerel olarak test edebilirsiniz ama üretim ortamında değil.",
-  
-  "missing_license": "Eksik Lisans",
+  "enterprise_license_locally": "Bu özelliği yerel olarak test edebilirsiniz ama üretim ortamında değil.","missing_license": "Eksik Lisans",
   "next_steps": "Sonraki Adımlar",
   "acquire_commercial_license": "Ticari bir lisans edinin",
   "the_infrastructure_plan": "Altyapı planı kullanıma dayalıdır ve yeni başlayanlar için uygun indirimlere sahiptir.",
   "prisma_studio_tip": "Prisma Studio aracılığıyla bir hesap oluşturun",
-  "prisma_studio_tip_description": "İlk kullanıcınız için nasıl ayar yapacağınızı öğrenin",
-  
-  "error_404": "404 Hatası",
+  "prisma_studio_tip_description": "İlk kullanıcınız için nasıl ayar yapacağınızı öğrenin","error_404": "404 Hatası",
   "default": "Varsayılan",
   "set_to_default": "Varsayılan olarak ayarla",
   "new_schedule_btn": "Yeni plan",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Destek Belgeleri",
   "developer_documentation": "Geliştirici Belgeleri",
   "get_in_touch": "Bize ulaşın",
-  "contact_support": "Destek ile iletişime geçin",
-  
-  "community_support": "Topluluk Desteği",
+  "contact_support": "Destek ile iletişime geçin","community_support": "Topluluk Desteği",
   "feedback": "Geri bildirim",
   "submitted_feedback": "Geri bildiriminiz için teşekkür ederiz!",
   "feedback_error": "Geri bildirim gönderilirken bir hata oluştu",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "İş akışları, hatırlatıcı ve bildirim göndermeyi otomatikleştirmenizi sağlar.",
   "active_on": "Aktif",
   "workflow_updated_successfully": "{{workflowName}} iş akışı başarıyla güncellendi",
-    
-  "current": "Mevcut",
-  
-  "standard": "standart",
+  "current": "Mevcut","standard": "standart",
   "confirm_username_change_dialog_title": "Kullanıcı adı değişikliğini onaylayın",
-  
-  
-    
   "trial_expired": "Deneme süreniz doldu",
   "remove_app": "Uygulamayı Kaldır",
   "yes_remove_app": "Evet, uygulamayı kaldır",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "Katılımcı",
   "event_date_variable": "Etkinlik tarihi",
   "event_time_variable": "Etkinlik saati",
-  "organizer_name_variable": "Düzenleyenin adı",
-  
-  "invalid_number": "Geçersiz telefon numarası",
+  "organizer_name_variable": "Düzenleyenin adı","invalid_number": "Geçersiz telefon numarası",
   "invalid_url_error_message": "{{label}} için geçersiz URL. Örnek URL: {{sampleUrl}}",
   "navigate": "Gezin",
   "open": "Aç",
   "close": "Kapat",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Kayıtlar ekip planının bir parçasıdır",
   "team_feature_teams": "Bu bir Ekip sürümü özelliğidir. Ekibinizin müsaitlik durumunu görebilmek için Ekip'e yükseltin.",
   "team_feature_workflows": "Bu bir Ekip sürümü özelliğidir. İş akışlarıyla ilgili etkinlik bildirimlerinizi ve hatırlatıcılarınızı otomatikleştirmek için Ekip sürümüne geçin.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Rezervasyon Sorusu Tanımlayıcısı",
   "company_size": "Şirket büyüklüğü",
   "what_help_needed": "Hangi konuda yardıma ihtiyacınız var?",
-  "variable_format": "Değişken biçimi",
-  
-  "custom_input_as_variable_info": "Ek giriş etiketindeki tüm özel karakterleri yok sayın (yalnızca harfler ve rakamlar kullanın), tüm harfler için büyük harfleri kullanın ve boşlukları alt çizgilerle değiştirin.",
+  "variable_format": "Değişken biçimi","custom_input_as_variable_info": "Ek giriş etiketindeki tüm özel karakterleri yok sayın (yalnızca harfler ve rakamlar kullanın), tüm harfler için büyük harfleri kullanın ve boşlukları alt çizgilerle değiştirin.",
   "using_booking_questions_as_variables": "Rezervasyon sorularını değişken olarak nasıl kullanabilirim?",
   "download_desktop_app": "Masaüstü uygulamasını indirin",
   "set_ping_link": "Ping bağlantısını ayarla",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "Ne sıklıkla rezervasyon yapabilirsiniz",
   "event_advanced_tab_description": "Takvim ayarları ve daha fazlası...",
   "event_advanced_tab_title": "Gelişmiş",
-  
-  
   "event_setup_multiple_duration_error": "Etkinlik Kurulumu: Birden çok süre için en az 1 seçenek gereklidir.",
   "event_setup_multiple_duration_default_error": "Etkinlik Kurulumu: Lütfen geçerli bir varsayılan süre seçin.",
   "event_setup_booking_limits_error": "Rezervasyon limitleri artan sırada olmalıdır. [gün, hafta, ay, yıl]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "Tüm bunları daha sonra müsaitlik durumu sayfasından özelleştirebilirsiniz.",
   "connect_calendars_from_app_store": "Uygulama mağazasından daha fazla takvim ekleyebilirsiniz",
   "connect_conference_apps": "Konferans uygulamalarını bağlayın",
-  "connect_calendar_apps": "Takvim uygulamalarını bağlayın",
-  
-  "connect_automation_apps": "Otomasyon uygulamaları bağlayın",
+  "connect_calendar_apps": "Takvim uygulamalarını bağlayın","connect_automation_apps": "Otomasyon uygulamaları bağlayın",
   "connect_analytics_apps": "Analiz uygulamaları bağlayın",
   "connect_other_apps": "Diğer uygulamaları bağlayın",
   "connect_messaging_apps": "Mesajlaşma uygulamalarını bağlayın",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Sıfırlama bağlantısı gönderildi",
   "password_reset_email": "{{email}} adresine şifrenizi sıfırlama talimatlarını içeren bir e-posta gönderildi.",
   "password_reset_leading": "Kısa süre içinde bir e-posta almazsanız, lütfen girdiğiniz e-posta adresinin doğru olup olmadığını ve spam klasörünüzü kontrol edin veya sorunun devam etmesi halinde destek ekibi ile iletişime geçin.",
-  "password_updated": "Şifre güncellendi!",
-  
-  "pending_invites": "Bekleyen Davetler",
+  "password_updated": "Şifre güncellendi!","pending_invites": "Bekleyen Davetler",
   "pending_organization_invites": "Bekleyen Organizasyon Davetleri",
   "not_on_cal": "{{appName}}'da değil",
   "no_calendar_installed": "Yüklü takvim yok",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "Tüm harfleri büyük harf olarak kullanın",
   "replace_whitespaces_underscores": "Boşlukları alt çizgi ile değiştir",
   "platform_members": "Platform üyeleri",
-  "platform_members_description": "Platform ekibinizdeki yöneticileri ve üyeleri yönetin",
-                  "ignore_special_characters_booking_questions": "Rezervasyon sorusu tanımlayıcınızdaki özel karakterleri yok sayın. Yalnızca harf ve sayıları kullanın",
+  "platform_members_description": "Platform ekibinizdeki yöneticileri ve üyeleri yönetin",              "ignore_special_characters_booking_questions": "Rezervasyon sorusu tanımlayıcınızdaki özel karakterleri yok sayın. Yalnızca harf ve sayıları kullanın",
   "retry": "Yeniden dene",
   "fetching_calendars_error": "Takvimleriniz alınırken bir sorun oluştu. Lütfen <1>tekrar deneyin</1> veya müşteri destek ekibiyle iletişme geçin.",
   "calendar_connection_fail": "Takvim bağlantısı yapılamadı",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Gelecekteki rezervasyonları sınırla",
   "limit_future_bookings_description": "Bu etkinlik için gelecekte kaç rezervasyon yapılabileceğini sınırlayın",
   "no_event_types": "Etkinlik türleri ayarlanmadı",
-  "no_event_types_description": "{{name}}, rezervasyon yapabileceğiniz herhangi bir etkinlik türü oluşturmadı.",
-    "monthly": "Aylık",
+  "no_event_types_description": "{{name}}, rezervasyon yapabileceğiniz herhangi bir etkinlik türü oluşturmadı.","monthly": "Aylık",
   "yearly": "Yıllık",
   "weekly": "Haftalık",
   "checkout": "Ödeme yap",
@@ -1733,9 +1643,7 @@
   "test_preview": "Ön İzlemeyi Test Et",
   "route_to": "Şuraya yönlendir:",
   "test_preview_description": "Herhangi bir veri göndermeden yönlendirme formunuzu test edin",
-  "test_routing": "Yönlendirmeyi Test Et",
-  
-  "edit_event_type": "Etkinlik türünü düzenle",
+  "test_routing": "Yönlendirmeyi Test Et","edit_event_type": "Etkinlik türünü düzenle",
   "only_admin_can_see_members_of_org": "Bu organizasyon özeldir ve sadece organizasyonun yöneticisi veya sahibi üyelerini görebilir.",
   "only_admin_can_manage_sso_org": "Yalnızca organizasyonun yöneticisi veya sahibi SSO ayarlarını yönetebilir",
   "collective_scheduling": "Toplu Planlama",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "<strong>{{teamName}}</strong> ekibindeki bir yönetici, <strong>/{{slug}}</strong> etkinlik türünüzü kontrol ettiği yönetilen bir etkinlik türüyle değiştirdi.",
   "email_body_slug_replacement_info": "Bağlantınız çalışmaya devam edecek, ancak bazı ayarları değişmiş olabilir. Bağlantıyı etkinlik kategorilerinde inceleyebilirsiniz.",
   "email_body_slug_replacement_suggestion": "Etkinlik türüyle ilgili herhangi bir sorunuz varsa lütfen yöneticinizle iletişime geçin.<br /><br />İyi planlamalar, <br />Cal.com ekibi",
-  
-  
   "app_disabled_with_event_type": "Yönetici, etkinlik {{title}} türünüzü etkileyen {{appName}} uygulamasını devre dışı bıraktı.",
   "app_disabled_video": "Yönetici, etkinlik türlerinizi etkileyebilecek {{appName}} uygulamasını devre dışı bıraktı. Konum olarak {{appName}} olan etkinlik türleriniz varsa varsayılan uygulama Cal Video olacaktır.",
   "app_disabled_subject": "{{appName}} devre dışı bırakıldı",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Döngüsel Organizatörler",
   "minimum_round_robin_hosts_count": "Katılması gereken organizatör sayısı",
   "hosts": "Organizatörler",
-  
-  
   "new_attendee": "Yeni Katılımcı",
   "awaiting_approval": "Onay Bekleniyor",
   "requires_google_calendar": "Bu uygulama, Google Takvim bağlantısı gerektirir",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Rezervasyon sayfasında sorulan soruları özelleştirin",
   "add_a_booking_question": "Soru ekle",
   "identifier": "Tanımlayıcı",
-  "duplicate_email": "E-posta yinelenmiş",
-  
-  
-  
-  "booking_confirmation_failed": "Rezervasyon onayı yapılamadı",
+  "duplicate_email": "E-posta yinelenmiş","booking_confirmation_failed": "Rezervasyon onayı yapılamadı",
   "not_enough_seats": "Yeterli yer yok",
   "form_builder_field_already_exists": "Bu ada sahip bir alan zaten var",
   "show_on_booking_page": "Rezervasyon sayfasında göster",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Filtreleri Temizle",
   "clear": "Temizle",
   "hold": "Tut",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Öngörüler",
   "routing_forms": "Yönlendirme Formları",
   "testing_workflow_info_message": "Bu iş akışını test ederken, E-postaların ve SMS'lerin yalnızca en az 1 saat önceden planlanabileceğini unutmayın",
   "insights_no_data_found_for_filter": "Seçili filtre veya tarihler için veri bulunamadı.",
-  
-  
   "something_went_wrong_on_our_end": "Bizden kaynaklanan bir sorun oluştu. Sorunu çözebilmemiz için lütfen destek ekibimizle iletişime geçin.",
-  "please_provide_following_text_to_suppport": "Size daha iyi yardımcı olabilmemiz için lütfen destek ekibiyle iletişime geçtiğinizde aşağıdaki bilgileri sağlayın",
-  
-  "complete_your_booking": "Rezervasyonunuzu tamamlayın",
+  "please_provide_following_text_to_suppport": "Size daha iyi yardımcı olabilmemiz için lütfen destek ekibiyle iletişime geçtiğinizde aşağıdaki bilgileri sağlayın","complete_your_booking": "Rezervasyonunuzu tamamlayın",
   "complete_your_booking_subject": "Rezervasyonunuzu tamamlayın: {{title}}, {{date}}",
   "confirm_your_details": "Bilgilerinizi onaylayın",
   "copy_invite_link": "Davet bağlantısını kopyala",
@@ -2120,14 +2000,8 @@
   "three_months": "3 ay",
   "one_year": "1 yıl",
   "team_invite_received": "{{teamName}} ekibine katılmaya davet edildiniz",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "Katılımcıdan {{amount, currency}} tahsil edin",
-  
-  "email_invite_team": "{{email}} davet edildi",
-  "email_invite_team_bulk": "{{userCount}} kullanıcı davet edildi",
-  
-  "image_size_limit_exceed": "Yüklenen resim boyutu 5 MB boyut limitini aşmamalıdır",
+  "currency_string": "{{amount, currency}}","charge_attendee": "Katılımcıdan {{amount, currency}} tahsil edin","email_invite_team": "{{email}} davet edildi",
+  "email_invite_team_bulk": "{{userCount}} kullanıcı davet edildi","image_size_limit_exceed": "Yüklenen resim boyutu 5 MB boyut limitini aşmamalıdır",
   "unauthorized_workflow_error_message": "{{errorCode}}: Bu iş akışını etkinleştirme veya devre dışı bırakma yetkiniz yok",
   "inline_embed": "Satır İçine Yerleştir",
   "load_inline_content": "Etkinlik türünüzü doğrudan diğer web sitesi içeriğinizle birlikte yükler.",
@@ -2394,9 +2268,7 @@
   "locked": "Kilitli",
   "unlocked": "Kilitli Değil",
   "lock_timezone_toggle_on_booking_page": "Rezervasyon sayfasında saat dilimini kilitle",
-  "description_lock_timezone_toggle_on_booking_page": "Rezervasyon sayfasında saat dilimini kilitlemek kişisel etkinlikler için kullanışlıdır.",
-  
-  "number_in_international_format": "Lütfen numarayı uluslararası formatta girin.",
+  "description_lock_timezone_toggle_on_booking_page": "Rezervasyon sayfasında saat dilimini kilitlemek kişisel etkinlikler için kullanışlıdır.","number_in_international_format": "Lütfen numarayı uluslararası formatta girin.",
   "install_calendar": "Takvimi Yükle",
   "branded_subdomain": "Markalı Alt Alan Adı",
   "branded_subdomain_description": "acme.cal.com gibi kendi markalı alt alan adınızı alın",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Özel işe alıştırma ve mühendislik desteği",
   "extensive_whitelabeling_description": "Kendi logonuz, renkleriniz ve daha fazlasıyla planlama deneyiminizi özelleştirin",
   "unlimited_teams": "Sınırsız Takımlar",
-  "unlimited_teams_description": "Organizasyonunuza ihtiyaç duyduğunuz kadar alt takım ekleyin",
-      "advanced_managed_events": "Gelişmiş Yönetilen Etkinlik Türleri",
+  "unlimited_teams_description": "Organizasyonunuza ihtiyaç duyduğunuz kadar alt takım ekleyin",  "advanced_managed_events": "Gelişmiş Yönetilen Etkinlik Türleri",
   "advanced_managed_events_description": "Tüm takım abonelikleriniz için tek bir kredi kartı ekleyin",
   "enterprise": "Kurumsal",
   "enterprise_description": "Organizasyonunuzu oluşturmak için Enterprise'a yükseltin",
-  "create_your_org": "Organizasyonunuzu Oluşturun",
-    "create_your_enterprise_description": "Enterprise'a yükseltin ve Active Directory Sync, SCIM Otomatik Kullanıcı sağlama, Cal.ai Ses Ajanları, Yönetici API'leri ve daha fazlasına erişim kazanın!",
-  
-  "admin_delete_organization_description": "<ul><li>Bu organizasyonun üyesi olan takımlar, etkinlik türleriyle birlikte silinecektir</li><li>Organizasyonun bir parçası olan kullanıcılar silinmeyecek, ancak kullanıcı adları organizasyon dışında var olmalarına izin vermek için değiştirilecektir</li><li>Kullanıcı organizasyondayken oluşturulan kullanıcı etkinlik türleri silinecektir</li><li>Taşınan kullanıcı etkinlik türleri silinmeyecektir</li></ul>",
+  "create_your_org": "Organizasyonunuzu Oluşturun","create_your_enterprise_description": "Enterprise'a yükseltin ve Active Directory Sync, SCIM Otomatik Kullanıcı sağlama, Cal.ai Ses Ajanları, Yönetici API'leri ve daha fazlasına erişim kazanın!","admin_delete_organization_description": "<ul><li>Bu organizasyonun üyesi olan takımlar, etkinlik türleriyle birlikte silinecektir</li><li>Organizasyonun bir parçası olan kullanıcılar silinmeyecek, ancak kullanıcı adları organizasyon dışında var olmalarına izin vermek için değiştirilecektir</li><li>Kullanıcı organizasyondayken oluşturulan kullanıcı etkinlik türleri silinecektir</li><li>Taşınan kullanıcı etkinlik türleri silinmeyecektir</li></ul>",
   "admin_delete_organization_title": "{{organizationName}} silinsin mi?",
   "published": "Yayınlandı",
   "unpublished": "Yayınlanmadı",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "İnsanların hemen rezervasyon yapmasına izin verin",
   "uprade_to_create_instant_bookings": "Enterprise'a yükseltin ve misafirlerin katılımcıların doğrudan katılabileceği anlık bir çağrıya katılmasına izin verin. Bu sadece takım etkinlik türleri içindir",
   "dont_want_to_wait": "Beklemek istemiyor musunuz?",
-  "meeting_started": "Toplantı Başladı",
-  
-  "cal_ai_event_tab_description": "AI Ajanlarının sizin için rezervasyon yapmasına izin verin",
+  "meeting_started": "Toplantı Başladı","cal_ai_event_tab_description": "AI Ajanlarının sizin için rezervasyon yapmasına izin verin",
   "booking_not_found_error": "Rezervasyon bulunamadı",
   "booking_seats_full_error": "Rezervasyon koltukları dolu",
-  
-  
   "not_enough_available_seats_error": "Rezervasyonda yeterli boş koltuk yok",
   "user_redirect_title": "{{username}} kısa bir süreliğine uzakta.",
   "user_redirect_description": "Bu arada, {{profile.username}} yeni planlanan tüm toplantılardan {{username}} adına sorumlu olacak.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "Daveti kabul ettiğinizde, bağlantınız organizasyonunuzun alan adına değişecektir, ancak endişelenmeyin, önceki tüm bağlantılar hala çalışacak ve uygun şekilde yönlendirilecektir.<br /><br />Lütfen dikkat: Tüm kişisel etkinlik türleriniz <strong>{teamName}</strong> organizasyonuna taşınacaktır, bu da potansiyel kişisel bağlantıyı içerebilir.<br /><br />Kişisel etkinlikler için kişisel bir e-posta adresiyle yeni bir hesap oluşturmanızı öneririz.",
   "email|existing_user_added_link_changed": "Bağlantınız <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> adresinden <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a> adresine değiştirildi, ancak endişelenmeyin, önceki tüm bağlantılar hala çalışıyor ve uygun şekilde yönlendiriliyor.<br /><br />Lütfen dikkat: Tüm kişisel etkinlik türleriniz <strong>{teamName}</strong> organizasyonuna taşındı, bu da potansiyel kişisel bağlantıyı içerebilir.<br /><br />Lütfen giriş yapın ve yeni organizasyon hesabınızda özel etkinliklerinizin olmadığından emin olun.<br /><br />Kişisel etkinlikler için kişisel bir e-posta adresiyle yeni bir hesap oluşturmanızı öneririz.<br /><br />Yeni temiz bağlantınızın keyfini çıkarın: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Organizasyonunuz oluşturuldu",
-  "your_current_plan": "Mevcut planınız",
-  
-  "privacy_organization_description": "Organizasyonunuzun gizlilik ayarlarını yönetin",
+  "your_current_plan": "Mevcut planınız","privacy_organization_description": "Organizasyonunuzun gizlilik ayarlarını yönetin",
   "privacy": "Gizlilik",
   "team_will_be_under_org": "Yeni takımlar organizasyonunuzun altında olacak",
   "add_group_name": "Grup adı ekle",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "Devam ederek <0>Şartlar</0> ve <1>Gizlilik Politikası<1>'nı kabul etmiş olursunuz",
   "proceeding_agreement": "Devam ederek",
   "terms": "Koşullarımızı",
-  "always_show_x_days": "Her zaman {{x}} gün mevcut",
-  
-  "updating_oauth_client_error": "OAuth istemcisini güncellerken bir hata oluştu, lütfen daha sonra tekrar deneyin",
+  "always_show_x_days": "Her zaman {{x}} gün mevcut","updating_oauth_client_error": "OAuth istemcisini güncellerken bir hata oluştu, lütfen daha sonra tekrar deneyin",
   "creating_oauth_client_error": "OAuth istemcisini oluştururken bir hata oluştu, lütfen daha sonra tekrar deneyin",
   "event_type_color": "Etkinlik türü rengi",
   "event_type_color_description": "Bu, yalnızca uygulama içinde etkinlik türü ve rezervasyon ayrımı için kullanılır. Rezervasyon yapanlara gösterilmez.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Google Takvimi Kontrol Ediliyor",
   "outlook_connect_atom_label": "Outlook Takvimi Bağla",
   "outlook_connect_atom_already_connected_label": "Outlook Takvimi Bağlı",
-  "outlook_connect_atom_loading_label": "Outlook Takvimi Kontrol Ediliyor",
-  
-  
-  
-  "booking_question_response_variables": "Rezervasyon soru yanıt değişkenleri",
+  "outlook_connect_atom_loading_label": "Outlook Takvimi Kontrol Ediliyor","booking_question_response_variables": "Rezervasyon soru yanıt değişkenleri",
   "managed_by_teamAdmins": "{{teamAdmins}} tarafından yönetiliyor",
   "number_of_options": "{{count}} seçenek",
   "reschedule_with_same_round_robin_host_title": "Aynı Round-Robin ev sahibi ile yeniden planla",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "son {{count}} gün",
   "month_to_date": "ayın başından bugüne",
   "year_to_date": "yılın başından bugüne",
-  "custom_range": "özel aralık",
-  
-  "always": "Her zaman",
-  "never": "Asla",
-  
-  "if_cancelled": "İptal edilirse",
+  "custom_range": "özel aralık","always": "Her zaman",
+  "never": "Asla","if_cancelled": "İptal edilirse",
   "before": "önce",
   "show_all_columns": "Tüm sütunları göster",
   "toggle_columns": "Sütunları değiştir",

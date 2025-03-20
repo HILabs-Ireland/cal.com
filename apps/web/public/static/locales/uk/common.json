@@ -4,9 +4,7 @@
   "day_one": "{{count}} день",
   "day_other": "{{count}} д.",
   "second_one": "{{count}} с",
-  "second_other": "{{count}} с",
-  
-  "untitled": "Без назви",
+  "second_other": "{{count}} с","untitled": "Без назви",
   "accept_invitation": "Прийняти запрошення",
   "max_characters": "Макс. кількість символів",
   "min_characters": "Мін. кількість символів",
@@ -68,18 +66,10 @@
   "accept_our_license": "Прийміть нашу ліцензію, змінивши значення змінної .env <1>NEXT_PUBLIC_LICENSE_CONSENT</1> на «{agree}}».",
   "remove_banner_instructions": "Щоб прибрати цей банер, відкрийте файл .env і змініть значення змінної <1>NEXT_PUBLIC_LICENSE_CONSENT</1> на «{{agree}}».",
   "error_message": "Повідомлення про помилку: «{{errorMessage}}»",
-  
-  
-  "check_with_provider_and_user": "Зверніться до свого постачальника платіжних послуг і користувача {{user}} щодо вирішення цієї проблеми.",
-  
-  
-  
   "dark_theme_contrast_error": "Колір темної теми не проходить перевірку контрасту. Ми рекомендуємо змінити цей колір, щоб його було краще бачити.",
   "light_theme_contrast_error": "Колір темної теми не проходить перевірку контрасту. Ми рекомендуємо змінити цей колір, щоб його було краще бачити.",
   "event_type_color_light_theme_contrast_error": "Колір світлої теми не проходить перевірку контрастності. Ми рекомендуємо змінити цей колір, щоб ваші типи подій були більш видимими.",
   "event_type_color_dark_theme_contrast_error": "Колір темної теми не проходить перевірку контрастності. Ми рекомендуємо змінити цей колір, щоб ваші типи подій були більш видимими.",
-  
-  
   "no_available_users_found_error": "Не знайдено жодного доступного користувача. Чи могли б ви спробувати інший часовий слот?",
   "request_body_end_time_internal_error": "Внутрішня помилка. Тіло запиту не містить кінцевого часу",
   "create_calendar_event_error": "Не вдалося створити подію у календарі організаторів",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "Ви вже зареєстровані в цьому бронювання.",
   "hosts_unavailable_for_booking": "Деякі хости недоступні для бронювання.",
   "help": "Довідка",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Загальний запит",
   "begin_message": "Почати повідомлення",
   "codebase_has_to_stay_opensource": "База коду має залишатися відкритою незалежно від внесення змін",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "У цій команді вас приховано",
   "hidden_team_member_message": "Ваше місце не оплачено. Перейдіть на версію Pro або попросіть власника команди оплатити ваше місце.",
   "hidden_team_owner_message": "Щоб користуватися функціями команди, потрібен обліковий запис версії Pro. До переходу на цю версію вас буде приховано.",
-  "link_expires": "P.S. Термін дії – ще {{expiresIn}} год.",
-  
-  "seat_options_doesnt_support_confirmation": "Для бронювань із місцями підтвердження не надається",
-  "multilocation_doesnt_support_seats": "Опція кількості місць не підтримується для кількох локацій",
-  
-  "seats_option_doesnt_support_multi_location": "Опція кількості місць не підтримується для кількох локацій",
-  
-  
-  
-  
-  
-  
+  "link_expires": "P.S. Термін дії – ще {{expiresIn}} год.","seat_options_doesnt_support_confirmation": "Для бронювань із місцями підтвердження не надається",
+  "multilocation_doesnt_support_seats": "Опція кількості місць не підтримується для кількох локацій","seats_option_doesnt_support_multi_location": "Опція кількості місць не підтримується для кількох локацій",
   "use_link_to_reset_password": "Скористайтеся посиланням нижче, щоб скинути пароль",
   "hey_there": "Привіт",
   "forgot_your_password_calcom": "Забули пароль? – {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Вебгук створено!",
   "webhook_updated_successfully": "Вебгук оновлено!",
   "webhook_removed_successfully": "Вебгук вилучено!",
-  
-  
   "payload_template": "Шаблон корисних даних",
   "dismiss": "Закрити",
   "no_data_yet": "Поки немає даних",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "Вашу періодичну нараду надіслано",
   "booking_confirmed": "Ваше бронювання підтверджено",
   "booking_confirmed_recurring": "Вашу періодичну нараду підтверджено",
-  
-  
   "enter_new_password": "Введіть новий пароль для свого облікового запису.",
   "reset_password": "Скидання пароля",
   "change_your_password": "Змініть свій пароль",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Транскрипт створено",
   "booking_created": "Бронювання створено",
   "booking_rejected": "Бронювання відхилено",
-  "booking_requested": "Запит на бронювання надіслано",
-  
-  "meeting_ended": "Нарада завершилася",
+  "booking_requested": "Запит на бронювання надіслано","meeting_ended": "Нарада завершилася",
   "form_submitted": "Форму надіслано",
-  "form_submitted_no_event": "Форму надіслано, подію не заброньовано",
-  
-  "ooo_created": "Створено режим відсутності в офісі",
+  "form_submitted_no_event": "Форму надіслано, подію не заброньовано","ooo_created": "Створено режим відсутності в офісі",
   "booking_no_show_updated": "Оновлено статус відсутності на зустрічі",
-  "event_triggers": "Тригери заходів",
-  
-  "create_new_webhook": "Створити новий вебгук",
+  "event_triggers": "Тригери заходів","create_new_webhook": "Створити новий вебгук",
   "webhooks": "Вебгуки",
   "team_webhooks": "Вебгуки команди",
   "create_new_webhook_to_account": "Створіть новий вебгук у своєму обліковому записі",
@@ -529,9 +493,7 @@
   "iframe_embed": "Вбудовування iframe",
   "embed_calcom": "Це найпростіший спосіб вбудувати {{appName}} у ваш вебсайт.",
   "integrate_using_embed_or_webhooks": "Інтегруйте наші служби у свій вебсайт за допомогою наших варіантів вбудовування або отримуйте відомості про бронювання в реальному часі за допомогою користувацьких вебгуків.",
-  "schedule_a_meeting": "Запланувати нараду",
-        "need_anything_else": "Потрібно щось інше?",
-    "contact": "Звернутися",
+  "schedule_a_meeting": "Запланувати нараду",    "need_anything_else": "Потрібно щось інше?","contact": "Звернутися",
   "our_support_team": "в службу підтримки",
   "contact_our_support_team": "Зверніться в нашу службу підтримки",
   "uh_oh": "Отакої!",
@@ -773,10 +735,6 @@
   "readonly": "Тільки читання",
   "one_time_link": "Одноразове посилання",
   "plan_description": "Зараз ви використовуєте план {{plan}}.",
-  
-  
-  
-  
   "event_types_page_title": "Типи заходів",
   "event_types_page_subtitle": "Створюйте заходи й публікуйте їх, щоб інші могли бронювати їх у вашому календарі.",
   "new": "Нова",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Створіть команду, щоб почати",
   "teams": "Команди",
   "team": "Команда",
-  "organization": "Організація",
-      
-  
-    "create_manage_teams_collaborative": "Створюйте команди, керуйте ними та користуйтеся функціями для співпраці.",
+  "organization": "Організація",    "create_manage_teams_collaborative": "Створюйте команди, керуйте ними та користуйтеся функціями для співпраці.",
   "only_available_on_pro_plan": "Ця функція доступна лише в плані Pro",
   "remove_cal_branding_description": "Щоб прибрати фірмове оформлення {{appName}} зі своїх сторінок бронювання, перейдіть на обліковий запис Pro.",
   "edit_profile_info_description": "Внесіть зміни у відомості профілю, доступні за вашим посиланням для планування.",
@@ -843,16 +798,13 @@
   "little_something_about": "Стисло про вас.",
   "profile_updated_successfully": "Профіль оновлено",
   "your_user_profile_updated_successfully": "Ваш профіль оновлено.",
-  
-  
   "you_are_all_set": "Все готово",
   "you_are_all_set_description": "Ви вже користуєтесь найновішим тарифним планом. Нічого оновлювати не потрібно. Насолоджуйтесь новими функціями та звертайтеся до нас із будь-якими питаннями!",
   "user_cannot_found_db": "Схоже, користувач увійшов, але його не вдається знайти в базі даних",
   "embed_and_webhooks": "Вбудовування та вебгуки",
   "enabled": "Увімкнено",
   "disabled": "Вимкнено",
-  "disable": "Вимкнути",
-      "availability": "Доступність",
+  "disable": "Вимкнути",  "availability": "Доступність",
   "edit_availability": "Редагувати дані про доступність",
   "configure_availability": "Налаштовуйте свої часові вікна, доступні для бронювання.",
   "copy_times_to": "Копіювати час у",
@@ -889,8 +841,6 @@
   "recurring_event": "Періодичний захід",
   "recurring_event_description": "Користувачі можуть підписуватися на періодичні заходи",
   "connect_and_join": "Підключитися та приєднатися",
-  
-  
   "warning_instant_meeting_experimental": "Експериментально: Миттєві зустрічі наразі є експериментальними.",
   "starting": "Початок",
   "disable_guests": "Вимкнути гостей",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "{{appName}} надасть URL-адресу наради Daily.",
   "cal_provide_jitsi_meeting_url": "Ми згенеруємо URL-адресу Jitsi Meet.",
   "cal_provide_huddle01_meeting_url": "{{appName}} надасть URL-адресу відеонаради Huddle01.",
-  "cal_provide_teams_meeting_url": "{{appName}} надасть URL-адресу наради в MS Teams. ПРИМІТКА: ПОТРІБЕН РОБОЧИЙ АБО НАВЧАЛЬНИЙ ОБЛІКОВИЙ ЗАПИС",
-  
-  "you_need_to_add_a_name": "Потрібно додати ім’я",
+  "cal_provide_teams_meeting_url": "{{appName}} надасть URL-адресу наради в MS Teams. ПРИМІТКА: ПОТРІБЕН РОБОЧИЙ АБО НАВЧАЛЬНИЙ ОБЛІКОВИЙ ЗАПИС","you_need_to_add_a_name": "Потрібно додати ім’я",
   "commission_per_transaction": "комісія за транзакцію",
   "event_type_updated_successfully_description": "Ваш тип заходу оновлено.",
   "hide_event_type": "Приховати тип заходу",
@@ -964,9 +912,7 @@
   "next_step_text": "Наступний крок",
   "next_step": "Пропустити крок",
   "prev_step": "Попередній крок",
-  "install": "Установити",
-  
-  "installed": "Установлено",
+  "install": "Установити","installed": "Установлено",
   "active_install_one": "{{count}} активна інсталяція",
   "active_install_other": "Активних інсталяцій: {{count}}",
   "globally_install": "Установлено глобально",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Календар оновлено",
   "check_here": "Перевірте тут",
   "conferencing": "Відеоконференції",
-  "calendar": "Календар",
-  
-  "not_installed": "Не встановлено",
+  "calendar": "Календар","not_installed": "Не встановлено",
   "error_password_mismatch": "Паролі не збігаються.",
   "error_required_field": "Це поле обов’язкове.",
   "status": "Стан",
@@ -1024,16 +968,12 @@
   "no_category_apps": "{{category}} — немає додатків",
   "all_apps": "Усі застосунки",
   "no_category_apps_description_calendar": "Додайте додаток для календаря, щоб перевіряти, чи немає конфліктів у розкладі, і уникати подвійних бронювань",
-  "no_category_apps_description_conferencing": "Спробуйте додати застосунок для відеоконференцій, щоб взаємодіяти зі своїми клієнтами",
-  
-  "no_category_apps_description_analytics": "Вибрати аналітичний додаток для своїх сторінок бронювання",
+  "no_category_apps_description_conferencing": "Спробуйте додати застосунок для відеоконференцій, щоб взаємодіяти зі своїми клієнтами","no_category_apps_description_analytics": "Вибрати аналітичний додаток для своїх сторінок бронювання",
   "no_category_apps_description_automation": "Вибрати додаток для автоматизації",
   "no_category_apps_description_other": "Додавайте інші додатки з різноманітними функціями",
   "no_category_apps_description_messaging": "Додайте застосунок для обміну повідомленнями, щоб налаштувати сповіщення й нагадування",
   "no_category_apps_description_crm": "Додайте застосунок для CRM, щоб вести облік користувачів, з якими ви зустрічалися",
-  "installed_app_calendar_description": "Налаштуйте календарі, щоб перевіряти, чи немає конфліктів у розкладі, і уникати подвійних бронювань.",
-  
-  "installed_app_analytics_description": "Указати аналітичні додатки для своїх сторінок бронювання",
+  "installed_app_calendar_description": "Налаштуйте календарі, щоб перевіряти, чи немає конфліктів у розкладі, і уникати подвійних бронювань.","installed_app_analytics_description": "Указати аналітичні додатки для своїх сторінок бронювання",
   "installed_app_other_description": "Усі ваші встановлені додатки з інших категорій.",
   "installed_app_conferencing_description": "Укажіть, які застосунки для конференцій використовувати",
   "installed_app_automation_description": "Указати додатки для автоматизації",
@@ -1048,9 +988,7 @@
   "features": "Функції",
   "permissions": "Дозволи",
   "terms_and_privacy": "Умови та конфіденційність",
-  "published_by": "Опублікував(-ла) {{author}}",
-  
-  "buy": "Купити",
+  "published_by": "Опублікував(-ла) {{author}}","buy": "Купити",
   "install_app": "Установити додаток",
   "categories": "Категорії",
   "pricing": "Ціни",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Пройдіть перевірку гаманця",
   "create_events_on": "Створюйте заходи в календарі",
   "enterprise_license": "Це комерційна функція",
-  "enterprise_license_locally": "Ви можете тестувати цю функцію локально, але не в виробництві.",
-  
-  "missing_license": "Відсутня ліцензія",
+  "enterprise_license_locally": "Ви можете тестувати цю функцію локально, але не в виробництві.","missing_license": "Відсутня ліцензія",
   "next_steps": "Подальші кроки",
   "acquire_commercial_license": "Отримати комерційну ліцензію",
   "the_infrastructure_plan": "Інфраструктурний план базується на використанні та надає знижки для стартапів.",
   "prisma_studio_tip": "Створіть обліковий запис через Prisma Studio",
-  "prisma_studio_tip_description": "Дізнайтеся, як налаштувати першого користувача",
-  
-  "error_404": "Помилка 404",
+  "prisma_studio_tip_description": "Дізнайтеся, як налаштувати першого користувача","error_404": "Помилка 404",
   "default": "За замовчуванням",
   "set_to_default": "Установити за замовчуванням",
   "new_schedule_btn": "Створити розклад",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Довідкова інформація",
   "developer_documentation": "Документація для розробників",
   "get_in_touch": "Наші контакти",
-  "contact_support": "Служба підтримки",
-  
-  "community_support": "Підтримка спільноти",
+  "contact_support": "Служба підтримки","community_support": "Підтримка спільноти",
   "feedback": "Відгук",
   "submitted_feedback": "Дякуємо за відгук!",
   "feedback_error": "Не вдалося надіслати відгук",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "Робочі процеси дають змогу автоматизувати надсилання нагадувань і сповіщень.",
   "active_on": "Активується",
   "workflow_updated_successfully": "Робочий процес «{{workflowName}}» оновлено",
-    
-  "current": "Поточна",
-  
-  "standard": "стандарт",
+  "current": "Поточна","standard": "стандарт",
   "confirm_username_change_dialog_title": "Підтвердьте змінення імені користувача",
-  
-  
-    
   "trial_expired": "Пробний період закінчився",
   "remove_app": "Вилучити додаток",
   "yes_remove_app": "Так, вилучити додаток",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "Учасник",
   "event_date_variable": "Дата заходу",
   "event_time_variable": "Час заходу",
-  "organizer_name_variable": "Ім’я організатора",
-  
-  "invalid_number": "Недійсний номер телефону",
+  "organizer_name_variable": "Ім’я організатора","invalid_number": "Недійсний номер телефону",
   "invalid_url_error_message": "Неприпустима URL-адреса для {{label}}. Зразок URL-адреси: {{sampleUrl}}",
   "navigate": "Перейти",
   "open": "Відкрити",
   "close": "Закрити",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Записи доступні в тарифному плані для команд",
   "team_feature_teams": "Ця функція доступна в плані Team. Перейдіть на нього, щоб переглядати дані про доступність учасників своєї команди.",
   "team_feature_workflows": "Ця функція доступна в плані Team. Перейдіть на нього, щоб автоматизувати сповіщення та нагадування про заходи за допомогою робочих процесів.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Ідентифікатор запитання про бронювання",
   "company_size": "Розмір компанії",
   "what_help_needed": "З чим саме потрібна допомога?",
-  "variable_format": "Формат змінної",
-  
-  "custom_input_as_variable_info": "Усі спеціальні символи в додатковому введеному підписі пропускаються (використовуються тільки літери та цифри), використовуються лише великі літери, пробіли замінюються на підкреслення.",
+  "variable_format": "Формат змінної","custom_input_as_variable_info": "Усі спеціальні символи в додатковому введеному підписі пропускаються (використовуються тільки літери та цифри), використовуються лише великі літери, пробіли замінюються на підкреслення.",
   "using_booking_questions_as_variables": "Як використовувати запитання про бронювання як змінні?",
   "download_desktop_app": "Завантажити додаток для ПК",
   "set_ping_link": "Установити Ping-посилання",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "Як часто ваш час можуть бронювати",
   "event_advanced_tab_description": "Налаштування календаря та інше…",
   "event_advanced_tab_title": "Додатково",
-  
-  
   "event_setup_multiple_duration_error": "Налаштування заходу: якщо мають бути доступні різні варіанти, потрібно вказати принаймні один.",
   "event_setup_multiple_duration_default_error": "Налаштування заходу: виберіть припустиму тривалість за замовчуванням.",
   "event_setup_booking_limits_error": "Ліміти бронювань має бути впорядковано за зростанням. [день, тиждень, місяць, рік]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "Усе це можна налаштувати пізніше на сторінці «Доступність».",
   "connect_calendars_from_app_store": "Ви можете додати інші календарі з магазину додатків",
   "connect_conference_apps": "Підключити додатки для конференцій",
-  "connect_calendar_apps": "Підключити додатки для календаря",
-  
-  "connect_automation_apps": "Підключити додатки для автоматизації",
+  "connect_calendar_apps": "Підключити додатки для календаря","connect_automation_apps": "Підключити додатки для автоматизації",
   "connect_analytics_apps": "Підключити аналітичні додатки",
   "connect_other_apps": "Підключити інші додатки",
   "connect_messaging_apps": "Підключити застосунки для повідомлень",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Посилання для скидання надіслано",
   "password_reset_email": "Електронний лист з інструкціями зі скидання пароля надіслано на {{email}}.",
   "password_reset_leading": "Якщо ви не отримаєте електронний лист найближчим часом, перевірте, чи правильну адресу електронної пошти введено та перевірте папку спаму. Якщо проблема не зникне, зверніться в нашу службу підтримки.",
-  "password_updated": "Пароль оновлено!",
-  
-  "pending_invites": "Нерозглянуті запрошення",
+  "password_updated": "Пароль оновлено!","pending_invites": "Нерозглянуті запрошення",
   "pending_organization_invites": "Запрошення до організації, що очікують на підтвердження",
   "not_on_cal": "Не на {{appName}}",
   "no_calendar_installed": "Немає встановлених календарів",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "Використовувати всі великі літери",
   "replace_whitespaces_underscores": "Заміняти пробіли підкресленнями",
   "platform_members": "Учасники платформи",
-  "platform_members_description": "Керуйте адміністраторами та учасниками вашої команди платформи",
-                  "ignore_special_characters_booking_questions": "Пропускайте спеціальні символи в ідентифікаторі запитання про бронювання та використовуйте лише літери й цифри",
+  "platform_members_description": "Керуйте адміністраторами та учасниками вашої команди платформи",              "ignore_special_characters_booking_questions": "Пропускайте спеціальні символи в ідентифікаторі запитання про бронювання та використовуйте лише літери й цифри",
   "retry": "Повторити",
   "fetching_calendars_error": "Під час отримання календарів виникла проблема. <1>Повторіть спробу</1> або зверніться в службу підтримки.",
   "calendar_connection_fail": "Не вдалося підключитися до календаря",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Обмежити майбутні бронювання",
   "limit_future_bookings_description": "Указати, наскільки заздалегідь можна забронювати цей захід",
   "no_event_types": "Типи подій не налаштовано",
-  "no_event_types_description": "{{name}} не налаштував(-ла) жодних типів заходів, які можна було б забронювати.",
-    "monthly": "Щомісяця",
+  "no_event_types_description": "{{name}} не налаштував(-ла) жодних типів заходів, які можна було б забронювати.","monthly": "Щомісяця",
   "yearly": "Щороку",
   "weekly": "Щотижнево",
   "checkout": "Оплата",
@@ -1733,9 +1643,7 @@
   "test_preview": "Перевірити попередній перегляд",
   "route_to": "Кінцева точка",
   "test_preview_description": "Перевірте свою форму переспрямування без надсилання даних",
-  "test_routing": "Перевірка переспрямування",
-  
-  "edit_event_type": "Редагувати тип заходу",
+  "test_routing": "Перевірка переспрямування","edit_event_type": "Редагувати тип заходу",
   "only_admin_can_see_members_of_org": "Ця організація є приватною, і лише адміністратор або власник організації може переглядати її членів.",
   "only_admin_can_manage_sso_org": "Лише адміністратор або власник організації може керувати налаштуваннями SSO",
   "collective_scheduling": "Колективне планування",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "Адміністратор команди <strong>{{teamName}}</strong> замінив ваш тип заходу<strong>/{{slug}}</strong> на керований тип заходу, який він контролює.",
   "email_body_slug_replacement_info": "Ваше посилання й надалі працювати, але деякі параметри можуть змінитися. Перегляньте їх у типах подій.",
   "email_body_slug_replacement_suggestion": "Якщо у вас є запитання про тип заходу, зверніться до свого адміністратора.<br /><br />Вдалого планування!<br />Команда Cal.com",
-  
-  
   "app_disabled_with_event_type": "Адміністратор вимкнув додаток {{appName}}, що впливає на ваш тип заходу «{{title}}».",
   "app_disabled_video": "Адміністратор вимкнув додаток {{appName}}, що впливає на ваші типи заходів. Якщо у вас є типи заходів, де {{appName}} визначає розташування, за замовчуванням використовуватиметься Cal Video.",
   "app_disabled_subject": "{{appName}} вимкнено",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Почергові ведучі",
   "minimum_round_robin_hosts_count": "Кількість ведучих, які мають узяти участь",
   "hosts": "Ведучі",
-  
-  
   "new_attendee": "Новий учасник",
   "awaiting_approval": "Очікує схвалення",
   "requires_google_calendar": "Цей додаток потрібно підключити до Google Календаря",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Налаштуйте запитання, відповіді на які потрібно буде надати на сторінці бронювання",
   "add_a_booking_question": "Додати запитання",
   "identifier": "Ідентифікатор",
-  "duplicate_email": "Ця електронна адреса дублюється",
-  
-  
-  
-  "booking_confirmation_failed": "Не вдалося підтвердити бронювання",
+  "duplicate_email": "Ця електронна адреса дублюється","booking_confirmation_failed": "Не вдалося підтвердити бронювання",
   "not_enough_seats": "Недостатньо місць",
   "form_builder_field_already_exists": "Поле з такою назвою вже існує",
   "show_on_booking_page": "Показувати на сторінці бронювання",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Очистити фільтри",
   "clear": "Очистити",
   "hold": "Блокування",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Аналітика",
   "routing_forms": "Форми маршрутизації",
   "testing_workflow_info_message": "Тестуючи цей робочий процес, зважайте на те, що надсилання електронних листів і SMS-повідомлень можна запланувати щонайменше за 1 годину",
   "insights_no_data_found_for_filter": "Не знайдено жодних даних для вибраного фільтра або вибраних дат.",
-  
-  
   "something_went_wrong_on_our_end": "Щось пішло не так на нашому боці. Зв’яжіться з нашою службою підтримки й ми одразу все виправимо.",
-  "please_provide_following_text_to_suppport": "Надайте нижчезазначений текст, звертаючись до служби підтримки, щоб нам було легше допомогти вам",
-  
-  "complete_your_booking": "Завершіть бронювання",
+  "please_provide_following_text_to_suppport": "Надайте нижчезазначений текст, звертаючись до служби підтримки, щоб нам було легше допомогти вам","complete_your_booking": "Завершіть бронювання",
   "complete_your_booking_subject": "Завершіть бронювання: {{title}} від {{date}}",
   "confirm_your_details": "Підтвердьте свої дані",
   "copy_invite_link": "Копіювати посилання на запрошення",
@@ -2120,14 +2000,8 @@
   "three_months": "3 місяці",
   "one_year": "1 рік",
   "team_invite_received": "Вас запрошено приєднатися до команди «{{teamName}}»",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "Стягнути з учасника {{amount, currency}}",
-  
-  "email_invite_team": "{{email}} запрошено",
-  "email_invite_team_bulk": "Запрошено стільки користувачів: {{userCount}}",
-  
-  "image_size_limit_exceed": "Розмір переданого зображення не може перевищувати 5 МБ",
+  "currency_string": "{{amount, currency}}","charge_attendee": "Стягнути з учасника {{amount, currency}}","email_invite_team": "{{email}} запрошено",
+  "email_invite_team_bulk": "Запрошено стільки користувачів: {{userCount}}","image_size_limit_exceed": "Розмір переданого зображення не може перевищувати 5 МБ",
   "unauthorized_workflow_error_message": "{{errorCode}}: авторизуйтеся, щоб вмикати або вимикати цей робочий процес",
   "inline_embed": "Вбудовування",
   "load_inline_content": "Завантажує ваш тип заходу, безпосередньо вбудовуючи його у ваш інший контент на вебсайті.",
@@ -2394,9 +2268,7 @@
   "locked": "Заблоковано",
   "unlocked": "Розблоковано",
   "lock_timezone_toggle_on_booking_page": "Заблокуйте часовий пояс на сторінці бронювання",
-  "description_lock_timezone_toggle_on_booking_page": "Для блокування часового поясу на сторінці бронювання (корисне для окремих заходів)",
-  
-  "number_in_international_format": "Будь ласка, введіть номер у міжнародному форматі.",
+  "description_lock_timezone_toggle_on_booking_page": "Для блокування часового поясу на сторінці бронювання (корисне для окремих заходів)","number_in_international_format": "Будь ласка, введіть номер у міжнародному форматі.",
   "install_calendar": "Встановити календар",
   "branded_subdomain": "Брендований піддомен",
   "branded_subdomain_description": "Отримайте власний брендований піддомен, наприклад, acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Технічна підтримка й підтримка під час ознайомлення",
   "extensive_whitelabeling_description": "Налаштуйте свій досвід планування за допомогою власного логотипу, кольорів та іншого",
   "unlimited_teams": "Необмежена кількість команд",
-  "unlimited_teams_description": "Додайте стільки підкоманд, скільки потрібно вашій організації",
-      "advanced_managed_events": "Розширені керовані типи подій",
+  "unlimited_teams_description": "Додайте стільки підкоманд, скільки потрібно вашій організації",  "advanced_managed_events": "Розширені керовані типи подій",
   "advanced_managed_events_description": "Додайте одну кредитну картку для оплати всіх підписок вашої команди",
   "enterprise": "Підприємство",
   "enterprise_description": "Оновіть до Enterprise, щоб створити свою організацію",
-  "create_your_org": "Створіть свою організацію",
-    "create_your_enterprise_description": "Оновіть до Enterprise і отримайте доступ до синхронізації з Active Directory, автоматичного надання користувачів через SCIM, голосових агентів Cal.ai, адміністративних API та іншого!",
-  
-  "admin_delete_organization_description": "<ul><li>Команди, які є членами цієї організації, також будуть видалені разом з їхніми типами подій</li><li>Користувачі, які були частиною організації, не будуть видалені, але їхні імена користувачів будуть змінені, щоб дозволити їм існувати поза організацією</li><li>Типи подій користувачів, створені після того, як користувач був у організації, будуть видалені</li><li>Мігровані типи подій користувачів не будуть видалені</li></ul>",
+  "create_your_org": "Створіть свою організацію","create_your_enterprise_description": "Оновіть до Enterprise і отримайте доступ до синхронізації з Active Directory, автоматичного надання користувачів через SCIM, голосових агентів Cal.ai, адміністративних API та іншого!","admin_delete_organization_description": "<ul><li>Команди, які є членами цієї організації, також будуть видалені разом з їхніми типами подій</li><li>Користувачі, які були частиною організації, не будуть видалені, але їхні імена користувачів будуть змінені, щоб дозволити їм існувати поза організацією</li><li>Типи подій користувачів, створені після того, як користувач був у організації, будуть видалені</li><li>Мігровані типи подій користувачів не будуть видалені</li></ul>",
   "admin_delete_organization_title": "Видалити {{organizationName}}?",
   "published": "Опубліковано",
   "unpublished": "Неопубліковано",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "Дозвольте людям бронювати негайно",
   "uprade_to_create_instant_bookings": "Оновіть до Enterprise і дозвольте гостям приєднуватися до миттєвого дзвінка, до якого учасники можуть приєднатися відразу. Це лише для командних типів подій",
   "dont_want_to_wait": "Не хочете чекати?",
-  "meeting_started": "Зустріч розпочалася",
-  
-  "cal_ai_event_tab_description": "Дозвольте AI агентам бронювати для вас",
+  "meeting_started": "Зустріч розпочалася","cal_ai_event_tab_description": "Дозвольте AI агентам бронювати для вас",
   "booking_not_found_error": "Не вдалося знайти бронювання",
   "booking_seats_full_error": "Усі місця заброньовані",
-  
-  
   "not_enough_available_seats_error": "Недостатньо доступних місць для бронювання",
   "user_redirect_title": "{{username}} зараз відсутній на короткий час.",
   "user_redirect_description": "Тим часом, {{profile.username}} буде відповідати за всі нові заплановані зустрічі від імені {{username}}.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "Після прийняття запрошення ваше посилання зміниться на домен вашої організації, але не хвилюйтеся, всі попередні посилання все ще працюватимуть і перенаправлятимуть належним чином.<br /><br />Зверніть увагу: Всі ваші особисті типи подій будуть переміщені до організації <strong>{teamName}</strong>, що може також включати потенційне особисте посилання.<br /><br />Для особистих подій ми рекомендуємо створити новий обліковий запис з особистою електронною адресою.",
   "email|existing_user_added_link_changed": "Ваше посилання було змінено з <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> на <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>, але не хвилюйтеся, всі попередні посилання все ще працюють і перенаправляють належним чином.<br /><br />Зверніть увагу: Всі ваші особисті типи подій були переміщені до організації <strong>{teamName}</strong>, що може також включати потенційне особисте посилання.<br /><br />Будь ласка, увійдіть і переконайтеся, що у вашому новому організаційному обліковому записі немає приватних подій.<br /><br />Для особистих подій ми рекомендуємо створити новий обліковий запис з особистою електронною адресою.<br /><br />Насолоджуйтесь вашим новим чистим посиланням: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Вашу організацію створено",
-  "your_current_plan": "Ваш поточний план",
-  
-  "privacy_organization_description": "Керуйте налаштуваннями конфіденційності вашої організації",
+  "your_current_plan": "Ваш поточний план","privacy_organization_description": "Керуйте налаштуваннями конфіденційності вашої організації",
   "privacy": "Політика конфіденційності",
   "team_will_be_under_org": "Нові команди будуть під вашою організацією",
   "add_group_name": "Додати назву групи",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "Продовжуючи, ви погоджуєтеся з <0>Умовами</0> та <1>Політикою конфіденційності<1>",
   "proceeding_agreement": "Продовжуючи, ви погоджуєтеся з нашими",
   "terms": "Умовами",
-  "always_show_x_days": "Завжди доступно {{x}} днів",
-  
-  "updating_oauth_client_error": "Сталася помилка під час оновлення клієнта OAuth, будь ласка, спробуйте пізніше",
+  "always_show_x_days": "Завжди доступно {{x}} днів","updating_oauth_client_error": "Сталася помилка під час оновлення клієнта OAuth, будь ласка, спробуйте пізніше",
   "creating_oauth_client_error": "Сталася помилка під час створення клієнта OAuth, будь ласка, спробуйте пізніше",
   "event_type_color": "Колір типу події",
   "event_type_color_description": "Це використовується лише для розрізнення типів подій та бронювань у додатку. Це не відображається для користувачів.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Перевірка календаря Google",
   "outlook_connect_atom_label": "Підключити календар Outlook",
   "outlook_connect_atom_already_connected_label": "Календар Outlook підключено",
-  "outlook_connect_atom_loading_label": "Перевірка календаря Outlook",
-  
-  
-  
-  "booking_question_response_variables": "Змінні відповідей на питання бронювання",
+  "outlook_connect_atom_loading_label": "Перевірка календаря Outlook","booking_question_response_variables": "Змінні відповідей на питання бронювання",
   "managed_by_teamAdmins": "Керується {{teamAdmins}}",
   "number_of_options": "{{count}} варіантів",
   "reschedule_with_same_round_robin_host_title": "Перепланувати з тим самим ведучим Round-Robin",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "останні {{count}} днів",
   "month_to_date": "з початку місяця",
   "year_to_date": "з початку року",
-  "custom_range": "власний діапазон",
-  
-  "always": "Завжди",
-  "never": "Ніколи",
-  
-  "if_cancelled": "Якщо скасовано",
+  "custom_range": "власний діапазон","always": "Завжди",
+  "never": "Ніколи","if_cancelled": "Якщо скасовано",
   "before": "до",
   "show_all_columns": "Показати всі стовпці",
   "toggle_columns": "Перемкнути стовпці",

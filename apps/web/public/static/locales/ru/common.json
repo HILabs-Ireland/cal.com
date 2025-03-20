@@ -4,9 +4,7 @@
   "day_one": "{{count}} день",
   "day_other": "{{count}} дн.",
   "second_one": "{{count}} сек.",
-  "second_other": "{{count}} сек.",
-  
-  "untitled": "Без названия",
+  "second_other": "{{count}} сек.","untitled": "Без названия",
   "accept_invitation": "Принять приглашение",
   "max_characters": "Макс. символов",
   "min_characters": "Мин. символов",
@@ -68,18 +66,10 @@
   "accept_our_license": "Примите нашу лицензию, изменив переменную окружения <1>NEXT_PUBLIC_LICENSE_CONSENT</1> на '{{agree}}'.",
   "remove_banner_instructions": "Чтобы удалить этот баннер, откройте файл .env и измените <1>NEXT_PUBLIC_LICENSE_CONSENT</1> на '{{agree}}'.",
   "error_message": "Сообщение об ошибке: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Уточните у своего поставщика платежных услуг и {{user}}, как поступить в этом случае.",
-  
-  
-  
   "dark_theme_contrast_error": "Темный цвет темы не проходит проверку на контрастность. Мы рекомендуем вам изменить этот цвет, чтобы ваши кнопки были более заметны.",
   "light_theme_contrast_error": "Цвет светлой темы не проходит проверку контраста. Мы рекомендуем изменить этот цвет, чтобы ваши кнопки были более заметными.",
   "event_type_color_light_theme_contrast_error": "Цвет светлой темы не проходит проверку контраста. Мы рекомендуем изменить этот цвет, чтобы цвет ваших типов событий был более заметным.",
   "event_type_color_dark_theme_contrast_error": "Цвет темной темы не проходит проверку контраста. Мы рекомендуем изменить этот цвет, чтобы цвет ваших типов событий был более заметным.",
-  
-  
   "no_available_users_found_error": "Не найдено доступных пользователей. Попробуйте выбрать другое время.",
   "request_body_end_time_internal_error": "Внутренняя ошибка. В теле запроса отсутствует время окончания",
   "create_calendar_event_error": "Не удалось создать событие в календаре организатора",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "Вы уже зарегистрированы на это бронирование.",
   "hosts_unavailable_for_booking": "Некоторые из хостов недоступны для бронирования.",
   "help": "Помощь",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Общий запрос",
   "begin_message": "Начать сообщение",
   "codebase_has_to_stay_opensource": "Код должен оставаться открытым исходным кодом, независимо от того, был ли он изменен или нет",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "В этой команде вы скрытый пользователь",
   "hidden_team_member_message": "Ваше место не оплачено. Перейдите на аккаунт PRO или свяжитесь с руководителем команды, чтобы сообщить ему, что он может оплатить ваше место.",
   "hidden_team_owner_message": "Чтобы работать с командами, необходим аккаунт Pro. До перехода на этот тариф Вы остаетесь скрытым пользователем.",
-  "link_expires": "p.s. Это истекает через {{expiresIn}} часов.",
-  
-  "seat_options_doesnt_support_confirmation": "При использовании обязательного подтверждения параметр «Места» не поддерживается",
-  "multilocation_doesnt_support_seats": "Множественные локации не поддерживают опцию мест",
-  
-  "seats_option_doesnt_support_multi_location": "Опция мест не поддерживает множественные локации",
-  
-  
-  
-  
-  
-  
+  "link_expires": "p.s. Это истекает через {{expiresIn}} часов.","seat_options_doesnt_support_confirmation": "При использовании обязательного подтверждения параметр «Места» не поддерживается",
+  "multilocation_doesnt_support_seats": "Множественные локации не поддерживают опцию мест","seats_option_doesnt_support_multi_location": "Опция мест не поддерживает множественные локации",
   "use_link_to_reset_password": "Используйте ссылку ниже, чтобы сбросить пароль",
   "hey_there": "Привет,",
   "forgot_your_password_calcom": "Забыли пароль? - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Веб-хук успешно создан!",
   "webhook_updated_successfully": "Веб-хук успешно обновлён!",
   "webhook_removed_successfully": "Веб-хук успешно удалён!",
-  
-  
   "payload_template": "Шаблон данных",
   "dismiss": "Отменить",
   "no_data_yet": "Пока нет данных",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "Сведения о вашей повторяющейся встрече отправлены",
   "booking_confirmed": "Бронирование подтверждено",
   "booking_confirmed_recurring": "Ваша повторяющаяся встреча подтверждена",
-  
-  
   "enter_new_password": "Введите новый пароль для вашей учетной записи.",
   "reset_password": "Сбросить пароль",
   "change_your_password": "Изменить пароль",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Транскрипция создана",
   "booking_created": "Бронирование создано",
   "booking_rejected": "Бронирование отклонено",
-  "booking_requested": "Запрос на бронирование отправлен",
-  
-  "meeting_ended": "Встреча завершилась",
+  "booking_requested": "Запрос на бронирование отправлен","meeting_ended": "Встреча завершилась",
   "form_submitted": "Форма отправлена",
-  "form_submitted_no_event": "Форма отправлена, встреча не забронирована",
-  
-  "ooo_created": "Статус \"Вне офиса\" создан",
+  "form_submitted_no_event": "Форма отправлена, встреча не забронирована","ooo_created": "Статус \"Вне офиса\" создан",
   "booking_no_show_updated": "Обновление статуса отсутствия на встрече",
-  "event_triggers": "Триггеры событий",
-  
-  "create_new_webhook": "Создать новый веб-хук",
+  "event_triggers": "Триггеры событий","create_new_webhook": "Создать новый веб-хук",
   "webhooks": "Вебхуки",
   "team_webhooks": "Командные вебхуки",
   "create_new_webhook_to_account": "Создайте новый вебхук для вашей учетной записи",
@@ -529,9 +493,7 @@
   "iframe_embed": "Встраиваемый iframe",
   "embed_calcom": "Самый простой способ встроить {{appName}} на ваш сайт.",
   "integrate_using_embed_or_webhooks": "Интегрируйте свой сайт с помощью наших опций встраивания, или получайте информацию о бронированиях в режиме реального времени с помощью вебхуков.",
-  "schedule_a_meeting": "Запланировать встречу",
-        "need_anything_else": "Нужно что-нибудь еще?",
-    "contact": "Связаться",
+  "schedule_a_meeting": "Запланировать встречу",    "need_anything_else": "Нужно что-нибудь еще?","contact": "Связаться",
   "our_support_team": "с нашей службой поддержки",
   "contact_our_support_team": "Свяжитесь с нашей службой поддержки",
   "uh_oh": "О нет!",
@@ -773,10 +735,6 @@
   "readonly": "Только для чтения",
   "one_time_link": "Одноразовая ссылка",
   "plan_description": "В настоящее время вы используете план {{plan}}.",
-  
-  
-  
-  
   "event_types_page_title": "Типы событий",
   "event_types_page_subtitle": "Создайте мероприятие, чтобы поделиться с людьми для бронирования в вашем календаре.",
   "new": "Создать",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Создайте команду, чтобы начать работу",
   "teams": "Команды",
   "team": "Команда",
-  "organization": "Организация",
-      
-  
-    "create_manage_teams_collaborative": "Создавайте и управляйте командами для использования совместных функций.",
+  "organization": "Организация",    "create_manage_teams_collaborative": "Создавайте и управляйте командами для использования совместных функций.",
   "only_available_on_pro_plan": "Эта функция доступна только в Pro тарифе",
   "remove_cal_branding_description": "Чтобы удалить брендинг {{appName}} со страниц бронирования, необходимо перейти на Pro аккаунт.",
   "edit_profile_info_description": "Отредактируйте информацию своего профиля, она будет отображаться на вашей публичной странице.",
@@ -843,16 +798,13 @@
   "little_something_about": "Немного о вас.",
   "profile_updated_successfully": "Профиль успешно обновлен",
   "your_user_profile_updated_successfully": "Ваш профиль пользователя успешно обновлен.",
-  
-  
   "you_are_all_set": "Всё готово",
   "you_are_all_set_description": "Вы уже используете последний план. Обновление не требуется. Наслаждайтесь новыми функциями и обращайтесь к нам с любыми вопросами!",
   "user_cannot_found_db": "Пользователь авторизован, но не найден в базе данных",
   "embed_and_webhooks": "Встраивание и веб-хуки",
   "enabled": "Включено",
   "disabled": "Выключено",
-  "disable": "Выключить",
-      "availability": "Доступность",
+  "disable": "Выключить",  "availability": "Доступность",
   "edit_availability": "Изменить информацию о доступности",
   "configure_availability": "Измените временные интервалы, доступные для бронирования.",
   "copy_times_to": "Скопировать время в",
@@ -889,8 +841,6 @@
   "recurring_event": "Повторяющееся событие",
   "recurring_event_description": "Пользователи могут подписываться на повторяющиеся события",
   "connect_and_join": "Подключиться и присоединиться",
-  
-  
   "warning_instant_meeting_experimental": "Экспериментально: Мгновенные встречи в настоящее время находятся на стадии эксперимента.",
   "starting": "Начало",
   "disable_guests": "Отключить участников",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "{{appName}} создаст ссылку на встречу в Daily.",
   "cal_provide_jitsi_meeting_url": "{{appName}} создаст ссылку на встречу в Jitsi Meet.",
   "cal_provide_huddle01_meeting_url": "{{appName}} создаст ссылку на встречу в Huddle01 Web3.",
-  "cal_provide_teams_meeting_url": "{{appName}} предоставит URL-адрес встречи в MS Teams. ПРИМЕЧАНИЕ: У ВАС ДОЛЖЕН БЫТЬ КОРПОРАТИВНЫЙ ИЛИ СТУДЕНЧЕСКИЙ АККАУНТ",
-  
-  "you_need_to_add_a_name": "Необходимо добавить имя",
+  "cal_provide_teams_meeting_url": "{{appName}} предоставит URL-адрес встречи в MS Teams. ПРИМЕЧАНИЕ: У ВАС ДОЛЖЕН БЫТЬ КОРПОРАТИВНЫЙ ИЛИ СТУДЕНЧЕСКИЙ АККАУНТ","you_need_to_add_a_name": "Необходимо добавить имя",
   "commission_per_transaction": "комиссия за сделку",
   "event_type_updated_successfully_description": "Ваш шаблон события успешно обновлён.",
   "hide_event_type": "Скрыть шаблон события",
@@ -964,9 +912,7 @@
   "next_step_text": "Следующий шаг",
   "next_step": "Пропустить шаг",
   "prev_step": "Предыдущий шаг",
-  "install": "Установить",
-  
-  "installed": "Установлено",
+  "install": "Установить","installed": "Установлено",
   "active_install_one": "Активные установки: {{count}}",
   "active_install_other": "Активные установки: {{count}}",
   "globally_install": "Глобально установленная",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Календарь обновлен",
   "check_here": "Проверьте здесь",
   "conferencing": "Конференции",
-  "calendar": "Календарь",
-  
-  "not_installed": "Не установлено",
+  "calendar": "Календарь","not_installed": "Не установлено",
   "error_password_mismatch": "Пароли не совпадают.",
   "error_required_field": "Это поле является обязательным.",
   "status": "Статус",
@@ -1024,16 +968,12 @@
   "no_category_apps": "Нет приложений в категории «{{category}}»",
   "all_apps": "Все приложения",
   "no_category_apps_description_calendar": "Добавьте приложение календаря, чтобы проверять наличие конфликтов для избежания двойного бронирования",
-  "no_category_apps_description_conferencing": "Попробуйте добавить приложение конференц-связи для интеграции видеозвонков с клиентами",
-  
-  "no_category_apps_description_analytics": "Добавьте приложение аналитики для использования на страницах бронирования",
+  "no_category_apps_description_conferencing": "Попробуйте добавить приложение конференц-связи для интеграции видеозвонков с клиентами","no_category_apps_description_analytics": "Добавьте приложение аналитики для использования на страницах бронирования",
   "no_category_apps_description_automation": "Добавьте приложение для автоматизации",
   "no_category_apps_description_other": "Добавляйте всевозможные приложения для решения своих задач",
   "no_category_apps_description_messaging": "Добавьте мессенджер, чтобы настроить пользовательские уведомления и напоминания",
   "no_category_apps_description_crm": "Добавьте приложение CRM, чтобы отслеживать, с кем у вас были встречи",
-  "installed_app_calendar_description": "Настройте проверку календарей на предмет конфликтов для избежания двойного бронирования.",
-  
-  "installed_app_analytics_description": "Выберите приложения аналитики для страниц бронирования",
+  "installed_app_calendar_description": "Настройте проверку календарей на предмет конфликтов для избежания двойного бронирования.","installed_app_analytics_description": "Выберите приложения аналитики для страниц бронирования",
   "installed_app_other_description": "Все установленные приложения из других категорий.",
   "installed_app_conferencing_description": "Выберите приложения для конференц-связи",
   "installed_app_automation_description": "Выберите приложения для автоматизации",
@@ -1048,9 +988,7 @@
   "features": "Возможности",
   "permissions": "Разрешения",
   "terms_and_privacy": "Условия использования и конфиденциальность",
-  "published_by": "Опубликовано {{author}}",
-  
-  "buy": "Купить",
+  "published_by": "Опубликовано {{author}}","buy": "Купить",
   "install_app": "Установить приложение",
   "categories": "Категории",
   "pricing": "Цены",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Подтвердить кошелек",
   "create_events_on": "Создавать события в календаре:",
   "enterprise_license": "Это функция корпоративного тарифного плана",
-  "enterprise_license_locally": "Вы можете протестировать эту функцию локально, но не в производственной среде.",
-  
-  "missing_license": "Отсутствует лицензия",
+  "enterprise_license_locally": "Вы можете протестировать эту функцию локально, но не в производственной среде.","missing_license": "Отсутствует лицензия",
   "next_steps": "Следующие шаги",
   "acquire_commercial_license": "Приобрести коммерческую лицензию",
   "the_infrastructure_plan": "Стоимость тарифного плана по развертыванию инфраструктуры зависит от вариантов использования; стартапам предоставляются скидки.",
   "prisma_studio_tip": "Создать учетную запись через Prisma Studio",
-  "prisma_studio_tip_description": "Узнайте, как настроить первого пользователя",
-  
-  "error_404": "Ошибка 404",
+  "prisma_studio_tip_description": "Узнайте, как настроить первого пользователя","error_404": "Ошибка 404",
   "default": "По умолчанию",
   "set_to_default": "Использовать по умолчанию",
   "new_schedule_btn": "Новое расписание",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Справочная документация",
   "developer_documentation": "Документация для разработчиков",
   "get_in_touch": "Связаться с нами",
-  "contact_support": "Обратиться в службу поддержки",
-  
-  "community_support": "Поддержка со стороны сообщества",
+  "contact_support": "Обратиться в службу поддержки","community_support": "Поддержка со стороны сообщества",
   "feedback": "Отзыв",
   "submitted_feedback": "Спасибо за отзыв!",
   "feedback_error": "Ошибка при отправке отзыва",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "Рабочие процессы позволяют автоматизировать отправку напоминаний и уведомлений.",
   "active_on": "Активен с",
   "workflow_updated_successfully": "Рабочий процесс {{workflowName}} обновлен",
-    
-  "current": "Текущее",
-  
-  "standard": "стандартное",
+  "current": "Текущее","standard": "стандартное",
   "confirm_username_change_dialog_title": "Подтвердите смену имени пользователя",
-  
-  
-    
   "trial_expired": "Пробный период истек",
   "remove_app": "Удалить приложение",
   "yes_remove_app": "Да, удалить приложение",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "Участник",
   "event_date_variable": "Дата события",
   "event_time_variable": "Время события",
-  "organizer_name_variable": "Имя организатора",
-  
-  "invalid_number": "Неверный номер телефона",
+  "organizer_name_variable": "Имя организатора","invalid_number": "Неверный номер телефона",
   "invalid_url_error_message": "Недопустимый URL для {{label}}. Пример URL: {{sampleUrl}}",
   "navigate": "Перейти",
   "open": "Открыть",
   "close": "Закрыть",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Записи поддерживаются в тарифном плане Teams",
   "team_feature_teams": "Эта функция доступна в тарифном плане Team. Перейдите на тариф Team, чтобы видеть доступность участников команды.",
   "team_feature_workflows": "Эта функция доступна в тарифном плане Team. Перейдите на тариф Team, чтобы использовать рабочие процессы для автоматизации уведомлений и напоминаний о событиях.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Идентификатор вопроса о бронировании",
   "company_size": "Размер компании",
   "what_help_needed": "Какая помощь вам нужна?",
-  "variable_format": "Формат переменной",
-  
-  "custom_input_as_variable_info": "Игнорировать все специальные символы в дополнительной метке ввода (использовать только буквы и цифры), использовать верхний регистр для всех букв и заменить пробелы подчеркиванием.",
+  "variable_format": "Формат переменной","custom_input_as_variable_info": "Игнорировать все специальные символы в дополнительной метке ввода (использовать только буквы и цифры), использовать верхний регистр для всех букв и заменить пробелы подчеркиванием.",
   "using_booking_questions_as_variables": "Как использовать вопросы о бронировании в качестве переменных?",
   "download_desktop_app": "Скачать приложение для компьютера",
   "set_ping_link": "Ссылка на Ping",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "Как часто можно забронировать для вас событие",
   "event_advanced_tab_description": "Настройки календаря и ещё...",
   "event_advanced_tab_title": "Расширенные",
-  
-  
   "event_setup_multiple_duration_error": "Настройка события: чтобы выбрать несколько вариантов продолжительности, требуется как минимум 1 параметр.",
   "event_setup_multiple_duration_default_error": "Настройка события: выберите допустимую продолжительность по умолчанию.",
   "event_setup_booking_limits_error": "Лимиты бронирования должны указываться от меньшей единицы к большей [день, неделя, месяц, год]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "Эти данные можно указать позже на странице «Доступность».",
   "connect_calendars_from_app_store": "Вы можете добавить другие календари из App Store",
   "connect_conference_apps": "Подключить приложения для конференций",
-  "connect_calendar_apps": "Подключить приложения календаря",
-  
-  "connect_automation_apps": "Подключить приложения для автоматизации",
+  "connect_calendar_apps": "Подключить приложения календаря","connect_automation_apps": "Подключить приложения для автоматизации",
   "connect_analytics_apps": "Подключить приложения аналитики",
   "connect_other_apps": "Подключить другие приложения",
   "connect_messaging_apps": "Подключить мессенджеры",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Ссылка для сброса отправлена",
   "password_reset_email": "В ближайшее время вы получите на {{email}} письмо с инструкциями по сбросу пароля.",
   "password_reset_leading": "Если вы не получите письмо в ближайшее время, проверьте, верно ли введен адрес электронной почты, не попало ли письмо в спам и напишите в поддержку, если письмо так и не нашлось.",
-  "password_updated": "Пароль обновлен.",
-  
-  "pending_invites": "Приглашения, ожидающие ответа",
+  "password_updated": "Пароль обновлен.","pending_invites": "Приглашения, ожидающие ответа",
   "pending_organization_invites": "Ожидающие приглашения в организацию",
   "not_on_cal": "Не является пользователем {{appName}}",
   "no_calendar_installed": "Нет установленных календарей",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "Использовать только прописные буквы",
   "replace_whitespaces_underscores": "Заменить пробелы подчеркиванием",
   "platform_members": "Участники платформы",
-  "platform_members_description": "Управляйте администраторами и участниками вашей команды на платформе",
-                  "ignore_special_characters_booking_questions": "Не используйте в идентификаторе вопроса о бронировании специальные символы. Используйте только буквы и цифры",
+  "platform_members_description": "Управляйте администраторами и участниками вашей команды на платформе",              "ignore_special_characters_booking_questions": "Не используйте в идентификаторе вопроса о бронировании специальные символы. Используйте только буквы и цифры",
   "retry": "Повторить",
   "fetching_calendars_error": "Ошибка при загрузке календарей. <1>Попробуйте еще раз</1> или обратитесь в службу поддержки.",
   "calendar_connection_fail": "Не удалось подключиться к календарю",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Ограничить дальнейшие бронирования",
   "limit_future_bookings_description": "Указать дату, после которой нельзя забронировать это событие",
   "no_event_types": "Типы событий не установлены",
-  "no_event_types_description": "{{name}} не установил(а) для вас типы событий, которые вы можете бронировать.",
-    "monthly": "Ежемесячная",
+  "no_event_types_description": "{{name}} не установил(а) для вас типы событий, которые вы можете бронировать.","monthly": "Ежемесячная",
   "yearly": "Ежегодная",
   "weekly": "Еженедельно",
   "checkout": "Оплатить заказ",
@@ -1733,9 +1643,7 @@
   "test_preview": "Проверить предварительный просмотр",
   "route_to": "Цель маршрута",
   "test_preview_description": "Проверяйте формы маршрутизации без отправки данных",
-  "test_routing": "Проверить машрутизацию",
-  
-  "edit_event_type": "Редактировать тип мероприятия",
+  "test_routing": "Проверить машрутизацию","edit_event_type": "Редактировать тип мероприятия",
   "only_admin_can_see_members_of_org": "Эта организация является частной, и только администратор или владелец организации может просматривать её участников.",
   "only_admin_can_manage_sso_org": "Только администратор или владелец организации может управлять настройками SSO",
   "collective_scheduling": "Совместное планирование",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "Администратор команды <strong>{{teamName}}</strong> заменил ваш тип события <strong>/{{slug}}</strong> на управляемый им тип события.",
   "email_body_slug_replacement_info": "Ссылка по-прежнему будет работать, но некоторые настройки могли измениться. Вы можете просмотреть их в списке типов событий.",
   "email_body_slug_replacement_suggestion": "Если у вас есть вопросы о данном типе события, свяжитесь с администратором.<br /><br />Счастливого планирования! <br />Команда Cal.com",
-  
-  
   "app_disabled_with_event_type": "Администратор отключил {{appName}}, которое влияет на тип мероприятия {{title}}.",
   "app_disabled_video": "Приложение {{appName}} отключено администратором, что может повлиять на некоторые типы событий. Если у вас есть типы событий, использующие {{appName}} в качестве местоположения, то по умолчанию будет использоваться Cal Video.",
   "app_disabled_subject": "{{appName}} отключено",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Назначение организаторов по очереди",
   "minimum_round_robin_hosts_count": "Количество организаторов, которые должны участвовать в мероприятии",
   "hosts": "Организаторы",
-  
-  
   "new_attendee": "Новый участник",
   "awaiting_approval": "Ожидает одобрения",
   "requires_google_calendar": "Для этого приложения необходимо подключение к Google Календарю",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Настройка вопросов, задаваемых пользователю на странице бронирования",
   "add_a_booking_question": "Добавить вопрос",
   "identifier": "Идентификатор",
-  "duplicate_email": "Адрес электронной почты уже существует",
-  
-  
-  
-  "booking_confirmation_failed": "Не удалось подтвердить бронирование",
+  "duplicate_email": "Адрес электронной почты уже существует","booking_confirmation_failed": "Не удалось подтвердить бронирование",
   "not_enough_seats": "Недостаточно мест",
   "form_builder_field_already_exists": "Поле с таким именем уже существует",
   "show_on_booking_page": "Показывать на странице бронирования",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Сбросить фильтры",
   "clear": "Сбросить",
   "hold": "Заморозить",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Аналитика",
   "routing_forms": "Формы маршрутизации",
   "testing_workflow_info_message": "При тестировании этого рабочего процесса помните, что отправку писем и SMS можно запланировать не менее чем за 1 час до начала",
   "insights_no_data_found_for_filter": "Данные, соответствующие выбранному фильтру или диапазону дат, не найдены.",
-  
-  
   "something_went_wrong_on_our_end": "Что-то пошло не так. Свяжитесь с нашей службой поддержки, и мы быстро устраним проблему.",
-  "please_provide_following_text_to_suppport": "Чтобы специалисты техподдержки могли быстрее вам помочь, укажите следующую информацию",
-  
-  "complete_your_booking": "Завершить бронирование",
+  "please_provide_following_text_to_suppport": "Чтобы специалисты техподдержки могли быстрее вам помочь, укажите следующую информацию","complete_your_booking": "Завершить бронирование",
   "complete_your_booking_subject": "Завершите бронирование: {{title}}, {{date}}",
   "confirm_your_details": "Подтвердите свои данные",
   "copy_invite_link": "Копировать ссылку для приглашения",
@@ -2120,14 +2000,8 @@
   "three_months": "3 месяца",
   "one_year": "1 год",
   "team_invite_received": "Вас пригласили в команду {{teamName}}",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "Списать с участника {{amount, currency}}",
-  
-  "email_invite_team": "Участник {{email}} приглашен(а)",
-  "email_invite_team_bulk": "Приглашено пользователей: {{userCount}}",
-  
-  "image_size_limit_exceed": "Размер загружаемого изображения не должен превышать 5 МБ",
+  "currency_string": "{{amount, currency}}","charge_attendee": "Списать с участника {{amount, currency}}","email_invite_team": "Участник {{email}} приглашен(а)",
+  "email_invite_team_bulk": "Приглашено пользователей: {{userCount}}","image_size_limit_exceed": "Размер загружаемого изображения не должен превышать 5 МБ",
   "unauthorized_workflow_error_message": "{{errorCode}}: у вас недостаточно разрешений для включения или отключения этого рабочего процесса",
   "inline_embed": "Встраивание в содержимое сайта",
   "load_inline_content": "Отображение события вместе с другим содержимым сайта.",
@@ -2394,9 +2268,7 @@
   "locked": "Заблокировано",
   "unlocked": "Разблокировано",
   "lock_timezone_toggle_on_booking_page": "Заблокируйте часовой пояс на странице бронирования",
-  "description_lock_timezone_toggle_on_booking_page": "Блокировка часового пояса на странице бронирования подходит для личных событий.",
-  
-  "number_in_international_format": "Пожалуйста, введите номер в международном формате.",
+  "description_lock_timezone_toggle_on_booking_page": "Блокировка часового пояса на странице бронирования подходит для личных событий.","number_in_international_format": "Пожалуйста, введите номер в международном формате.",
   "install_calendar": "Установить календарь",
   "branded_subdomain": "Брендированный поддомен",
   "branded_subdomain_description": "Получите свой собственный брендированный поддомен, например, acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Индивидуальная техподдержка и помощь при онбординге",
   "extensive_whitelabeling_description": "Настройте свой опыт планирования с помощью собственного логотипа, цветов и многого другого",
   "unlimited_teams": "Неограниченное количество команд",
-  "unlimited_teams_description": "Добавьте столько подкоманд, сколько нужно вашей организации",
-      "advanced_managed_events": "Расширенные управляемые типы событий",
+  "unlimited_teams_description": "Добавьте столько подкоманд, сколько нужно вашей организации",  "advanced_managed_events": "Расширенные управляемые типы событий",
   "advanced_managed_events_description": "Добавьте одну кредитную карту для оплаты всех подписок вашей команды",
   "enterprise": "Корпоративный",
   "enterprise_description": "Обновитесь до Enterprise, чтобы создать свою организацию",
-  "create_your_org": "Создайте свою организацию",
-    "create_your_enterprise_description": "Обновитесь до Enterprise и получите доступ к синхронизации Active Directory, автоматическому предоставлению пользователей SCIM, голосовым агентам Cal.ai, административным API и многому другому!",
-  
-  "admin_delete_organization_description": "<ul><li>Команды, являющиеся членами этой организации, также будут удалены вместе с их типами событий</li><li>Пользователи, которые были частью организации, не будут удалены, но их имена пользователей будут изменены, чтобы они могли существовать вне организации</li><li>Типы событий пользователей, созданные после того, как пользователь был в организации, будут удалены</li><li>Мигрированные типы событий пользователей не будут удалены</li></ul>",
+  "create_your_org": "Создайте свою организацию","create_your_enterprise_description": "Обновитесь до Enterprise и получите доступ к синхронизации Active Directory, автоматическому предоставлению пользователей SCIM, голосовым агентам Cal.ai, административным API и многому другому!","admin_delete_organization_description": "<ul><li>Команды, являющиеся членами этой организации, также будут удалены вместе с их типами событий</li><li>Пользователи, которые были частью организации, не будут удалены, но их имена пользователей будут изменены, чтобы они могли существовать вне организации</li><li>Типы событий пользователей, созданные после того, как пользователь был в организации, будут удалены</li><li>Мигрированные типы событий пользователей не будут удалены</li></ul>",
   "admin_delete_organization_title": "Удалить {{organizationName}}?",
   "published": "Опубликовано",
   "unpublished": "Не опубликовано",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "Позвольте людям бронировать сразу",
   "uprade_to_create_instant_bookings": "Обновитесь до Enterprise и позвольте гостям присоединиться к мгновенному звонку, в который участники могут сразу войти. Это только для командных типов событий",
   "dont_want_to_wait": "Не хотите ждать?",
-  "meeting_started": "Встреча началась",
-  
-  "cal_ai_event_tab_description": "Позвольте AI-агентам бронировать для вас",
+  "meeting_started": "Встреча началась","cal_ai_event_tab_description": "Позвольте AI-агентам бронировать для вас",
   "booking_not_found_error": "Не удалось найти бронирование",
   "booking_seats_full_error": "Все места для бронирования заняты",
-  
-  
   "not_enough_available_seats_error": "Недостаточно доступных мест для бронирования",
   "user_redirect_title": "{{username}} временно отсутствует.",
   "user_redirect_description": "Тем временем {{profile.username}} будет отвечать за все новые запланированные встречи от имени {{username}}.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "После принятия приглашения ваша ссылка изменится на домен вашей организации, но не волнуйтесь, все предыдущие ссылки будут по-прежнему работать и перенаправлять корректно.<br /><br />Обратите внимание: Все ваши личные типы событий будут перемещены в организацию <strong>{teamName}</strong>, что также может включать потенциальную личную ссылку.<br /><br />Для личных событий мы рекомендуем создать новую учетную запись с личным адресом электронной почты.",
   "email|existing_user_added_link_changed": "Ваша ссылка была изменена с <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> на <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>, но не волнуйтесь, все предыдущие ссылки по-прежнему работают и перенаправляют корректно.<br /><br />Обратите внимание: Все ваши личные типы событий были перемещены в организацию <strong>{teamName}</strong>, что также может включать потенциальную личную ссылку.<br /><br />Пожалуйста, войдите в систему и убедитесь, что у вас нет частных событий в вашей новой организационной учетной записи.<br /><br />Для личных событий мы рекомендуем создать новую учетную запись с личным адресом электронной почты.<br /><br />Наслаждайтесь вашей новой чистой ссылкой: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Ваша организация была создана",
-  "your_current_plan": "Ваш текущий план",
-  
-  "privacy_organization_description": "Управление настройками конфиденциальности для вашей организации",
+  "your_current_plan": "Ваш текущий план","privacy_organization_description": "Управление настройками конфиденциальности для вашей организации",
   "privacy": "Конфиденциальность",
   "team_will_be_under_org": "Новые команды будут под вашей организацией",
   "add_group_name": "Добавить название группы",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "Продолжая, вы соглашаетесь с <0>Терминами</0> и <1>Политикой конфиденциальности<1>",
   "proceeding_agreement": "Продолжая, вы соглашаетесь с нашими",
   "terms": "Условиями",
-  "always_show_x_days": "Всегда доступно {{x}} дней",
-  
-  "updating_oauth_client_error": "Произошла ошибка при обновлении OAuth клиента, пожалуйста, попробуйте позже",
+  "always_show_x_days": "Всегда доступно {{x}} дней","updating_oauth_client_error": "Произошла ошибка при обновлении OAuth клиента, пожалуйста, попробуйте позже",
   "creating_oauth_client_error": "Произошла ошибка при создании OAuth клиента, пожалуйста, попробуйте позже",
   "event_type_color": "Цвет типа события",
   "event_type_color_description": "Используется только для различения типов событий и бронирования в приложении. Не отображается для бронирующих.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Проверка календаря Google",
   "outlook_connect_atom_label": "Подключить календарь Outlook",
   "outlook_connect_atom_already_connected_label": "Календарь Outlook подключен",
-  "outlook_connect_atom_loading_label": "Проверка календаря Outlook",
-  
-  
-  
-  "booking_question_response_variables": "Переменные ответов на вопросы бронирования",
+  "outlook_connect_atom_loading_label": "Проверка календаря Outlook","booking_question_response_variables": "Переменные ответов на вопросы бронирования",
   "managed_by_teamAdmins": "Управляется {{teamAdmins}}",
   "number_of_options": "{{count}} вариантов",
   "reschedule_with_same_round_robin_host_title": "Переназначить с тем же организатором Round-Robin",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "последние {{count}} дней",
   "month_to_date": "с начала месяца",
   "year_to_date": "с начала года",
-  "custom_range": "произвольный период",
-  
-  "always": "Всегда",
-  "never": "Никогда",
-  
-  "if_cancelled": "При отмене",
+  "custom_range": "произвольный период","always": "Всегда",
+  "never": "Никогда","if_cancelled": "При отмене",
   "before": "до",
   "show_all_columns": "Показать все столбцы",
   "toggle_columns": "Переключить столбцы",

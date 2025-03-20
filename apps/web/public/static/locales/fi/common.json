@@ -4,9 +4,7 @@
   "day_one": "{{count}} päivä",
   "day_other": "{{count}} päivää",
   "second_one": "{{count}} sekunti",
-  "second_other": "{{count}} sekuntia",
-  
-  "untitled": "Nimetön",
+  "second_other": "{{count}} sekuntia","untitled": "Nimetön",
   "accept_invitation": "Hyväksy Kutsu",
   "max_characters": "Enimmäismerkkimäärä",
   "min_characters": "Vähimmäismerkkimäärä",
@@ -68,18 +66,10 @@
   "accept_our_license": "Hyväksy lisenssimme muuttamalla .env-muuttuja <1>NEXT_PUBLIC_LICENSE_CONSENT</1> arvoksi '{{agree}}'.",
   "remove_banner_instructions": "Poistaaksesi tämän bannerin, avaa .env-tiedosto ja muuta <1>NEXT_PUBLIC_LICENSE_CONSENT</1> muuttujan arvoksi '{{agree}}'.",
   "error_message": "Virheviesti oli: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Tarkista maksunvälittäjältä ja käyttäjältä {{user}} kuinka tämä tulisi hoitaa.",
-  
-  
-  
   "dark_theme_contrast_error": "Tumman teeman väri ei läpäise kontrastintarkistusta. Suosittelemme vaihtamaan tätä väriä, jotta painikkeet olisivat paremmin näkyvissä.",
   "light_theme_contrast_error": "Vaalean teeman väri ei läpäise kontrastintarkistusta. Suosittelemme vaihtamaan tätä väriä, jotta painikkeet olisivat paremmin näkyvissä.",
   "event_type_color_light_theme_contrast_error": "Vaalean teeman väri ei läpäise kontrastintarkistusta. Suosittelemme vaihtamaan tätä väriä, jotta tapahtumatyyppien värit olisivat paremmin näkyvissä.",
   "event_type_color_dark_theme_contrast_error": "Tumman teeman väri ei läpäise kontrastintarkistusta. Suosittelemme vaihtamaan tätä väriä, jotta tapahtumatyyppien värit olisivat paremmin näkyvissä.",
-  
-  
   "no_available_users_found_error": "Vapaita käyttäjiä ei löytynyt. Kokeilitko toista ajankohtaa?",
   "request_body_end_time_internal_error": "Sisäinen virhe. Pyynnön rungosta puuttuu lopetusaika",
   "create_calendar_event_error": "Kalenteritapahtuman luominen järjestäjän kalenteriin epäonnistui",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "Olet jo ilmoittautunut tähän varaukseen.",
   "hosts_unavailable_for_booking": "Osa järjestäjistä ei ole käytettävissä varausta varten.",
   "help": "Ohje",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Yleinen kehote",
   "begin_message": "Aloita viesti",
   "codebase_has_to_stay_opensource": "Lähdekoodin on pysyttävä avoimena, riippumatta siitä onko sitä muokattu vai ei",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "Olet piilotettu tässä tiimissä",
   "hidden_team_member_message": "Paikkaasi ei ole maksettu. Päivitä PRO-versioon tai ilmoita tiimin omistajalle, että he voivat maksaa paikkasi.",
   "hidden_team_owner_message": "Tarvitset pro-tilin käyttääksesi tiimejä. Olet piilotettu, kunnes päivität tilisi.",
-  "link_expires": "PS. Linkki vanhenee {{expiresIn}} tunnin kuluttua.",
-  
-  "seat_options_doesnt_support_confirmation": "Paikkavalinta ei tue vahvistusvaatimusta",
-  "multilocation_doesnt_support_seats": "Useat sijainnit eivät tue paikkavalintaa",
-  
-  "seats_option_doesnt_support_multi_location": "Paikkavalinta ei tue useita sijainteja",
-  
-  
-  
-  
-  
-  
+  "link_expires": "PS. Linkki vanhenee {{expiresIn}} tunnin kuluttua.","seat_options_doesnt_support_confirmation": "Paikkavalinta ei tue vahvistusvaatimusta",
+  "multilocation_doesnt_support_seats": "Useat sijainnit eivät tue paikkavalintaa","seats_option_doesnt_support_multi_location": "Paikkavalinta ei tue useita sijainteja",
   "use_link_to_reset_password": "Käytä alla olevaa linkkiä salasanan vaihtamiseen",
   "hey_there": "Hei siellä",
   "forgot_your_password_calcom": "Unohditko salasanasi? - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Webhook luotu onnistuneesti!",
   "webhook_updated_successfully": "Webhook päivitetty onnistuneesti!",
   "webhook_removed_successfully": "Webhook poistettu onnistuneesti!",
-  
-  
   "payload_template": "Payload-malli",
   "dismiss": "Sulje",
   "no_data_yet": "Ei vielä dataa",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "Toistuva tapaamisvarauksesi on lähetetty",
   "booking_confirmed": "Varauksesi on vahvistettu",
   "booking_confirmed_recurring": "Toistuva tapaamisvarauksesi on vahvistettu",
-  
-  
   "enter_new_password": "Syötä uusi salasana, jonka haluat tilillesi.",
   "reset_password": "Nollaa salasana",
   "change_your_password": "Vaihda salasanasi",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Litterointi luotu",
   "booking_created": "Varaus luotu",
   "booking_rejected": "Varaus hylätty",
-  "booking_requested": "Varaus pyydetty",
-  
-  "meeting_ended": "Kokous päättynyt",
+  "booking_requested": "Varaus pyydetty","meeting_ended": "Kokous päättynyt",
   "form_submitted": "Lomake lähetetty",
-  "form_submitted_no_event": "Lomake lähetetty, ei varausta",
-  
-  "ooo_created": "Poissaoloilmoitus luotu",
+  "form_submitted_no_event": "Lomake lähetetty, ei varausta","ooo_created": "Poissaoloilmoitus luotu",
   "booking_no_show_updated": "Varauksen no-show päivitetty",
-  "event_triggers": "Tapahtumaliipaisimet",
-  
-  "create_new_webhook": "Luo uusi webhook",
+  "event_triggers": "Tapahtumaliipaisimet","create_new_webhook": "Luo uusi webhook",
   "webhooks": "Webhookit",
   "team_webhooks": "Tiimin webhookit",
   "create_new_webhook_to_account": "Luo uusi webhook tilillesi",
@@ -529,9 +493,7 @@
   "iframe_embed": "iframe-upotus",
   "embed_calcom": "Helpoin tapa upottaa {{appName}} verkkosivustollesi",
   "integrate_using_embed_or_webhooks": "Integroi verkkosivustosi käyttämällä upotusvalintojamme tai saa reaaliaikaista varaustietoa mukautettujen webhookien avulla",
-  "schedule_a_meeting": "Varaa tapaaminen",
-        "need_anything_else": "Tarvitsetko muuta apua?",
-    "contact": "Ota yhteyttä",
+  "schedule_a_meeting": "Varaa tapaaminen",    "need_anything_else": "Tarvitsetko muuta apua?","contact": "Ota yhteyttä",
   "our_support_team": "tukitiimiimme",
   "contact_our_support_team": "Ota yhteyttä tukitiimiimme",
   "uh_oh": "Voi ei!",
@@ -773,10 +735,6 @@
   "readonly": "Vain luku",
   "one_time_link": "Kertakäyttölinkki",
   "plan_description": "Käytät tällä hetkellä {{plan}}-tilausta.",
-  
-  
-  
-  
   "event_types_page_title": "Tapahtumatyypit",
   "event_types_page_subtitle": "Luo tapahtumia, jotka muut voivat varata kalenteristasi.",
   "new": "Uusi",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Aloita luomalla tiimi",
   "teams": "Tiimit",
   "team": "Tiimi",
-  "organization": "Organisaatio",
-      
-  
-    "create_manage_teams_collaborative": "Luo ja hallinnoi tiimejä käyttääksesi yhteistyöominaisuuksia.",
+  "organization": "Organisaatio",    "create_manage_teams_collaborative": "Luo ja hallinnoi tiimejä käyttääksesi yhteistyöominaisuuksia.",
   "only_available_on_pro_plan": "Tämä ominaisuus on saatavilla vain Pro-tilauksessa",
   "remove_cal_branding_description": "Poistaaksesi {{appName}}-brändin varaussivuiltasi sinun täytyy päivittää Pro-tilille.",
   "edit_profile_info_description": "Muokkaa profiilitietojasi, jotka näkyvät varauslinkissäsi.",
@@ -843,16 +798,13 @@
   "little_something_about": "Kerro jotain itsestäsi.",
   "profile_updated_successfully": "Profiili päivitetty onnistuneesti",
   "your_user_profile_updated_successfully": "Käyttäjäprofiilisi on päivitetty onnistuneesti.",
-  
-  
   "you_are_all_set": "Kaikki on valmista",
   "you_are_all_set_description": "Sinulla on jo uusin tilaus käytössä. Ei tarvetta päivitykselle. Nauti uusista ominaisuuksista ja ota yhteyttä, jos sinulla on kysyttävää!",
   "user_cannot_found_db": "Käyttäjä vaikuttaa kirjautuneelta mutta häntä ei löydy tietokannasta",
   "embed_and_webhooks": "Upotus & webhookit",
   "enabled": "Käytössä",
   "disabled": "Pois käytöstä",
-  "disable": "Poista käytöstä",
-      "availability": "Saatavuus",
+  "disable": "Poista käytöstä",  "availability": "Saatavuus",
   "edit_availability": "Muokkaa saatavuutta",
   "configure_availability": "Määritä ajat, jolloin olet käytettävissä varauksille.",
   "copy_times_to": "Kopioi ajat kohteeseen",
@@ -889,8 +841,6 @@
   "recurring_event": "Toistuva tapahtuma",
   "recurring_event_description": "Ihmiset voivat tilata toistuvia tapahtumia",
   "connect_and_join": "Yhdistä ja liity",
-  
-  
   "warning_instant_meeting_experimental": "Kokeellinen: Pikatapaamistapahtumat ovat tällä hetkellä kokeiluvaiheessa.",
   "starting": "Alkaa",
   "disable_guests": "Poista vieraat käytöstä",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "{{appName}} tarjoaa videokokouslinkin.",
   "cal_provide_jitsi_meeting_url": "Luomme sinulle Jitsi Meet -linkin.",
   "cal_provide_huddle01_meeting_url": "{{appName}} tarjoaa Huddle01-videokokouslinkin.",
-  "cal_provide_teams_meeting_url": "{{appName}} tarjoaa MS Teams -kokouslinkin. HUOM: VAATII TYÖ- TAI KOULUTILIN",
-  
-  "you_need_to_add_a_name": "Sinun täytyy lisätä nimi",
+  "cal_provide_teams_meeting_url": "{{appName}} tarjoaa MS Teams -kokouslinkin. HUOM: VAATII TYÖ- TAI KOULUTILIN","you_need_to_add_a_name": "Sinun täytyy lisätä nimi",
   "commission_per_transaction": "komissio per tapahtuma",
   "event_type_updated_successfully_description": "Tapahtumatyyppi on päivitetty onnistuneesti.",
   "hide_event_type": "Piilota tapahtumatyyppi",
@@ -964,9 +912,7 @@
   "next_step_text": "Seuraava vaihe",
   "next_step": "Ohita vaihe",
   "prev_step": "Edellinen vaihe",
-  "install": "Asenna",
-  
-  "installed": "Asennettu",
+  "install": "Asenna","installed": "Asennettu",
   "active_install_one": "{{count}} aktiivinen asennus",
   "active_install_other": "{{count}} aktiivista asennusta",
   "globally_install": "Asennettu globaalisti",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Kalenteri päivitetty onnistuneesti",
   "check_here": "Tarkista täältä",
   "conferencing": "Videoneuvottelut",
-  "calendar": "Kalenteri",
-  
-  "not_installed": "Ei asennettu",
+  "calendar": "Kalenteri","not_installed": "Ei asennettu",
   "error_password_mismatch": "Salasanat eivät täsmää.",
   "error_required_field": "Tämä kenttä on pakollinen.",
   "status": "Tila",
@@ -1024,16 +968,12 @@
   "no_category_apps": "Ei {{category}} sovelluksia",
   "all_apps": "Kaikki sovellukset",
   "no_category_apps_description_calendar": "Lisää kalenterisovellus päällekkäisten varausten estämiseksi",
-  "no_category_apps_description_conferencing": "Kokeile lisätä videokonferenssisovellus asiakastapaamisia varten",
-  
-  "no_category_apps_description_analytics": "Lisää analytiikkasovellus varaussivuillesi",
+  "no_category_apps_description_conferencing": "Kokeile lisätä videokonferenssisovellus asiakastapaamisia varten","no_category_apps_description_analytics": "Lisää analytiikkasovellus varaussivuillesi",
   "no_category_apps_description_automation": "Lisää automaatiosovellus käyttöösi",
   "no_category_apps_description_other": "Lisää mikä tahansa muu sovellus erilaisiin käyttötarkoituksiin",
   "no_category_apps_description_messaging": "Lisää viestintäsovellus mukautettujen ilmoitusten ja muistutusten määrittämiseen",
   "no_category_apps_description_crm": "Lisää CRM-sovellus pitääksesi kirjaa tapaamistasi henkilöistä",
-  "installed_app_calendar_description": "Set the calendars to check for conflicts to prevent double bookings.",
-  
-  "installed_app_analytics_description": "Määritä, mitä analytiikkasovelluksia käytetään varaussivuillasi",
+  "installed_app_calendar_description": "Set the calendars to check for conflicts to prevent double bookings.","installed_app_analytics_description": "Määritä, mitä analytiikkasovelluksia käytetään varaussivuillasi",
   "installed_app_other_description": "Kaikki asentamasi sovellukset muista kategorioista.",
   "installed_app_conferencing_description": "Määritä käytettävät videoneuvottelusovellukset",
   "installed_app_automation_description": "Määritä käytettävät automaatiosovellukset",
@@ -1048,9 +988,7 @@
   "features": "Ominaisuudet",
   "permissions": "Käyttöoikeudet",
   "terms_and_privacy": "Käyttöehdot ja tietosuoja",
-  "published_by": "Julkaisija: {{author}}",
-  
-  "buy": "Osta",
+  "published_by": "Julkaisija: {{author}}","buy": "Osta",
   "install_app": "Asenna sovellus",
   "categories": "Kategoriat",
   "pricing": "Hinnoittelu",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Vahvista lompakko",
   "create_events_on": "Luo tapahtumia",
   "enterprise_license": "Tämä on kaupallinen ominaisuus",
-  "enterprise_license_locally": "Voit testata tätä ominaisuutta paikallisesti, mutta ei tuotannossa.",
-  
-  "missing_license": "Lisenssi puuttuu",
+  "enterprise_license_locally": "Voit testata tätä ominaisuutta paikallisesti, mutta ei tuotannossa.","missing_license": "Lisenssi puuttuu",
   "next_steps": "Seuraavat vaiheet",
   "acquire_commercial_license": "Hanki kaupallinen lisenssi",
   "the_infrastructure_plan": "Infrastruktuurisuunnitelma perustuu käyttöön ja sisältää startup-ystävällisiä alennuksia",
   "prisma_studio_tip": "Luo tili Prisma Studion kautta",
-  "prisma_studio_tip_description": "Opi miten luot ensimmäisen käyttäjän",
-  
-  "error_404": "Virhe 404",
+  "prisma_studio_tip_description": "Opi miten luot ensimmäisen käyttäjän","error_404": "Virhe 404",
   "default": "Oletus",
   "set_to_default": "Aseta oletukseksi",
   "new_schedule_btn": "Uusi aikataulu",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Tukidokumentaatio",
   "developer_documentation": "Kehittäjädokumentaatio",
   "get_in_touch": "Ota yhteyttä",
-  "contact_support": "Ota yhteyttä tukeen",
-  
-  "community_support": "Yhteisötuki",
+  "contact_support": "Ota yhteyttä tukeen","community_support": "Yhteisötuki",
   "feedback": "Palaute",
   "submitted_feedback": "Kiitos palautteestasi!",
   "feedback_error": "Virhe palautteen lähetyksessä",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "Työnkulkujen avulla voit automatisoida muistutusten ja ilmoitusten lähettämisen.",
   "active_on": "Aktiivinen",
   "workflow_updated_successfully": "{{workflowName}}-työnkulku päivitetty onnistuneesti",
-    
-  "current": "Nykyinen",
-  
-  "standard": "tavallinen",
+  "current": "Nykyinen","standard": "tavallinen",
   "confirm_username_change_dialog_title": "Vahvista käyttäjätunnuksen muutos",
-  
-  
-    
   "trial_expired": "Kokeiluaikasi on päättynyt",
   "remove_app": "Poista sovellus",
   "yes_remove_app": "Kyllä, poista sovellus",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "Osallistuja",
   "event_date_variable": "Tapahtuman päivämäärä",
   "event_time_variable": "Tapahtuman aika",
-  "organizer_name_variable": "Järjestäjän nimi",
-  
-  "invalid_number": "Virheellinen puhelinnumero",
+  "organizer_name_variable": "Järjestäjän nimi","invalid_number": "Virheellinen puhelinnumero",
   "invalid_url_error_message": "Virheellinen URL-osoite kohteelle {{label}}. Esimerkkiosoite: {{sampleUrl}}",
   "navigate": "Siirry",
   "open": "Avaa",
   "close": "Sulje",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Tallenteet kuuluvat tiimipakettiin",
   "team_feature_teams": "Tämä on tiimin ominaisuus. Päivitä tiimiversioon nähdäksesi tiimisi käytettävyyden.",
   "team_feature_workflows": "Tämä on tiimin ominaisuus. Päivitä tiimiversioon automatisoidaksesi tapahtumailmoituksesi ja muistutuksesi työnkuluilla.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Varauksen kysymystunniste",
   "company_size": "Yrityksen koko",
   "what_help_needed": "Missä tarvitset apua?",
-  "variable_format": "Muuttujan muoto",
-  
-  "custom_input_as_variable_info": "Jätä huomiotta lisäsyötteen otsikon erikoismerkit (käytä vain kirjaimia ja numeroita), käytä isoja kirjaimia ja korvaa välilyönnit alaviivoilla.",
+  "variable_format": "Muuttujan muoto","custom_input_as_variable_info": "Jätä huomiotta lisäsyötteen otsikon erikoismerkit (käytä vain kirjaimia ja numeroita), käytä isoja kirjaimia ja korvaa välilyönnit alaviivoilla.",
   "using_booking_questions_as_variables": "Miten käytän varauksen kysymyksiä muuttujina?",
   "download_desktop_app": "Lataa työpöytäsovellus",
   "set_ping_link": "Aseta Ping-linkki",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "Kuinka usein sinut voidaan varata",
   "event_advanced_tab_description": "Kalenteriasetukset ja muuta...",
   "event_advanced_tab_title": "Lisäasetukset",
-  
-  
   "event_setup_multiple_duration_error": "Tapahtuman asetukset: Useampi kesto vaatii vähintään yhden vaihtoehdon.",
   "event_setup_multiple_duration_default_error": "Tapahtuman asetukset: Valitse kelvollinen oletuskesto.",
   "event_setup_booking_limits_error": "Varausrajoitusten tulee olla nousevassa järjestyksessä [päivä, viikko, kuukausi, vuosi]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "Voit muokata kaikkia näitä myöhemmin saatavuussivulla",
   "connect_calendars_from_app_store": "Voit lisätä kalentereita sovelluskaupasta",
   "connect_conference_apps": "Yhdistä konferenssisovellukset",
-  "connect_calendar_apps": "Yhdistä kalenterisovellukset",
-  
-  "connect_automation_apps": "Yhdistä automaatiosovellukset",
+  "connect_calendar_apps": "Yhdistä kalenterisovellukset","connect_automation_apps": "Yhdistä automaatiosovellukset",
   "connect_analytics_apps": "Yhdistä analytiikkasovellukset",
   "connect_other_apps": "Yhdistä muut sovellukset",
   "connect_messaging_apps": "Yhdistä viestintäsovellukset",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Palautuslinkki lähetetty",
   "password_reset_email": "Sähköposti salasanan palautusohjeineen on matkalla osoitteeseen {{email}}.",
   "password_reset_leading": "Jos et saa sähköpostia pian, tarkista että antamasi sähköpostiosoite on oikein, tarkista roskapostikansio tai ota yhteyttä tukeen, jos ongelma jatkuu.",
-  "password_updated": "Salasana päivitetty!",
-  
-  "pending_invites": "Odottavat kutsut",
+  "password_updated": "Salasana päivitetty!","pending_invites": "Odottavat kutsut",
   "pending_organization_invites": "Odottavat organisaatiokutsut",
   "not_on_cal": "Ei {{appName}}:ssa",
   "no_calendar_installed": "Ei asennettua kalenteria",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "Käytä isoja kirjaimia kaikissa kirjaimissa",
   "replace_whitespaces_underscores": "Korvaa välilyönnit alaviivoilla",
   "platform_members": "Alustan jäsenet",
-  "platform_members_description": "Hallinnoi alustatiimisi ylläpitäjiä ja jäseniä",
-                  "ignore_special_characters_booking_questions": "Jätä huomiotta erikoismerkit varauksen kysymystunnuksessa. Käytä vain kirjaimia ja numeroita",
+  "platform_members_description": "Hallinnoi alustatiimisi ylläpitäjiä ja jäseniä",              "ignore_special_characters_booking_questions": "Jätä huomiotta erikoismerkit varauksen kysymystunnuksessa. Käytä vain kirjaimia ja numeroita",
   "retry": "Yritä uudelleen",
   "fetching_calendars_error": "Kalentereiden hakemisessa ilmeni ongelma. Ole hyvä ja <1>yritä uudelleen</1> tai ota yhteyttä asiakastukeen.",
   "calendar_connection_fail": "Kalenteriyhteys epäonnistui",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Rajoita tulevia varauksia",
   "limit_future_bookings_description": "Rajoita kuinka pitkälle tulevaisuuteen tämän tapahtuman voi varata",
   "no_event_types": "Ei määritettyjä tapahtumatyyppejä",
-  "no_event_types_description": "{{name}} ei ole määrittänyt yhtään tapahtumatyyppiä varattavaksi.",
-    "monthly": "Kuukausittain",
+  "no_event_types_description": "{{name}} ei ole määrittänyt yhtään tapahtumatyyppiä varattavaksi.","monthly": "Kuukausittain",
   "yearly": "Vuosittain",
   "weekly": "Viikoittain",
   "checkout": "Kassalle",
@@ -1733,9 +1643,7 @@
   "test_preview": "Testaa esikatselu",
   "route_to": "Reititä kohteeseen",
   "test_preview_description": "Testaa reitityskaavaketta lähettämättä mitään tietoja",
-  "test_routing": "Testaa reititys",
-  
-  "edit_event_type": "Muokkaa tapahtumatyyppiä",
+  "test_routing": "Testaa reititys","edit_event_type": "Muokkaa tapahtumatyyppiä",
   "only_admin_can_see_members_of_org": "Tämä organisaatio on yksityinen, ja vain organisaation ylläpitäjä tai omistaja voi nähdä sen jäsenet",
   "only_admin_can_manage_sso_org": "Vain organisaation ylläpitäjä tai omistaja voi hallita SSO-asetuksia",
   "collective_scheduling": "Yhteinen ajanvaraus",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "<strong>{{teamName}}</strong>-tiimin ylläpitäjä on korvannut tapahtumatyyppisi <strong>/{{slug}}</strong> hallinnoidulla tapahtumatyypillä, jota he hallinnoivat",
   "email_body_slug_replacement_info": "Linkkisi toimii edelleen, mutta jotkin sen asetukset ovat saattaneet muuttua. Voit tarkistaa sen tapahtumatyypeistä.",
   "email_body_slug_replacement_suggestion": "Jos sinulla on kysyttävää tapahtumatyypistä, ota yhteyttä järjestelmänvalvojaan.<br /><br />Mukavaa ajanvarausta, <br />Cal.com-tiimi",
-  
-  
   "app_disabled_with_event_type": "Järjestelmänvalvoja on poistanut {{appName}}-sovelluksen käytöstä, mikä vaikuttaa tapahtumatyyppiin {{title}}.",
   "app_disabled_video": "Järjestelmänvalvoja on poistanut {{appName}}-sovelluksen käytöstä, mikä saattaa vaikuttaa tapahtumatyyppeihin. Jos sinulla on tapahtumatyyppejä, joissa {{appName}} on sijaintina, se vaihtuu oletuksena Cal Videoksi.",
   "app_disabled_subject": "{{appName}} on poistettu käytöstä",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Round-Robin-isännät",
   "minimum_round_robin_hosts_count": "Vaadittu isäntien määrä osallistumiseen",
   "hosts": "Isännät",
-  
-  
   "new_attendee": "Uusi osallistuja",
   "awaiting_approval": "Odottaa hyväksyntää",
   "requires_google_calendar": "Tämä sovellus vaatii Google Calendar -yhteyden",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Muokkaa varaussivulla kysyttäviä kysymyksiä",
   "add_a_booking_question": "Lisää kysymys",
   "identifier": "Tunniste",
-  "duplicate_email": "Sähköposti on jo käytössä",
-  
-  
-  
-  "booking_confirmation_failed": "Varauksen vahvistaminen epäonnistui",
+  "duplicate_email": "Sähköposti on jo käytössä","booking_confirmation_failed": "Varauksen vahvistaminen epäonnistui",
   "not_enough_seats": "Ei tarpeeksi paikkoja",
   "form_builder_field_already_exists": "Tämänniminen kenttä on jo olemassa",
   "show_on_booking_page": "Näytä varaussivulla",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Tyhjennä suodattimet",
   "clear": "Tyhjennä",
   "hold": "Pidätä",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Analytiikka",
   "routing_forms": "Reitityskaavakkeet",
   "testing_workflow_info_message": "Huomioi tätä työnkulkua testatessasi, että sähköpostit ja tekstiviestit voidaan ajastaa vain vähintään 1 tunnin päähän",
   "insights_no_data_found_for_filter": "Valituilla suodattimilla tai päivämäärillä ei löytynyt tietoja.",
-  
-  
   "something_went_wrong_on_our_end": "Tapahtui virhe meidän päässämme. Ota yhteyttä asiakastukeemme, niin korjaamme asian välittömästi.",
-  "please_provide_following_text_to_suppport": "Anna seuraava teksti ottaessasi yhteyttä tukeen, jotta voimme auttaa sinua paremmin",
-  
-  "complete_your_booking": "Viimeistele varauksesi",
+  "please_provide_following_text_to_suppport": "Anna seuraava teksti ottaessasi yhteyttä tukeen, jotta voimme auttaa sinua paremmin","complete_your_booking": "Viimeistele varauksesi",
   "complete_your_booking_subject": "Viimeistele varauksesi: {{title}} {{date}}",
   "confirm_your_details": "Vahvista tietosi",
   "copy_invite_link": "Kopioi kutsulinkki",
@@ -2120,14 +2000,8 @@
   "three_months": "3 kuukautta",
   "one_year": "1 vuosi",
   "team_invite_received": "Sinut on kutsuttu liittymään tiimiin {{teamName}}",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "Veloita osallistujalta {{amount, currency}}",
-  
-  "email_invite_team": "{{email}} on kutsuttu",
-  "email_invite_team_bulk": "{{userCount}} käyttäjää on kutsuttu",
-  
-  "image_size_limit_exceed": "Ladattu kuva ei saa ylittää 5 mb:n kokorajoitusta",
+  "currency_string": "{{amount, currency}}","charge_attendee": "Veloita osallistujalta {{amount, currency}}","email_invite_team": "{{email}} on kutsuttu",
+  "email_invite_team_bulk": "{{userCount}} käyttäjää on kutsuttu","image_size_limit_exceed": "Ladattu kuva ei saa ylittää 5 mb:n kokorajoitusta",
   "unauthorized_workflow_error_message": "{{errorCode}}: Sinulla ei ole oikeuksia ottaa käyttöön tai poistaa käytöstä tätä työnkulkua",
   "inline_embed": "Upotettu näkymä",
   "load_inline_content": "Lataa tapahtumatyyppisi suoraan verkkosivusi muun sisällön sekaan.",
@@ -2394,9 +2268,7 @@
   "locked": "Lukittu",
   "unlocked": "Avattu",
   "lock_timezone_toggle_on_booking_page": "Lukitse aikavyöhyke varaussivulla",
-  "description_lock_timezone_toggle_on_booking_page": "Aikavyöhykkeen lukitseminen varaussivulla, hyödyllinen paikan päällä tapahtuvissa tapaamisissa.",
-  
-  "number_in_international_format": "Syötä numero kansainvälisessä muodossa.",
+  "description_lock_timezone_toggle_on_booking_page": "Aikavyöhykkeen lukitseminen varaussivulla, hyödyllinen paikan päällä tapahtuvissa tapaamisissa.","number_in_international_format": "Syötä numero kansainvälisessä muodossa.",
   "install_calendar": "Asenna kalenteri",
   "branded_subdomain": "Brändätty alidomaini",
   "branded_subdomain_description": "Hanki oma brändätty alidomaini, kuten acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Laaja white label -muokkaus",
   "extensive_whitelabeling_description": "Mukauta varauskokemustasi omalla logolla, väreillä ja muulla",
   "unlimited_teams": "Rajattomat tiimit",
-  "unlimited_teams_description": "Lisää organisaatioosi niin monta alitiimiä kuin tarvitset",
-      "advanced_managed_events": "Edistyneet hallitut tapahtumatyypit",
+  "unlimited_teams_description": "Lisää organisaatioosi niin monta alitiimiä kuin tarvitset",  "advanced_managed_events": "Edistyneet hallitut tapahtumatyypit",
   "advanced_managed_events_description": "Lisää yksi luottokortti kaikkien tiimiesi tilausten maksamiseen",
   "enterprise": "Enterprise",
   "enterprise_description": "Päivitä Enterprise-versioon luodaksesi organisaatiosi",
-  "create_your_org": "Luo organisaatiosi",
-    "create_your_enterprise_description": "Päivitä Enterprise-versioon ja saa käyttöösi Active Directory -synkronointi, SCIM-automaattinen käyttäjien provisiointi, Cal.ai-ääniagentit, ylläpitäjän API:t ja paljon muuta!",
-  
-  "admin_delete_organization_description": "<ul><li>Organisaatioon kuuluvat tiimit poistetaan myös tapahtumatyyppeineen</li><li>Organisaatioon kuuluneita käyttäjiä ei poisteta, mutta heidän käyttäjänimensä muutetaan, jotta he voivat toimia organisaation ulkopuolella</li><li>Käyttäjän tapahtumatyypit, jotka on luotu organisaatioon liittymisen jälkeen, poistetaan</li><li>Siirrettyjä käyttäjän tapahtumatyyppejä ei poisteta</li></ul>",
+  "create_your_org": "Luo organisaatiosi","create_your_enterprise_description": "Päivitä Enterprise-versioon ja saa käyttöösi Active Directory -synkronointi, SCIM-automaattinen käyttäjien provisiointi, Cal.ai-ääniagentit, ylläpitäjän API:t ja paljon muuta!","admin_delete_organization_description": "<ul><li>Organisaatioon kuuluvat tiimit poistetaan myös tapahtumatyyppeineen</li><li>Organisaatioon kuuluneita käyttäjiä ei poisteta, mutta heidän käyttäjänimensä muutetaan, jotta he voivat toimia organisaation ulkopuolella</li><li>Käyttäjän tapahtumatyypit, jotka on luotu organisaatioon liittymisen jälkeen, poistetaan</li><li>Siirrettyjä käyttäjän tapahtumatyyppejä ei poisteta</li></ul>",
   "admin_delete_organization_title": "Poistetaanko {{organizationName}}?",
   "published": "Julkaistu",
   "unpublished": "Julkaisematon",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "Anna ihmisten varata välittömästi",
   "uprade_to_create_instant_bookings": "Päivitä Enterprise-versioon ja anna vieraiden liittyä pikapuheluun, johon osallistujat voivat hypätä suoraan mukaan. Tämä on saatavilla vain tiimin tapahtumatyypeille",
   "dont_want_to_wait": "Etkö halua odottaa?",
-  "meeting_started": "Kokous alkoi",
-  
-  "cal_ai_event_tab_description": "Anna tekoälyagenttien varata puolestasi",
+  "meeting_started": "Kokous alkoi","cal_ai_event_tab_description": "Anna tekoälyagenttien varata puolestasi",
   "booking_not_found_error": "Varausta ei löytynyt",
   "booking_seats_full_error": "Varauspaikat ovat täynnä",
-  
-  
   "not_enough_available_seats_error": "Varauksessa ei ole tarpeeksi vapaita paikkoja",
   "user_redirect_title": "{{username}} on tällä hetkellä tilapäisesti poissa.",
   "user_redirect_description": "Tänä aikana {{profile.username}} vastaa kaikista {{username}}:n uusista varauksista.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "On accepting the invite, your link will change to your organization domain but don&apos;t worry, all previous links will still work and redirect appropriately.<br /><br />Please note: All of your personal event types will be moved into the <strong>{teamName}</strong> organization, which may also include potential personal link.  <br /><br />For personal events we recommend creating a new account with a personal email address.",
   "email|existing_user_added_link_changed": "Linkkisi on muutettu osoitteesta <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> osoitteeseen <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>, mutta ei huolta - kaikki aiemmat linkit toimivat edelleen ja ohjaavat oikeaan paikkaan. <br /><br />Huomioithan: Kaikki henkilökohtaiset tapahtumatyyppisi on siirretty <strong>{teamName}</strong>-organisaatioon, mukaan lukien mahdolliset henkilökohtaiset linkit.<br /><br />Kirjaudu sisään ja varmista, ettei uudella organisaatiotililläsi ole yksityisiä tapahtumia.<br /><br />Henkilökohtaisia tapahtumia varten suosittelemme luomaan uuden tilin henkilökohtaisella sähköpostiosoitteella.<br /><br />Nauti uudesta selkeästä linkistäsi: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Organisaatiosi on luotu",
-  "your_current_plan": "Nykyinen tilauksesi",
-  
-  "privacy_organization_description": "Hallitse organisaatiosi yksityisyysasetuksia",
+  "your_current_plan": "Nykyinen tilauksesi","privacy_organization_description": "Hallitse organisaatiosi yksityisyysasetuksia",
   "privacy": "Yksityisyys",
   "team_will_be_under_org": "Uudet tiimit tulevat olemaan organisaatiosi alla",
   "add_group_name": "Lisää ryhmän nimi",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "Jatkamalla hyväksyt meidän <0>käyttöehdot</0> ja <1>tietosuojakäytännöt</1>",
   "proceeding_agreement": "Jatkamalla hyväksyt meidän",
   "terms": "Käyttöehdot",
-  "always_show_x_days": "Aina {{x}} päivää saatavilla",
-  
-  "updating_oauth_client_error": "OAuth-asiakkaan päivityksessä tapahtui virhe, yritä myöhemmin uudelleen",
+  "always_show_x_days": "Aina {{x}} päivää saatavilla","updating_oauth_client_error": "OAuth-asiakkaan päivityksessä tapahtui virhe, yritä myöhemmin uudelleen",
   "creating_oauth_client_error": "OAuth-asiakkaan luonnissa tapahtui virhe, yritä myöhemmin uudelleen",
   "event_type_color": "Tapahtumatyypin väri",
   "event_type_color_description": "Tätä käytetään vain tapahtumatyyppien ja varausten erottamiseen sovelluksessa. Sitä ei näytetä varaajille.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Tarkistetaan Google-kalenteria",
   "outlook_connect_atom_label": "Yhdistä Outlook-kalenteri",
   "outlook_connect_atom_already_connected_label": "Outlook-kalenteri yhdistetty",
-  "outlook_connect_atom_loading_label": "Tarkistetaan Outlook-kalenteria",
-  
-  
-  
-  "booking_question_response_variables": "Varauksen kysymysten vastausmuuttujat",
+  "outlook_connect_atom_loading_label": "Tarkistetaan Outlook-kalenteria","booking_question_response_variables": "Varauksen kysymysten vastausmuuttujat",
   "managed_by_teamAdmins": "Hallinnoi {{teamAdmins}}",
   "number_of_options": "{{count}} vaihtoehtoa",
   "reschedule_with_same_round_robin_host_title": "Uudelleenajoita saman Round-Robin-isännän kanssa",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "viimeiset {{count}} päivää",
   "month_to_date": "kuukauden alusta tähän päivään",
   "year_to_date": "vuoden alusta tähän päivään",
-  "custom_range": "mukautettu aikaväli",
-  
-  "always": "Aina",
-  "never": "Ei koskaan",
-  
-  "if_cancelled": "Jos peruutettu",
+  "custom_range": "mukautettu aikaväli","always": "Aina",
+  "never": "Ei koskaan","if_cancelled": "Jos peruutettu",
   "before": "ennen",
   "show_all_columns": "Näytä kaikki sarakkeet",
   "toggle_columns": "Näytä/piilota sarakkeet",

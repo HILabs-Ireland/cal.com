@@ -4,9 +4,7 @@
   "day_one": "{{count}} deň",
   "day_other": "{{count}} dní",
   "second_one": "{{count}} sekunda",
-  "second_other": "{{count}} sekúnd",
-  
-  "untitled": "Bez názvu",
+  "second_other": "{{count}} sekúnd","untitled": "Bez názvu",
   "accept_invitation": "Prijať pozvánku",
   "max_characters": "Max. znakov",
   "min_characters": "Min. znakov",
@@ -68,18 +66,10 @@
   "accept_our_license": "Prijmite našu licenciu zmenou .env premennej <1>NEXT_PUBLIC_LICENSE_CONSENT</1> na '{{agree}}'.",
   "remove_banner_instructions": "Ak chcete odstrániť tento banner, otvorte svoj .env súbor a zmeňte premennú <1>NEXT_PUBLIC_LICENSE_CONSENT</1> na '{{agree}}'.",
   "error_message": "Chybová správa bola: '{{errorMessage}}'",
-  
-  
-  "check_with_provider_and_user": "Prosím, skontrolujte u svojho poskytovateľa platby a {{user}}, ako to riešiť.",
-  
-  
-  
   "dark_theme_contrast_error": "Farba tmavej témy neprešla kontrolou kontrastu. Odporúčame zmeniť túto farbu, aby boli vaše tlačidlá viditeľnejšie.",
   "light_theme_contrast_error": "Farba svetlej témy neprešla kontrolou kontrastu. Odporúčame zmeniť túto farbu, aby boli vaše tlačidlá viditeľnejšie.",
   "event_type_color_light_theme_contrast_error": "Farba svetlej témy neprešla kontrolou kontrastu. Odporúčame zmeniť túto farbu, aby boli farby typov udalostí viditeľnejšie.",
   "event_type_color_dark_theme_contrast_error": "Farba tmavej témy neprešla kontrolou kontrastu. Odporúčame zmeniť túto farbu, aby boli farby typov udalostí viditeľnejšie.",
-  
-  
   "no_available_users_found_error": "Nenašli sa žiadni dostupní používatelia. Mohli by ste skúsiť iný časový úsek?",
   "request_body_end_time_internal_error": "Interná chyba. Telo žiadosti neobsahuje koncový čas",
   "create_calendar_event_error": "Nepodarilo sa vytvoriť udalosť v kalendári organizátora",
@@ -88,12 +78,6 @@
   "already_signed_up_for_this_booking_error": "Už ste prihlásený na túto rezerváciu.",
   "hosts_unavailable_for_booking": "Niektorí hostitelia nie sú k dispozícii na rezerváciu.",
   "help": "Pomoc",
-  
-  
-  
-  
-  
-  
   "general_prompt": "Všeobecná výzva",
   "begin_message": "Začať správu",
   "codebase_has_to_stay_opensource": "Základ kódu musí zostať open source, či už bol upravený alebo nie",
@@ -178,18 +162,8 @@
   "hidden_team_member_title": "V tomto tíme ste skrytý/á",
   "hidden_team_member_message": "Vaše miesto nie je zaplatené. Buď si aktivujte PRO verziu, alebo informujte vlastníka tímu, že môže zaplatiť za vaše miesto.",
   "hidden_team_owner_message": "Pre používanie tímov potrebujete pro účet. Budete skrytý/á, kým neupgradujete.",
-  "link_expires": "P.S. Platnosť vyprší o {{expiresIn}} hodín.",
-  
-  "seat_options_doesnt_support_confirmation": "Možnosti miest nepodporujú požiadavku na potvrdenie",
-  "multilocation_doesnt_support_seats": "Viaceré lokality nepodporujú možnosť miest",
-  
-  "seats_option_doesnt_support_multi_location": "Možnosť miest nepodporuje viaceré lokality",
-  
-  
-  
-  
-  
-  
+  "link_expires": "P.S. Platnosť vyprší o {{expiresIn}} hodín.","seat_options_doesnt_support_confirmation": "Možnosti miest nepodporujú požiadavku na potvrdenie",
+  "multilocation_doesnt_support_seats": "Viaceré lokality nepodporujú možnosť miest","seats_option_doesnt_support_multi_location": "Možnosť miest nepodporuje viaceré lokality",
   "use_link_to_reset_password": "Použite nasledujúci odkaz na obnovenie hesla",
   "hey_there": "Ahoj",
   "forgot_your_password_calcom": "Zabudli ste heslo? - {{appName}}",
@@ -208,8 +182,6 @@
   "webhook_created_successfully": "Webhook bol úspešne vytvorený!",
   "webhook_updated_successfully": "Webhook bol úspešne aktualizovaný!",
   "webhook_removed_successfully": "Webhook bol úspešne odstránený!",
-  
-  
   "payload_template": "Šablóna payloadu",
   "dismiss": "Zavrieť",
   "no_data_yet": "Zatiaľ žiadne dáta",
@@ -374,8 +346,6 @@
   "booking_submitted_recurring": "Vaše opakujúce sa stretnutie bolo odoslané",
   "booking_confirmed": "Vaša rezervácia bola potvrdená",
   "booking_confirmed_recurring": "Vaše opakujúce sa stretnutie bolo potvrdené",
-  
-  
   "enter_new_password": "Zadajte nové heslo, ktoré chcete použiť pre svoj účet.",
   "reset_password": "Obnoviť heslo",
   "change_your_password": "Zmeniť heslo",
@@ -503,17 +473,11 @@
   "recording_transcription_generated": "Prepis vygenerovaný",
   "booking_created": "Rezervácia vytvorená",
   "booking_rejected": "Rezervácia odmietnutá",
-  "booking_requested": "Rezervácia požadovaná",
-  
-  "meeting_ended": "Stretnutie ukončené",
+  "booking_requested": "Rezervácia požadovaná","meeting_ended": "Stretnutie ukončené",
   "form_submitted": "Formulár odoslaný",
-  "form_submitted_no_event": "Formulár odoslaný, žiadna rezervácia nebola vytvorená",
-  
-  "ooo_created": "Neprítomnosť vytvorená",
+  "form_submitted_no_event": "Formulár odoslaný, žiadna rezervácia nebola vytvorená","ooo_created": "Neprítomnosť vytvorená",
   "booking_no_show_updated": "Neúčasť na rezervácii aktualizovaná",
-  "event_triggers": "Spúšťače udalostí",
-  
-  "create_new_webhook": "Vytvoriť nový webhook",
+  "event_triggers": "Spúšťače udalostí","create_new_webhook": "Vytvoriť nový webhook",
   "webhooks": "Webhooky",
   "team_webhooks": "Tímové webhooky",
   "create_new_webhook_to_account": "Vytvoriť nový webhook pre váš účet",
@@ -529,9 +493,7 @@
   "iframe_embed": "Vloženie iframe",
   "embed_calcom": "Najjednoduchší spôsob, ako vložiť {{appName}} na vašu webstránku",
   "integrate_using_embed_or_webhooks": "Integrujte s vašou webstránkou pomocou možností vloženia alebo získavajte informácie o rezerváciách v reálnom čase pomocou vlastných webhookov",
-  "schedule_a_meeting": "Naplánovať stretnutie",
-        "need_anything_else": "Potrebujete niečo iné?",
-    "contact": "Kontakt",
+  "schedule_a_meeting": "Naplánovať stretnutie",    "need_anything_else": "Potrebujete niečo iné?","contact": "Kontakt",
   "our_support_team": "náš podporný tím",
   "contact_our_support_team": "Kontaktujte náš podporný tím",
   "uh_oh": "Ups!",
@@ -773,10 +735,6 @@
   "readonly": "Iba na čítanie",
   "one_time_link": "Jednorazový odkaz",
   "plan_description": "Momentálne používate plán {{plan}}.",
-  
-  
-  
-  
   "event_types_page_title": "Typy udalostí",
   "event_types_page_subtitle": "Vytvorte udalosti, ktoré môžete zdieľať, aby si ľudia mohli rezervovať termín vo vašom kalendári.",
   "new": "Nové",
@@ -832,10 +790,7 @@
   "create_team_to_get_started": "Začnite vytvorením tímu",
   "teams": "Tímy",
   "team": "Tím",
-  "organization": "Organizácia",
-      
-  
-    "create_manage_teams_collaborative": "Vytvárajte a spravujte tímy pre využitie funkcií spolupráce.",
+  "organization": "Organizácia",    "create_manage_teams_collaborative": "Vytvárajte a spravujte tímy pre využitie funkcií spolupráce.",
   "only_available_on_pro_plan": "Táto funkcia je dostupná len v Pro pláne",
   "remove_cal_branding_description": "Pre odstránenie {{appName}} brandingu z vašich rezervačných stránok potrebujete inovovať na Pro účet.",
   "edit_profile_info_description": "Upravte svoje profilové informácie, ktoré sa zobrazujú na vašom plánovacom odkaze.",
@@ -843,16 +798,13 @@
   "little_something_about": "Niečo málo o vás.",
   "profile_updated_successfully": "Profil bol úspešne aktualizovaný",
   "your_user_profile_updated_successfully": "Váš používateľský profil bol úspešne aktualizovaný",
-  
-  
   "you_are_all_set": "Všetko je pripravené",
   "you_are_all_set_description": "Už máte najnovší plán. Nie je potrebný žiadny upgrade. Užite si nové funkcie a v prípade otázok nás kontaktujte!",
   "user_cannot_found_db": "Používateľ sa zdá byť prihlásený, ale nemožno ho nájsť v databáze",
   "embed_and_webhooks": "Vloženie & Webhooky",
   "enabled": "Povolené",
   "disabled": "Zakázané",
-  "disable": "Zakázať",
-      "availability": "Dostupnosť",
+  "disable": "Zakázať",  "availability": "Dostupnosť",
   "edit_availability": "Upraviť dostupnosť",
   "configure_availability": "Nastavte časy, kedy ste k dispozícii pre rezervácie.",
   "copy_times_to": "Kopírovať časy do",
@@ -889,8 +841,6 @@
   "recurring_event": "Opakujúca sa udalosť",
   "recurring_event_description": "Ľudia sa môžu prihlásiť na opakujúce sa udalosti",
   "connect_and_join": "Pripojiť sa",
-  
-  
   "warning_instant_meeting_experimental": "Experimentálne: Okamžité stretnutia sú momentálne experimentálne.",
   "starting": "Začiatok",
   "disable_guests": "Zakázať hostí",
@@ -920,9 +870,7 @@
   "cal_provide_video_meeting_url": "{{appName}} poskytne URL adresu video stretnutia.",
   "cal_provide_jitsi_meeting_url": "Vygenerujeme pre vás URL adresu stretnutia cez Jitsi Meet.",
   "cal_provide_huddle01_meeting_url": "{{appName}} poskytne URL adresu video stretnutia cez Huddle01.",
-  "cal_provide_teams_meeting_url": "{{appName}} poskytne URL adresu stretnutia cez MS Teams. POZNÁMKA: VYŽADUJE SA PRACOVNÝ ALEBO ŠKOLSKÝ ÚČET",
-  
-  "you_need_to_add_a_name": "Musíte pridať meno",
+  "cal_provide_teams_meeting_url": "{{appName}} poskytne URL adresu stretnutia cez MS Teams. POZNÁMKA: VYŽADUJE SA PRACOVNÝ ALEBO ŠKOLSKÝ ÚČET","you_need_to_add_a_name": "Musíte pridať meno",
   "commission_per_transaction": "provízia za transakciu",
   "event_type_updated_successfully_description": "Typ udalosti bol úspešne aktualizovaný.",
   "hide_event_type": "Skryť typ udalosti",
@@ -964,9 +912,7 @@
   "next_step_text": "Ďalší krok",
   "next_step": "Preskočiť krok",
   "prev_step": "Predchádzajúci krok",
-  "install": "Nainštalovať",
-  
-  "installed": "Nainštalované",
+  "install": "Nainštalovať","installed": "Nainštalované",
   "active_install_one": "{{count}} aktívna inštalácia",
   "active_install_other": "{{count}} aktívne inštalácie",
   "globally_install": "Globálne nainštalované",
@@ -982,9 +928,7 @@
   "calendar_updated_successfully": "Kalendár bol úspešne aktualizovaný",
   "check_here": "Skontrolujte tu",
   "conferencing": "Konferencie",
-  "calendar": "Kalendár",
-  
-  "not_installed": "Nie je nainštalované",
+  "calendar": "Kalendár","not_installed": "Nie je nainštalované",
   "error_password_mismatch": "Heslá sa nezhodujú.",
   "error_required_field": "Toto pole je povinné.",
   "status": "Stav",
@@ -1024,16 +968,12 @@
   "no_category_apps": "Žiadne aplikácie {{category}}",
   "all_apps": "Všetky aplikácie",
   "no_category_apps_description_calendar": "Pridajte kalendárovú aplikáciu na kontrolu konfliktov a zabránenie dvojitým rezerváciám.",
-  "no_category_apps_description_conferencing": "Skúste pridať konferenčnú aplikáciu na videohovory s vašimi klientmi.",
-  
-  "no_category_apps_description_analytics": "Pridajte analytickú aplikáciu pre vaše rezervačné stránky.",
+  "no_category_apps_description_conferencing": "Skúste pridať konferenčnú aplikáciu na videohovory s vašimi klientmi.","no_category_apps_description_analytics": "Pridajte analytickú aplikáciu pre vaše rezervačné stránky.",
   "no_category_apps_description_automation": "Pridajte automatizačnú aplikáciu na použitie.",
   "no_category_apps_description_other": "Pridajte akýkoľvek iný typ aplikácie na vykonávanie rôznych úloh.",
   "no_category_apps_description_messaging": "Pridajte aplikáciu na zasielanie správ na nastavenie vlastných upozornení a pripomienok.",
   "no_category_apps_description_crm": "Pridajte CRM aplikáciu na sledovanie, s kým ste sa stretli.",
-  "installed_app_calendar_description": "Nastavte kalendáre na kontrolu konfliktov a zabránenie dvojitým rezerváciám.",
-  
-  "installed_app_analytics_description": "Nakonfigurujte, ktoré analytické aplikácie sa majú používať pre vaše rezervačné stránky.",
+  "installed_app_calendar_description": "Nastavte kalendáre na kontrolu konfliktov a zabránenie dvojitým rezerváciám.","installed_app_analytics_description": "Nakonfigurujte, ktoré analytické aplikácie sa majú používať pre vaše rezervačné stránky.",
   "installed_app_other_description": "Všetky vaše nainštalované aplikácie z iných kategórií.",
   "installed_app_conferencing_description": "Nakonfigurujte, ktoré konferenčné aplikácie sa majú používať.",
   "installed_app_automation_description": "Nakonfigurujte, ktoré automatizačné aplikácie sa majú používať.",
@@ -1048,9 +988,7 @@
   "features": "Funkcie",
   "permissions": "Oprávnenia",
   "terms_and_privacy": "Podmienky a ochrana osobných údajov",
-  "published_by": "Publikované {{author}}",
-  
-  "buy": "Kúpiť",
+  "published_by": "Publikované {{author}}","buy": "Kúpiť",
   "install_app": "Nainštalovať aplikáciu",
   "categories": "Kategórie",
   "pricing": "Ceny",
@@ -1063,16 +1001,12 @@
   "verify_wallet": "Overiť peňaženku",
   "create_events_on": "Vytvoriť udalosti na",
   "enterprise_license": "Toto je komerčná funkcia",
-  "enterprise_license_locally": "Túto funkciu môžete testovať lokálne, ale nie v produkcii.",
-  
-  "missing_license": "Chýbajúca licencia",
+  "enterprise_license_locally": "Túto funkciu môžete testovať lokálne, ale nie v produkcii.","missing_license": "Chýbajúca licencia",
   "next_steps": "Ďalšie kroky",
   "acquire_commercial_license": "Získať komerčnú licenciu",
   "the_infrastructure_plan": "Plán infraštruktúry je založený na používaní a má zľavy pre startupy.",
   "prisma_studio_tip": "Vytvorte si účet cez Prisma Studio",
-  "prisma_studio_tip_description": "Naučte sa, ako nastaviť svojho prvého používateľa",
-  
-  "error_404": "Chyba 404",
+  "prisma_studio_tip_description": "Naučte sa, ako nastaviť svojho prvého používateľa","error_404": "Chyba 404",
   "default": "Predvolené",
   "set_to_default": "Nastaviť na predvolené",
   "new_schedule_btn": "Nový rozvrh",
@@ -1230,9 +1164,7 @@
   "support_documentation": "Dokumentácia podpory",
   "developer_documentation": "Dokumentácia pre vývojárov",
   "get_in_touch": "Kontaktujte nás",
-  "contact_support": "Kontaktovať podporu",
-  
-  "community_support": "Komunitná podpora",
+  "contact_support": "Kontaktovať podporu","community_support": "Komunitná podpora",
   "feedback": "Spätná väzba",
   "submitted_feedback": "Ďakujeme za vašu spätnú väzbu!",
   "feedback_error": "Chyba pri odosielaní spätnej väzby",
@@ -1290,14 +1222,8 @@
   "new_workflow_description": "Pracovné postupy vám umožňujú automatizovať posielanie pripomienok a upozornení.",
   "active_on": "Aktívne na",
   "workflow_updated_successfully": "Pracovný postup {{workflowName}} bol úspešne aktualizovaný",
-    
-  "current": "Aktuálne",
-  
-  "standard": "štandardné",
+  "current": "Aktuálne","standard": "štandardné",
   "confirm_username_change_dialog_title": "Potvrdiť zmenu používateľského mena",
-  
-  
-    
   "trial_expired": "Vaša skúšobná verzia vypršala",
   "remove_app": "Odstrániť aplikáciu",
   "yes_remove_app": "Áno, odstrániť aplikáciu",
@@ -1365,17 +1291,11 @@
   "attendee_name_variable": "Účastník",
   "event_date_variable": "Dátum udalosti",
   "event_time_variable": "Čas udalosti",
-  "organizer_name_variable": "Meno organizátora",
-  
-  "invalid_number": "Neplatné telefónne číslo",
+  "organizer_name_variable": "Meno organizátora","invalid_number": "Neplatné telefónne číslo",
   "invalid_url_error_message": "Neplatná URL pre {{label}}. Príklad URL: {{sampleUrl}}",
   "navigate": "Navigovať",
   "open": "Otvoriť",
   "close": "Zatvoriť",
-  
-  
-  
-  
   "recordings_are_part_of_the_teams_plan": "Nahrávky sú súčasťou tímového plánu",
   "team_feature_teams": "Toto je funkcia tímu. Inovujte na Tím, aby ste videli dostupnosť vášho tímu.",
   "team_feature_workflows": "Toto je funkcia tímu. Inovujte na Tím, aby ste automatizovali notifikácie a pripomienky udalostí pomocou Workflows.",
@@ -1388,9 +1308,7 @@
   "booking_question_identifier": "Identifikátor otázky rezervácie",
   "company_size": "Veľkosť spoločnosti",
   "what_help_needed": "S čím potrebujete pomoc?",
-  "variable_format": "Formát premennej",
-  
-  "custom_input_as_variable_info": "Ignorujte všetky špeciálne znaky v dodatočnom označení vstupu (používajte len písmená a čísla), použite veľké písmená pre všetky písmená a nahraďte medzery podčiarkovníkmi.",
+  "variable_format": "Formát premennej","custom_input_as_variable_info": "Ignorujte všetky špeciálne znaky v dodatočnom označení vstupu (používajte len písmená a čísla), použite veľké písmená pre všetky písmená a nahraďte medzery podčiarkovníkmi.",
   "using_booking_questions_as_variables": "Ako používať otázky rezervácie ako premenné?",
   "download_desktop_app": "Stiahnuť desktopovú aplikáciu",
   "set_ping_link": "Nastaviť Ping odkaz",
@@ -1413,8 +1331,6 @@
   "event_limit_tab_description": "Ako často môžete byť rezervovaní",
   "event_advanced_tab_description": "Nastavenia kalendára a viac...",
   "event_advanced_tab_title": "Pokročilé",
-  
-  
   "event_setup_multiple_duration_error": "Nastavenie udalosti: Viacero trvaní vyžaduje aspoň 1 možnosť.",
   "event_setup_multiple_duration_default_error": "Nastavenie udalosti: Vyberte platné predvolené trvanie.",
   "event_setup_booking_limits_error": "Limity rezervácií musia byť v vzostupnom poradí. [deň, týždeň, mesiac, rok]",
@@ -1498,9 +1414,7 @@
   "set_availability_getting_started_subtitle_2": "Všetko toto môžete neskôr prispôsobiť na stránke dostupnosti.",
   "connect_calendars_from_app_store": "Môžete pridať viac kalendárov z obchodu s aplikáciami",
   "connect_conference_apps": "Pripojiť aplikácie na konferencie",
-  "connect_calendar_apps": "Pripojiť aplikácie kalendára",
-  
-  "connect_automation_apps": "Pripojiť automatizačné aplikácie",
+  "connect_calendar_apps": "Pripojiť aplikácie kalendára","connect_automation_apps": "Pripojiť automatizačné aplikácie",
   "connect_analytics_apps": "Pripojiť analytické aplikácie",
   "connect_other_apps": "Pripojiť iné aplikácie",
   "connect_messaging_apps": "Pripojiť aplikácie na správy",
@@ -1620,9 +1534,7 @@
   "reset_link_sent": "Odkaz na obnovenie odoslaný",
   "password_reset_email": "Email s pokynmi na obnovenie hesla bol odoslaný na {{email}}.",
   "password_reset_leading": "Ak čoskoro neobdržíte email, skontrolujte, či je zadaná emailová adresa správna, skontrolujte priečinok so spamom alebo kontaktujte podporu, ak problém pretrváva.",
-  "password_updated": "Heslo aktualizované!",
-  
-  "pending_invites": "Čakajúce pozvánky",
+  "password_updated": "Heslo aktualizované!","pending_invites": "Čakajúce pozvánky",
   "pending_organization_invites": "Čakajúce pozvánky do organizácie",
   "not_on_cal": "Nie je na {{appName}}",
   "no_calendar_installed": "Žiadny kalendár nie je nainštalovaný",
@@ -1648,8 +1560,7 @@
   "uppercase_for_letters": "Použiť veľké písmená pre všetky písmená",
   "replace_whitespaces_underscores": "Nahradiť medzery podčiarkovníkmi",
   "platform_members": "Členovia platformy",
-  "platform_members_description": "Spravujte administrátorov a členov vášho tímu platformy",
-                  "ignore_special_characters_booking_questions": "Ignorovať špeciálne znaky v identifikátore otázky pri rezervácii. Používajte iba písmená a čísla",
+  "platform_members_description": "Spravujte administrátorov a členov vášho tímu platformy",              "ignore_special_characters_booking_questions": "Ignorovať špeciálne znaky v identifikátore otázky pri rezervácii. Používajte iba písmená a čísla",
   "retry": "Skúsiť znova",
   "fetching_calendars_error": "Vyskytol sa problém pri načítavaní vašich kalendárov. Prosím, <1>skúste to znova</1> alebo kontaktujte zákaznícku podporu.",
   "calendar_connection_fail": "Pripojenie ku kalendáru zlyhalo",
@@ -1693,8 +1604,7 @@
   "limit_future_bookings": "Obmedziť budúce rezervácie",
   "limit_future_bookings_description": "Obmedziť, ako ďaleko do budúcnosti môže byť táto udalosť rezervovaná",
   "no_event_types": "Žiadne typy udalostí nie sú nastavené",
-  "no_event_types_description": "{{name}} nenastavil žiadne typy udalostí, ktoré by ste mohli rezervovať.",
-    "monthly": "Mesačne",
+  "no_event_types_description": "{{name}} nenastavil žiadne typy udalostí, ktoré by ste mohli rezervovať.","monthly": "Mesačne",
   "yearly": "Ročne",
   "weekly": "Týždenne",
   "checkout": "Pokladňa",
@@ -1733,9 +1643,7 @@
   "test_preview": "Testovacia ukážka",
   "route_to": "Smerovať do",
   "test_preview_description": "Otestujte svoju smerovaciu formu bez odoslania akýchkoľvek údajov",
-  "test_routing": "Testovanie smerovania",
-  
-  "edit_event_type": "Upraviť typ udalosti",
+  "test_routing": "Testovanie smerovania","edit_event_type": "Upraviť typ udalosti",
   "only_admin_can_see_members_of_org": "Táto organizácia je súkromná a iba administrátor alebo vlastník organizácie môže vidieť jej členov.",
   "only_admin_can_manage_sso_org": "Iba administrátor alebo vlastník organizácie môže spravovať nastavenia SSO",
   "collective_scheduling": "Kolektívne plánovanie",
@@ -1755,8 +1663,6 @@
   "email_body_slug_replacement_notice": "Administrátor tímu <strong>{{teamName}}</strong> nahradil váš typ udalosti <strong>/{{slug}}</strong> s riadeným typom udalosti, ktorý ovláda.",
   "email_body_slug_replacement_info": "Váš odkaz bude naďalej fungovať, ale niektoré nastavenia sa mohli zmeniť. Môžete si to skontrolovať v typoch udalostí.",
   "email_body_slug_replacement_suggestion": "Ak máte akékoľvek otázky týkajúce sa typu udalosti, obráťte sa na svojho administrátora.<br /><br />Šťastné plánovanie, <br />Tím Cal.com",
-  
-  
   "app_disabled_with_event_type": "Administrátor deaktivoval {{appName}}, čo ovplyvňuje váš typ udalosti {{title}}.",
   "app_disabled_video": "Administrátor deaktivoval {{appName}}, čo môže ovplyvniť vaše typy udalostí. Ak máte typy udalostí s {{appName}} ako miesto, predvolí sa Cal Video.",
   "app_disabled_subject": "{{appName}} bol deaktivovaný",
@@ -1842,8 +1748,6 @@
   "round_robin_hosts": "Hostitelia v systéme round-robin",
   "minimum_round_robin_hosts_count": "Počet hostiteľov potrebných na účasť",
   "hosts": "Hostitelia",
-  
-  
   "new_attendee": "Nový účastník",
   "awaiting_approval": "Čaká na schválenie",
   "requires_google_calendar": "Táto aplikácia vyžaduje pripojenie k Google Kalendáru",
@@ -1943,11 +1847,7 @@
   "booking_questions_description": "Prispôsobte otázky na stránke rezervácie",
   "add_a_booking_question": "Pridať otázku",
   "identifier": "Identifikátor",
-  "duplicate_email": "Email je duplicitný",
-  
-  
-  
-  "booking_confirmation_failed": "Potvrdenie rezervácie zlyhalo",
+  "duplicate_email": "Email je duplicitný","booking_confirmation_failed": "Potvrdenie rezervácie zlyhalo",
   "not_enough_seats": "Nedostatok voľných miest",
   "form_builder_field_already_exists": "Pole s týmto názvom už existuje",
   "show_on_booking_page": "Zobraziť na stránke rezervácie",
@@ -2079,32 +1979,12 @@
   "clear_filters": "Vymazať filtre",
   "clear": "Vymazať",
   "hold": "Zadržať",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   "insights": "Prehľady",
   "routing_forms": "Smerovacie formuláre",
   "testing_workflow_info_message": "Pri testovaní tohto pracovného postupu majte na pamäti, že e-maily a SMS môžu byť naplánované iba minimálne 1 hodinu vopred.",
   "insights_no_data_found_for_filter": "Pre vybraný filter alebo vybrané dátumy neboli nájdené žiadne údaje.",
-  
-  
   "something_went_wrong_on_our_end": "Na našej strane došlo k chybe. Kontaktujte náš podporný tím a my to okamžite vyriešime.",
-  "please_provide_following_text_to_suppport": "Pri kontakte s podporou prosím poskytnite nasledujúci text, aby sme vám mohli lepšie pomôcť",
-  
-  "complete_your_booking": "Dokončite svoju rezerváciu",
+  "please_provide_following_text_to_suppport": "Pri kontakte s podporou prosím poskytnite nasledujúci text, aby sme vám mohli lepšie pomôcť","complete_your_booking": "Dokončite svoju rezerváciu",
   "complete_your_booking_subject": "Dokončite svoju rezerváciu: {{title}} dňa {{date}}",
   "confirm_your_details": "Potvrďte svoje údaje",
   "copy_invite_link": "Kopírovať odkaz na pozvánku",
@@ -2120,14 +2000,8 @@
   "three_months": "3 mesiace",
   "one_year": "1 rok",
   "team_invite_received": "Boli ste pozvaní pripojiť sa k {{teamName}}",
-  "currency_string": "{{amount, currency}}",
-  
-  "charge_attendee": "Účtovať účastníkovi {{amount, currency}}",
-  
-  "email_invite_team": "{{email}} bol pozvaný",
-  "email_invite_team_bulk": "{{userCount}} používateľov bolo pozvaných",
-  
-  "image_size_limit_exceed": "Nahraný obrázok by nemal presiahnuť limit veľkosti 5 MB",
+  "currency_string": "{{amount, currency}}","charge_attendee": "Účtovať účastníkovi {{amount, currency}}","email_invite_team": "{{email}} bol pozvaný",
+  "email_invite_team_bulk": "{{userCount}} používateľov bolo pozvaných","image_size_limit_exceed": "Nahraný obrázok by nemal presiahnuť limit veľkosti 5 MB",
   "unauthorized_workflow_error_message": "{{errorCode}}: Nie ste oprávnení povoliť alebo zakázať tento pracovný postup",
   "inline_embed": "Vloženie v riadku",
   "load_inline_content": "Načíta váš typ udalosti priamo v riadku s ostatným obsahom vašej webovej stránky.",
@@ -2394,9 +2268,7 @@
   "locked": "Zamknuté",
   "unlocked": "Odomknuté",
   "lock_timezone_toggle_on_booking_page": "Zamknúť časové pásmo na stránke rezervácie",
-  "description_lock_timezone_toggle_on_booking_page": "Zamknúť časové pásmo na stránke rezervácie, užitočné pre osobné udalosti.",
-  
-  "number_in_international_format": "Zadajte číslo v medzinárodnom formáte.",
+  "description_lock_timezone_toggle_on_booking_page": "Zamknúť časové pásmo na stránke rezervácie, užitočné pre osobné udalosti.","number_in_international_format": "Zadajte číslo v medzinárodnom formáte.",
   "install_calendar": "Inštalovať kalendár",
   "branded_subdomain": "Značková subdoména",
   "branded_subdomain_description": "Získajte vlastnú značkovú subdoménu, napríklad acme.cal.com",
@@ -2405,15 +2277,11 @@
   "extensive_whitelabeling": "Rozsiahle prispôsobenie značky",
   "extensive_whitelabeling_description": "Prispôsobte si skúsenosť s plánovaním pomocou vlastného loga, farieb a ďalších prvkov",
   "unlimited_teams": "Neobmedzené tímy",
-  "unlimited_teams_description": "Pridajte do svojej organizácie toľko podtímov, koľko potrebujete",
-      "advanced_managed_events": "Pokročilé spravované typy udalostí",
+  "unlimited_teams_description": "Pridajte do svojej organizácie toľko podtímov, koľko potrebujete",  "advanced_managed_events": "Pokročilé spravované typy udalostí",
   "advanced_managed_events_description": "Pridajte jednu kreditnú kartu na úhradu všetkých predplatných vášho tímu",
   "enterprise": "Podnik",
   "enterprise_description": "Prejdite na podnikové riešenie a vytvorte svoju organizáciu",
-  "create_your_org": "Vytvorte svoju organizáciu",
-    "create_your_enterprise_description": "Prejdite na podnikové riešenie a získajte prístup k synchronizácii Active Directory, automatickému poskytovaniu používateľov SCIM, hlasovým agentom Cal.ai, administrátorským API a ďalším!",
-  
-  "admin_delete_organization_description": "<ul><li>Tímy, ktoré sú členmi tejto organizácie, budú tiež odstránené spolu s ich typmi udalostí</li><li>Používatelia, ktorí boli súčasťou organizácie, nebudú odstránení, ale ich používateľské mená budú zmenené, aby mohli existovať mimo organizácie</li><li>Typy udalostí používateľov vytvorené po tom, čo bol používateľ v organizácii, budú odstránené</li><li>Migrované typy udalostí používateľov nebudú odstránené</li></ul>",
+  "create_your_org": "Vytvorte svoju organizáciu","create_your_enterprise_description": "Prejdite na podnikové riešenie a získajte prístup k synchronizácii Active Directory, automatickému poskytovaniu používateľov SCIM, hlasovým agentom Cal.ai, administrátorským API a ďalším!","admin_delete_organization_description": "<ul><li>Tímy, ktoré sú členmi tejto organizácie, budú tiež odstránené spolu s ich typmi udalostí</li><li>Používatelia, ktorí boli súčasťou organizácie, nebudú odstránení, ale ich používateľské mená budú zmenené, aby mohli existovať mimo organizácie</li><li>Typy udalostí používateľov vytvorené po tom, čo bol používateľ v organizácii, budú odstránené</li><li>Migrované typy udalostí používateľov nebudú odstránené</li></ul>",
   "admin_delete_organization_title": "Odstrániť {{organizationName}}?",
   "published": "Publikované",
   "unpublished": "Nepublikované",
@@ -2431,13 +2299,9 @@
   "instant_event_tab_description": "Umožnite ľuďom rezervovať okamžite",
   "uprade_to_create_instant_bookings": "Prejdite na Enterprise a umožnite hosťom pripojiť sa k okamžitému hovoru, do ktorého sa môžu účastníci ihneď zapojiť. Toto je len pre tímové typy udalostí",
   "dont_want_to_wait": "Nechcete čakať?",
-  "meeting_started": "Stretnutie začalo",
-  
-  "cal_ai_event_tab_description": "Nechajte AI agentov rezervovať za vás",
+  "meeting_started": "Stretnutie začalo","cal_ai_event_tab_description": "Nechajte AI agentov rezervovať za vás",
   "booking_not_found_error": "Rezerváciu sa nepodarilo nájsť",
   "booking_seats_full_error": "Kapacita rezervácie je plná",
-  
-  
   "not_enough_available_seats_error": "Rezervácia nemá dostatok voľných miest",
   "user_redirect_title": "{{username}} je momentálne preč na krátky čas.",
   "user_redirect_description": "Medzitým bude {{profile.username}} zodpovedný za všetky nové naplánované stretnutia v mene {{username}}.",
@@ -2533,9 +2397,7 @@
   "email|existing_user_added_link_will_change": "Po prijatí pozvánky sa váš odkaz zmení na doménu vašej organizácie, ale nebojte sa, všetky predchádzajúce odkazy budú stále fungovať a presmerujú sa správne.<br /><br />Upozornenie: Všetky vaše osobné typy udalostí budú presunuté do organizácie <strong>{teamName}</strong>, čo môže zahŕňať aj potenciálny osobný odkaz.<br /><br />Pre osobné udalosti odporúčame vytvoriť nový účet s osobnou emailovou adresou.",
   "email|existing_user_added_link_changed": "Váš odkaz bol zmenený z <a href={`https://${prevLink}`}>{prevLinkWithoutProtocol}</a> na <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>, ale nebojte sa, všetky predchádzajúce odkazy stále fungujú a presmerujú sa správne.<br /><br />Upozornenie: Všetky vaše osobné typy udalostí boli presunuté do organizácie <strong>{teamName}</strong>, čo môže zahŕňať aj potenciálny osobný odkaz.<br /><br />Prosím, prihláste sa a uistite sa, že nemáte žiadne súkromné udalosti na vašom novom organizačnom účte.<br /><br />Pre osobné udalosti odporúčame vytvoriť nový účet s osobnou emailovou adresou.<br /><br />Užite si svoj nový čistý odkaz: <a href={`https://${newLink}`}>{newLinkWithoutProtocol}</a>",
   "email_organization_created|subject": "Vaša organizácia bola vytvorená",
-  "your_current_plan": "Váš aktuálny plán",
-  
-  "privacy_organization_description": "Spravujte nastavenia súkromia pre vašu organizáciu",
+  "your_current_plan": "Váš aktuálny plán","privacy_organization_description": "Spravujte nastavenia súkromia pre vašu organizáciu",
   "privacy": "Súkromie",
   "team_will_be_under_org": "Nové tímy budú pod vašou organizáciou",
   "add_group_name": "Pridať názov skupiny",
@@ -2630,9 +2492,7 @@
   "signing_up_terms": "Pokračovaním súhlasíte s našimi <0>Podmienkami</0> a <1>Zásadami ochrany osobných údajov</1>.",
   "proceeding_agreement": "Pokračovaním súhlasíte s našimi",
   "terms": "Podmienkami",
-  "always_show_x_days": "Vždy {{x}} dní dostupných",
-  
-  "updating_oauth_client_error": "Pri aktualizácii OAuth klienta došlo k chybe, skúste to prosím neskôr",
+  "always_show_x_days": "Vždy {{x}} dní dostupných","updating_oauth_client_error": "Pri aktualizácii OAuth klienta došlo k chybe, skúste to prosím neskôr",
   "creating_oauth_client_error": "Pri vytváraní OAuth klienta došlo k chybe, skúste to prosím neskôr",
   "event_type_color": "Farba typu udalosti",
   "event_type_color_description": "Používa sa iba na rozlíšenie typu udalosti a rezervácie v aplikácii. Nezobrazuje sa rezervujúcim.",
@@ -2691,11 +2551,7 @@
   "google_connect_atom_loading_label": "Kontrolujem Google kalendár",
   "outlook_connect_atom_label": "Pripojiť Outlook kalendár",
   "outlook_connect_atom_already_connected_label": "Pripojený Outlook kalendár",
-  "outlook_connect_atom_loading_label": "Kontrolujem Outlook kalendár",
-  
-  
-  
-  "booking_question_response_variables": "Premenné odpovedí na rezervačné otázky",
+  "outlook_connect_atom_loading_label": "Kontrolujem Outlook kalendár","booking_question_response_variables": "Premenné odpovedí na rezervačné otázky",
   "managed_by_teamAdmins": "Spravované používateľmi {{teamAdmins}}",
   "number_of_options": "{{count}} možností",
   "reschedule_with_same_round_robin_host_title": "Preložiť termín s rovnakým Round-Robin hostiteľom",
@@ -2717,12 +2573,8 @@
   "last_number_of_days": "posledných {{count}} dní",
   "month_to_date": "od začiatku mesiaca",
   "year_to_date": "od začiatku roka",
-  "custom_range": "vlastný rozsah",
-  
-  "always": "Vždy",
-  "never": "Nikdy",
-  
-  "if_cancelled": "V prípade zrušenia",
+  "custom_range": "vlastný rozsah","always": "Vždy",
+  "never": "Nikdy","if_cancelled": "V prípade zrušenia",
   "before": "pred",
   "show_all_columns": "Zobraziť všetky stĺpce",
   "toggle_columns": "Prepnúť stĺpce",
