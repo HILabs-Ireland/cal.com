@@ -38,7 +38,6 @@ export const getEventTypeAppData = <T extends EventTypeAppsList>(
       price: eventType.price,
       // Currency default is "usd" in DB.So, it would also be available always
       currency: eventType.currency,
-      paymentOption: "ON_BOOKING",
     },
     giphy: {
       enabled: !!eventType.metadata?.giphyThankYouPage,

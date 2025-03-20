@@ -5,7 +5,7 @@ export function DynamicComponent<T extends Record<string, React.ComponentType<an
   wrapperClassName?: string;
 }) {
   const { componentMap, slug, wrapperClassName, ...rest } = props;
-  const dirName = slug === "stripe" ? "stripepayment" : slug;
+  const dirName = slug;
 
   // There can be apps with no matching component
   if (!componentMap[dirName]) return null;

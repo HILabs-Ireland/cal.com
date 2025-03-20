@@ -64,27 +64,6 @@ describe("Tests for EventTypeAppCard component", () => {
     expect(setAppDataMock).toHaveBeenCalled();
   });
 
-  test("Should render DynamicComponent with 'stripepayment' slug for stripe app", () => {
-    const stripeProps = {
-      ...mockProps,
-      app: {
-        ...mockProps.app,
-        slug: "stripe",
-      },
-    };
-
-    render(<EventTypeAppCard {...stripeProps} />);
-
-    expect(DynamicComponent).toHaveBeenCalledWith(
-      expect.objectContaining({
-        slug: "stripepayment",
-      }),
-      {}
-    );
-
-    expect(screen.getByText("MockedDynamicComponent")).toBeInTheDocument();
-  });
-
   test("Should display error boundary message on child component error", () => {
     (DynamicComponent as jest.Mock).mockImplementation(() => {
       return Error("Mocked error from DynamicComponent");

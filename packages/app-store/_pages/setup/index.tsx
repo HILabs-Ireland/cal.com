@@ -13,7 +13,6 @@ export const AppSetupMap = {
   zapier: dynamic(() => import("../../zapier/pages/setup")),
   make: dynamic(() => import("../../make/pages/setup")),
   sendgrid: dynamic(() => import("../../sendgrid/pages/setup")),
-  stripe: dynamic(() => import("../../stripepayment/pages/setup")),
   paypal: dynamic(() => import("../../paypal/pages/setup")),
   hitpay: dynamic(() => import("../../hitpay/pages/setup")),
 };

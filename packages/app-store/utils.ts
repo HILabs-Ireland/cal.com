@@ -122,9 +122,6 @@ export function getAppType(name: string): string {
   if (type.endsWith("_calendar")) {
     return "Calendar";
   }
-  if (type.endsWith("_payment")) {
-    return "Payment";
-  }
   return "Unknown";
 }
 

@@ -20,7 +20,6 @@ export const AppSettingsComponentsMap = {
   zapier: dynamic(() => import("./zapier/components/AppSettingsInterface")),
 };
 export const EventTypeAddonMap = {
-  alby: dynamic(() => import("./alby/components/EventTypeAppCardInterface")),
   basecamp3: dynamic(() => import("./basecamp3/components/EventTypeAppCardInterface")),
   closecom: dynamic(() => import("./closecom/components/EventTypeAppCardInterface")),
   fathom: dynamic(() => import("./fathom/components/EventTypeAppCardInterface")),
@@ -52,7 +51,6 @@ export const EventTypeAddonMap = {
   zohocrm: dynamic(() => import("./zohocrm/components/EventTypeAppCardInterface")),
 };
 export const EventTypeSettingsMap = {
-  alby: dynamic(() => import("./alby/components/EventTypeAppSettingsInterface")),
   basecamp3: dynamic(() => import("./basecamp3/components/EventTypeAppSettingsInterface")),
   fathom: dynamic(() => import("./fathom/components/EventTypeAppSettingsInterface")),
   ga4: dynamic(() => import("./ga4/components/EventTypeAppSettingsInterface")),

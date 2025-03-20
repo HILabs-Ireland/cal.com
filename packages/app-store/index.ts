@@ -24,7 +24,6 @@ const appStore = {
   salesforce: () => import("./salesforce"),
   zohocrm: () => import("./zohocrm"),
   sendgrid: () => import("./sendgrid"),
-  stripepayment: () => import("./stripepayment"),
   tandemvideo: () => import("./tandemvideo"),
   vital: () => import("./vital"),
   zoomvideo: () => import("./zoomvideo"),
@@ -46,12 +45,6 @@ const appStore = {
   hitpay: () => import("./hitpay"),
 };
 
-const exportedAppStore: typeof appStore & {
-  ["mock-payment-app"]?: () => Promise<typeof import("./mock-payment-app/index")>;
-} = appStore;
-
-if (process.env.MOCK_PAYMENT_APP_ENABLED !== undefined) {
-  exportedAppStore["mock-payment-app"] = () => import("./mock-payment-app/index");
-}
+const exportedAppStore: typeof appStore = appStore;
 
 export default exportedAppStore;
