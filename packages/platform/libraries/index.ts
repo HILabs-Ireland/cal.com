@@ -24,7 +24,6 @@ import * as newBookingMethods from "@calcom/features/bookings/lib/handleNewBooki
 import handleDeleteCredential from "@calcom/features/credentials/handleDeleteCredential";
 import { getClientSecretFromPayment } from "@calcom/features/ee/payments/pages/getClientSecretFromPayment";
 import { getPublicEvent } from "@calcom/features/eventtypes/lib/getPublicEvent";
-import { handleCreatePhoneCall } from "@calcom/features/handleCreatePhoneCall";
 import handleMarkNoShow from "@calcom/features/handleMarkNoShow";
 import * as instantMeetingMethods from "@calcom/features/instant-meeting/handleInstantMeeting";
 import getEnabledAppsFromCredentials from "@calcom/lib/apps/getEnabledAppsFromCredentials";
@@ -76,7 +75,6 @@ const handleInstantMeeting = instantMeetingMethods.default;
 export { handleInstantMeeting };
 
 export { handleMarkNoShow };
-export { handleCreatePhoneCall };
 
 export { getAvailableSlots };
 export type AvailableSlotsType = Awaited<ReturnType<typeof getAvailableSlots>>;
@@ -88,7 +86,6 @@ export type { ConnectedDestinationCalendars } from "@calcom/lib/getConnectedDest
 export { getConnectedApps } from "@calcom/lib/getConnectedApps";
 export { bulkUpdateEventsToDefaultLocation } from "@calcom/lib/bulkUpdateEventsToDefaultLocation";
 export type { ConnectedApps } from "@calcom/lib/getConnectedApps";
-export { getBusyCalendarTimes } from "@calcom/core/CalendarManager";
 
 export {
   transformWorkingHoursForAtom,
@@ -188,7 +185,6 @@ export { roundRobinManualReassignment } from "@calcom/features/ee/round-robin/ro
 export { ErrorCode } from "@calcom/lib/errorCodes";
 
 export { IcsFeedCalendarService };
-export { validateCustomEventName } from "@calcom/core/event";
 export { getEnabledAppsFromCredentials };
 export type { App };
 export type { CredentialDataWithTeamName };

@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-import { templateTypeEnum } from "@calcom/features/ee/cal-ai-phone/zod-utils";
 import { _DestinationCalendarModel, _EventTypeModel } from "@calcom/prisma/zod";
 import {
   customInputSchema,
@@ -20,7 +19,6 @@ const aiPhoneCallConfig = z
     guestName: z.string().nullable().optional(),
     guestEmail: z.string().nullable().optional(),
     guestCompany: z.string().nullable().optional(),
-    templateType: templateTypeEnum,
   })
   .optional();
 
