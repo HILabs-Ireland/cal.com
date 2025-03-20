@@ -1,9 +1,7 @@
 import { SchedulesService_2024_06_11 } from "@/ee/schedules/schedules_2024_06_11/services/schedules.service";
 import { API_VERSIONS_VALUES } from "@/lib/api-versions";
-import { PlatformPlan } from "@/modules/auth/decorators/billing/platform-plan.decorator";
 import { Roles } from "@/modules/auth/decorators/roles/roles.decorator";
 import { ApiAuthGuard } from "@/modules/auth/guards/api-auth/api-auth.guard";
-import { PlatformPlanGuard } from "@/modules/auth/guards/billing/platform-plan.guard";
 import { IsAdminAPIEnabledGuard } from "@/modules/auth/guards/organizations/is-admin-api-enabled.guard";
 import { IsOrgGuard } from "@/modules/auth/guards/organizations/is-org.guard";
 import { RolesGuard } from "@/modules/auth/guards/roles/roles.guard";
@@ -19,13 +17,12 @@ import { GetSchedulesOutput_2024_06_11 } from "@calcom/platform-types";
   path: "/v2/organizations/:orgId/teams/:teamId",
   version: API_VERSIONS_VALUES,
 })
-@UseGuards(ApiAuthGuard, IsOrgGuard, IsTeamInOrg, RolesGuard, PlatformPlanGuard, IsAdminAPIEnabledGuard)
+@UseGuards(ApiAuthGuard, IsOrgGuard, IsTeamInOrg, RolesGuard, IsAdminAPIEnabledGuard)
 @DocsTags("Orgs / Teams / Schedules")
 export class OrganizationsTeamsSchedulesController {
   constructor(private schedulesService: SchedulesService_2024_06_11) {}
 
   @Roles("TEAM_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @UseGuards(IsUserInOrgTeam)
   @Get("/users/:userId/schedules")
   @DocsTags("Orgs / Teams / Users / Schedules")

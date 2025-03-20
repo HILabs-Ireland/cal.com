@@ -6,14 +6,11 @@ import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { MembershipRole } from "@calcom/prisma/enums";
 import { trpc } from "@calcom/trpc/react";
 import { Button } from "@calcom/ui";
-import NoPlatformPlan from "@calcom/web/components/settings/platform/dashboard/NoPlatformPlan";
 import { useGetUserAttributes } from "@calcom/web/components/settings/platform/hooks/useGetUserAttributes";
-import { PlatformPricing } from "@calcom/web/components/settings/platform/pricing/platform-pricing/index";
 
 const PlatformMembersView = () => {
   const { t } = useLocale();
-  const { isUserLoading, isUserBillingDataLoading, isPlatformUser, isPaidUser, userBillingData, userOrgId } =
-    useGetUserAttributes();
+  const { isUserLoading, isPlatformUser, userOrgId } = useGetUserAttributes();
   const { data: currentOrg, isPending } = trpc.viewer.organizations.listCurrent.useQuery();
 
   const isOrgAdminOrOwner =
@@ -23,28 +20,14 @@ const PlatformMembersView = () => {
   const canLoggedInUserSeeMembers =
     (currentOrg?.isPrivate && isOrgAdminOrOwner) || isOrgAdminOrOwner || !currentOrg?.isPrivate;
 
-  if (isUserLoading || (isUserBillingDataLoading && !userBillingData)) {
+  if (isUserLoading) {
     return <div className="m-5">Loading...</div>;
   }
-
-  if (isPlatformUser && !isPaidUser)
-    return (
-      <PlatformPricing
-        teamId={userOrgId}
-        heading={
-          <div className="mb-5 text-center text-2xl font-semibold">
-            <h1>Subscribe to Platform</h1>
-          </div>
-        }
-      />
-    );
 
   if (!isPlatformUser)
     return (
       <div>
-        <Shell isPlatformUser={true} hideHeadingOnMobile withoutMain={false} SidebarContainer={<></>}>
-          <NoPlatformPlan />
-        </Shell>
+        <Shell isPlatformUser={true} withoutMain={false} SidebarContainer={<></>} />
       </div>
     );
 

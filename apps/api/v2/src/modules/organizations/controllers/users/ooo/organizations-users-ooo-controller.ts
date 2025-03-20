@@ -1,8 +1,6 @@
 import { API_VERSIONS_VALUES } from "@/lib/api-versions";
-import { PlatformPlan } from "@/modules/auth/decorators/billing/platform-plan.decorator";
 import { Roles } from "@/modules/auth/decorators/roles/roles.decorator";
 import { ApiAuthGuard } from "@/modules/auth/guards/api-auth/api-auth.guard";
-import { PlatformPlanGuard } from "@/modules/auth/guards/billing/platform-plan.guard";
 import { IsAdminAPIEnabledGuard } from "@/modules/auth/guards/organizations/is-admin-api-enabled.guard";
 import { IsOrgGuard } from "@/modules/auth/guards/organizations/is-org.guard";
 import { RolesGuard } from "@/modules/auth/guards/roles/roles.guard";
@@ -45,7 +43,7 @@ import { SUCCESS_STATUS } from "@calcom/platform-constants";
   version: API_VERSIONS_VALUES,
 })
 @UseInterceptors(ClassSerializerInterceptor)
-@UseGuards(ApiAuthGuard, IsOrgGuard, RolesGuard, PlatformPlanGuard, IsAdminAPIEnabledGuard)
+@UseGuards(ApiAuthGuard, IsOrgGuard, RolesGuard, IsAdminAPIEnabledGuard)
 @UseGuards(IsOrgGuard)
 @DocsTags("Orgs / Users / OOO")
 export class OrganizationsUsersOOOController {
@@ -56,7 +54,6 @@ export class OrganizationsUsersOOOController {
 
   @Get("/users/:userId/ooo")
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @UseGuards(IsUserInOrg)
   @ApiOperation({ summary: "Get all ooo entries of a user" })
   async getOrganizationUserOOO(
@@ -74,7 +71,6 @@ export class OrganizationsUsersOOOController {
 
   @Post("/users/:userId/ooo")
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @UseGuards(IsUserInOrg)
   @ApiOperation({ summary: "Create an ooo entry for user" })
   async createOrganizationUserOOO(
@@ -90,7 +86,6 @@ export class OrganizationsUsersOOOController {
 
   @Patch("/users/:userId/ooo/:oooId")
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @UseGuards(IsUserInOrg, IsUserOOO)
   @ApiOperation({ summary: "Update ooo entry of a user" })
   async updateOrganizationUserOOO(
@@ -108,7 +103,6 @@ export class OrganizationsUsersOOOController {
 
   @Delete("/users/:userId/ooo/:oooId")
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @UseGuards(IsUserInOrg, IsUserOOO)
   @ApiOperation({ summary: "Delete ooo entry of a user" })
   async deleteOrganizationUserOOO(
@@ -123,7 +117,6 @@ export class OrganizationsUsersOOOController {
 
   @Get("/ooo")
   @Roles("ORG_ADMIN")
-  @PlatformPlan("ESSENTIALS")
   @ApiOperation({ summary: "Get all OOO entries of org users" })
   async getOrganizationUsersOOO(
     @Param("orgId", ParseIntPipe) orgId: number,

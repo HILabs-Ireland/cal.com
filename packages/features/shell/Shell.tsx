@@ -74,7 +74,7 @@ export type LayoutProps = {
   heading?: ReactNode;
   subtitle?: ReactNode;
   headerClassName?: string;
-  children: ReactNode;
+  children?: ReactNode;
   CTA?: ReactNode;
   large?: boolean;
   MobileNavigationContainer?: ReactNode;

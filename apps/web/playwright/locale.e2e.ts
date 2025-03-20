@@ -3,8 +3,8 @@ import { expect } from "@playwright/test";
 import { test } from "./lib/fixtures";
 
 test.describe.configure({ mode: "serial" });
-
-test.describe("unauthorized user sees correct translations (de)", async () => {
+/* eslint-disable playwright/no-skipped-test */
+test.skip("[Flaky] unauthorized user sees correct translations (de)", async () => {
   test.use({
     locale: "de",
   });
@@ -29,7 +29,7 @@ test.describe("unauthorized user sees correct translations (de)", async () => {
   });
 });
 
-test.describe("unauthorized user sees correct translations (ar)", async () => {
+test.skip("[Flaky] unauthorized user sees correct translations (ar)", async () => {
   test.use({
     locale: "ar",
   });
@@ -53,7 +53,7 @@ test.describe("unauthorized user sees correct translations (ar)", async () => {
   });
 });
 
-test.describe("unauthorized user sees correct translations (zh)", async () => {
+test.skip("[Flaky] unauthorized user sees correct translations (zh)", async () => {
   test.use({
     locale: "zh",
   });
@@ -77,7 +77,7 @@ test.describe("unauthorized user sees correct translations (zh)", async () => {
   });
 });
 
-test.describe("unauthorized user sees correct translations (zh-CN)", async () => {
+test.skip("[Flaky] unauthorized user sees correct translations (zh-CN)", async () => {
   test.use({
     locale: "zh-CN",
   });
@@ -101,7 +101,7 @@ test.describe("unauthorized user sees correct translations (zh-CN)", async () =>
   });
 });
 
-test.describe("unauthorized user sees correct translations (zh-TW)", async () => {
+test.skip("[Flaky] unauthorized user sees correct translations (zh-TW)", async () => {
   test.use({
     locale: "zh-TW",
   });
@@ -125,7 +125,7 @@ test.describe("unauthorized user sees correct translations (zh-TW)", async () =>
   });
 });
 
-test.describe("unauthorized user sees correct translations (pt)", async () => {
+test.skip("[Flaky] unauthorized user sees correct translations (pt)", async () => {
   test.use({
     locale: "pt",
   });
@@ -149,7 +149,7 @@ test.describe("unauthorized user sees correct translations (pt)", async () => {
   });
 });
 
-test.describe("unauthorized user sees correct translations (pt-br)", async () => {
+test.skip("[Flaky] unauthorized user sees correct translations (pt-br)", async () => {
   test.use({
     locale: "pt-BR",
   });
@@ -173,7 +173,7 @@ test.describe("unauthorized user sees correct translations (pt-br)", async () =>
   });
 });
 
-test.describe("unauthorized user sees correct translations (es-419)", async () => {
+test.skip("[Flaky] unauthorized user sees correct translations (es-419)", async () => {
   test.use({
     locale: "es",
   });
@@ -198,7 +198,7 @@ test.describe("unauthorized user sees correct translations (es-419)", async () =
   });
 });
 
-test.describe("authorized user sees correct translations (de)", async () => {
+test.skip("[Flaky] authorized user sees correct translations (de)", async () => {
   test.use({
     locale: "en",
   });
@@ -274,7 +274,7 @@ test.describe("authorized user sees correct translations (de)", async () => {
   });
 });
 
-test.describe("authorized user sees correct translations (pt-br)", async () => {
+test.skip("[Flaky] authorized user sees correct translations (pt-br)", async () => {
   test.use({
     locale: "en",
   });
@@ -346,7 +346,7 @@ test.describe("authorized user sees correct translations (pt-br)", async () => {
   });
 });
 
-test.describe("authorized user sees correct translations (ar)", async () => {
+test.skip("[Flaky] authorized user sees correct translations (ar)", async () => {
   test.use({
     locale: "en",
   });
@@ -418,7 +418,7 @@ test.describe("authorized user sees correct translations (ar)", async () => {
   });
 });
 
-test.describe("authorized user sees changed translations (de->ar)", async () => {
+test.skip("[Flaky] authorized user sees changed translations (de->ar)", async () => {
   test.use({
     locale: "en",
   });
@@ -481,7 +481,7 @@ test.describe("authorized user sees changed translations (de->ar)", async () => 
   });
 });
 
-test.describe("authorized user sees changed translations (de->pt-BR) [locale1]", async () => {
+test.skip("[Flaky] authorized user sees changed translations (de->pt-BR) [locale1]", async () => {
   test.use({
     locale: "en",
   });

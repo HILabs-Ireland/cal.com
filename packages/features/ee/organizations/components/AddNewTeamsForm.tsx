@@ -7,7 +7,6 @@ import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { classNames } from "@calcom/lib";
-import { IS_TEAM_BILLING_ENABLED_CLIENT } from "@calcom/lib/constants";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { useRouterQuery } from "@calcom/lib/hooks/useRouterQuery";
 import { UserPermissionRole } from "@calcom/prisma/enums";
@@ -95,7 +94,7 @@ const AddNewTeamsFormChild = ({
     session.data?.user?.role === UserPermissionRole.ADMIN ||
     session.data?.user?.impersonatedBy?.role === UserPermissionRole.ADMIN;
 
-  const allowWizardCompletionWithoutUpgrading = !IS_TEAM_BILLING_ENABLED_CLIENT || isAdmin;
+  const allowWizardCompletionWithoutUpgrading = isAdmin;
   const { register, control, watch, getValues } = form;
   const { fields, append, remove } = useFieldArray({
     control,

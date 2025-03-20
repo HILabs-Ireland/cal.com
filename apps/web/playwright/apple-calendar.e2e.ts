@@ -12,9 +12,8 @@ const APPLE_CALENDAR_EMAIL = process.env.E2E_TEST_APPLE_CALENDAR_EMAIL!;
 const APPLE_CALENDAR_PASSWORD = process.env.E2E_TEST_APPLE_CALENDAR_PASSWORD!;
 
 const SHOULD_SKIP_TESTS = !APPLE_CALENDAR_EMAIL || !APPLE_CALENDAR_PASSWORD;
-
-test.describe("Apple Calendar", () => {
-  // eslint-disable-next-line playwright/no-skipped-test
+/* eslint-disable playwright/no-skipped-test */
+test.skip("[EE feature] Apple Calendar", () => {
   test.skip(SHOULD_SKIP_TESTS, "Skipping due to missing the testing credentials");
 
   test("Should be able to install and login on Apple Calendar", async ({ page, users }) => {

@@ -156,12 +156,6 @@ const platformNavigationItems: NavigationItemType[] = [
     target: "_blank",
   },
   {
-    name: "Billing",
-    href: "/settings/platform/billing",
-    icon: "credit-card",
-    moreOnMobile: true,
-  },
-  {
     name: "Members",
     href: "/settings/platform/members",
     icon: "users",

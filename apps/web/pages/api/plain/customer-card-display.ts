@@ -323,7 +323,7 @@ export default (
       },
       {
         componentText: {
-          text: "Security & Billing",
+          text: "Security",
           textColor: "NORMAL",
           textSize: "M",
         },

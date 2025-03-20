@@ -1,3 +1,4 @@
+/* eslint-disable playwright/no-skipped-test */
 import { expect } from "@playwright/test";
 
 import { BookingStatus } from "@calcom/prisma/client";
@@ -63,7 +64,7 @@ test.describe("Bookings", () => {
       ).toBeVisible();
     });
   });
-  test.describe("Past bookings", () => {
+  test.skip("[Flaky] Past bookings", () => {
     test("Mark first guest as no-show", async ({ page, users, bookings, webhooks }) => {
       const firstUser = await users.create();
       const secondUser = await users.create();

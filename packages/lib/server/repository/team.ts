@@ -2,7 +2,6 @@ import { Prisma } from "@prisma/client";
 import type { z } from "zod";
 
 import { whereClauseForOrgWithSlugOrRequestedSlug } from "@calcom/ee/organizations/lib/orgDomains";
-import { TeamBilling } from "@calcom/features/ee/billing/teams";
 import removeMember from "@calcom/features/ee/teams/lib/removeMember";
 import { deleteDomain } from "@calcom/lib/domainManager/organization";
 import logger from "@calcom/lib/logger";
@@ -214,8 +213,6 @@ export class TeamRepository {
         },
       });
 
-      const teamBilling = await TeamBilling.findAndInit(id);
-      await teamBilling.cancel();
       return deletedTeam;
     });
 
@@ -267,15 +264,7 @@ export class TeamRepository {
       } else throw e;
     }
 
-    const teamBilling = await TeamBilling.findAndInit(verificationToken.teamId);
-    await teamBilling.updateQuantity();
-
     return verificationToken.team.name;
-  }
-
-  static async publish(teamId: number) {
-    const teamBilling = await TeamBilling.findAndInit(teamId);
-    return teamBilling.publish();
   }
 
   static async removeMembers(teamIds: number[], memberIds: number[], isOrg = false) {
@@ -295,9 +284,5 @@ export class TeamRepository {
     }
 
     await Promise.all(deleteMembershipPromises);
-
-    const teamsBilling = await TeamBilling.findAndInitMany(teamIds);
-    const teamBillingPromises = teamsBilling.map((teamBilling) => teamBilling.updateQuantity());
-    await Promise.allSettled(teamBillingPromises);
   }
 }

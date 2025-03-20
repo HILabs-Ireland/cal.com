@@ -13,7 +13,6 @@ import { INestApplication } from "@nestjs/common";
 import { NestExpressApplication } from "@nestjs/platform-express";
 import { Test } from "@nestjs/testing";
 import * as request from "supertest";
-import { PlatformBillingRepositoryFixture } from "test/fixtures/repository/billing.repository.fixture";
 import { MembershipRepositoryFixture } from "test/fixtures/repository/membership.repository.fixture";
 import { OAuthClientRepositoryFixture } from "test/fixtures/repository/oauth-client.repository.fixture";
 import { OrganizationRepositoryFixture } from "test/fixtures/repository/organization.repository.fixture";
@@ -41,7 +40,6 @@ describe("OAuth client WebhooksController (e2e)", () => {
   let membershipRepositoryFixture: MembershipRepositoryFixture;
   let profileRepositoryFixture: ProfileRepositoryFixture;
   let orgRepositoryFixture: OrganizationRepositoryFixture;
-  let platformBillingRepositoryFixture: PlatformBillingRepositoryFixture;
 
   let webhook: OAuthClientWebhookOutputResponseDto["data"];
 
@@ -56,7 +54,6 @@ describe("OAuth client WebhooksController (e2e)", () => {
     webhookRepositoryFixture = new WebhookRepositoryFixture(moduleRef);
     oAuthClientRepositoryFixture = new OAuthClientRepositoryFixture(moduleRef);
     orgRepositoryFixture = new OrganizationRepositoryFixture(moduleRef);
-    platformBillingRepositoryFixture = new PlatformBillingRepositoryFixture(moduleRef);
     membershipRepositoryFixture = new MembershipRepositoryFixture(moduleRef);
     profileRepositoryFixture = new ProfileRepositoryFixture(moduleRef);
     user = await userRepositoryFixture.create({
@@ -90,8 +87,6 @@ describe("OAuth client WebhooksController (e2e)", () => {
       },
       isPlatform: true,
     });
-    await platformBillingRepositoryFixture.create(org.id);
-    await platformBillingRepositoryFixture.create(otherOrg.id);
     await membershipRepositoryFixture.create({
       role: "OWNER",
       user: { connect: { id: user.id } },

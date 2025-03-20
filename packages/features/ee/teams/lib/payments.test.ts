@@ -11,8 +11,6 @@ import {
 } from "./payments";
 
 beforeEach(async () => {
-  vi.stubEnv("STRIPE_ORG_MONTHLY_PRICE_ID", "STRIPE_ORG_MONTHLY_PRICE_ID");
-  vi.stubEnv("STRIPE_TEAM_MONTHLY_PRICE_ID", "STRIPE_TEAM_MONTHLY_PRICE_ID");
   vi.resetAllMocks();
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -130,148 +128,6 @@ describe("purchaseTeamOrOrgSubscription", () => {
       })
     );
   });
-  it("Should create a monthly subscription if billing period is set to monthly", async () => {
-    const FAKE_PAYMENT_ID = "FAKE_PAYMENT_ID";
-    const user = await prismock.user.create({
-      data: {
-        name: "test",
-        email: "test@email.com",
-      },
-    });
-
-    const checkoutSessionsCreate = mockStripeCheckoutSessionsCreate({
-      url: "SESSION_URL",
-    });
-
-    mockStripeCheckoutSessionRetrieve(
-      {
-        currency: "USD",
-        product: {
-          id: "PRODUCT_ID",
-        },
-      },
-      [FAKE_PAYMENT_ID]
-    );
-
-    mockStripeCheckoutPricesRetrieve({
-      id: "PRICE_ID",
-      product: {
-        id: "PRODUCT_ID",
-      },
-    });
-
-    const checkoutPricesCreate = mockStripePricesCreate({
-      id: "PRICE_ID",
-    });
-
-    const team = await prismock.team.create({
-      data: {
-        name: "test",
-        metadata: {
-          paymentId: FAKE_PAYMENT_ID,
-        },
-      },
-    });
-
-    const seatsToChargeFor = 1000;
-    expect(
-      await purchaseTeamOrOrgSubscription({
-        teamId: team.id,
-        seatsUsed: 10,
-        seatsToChargeFor,
-        userId: user.id,
-        isOrg: true,
-        pricePerSeat: 100,
-        billingPeriod: "MONTHLY",
-      })
-    ).toEqual({ url: "SESSION_URL" });
-
-    expect(checkoutPricesCreate).toHaveBeenCalledWith(
-      expect.objectContaining({ recurring: { interval: "month" } })
-    );
-
-    expect(checkoutSessionsCreate).toHaveBeenCalledWith(
-      expect.objectContaining({
-        line_items: [
-          {
-            price: "PRICE_ID",
-            quantity: seatsToChargeFor,
-          },
-        ],
-      })
-    );
-  });
-  it("Should create a annual subscription if billing period is set to annual", async () => {
-    const FAKE_PAYMENT_ID = "FAKE_PAYMENT_ID";
-    const user = await prismock.user.create({
-      data: {
-        name: "test",
-        email: "test@email.com",
-      },
-    });
-
-    const checkoutSessionsCreate = mockStripeCheckoutSessionsCreate({
-      url: "SESSION_URL",
-    });
-
-    mockStripeCheckoutSessionRetrieve(
-      {
-        currency: "USD",
-        product: {
-          id: "PRODUCT_ID",
-        },
-      },
-      [FAKE_PAYMENT_ID]
-    );
-
-    mockStripeCheckoutPricesRetrieve({
-      id: "PRICE_ID",
-      product: {
-        id: "PRODUCT_ID",
-      },
-    });
-
-    const checkoutPricesCreate = mockStripePricesCreate({
-      id: "PRICE_ID",
-    });
-
-    const team = await prismock.team.create({
-      data: {
-        name: "test",
-        metadata: {
-          paymentId: FAKE_PAYMENT_ID,
-        },
-      },
-    });
-
-    const seatsToChargeFor = 1000;
-    expect(
-      await purchaseTeamOrOrgSubscription({
-        teamId: team.id,
-        seatsUsed: 10,
-        seatsToChargeFor,
-        userId: user.id,
-        isOrg: true,
-        pricePerSeat: 100,
-        billingPeriod: "ANNUALLY",
-      })
-    ).toEqual({ url: "SESSION_URL" });
-
-    expect(checkoutPricesCreate).toHaveBeenCalledWith(
-      expect.objectContaining({ recurring: { interval: "year" } })
-    );
-
-    expect(checkoutSessionsCreate).toHaveBeenCalledWith(
-      expect.objectContaining({
-        line_items: [
-          {
-            price: "PRICE_ID",
-            quantity: seatsToChargeFor,
-          },
-        ],
-      })
-    );
-  });
 
   it("It should not create a custom price if price_per_seat is not set", async () => {
     const FAKE_PAYMENT_ID = "FAKE_PAYMENT_ID";
@@ -324,7 +180,6 @@ describe("purchaseTeamOrOrgSubscription", () => {
         seatsToChargeFor,
         userId: user.id,
         isOrg: true,
-        billingPeriod: "ANNUALLY",
       })
     ).toEqual({ url: "SESSION_URL" });
 

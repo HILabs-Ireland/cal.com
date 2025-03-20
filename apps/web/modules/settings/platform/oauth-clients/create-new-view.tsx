@@ -11,7 +11,6 @@ import { showToast } from "@calcom/ui";
 
 import { useCreateOAuthClient } from "@lib/hooks/settings/platform/oauth-clients/usePersistOAuthClient";
 
-import NoPlatformPlan from "@components/settings/platform/dashboard/NoPlatformPlan";
 import { useGetUserAttributes } from "@components/settings/platform/hooks/useGetUserAttributes";
 import type { FormValues } from "@components/settings/platform/oauth-clients/oauth-client-form";
 import { OAuthClientForm } from "@components/settings/platform/oauth-clients/oauth-client-form";
@@ -20,9 +19,8 @@ export default function CreateOAuthClient() {
   const searchParams = useCompatSearchParams();
   const router = useRouter();
   const { t } = useLocale();
-  const clientId = searchParams?.get("clientId") || "";
 
-  const { isUserLoading, isPlatformUser, isPaidUser } = useGetUserAttributes();
+  const { isUserLoading, isPlatformUser } = useGetUserAttributes();
 
   const { mutateAsync: save, isPending: isSaving } = useCreateOAuthClient({
     onSuccess: () => {
@@ -61,7 +59,7 @@ export default function CreateOAuthClient() {
 
   if (isUserLoading) return <div className="m-5">Loading...</div>;
 
-  if (isPlatformUser && isPaidUser) {
+  if (isPlatformUser) {
     return (
       <div>
         <Shell title={t("oAuth_client_creation_form")} isPlatformUser={true} withoutSeo={true}>
@@ -85,14 +83,7 @@ export default function CreateOAuthClient() {
 
   return (
     <div>
-      <Shell
-        withoutSeo={true}
-        isPlatformUser={true}
-        hideHeadingOnMobile
-        withoutMain={false}
-        SidebarContainer={<></>}>
-        <NoPlatformPlan />
-      </Shell>
+      <Shell withoutSeo={true} isPlatformUser={true} withoutMain={false} SidebarContainer={<></>} />
     </div>
   );
 }

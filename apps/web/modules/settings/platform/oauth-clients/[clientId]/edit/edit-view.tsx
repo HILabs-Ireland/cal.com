@@ -12,7 +12,6 @@ import { showToast } from "@calcom/ui";
 import { useOAuthClient } from "@lib/hooks/settings/platform/oauth-clients/useOAuthClients";
 import { useUpdateOAuthClient } from "@lib/hooks/settings/platform/oauth-clients/usePersistOAuthClient";
 
-import NoPlatformPlan from "@components/settings/platform/dashboard/NoPlatformPlan";
 import { useGetUserAttributes } from "@components/settings/platform/hooks/useGetUserAttributes";
 import type { FormValues } from "@components/settings/platform/oauth-clients/oauth-client-form";
 import { OAuthClientForm as EditOAuthClientForm } from "@components/settings/platform/oauth-clients/oauth-client-form";
@@ -36,7 +35,7 @@ export default function EditOAuthClient() {
   const params = useParams<{ clientId: string }>();
   const clientId = params?.clientId || "";
 
-  const { isUserLoading, isPlatformUser, isPaidUser } = useGetUserAttributes();
+  const { isUserLoading, isPlatformUser } = useGetUserAttributes();
 
   const { data, isFetched, isFetching, isError, refetch } = useOAuthClient(clientId);
   const { mutateAsync: update, isPending: isUpdating } = useUpdateOAuthClient({
@@ -77,11 +76,11 @@ export default function EditOAuthClient() {
 
   if (isUserLoading) return <div className="m-5">Loading...</div>;
 
-  if (isPlatformUser && isPaidUser) {
+  if (isPlatformUser) {
     return (
       <div>
         <Shell withoutSeo={true} title={t("oAuth_client_updation_form")} isPlatformUser={true}>
-          <div className="m-2 md:mx-14 md:mx-5">
+          <div className="m-2 md:mx-14">
             <div className="border-subtle mx-auto block justify-between rounded-t-lg border px-4 py-6 sm:flex sm:px-6">
               <div className="flex w-full flex-col">
                 <h1 className="font-cal text-emphasis mb-1 text-xl font-semibold leading-5 tracking-wide">
@@ -127,14 +126,7 @@ export default function EditOAuthClient() {
 
   return (
     <div>
-      <Shell
-        withoutSeo={true}
-        isPlatformUser={true}
-        hideHeadingOnMobile
-        withoutMain={false}
-        SidebarContainer={<></>}>
-        <NoPlatformPlan />
-      </Shell>
+      <Shell withoutSeo={true} isPlatformUser={true} withoutMain={false} SidebarContainer={<></>} />
     </div>
   );
 }

@@ -57,7 +57,6 @@ function SingleAppPage(props: PageProps) {
       author={data.publisher}
       feeType={data.feeType || "usage-based"}
       price={data.price || 0}
-      commission={data.commission || 0}
       docs={data.docsUrl}
       website={data.url}
       email={data.email}

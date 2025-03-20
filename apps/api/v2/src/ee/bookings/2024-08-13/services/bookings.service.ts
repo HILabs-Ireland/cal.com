@@ -2,7 +2,6 @@ import { BookingsRepository_2024_08_13 } from "@/ee/bookings/2024-08-13/bookings
 import { InputBookingsService_2024_08_13 } from "@/ee/bookings/2024-08-13/services/input.service";
 import { OutputBookingsService_2024_08_13 } from "@/ee/bookings/2024-08-13/services/output.service";
 import { EventTypesRepository_2024_06_14 } from "@/ee/event-types/event-types_2024_06_14/event-types.repository";
-import { BillingService } from "@/modules/billing/services/billing.service";
 import { BookingSeatRepository } from "@/modules/booking-seat/booking-seat.repository";
 import { PrismaReadService } from "@/modules/prisma/prisma-read.service";
 import { UsersService } from "@/modules/users/services/users.service";
@@ -65,7 +64,6 @@ export class BookingsService_2024_08_13 {
     private readonly bookingSeatRepository: BookingSeatRepository,
     private readonly eventTypesRepository: EventTypesRepository_2024_06_14,
     private readonly prismaReadService: PrismaReadService,
-    private readonly billingService: BillingService,
     private readonly usersService: UsersService,
     private readonly usersRepository: UsersRepository
   ) {}
@@ -341,9 +339,6 @@ export class BookingsService_2024_08_13 {
 
     const bookingRequest = await this.inputService.createCancelBookingRequest(request, bookingUid, body);
     const res = await handleCancelBooking(bookingRequest);
-    if (!res.onlyRemovedAttendee) {
-      await this.billingService.cancelUsageByBookingUid(res.bookingUid);
-    }
 
     if ("cancelSubsequentBookings" in body && body.cancelSubsequentBookings) {
       return this.getAllRecurringBookingsByIndividualUid(bookingUid);
@@ -390,39 +385,6 @@ export class BookingsService_2024_08_13 {
       return this.outputService.getOutputRecurringBooking(booking);
     }
     return this.outputService.getOutputBooking(booking);
-  }
-
-  async billBookings(bookings: CreatedBooking[]) {
-    for (const booking of bookings) {
-      await this.billBooking(booking);
-    }
-  }
-
-  async billBooking(booking: CreatedBooking) {
-    const hostId = booking.hosts?.[0]?.id;
-    if (!hostId) {
-      this.logger.error(`Booking with uid=${booking.uid} has no host`);
-      return;
-    }
-
-    await this.billingService.increaseUsageByUserId(hostId, {
-      uid: booking.uid,
-      startTime: new Date(booking.start),
-    });
-  }
-
-  async billRescheduledBooking(newBooking: CreatedBooking, oldBookingUid: string) {
-    const hostId = newBooking.hosts[0].id;
-    if (!hostId) {
-      this.logger.error(`Booking with uid=${newBooking.uid} has no host`);
-      return;
-    }
-
-    await this.billingService.increaseUsageByUserId(hostId, {
-      uid: newBooking.uid,
-      startTime: new Date(newBooking.start),
-      fromReschedule: oldBookingUid,
-    });
   }
 
   async reassignBooking(bookingUid: string, requestUser: UserWithProfile) {

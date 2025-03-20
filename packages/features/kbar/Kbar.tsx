@@ -229,14 +229,6 @@ export const KBarRoot = ({ children }: { children: React.ReactNode }) => {
         keywords: "api keys",
         perform: () => router.push("/settings/developer/api-keys"),
       },
-      {
-        id: "billing",
-        name: "manage_billing",
-        section: "billing",
-        shortcut: ["m", "b"],
-        keywords: "billing view manage",
-        perform: () => router.push("/settings/billing"),
-      },
       ...appStoreActions,
     ];
     // eslint-disable-next-line react-hooks/exhaustive-deps

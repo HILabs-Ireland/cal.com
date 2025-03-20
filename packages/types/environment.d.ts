@@ -25,11 +25,6 @@ declare namespace NodeJS {
     readonly CRON_API_KEY: string | undefined;
     readonly CRON_ENABLE_APP_SYNC: string | undefined;
     readonly NEXT_PUBLIC_STRIPE_PUBLIC_KEY: string | undefined;
-    readonly STRIPE_PRIVATE_KEY: string | undefined;
-    readonly STRIPE_CLIENT_ID: string | undefined;
-    readonly STRIPE_WEBHOOK_SECRET: string | undefined;
-    readonly STRIPE_WEBHOOK_SECRET_APPS: string | undefined;
-    readonly STRIPE_TEAM_PRODUCT_ID: `prod_${string}` | undefined;
     readonly PAYMENT_FEE_PERCENTAGE: number | undefined;
     readonly PAYMENT_FEE_FIXED: number | undefined;
     readonly NEXT_PUBLIC_INTERCOM_APP_ID: string | undefined;
