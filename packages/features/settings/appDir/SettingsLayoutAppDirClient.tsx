@@ -50,12 +50,6 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
       ],
     },
     {
-      name: "billing",
-      href: "/settings/billing",
-      icon: "credit-card",
-      children: [{ name: "manage_billing", href: "/settings/billing" }],
-    },
-    {
       name: "developer",
       href: "/settings/developer",
       icon: "terminal",
@@ -91,10 +85,6 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
         {
           name: "privacy",
           href: "/settings/organizations/privacy",
-        },
-        {
-          name: "billing",
-          href: "/settings/organizations/billing",
         },
         { name: "OAuth Clients", href: "/settings/organizations/platform/oauth-clients" },
         {
@@ -160,7 +150,7 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
 // The following keys are assigned to admin only
 const adminRequiredKeys = ["admin"];
 const organizationRequiredKeys = ["organization"];
-const organizationAdminKeys = ["privacy", "billing", "OAuth Clients", "SSO"];
+const organizationAdminKeys = ["privacy", "OAuth Clients", "SSO"];
 
 const useTabs = () => {
   const session = useSession();
@@ -262,11 +252,12 @@ const TeamListCollapsible = () => {
   const [teamMenuState, setTeamMenuState] =
     useState<{ teamId: number | undefined; teamMenuOpen: boolean }[]>();
   const searchParams = useCompatSearchParams();
+  const id = searchParams?.get("id");
   useEffect(() => {
     if (teams) {
       const teamStates = teams?.map((team) => ({
         teamId: team.id,
-        teamMenuOpen: String(team.id) === searchParams?.get("id"),
+        teamMenuOpen: String(team.id) === id,
       }));
       setTeamMenuState(teamStates);
       setTimeout(() => {
@@ -277,7 +268,7 @@ const TeamListCollapsible = () => {
         tabMembers?.scrollIntoView({ behavior: "smooth" });
       }, 100);
     }
-  }, [searchParams?.get("id"), teams]);
+  }, [id, teams]);
 
   return (
     <>
@@ -376,17 +367,6 @@ const TeamListCollapsible = () => {
                         textClassNames="px-3 text-emphasis font-medium text-sm"
                         disableChevron
                       />
-                      {/* Hide if there is a parent ID */}
-                      {!team.parentId ? (
-                        <>
-                          <VerticalTabItem
-                            name={t("billing")}
-                            href={`/settings/teams/${team.id}/billing`}
-                            textClassNames="px-3 text-emphasis font-medium text-sm"
-                            disableChevron
-                          />
-                        </>
-                      ) : null}
                       <VerticalTabItem
                         name={t("booking_limits")}
                         href={`/settings/teams/${team.id}/bookingLimits`}
@@ -446,7 +426,7 @@ const SettingsSidebarContainer = ({
         tabMembers?.scrollIntoView({ behavior: "smooth" });
       }, 100);
     }
-  }, [searchParams?.get("id"), otherTeams]);
+  }, [otherTeams, searchParams]);
 
   const isOrgAdminOrOwner =
     currentOrg && currentOrg?.user?.role && ["OWNER", "ADMIN"].includes(currentOrg?.user?.role);
@@ -704,13 +684,13 @@ export default function SettingsLayoutAppDirClient({
     return () => {
       window.removeEventListener("resize", closeSideContainer);
     };
-  }, []);
+  }, [setSideContainerOpen]);
 
   useEffect(() => {
     if (sideContainerOpen) {
       setSideContainerOpen(!sideContainerOpen);
     }
-  }, [pathname]);
+  }, [pathname, setSideContainerOpen, sideContainerOpen]);
 
   return (
     <Shell

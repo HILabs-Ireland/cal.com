@@ -13,7 +13,6 @@ import {
 import logger from "@calcom/lib/logger";
 import { safeStringify } from "@calcom/lib/safeStringify";
 import prisma from "@calcom/prisma";
-import { BillingPeriod } from "@calcom/prisma/zod-utils";
 import { teamMetadataSchema } from "@calcom/prisma/zod-utils";
 
 const log = logger.getSubLogger({ prefix: ["teams/lib/payments"] });
@@ -63,7 +62,7 @@ export const generateTeamCheckoutSession = async ({
     line_items: [
       {
         /** We only need to set the base price and we can upsell it directly on Stripe's checkout  */
-        price: process.env.STRIPE_TEAM_MONTHLY_PRICE_ID,
+        price: "0",
         /**Initially it will be just the team owner */
         quantity: 1,
       },
@@ -107,17 +106,8 @@ export const purchaseTeamOrOrgSubscription = async (input: {
   userId: number;
   isOrg?: boolean;
   pricePerSeat: number | null;
-  billingPeriod?: BillingPeriod;
 }) => {
-  const {
-    teamId,
-    seatsToChargeFor,
-    seatsUsed,
-    userId,
-    isOrg,
-    pricePerSeat,
-    billingPeriod = BillingPeriod.MONTHLY,
-  } = input;
+  const { teamId, seatsToChargeFor, seatsUsed, userId, isOrg, pricePerSeat } = input;
   const { url } = await checkIfTeamPaymentRequired({ teamId });
   if (url) return { url };
 
@@ -144,7 +134,6 @@ export const purchaseTeamOrOrgSubscription = async (input: {
         isOrg: !!isOrg,
         teamId,
         pricePerSeat,
-        billingPeriod,
         product: customPriceObj.product as string, // We don't expand the object from stripe so just use the product as ID
         currency: customPriceObj.currency,
       });
@@ -188,21 +177,19 @@ export const purchaseTeamOrOrgSubscription = async (input: {
     isOrg,
     teamId,
     pricePerSeat,
-    billingPeriod,
     product,
     currency,
   }: {
     isOrg: boolean;
     teamId: number;
     pricePerSeat: number;
-    billingPeriod: BillingPeriod;
     product: Stripe.Product | string;
     currency: string;
   }) {
     try {
       const pricePerSeatInCents = pricePerSeat * 100;
       // Price comes in monthly so we need to convert it to a monthly/yearly price
-      const occurrence = billingPeriod === "MONTHLY" ? 1 : 12;
+      const occurrence = 12;
       const yearlyPrice = pricePerSeatInCents * occurrence;
 
       const customPriceObj = await stripe.prices.create({
@@ -210,7 +197,6 @@ export const purchaseTeamOrOrgSubscription = async (input: {
         unit_amount: yearlyPrice, // Stripe expects the amount in cents
         // Use the same currency as in the fixed price to avoid hardcoding it.
         currency: currency,
-        recurring: { interval: billingPeriod === "MONTHLY" ? "month" : "year" }, // Define your subscription interval
         product: typeof product === "string" ? product : product.id,
         tax_behavior: "exclusive",
       });
@@ -230,15 +216,7 @@ export const purchaseTeamOrOrgSubscription = async (input: {
    * If the organization has a custom price per seat, it will create a new price in stripe and return its ID.
    */
   async function getFixedPrice() {
-    const fixedPriceId = isOrg
-      ? process.env.STRIPE_ORG_MONTHLY_PRICE_ID
-      : process.env.STRIPE_TEAM_MONTHLY_PRICE_ID;
-
-    if (!fixedPriceId) {
-      throw new Error(
-        "You need to have STRIPE_ORG_MONTHLY_PRICE_ID and STRIPE_TEAM_MONTHLY_PRICE_ID env variables set"
-      );
-    }
+    const fixedPriceId = "0";
 
     log.debug("Getting price ID", safeStringify({ fixedPriceId, isOrg, teamId, pricePerSeat }));
 

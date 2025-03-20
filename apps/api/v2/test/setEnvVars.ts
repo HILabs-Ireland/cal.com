@@ -10,8 +10,6 @@ const env: Partial<Omit<Environment, "NODE_ENV">> = {
   JWT_SECRET: "XF+Hws3A5g2eyWA5uGYYVJ74X+wrCWJ8oWo6kAfU6O8=",
   LOG_LEVEL: "trace",
   REDIS_URL: "redis://localhost:6379",
-  STRIPE_API_KEY: "sk_test_51J4",
-  STRIPE_WEBHOOK_SECRET: "whsec_51J4",
   IS_E2E: true,
   API_KEY_PREFIX: "cal_test_",
   GET_LICENSE_KEY_URL: " https://console.cal.com/api/license",
@@ -20,7 +18,6 @@ const env: Partial<Omit<Environment, "NODE_ENV">> = {
   // note(Lauris): setting high limit so that e2e tests themselves are not rate limited
   RATE_LIMIT_DEFAULT_LIMIT: 10000,
   RATE_LIMIT_DEFAULT_BLOCK_DURATION_MS: 60000,
-  IS_TEAM_BILLING_ENABLED: false,
 };
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore

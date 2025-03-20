@@ -70,7 +70,7 @@ export default function TeamList(props: Props) {
                     variant="basic"
                     title={t("You have a lot of teams")}
                     description={t(
-                      "Consider consolidating your teams in an organisation, unify billing, admin tools and analytics."
+                      "Consider consolidating your teams in an organisation, admin tools and analytics."
                     )}
                     actionButton={{
                       href: `/settings/organizations/new`,
