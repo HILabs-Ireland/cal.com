@@ -1,7 +1,7 @@
 "use client";
 
 import type { SessionContextValue } from "next-auth/react";
-import { useSession, signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -53,14 +53,6 @@ const CreateANewPlatformFormChild = ({ session }: { session: Ensure<SessionConte
       await session.update({
         upId: data.upId,
       });
-      if (isAdmin && data.userId !== session.data?.user.id) {
-        // Impersonate the user chosen as the organization owner(if the admin user isn't the owner himself), so that admin can now configure the organisation on his behalf.
-        // He won't need to have access to the org directly in this way.
-        signIn("impersonation-auth", {
-          username: data.email,
-          callbackUrl: `/settings/platform`,
-        });
-      }
       router.push("/settings/platform");
     },
     onError: (err) => {

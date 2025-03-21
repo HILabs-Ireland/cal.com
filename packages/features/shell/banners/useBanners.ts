@@ -13,11 +13,9 @@ const _useBanners = () => {
   if (isPending || !userSession) return null;
 
   const isUserInactiveAdmin = userSession?.user.role === "INACTIVE_ADMIN";
-  const userImpersonatedByUID = userSession?.user.impersonatedBy?.id;
 
   const userSessionBanners = {
     adminPasswordBanner: isUserInactiveAdmin ? userSession : null,
-    impersonationBanner: userImpersonatedByUID ? userSession : null,
   };
 
   const allBanners: AllBannerProps = Object.assign({}, getUserTopBanners, userSessionBanners);

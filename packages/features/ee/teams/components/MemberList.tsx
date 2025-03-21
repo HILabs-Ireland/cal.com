@@ -11,7 +11,6 @@ import {
 } from "@tanstack/react-table";
 import classNames from "classnames";
 import { useSession } from "next-auth/react";
-import { signIn } from "next-auth/react";
 import { useQueryState, parseAsBoolean } from "nuqs";
 import { useMemo, useReducer, useRef, useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
@@ -41,15 +40,12 @@ import {
   Checkbox,
   ConfirmationDialogContent,
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogFooter,
   Dropdown,
   DropdownItem,
   DropdownMenuPortal,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
   showToast,
   Tooltip,
@@ -79,19 +75,13 @@ type Payload = {
 
 export type State = {
   deleteMember: Payload;
-  impersonateMember: Payload;
   editSheet: Payload;
   teamAvailability: Payload;
 };
 
 export type Action =
   | {
-      type:
-        | "SET_DELETE_ID"
-        | "SET_IMPERSONATE_ID"
-        | "EDIT_USER_SHEET"
-        | "TEAM_AVAILABILITY"
-        | "INVITE_MEMBER";
+      type: "SET_DELETE_ID" | "EDIT_USER_SHEET" | "TEAM_AVAILABILITY" | "INVITE_MEMBER";
       payload: Payload;
     }
   | {
@@ -100,9 +90,6 @@ export type Action =
 
 const initialState: State = {
   deleteMember: {
-    showModal: false,
-  },
-  impersonateMember: {
     showModal: false,
   },
   editSheet: {
@@ -125,8 +112,6 @@ function reducer(state: State, action: Action): State {
   switch (action.type) {
     case "SET_DELETE_ID":
       return { ...state, deleteMember: action.payload };
-    case "SET_IMPERSONATE_ID":
-      return { ...state, impersonateMember: action.payload };
     case "EDIT_USER_SHEET":
       return { ...state, editSheet: action.payload };
     case "TEAM_AVAILABILITY":
@@ -135,7 +120,6 @@ function reducer(state: State, action: Action): State {
       return {
         ...state,
         deleteMember: { showModal: false },
-        impersonateMember: { showModal: false },
         editSheet: { showModal: false },
         teamAvailability: { showModal: false },
       };
@@ -418,11 +402,6 @@ function MemberListContent(props: Props) {
               (user.role !== MembershipRole.OWNER || !isSelf)) ||
             (props.team.membership?.role === MembershipRole.ADMIN && user.role !== MembershipRole.OWNER) ||
             props.isOrgAdminOrOwner;
-          const impersonationMode =
-            editMode &&
-            !user.disableImpersonation &&
-            user.accepted &&
-            process.env.NEXT_PUBLIC_TEAM_IMPERSONATION === "true";
           const resendInvitation = editMode && !user.accepted;
           return (
             <>
@@ -495,27 +474,6 @@ function MemberListContent(props: Props) {
                                 {t("edit")}
                               </DropdownItem>
                             </DropdownMenuItem>
-                            {impersonationMode && (
-                              <>
-                                <DropdownMenuItem>
-                                  <DropdownItem
-                                    type="button"
-                                    onClick={() =>
-                                      dispatch({
-                                        type: "SET_IMPERSONATE_ID",
-                                        payload: {
-                                          user,
-                                          showModal: true,
-                                        },
-                                      })
-                                    }
-                                    StartIcon="lock">
-                                    {t("impersonate")}
-                                  </DropdownItem>
-                                </DropdownMenuItem>
-                                <DropdownMenuSeparator />
-                              </>
-                            )}
                             {resendInvitation && (
                               <DropdownMenuItem>
                                 <DropdownItem
@@ -733,36 +691,6 @@ function MemberListContent(props: Props) {
         </Dialog>
       )}
 
-      {state.impersonateMember.showModal && state.impersonateMember.user?.username && (
-        <Dialog
-          open={true}
-          onOpenChange={() =>
-            dispatch({
-              type: "CLOSE_MODAL",
-            })
-          }>
-          <DialogContent type="creation" title={t("impersonate")} description={t("impersonation_user_tip")}>
-            <form
-              onSubmit={async (e) => {
-                e.preventDefault();
-                await signIn("impersonation-auth", {
-                  username: state.impersonateMember.user?.email,
-                  teamId: props.team.id,
-                });
-                dispatch({
-                  type: "CLOSE_MODAL",
-                });
-              }}>
-              <DialogFooter showDivider className="mt-8">
-                <DialogClose color="secondary">{t("cancel")}</DialogClose>
-                <Button color="primary" type="submit">
-                  {t("impersonate")}
-                </Button>
-              </DialogFooter>
-            </form>
-          </DialogContent>
-        </Dialog>
-      )}
       {state.teamAvailability.showModal && (
         <Dialog
           open={true}

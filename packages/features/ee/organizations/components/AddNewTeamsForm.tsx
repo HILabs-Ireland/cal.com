@@ -90,9 +90,7 @@ const AddNewTeamsFormChild = ({
     },
   });
   const session = useSession();
-  const isAdmin =
-    session.data?.user?.role === UserPermissionRole.ADMIN ||
-    session.data?.user?.impersonatedBy?.role === UserPermissionRole.ADMIN;
+  const isAdmin = session.data?.user?.role === UserPermissionRole.ADMIN;
 
   const allowWizardCompletionWithoutUpgrading = isAdmin;
   const { register, control, watch, getValues } = form;

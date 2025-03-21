@@ -223,7 +223,6 @@ export class OrganizationRepository {
     const metadata = teamMetadataSchema.parse(membership?.team.metadata);
 
     return {
-      canAdminImpersonate: !!organizationSettings?.isAdminReviewed,
       organizationSettings: {
         lockEventTypeCreationForUsers: organizationSettings?.lockEventTypeCreationForUsers,
         adminGetsNoSlotsNotification: organizationSettings?.adminGetsNoSlotsNotification,
