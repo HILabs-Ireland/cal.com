@@ -3,12 +3,6 @@ name: PR Update
 on:
   pull_request:
     types: [ opened, synchronize, reopened ]
-  pull_request_target:
-    types: [opened, synchronize, reopened]
-    branches:
-      - fix/fork-for-v4.9.3
-      - development
-      - gh-actions-test-branch
   workflow_dispatch:
 
 permissions:
