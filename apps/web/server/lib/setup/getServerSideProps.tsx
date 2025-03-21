@@ -1,7 +1,6 @@
 import type { GetServerSidePropsContext } from "next";
 
 import { getServerSession } from "@calcom/features/auth/lib/getServerSession";
-import { getDeploymentKey } from "@calcom/features/ee/deployment/lib/getDeploymentKey";
 import prisma from "@calcom/prisma";
 import { UserPermissionRole } from "@calcom/prisma/enums";
 
@@ -44,7 +43,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     });
   }
 
-  const isFreeLicense = (await getDeploymentKey(prisma)) === "";
+  const isFreeLicense = true; // (await getDeploymentKey(prisma)) === "";
 
   return {
     props: {

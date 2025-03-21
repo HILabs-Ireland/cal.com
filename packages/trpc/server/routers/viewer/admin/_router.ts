@@ -1,6 +1,5 @@
 import { authedAdminProcedure } from "../../../procedures/authedProcedure";
 import { importHandler, router } from "../../../trpc";
-import { ZCreateSelfHostedLicenseSchema } from "./createSelfHostedLicenseKey.schema";
 import { ZListMembersSchema } from "./listPaginated.schema";
 import { ZAdminLockUserAccountSchema } from "./lockUserAccount.schema";
 import { ZAdminRemoveTwoFactor } from "./removeTwoFactor.schema";
@@ -59,15 +58,6 @@ export const adminRouter = router({
     );
     return handler(opts);
   }),
-  createSelfHostedLicense: authedAdminProcedure
-    .input(ZCreateSelfHostedLicenseSchema)
-    .mutation(async (opts) => {
-      const handler = await importHandler(
-        namespaced("createSelfHostedLicense"),
-        () => import("./createSelfHostedLicenseKey.handler")
-      );
-      return handler(opts);
-    }),
   workspacePlatform: router({
     list: authedAdminProcedure.query(async () => {
       const handler = await importHandler(
