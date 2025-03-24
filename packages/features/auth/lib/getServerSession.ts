@@ -107,24 +107,6 @@ export async function getServerSession(options: {
     upId,
   };
 
-  if (token?.impersonatedBy?.id) {
-    const impersonatedByUser = await prisma.user.findUnique({
-      where: {
-        id: token.impersonatedBy.id,
-      },
-      select: {
-        id: true,
-        role: true,
-      },
-    });
-    if (impersonatedByUser) {
-      session.user.impersonatedBy = {
-        id: impersonatedByUser?.id,
-        role: impersonatedByUser.role,
-      };
-    }
-  }
-
   CACHE.set(JSON.stringify(token), session);
 
   log.debug("Returned session", safeStringify(session));
