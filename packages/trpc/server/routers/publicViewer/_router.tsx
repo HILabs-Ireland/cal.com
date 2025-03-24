@@ -1,12 +1,9 @@
 import publicProcedure from "../../procedures/publicProcedure";
 import { importHandler, router } from "../../trpc";
-import { slotsRouter } from "../viewer/slots/_router";
 import { ZUserEmailVerificationRequiredSchema } from "./checkIfUserEmailVerificationRequired.schema";
 import { i18nInputSchema } from "./i18n.schema";
 import { ZMarkHostAsNoShowInputSchema } from "./markHostAsNoShow.schema";
-import { event } from "./procedures/event";
 import { session } from "./procedures/session";
-import { ZSamlTenantProductInputSchema } from "./samlTenantProduct.schema";
 import { ZStripeCheckoutSessionInputSchema } from "./stripeCheckoutSession.schema";
 import { ZSubmitRatingInputSchema } from "./submitRating.schema";
 
@@ -36,13 +33,6 @@ export const publicViewerRouter = router({
     );
     return handler(opts);
   }),
-  samlTenantProduct: publicProcedure.input(ZSamlTenantProductInputSchema).mutation(async (opts) => {
-    const handler = await importHandler(
-      namespaced("samlTenantProduct"),
-      () => import("./samlTenantProduct.handler")
-    );
-    return handler(opts);
-  }),
   stripeCheckoutSession: publicProcedure.input(ZStripeCheckoutSessionInputSchema).query(async (opts) => {
     const handler = await importHandler(
       namespaced("stripeCheckoutSession"),
@@ -50,17 +40,6 @@ export const publicViewerRouter = router({
     );
     return handler(opts);
   }),
-  // REVIEW: This router is part of both the public and private viewer router?
-  slots: slotsRouter,
-  event,
-  ssoConnections: publicProcedure.query(async () => {
-    const handler = await importHandler(
-      namespaced("ssoConnections"),
-      () => import("./ssoConnections.handler")
-    );
-    return handler();
-  }),
-
   checkIfUserEmailVerificationRequired: publicProcedure
     .input(ZUserEmailVerificationRequiredSchema)
     .query(async (opts) => {
