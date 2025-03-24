@@ -8,7 +8,6 @@ import type { UseFormReturn } from "react-hook-form";
 
 import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
 import type { EventTypeSetupProps, FormValues } from "@calcom/features/eventtypes/lib/types";
-import { getPaymentAppData } from "@calcom/lib/getPaymentAppData";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import type { VerticalTabItemProps } from "@calcom/ui";
 
@@ -45,10 +44,6 @@ export const usePlatformTabsNavigations = ({ formMethods, eventType, team, tabs 
     formMethods,
   });
 
-  const paymentAppData = getPaymentAppData(eventType);
-
-  const requirePayment = paymentAppData.price > 0;
-
   const EventTypeTabs = useMemo(() => {
     const navigation: VerticalTabItemProps[] = getNavigation({
       t,
@@ -63,7 +58,7 @@ export const usePlatformTabsNavigations = ({ formMethods, eventType, team, tabs 
       currentTab,
     });
 
-    if (!requirePayment && tabs.includes("recurring")) {
+    if (tabs.includes("recurring")) {
       navigation.splice(3, 0, {
         name: "recurring",
         onClick: () => setCurrentTab("recurring"),
@@ -117,7 +112,6 @@ export const usePlatformTabsNavigations = ({ formMethods, eventType, team, tabs 
     isChildrenManagedEventType,
     team,
     length,
-    requirePayment,
     multipleDuration,
     formMethods.getValues("id"),
     watchSchedulingType,
@@ -171,15 +165,6 @@ function getNavigation({ length, multipleDuration, t, tabs, url, onClick, curren
       href: `${url}?tabName=advanced`,
       icon: "sliders-vertical",
       info: `event_advanced_tab_description`,
-    });
-  tabs.includes("payments") &&
-    tabsNavigation.push({
-      name: "event_payments_tab_title",
-      onClick: () => onClick("payments"),
-      isActive: currentTab === "payments",
-      href: `${url}?tabName=payments`,
-      icon: "credit-card",
-      info: `event_payments_tab_description`,
     });
 
   return tabsNavigation;

@@ -366,16 +366,6 @@ export default async function main() {
     });
   }
 
-  // Payment apps
-  if (process.env.PAYMENT_FEE_FIXED && process.env.PAYMENT_FEE_PERCENTAGE) {
-    await createApp("stripe", "stripepayment", ["payment"], "stripe_payment", {
-      client_id: "",
-      client_secret: "",
-      payment_fee_fixed: Number(process.env.PAYMENT_FEE_FIXED),
-      payment_fee_percentage: Number(process.env.PAYMENT_FEE_PERCENTAGE),
-    });
-  }
-
   if (process.env.CLOSECOM_CLIENT_ID && process.env.CLOSECOM_CLIENT_SECRET) {
     await createApp("closecom", "closecom", ["crm"], "closecom_crm", {
       client_id: process.env.CLOSECOM_CLIENT_ID,

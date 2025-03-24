@@ -13,9 +13,7 @@ import type {
   FormValues,
   EventTypeApps,
 } from "@calcom/features/eventtypes/lib/types";
-import { getPaymentAppData } from "@calcom/lib/getPaymentAppData";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
-import { eventTypeMetaDataSchemaWithTypedApps } from "@calcom/prisma/zod-utils";
 import type { VerticalTabItemProps } from "@calcom/ui";
 
 type Props = {
@@ -56,12 +54,6 @@ export const useTabsNavigations = ({
         eventTypeApps?.items.find((app) => app.slug === appId)?.isInstalled && appData.enabled
     ).length;
   }
-  const paymentAppData = getPaymentAppData({
-    ...eventType,
-    metadata: eventTypeMetaDataSchemaWithTypedApps.parse(eventType.metadata),
-  });
-
-  const requirePayment = paymentAppData.price > 0;
 
   const activeWebhooksNumber = eventType.webhooks.filter((webhook) => webhook.active).length;
 
@@ -81,14 +73,12 @@ export const useTabsNavigations = ({
       availability,
     });
 
-    if (!requirePayment) {
-      navigation.splice(3, 0, {
-        name: "recurring",
-        href: `/event-types/${formMethods.getValues("id")}?tabName=recurring`,
-        icon: "repeat",
-        info: `recurring_event_tab_description`,
-      });
-    }
+    navigation.splice(3, 0, {
+      name: "recurring",
+      href: `/event-types/${formMethods.getValues("id")}?tabName=recurring`,
+      icon: "repeat",
+      info: `recurring_event_tab_description`,
+    });
     navigation.splice(1, 0, {
       name: "availability",
       href: `/event-types/${formMethods.getValues("id")}?tabName=availability`,
@@ -154,7 +144,6 @@ export const useTabsNavigations = ({
     isChildrenManagedEventType,
     team,
     length,
-    requirePayment,
     multipleDuration,
     formMethods.getValues("id"),
     watchSchedulingType,

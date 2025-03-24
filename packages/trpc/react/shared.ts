@@ -15,7 +15,6 @@ export const ENDPOINTS = [
   "features",
   "highPerf",
   "insights",
-  "payments",
   "public",
   "timezones",
   "saml",

@@ -449,7 +449,6 @@ export type userMetadataType = z.infer<typeof userMetadata>;
 export const teamMetadataSchema = z
   .object({
     requestedSlug: z.string().or(z.null()),
-    paymentId: z.string(),
     subscriptionId: z.string().nullable(),
     subscriptionItemId: z.string().nullable(),
     orgSeats: z.number().nullable(),
