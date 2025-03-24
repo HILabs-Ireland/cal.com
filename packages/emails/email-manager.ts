@@ -51,7 +51,6 @@ import FeedbackEmail from "./templates/feedback-email";
 import type { PasswordReset } from "./templates/forgot-password-email";
 import ForgotPasswordEmail from "./templates/forgot-password-email";
 import MonthlyDigestEmail from "./templates/monthly-digest-email";
-import NoShowFeeChargedEmail from "./templates/no-show-fee-charged-email";
 import OrganizationAdminNoSlotsEmail from "./templates/organization-admin-no-slots-email";
 import type { OrganizationCreation } from "./templates/organization-creation-email";
 import OrganizationCreationEmail from "./templates/organization-creation-email";

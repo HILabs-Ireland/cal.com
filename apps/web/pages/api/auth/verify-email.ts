@@ -3,7 +3,6 @@ import { z } from "zod";
 
 import dayjs from "@calcom/dayjs";
 import { WEBAPP_URL } from "@calcom/lib/constants";
-import { IS_STRIPE_ENABLED } from "@calcom/lib/constants";
 import { OrganizationRepository } from "@calcom/lib/server/repository/organization";
 import { prisma } from "@calcom/prisma";
 import { MembershipRole } from "@calcom/prisma/client";
@@ -125,12 +124,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         metadata: userMetadataParsed,
       },
     });
-
-    if (IS_STRIPE_ENABLED && userMetadataParsed.stripeCustomerId) {
-      await stripe.customers.update(userMetadataParsed.stripeCustomerId, {
-        email: updatedEmail,
-      });
-    }
 
     // The user is trying to update the email to an already existing unverified secondary email of his
     // so we swap the emails and its verified status
