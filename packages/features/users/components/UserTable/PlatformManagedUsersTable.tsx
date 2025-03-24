@@ -30,9 +30,6 @@ const initialState: UserTableState = {
   deleteMember: {
     showModal: false,
   },
-  impersonateMember: {
-    showModal: false,
-  },
   inviteMember: {
     showModal: false,
   },
@@ -279,8 +276,6 @@ function UserListTableContent({ oAuthClientId }: PlatformManagedUsersTableProps)
         return { ...state, changeMemberRole: action.payload };
       case "SET_DELETE_ID":
         return { ...state, deleteMember: action.payload };
-      case "SET_IMPERSONATE_ID":
-        return { ...state, impersonateMember: action.payload };
       case "INVITE_MEMBER":
         return { ...state, inviteMember: action.payload };
       case "EDIT_USER_SHEET":
@@ -290,7 +285,6 @@ function UserListTableContent({ oAuthClientId }: PlatformManagedUsersTableProps)
           ...state,
           changeMemberRole: { showModal: false },
           deleteMember: { showModal: false },
-          impersonateMember: { showModal: false },
           inviteMember: { showModal: false },
           editSheet: { showModal: false },
         };
