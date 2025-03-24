@@ -87,10 +87,6 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
         },
         { name: "OAuth Clients", href: "/settings/organizations/platform/oauth-clients" },
         {
-          name: "SSO",
-          href: "/settings/organizations/sso",
-        },
-        {
           name: "admin_api",
           href: "https://cal.com/docs/enterprise-features/api/api-reference/bookings#admin-access",
         },
@@ -145,7 +141,7 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
 // The following keys are assigned to admin only
 const adminRequiredKeys = ["admin"];
 const organizationRequiredKeys = ["organization"];
-const organizationAdminKeys = ["privacy", "OAuth Clients", "SSO"];
+const organizationAdminKeys = ["privacy", "OAuth Clients"];
 
 const useTabs = () => {
   const session = useSession();
@@ -411,7 +407,7 @@ const SettingsSidebarContainer = ({
         teamId: team.id,
         teamMenuOpen: String(team.id) === searchParams?.get("id"),
       }));
-      setOtherTeamMenuState(otherTeamStates);
+      //setOtherTeamMenuState(otherTeamStates);
       setTimeout(() => {
         // @TODO: test if this works for 2 dataset testids
         const tabMembers = Array.from(document.getElementsByTagName("a")).filter(
