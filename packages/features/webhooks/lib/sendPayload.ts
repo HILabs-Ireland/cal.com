@@ -1,4 +1,4 @@
-import type { Payment, Webhook } from "@prisma/client";
+import type { Webhook } from "@prisma/client";
 import { createHmac } from "crypto";
 import { compile } from "handlebars";
 
@@ -87,10 +87,8 @@ export type EventPayloadType = CalendarEvent &
     rescheduleStartTime?: string;
     rescheduleEndTime?: string;
     downloadLink?: string;
-    paymentId?: number;
     rescheduledBy?: string;
     cancelledBy?: string;
-    paymentData?: Payment;
   };
 
 export type WebhookPayloadType = EventPayloadType | OOOEntryPayloadType | BookingNoShowUpdatedPayload;

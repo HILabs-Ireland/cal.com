@@ -137,7 +137,6 @@ describe("getTeam", () => {
         slug: "test-slug",
         metadata: {
           anything: "here",
-          paymentId: "1",
         },
       },
     ]);
@@ -169,8 +168,6 @@ describe("getTeam", () => {
       },
     });
     expect(team).not.toBeNull();
-    // 'anything' is not in the teamMetadata schema, so it should be stripped out
-    expect(team?.metadata).toEqual({ paymentId: "1" });
   });
 
   it("should not return a team result if the queried result isn't a team", async () => {

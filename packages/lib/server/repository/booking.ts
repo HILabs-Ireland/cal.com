@@ -527,7 +527,6 @@ export class BookingRepository {
           },
         },
         destinationCalendar: true,
-        payment: true,
         references: true,
         workflowReminders: true,
       },

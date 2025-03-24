@@ -2,16 +2,12 @@ import type { Prisma } from "@prisma/client";
 import { useMemo } from "react";
 import type { z } from "zod";
 
-import { Price } from "@calcom/features/bookings/components/event-meta/Price";
-import { PriceIcon } from "@calcom/features/bookings/components/event-meta/PriceIcon";
 import { classNames, parseRecurringEvent } from "@calcom/lib";
-import { getPaymentAppData } from "@calcom/lib/getPaymentAppData";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { markdownToSafeHTML } from "@calcom/lib/markdownToSafeHTML";
 import type { baseEventTypeSelect } from "@calcom/prisma";
 import { SchedulingType } from "@calcom/prisma/enums";
 import type { EventTypeModel } from "@calcom/prisma/zod";
-import { eventTypeMetaDataSchemaWithTypedApps } from "@calcom/prisma/zod-utils";
 import { Badge } from "@calcom/ui";
 
 export type EventTypeDescriptionProps = {
@@ -31,19 +27,13 @@ export const EventTypeDescription = ({
   eventType,
   className,
   shortenDescription,
-  isPublic,
 }: EventTypeDescriptionProps) => {
-  const { t, i18n } = useLocale();
+  const { t } = useLocale();
 
   const recurringEvent = useMemo(
     () => parseRecurringEvent(eventType.recurringEvent),
     [eventType.recurringEvent]
   );
-
-  const paymentAppData = getPaymentAppData({
-    ...eventType,
-    metadata: eventTypeMetaDataSchemaWithTypedApps.parse(eventType.metadata),
-  });
 
   return (
     <>
@@ -90,21 +80,6 @@ export const EventTypeDescription = ({
                 {t("repeats_up_to", {
                   count: recurringEvent.count,
                 })}
-              </Badge>
-            </li>
-          )}
-          {paymentAppData.enabled && (
-            <li>
-              <Badge
-                variant="gray"
-                customStartIcon={
-                  <PriceIcon currency={paymentAppData.currency} className="h-3 w-3 stroke-[3px]" />
-                }>
-                <Price
-                  currency={paymentAppData.currency}
-                  price={paymentAppData.price}
-                  displayAlternateSymbol={false}
-                />
               </Badge>
             </li>
           )}

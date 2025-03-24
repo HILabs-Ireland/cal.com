@@ -431,9 +431,6 @@ export const EventAdvancedTab = ({
   );
   const seatsEnabled = formMethods.watch("seatsPerTimeSlotEnabled");
   const multiLocation = (formMethods.getValues("locations") || []).length > 1;
-  const noShowFeeEnabled =
-    formMethods.getValues("metadata")?.apps?.stripe?.enabled === true &&
-    formMethods.getValues("metadata")?.apps?.stripe?.paymentOption === "HOLD";
 
   const isRoundRobinEventType =
     eventType.schedulingType && eventType.schedulingType === SchedulingType.ROUND_ROBIN;
@@ -768,14 +765,8 @@ export const EventAdvancedTab = ({
               {...seatsLocked}
               description={t("offer_seats_description")}
               checked={value}
-              disabled={noShowFeeEnabled || multiLocation}
-              tooltip={
-                multiLocation
-                  ? t("multilocation_doesnt_support_seats")
-                  : noShowFeeEnabled
-                  ? t("no_show_fee_doesnt_support_seats")
-                  : undefined
-              }
+              disabled={multiLocation}
+              tooltip={multiLocation ? t("multilocation_doesnt_support_seats") : undefined}
               onCheckedChange={(e) => {
                 // Enabling seats will disable guests and requiring confirmation until fully supported
                 if (e) {
@@ -869,7 +860,6 @@ export const EventAdvancedTab = ({
                 />
               </div>
             </SettingsToggle>
-            {noShowFeeEnabled && <Alert severity="warning" title={t("seats_and_no_show_fee_error")} />}
           </>
         )}
       />
