@@ -92,7 +92,6 @@ export const SEO_IMG_DEFAULT = `${CAL_URL}/og-image.png`;
 // as well, otherwise the URL won't be valid.
 export const SEO_IMG_OGIMG = `${CAL_URL}/_next/image?w=1200&q=100&url=`;
 export const SEO_IMG_OGIMG_VIDEO = `${CAL_URL}/video-og-image.png`;
-export const IS_STRIPE_ENABLED = !!process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY;
 
 export const FULL_NAME_LENGTH_MAX_LIMIT = 50;
 export const MINUTES_TO_BOOK = process.env.NEXT_PUBLIC_MINUTES_TO_BOOK || "5";
@@ -132,7 +131,7 @@ export const AB_TEST_BUCKET_PROBABILITY = defaultOnNaN(
   10
 );
 
-export const IS_PREMIUM_USERNAME_ENABLED = IS_CALCOM || (process.env.NEXT_PUBLIC_IS_E2E && IS_STRIPE_ENABLED);
+export const IS_PREMIUM_USERNAME_ENABLED = IS_CALCOM || process.env.NEXT_PUBLIC_IS_E2E;
 
 // Max number of invites to join a team/org that can be sent at once
 export const MAX_NB_INVITES = 100;

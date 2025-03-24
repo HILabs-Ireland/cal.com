@@ -412,7 +412,6 @@ const schemaDefaultConferencingApp = z.object({
 export const userMetadata = z
   .object({
     proPaidForByTeamId: z.number().optional(),
-    stripeCustomerId: z.string().optional(),
     vitalSettings: vitalSettingsUpdateSchema.optional(),
     isPremium: z.boolean().optional(),
     sessionTimeout: z.number().optional(), // Minutes

@@ -7,7 +7,6 @@ import { ZMarkHostAsNoShowInputSchema } from "./markHostAsNoShow.schema";
 import { event } from "./procedures/event";
 import { session } from "./procedures/session";
 import { ZSamlTenantProductInputSchema } from "./samlTenantProduct.schema";
-import { ZStripeCheckoutSessionInputSchema } from "./stripeCheckoutSession.schema";
 import { ZSubmitRatingInputSchema } from "./submitRating.schema";
 
 const NAMESPACE = "publicViewer";
@@ -40,13 +39,6 @@ export const publicViewerRouter = router({
     const handler = await importHandler(
       namespaced("samlTenantProduct"),
       () => import("./samlTenantProduct.handler")
-    );
-    return handler(opts);
-  }),
-  stripeCheckoutSession: publicProcedure.input(ZStripeCheckoutSessionInputSchema).query(async (opts) => {
-    const handler = await importHandler(
-      namespaced("stripeCheckoutSession"),
-      () => import("./stripeCheckoutSession.handler")
     );
     return handler(opts);
   }),

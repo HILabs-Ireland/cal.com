@@ -5,7 +5,7 @@ import { MembershipRole } from "@calcom/prisma/enums";
 
 import { test } from "./lib/fixtures";
 import { moveUserToOrg } from "./lib/orgMigration";
-import { IS_STRIPE_ENABLED, submitAndWaitForResponse } from "./lib/testUtils";
+import { submitAndWaitForResponse } from "./lib/testUtils";
 
 test.describe.configure({ mode: "parallel" });
 
@@ -56,8 +56,6 @@ test.describe("Change username on settings", () => {
 
   test("User can update to PREMIUM username", async ({ page, users }, testInfo) => {
     // eslint-disable-next-line playwright/no-skipped-test
-    test.skip(!IS_STRIPE_ENABLED, "It should only run if Stripe is installed");
-    // eslint-disable-next-line playwright/no-skipped-test
     test.skip(IS_SELF_HOSTED, "It shouldn't run on self hosted");
 
     const user = await users.create();
@@ -80,8 +78,6 @@ test.describe("Change username on settings", () => {
     expect(currentUsernameText).not.toBe(newUsernameText);
 
     await page.waitForLoadState();
-
-    await expect(page).toHaveURL(/.*checkout.stripe.com/);
   });
 
   test("User can't take a username that has been migrated to a different username in an organization", async ({

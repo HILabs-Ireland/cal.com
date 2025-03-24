@@ -12,7 +12,6 @@ import hasKeyInMetadata from "@calcom/lib/hasKeyInMetadata";
 import { useDebounce } from "@calcom/lib/hooks/useDebounce";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import type { TRPCClientErrorLike } from "@calcom/trpc/client";
-import type { RouterOutputs } from "@calcom/trpc/react";
 import { trpc } from "@calcom/trpc/react";
 import type { AppRouter } from "@calcom/trpc/server/routers/_app";
 import { Button, Dialog, DialogClose, DialogContent, DialogFooter, Input, Label } from "@calcom/ui";
@@ -39,7 +38,6 @@ const obtainNewUsernameChangeCondition = ({
 }: {
   userIsPremium: boolean;
   isNewUsernamePremium: boolean;
-  stripeCustomer: RouterOutputs["viewer"]["stripeCustomer"] | undefined;
 }) => {
   if (!userIsPremium && isNewUsernamePremium) {
     return UsernameChangeStatusEnum.UPGRADE;
@@ -66,7 +64,6 @@ const PremiumTextfield = (props: ICustomUsernameProps) => {
   const [usernameIsAvailable, setUsernameIsAvailable] = useState(false);
   const [markAsError, setMarkAsError] = useState(false);
   const [openDialogSaveUsername, setOpenDialogSaveUsername] = useState(false);
-  const { data: stripeCustomer } = trpc.viewer.stripeCustomer.useQuery();
   const isCurrentUsernamePremium =
     user && user.metadata && hasKeyInMetadata(user, "isPremium") ? !!user.metadata.isPremium : false;
   const [isInputUsernamePremium, setIsInputUsernamePremium] = useState(false);
@@ -74,9 +71,9 @@ const PremiumTextfield = (props: ICustomUsernameProps) => {
   const debouncedUsername = useDebounce(inputUsernameValue, 600);
 
   useEffect(() => {
-    // Use the current username or if it's not set, use the one available from stripe
-    setInputUsernameValue(currentUsername || stripeCustomer?.username || "");
-  }, [setInputUsernameValue, currentUsername, stripeCustomer?.username]);
+    // Use the current username or if it's not set
+    setInputUsernameValue(currentUsername || "");
+  }, [setInputUsernameValue, currentUsername]);
 
   useEffect(() => {
     async function checkUsername(username: string | undefined) {
@@ -110,7 +107,6 @@ const PremiumTextfield = (props: ICustomUsernameProps) => {
   const usernameChangeCondition = obtainNewUsernameChangeCondition({
     userIsPremium: isCurrentUsernamePremium,
     isNewUsernamePremium: isInputUsernamePremium,
-    stripeCustomer,
   });
 
   const ActionButtons = () => {

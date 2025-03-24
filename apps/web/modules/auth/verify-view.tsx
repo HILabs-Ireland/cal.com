@@ -56,7 +56,6 @@ function useSendFirstVerificationLogin({
 }
 
 const querySchema = z.object({
-  stripeCustomerId: z.string().optional(),
   sessionId: z.string().optional(),
   t: z.string().optional(),
 });
@@ -72,15 +71,14 @@ export default function Verify(props: PageProps) {
   const pathname = usePathname();
   const router = useRouter();
   const routerQuery = useRouterQuery();
-  const { t, sessionId, stripeCustomerId } = querySchema.parse(routerQuery);
+  const { t, sessionId } = querySchema.parse(routerQuery);
   const [secondsLeft, setSecondsLeft] = useState(30);
   const { data } = trpc.viewer.public.stripeCheckoutSession.useQuery(
     {
-      stripeCustomerId,
       checkoutSessionId: sessionId,
     },
     {
-      enabled: !!stripeCustomerId || !!sessionId,
+      enabled: !!sessionId,
       staleTime: Infinity,
     }
   );
@@ -120,7 +118,7 @@ export default function Verify(props: PageProps) {
     throw new Error("Invalid session or customer id");
   }
 
-  if (!stripeCustomerId && !sessionId) {
+  if (!sessionId) {
     return <div>Invalid Link</div>;
   }
 

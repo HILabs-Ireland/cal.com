@@ -43,7 +43,6 @@ type AppsRouterHandlerCache = {
   integrations?: typeof import("./integrations.handler").integrationsHandler;
   appById?: typeof import("./appById.handler").appByIdHandler;
   appCredentialsByType?: typeof import("./appCredentialsByType.handler").appCredentialsByTypeHandler;
-  stripeCustomer?: typeof import("./stripeCustomer.handler").stripeCustomerHandler;
   updateProfile?: typeof import("./updateProfile.handler").updateProfileHandler;
   eventTypeOrder?: typeof import("./eventTypeOrder.handler").eventTypeOrderHandler;
   routingFormOrder?: typeof import("./routingFormOrder.handler").routingFormOrderHandler;
@@ -179,21 +178,6 @@ export const loggedInViewerRouter = router({
 
       return UNSTABLE_HANDLER_CACHE.appCredentialsByType({ ctx, input });
     }),
-
-  stripeCustomer: authedProcedure.query(async ({ ctx }) => {
-    if (!UNSTABLE_HANDLER_CACHE.stripeCustomer) {
-      UNSTABLE_HANDLER_CACHE.stripeCustomer = (
-        await import("./stripeCustomer.handler")
-      ).stripeCustomerHandler;
-    }
-
-    // Unreachable code but required for type safety
-    if (!UNSTABLE_HANDLER_CACHE.stripeCustomer) {
-      throw new Error("Failed to load handler");
-    }
-
-    return UNSTABLE_HANDLER_CACHE.stripeCustomer({ ctx });
-  }),
 
   updateProfile: authedProcedure.input(ZUpdateProfileInputSchema).mutation(async ({ ctx, input }) => {
     if (!UNSTABLE_HANDLER_CACHE.updateProfile) {

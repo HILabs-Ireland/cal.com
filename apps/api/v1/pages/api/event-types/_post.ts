@@ -207,15 +207,6 @@ import ensureOnlyMembersAsHosts from "./_utils/ensureOnlyMembersAsHosts";
  *                  slotInterval: null
  *                  successRedirectUrl: null
  *                  description: A test event type
- *                  metadata: {
- *                    apps: {
- *                      stripe: {
- *                        price: 0,
- *                        enabled: false,
- *                        currency: usd
- *                      }
- *                    }
- *                  }
  *              team-event-type:
  *                summary: An example of a team event type POST request
  *                value:

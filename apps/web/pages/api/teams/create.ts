@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import type Stripe from "stripe";
 import { z } from "zod";
 
 import { HttpError } from "@calcom/lib/http-error";

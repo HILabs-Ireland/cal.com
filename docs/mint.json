@@ -150,7 +150,6 @@
             "self-hosting/apps/install-apps/daily",
             "self-hosting/apps/install-apps/hubspot",
             "self-hosting/apps/install-apps/sendgrid",
-            "self-hosting/apps/install-apps/stripe",
             "self-hosting/apps/install-apps/twilio",
             "self-hosting/apps/install-apps/zoho"
           ]

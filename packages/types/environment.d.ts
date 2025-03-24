@@ -24,7 +24,6 @@ declare namespace NodeJS {
     readonly EMAIL_SERVER_PASSWORD: string | undefined;
     readonly CRON_API_KEY: string | undefined;
     readonly CRON_ENABLE_APP_SYNC: string | undefined;
-    readonly NEXT_PUBLIC_STRIPE_PUBLIC_KEY: string | undefined;
     readonly NEXT_PUBLIC_INTERCOM_APP_ID: string | undefined;
     readonly NEXT_PUBLIC_POSTHOG_KEY: string | undefined;
     readonly NEXT_PUBLIC_POSTHOG_HOST: string | undefined;

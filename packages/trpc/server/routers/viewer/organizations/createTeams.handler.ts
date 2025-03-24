@@ -253,20 +253,6 @@ async function moveTeam({
     // Org owner is already a member of the team
     return membership.userId !== org.ownerId;
   }
-  // Cancel existing stripe subscriptions once the team is migrated
-  const subscriptionId = getSubscriptionId(team.metadata);
-  if (subscriptionId) {
-    await tryToCancelSubscription(subscriptionId);
-  }
-}
-
-async function tryToCancelSubscription(subscriptionId: string) {
-  try {
-    log.debug("Canceling stripe subscription", safeStringify({ subscriptionId }));
-    return await stripe.subscriptions.cancel(subscriptionId);
-  } catch (error) {
-    log.error("Error while cancelling stripe subscription", error);
-  }
 }
 
 function getSubscriptionId(metadata: Prisma.JsonValue) {

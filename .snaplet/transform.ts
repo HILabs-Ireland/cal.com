@@ -31,8 +31,6 @@ function replaceSensitiveKeys(record: object) {
     ...replaceKeyIfExists(record, "signing_secret"),
     ...replaceKeyIfExists(record, "access_token"),
     ...replaceKeyIfExists(record, "refresh_token"),
-    ...replaceKeyIfExists(record, "stripe_user_id"),
-    ...replaceKeyIfExists(record, "stripe_publishable_key"),
     ...replaceKeyIfExists(record, "accessToken"),
     ...replaceKeyIfExists(record, "refreshToken"),
     ...replaceKeyIfExists(record, "bot_user_id"),

@@ -10,16 +10,15 @@ import type { PageProps } from "~/auth/verify-view";
 import VerifyPage from "~/auth/verify-view";
 
 const querySchema = z.object({
-  stripeCustomerId: z.string().optional(),
   sessionId: z.string().optional(),
   t: z.string().optional(),
 });
 
 export const generateMetadata = async ({ params, searchParams }: _PageProps) => {
   const p = { ...params, ...searchParams };
-  const { sessionId, stripeCustomerId } = querySchema.parse(p);
+  const { sessionId } = querySchema.parse(p);
 
-  if (!stripeCustomerId && !sessionId) {
+  if (!sessionId) {
     return await _generateMetadata(
       () => "Verify",
       () => ""

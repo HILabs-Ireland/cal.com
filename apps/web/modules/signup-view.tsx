@@ -204,24 +204,6 @@ export default function Signup({
   const loadingSubmitState = isSubmitSuccessful || isSubmitting;
   const displayBackButton = token ? false : displayEmailForm;
 
-  const handleErrorsAndStripe = async (resp: Response) => {
-    if (!resp.ok) {
-      const err = await resp.json();
-      if (err.checkoutSessionId) {
-        const stripe = await getStripe();
-        if (stripe) {
-          console.log("Redirecting to stripe checkout");
-          const { error } = await stripe.redirectToCheckout({
-            sessionId: err.checkoutSessionId,
-          });
-          console.warn(error.message);
-        }
-      } else {
-        throw new Error(err.message);
-      }
-    }
-  };
-
   const isPlatformUser = redirectUrl?.includes("platform") && redirectUrl?.includes("new");
 
   const signUp: SubmitHandler<FormValues> = async (_data) => {
@@ -238,7 +220,6 @@ export default function Signup({
       },
       method: "POST",
     })
-      .then(handleErrorsAndStripe)
       .then(async () => {
         if (process.env.NEXT_PUBLIC_GTM_ID)
           pushGTMEvent("create_account", { email: data.email, user: data.username, lang: data.language });
@@ -459,7 +440,6 @@ export default function Signup({
                         }
                         localStorage.setItem("username", username);
                         const sp = new URLSearchParams();
-                        // @NOTE: don't remove username query param as it's required right now for stripe payment page
                         sp.set("username", username);
                         sp.set("email", formMethods.getValues("email"));
                         router.push(
@@ -492,9 +472,7 @@ export default function Signup({
                         isSubmitting ||
                         usernameTaken
                       }>
-                      {premiumUsername && !usernameTaken
-                        ? `${t("create_account")} (${getPremiumPlanPriceValue()})`
-                        : t("create_account")}
+                      {premiumUsername && !usernameTaken ? `${t("create_account")}` : t("create_account")}
                     </Button>
                   )}
                 </Form>

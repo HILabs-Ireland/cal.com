@@ -2656,16 +2656,7 @@
                     "currency": "usd",
                     "slotInterval": null,
                     "successRedirectUrl": null,
-                    "description": "A test event type",
-                    "metadata": {
-                      "apps": {
-                        "stripe": {
-                          "price": 0,
-                          "enabled": false,
-                          "currency": "usd"
-                        }
-                      }
-                    }
+                    "description": "A test event type"
                   }
                 },
                 "team-event-type": {
