@@ -43,7 +43,6 @@ const moveSeatedBookingToNewTimeSlot = async (
     include: {
       user: true,
       references: true,
-      payment: true,
       attendees: true,
     },
   });

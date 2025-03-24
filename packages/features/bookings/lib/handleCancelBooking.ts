@@ -20,7 +20,6 @@ import getOrgIdFromMemberOrTeamId from "@calcom/lib/getOrgIdFromMemberOrTeamId";
 import { getTeamIdFromEventType } from "@calcom/lib/getTeamIdFromEventType";
 import { HttpError } from "@calcom/lib/http-error";
 import logger from "@calcom/lib/logger";
-import { processPaymentRefund } from "@calcom/lib/payment/processPaymentRefund";
 import { safeStringify } from "@calcom/lib/safeStringify";
 import { getTranslation } from "@calcom/lib/server/i18n";
 import { WorkflowRepository } from "@calcom/lib/server/repository/workflow";
@@ -71,7 +70,6 @@ async function getBookingToDelete(id: number | undefined, uid: string | undefine
           thirdPartyRecurringEventId: true,
         },
       },
-      payment: true,
       paid: true,
       eventType: {
         select: {
@@ -506,13 +504,6 @@ async function handler(req: CustomRequest) {
       },
     });
     updatedBookings.push(updatedBooking);
-
-    if (!!bookingToDelete.payment.length) {
-      await processPaymentRefund({
-        booking: bookingToDelete,
-        teamId,
-      });
-    }
   }
 
   /** TODO: Remove this without breaking functionality */

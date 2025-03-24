@@ -487,68 +487,6 @@ export async function handleConfirmation(args: {
     );
 
     await Promise.all(promises);
-
-    if (paid) {
-      let paymentExternalId: string | undefined;
-      const subscriberMeetingPaid = await getWebhooks({
-        userId,
-        eventTypeId: booking.eventTypeId,
-        triggerEvent: WebhookTriggerEvents.BOOKING_PAID,
-        teamId: eventType?.teamId,
-        orgId,
-        oAuthClientId: platformClientParams?.platformClientId,
-      });
-      const bookingWithPayment = await prisma.booking.findFirst({
-        where: {
-          id: bookingId,
-        },
-        select: {
-          payment: {
-            select: {
-              id: true,
-              success: true,
-              externalId: true,
-            },
-          },
-        },
-      });
-      const successPayment = bookingWithPayment?.payment?.find((item) => item.success);
-      if (successPayment) {
-        paymentExternalId = successPayment.externalId;
-      }
-
-      const paymentMetadata = {
-        identifier: "cal.com",
-        bookingId,
-        eventTypeId: eventType?.id,
-        bookerEmail: evt.attendees[0].email,
-        eventTitle: eventType?.title,
-        externalId: paymentExternalId,
-      };
-
-      payload.paymentId = bookingWithPayment?.payment?.[0].id;
-      payload.metadata = {
-        ...(paid ? paymentMetadata : {}),
-      };
-
-      const bookingPaidSubscribers = subscriberMeetingPaid.map((sub) =>
-        sendPayload(
-          sub.secret,
-          WebhookTriggerEvents.BOOKING_PAID,
-          new Date().toISOString(),
-          sub,
-          payload
-        ).catch((e) => {
-          log.error(
-            `Error executing webhook for event: ${WebhookTriggerEvents.BOOKING_PAID}, URL: ${sub.subscriberUrl}, bookingId: ${evt.bookingId}, bookingUid: ${evt.uid}`,
-            safeStringify(e)
-          );
-        })
-      );
-
-      // I don't need to await for this
-      Promise.all(bookingPaidSubscribers);
-    }
   } catch (error) {
     // Silently fail
     console.error(error);
