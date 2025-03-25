@@ -1,7 +1,6 @@
 {
   "identity_provider": "Đơn vị cung cấp danh tính",
-  "trial_days_left": "Bạn có $t(day, {\"count\": {{days}} }) còn lại trên bản thử nghiệm PRO",
-  "day_one": "{{count}} ngày",
+"day_one": "{{count}} ngày",
   "day_other": "{{count}} ngày",
   "second_one": "{{count}} giây",
   "second_other": "{{count}} giây",
@@ -1240,8 +1239,7 @@
   "current": "Hiện tại",
   "standard": "tiêu chuẩn",
   "confirm_username_change_dialog_title": "Xác nhận thay đổi tên người dùng",
-  "trial_expired": "Bản dùng thử đã hết hạn",
-  "remove_app": "Gỡ bỏ ứng dụng",
+"remove_app": "Gỡ bỏ ứng dụng",
   "yes_remove_app": "Có, hãy gỡ bỏ ứng dụng",
   "are_you_sure_you_want_to_remove_this_app": "Bạn có chắc muốn gỡ bỏ ứng dụng này?",
   "app_removed_successfully": "Ứng dụng được gỡ bỏ thành công",

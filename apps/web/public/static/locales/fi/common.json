@@ -1,7 +1,6 @@
 {
   "identity_provider": "Identiteetintarjoaja",
-  "trial_days_left": "Sinulla on $t(day, {\"count\": {{days}} }) jäljellä PRO-kokeiluversiossa",
-  "day_one": "{{count}} päivä",
+"day_one": "{{count}} päivä",
   "day_other": "{{count}} päivää",
   "second_one": "{{count}} sekunti",
   "second_other": "{{count}} sekuntia",
@@ -1240,8 +1239,7 @@
   "current": "Nykyinen",
   "standard": "tavallinen",
   "confirm_username_change_dialog_title": "Vahvista käyttäjätunnuksen muutos",
-  "trial_expired": "Kokeiluaikasi on päättynyt",
-  "remove_app": "Poista sovellus",
+"remove_app": "Poista sovellus",
   "yes_remove_app": "Kyllä, poista sovellus",
   "are_you_sure_you_want_to_remove_this_app": "Haluatko varmasti poistaa tämän sovelluksen?",
   "app_removed_successfully": "Sovellus poistettu onnistuneesti",

@@ -1,6 +1,6 @@
 {
 "identity_provider": "Identitātes nodrošinātājs",
-"trial_days_left": "Jūsu PRO izmēģinājuma ir atlikušas $t(day, {\"count\": {{days}} })",
+
 "day_one": "{{count}} diena",
 "day_other": "{{count}} dienas",
 "second_one": "{{count}} sekunde",

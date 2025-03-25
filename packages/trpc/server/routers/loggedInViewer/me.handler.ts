@@ -109,7 +109,6 @@ export const meHandler = async ({ ctx, input }: MeOptions) => {
     avatar: getUserAvatarUrl(user),
     avatarUrl: user.avatarUrl,
     createdDate: user.createdDate,
-    trialEndsAt: user.trialEndsAt,
     defaultScheduleId: user.defaultScheduleId,
     completedOnboarding: user.completedOnboarding,
     twoFactorEnabled: user.twoFactorEnabled,

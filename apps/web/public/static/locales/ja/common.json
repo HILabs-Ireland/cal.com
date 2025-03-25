@@ -1,7 +1,6 @@
 {
   "identity_provider": "アイデンティティプロバイダー",
-  "trial_days_left": "PRO トライアル版は残り $t(day, {\"count\": {{days}} }) です",
-  "day_one": "{{count}} 日",
+"day_one": "{{count}} 日",
   "day_other": "{{count}} 日",
   "second_one": "{{count}} 秒",
   "second_other": "{{count}} 秒",
@@ -1240,8 +1239,7 @@
   "current": "現在",
   "standard": "スタンダード",
   "confirm_username_change_dialog_title": "ユーザー名の変更を確認",
-  "trial_expired": "トライアル期間は終了しました",
-  "remove_app": "アプリを削除",
+"remove_app": "アプリを削除",
   "yes_remove_app": "はい。アプリを削除します",
   "are_you_sure_you_want_to_remove_this_app": "このアプリを削除してもよろしいですか？",
   "app_removed_successfully": "アプリは正常に削除されました",

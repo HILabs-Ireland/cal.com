@@ -1,6 +1,6 @@
 {
 "identity_provider": "Identidikazioaren hornitzailea",
-"trial_days_left": "$t(day, {\"count\": {{days}} }) geratzen zaizkizu zure PRO frogan",
+
 "day_one": "egun {{count}}",
 "day_other": "{{count}} egun",
 "second_one": "segundo {{count}}",
@@ -1240,7 +1240,7 @@
 "current": "Unekoa",
 "standard": "estandar",
 "confirm_username_change_dialog_title": "Baieztatu erabiltzaile-izenaren aldaketa",
-"trial_expired": "Zure proba epea amaitu da",
+
 "remove_app": "Kendu aplikazioa",
 "yes_remove_app": "Bai, kendu aplikazioa",
 "are_you_sure_you_want_to_remove_this_app": "Ziur zaude aplikazio hau kendu nahi duzula?",

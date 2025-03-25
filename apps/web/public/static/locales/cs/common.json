@@ -1,7 +1,6 @@
 {
   "identity_provider": "Poskytovatel identity",
-  "trial_days_left": "V PRO verzi na zkoušku vám zbývají $t(day, {\"count\": {{days}} })",
-  "day_one": "{{count}} den",
+"day_one": "{{count}} den",
   "day_other": "{{count}} dny/dní",
   "second_one": "{{count}} sekunda",
   "second_other": "{{count}} s",
@@ -1240,8 +1239,7 @@
   "current": "Aktuální",
   "standard": "standardní",
   "confirm_username_change_dialog_title": "Potvrdit změnu uživatelského jména",
-  "trial_expired": "Vaše zkušební verze vypršela",
-  "remove_app": "Odstranit aplikaci",
+"remove_app": "Odstranit aplikaci",
   "yes_remove_app": "Ano, odstranit aplikaci",
   "are_you_sure_you_want_to_remove_this_app": "Opravdu chcete odstranit tuto aplikaci?",
   "app_removed_successfully": "Aplikace byla odstraněna",

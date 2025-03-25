@@ -837,27 +837,6 @@ async function main() {
 
   await createUserAndEventType({
     user: {
-      email: "trial@example.com",
-      password: "trial",
-      username: "trial",
-      name: "Trial Example",
-    },
-    eventTypes: [
-      {
-        title: "30min",
-        slug: "30min",
-        length: 30,
-      },
-      {
-        title: "60min",
-        slug: "60min",
-        length: 60,
-      },
-    ],
-  });
-
-  await createUserAndEventType({
-    user: {
       email: "free@example.com",
       password: "free",
       username: "free",

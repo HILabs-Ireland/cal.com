@@ -1,7 +1,6 @@
 {
   "identity_provider": "Azonosítás szolgáltató",
-  "trial_days_left": "Még $t(day, {\"count\": {{days}} }) maradt a PRO próbaidőszakodból",
-  "day_one": "{{count}} nap",
+"day_one": "{{count}} nap",
   "day_other": "{{count}} nap",
   "second_one": "{{count}} másodperc",
   "second_other": "{{count}} másodperc",
@@ -1240,8 +1239,7 @@
   "current": "Jelenlegi",
   "standard": "alap",
   "confirm_username_change_dialog_title": "Erősítse meg a felhasználónév módosítását",
-  "trial_expired": "A próbaidőszak lejárt",
-  "remove_app": "Alkalmazás eltávolítása",
+"remove_app": "Alkalmazás eltávolítása",
   "yes_remove_app": "Igen, távolítsd el az alkalmazást",
   "are_you_sure_you_want_to_remove_this_app": "Biztosan eltávolítja ezt az alkalmazást?",
   "app_removed_successfully": "Az alkalmazás sikeresen eltávolítva",

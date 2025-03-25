@@ -1,5 +1,5 @@
 {
-"trial_days_left": "Tersisa $t(day, {\"count\": {{days}} }) di akun PRO kamu",
+
 "day_one": "{{count}} hari",
 "day_other": "{{count}} hari",
 "second_one": "{{count}} detik",

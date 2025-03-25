@@ -1,7 +1,6 @@
 {
   "identity_provider": "Furnizor de identitate",
-  "trial_days_left": "Aveți $t(zi, {\"count\": {{days}} }) rămase din perioada de probă PRO",
-  "day_one": "{{count}} zi",
+"day_one": "{{count}} zi",
   "day_other": "{{count}} (de) zile",
   "second_one": "{{count}} secundă",
   "second_other": "{{count}} (de) secunde",
@@ -1240,8 +1239,7 @@
   "current": "Actual",
   "standard": "standard",
   "confirm_username_change_dialog_title": "Confirmați modificarea numelui de utilizator",
-  "trial_expired": "Perioada dvs. de probă a expirat",
-  "remove_app": "Ștergeți aplicația",
+"remove_app": "Ștergeți aplicația",
   "yes_remove_app": "Da, ștergeți aplicația",
   "are_you_sure_you_want_to_remove_this_app": "Sigur doriți să ștergeți această aplicație?",
   "app_removed_successfully": "Aplicație ștearsă cu succes",

@@ -1,7 +1,6 @@
 {
   "identity_provider": "Davatelj identiteta",
-  "trial_days_left": "Preostalo vam je $t(day, {\"count\": {{days}} }) vašeg PRO probnog perioda",
-  "day_one": "{{count}} dan",
+"day_one": "{{count}} dan",
   "day_other": "{{count}} dana",
   "second_one": "{{count}} sekunda",
   "second_other": "{{count}} sek.",

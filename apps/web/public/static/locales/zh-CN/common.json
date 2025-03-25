@@ -1,7 +1,6 @@
 {
   "identity_provider": "身份提供程序",
-  "trial_days_left": "您的 PRO 试用还有 $t(day, {\"count\": {{days}} }) 到期",
-  "day_one": "{{count}} 天",
+"day_one": "{{count}} 天",
   "day_other": "{{count}} 天",
   "second_one": "{{count}} 秒",
   "second_other": "{{count}} 秒",
@@ -1240,8 +1239,7 @@
   "current": "当前",
   "standard": "标准",
   "confirm_username_change_dialog_title": "确认用户名更改",
-  "trial_expired": "您的试用已到期",
-  "remove_app": "移除应用",
+"remove_app": "移除应用",
   "yes_remove_app": "是，移除应用",
   "are_you_sure_you_want_to_remove_this_app": "确定要移除此应用吗?",
   "app_removed_successfully": "应用已成功删除",

@@ -1,7 +1,6 @@
 {
   "identity_provider": "Proveïdor d'identitat",
-  "trial_days_left": "Et queden $t(day, {\"count\": {{days}} }) de prova PRO",
-  "day_one": "{{count}} dia",
+"day_one": "{{count}} dia",
   "day_other": "{{count}} dies",
   "second_one": "{{count}} segon",
   "second_other": "{{count}} segons",
@@ -1240,8 +1239,7 @@
   "current": "Actual",
   "standard": "estàndard",
   "confirm_username_change_dialog_title": "Confirma el canvi de nom d'usuari",
-  "trial_expired": "El teu període de prova ha expirat",
-  "remove_app": "Eliminar aplicació",
+"remove_app": "Eliminar aplicació",
   "yes_remove_app": "Sí, eliminar aplicació",
   "are_you_sure_you_want_to_remove_this_app": "Estàs segur que vols eliminar aquesta aplicació?",
   "app_removed_successfully": "L'aplicació s'ha eliminat correctament",

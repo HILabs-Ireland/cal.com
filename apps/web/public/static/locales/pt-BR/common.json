@@ -1,7 +1,6 @@
 {
   "identity_provider": "Provedor de identidade",
-  "trial_days_left": "Você tem $t(day, {\"count\": {{days}} }) restantes no seu período de testes da versão PRO",
-  "day_one": "{{count}} dia",
+"day_one": "{{count}} dia",
   "day_other": "{{count}} dias",
   "second_one": "{{count}} segundo",
   "second_other": "{{count}} segundos",
@@ -1240,8 +1239,7 @@
   "current": "Atual",
   "standard": "padrão",
   "confirm_username_change_dialog_title": "Confirmar alteração de nome de usuário",
-  "trial_expired": "Seu teste expirou",
-  "remove_app": "Remover app",
+"remove_app": "Remover app",
   "yes_remove_app": "Sim, remover o app",
   "are_you_sure_you_want_to_remove_this_app": "Tem certeza de que deseja remover este app?",
   "app_removed_successfully": "Aplicativo removido com sucesso",

@@ -1,7 +1,6 @@
 {
   "identity_provider": "អ្នកផ្តល់អត្តសញ្ញាណ",
-  "trial_days_left": "អ្នកនៅសល់ $t(day, {\"count\": {{days}} }) ទៀតក្នុងការសាកល្បង PRO របស់អ្នក។",
-  "day_one": "{{count}} ថ្ងៃ",
+"day_one": "{{count}} ថ្ងៃ",
   "day_other": "{{count}} ថ្ងៃ",
   "second_one": "{{count}} នាទី",
   "second_other": "{{count}} នាទី",
@@ -1240,8 +1239,7 @@
   "current": "បច្ចុប្បន្ន",
   "standard": "ស្តង់ដារ",
   "confirm_username_change_dialog_title": "បញ្ជាក់ការផ្លាស់ប្តូរឈ្មោះប្រើប្រាស់",
-  "trial_expired": "ការសាកល្បងរបស់អ្នកបានផុតកំណត់",
-  "remove_app": "យកកម្មវិធីចេញ",
+"remove_app": "យកកម្មវិធីចេញ",
   "yes_remove_app": "បាទ/ចាស, យកកម្មវិធីចេញ",
   "are_you_sure_you_want_to_remove_this_app": "តើអ្នកប្រាកដថាអ្នកចង់យកកម្មវិធីនេះចេញមែនទេ?",
   "app_removed_successfully": "កម្មវិធីត្រូវបានយកចេញដោយជោគជ័យ",

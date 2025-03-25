@@ -1,7 +1,6 @@
 {
   "identity_provider": "Poskytovateľ identity",
-  "trial_days_left": "V PRO verzii na skúšku vám zostávajú $t(day, {\"count\": {{days}} })",
-  "day_one": "{{count}} deň",
+"day_one": "{{count}} deň",
   "day_other": "{{count}} dni",
   "second_one": "{{count}} sekunda",
   "second_other": "{{count}} sekundy",

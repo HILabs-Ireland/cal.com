@@ -252,7 +252,6 @@ type UserPayload = Prisma.UserGetPayload<{
     theme: true;
     appTheme: true;
     timeFormat: true;
-    trialEndsAt: true;
     twoFactorEnabled: true;
     twoFactorSecret: true;
     verified: true;
@@ -305,7 +304,6 @@ export const buildUser = <T extends Partial<UserPayload>>(
     theme: null,
     appTheme: null,
     timeFormat: null,
-    trialEndsAt: null,
     twoFactorEnabled: false,
     twoFactorSecret: null,
     verified: false,

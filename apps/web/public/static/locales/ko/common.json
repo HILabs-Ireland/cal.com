@@ -1,7 +1,6 @@
 {
   "identity_provider": "ID 제공자",
-  "trial_days_left": "PRO 평가판의 남은 기한 $t(day, {\"count\": {{days}} })",
-  "day_one": "{{count}}일",
+"day_one": "{{count}}일",
   "day_other": "{{count}}일",
   "second_one": "{{count}}초",
   "second_other": "{{count}}초",
@@ -1240,8 +1239,7 @@
   "current": "기존",
   "standard": "표준",
   "confirm_username_change_dialog_title": "사용자 이름 변경 확인",
-  "trial_expired": "평가 기간이 만료되었습니다",
-  "remove_app": "앱 제거",
+"remove_app": "앱 제거",
   "yes_remove_app": "예, 앱을 제거합니다",
   "are_you_sure_you_want_to_remove_this_app": "이 앱을 제거하시겠습니까?",
   "app_removed_successfully": "앱이 제거됨",

@@ -1,6 +1,6 @@
 {
 "identity_provider": "அடையாள வழங்குபவர்",
-"trial_days_left": "உங்கள் மேம்படுத்தப்பட்ட பயன்பாட்டு சோதனையில் $t(day, {\"count\": {{days}} }) மீதமுள்ளது",
+
 "day_one": "{{count}} நாள்",
 "day_other": "{{count}} நாட்கள்",
 "second_one": "{{count}} நொடி",

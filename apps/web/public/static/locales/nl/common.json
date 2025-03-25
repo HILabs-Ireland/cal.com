@@ -1,7 +1,6 @@
 {
   "identity_provider": "Identiteitsprovider",
-  "trial_days_left": "U heeft nog $t(day, {\"count\": {{days}} }) over van uw PRO-proefperiode",
-  "day_one": "{{count}} dag",
+"day_one": "{{count}} dag",
   "day_other": "{{count}} dagen",
   "second_one": "{{count}} seconde",
   "second_other": "{{count}} seconden",
@@ -1240,8 +1239,7 @@
   "current": "Huidig",
   "standard": "standaard",
   "confirm_username_change_dialog_title": "Bevestig wijziging gebruikersnaam",
-  "trial_expired": "Uw proefperiode is verlopen",
-  "remove_app": "App verwijderen",
+"remove_app": "App verwijderen",
   "yes_remove_app": "Ja, verwijder app",
   "are_you_sure_you_want_to_remove_this_app": "Weet u zeker dat u deze app wilt verwijderen?",
   "app_removed_successfully": "De app is verwijderd",

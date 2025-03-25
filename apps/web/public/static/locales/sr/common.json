@@ -1,7 +1,6 @@
 {
   "identity_provider": "Dobavljač identiteta",
-  "trial_days_left": "Preostalo vam je $t(day, {\"count\": {{days}} }) na vašem probnom PRO nalogu",
-  "day_one": "{{count}} dan",
+"day_one": "{{count}} dan",
   "day_other": "{{count}} dana",
   "second_one": "{{count}} sekunda",
   "second_other": "{{count}} sek.",
@@ -1240,8 +1239,7 @@
   "current": "Trenutno",
   "standard": "standardno",
   "confirm_username_change_dialog_title": "Potvrdite promenu korisničkog imena",
-  "trial_expired": "Vaš probni period je istekao",
-  "remove_app": "Ukloniti aplikaciju",
+"remove_app": "Ukloniti aplikaciju",
   "yes_remove_app": "Da, ukloni aplikaciju",
   "are_you_sure_you_want_to_remove_this_app": "Da li ste sigurni da želite da uklonite ovu aplikaciju?",
   "app_removed_successfully": "Aplikacija je uspešno uklonjena",

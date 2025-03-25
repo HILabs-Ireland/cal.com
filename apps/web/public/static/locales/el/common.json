@@ -1,7 +1,6 @@
 {
   "identity_provider": "Πάροχος ταυτότητας",
-  "trial_days_left": "Απομένουν $t(day, {\"count\": {{days}} }) στη δοκιμαστική περίοδο PRO",
-  "day_one": "{{count}} ημέρα",
+"day_one": "{{count}} ημέρα",
   "day_other": "{{count}} ημέρες",
   "second_one": "{{count}} δευτερόλεπτο",
   "second_other": "{{count}} δευτερόλεπτα",
@@ -1240,8 +1239,7 @@
   "current": "Τρέχον",
   "standard": "τυπικό",
   "confirm_username_change_dialog_title": "Επιβεβαίωση αλλαγής ονόματος χρήστη",
-  "trial_expired": "Η δοκιμαστική περίοδος έληξε",
-  "remove_app": "Αφαίρεση εφαρμογής",
+"remove_app": "Αφαίρεση εφαρμογής",
   "yes_remove_app": "Ναι, αφαίρεση εφαρμογής",
   "are_you_sure_you_want_to_remove_this_app": "Είστε βέβαιοι ότι θέλετε να αφαιρέσετε αυτή την εφαρμογή;",
   "app_removed_successfully": "Η εφαρμογή αφαιρέθηκε με επιτυχία",

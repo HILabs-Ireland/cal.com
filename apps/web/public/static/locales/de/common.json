@@ -1,6 +1,6 @@
 {
 "identity_provider": "Identitätsanbieter",
-"trial_days_left": "Sie haben noch $t(Tage, {\"count\": {{days}} }) im Testzeitraum der PRO-Version",
+
 "day_one": "{{count}} Tag",
 "day_other": "{{count}} Tage",
 "second_one": "{{count}} Sekunde",
@@ -1240,7 +1240,7 @@
 "current": "Aktuell",
 "standard": "Standard",
 "confirm_username_change_dialog_title": "Änderung des Benutzernamens bestätigen",
-"trial_expired": "Ihre Testversion ist abgelaufen",
+
 "remove_app": "App entfernen",
 "yes_remove_app": "Ja, App entfernen",
 "are_you_sure_you_want_to_remove_this_app": "Sind Sie sicher, dass Sie diese App entfernen möchten?",

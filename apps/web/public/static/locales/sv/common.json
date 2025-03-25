@@ -1,7 +1,6 @@
 {
   "identity_provider": "Identitetsleverantör",
-  "trial_days_left": "Du har $t(day, {\"count\": {{days}} }) kvar på din PRO-provperiod",
-  "day_one": "{{count}} dag",
+"day_one": "{{count}} dag",
   "day_other": "{{count}} dagar",
   "second_one": "{{count}} sekund",
   "second_other": "{{count}} sekunder",
@@ -1240,8 +1239,7 @@
   "current": "Nuvarande",
   "standard": "standard",
   "confirm_username_change_dialog_title": "Bekräfta ändring av användarnamn",
-  "trial_expired": "Din provperiod har gått ut",
-  "remove_app": "Ta bort app",
+"remove_app": "Ta bort app",
   "yes_remove_app": "Ja, ta bort appen",
   "are_you_sure_you_want_to_remove_this_app": "Vill du verkligen ta bort den här appen?",
   "app_removed_successfully": "Appen har tagits bort",
