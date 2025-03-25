@@ -120,33 +120,34 @@ jobs:
 
   deps:
     name: Install dependencies
+    needs: [changes]
     if: ${{ needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true' || needs.changes.outputs.has-api-changes == 'true' }}
     uses: ./.github/workflows/yarn-install.yml
 
   type-check:
     name: Type check
-    needs: [deps]
+    needs: [changes, deps]
     if: ${{ needs.changes.outputs.has-code-changes == 'true' }}
     uses: ./.github/workflows/check-types.yml
     secrets: inherit
 
   lint:
     name: Linters
-    needs: [deps]
+    needs: [changes, deps]
     if: ${{ needs.changes.outputs.has-code-changes == 'true' }}
     uses: ./.github/workflows/lint.yml
     secrets: inherit
 
   unit-test:
     name: Tests
-    needs: [deps]
+    needs: [changes, deps]
     if: ${{ needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true' }}
     uses: ./.github/workflows/unit-tests.yml
     secrets: inherit
     
   test-setup:
     name: Test Setup
-    needs: [deps]
+    needs: [changes, deps]
     if: ${{ needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true' }}
     runs-on: ubuntu-latest
     steps:
@@ -200,21 +201,21 @@ jobs:
 
   build:
     name: Production builds
-    needs: [deps, type-check, lint]
+    needs: [changes, deps, type-check, lint]
     if: ${{ needs.changes.outputs.has-code-changes == 'true' }}
     uses: ./.github/workflows/production-build-without-database.yml
     secrets: inherit
 
   integration-test:
     name: Tests
-    needs: [test-setup, build-api-v1]
+    needs: [changes, test-setup, build-api-v1]
     if: ${{ needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true' }}
     uses: ./.github/workflows/integration-tests.yml
     secrets: inherit
 
   e2e:
     name: Tests
-    needs: [test-setup, build-api-v1]
+    needs: [changes, test-setup, build-api-v1]
     if: ${{ needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true' }}
     uses: ./.github/workflows/e2e.yml
     secrets: inherit
@@ -235,14 +236,14 @@ jobs:
 
   e2e-embed:
     name: Tests
-    needs: [test-setup, build-api-v1]
+    needs: [changes, test-setup, build-api-v1]
     if: ${{ needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true' }}
     uses: ./.github/workflows/e2e-embed.yml
     secrets: inherit
 
   e2e-embed-react:
     name: Tests
-    needs: [test-setup, build-api-v1]
+    needs: [changes, test-setup, build-api-v1]
     if: ${{ needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true' }}
     uses: ./.github/workflows/e2e-embed-react.yml
     secrets: inherit
@@ -255,8 +256,8 @@ jobs:
 
   merge-reports:
     name: Merge reports
+    needs: [changes, e2e, e2e-embed, e2e-embed-react]
     if: ${{ !cancelled() && (needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true') }}
-    needs: [e2e, e2e-embed, e2e-embed-react]
     uses: ./.github/workflows/merge-reports.yml
     secrets: inherit
 
