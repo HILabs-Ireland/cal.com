@@ -421,7 +421,7 @@ const SettingsSidebarContainer = ({
         tabMembers?.scrollIntoView({ behavior: "smooth" });
       }, 100);
     }
-  }, [otherTeams, searchParams]);
+  }, [otherTeams, searchParams?.get("id")]);
 
   const isOrgAdminOrOwner =
     currentOrg && currentOrg?.user?.role && ["OWNER", "ADMIN"].includes(currentOrg?.user?.role);
