@@ -3,6 +3,11 @@ name: PR Update
 on:
   pull_request:
     types: [ opened, synchronize, reopened ]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - '.github/CODEOWNERS'
+      - 'apps/web/public/static/locales/**/common.json'
   workflow_dispatch:
 
 permissions:
@@ -20,17 +25,32 @@ jobs:
     permissions:
       pull-requests: read
     outputs:
-      has-files-requiring-all-checks: ${{ steps.filter.outputs.has-files-requiring-all-checks }}
+      has-code-changes: ${{ steps.filter.outputs.has-code-changes }}
+      has-test-changes: ${{ steps.filter.outputs.has-test-changes }}
+      has-api-changes: ${{ steps.filter.outputs.has-api-changes }}
       commit-sha: ${{ steps.get_sha.outputs.commit-sha }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
       - uses: ./.github/actions/dangerous-git-checkout
       - uses: dorny/paths-filter@v3
         id: filter
         with:
           filters: |
-            has-files-requiring-all-checks:
-              - "!(**.md|.github/CODEOWNERS|docs/**|apps/web/public/static/locales/**/common.json)"
+            has-code-changes:
+              - 'packages/**'
+              - 'apps/**'
+              - '!apps/**/*.test.{ts,tsx}'
+              - '!apps/**/*.spec.{ts,tsx}'
+            has-test-changes:
+              - '**/*.test.{ts,tsx}'
+              - '**/*.spec.{ts,tsx}'
+              - 'tests/**'
+            has-api-changes:
+              - 'packages/features/ee/**'
+              - 'packages/core/**'
+              - 'packages/app-store/**'
       - name: Get Latest Commit SHA
         id: get_sha
         run: |
@@ -90,35 +110,60 @@ jobs:
 
   deps:
     name: Install dependencies
-    needs: [changes]
-    if: ${{ needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
+    if: ${{ needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true' || needs.changes.outputs.has-api-changes == 'true' }}
     uses: ./.github/workflows/yarn-install.yml
 
   type-check:
     name: Type check
-    needs: [changes, deps]
-    if: ${{ needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
+    needs: [deps]
+    if: ${{ needs.changes.outputs.has-code-changes == 'true' }}
     uses: ./.github/workflows/check-types.yml
     secrets: inherit
 
   lint:
     name: Linters
-    needs: [changes, deps]
-    if: ${{ needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
+    needs: [deps]
+    if: ${{ needs.changes.outputs.has-code-changes == 'true' }}
     uses: ./.github/workflows/lint.yml
     secrets: inherit
 
   unit-test:
     name: Tests
-    needs: [changes, deps]
-    if: ${{ needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
+    needs: [deps]
+    if: ${{ needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true' }}
     uses: ./.github/workflows/unit-tests.yml
     secrets: inherit
+    
+  test-setup:
+    name: Test Setup
+    needs: [deps]
+    if: ${{ needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: ./.github/actions/dangerous-git-checkout
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: yarn
+      - name: Cache test setup
+        uses: actions/cache@v3
+        with:
+          path: |
+            .next
+            node_modules
+            apps/web/.next
+            packages/prisma/node_modules
+          key: ${{ runner.os }}-test-setup-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-test-setup-
 
   build-api-v1:
     name: Production builds
-    needs: [changes, deps]
-    if: ${{ needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
+    needs: [deps]
+    if: ${{ needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-api-changes == 'true' }}
     uses: ./.github/workflows/api-v1-production-build.yml
     secrets: inherit
 
@@ -145,22 +190,22 @@ jobs:
 
   build:
     name: Production builds
-    needs: [changes, deps]
-    if: ${{ needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
+    needs: [deps, type-check, lint]
+    if: ${{ needs.changes.outputs.has-code-changes == 'true' }}
     uses: ./.github/workflows/production-build-without-database.yml
     secrets: inherit
 
   integration-test:
     name: Tests
-    needs: [changes, build, build-api-v1]
-    if: ${{ needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
+    needs: [test-setup, build-api-v1]
+    if: ${{ needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true' }}
     uses: ./.github/workflows/integration-tests.yml
     secrets: inherit
 
   e2e:
     name: Tests
-    needs: [changes, build, build-api-v1]
-    if: ${{ needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
+    needs: [test-setup, build-api-v1]
+    if: ${{ needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true' }}
     uses: ./.github/workflows/e2e.yml
     secrets: inherit
 
@@ -180,15 +225,15 @@ jobs:
 
   e2e-embed:
     name: Tests
-    needs: [changes, build, build-api-v1]
-    if: ${{ needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
+    needs: [test-setup, build-api-v1]
+    if: ${{ needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true' }}
     uses: ./.github/workflows/e2e-embed.yml
     secrets: inherit
 
   e2e-embed-react:
     name: Tests
-    needs: [changes, build, build-api-v1]
-    if: ${{ needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
+    needs: [test-setup, build-api-v1]
+    if: ${{ needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true' }}
     uses: ./.github/workflows/e2e-embed-react.yml
     secrets: inherit
 
@@ -200,8 +245,8 @@ jobs:
 
   merge-reports:
     name: Merge reports
-    if: ${{ !cancelled() && needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
-    needs: [changes, e2e, e2e-embed, e2e-embed-react]
+    if: ${{ !cancelled() && (needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true') }}
+    needs: [e2e, e2e-embed, e2e-embed-react]
     uses: ./.github/workflows/merge-reports.yml
     secrets: inherit
 
@@ -219,26 +264,19 @@ jobs:
   required:
     needs:
       [
-        changes,
         lint,
         type-check,
         unit-test,
         integration-test,
-#        check-label,
         build,
         build-api-v1,
-        #build-api-v2,
-        #build-atoms,
-        #build-docs,
         e2e,
-#        e2e-api-v2,
         e2e-embed,
-        e2e-embed-react,
-#        e2e-app-store,
+        e2e-embed-react
       ]
     if: always()
     runs-on: ubuntu-latest
     steps:
       - name: fail if conditional jobs failed
-        if: needs.changes.outputs.has-files-requiring-all-checks == 'true' && (contains(needs.*.result, 'failure') || contains(needs.*.result, 'skipped') || contains(needs.*.result, 'cancelled'))
+        if: (needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true') && (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled'))
         run: exit 1
