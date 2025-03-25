@@ -159,6 +159,13 @@ jobs:
         with:
           node-version: 18
           cache: yarn
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build test dependencies
+        run: |
+          yarn workspace @calcom/web build
+          yarn workspace @calcom/embed-core build
+          yarn workspace @calcom/embed-react build
       - name: Cache test setup
         uses: actions/cache@v3
         with:
@@ -167,8 +174,12 @@ jobs:
             node_modules
             apps/web/.next
             packages/prisma/node_modules
-          key: ${{ runner.os }}-test-setup-${{ hashFiles('**/yarn.lock') }}
+            apps/web/public/embed
+            packages/embeds/embed-core/dist
+            packages/embeds/embed-react/dist
+          key: ${{ runner.os }}-test-setup-${{ hashFiles('**/yarn.lock', 'apps/web/.next/**', 'packages/embeds/**/dist/**') }}
           restore-keys: |
+            ${{ runner.os }}-test-setup-${{ hashFiles('**/yarn.lock') }}-
             ${{ runner.os }}-test-setup-
 
   build-api-v1:
@@ -250,16 +261,40 @@ jobs:
 
   analyze:
     name: Analyze Build
-    needs: [build]
+    needs: [changes, build]
+    if: ${{ needs.changes.outputs.has-code-changes == 'true' }}
     uses: ./.github/workflows/nextjs-bundle-analysis.yml
     secrets: inherit
 
   merge-reports:
     name: Merge reports
     needs: [changes, e2e, e2e-embed, e2e-embed-react]
-    if: ${{ !cancelled() && (needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true') }}
-    uses: ./.github/workflows/merge-reports.yml
-    secrets: inherit
+    if: ${{ always() && (needs.changes.outputs.has-code-changes == 'true' || needs.changes.outputs.has-test-changes == 'true') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/dangerous-git-checkout
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: yarn
+      - name: Install Playwright deps
+        run: yarn playwright install --with-deps chromium
+      - name: Download blob reports
+        uses: actions/download-artifact@v4
+        with:
+          pattern: playwright-report-*
+          path: all-blob-reports
+          merge-multiple: true
+      - name: Merge into HTML Report
+        run: yarn playwright merge-reports --reporter html ./all-blob-reports
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-html
+          path: playwright-report
+          retention-days: 14
 
 #  publish-report:
 #    name: Publish HTML report
