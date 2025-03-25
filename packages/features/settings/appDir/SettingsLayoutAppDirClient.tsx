@@ -45,7 +45,6 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
       icon: "key",
       children: [
         { name: "password", href: "/settings/security/password" },
-        { name: "impersonation", href: "/settings/security/impersonation" },
         { name: "2fa_auth", href: "/settings/security/two-factor-auth" },
       ],
     },
@@ -121,7 +120,6 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
         //
         { name: "features", href: "/settings/admin/flags" },
         { name: "license", href: "/auth/setup?step=1" },
-        { name: "impersonation", href: "/settings/admin/impersonation" },
         { name: "apps", href: "/settings/admin/apps/calendar" },
         { name: "users", href: "/settings/admin/users" },
         { name: "organizations", href: "/settings/admin/organizations" },
@@ -426,7 +424,7 @@ const SettingsSidebarContainer = ({
         tabMembers?.scrollIntoView({ behavior: "smooth" });
       }, 100);
     }
-  }, [otherTeams, searchParams]);
+  }, [otherTeams, searchParams?.get("id")]);
 
   const isOrgAdminOrOwner =
     currentOrg && currentOrg?.user?.role && ["OWNER", "ADMIN"].includes(currentOrg?.user?.role);
