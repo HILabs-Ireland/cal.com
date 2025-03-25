@@ -3,7 +3,6 @@ import { Suspense, useEffect, useState } from "react";
 
 import dayjs from "@calcom/dayjs";
 import LicenseRequired from "@calcom/features/ee/common/components/LicenseRequired";
-import { useHasTeamPlan } from "@calcom/lib/hooks/useHasPaidPlan";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import type { RecordingItemSchema } from "@calcom/prisma/zod-utils";
 import type { RouterOutputs } from "@calcom/trpc/react";
@@ -149,8 +148,6 @@ export const ViewRecordingsDialog = (props: IViewRecordingsDialog) => {
   const { t, i18n } = useLocale();
   const { isOpenDialog, setIsOpenDialog, booking, timeFormat } = props;
 
-  const { hasTeamPlan, isPending: isTeamPlanStatusLoading } = useHasTeamPlan();
-
   const roomName =
     booking?.references?.find((reference: PartialReference) => reference.type === "daily_video")?.meetingId ??
     undefined;
@@ -170,13 +167,9 @@ export const ViewRecordingsDialog = (props: IViewRecordingsDialog) => {
         <DialogHeader title={t("recordings_title")} subtitle={subtitle} />
         {roomName ? (
           <LicenseRequired>
-            {isTeamPlanStatusLoading ? (
-              <RecordingListSkeleton />
-            ) : (
-              <Suspense fallback={<RecordingListSkeleton />}>
-                <ViewRecordingsList hasTeamPlan={!!hasTeamPlan} roomName={roomName} />
-              </Suspense>
-            )}
+            <Suspense fallback={<RecordingListSkeleton />}>
+              <ViewRecordingsList roomName={roomName} />
+            </Suspense>
           </LicenseRequired>
         ) : (
           <p className="font-semibold">{t("no_recordings_found")}</p>
