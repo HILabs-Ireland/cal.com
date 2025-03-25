@@ -241,7 +241,6 @@ function buildNewBookingData(params: CreateBookingParams) {
       ...(typeof originalRescheduledBooking.metadata === "object" && originalRescheduledBooking.metadata),
       ...reqBody.metadata,
     };
-    newBookingData.paid = originalRescheduledBooking.paid;
     newBookingData.fromReschedule = originalRescheduledBooking.uid;
     if (originalRescheduledBooking.uid) {
       newBookingData.cancellationReason = input.rescheduleReason;

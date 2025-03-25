@@ -221,10 +221,6 @@ class GetBookingsDataEntry {
   @ApiProperty({ enum: Status, type: String })
   status!: Status;
 
-  @IsBoolean()
-  @ApiProperty({ type: Boolean })
-  paid!: boolean;
-
   @ValidateNested()
   @Type(() => Reference)
   @IsArray()

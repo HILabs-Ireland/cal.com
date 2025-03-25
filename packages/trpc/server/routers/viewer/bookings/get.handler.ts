@@ -248,7 +248,6 @@ export async function getBookings({
       },
     },
     status: true,
-    paid: true,
     user: {
       select: {
         id: true,

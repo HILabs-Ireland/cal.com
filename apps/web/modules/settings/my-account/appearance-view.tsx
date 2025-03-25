@@ -12,7 +12,6 @@ import { APP_NAME } from "@calcom/lib/constants";
 import { DEFAULT_LIGHT_BRAND_COLOR, DEFAULT_DARK_BRAND_COLOR } from "@calcom/lib/constants";
 import { checkWCAGContrastColor } from "@calcom/lib/getBrandColours";
 import useGetBrandingColours from "@calcom/lib/getBrandColours";
-import { useHasPaidPlan } from "@calcom/lib/hooks/useHasPaidPlan";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import useTheme from "@calcom/lib/hooks/useTheme";
 import { validateBookerLayouts } from "@calcom/lib/validateBookerLayouts";
@@ -80,13 +79,7 @@ const useBrandColors = (
   });
 };
 
-const AppearanceView = ({
-  user,
-  hasPaidPlan,
-}: {
-  user: RouterOutputs["viewer"]["me"];
-  hasPaidPlan: boolean;
-}) => {
+const AppearanceView = ({ user }: { user: RouterOutputs["viewer"]["me"] }) => {
   const { t } = useLocale();
   const utils = trpc.useUtils();
   const session = useSession();
@@ -418,9 +411,9 @@ const AppearanceView = ({
           <SettingsToggle
             toggleSwitchAtTheEnd={true}
             title={t("disable_cal_branding", { appName: APP_NAME })}
-            disabled={!hasPaidPlan || mutation?.isPending}
+            disabled={mutation?.isPending}
             description={t("removes_cal_branding", { appName: APP_NAME })}
-            checked={hasPaidPlan ? hideBrandingValue : false}
+            checked={hideBrandingValue}
             onCheckedChange={(checked) => {
               setHideBrandingValue(checked);
               mutation.mutate({ hideBranding: checked });
@@ -435,11 +428,10 @@ const AppearanceView = ({
 
 const AppearancePage = () => {
   const { data: user, isPending } = trpc.viewer.me.useQuery();
-  const { isPending: isTeamPlanStatusLoading, hasPaidPlan } = useHasPaidPlan();
 
   if (isPending || isTeamPlanStatusLoading || !user) return <SkeletonLoader />;
 
-  return <AppearanceView user={user} hasPaidPlan={hasPaidPlan} />;
+  return <AppearanceView user={user} />;
 };
 
 export default AppearancePage;

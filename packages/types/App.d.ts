@@ -30,13 +30,6 @@ type DynamicLinkBasedEventLocation = {
 
 export type EventLocationTypeFromAppMeta = StaticLinkBasedEventLocation | DynamicLinkBasedEventLocation;
 
-type PaidAppData = {
-  priceInUsd: number;
-  priceId: string;
-  trial?: number;
-  mode?: "subscription" | "one_time";
-};
-
 type AppData = {
   /**
    * TODO: We must assert that if `location` is set in App config.json, then it must have atleast Messaging or Conferencing as a category.
@@ -135,8 +128,6 @@ export interface App {
   price?: number;
   licenseRequired?: boolean;
   appData?: AppData;
-  /** Represents paid app data, such as price, trials, etc */
-  paid?: PaidAppData;
 
   /**
    * @deprecated

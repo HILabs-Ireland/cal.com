@@ -242,7 +242,6 @@ const buildDryRunBooking = ({
     customInputs: null,
     responses: null,
     location: null,
-    paid: false,
     destinationCalendar: null,
     cancellationReason: null,
     rejectionReason: null,

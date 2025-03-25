@@ -71,11 +71,6 @@ async function getCheckoutSession(req: NextApiRequest) {
   return checkoutSession;
 }
 
-function validateCheckoutSession(checkoutSession: Stripe.Response<Stripe.Checkout.Session>) {
-  if (checkoutSession.payment_status !== "paid")
-    throw new HttpError({ statusCode: 402, message: "Payment required" });
-}
-
 function getCheckoutSessionSubscription(checkoutSession: Stripe.Response<Stripe.Checkout.Session>) {
   if (!checkoutSession.subscription) {
     throw new HttpError({

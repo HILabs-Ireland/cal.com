@@ -6,7 +6,7 @@ import { z } from "zod";
 
 import dayjs from "@calcom/dayjs";
 import { WEBAPP_URL, WEBSITE_URL } from "@calcom/lib/constants";
-import { useHasTeamPlan, useHasPaidPlan } from "@calcom/lib/hooks/useHasPaidPlan";
+import { useHasTeamPlan } from "@calcom/lib/hooks/useHasPaidPlan";
 import { localStorage } from "@calcom/lib/webstorage";
 import { trpc } from "@calcom/trpc/react";
 
@@ -63,7 +63,6 @@ export const useIntercom = () => {
         identity_provider: data?.identityProvider,
         timezone: data?.timeZone,
         locale: data?.locale,
-        has_paid_plan: hasPaidPlan,
         has_team_plan: hasTeamPlan,
         metadata: data?.metadata,
         completed_onboarding: data.completedOnboarding,
@@ -106,7 +105,6 @@ export const useIntercom = () => {
         identity_provider: data?.identityProvider,
         timezone: data?.timeZone,
         locale: data?.locale,
-        has_paid_plan: hasPaidPlan,
         has_team_plan: hasTeamPlan,
         metadata: data?.metadata,
         completed_onboarding: data?.completedOnboarding,

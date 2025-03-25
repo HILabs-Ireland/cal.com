@@ -70,7 +70,6 @@ async function getBookingToDelete(id: number | undefined, uid: string | undefine
           thirdPartyRecurringEventId: true,
         },
       },
-      paid: true,
       eventType: {
         select: {
           slug: true,

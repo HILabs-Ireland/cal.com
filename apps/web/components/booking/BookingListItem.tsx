@@ -192,8 +192,7 @@ function BookingListItem(booking: BookingItemProps) {
       icon: "ban",
       disabled: mutation.isPending,
     },
-    // For bookings with payment, only confirm if the booking is paid for
-    ...(isPending || booking.paid
+    ...(isPending
       ? [
           {
             id: "confirm",

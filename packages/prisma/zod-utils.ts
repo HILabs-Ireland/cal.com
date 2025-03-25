@@ -411,7 +411,6 @@ const schemaDefaultConferencingApp = z.object({
 
 export const userMetadata = z
   .object({
-    proPaidForByTeamId: z.number().optional(),
     vitalSettings: vitalSettingsUpdateSchema.optional(),
     sessionTimeout: z.number().optional(), // Minutes
     defaultConferencingApp: schemaDefaultConferencingApp.optional(),

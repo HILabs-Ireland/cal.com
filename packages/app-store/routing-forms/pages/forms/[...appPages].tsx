@@ -11,7 +11,6 @@ import { TeamsFilter } from "@calcom/features/filters/components/TeamsFilter";
 import { getTeamsFiltersFromQuery } from "@calcom/features/filters/lib/getTeamsFiltersFromQuery";
 import Shell, { ShellMain } from "@calcom/features/shell/Shell";
 import useApp from "@calcom/lib/hooks/useApp";
-import { useHasPaidPlan } from "@calcom/lib/hooks/useHasPaidPlan";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { useRouterQuery } from "@calcom/lib/hooks/useRouterQuery";
 import { trpc } from "@calcom/trpc/react";
@@ -59,7 +58,6 @@ export default function RoutingForms({
   appUrl: string;
 }) {
   const { t } = useLocale();
-  const { hasPaidPlan } = useHasPaidPlan();
   const routerQuery = useRouterQuery();
   const hookForm = useFormContext<RoutingFormWithResponseCount>();
   const utils = trpc.useUtils();
@@ -148,7 +146,7 @@ export default function RoutingForms({
     <LicenseRequired>
       <ShellMain
         heading={t("routing_forms")}
-        CTA={hasPaidPlan && forms?.length ? <NewFormButton /> : null}
+        CTA={forms?.length ? <NewFormButton /> : null}
         subtitle={t("routing_forms_description")}>
         <FormActionsProvider appUrl={appUrl}>
           <div className="-mx-4 md:-mx-8">

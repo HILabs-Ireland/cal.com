@@ -12182,7 +12182,6 @@
             ],
             "enum": [
               "BOOKING_CREATED",
-              "BOOKING_PAID",
               "BOOKING_RESCHEDULED",
               "BOOKING_REQUESTED",
               "BOOKING_CANCELLED",
@@ -12248,7 +12247,6 @@
             ],
             "enum": [
               "BOOKING_CREATED",
-              "BOOKING_PAID",
               "BOOKING_RESCHEDULED",
               "BOOKING_REQUESTED",
               "BOOKING_CANCELLED",

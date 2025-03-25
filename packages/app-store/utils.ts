@@ -142,16 +142,10 @@ export function getAppFromLocationValue(type: string): AppMeta | undefined {
 export function doesAppSupportTeamInstall({
   appCategories,
   concurrentMeetings = undefined,
-  isPaid,
 }: {
   appCategories: string[];
   concurrentMeetings: boolean | undefined;
-  isPaid: boolean;
 }) {
-  // Paid apps can't be installed on team level - That isn't supported
-  if (isPaid) {
-    return false;
-  }
   return !appCategories.some(
     (category) =>
       category === "calendar" ||

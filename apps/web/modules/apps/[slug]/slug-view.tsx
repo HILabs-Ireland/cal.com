@@ -66,7 +66,6 @@ function SingleAppPage(props: PageProps) {
       isTemplate={data.isTemplate}
       dependencies={data.dependencies}
       concurrentMeetings={data.concurrentMeetings}
-      paid={data.paid}
       //   tos="https://zoom.us/terms"
       //   privacy="https://zoom.us/privacy"
       body={

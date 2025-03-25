@@ -68,7 +68,6 @@ export async function handleConfirmation(args: {
     smsReminderNumber: string | null;
     userId: number | null;
   };
-  paid?: boolean;
   emailsEnabled?: boolean;
   platformClientParams?: PlatformClientParams;
 }) {
@@ -79,7 +78,6 @@ export async function handleConfirmation(args: {
     prisma,
     bookingId,
     booking,
-    paid,
     emailsEnabled = true,
     platformClientParams,
   } = args;
@@ -199,7 +197,6 @@ export async function handleConfirmation(args: {
           references: {
             create: scheduleResult.referencesToCreate,
           },
-          paid,
           metadata: {
             ...(typeof recurringBooking.metadata === "object" ? recurringBooking.metadata : {}),
             videoCallUrl: meetingUrl,

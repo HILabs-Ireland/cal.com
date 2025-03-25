@@ -160,7 +160,7 @@ export const BookEventForm = ({
         <div className="modalsticky mt-auto flex justify-end space-x-2 rtl:space-x-reverse">
           {isInstantMeeting ? (
             <Button type="submit" color="primary" loading={loadingStates.creatingInstantBooking}>
-              {isPaidEvent ? t("pay_and_book") : t("confirm")}
+              {t("confirm")}
             </Button>
           ) : (
             <>
@@ -183,9 +183,7 @@ export const BookEventForm = ({
                 {rescheduleUid && bookingData
                   ? t("reschedule")
                   : renderConfirmNotVerifyEmailButtonCond
-                  ? isPaidEvent
-                    ? t("pay_and_book")
-                    : t("confirm")
+                  ? t("confirm")
                   : t("verify_email_email_button")}
               </Button>
             </>

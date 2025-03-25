@@ -64,12 +64,6 @@ async function _createManyDifferentUsersWithDifferentEventTypesAndBookings({
           },
         },
         {
-          title: "paid",
-          slug: "paid",
-          length: 60,
-          price: 100,
-        },
-        {
           title: "In person meeting",
           slug: "in-person",
           length: 60,
@@ -269,13 +263,6 @@ async function createAUserWithManyBookings() {
         metadata: {
           multipleDuration: [30, 75, 90],
         },
-        _numBookings: 100,
-      },
-      {
-        title: "paid",
-        slug: "paid",
-        length: 60,
-        price: 100,
         _numBookings: 100,
       },
       {
