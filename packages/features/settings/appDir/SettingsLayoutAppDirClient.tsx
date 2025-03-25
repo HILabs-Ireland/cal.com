@@ -11,7 +11,7 @@ import { useOrgBranding } from "@calcom/features/ee/organizations/context/provid
 import type { OrganizationBranding } from "@calcom/features/ee/organizations/context/provider";
 import Shell from "@calcom/features/shell/Shell";
 import { classNames } from "@calcom/lib";
-import { HOSTED_CAL_FEATURES, IS_CALCOM, WEBAPP_URL } from "@calcom/lib/constants";
+import { IS_CALCOM, WEBAPP_URL } from "@calcom/lib/constants";
 import { getPlaceholderAvatar } from "@calcom/lib/defaultAvatarImage";
 import { getUserAvatarUrl } from "@calcom/lib/getAvatarUrl";
 import { useCompatSearchParams } from "@calcom/lib/hooks/useCompatSearchParams";
@@ -127,9 +127,6 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
   ];
 
   tabs.find((tab) => {
-    if (tab.name === "security" && !HOSTED_CAL_FEATURES) {
-      tab.children?.push({ name: "sso_configuration", href: "/settings/security/sso" });
-    }
     if (tab.name === "admin" && IS_CALCOM) {
       tab.children?.push({ name: "create_your_org", href: "/settings/organizations/new" });
     }
