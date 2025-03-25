@@ -2022,8 +2022,8 @@
 "three_months": "3 hilabete",
 "one_year": "Urte 1",
 "team_invite_received": "{{teamName}}-era batzeko gonbidapena jaso duzu",
-"currency_string": "{{amount, currency}}",
-"charge_attendee": "Kobratu parte-hartzaileari {{amount, currency}}",
+
+
   "email_invite_team": "{{email}} gonbidatua izan da",
 "email_invite_team_bulk": "{{userCount}} erabiltzaile gonbidatu dira",
 "image_size_limit_exceed": "Igotako irudiak ezin du 5mb-ko muga gainditu",
@@ -2053,7 +2053,7 @@
 "create_instant_meeting_webhook_description": "Sortu zure lehen webhookea 'Berehalako Bilera Sortua' abiarazlearekin gertaera mota honetarako",
 "install_app_on": "Instalatu aplikazioa hemen",
 "create_for": "Sortu honetarako",
-"currency": "Moneta",
+
 "organization_banner_description": "Sortu ingurune bat non zure taldeek aplikazio partekatuak, lan-fluxuak eta gertaera motak sortu ditzaketen round-robin eta taldeko programazioarekin.",
 "organization_banner_title": "Kudeatu hainbat taldedun erakundeak",
 "set_up_your_organization": "Konfiguratu zure erakundea",

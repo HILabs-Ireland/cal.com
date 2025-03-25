@@ -2022,8 +2022,8 @@
 "three_months": "3 Monate",
 "one_year": "1 Jahr",
 "team_invite_received": "Sie wurden eingeladen, ein Mitglied von {{teamName}} zu werden",
-"currency_string": "{{amount, currency}}",
-"charge_attendee": "Teilnehmer {{amount, currency}} berechnen",
+
+
   "email_invite_team": "{{email}} wurde eingeladen",
 "email_invite_team_bulk": "{{userCount}} Benutzer wurden eingeladen",
 "image_size_limit_exceed": "Das hochgeladene Bild sollte die maximale Größe von 5 MB nicht überschreiten",
@@ -2053,7 +2053,7 @@
 "create_instant_meeting_webhook_description": "Erstellen Sie Ihren ersten Webhook mit „Sofortiges Meeting erstellt“ als Auslöser für diesen Ereignistyp",
 "install_app_on": "App installieren auf",
 "create_for": "Erstellen für",
-"currency": "Währung",
+
 "organization_banner_description": "Schaffen Sie eine Umgebung, in der Ihre Teams gemeinsame Apps, Workflows und Termintypen mit Round-Robin- und kollektiver Planung erstellen können.",
 "organization_banner_title": "Verwalten Sie Organizations mit mehreren Teams",
 "set_up_your_organization": "Ihre Organization einrichten",

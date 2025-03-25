@@ -24,7 +24,6 @@ export const CreateANewLicenseKeyForm = () => {
 
 interface FormValues {
   entityCount: number;
-  entityPrice: number;
   overages: number;
   email: string;
 }
@@ -37,7 +36,6 @@ const CreateANewLicenseKeyFormChild = ({ session }: { session: Ensure<SessionCon
     defaultValues: {
       entityCount: 500,
       overages: 99, // $0.99
-      entityPrice: 50, // $0.5
       email: undefined,
     },
   });
@@ -105,23 +103,6 @@ const CreateANewLicenseKeyFormChild = ({ session }: { session: Ensure<SessionCon
                 placeholder="100"
                 defaultValue={value}
                 onChange={(event) => onChange(+event.target.value)}
-              />
-            )}
-          />
-          <Controller
-            name="entityPrice"
-            control={newLicenseKeyFormMethods.control}
-            rules={{
-              required: "Must enter fixed price per user",
-            }}
-            render={({ field: { value, onChange } }) => (
-              <TextField
-                className="mt-2"
-                name="entityPrice"
-                label="Fixed price per entity"
-                addOnSuffix="$"
-                defaultValue={value / 100}
-                onChange={(event) => onChange(+event.target.value * 100)}
               />
             )}
           />

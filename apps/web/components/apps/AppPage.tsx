@@ -31,7 +31,6 @@ export type AppPageProps = {
   categories: string[];
   author: string;
   pro?: boolean;
-  price?: number;
   feeType?: AppType["feeType"];
   docs?: string;
   website?: string;
@@ -56,7 +55,6 @@ export const AppPage = ({
   body,
   categories,
   author,
-  price = 0,
   isGlobal = false,
   feeType,
   docs,
@@ -120,12 +118,6 @@ export const AppPage = ({
       router.push(getAppOnboardingUrl({ slug, step: AppOnboardingSteps.ACCOUNTS_STEP }));
     }
   };
-
-  const priceInDollar = Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    useGrouping: false,
-  }).format(price);
 
   const [existingCredentials, setExistingCredentials] = useState<number[]>([]);
   const [showDisconnectIntegration, setShowDisconnectIntegration] = useState(false);

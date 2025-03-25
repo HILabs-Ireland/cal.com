@@ -990,7 +990,6 @@ async function handler(
   const eventTypeInfo: EventTypeInfo = {
     eventTitle: eventType.title,
     eventDescription: eventType.description,
-    currency: eventType.currency,
     length: dayjs(reqBody.end).diff(dayjs(reqBody.start), "minutes"),
   };
 

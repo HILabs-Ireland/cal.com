@@ -2022,8 +2022,8 @@
 "three_months": "3 months",
 "one_year": "1 year",
 "team_invite_received": "You have been invited to join {{teamName}}",
-"currency_string": "{{amount, currency}}",
-"charge_attendee": "Charge attendee {{amount, currency}}",
+
+
   "email_invite_team": "{{email}} has been invited",
 "email_invite_team_bulk": "{{userCount}} users have been invited",
 "image_size_limit_exceed": "Uploaded image shouldn't exceed 5mb size limit",
@@ -2053,7 +2053,7 @@
 "create_instant_meeting_webhook_description": "Create your first webhook with 'Instant Meeting Created' as trigger for this event type",
 "install_app_on": "Install app on",
 "create_for": "Create for",
-"currency": "Currency",
+
 "organization_banner_description": "Create an environment where your teams can create shared apps, workflows and event types with round-robin and collective scheduling.",
 "organization_banner_title": "Manage organizations with multiple teams",
 "set_up_your_organization": "Set up your organization",

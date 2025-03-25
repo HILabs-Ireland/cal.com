@@ -14,14 +14,7 @@ import { EventOccurences } from "./Occurences";
 type EventDetailsPropsBase = {
   event: Pick<
     BookerEvent,
-    | "currency"
-    | "price"
-    | "locations"
-    | "requiresConfirmation"
-    | "recurringEvent"
-    | "length"
-    | "metadata"
-    | "isDynamic"
+    "locations" | "requiresConfirmation" | "recurringEvent" | "length" | "metadata" | "isDynamic"
   >;
   className?: string;
 };
@@ -60,7 +53,6 @@ const defaultEventDetailsBlocks = [
   EventDetailBlocks.DURATION,
   EventDetailBlocks.OCCURENCES,
   EventDetailBlocks.LOCATION,
-  EventDetailBlocks.PRICE,
 ];
 
 /**

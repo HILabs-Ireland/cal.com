@@ -9,7 +9,6 @@ export const ZCreateInputSchema = z.object({
   orgOwnerEmail: emailSchema,
   language: z.string().optional(),
   seats: z.number().optional(),
-  pricePerSeat: z.number().optional(),
   isPlatform: z.boolean().default(false),
 });
 

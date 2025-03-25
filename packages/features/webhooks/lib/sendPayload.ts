@@ -13,8 +13,6 @@ export type EventTypeInfo = {
   eventTitle?: string | null;
   eventDescription?: string | null;
   requiresConfirmation?: boolean | null;
-  price?: number | null;
-  currency?: string | null;
   length?: number | null;
 };
 
@@ -150,8 +148,6 @@ function getZapierPayload(data: WithUTCOffsetType<EventPayloadType & { createdAt
       title: data.eventTitle,
       description: data.eventDescription,
       requiresConfirmation: data.requiresConfirmation,
-      price: data.price,
-      currency: data.currency,
       length: data.length,
     },
     attendees: attendees,

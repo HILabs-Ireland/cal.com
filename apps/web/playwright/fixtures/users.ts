@@ -810,8 +810,6 @@ const createUserFixture = (user: UserWithIncludes, page: Page) => {
         },
       });
     },
-    setupEventWithPrice: async (eventType: Pick<Prisma.EventType, "id">, slug: string) =>
-      setupEventWithPrice(eventType, slug, store.page),
     bookAndPayEvent: async (eventType: Pick<Prisma.EventType, "slug">) =>
       bookAndPayEvent(user, eventType, store.page),
     // ths is for developemnt only aimed to inject debugging messages in the metadata field of the user
@@ -1006,11 +1004,4 @@ export async function apiLogin(
   return page.context().request.post("/api/auth/callback/credentials", {
     data,
   });
-}
-
-export async function setupEventWithPrice(eventType: Pick<Prisma.EventType, "id">, slug: string, page: Page) {
-  await page.goto(`/event-types/${eventType?.id}?tabName=apps`);
-  await page.locator(`[data-testid='${slug}-app-switch']`).first().click();
-  await page.getByPlaceholder("Price").fill("100");
-  await page.getByTestId("update-eventtype").click();
 }

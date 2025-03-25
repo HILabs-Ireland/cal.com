@@ -9,7 +9,7 @@ export type EventTypeApps = NonNullable<
 export type EventTypeAppsList = keyof EventTypeApps;
 
 export const getEventTypeAppData = <T extends EventTypeAppsList>(
-  eventType: Pick<BookerEvent, "price" | "currency" | "metadata">,
+  eventType: Pick<BookerEvent, "metadata">,
   appId: T,
   forcedGet?: boolean
 ): EventTypeApps[T] => {
@@ -20,9 +20,6 @@ export const getEventTypeAppData = <T extends EventTypeAppsList>(
     return allowDataGet
       ? {
           ...appMetadata,
-          // We should favor eventType's price and currency over appMetadata's price and currency
-          price: eventType.price || appMetadata.price || null,
-          currency: eventType.currency || appMetadata.currency || null,
           // trackingId is legacy way to store value for TRACKING_ID. So, we need to support both.
           TRACKING_ID: appMetadata.TRACKING_ID || appMetadata.trackingId || null,
         }

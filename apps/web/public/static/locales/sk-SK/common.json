@@ -2022,8 +2022,8 @@
 "three_months": "3 mesiace",
 "one_year": "1 rok",
 "team_invite_received": "Boli ste pozvaní pripojiť sa k {{teamName}}",
-"currency_string": "{{amount, currency}}",
-"charge_attendee": "Účtovať účastníkovi {{amount, currency}}",
+
+
   "email_invite_team": "{{email}} bol pozvaný",
 "email_invite_team_bulk": "{{userCount}} používateľov bolo pozvaných",
 "image_size_limit_exceed": "Nahraný obrázok by nemal presiahnuť limit veľkosti 5 MB",
@@ -2053,7 +2053,7 @@
 "create_instant_meeting_webhook_description": "Vytvorte svoj prvý webhook s 'Okamžité stretnutie vytvorené' ako spúšťač pre tento typ udalosti",
 "install_app_on": "Inštalovať aplikáciu na",
 "create_for": "Vytvoriť pre",
-"currency": "Mena",
+
 "organization_banner_description": "Vytvorte prostredie, kde môžu vaše tímy vytvárať zdieľané aplikácie, pracovné postupy a typy udalostí s round-robin a kolektívnym plánovaním.",
 "organization_banner_title": "Spravujte organizácie s viacerými tímami",
 "set_up_your_organization": "Nastavte svoju organizáciu",

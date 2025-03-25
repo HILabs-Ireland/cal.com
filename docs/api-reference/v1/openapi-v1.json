@@ -2542,17 +2542,9 @@
                     "description": "The type of scheduling if a Team event. Required for team events only",
                     "enum": ["ROUND_ROBIN", "COLLECTIVE", "MANAGED"]
                   },
-                  "price": {
-                    "type": "integer",
-                    "description": "Price of the event type booking"
-                  },
                   "parentId": {
                     "type": "integer",
                     "description": "EventTypeId of the parent managed event"
-                  },
-                  "currency": {
-                    "type": "string",
-                    "description": "Currency acronym. Eg- usd, eur, gbp, etc."
                   },
                   "slotInterval": {
                     "type": "integer",
@@ -2652,8 +2644,6 @@
                     "minimumBookingNotice": 120,
                     "beforeEventBuffer": 0,
                     "afterEventBuffer": 0,
-                    "price": 0,
-                    "currency": "usd",
                     "slotInterval": null,
                     "successRedirectUrl": null,
                     "description": "A test event type"
@@ -2687,8 +2677,6 @@
                     "beforeEventBuffer": 0,
                     "afterEventBuffer": 0,
                     "schedulingType": "COLLECTIVE",
-                    "price": 0,
-                    "currency": "usd",
                     "slotInterval": null,
                     "successRedirectUrl": null,
                     "description": null,
@@ -2946,14 +2934,6 @@
                     "type": "string",
                     "description": "The type of scheduling if a Team event. Required for team events only",
                     "enum": ["ROUND_ROBIN", "COLLECTIVE"]
-                  },
-                  "price": {
-                    "type": "integer",
-                    "description": "Price of the event type booking"
-                  },
-                  "currency": {
-                    "type": "string",
-                    "description": "Currency acronym. Eg- usd, eur, gbp, etc."
                   },
                   "slotInterval": {
                     "type": "integer",

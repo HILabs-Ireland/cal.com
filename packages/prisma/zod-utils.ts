@@ -449,7 +449,6 @@ export const teamMetadataSchema = z
     subscriptionId: z.string().nullable(),
     subscriptionItemId: z.string().nullable(),
     orgSeats: z.number().nullable(),
-    orgPricePerSeat: z.number().nullable(),
     migratedToOrgFrom: z
       .object({
         teamSlug: z.string().or(z.null()).optional(),
@@ -689,10 +688,8 @@ export const allManagedEventTypeProps: { [k in keyof Omit<Prisma.EventTypeSelect
   instantMeetingParameters: true,
   instantMeetingExpiryTimeOffsetInSeconds: true,
   aiPhoneCallConfig: true,
-  currency: true,
   periodDays: true,
   position: true,
-  price: true,
   slug: true,
   length: true,
   offsetStart: true,

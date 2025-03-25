@@ -10,8 +10,6 @@ export const getWebhookPayloadForBooking = ({
       title: string;
       description: string | null;
       requiresConfirmation: boolean;
-      price: number;
-      currency: string;
       length: number;
       id: number;
     } | null;
@@ -25,8 +23,6 @@ export const getWebhookPayloadForBooking = ({
     eventTitle: booking.eventType?.title,
     eventDescription: booking.eventType?.description,
     requiresConfirmation: booking.eventType?.requiresConfirmation || null,
-    price: booking.eventType?.price,
-    currency: booking.eventType?.currency,
     length: booking.eventType?.length,
   };
 

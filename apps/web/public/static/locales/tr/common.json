@@ -2022,8 +2022,8 @@
 "three_months": "3 ay",
 "one_year": "1 yıl",
 "team_invite_received": "{{teamName}} ekibine katılmaya davet edildiniz",
-"currency_string": "{{amount, currency}}",
-"charge_attendee": "Katılımcıdan {{amount, currency}} tahsil edin",
+
+
   "email_invite_team": "{{email}} davet edildi",
 "email_invite_team_bulk": "{{userCount}} kullanıcı davet edildi",
 "image_size_limit_exceed": "Yüklenen resim boyutu 5 MB boyut limitini aşmamalıdır",
@@ -2053,7 +2053,7 @@
 "create_instant_meeting_webhook_description": "Bu etkinlik türü için tetikleyici olarak 'Anında Toplantı Oluşturuldu' ile ilk webhook'unuzu oluşturun",
 "install_app_on": "Uygulamayı şuraya yükle:",
 "create_for": "Oluşturun",
-"currency": "Para birimi",
+
 "organization_banner_description": "Ekiplerinizin round-robin ve toplu planlama ile paylaşılan uygulamalar, iş akışları ve etkinlik türleri oluşturabileceği bir ortam yaratın.",
 "organization_banner_title": "Kuruluşları birden çok ekiple yönetin",
 "set_up_your_organization": "Kuruluşunuzu düzenleyin",

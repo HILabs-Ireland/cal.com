@@ -271,7 +271,6 @@ async function fillAndSubmitFirstStepAsAdmin(
 
   // Fill in seat infomation
   await page.locator("input[name=seats]").fill("30");
-  await page.locator("input[name=pricePerSeat]").fill("30");
 
   await Promise.all([
     page.waitForResponse("**/api/trpc/organizations/create**"),

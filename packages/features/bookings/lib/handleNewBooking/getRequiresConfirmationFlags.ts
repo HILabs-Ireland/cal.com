@@ -72,8 +72,7 @@ function isUserReschedulingOwner(
 
 function determineIsConfirmedByDefault(
   requiresConfirmation: boolean,
-  price: number,
   userReschedulingIsOwner: boolean
 ): boolean {
-  return (!requiresConfirmation && price === 0) || userReschedulingIsOwner;
+  return !requiresConfirmation || userReschedulingIsOwner;
 }

@@ -2022,8 +2022,8 @@
 "three_months": "3 kuud",
 "one_year": "1 aasta",
 "team_invite_received": "Teid on kutsutud liituma meeskonnaga {{teamName}}",
-"currency_string": "{{summa, valuuta}}",
-"charge_attendee": "Tasuta osaleja {{summa, valuuta}}",
+
+
   "email_invite_team": "{{email}} on kutsutud",
 "email_invite_team_bulk": "{{userCount}} kasutajat on kutsutud",
 "image_size_limit_exceed": "Üleslaaditud pildi suurus ei tohiks ületada 5 MB",
@@ -2053,7 +2053,7 @@
 "create_instant_meeting_webhook_description": "Looge oma esimene veebihaak, kasutades selle sündmusetüübi päästikuks 'Instant Meeting Created'",
 "install_app_on": "Installi rakendus sisse",
 "create_for": "Loo jaoks",
-"currency": "valuuta",
+
 "organization_banner_description": "Looge keskkond, kus teie meeskonnad saavad luua jagatud rakendusi, töövoogusid ja sündmuste tüüpe koos round-robin ja kollektiivse planeerimisega.",
 "organization_banner_title": "Halda organisatsioone mitme meeskonnaga",
 "set_up_your_organization": "Seadistage oma organisatsioon",

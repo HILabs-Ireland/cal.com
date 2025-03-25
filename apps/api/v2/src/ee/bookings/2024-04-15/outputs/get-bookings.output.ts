@@ -66,17 +66,9 @@ class EventType {
   @ApiProperty({ type: String, nullable: true })
   eventName?: string | null;
 
-  @IsInt()
-  @ApiProperty()
-  price!: number;
-
   @IsOptional()
   @ApiPropertyOptional()
   recurringEvent?: any;
-
-  @IsString()
-  @ApiProperty()
-  currency!: string;
 
   @IsObject()
   @ApiProperty()

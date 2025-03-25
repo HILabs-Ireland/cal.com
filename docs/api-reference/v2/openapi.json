@@ -9012,12 +9012,6 @@
           "metadata": {
             "type": "object"
           },
-          "price": {
-            "type": "number"
-          },
-          "currency": {
-            "type": "string"
-          },
           "lockTimeZoneToggleOnBookingPage": {
             "type": "boolean"
           },
@@ -9125,8 +9119,6 @@
           "disableGuests",
           "recurrence",
           "metadata",
-          "price",
-          "currency",
           "lockTimeZoneToggleOnBookingPage",
           "forwardParamsSuccessRedirect",
           "successRedirectUrl",
@@ -11054,12 +11046,6 @@
           "metadata": {
             "type": "object"
           },
-          "price": {
-            "type": "number"
-          },
-          "currency": {
-            "type": "string"
-          },
           "lockTimeZoneToggleOnBookingPage": {
             "type": "boolean"
           },
@@ -11187,8 +11173,6 @@
           "disableGuests",
           "recurrence",
           "metadata",
-          "price",
-          "currency",
           "lockTimeZoneToggleOnBookingPage",
           "forwardParamsSuccessRedirect",
           "successRedirectUrl",

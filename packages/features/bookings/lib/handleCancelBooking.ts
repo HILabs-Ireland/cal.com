@@ -98,8 +98,6 @@ async function getBookingToDelete(id: number | undefined, uid: string | undefine
           eventName: true,
           description: true,
           requiresConfirmation: true,
-          price: true,
-          currency: true,
           length: true,
           seatsPerTimeSlot: true,
           bookingFields: true,
@@ -217,8 +215,6 @@ async function handler(req: CustomRequest) {
     eventTitle: bookingToDelete?.eventType?.title || null,
     eventDescription: bookingToDelete?.eventType?.description || null,
     requiresConfirmation: bookingToDelete?.eventType?.requiresConfirmation || null,
-    price: bookingToDelete?.eventType?.price || null,
-    currency: bookingToDelete?.eventType?.currency || null,
     length: bookingToDelete?.eventType?.length || null,
   };
 

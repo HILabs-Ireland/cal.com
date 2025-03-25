@@ -48,7 +48,7 @@ export const BookEventForm = ({
   eventQuery: {
     isError: boolean;
     isPending: boolean;
-    data?: Pick<BookerEvent, "price" | "currency" | "metadata" | "bookingFields" | "locations"> | null;
+    data?: Pick<BookerEvent, "metadata" | "bookingFields" | "locations"> | null;
   };
   rescheduleUid: string | null;
 }) => {

@@ -113,7 +113,6 @@ export default defineConfig({
         slug: generateSlug(row.slug),
         timeZone: c.timezone(row.timeZone),
         eventName: c.words(row.eventName, { max: 3 }),
-        currency: c.sentence(row.currency),
       }),
       EventTypeCustomInput({ row }) {
         return {

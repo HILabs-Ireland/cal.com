@@ -75,10 +75,8 @@ export const confirmHandler = async ({ ctx, input }: ConfirmOptions) => {
           title: true,
           slug: true,
           requiresConfirmation: true,
-          currency: true,
           length: true,
           description: true,
-          price: true,
           bookingFields: true,
           disableGuests: true,
           metadata: true,
@@ -330,8 +328,6 @@ export const confirmHandler = async ({ ctx, input }: ConfirmOptions) => {
       eventTitle: booking.eventType?.title,
       eventDescription: booking.eventType?.description,
       requiresConfirmation: booking.eventType?.requiresConfirmation || null,
-      price: booking.eventType?.price,
-      currency: booking.eventType?.currency,
       length: booking.eventType?.length,
     };
     const webhookData: EventPayloadType = {

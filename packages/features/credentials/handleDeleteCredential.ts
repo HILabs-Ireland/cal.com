@@ -81,8 +81,6 @@ const handleDeleteCredential = async ({
           credential: true,
         },
       },
-      price: true,
-      currency: true,
       metadata: true,
     },
   });

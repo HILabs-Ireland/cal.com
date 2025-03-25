@@ -43,11 +43,9 @@ export async function handleConfirmation(args: {
     startTime: Date;
     id: number;
     eventType: {
-      currency: string;
       description: string | null;
       id: number;
       length: number;
-      price: number;
       requiresConfirmation: boolean;
       metadata?: Prisma.JsonValue;
       title: string;
@@ -451,8 +449,6 @@ export async function handleConfirmation(args: {
       eventTitle: eventType?.title,
       eventDescription: eventType?.description,
       requiresConfirmation: eventType?.requiresConfirmation || null,
-      price: eventType?.price,
-      currency: eventType?.currency,
       length: eventType?.length,
     };
 
