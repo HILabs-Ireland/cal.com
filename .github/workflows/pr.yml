@@ -20,9 +20,9 @@ jobs:
     permissions:
       pull-requests: read
     outputs:
-      has-code-changes: ${{ steps.filter.outputs.has-code-changes }}
-      has-test-changes: ${{ steps.filter.outputs.has-test-changes }}
-      has-api-changes: ${{ steps.filter.outputs.has-api-changes }}
+      has-code-changes: ${{ steps.filter.outputs.changes }}
+      has-test-changes: ${{ steps.filter.outputs.tests }}
+      has-api-changes: ${{ steps.filter.outputs.api }}
       commit-sha: ${{ steps.get_sha.outputs.commit-sha }}
     steps:
       - uses: actions/checkout@v4
@@ -32,8 +32,9 @@ jobs:
       - uses: dorny/paths-filter@v3
         id: filter
         with:
+          base: ${{ github.base_ref }}
           filters: |
-            has-code-changes:
+            changes:
               - 'packages/**/*'
               - 'apps/**/*'
               - '**/*.ts'
@@ -47,13 +48,13 @@ jobs:
               - '!**/*.spec.{ts,tsx,js,jsx}'
               - '!**/__tests__/**'
               - '!**/test/**'
-            has-test-changes:
+            tests:
               - '**/*.test.{ts,tsx,js,jsx}'
               - '**/*.spec.{ts,tsx,js,jsx}'
               - '**/__tests__/**'
               - '**/test/**'
               - 'tests/**'
-            has-api-changes:
+            api:
               - 'packages/features/ee/**/*'
               - 'packages/core/**/*'
               - 'packages/app-store/**/*'
