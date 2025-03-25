@@ -1,10 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { checkPremiumUsername } from "@calcom/ee/common/lib/checkPremiumUsername";
 import { hashPassword } from "@calcom/features/auth/lib/hashPassword";
 import { sendEmailVerification } from "@calcom/features/auth/lib/verifyEmail";
 import { createOrUpdateMemberships } from "@calcom/features/auth/signup/utils/createOrUpdateMemberships";
-import { IS_PREMIUM_USERNAME_ENABLED } from "@calcom/lib/constants";
 import logger from "@calcom/lib/logger";
 import { isUsernameReservedDueToMigration } from "@calcom/lib/server/username";
 import slugify from "@calcom/lib/slugify";
@@ -137,15 +135,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!isUsernameAvailable) {
       res.status(409).json({ message: "A user exists with that username" });
       return;
-    }
-    if (IS_PREMIUM_USERNAME_ENABLED) {
-      const checkUsername = await checkPremiumUsername(correctedUsername);
-      if (checkUsername.premium) {
-        res.status(422).json({
-          message: "Sign up from https://cal.com/signup to claim your premium username",
-        });
-        return;
-      }
     }
     await prisma.user.upsert({
       where: { email: userEmail },

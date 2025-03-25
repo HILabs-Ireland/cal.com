@@ -1,5 +1,4 @@
 import { sendVerificationCode } from "@calcom/features/ee/workflows/lib/reminders/verifyPhoneNumber";
-import hasKeyInMetadata from "@calcom/lib/hasKeyInMetadata";
 import type { TrpcSessionUser } from "@calcom/trpc/server/trpc";
 
 import { TRPCError } from "@trpc/server";
@@ -15,18 +14,11 @@ type SendVerificationCodeOptions = {
 };
 
 export const sendVerificationCodeHandler = async ({ ctx, input }: SendVerificationCodeOptions) => {
-  const { user } = ctx;
-
-  const isCurrentUsernamePremium =
-    user && hasKeyInMetadata(user, "isPremium") ? !!user.metadata.isPremium : false;
-
   let isTeamsPlan = false;
-  if (!isCurrentUsernamePremium) {
-    const { hasTeamPlan } = await hasTeamPlanHandler({ ctx });
-    isTeamsPlan = !!hasTeamPlan;
-  }
+  const { hasTeamPlan } = await hasTeamPlanHandler({ ctx });
+  isTeamsPlan = !!hasTeamPlan;
 
-  if (!isCurrentUsernamePremium && !isTeamsPlan) {
+  if (!isTeamsPlan) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
 

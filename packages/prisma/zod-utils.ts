@@ -413,7 +413,6 @@ export const userMetadata = z
   .object({
     proPaidForByTeamId: z.number().optional(),
     vitalSettings: vitalSettingsUpdateSchema.optional(),
-    isPremium: z.boolean().optional(),
     sessionTimeout: z.number().optional(), // Minutes
     defaultConferencingApp: schemaDefaultConferencingApp.optional(),
     defaultBookerLayouts: bookerLayouts.optional(),

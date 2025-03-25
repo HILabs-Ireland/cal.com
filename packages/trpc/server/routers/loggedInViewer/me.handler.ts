@@ -130,7 +130,6 @@ export const meHandler = async ({ ctx, input }: MeOptions) => {
     receiveMonthlyDigestEmail: user.receiveMonthlyDigestEmail,
     ...profileData,
     secondaryEmails,
-    isPremium: userMetadataPrased?.isPremium,
     ...(passwordAdded ? { passwordAdded } : {}),
   };
 };

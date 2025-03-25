@@ -88,8 +88,6 @@ const FEATURES = [
 
 function UsernameField({
   username,
-  setPremium,
-  premium,
   setUsernameTaken,
   orgSlug,
   usernameTaken,
@@ -97,8 +95,6 @@ function UsernameField({
   ...props
 }: React.ComponentProps<typeof TextField> & {
   username: string;
-  setPremium: (value: boolean) => void;
-  premium: boolean;
   usernameTaken: boolean;
   orgSlug?: string;
   setUsernameTaken: (value: boolean) => void;
@@ -114,12 +110,10 @@ function UsernameField({
       // If the username can't be changed, there is no point in doing the username availability check
       if (disabled) return;
       if (!debouncedUsername) {
-        setPremium(false);
         setUsernameTaken(false);
         return;
       }
       fetchUsername(debouncedUsername, orgSlug ?? null).then(({ data }) => {
-        setPremium(data.premium);
         setUsernameTaken(!data.available);
       });
     }
@@ -170,7 +164,6 @@ export default function Signup({
 }: SignupProps) {
   const isOrgInviteByLink = orgSlug && !prepopulateFormValues?.username;
   const [isSamlSignup, setIsSamlSignup] = useState(false);
-  const [premiumUsername, setPremiumUsername] = useState(false);
   const [usernameTaken, setUsernameTaken] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [displayEmailForm, setDisplayEmailForm] = useState(token);
@@ -362,12 +355,10 @@ export default function Signup({
                       orgSlug={orgSlug}
                       label={t("username")}
                       username={watch("username") || ""}
-                      premium={premiumUsername}
                       usernameTaken={usernameTaken}
                       disabled={!!orgSlug}
                       setUsernameTaken={(value) => setUsernameTaken(value)}
                       data-testid="signup-usernamefield"
-                      setPremium={(value) => setPremiumUsername(value)}
                       addOnLeading={
                         orgSlug
                           ? `${getOrgFullOrigin(orgSlug, { protocol: true }).replace(
@@ -428,7 +419,6 @@ export default function Signup({
                         !!formMethods.formState.errors.email ||
                         !formMethods.getValues("email") ||
                         !formMethods.getValues("username") ||
-                        premiumUsername ||
                         isSubmitting
                       }
                       onClick={() => {
@@ -472,7 +462,7 @@ export default function Signup({
                         isSubmitting ||
                         usernameTaken
                       }>
-                      {premiumUsername && !usernameTaken ? `${t("create_account")}` : t("create_account")}
+                      {!usernameTaken ? `${t("create_account")}` : t("create_account")}
                     </Button>
                   )}
                 </Form>
@@ -488,7 +478,7 @@ export default function Signup({
                       loading={isGoogleLoading}
                       CustomStartIcon={
                         <img
-                          className={classNames("text-subtle  mr-2 h-4 w-4", premiumUsername && "opacity-50")}
+                          className={classNames("text-subtle  mr-2 h-4 w-4")}
                           src="/google-icon-colored.svg"
                           alt="Continue with Google Icon"
                         />

@@ -2,10 +2,9 @@ import type { GetServerSidePropsContext } from "next";
 import { z } from "zod";
 
 import { getOrgUsernameFromEmail } from "@calcom/features/auth/signup/utils/getOrgUsernameFromEmail";
-import { checkPremiumUsername } from "@calcom/features/ee/common/lib/checkPremiumUsername";
 import { isSAMLLoginEnabled } from "@calcom/features/ee/sso/lib/saml";
 import { getFeatureFlag } from "@calcom/features/flags/server/utils";
-import { IS_SELF_HOSTED, WEBAPP_URL } from "@calcom/lib/constants";
+import { WEBAPP_URL } from "@calcom/lib/constants";
 import { emailSchema } from "@calcom/lib/emailSchema";
 import slugify from "@calcom/lib/slugify";
 import { teamMetadataSchema } from "@calcom/prisma/zod-utils";
@@ -138,7 +137,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     return username;
   };
 
-  let username = guessUsernameFromEmail(verificationToken.identifier);
+  const username = guessUsernameFromEmail(verificationToken.identifier);
 
   const tokenTeam = {
     ...verificationToken?.team,
@@ -153,14 +152,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const orgSlug = isOrganizationOrATeamInOrganization
     ? tokenTeam.metadata?.requestedSlug || tokenTeam.parent?.slug || tokenTeam.slug
     : null;
-
-  // Org context shouldn't check if a username is premium
-  if (!IS_SELF_HOSTED && !isOrganizationOrATeamInOrganization) {
-    // Im not sure we actually hit this because of next redirects signup to website repo - but just in case this is pretty cool :)
-    const { available, suggestion } = await checkPremiumUsername(username);
-
-    username = available ? username : suggestion || username;
-  }
 
   const isValidEmail = checkValidEmail(verificationToken.identifier);
   const isOrgInviteByLink = isOrganizationOrATeamInOrganization && !isValidEmail;

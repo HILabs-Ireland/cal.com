@@ -45,11 +45,6 @@ async function handler(req: RequestWithUsernameStatus, res: NextApiResponse) {
 
   let username: string | null = req.usernameStatus.requestedUserName;
 
-  // Check for premium username
-  if (req.usernameStatus.statusCode === 418) {
-    return res.status(req.usernameStatus.statusCode).json(req.usernameStatus.json);
-  }
-
   // Validate the user
   if (!username) {
     throw new HttpError({

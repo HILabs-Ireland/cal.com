@@ -3,7 +3,6 @@ import {
   isSMSOrWhatsappAction,
 } from "@calcom/features/ee/workflows/lib/actionHelperFunctions";
 import { IS_SELF_HOSTED } from "@calcom/lib/constants";
-import hasKeyInMetadata from "@calcom/lib/hasKeyInMetadata";
 import { WorkflowRepository } from "@calcom/lib/server/repository/workflow";
 import type { PrismaClient } from "@calcom/prisma";
 import { WorkflowActions, WorkflowTemplates } from "@calcom/prisma/enums";
@@ -78,16 +77,12 @@ export const updateHandler = async ({ ctx, input }: UpdateOptions) => {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
 
-  const isCurrentUsernamePremium = hasKeyInMetadata(user, "isPremium") ? !!user.metadata.isPremium : false;
-
   let isTeamsPlan = false;
-  if (!isCurrentUsernamePremium) {
-    isTeamsPlan = await hasActiveTeamPlanHandler({
-      ctx,
-      input: { teamId: userWorkflow?.teamId ?? undefined },
-    });
-  }
-  const hasPaidPlan = IS_SELF_HOSTED || isCurrentUsernamePremium || isTeamsPlan;
+  isTeamsPlan = await hasActiveTeamPlanHandler({
+    ctx,
+    input: { teamId: userWorkflow?.teamId ?? undefined },
+  });
+  const hasPaidPlan = IS_SELF_HOSTED || isTeamsPlan;
 
   let newActiveOn: number[] = [];
 

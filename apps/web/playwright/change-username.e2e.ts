@@ -54,32 +54,6 @@ test.describe("Change username on settings", () => {
     });
   });
 
-  test("User can update to PREMIUM username", async ({ page, users }, testInfo) => {
-    // eslint-disable-next-line playwright/no-skipped-test
-    test.skip(IS_SELF_HOSTED, "It shouldn't run on self hosted");
-
-    const user = await users.create();
-
-    await user.apiLogin();
-    await page.goto("/settings/my-account/profile");
-
-    // Change username from normal to premium
-    const usernameInput = page.locator("[data-testid=username-input]");
-
-    await usernameInput.fill(`xx${testInfo.workerIndex}`);
-
-    // Click on save button
-    await page.click('button[type="submit"]');
-
-    // Validate modal text fields
-    const currentUsernameText = page.locator("[data-testid=current-username]").innerText();
-    const newUsernameText = page.locator("[data-testid=new-username]").innerText();
-
-    expect(currentUsernameText).not.toBe(newUsernameText);
-
-    await page.waitForLoadState();
-  });
-
   test("User can't take a username that has been migrated to a different username in an organization", async ({
     users,
     orgs,

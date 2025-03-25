@@ -1,7 +1,6 @@
 import { expect } from "@playwright/test";
 
 import { isSAMLLoginEnabled } from "@calcom/features/ee/sso/lib/saml";
-import { IS_PREMIUM_USERNAME_ENABLED } from "@calcom/lib/constants";
 
 import { login } from "./fixtures/users";
 import { test } from "./lib/fixtures";
@@ -66,19 +65,6 @@ test.describe("SAML tests", () => {
       // the cookie consent checkbox does not need to be checked for user to proceed
       await checkbox.uncheck();
       await expect(submitButton).toBeEnabled();
-    });
-
-    test("Submit button should be disabled with a premium username", async ({ page }) => {
-      // eslint-disable-next-line playwright/no-skipped-test
-      test.skip(!IS_PREMIUM_USERNAME_ENABLED, "Only run on Cal.com");
-
-      // Fill form
-      await page.locator('input[name="username"]').fill("pro");
-      await page.locator('input[name="email"]').fill("pro@example.com");
-
-      // Submit form
-      const submitButton = page.getByTestId("saml-submit-button");
-      await expect(submitButton).toBeDisabled();
     });
   });
 });

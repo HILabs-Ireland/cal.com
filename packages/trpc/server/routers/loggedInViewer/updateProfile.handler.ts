@@ -49,8 +49,6 @@ export const updateProfileHandler = async ({ ctx, input }: UpdateProfileOptions)
     secondaryEmails: undefined,
   };
 
-  let isPremiumUsername = false;
-
   const layoutError = validateBookerLayouts(input?.metadata?.defaultBookerLayouts || null);
   if (layoutError) {
     const t = await getTranslation(locale, "common");
@@ -63,7 +61,6 @@ export const updateProfileHandler = async ({ ctx, input }: UpdateProfileOptions)
     if (username !== user.username) {
       data.username = username;
       const response = await checkUsername(username);
-      isPremiumUsername = response.premium;
       if (!response.available) {
         const t = await getTranslation(locale, "common");
         throw new TRPCError({ code: "BAD_REQUEST", message: t("username_already_taken") });
@@ -74,14 +71,6 @@ export const updateProfileHandler = async ({ ctx, input }: UpdateProfileOptions)
     delete data.username;
   }
 
-  if (isPremiumUsername) {
-    if (!isPremiumUsernameSubscriptionActive) {
-      throw new TRPCError({
-        code: "BAD_REQUEST",
-        message: "You need to pay for premium username",
-      });
-    }
-  }
   const hasEmailBeenChanged = data.email && user.email !== data.email;
 
   let secondaryEmail:
