@@ -251,9 +251,6 @@ const CreateANewOrganizationFormChild = ({
         {!isAdmin && (
           <>
             <div className="bg-subtle space-y-5  rounded-lg p-5">
-              <h3 className="font-cal text-default text-lg font-semibold leading-4">
-                Upgrade to Organizations
-              </h3>
               <RadioArea.Group className={classNames("mt-1 flex flex-col gap-4")} value="ORGANIZATION">
                 <RadioArea.Item
                   className={classNames("bg-default w-full text-sm opacity-70")}

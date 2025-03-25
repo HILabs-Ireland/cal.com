@@ -370,13 +370,11 @@ export default function WorkflowStepContainer(props: WorkflowStepProps) {
     const selectedAction = {
       label: actionString.charAt(0).toUpperCase() + actionString.slice(1),
       value: step.action,
-      needsTeamsUpgrade: false,
     };
 
     const selectedTemplate = {
       label: t(`${step.template.toLowerCase()}`),
       value: step.template,
-      needsTeamsUpgrade: false,
     };
 
     const canRequirePhoneNumber = (workflowStep: string) => {
@@ -561,11 +559,6 @@ export default function WorkflowStepContainer(props: WorkflowStepProps) {
                         options={actionOptions?.map((option) => ({
                           ...option,
                         }))}
-                        isOptionDisabled={(option: {
-                          label: string;
-                          value: WorkflowActions;
-                          needsTeamsUpgrade: boolean;
-                        }) => option.needsTeamsUpgrade}
                       />
                     );
                   }}
@@ -886,11 +879,6 @@ export default function WorkflowStepContainer(props: WorkflowStepProps) {
                         defaultValue={selectedTemplate}
                         value={selectedTemplate}
                         options={templateOptions}
-                        isOptionDisabled={(option: {
-                          label: string;
-                          value: any;
-                          needsTeamsUpgrade: boolean;
-                        }) => option.needsTeamsUpgrade}
                       />
                     );
                   }}

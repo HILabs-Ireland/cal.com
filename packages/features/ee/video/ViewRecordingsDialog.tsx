@@ -125,22 +125,13 @@ const ViewRecordingsList = ({ roomName, hasTeamPlan }: { roomName: string; hasTe
                   </h1>
                   <p className="text-subtle text-sm font-normal">{convertSecondsToMs(recording.duration)}</p>
                 </div>
-                {hasTeamPlan ? (
-                  <Button
-                    StartIcon="download"
-                    className="ml-4 lg:ml-0"
-                    loading={isFetching && recordingId === recording.id}
-                    onClick={() => handleDownloadClick(recording.id)}>
-                    {t("download")}
-                  </Button>
-                ) : (
-                  <Button
-                    tooltip={t("upgrade_to_access_recordings_description")}
-                    className="ml-4 lg:ml-0"
-                    onClick={() => router.push("/teams")}>
-                    {t("upgrade")}
-                  </Button>
-                )}
+                <Button
+                  StartIcon="download"
+                  className="ml-4 lg:ml-0"
+                  loading={isFetching && recordingId === recording.id}
+                  onClick={() => handleDownloadClick(recording.id)}>
+                  {t("download")}
+                </Button>
               </div>
             );
           })}

@@ -79,13 +79,6 @@ export const InstallAppButton = (
           e.stopPropagation();
           return;
         }
-
-        if (props.teamsPlanRequired && !hasTeamPlan) {
-          // TODO: I think we should show the UpgradeTip in a Dialog here. This would solve the problem of no way to go back to the App page from the UpgradeTip page(except browser's back button)
-          router.push(props.teamsPlanRequired.upgradeUrl);
-          e.stopPropagation();
-          return;
-        }
       },
       true
     );

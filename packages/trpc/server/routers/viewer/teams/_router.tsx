@@ -112,14 +112,6 @@ export const viewerTeamsRouter = router({
       message: "This endpoint is deprecated",
     };
   }),
-  /** This is a temporal endpoint so we can progressively upgrade teams to the new billing system. */
-  getUpgradeable: authedProcedure.query(async ({ ctx }) => {
-    const handler = await importHandler(
-      namespaced("getUpgradeable"),
-      () => import("./getUpgradeable.handler")
-    );
-    return handler({ userId: ctx.user.id });
-  }),
   listMembers: authedProcedure.input(ZListMembersInputSchema).query(async (opts) => {
     const handler = await importHandler(namespaced("listMembers"), () => import("./listMembers.handler"));
     return handler(opts);

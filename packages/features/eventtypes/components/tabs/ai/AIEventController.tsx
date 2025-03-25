@@ -13,17 +13,7 @@ import { ComponentForField } from "@calcom/features/form-builder/FormBuilderFiel
 import { classNames } from "@calcom/lib";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { trpc } from "@calcom/trpc/react";
-import {
-  Button,
-  Label,
-  EmptyScreen,
-  SettingsToggle,
-  Divider,
-  TextField,
-  PhoneInput,
-  showToast,
-  Icon,
-} from "@calcom/ui";
+import { Button, Label, SettingsToggle, Divider, TextField, PhoneInput, showToast, Icon } from "@calcom/ui";
 
 type AIEventControllerProps = {
   eventType: EventTypeSetup;
@@ -43,46 +33,37 @@ export default function AIEventController({ eventType, isTeamEvent }: AIEventCon
   return (
     <LicenseRequired>
       <div className="block items-start sm:flex">
-        {!isOrg || !isTeamEvent ? (
-          <EmptyScreen
-            headline={t("Cal.ai")}
-            Icon="sparkles"
-            description={t("upgrade_to_cal_ai_phone_number_description")}
-            buttonRaw={<Button href="/enterprise">{t("upgrade")}</Button>}
-          />
-        ) : (
-          <div className="w-full">
-            <SettingsToggle
-              labelClassName="text-sm"
-              toggleSwitchAtTheEnd={true}
-              switchContainerClassName={classNames(
-                "border-subtle rounded-lg border py-6 px-4 sm:px-6",
-                aiEventState && "rounded-b-none"
-              )}
-              childrenClassName="lg:ml-0"
-              title={t("Cal.ai")}
-              description={t("use_cal_ai_to_make_call_description")}
-              checked={aiEventState}
-              data-testid="instant-event-check"
-              onCheckedChange={(e) => {
-                if (!e) {
-                  formMethods.setValue("aiPhoneCallConfig.enabled", false, {
-                    shouldDirty: true,
-                  });
-                  setAIEventState(false);
-                } else {
-                  formMethods.setValue("aiPhoneCallConfig.enabled", true, {
-                    shouldDirty: true,
-                  });
-                  setAIEventState(true);
-                }
-              }}>
-              <div className="border-subtle rounded-b-lg border border-t-0 p-6">
-                {aiEventState && <AISettings eventType={eventType} />}
-              </div>
-            </SettingsToggle>
-          </div>
-        )}
+        <div className="w-full">
+          <SettingsToggle
+            labelClassName="text-sm"
+            toggleSwitchAtTheEnd={true}
+            switchContainerClassName={classNames(
+              "border-subtle rounded-lg border py-6 px-4 sm:px-6",
+              aiEventState && "rounded-b-none"
+            )}
+            childrenClassName="lg:ml-0"
+            title={t("Cal.ai")}
+            description={t("use_cal_ai_to_make_call_description")}
+            checked={aiEventState}
+            data-testid="instant-event-check"
+            onCheckedChange={(e) => {
+              if (!e) {
+                formMethods.setValue("aiPhoneCallConfig.enabled", false, {
+                  shouldDirty: true,
+                });
+                setAIEventState(false);
+              } else {
+                formMethods.setValue("aiPhoneCallConfig.enabled", true, {
+                  shouldDirty: true,
+                });
+                setAIEventState(true);
+              }
+            }}>
+            <div className="border-subtle rounded-b-lg border border-t-0 p-6">
+              {aiEventState && <AISettings eventType={eventType} />}
+            </div>
+          </SettingsToggle>
+        </div>
       </div>
     </LicenseRequired>
   );

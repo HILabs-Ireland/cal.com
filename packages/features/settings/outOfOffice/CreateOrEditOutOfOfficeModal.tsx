@@ -20,7 +20,6 @@ import {
   showToast,
   Switch,
   TextArea,
-  UpgradeTeamsBadge,
   Label,
   Input,
 } from "@calcom/ui";
@@ -228,11 +227,6 @@ export const CreateOrEditOutOfOfficeEntryModal = ({
                   }}
                   label={hasTeamPlan ? t("redirect_team_enabled") : t("redirect_team_disabled")}
                 />
-                {!hasTeamPlan && (
-                  <div className="mx-2" data-testid="upgrade-team-badge">
-                    <UpgradeTeamsBadge />
-                  </div>
-                )}
               </div>
 
               {profileRedirect && (

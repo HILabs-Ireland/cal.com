@@ -3,7 +3,6 @@ import classNames from "classnames";
 // eslint-disable-next-line no-restricted-imports
 import { noop } from "lodash";
 import { useSession } from "next-auth/react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { RefCallback } from "react";
 import { useEffect, useState } from "react";
 
@@ -17,10 +16,6 @@ import type { AppRouter } from "@calcom/trpc/server/routers/_app";
 import { Button, Dialog, DialogClose, DialogContent, DialogFooter, Input, Label } from "@calcom/ui";
 import { Icon } from "@calcom/ui";
 
-export enum UsernameChangeStatusEnum {
-  UPGRADE = "UPGRADE",
-}
-
 interface ICustomUsernameProps {
   currentUsername: string | undefined;
   setCurrentUsername?: (newUsername: string) => void;
@@ -32,22 +27,7 @@ interface ICustomUsernameProps {
   readonly?: boolean;
 }
 
-const obtainNewUsernameChangeCondition = ({
-  userIsPremium,
-  isNewUsernamePremium,
-}: {
-  userIsPremium: boolean;
-  isNewUsernamePremium: boolean;
-}) => {
-  if (!userIsPremium && isNewUsernamePremium) {
-    return UsernameChangeStatusEnum.UPGRADE;
-  }
-};
-
 const PremiumTextfield = (props: ICustomUsernameProps) => {
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const router = useRouter();
   const { t } = useLocale();
   const { update } = useSession();
   const {
@@ -104,11 +84,6 @@ const PremiumTextfield = (props: ICustomUsernameProps) => {
     },
   });
 
-  const usernameChangeCondition = obtainNewUsernameChangeCondition({
-    userIsPremium: isCurrentUsernamePremium,
-    isNewUsernamePremium: isInputUsernamePremium,
-  });
-
   const ActionButtons = () => {
     if ((usernameIsAvailable || isInputUsernamePremium) && currentUsername !== inputUsernameValue) {
       return (
@@ -138,12 +113,10 @@ const PremiumTextfield = (props: ICustomUsernameProps) => {
   };
 
   const saveUsername = () => {
-    if (usernameChangeCondition !== UsernameChangeStatusEnum.UPGRADE) {
-      updateUsername.mutate({
-        username: inputUsernameValue,
-      });
-      setCurrentUsername(inputUsernameValue);
-    }
+    updateUsername.mutate({
+      username: inputUsernameValue,
+    });
+    setCurrentUsername(inputUsernameValue);
   };
 
   return (
@@ -215,16 +188,7 @@ const PremiumTextfield = (props: ICustomUsernameProps) => {
       {markAsError && <p className="mt-1 text-xs text-red-500">{t("username_already_taken")}</p>}
 
       <Dialog open={openDialogSaveUsername}>
-        <DialogContent
-          Icon="pencil"
-          title={t("confirm_username_change_dialog_title")}
-          description={
-            <>
-              {usernameChangeCondition && usernameChangeCondition === UsernameChangeStatusEnum.UPGRADE && (
-                <p className="text-default mb-4 text-sm">{t("change_username_standard_to_premium")}</p>
-              )}
-            </>
-          }>
+        <DialogContent Icon="pencil" title={t("confirm_username_change_dialog_title")}>
           <div className="flex flex-row">
             <div className="mb-4 w-full px-4 pt-1">
               <div className="bg-subtle flex w-full flex-wrap rounded-sm py-3 text-sm">
@@ -245,18 +209,15 @@ const PremiumTextfield = (props: ICustomUsernameProps) => {
           </div>
 
           <DialogFooter className="mt-4">
-            {/* Normal save */}
-            {usernameChangeCondition !== UsernameChangeStatusEnum.UPGRADE && (
-              <Button
-                type="button"
-                loading={updateUsername.isPending}
-                data-testid="save-username"
-                onClick={() => {
-                  saveUsername();
-                }}>
-                {t("save")}
-              </Button>
-            )}
+            <Button
+              type="button"
+              loading={updateUsername.isPending}
+              data-testid="save-username"
+              onClick={() => {
+                saveUsername();
+              }}>
+              {t("save")}
+            </Button>
             <DialogClose color="secondary" onClick={() => setOpenDialogSaveUsername(false)}>
               {t("cancel")}
             </DialogClose>

@@ -134,9 +134,6 @@ export interface App {
   /** 0 = free. if type="usage-based" it's the price per booking */
   price?: number;
   licenseRequired?: boolean;
-  teamsPlanRequired?: {
-    upgradeUrl: string;
-  };
   appData?: AppData;
   /** Represents paid app data, such as price, trials, etc */
   paid?: PaidAppData;

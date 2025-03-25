@@ -19,7 +19,6 @@ describe("pagesAndRewritePaths", () => {
       "reschedule",
       "settings",
       "teams",
-      "upgrade",
       "video",
       "workflows",
       "403",
