@@ -1766,7 +1766,6 @@
   "already_have_account": "Už máte účet?",
   "already_have_key": "Už mám kľúč:",
   "already_have_key_suggestion": "Prosím, skopírujte svoj existujúci CALCOM_LICENSE_KEY environment variable sem.",
-  "create_license_key": "Vytvoriť licenčný kľúč",
   "app_is_enabled": "{{appName}} je povolený",
   "app_is_disabled": "{{appName}} je deaktivovaný",
   "keys_have_been_saved": "Kľúče boli uložené",
