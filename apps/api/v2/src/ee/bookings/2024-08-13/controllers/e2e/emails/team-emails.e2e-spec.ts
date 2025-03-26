@@ -33,7 +33,6 @@ import {
   AttendeeRescheduledEmail,
   OrganizerCancelledEmail,
   AttendeeCancelledEmail,
-  OrganizerReassignedEmail,
   AttendeeUpdatedEmail,
 } from "@calcom/platform-libraries";
 import {
@@ -61,9 +60,6 @@ jest
   .mockImplementation(() => Promise.resolve("<p>email</p>"));
 jest
   .spyOn(OrganizerCancelledEmail.prototype, "getHtml")
-  .mockImplementation(() => Promise.resolve("<p>email</p>"));
-jest
-  .spyOn(OrganizerReassignedEmail.prototype, "getHtml")
   .mockImplementation(() => Promise.resolve("<p>email</p>"));
 jest
   .spyOn(AttendeeUpdatedEmail.prototype, "getHtml")
@@ -665,47 +661,6 @@ describe("Bookings Endpoints 2024-08-13 team emails", () => {
       });
     });
 
-    describe("reassign", () => {
-      it("should not send an email when manually reassigning round robin booking", async () => {
-        const reassignToId =
-          emailsDisabledSetup.roundRobinEventType.currentHostId === emailsDisabledSetup.member1.id
-            ? emailsDisabledSetup.member2.id
-            : emailsDisabledSetup.member1.id;
-
-        return request(app.getHttpServer())
-          .post(
-            `/v2/bookings/${emailsDisabledSetup.roundRobinEventType.rescheduledBookingUid}/reassign/${reassignToId}`
-          )
-          .set(CAL_API_VERSION_HEADER, VERSION_2024_08_13)
-          .expect(200)
-          .then(async (response) => {
-            const responseBody: CancelBookingOutput_2024_08_13 = response.body;
-            expect(responseBody.status).toEqual(SUCCESS_STATUS);
-            expect(responseBody.data).toBeDefined();
-            expect(AttendeeCancelledEmail.prototype.getHtml).not.toHaveBeenCalled();
-            expect(OrganizerScheduledEmail.prototype.getHtml).not.toHaveBeenCalled();
-            expect(AttendeeUpdatedEmail.prototype.getHtml).not.toHaveBeenCalled();
-            emailsDisabledSetup.roundRobinEventType.currentHostId = reassignToId;
-          });
-      });
-
-      it("should not send an email when automatically reassigning round robin booking", async () => {
-        return request(app.getHttpServer())
-          .post(`/v2/bookings/${emailsDisabledSetup.roundRobinEventType.rescheduledBookingUid}/reassign`)
-          .set(CAL_API_VERSION_HEADER, VERSION_2024_08_13)
-          .expect(200)
-          .then(async (response) => {
-            const responseBody: CancelBookingOutput_2024_08_13 = response.body;
-            expect(responseBody.status).toEqual(SUCCESS_STATUS);
-            expect(responseBody.data).toBeDefined();
-            expect(AttendeeCancelledEmail.prototype.getHtml).not.toHaveBeenCalled();
-            expect(OrganizerScheduledEmail.prototype.getHtml).not.toHaveBeenCalled();
-            expect(OrganizerReassignedEmail.prototype.getHtml).not.toHaveBeenCalled();
-            expect(AttendeeUpdatedEmail.prototype.getHtml).not.toHaveBeenCalled();
-          });
-      });
-    });
-
     describe("cancel", () => {
       it("should not send an email when cancelling a collective booking", async () => {
         const body: CancelBookingInput_2024_08_13 = {
@@ -880,47 +835,6 @@ describe("Bookings Endpoints 2024-08-13 team emails", () => {
             expect(OrganizerCancelledEmail.prototype.getHtml).toHaveBeenCalled();
             emailsEnabledSetup.roundRobinEventType.rescheduledBookingUid = responseBody.data.uid;
             emailsEnabledSetup.roundRobinEventType.currentHostId = responseBody.data.hosts[0].id;
-          });
-      });
-    });
-
-    describe("reassign", () => {
-      it("should send an email when manually reassigning round robin booking", async () => {
-        const reassignToId =
-          emailsEnabledSetup.roundRobinEventType.currentHostId === emailsEnabledSetup.member1.id
-            ? emailsEnabledSetup.member2.id
-            : emailsEnabledSetup.member1.id;
-
-        return request(app.getHttpServer())
-          .post(
-            `/v2/bookings/${emailsEnabledSetup.roundRobinEventType.rescheduledBookingUid}/reassign/${reassignToId}`
-          )
-          .set(CAL_API_VERSION_HEADER, VERSION_2024_08_13)
-          .expect(200)
-          .then(async (response) => {
-            const responseBody: CancelBookingOutput_2024_08_13 = response.body;
-            expect(responseBody.status).toEqual(SUCCESS_STATUS);
-            expect(responseBody.data).toBeDefined();
-            expect(AttendeeCancelledEmail.prototype.getHtml).not.toHaveBeenCalled();
-            expect(OrganizerScheduledEmail.prototype.getHtml).toHaveBeenCalled();
-            expect(AttendeeUpdatedEmail.prototype.getHtml).toHaveBeenCalled();
-            emailsDisabledSetup.roundRobinEventType.currentHostId = reassignToId;
-          });
-      });
-
-      it("should send an email when automatically reassigning round robin booking", async () => {
-        return request(app.getHttpServer())
-          .post(`/v2/bookings/${emailsEnabledSetup.roundRobinEventType.rescheduledBookingUid}/reassign`)
-          .set(CAL_API_VERSION_HEADER, VERSION_2024_08_13)
-          .expect(200)
-          .then(async (response) => {
-            const responseBody: CancelBookingOutput_2024_08_13 = response.body;
-            expect(responseBody.status).toEqual(SUCCESS_STATUS);
-            expect(responseBody.data).toBeDefined();
-            expect(AttendeeCancelledEmail.prototype.getHtml).not.toHaveBeenCalled();
-            expect(OrganizerScheduledEmail.prototype.getHtml).toHaveBeenCalled();
-            expect(OrganizerReassignedEmail.prototype.getHtml).toHaveBeenCalled();
-            expect(AttendeeUpdatedEmail.prototype.getHtml).toHaveBeenCalled();
           });
       });
     });

@@ -51,7 +51,6 @@ import assignmentReasonBadgeTitleMap from "@lib/booking/assignmentReasonBadgeTit
 import { AddGuestsDialog } from "@components/dialog/AddGuestsDialog";
 import { ChargeCardDialog } from "@components/dialog/ChargeCardDialog";
 import { EditLocationDialog } from "@components/dialog/EditLocationDialog";
-import { ReassignDialog } from "@components/dialog/ReassignDialog";
 import { RerouteDialog } from "@components/dialog/RerouteDialog";
 import { RescheduleDialog } from "@components/dialog/RescheduleDialog";
 
@@ -267,17 +266,6 @@ function BookingListItem(booking: BookingItemProps) {
     },
   ];
 
-  // if (booking.eventType.schedulingType === SchedulingType.ROUND_ROBIN) {
-  //   editBookingActions.push({
-  //     id: "reassign ",
-  //     label: t("reassign"),
-  //     onClick: () => {
-  //       setIsOpenReassignDialog(true);
-  //     },
-  //     icon: "users" as const,
-  //   });
-  // }
-
   if (isBookingInPast || isOngoing) {
     editBookingActions.push({
       id: "no_show",
@@ -341,7 +329,6 @@ function BookingListItem(booking: BookingItemProps) {
     .locale(language)
     .format(isUpcoming ? "ddd, D MMM" : "D MMMM YYYY");
   const [isOpenRescheduleDialog, setIsOpenRescheduleDialog] = useState(false);
-  const [isOpenReassignDialog, setIsOpenReassignDialog] = useState(false);
   const [isOpenSetLocationDialog, setIsOpenLocationDialog] = useState(false);
   const [isOpenAddGuestsDialog, setIsOpenAddGuestsDialog] = useState(false);
   const [rerouteDialogIsOpen, setRerouteDialogIsOpen] = useState(false);
@@ -438,14 +425,6 @@ function BookingListItem(booking: BookingItemProps) {
         setIsOpenDialog={setIsOpenRescheduleDialog}
         bookingUId={booking.uid}
       />
-      {isOpenReassignDialog && (
-        <ReassignDialog
-          isOpenDialog={isOpenReassignDialog}
-          setIsOpenDialog={setIsOpenReassignDialog}
-          bookingId={booking.id}
-          teamId={booking.eventType?.team?.id || 0}
-        />
-      )}
       <EditLocationDialog
         booking={booking}
         saveLocation={saveLocation}
