@@ -74,7 +74,7 @@ export function useOpenTimezoneDialog() {
   const { data: userSession, status } = useSession();
 
   useEffect(() => {
-    if (!user?.timeZone || status !== "authenticated" || userSession?.user?.impersonatedBy) {
+    if (!user?.timeZone || status !== "authenticated") {
       return;
     }
 
@@ -83,7 +83,7 @@ export function useOpenTimezoneDialog() {
     ) {
       setShowDialog(true);
     }
-  }, [user?.timeZone, status, userSession?.user?.impersonatedBy]);
+  }, [user?.timeZone, status]);
 
   return { open: showDialog, setOpen: setShowDialog };
 }

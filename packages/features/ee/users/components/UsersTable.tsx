@@ -1,5 +1,4 @@
 import { keepPreviousData } from "@tanstack/react-query";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -10,12 +9,8 @@ import { trpc } from "@calcom/trpc/react";
 import {
   Avatar,
   Badge,
-  Button,
   ConfirmationDialogContent,
   Dialog,
-  DialogClose,
-  DialogContent,
-  DialogFooter,
   DropdownActions,
   Icon,
   showToast,
@@ -34,7 +29,6 @@ function UsersTableBare() {
   const tableContainerRef = useRef<HTMLDivElement>(null);
   const utils = trpc.useUtils();
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [showImpersonateModal, setShowImpersonateModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState<string | null>(null);
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
   const router = useRouter();
@@ -119,10 +113,6 @@ function UsersTableBare() {
       utils.viewer.admin.listPaginated.invalidate();
     },
   });
-
-  const handleImpersonateUser = async (username: string | null) => {
-    await signIn("impersonation-auth", { username: username, callbackUrl: `${WEBAPP_URL}/event-types` });
-  };
 
   //we must flatten the array of arrays from the useInfiniteQuery hook
   const flatData = useMemo(() => data?.pages?.flatMap((page) => page.rows) ?? [], [data]);
@@ -224,25 +214,10 @@ function UsersTableBare() {
                           icon: "lock",
                         },
                         {
-                          id: "impersonate-user",
-                          label: "Impersonate User",
-                          onClick: () => handleImpersonateUser(user?.username),
-                          icon: "user",
-                        },
-                        {
                           id: "lock-user",
                           label: user.locked ? "Unlock User Account" : "Lock User Account",
                           onClick: () => lockUserAccount.mutate({ userId: user.id, locked: !user.locked }),
                           icon: "lock",
-                        },
-                        {
-                          id: "impersonation",
-                          label: "Impersonate",
-                          onClick: () => {
-                            setSelectedUser(user.username);
-                            setShowImpersonateModal(true);
-                          },
-                          icon: "venetian-mask",
                         },
                         {
                           id: "remove-2fa",
@@ -275,26 +250,6 @@ function UsersTableBare() {
           }}
         />
       </div>
-      {showImpersonateModal && selectedUser && (
-        <Dialog open={showImpersonateModal} onOpenChange={() => setShowImpersonateModal(false)}>
-          <DialogContent type="creation" title={t("impersonate")} description={t("impersonation_user_tip")}>
-            <form
-              onSubmit={async (e) => {
-                e.preventDefault();
-                await signIn("impersonation-auth", { redirect: false, username: selectedUser });
-                setShowImpersonateModal(false);
-                router.replace("/settings/my-account/profile");
-              }}>
-              <DialogFooter showDivider className="mt-8">
-                <DialogClose color="secondary">{t("cancel")}</DialogClose>
-                <Button color="primary" type="submit">
-                  {t("impersonate")}
-                </Button>
-              </DialogFooter>
-            </form>
-          </DialogContent>
-        </Dialog>
-      )}
     </div>
   );
 }

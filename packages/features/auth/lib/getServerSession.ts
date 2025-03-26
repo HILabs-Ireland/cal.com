@@ -3,7 +3,6 @@ import type { GetServerSidePropsContext, NextApiRequest, NextApiResponse } from 
 import type { AuthOptions, Session } from "next-auth";
 import { getToken } from "next-auth/jwt";
 
-import { LicenseKeySingleton } from "@calcom/ee/common/server/LicenseKeyService";
 import { getUserAvatarUrl } from "@calcom/lib/getAvatarUrl";
 import logger from "@calcom/lib/logger";
 import { safeStringify } from "@calcom/lib/safeStringify";
@@ -65,9 +64,6 @@ export async function getServerSession(options: {
     return null;
   }
 
-  const licenseKeyService = await LicenseKeySingleton.getInstance();
-  const hasValidLicense = await licenseKeyService.checkLicense();
-
   let upId = token.upId;
 
   if (!upId) {
@@ -85,7 +81,7 @@ export async function getServerSession(options: {
   });
 
   const session: Session = {
-    hasValidLicense,
+    hasValidLicense: false,
     expires: new Date(typeof token.exp === "number" ? token.exp * 1000 : Date.now()).toISOString(),
     user: {
       id: user.id,
@@ -106,24 +102,6 @@ export async function getServerSession(options: {
     profileId: token.profileId,
     upId,
   };
-
-  if (token?.impersonatedBy?.id) {
-    const impersonatedByUser = await prisma.user.findUnique({
-      where: {
-        id: token.impersonatedBy.id,
-      },
-      select: {
-        id: true,
-        role: true,
-      },
-    });
-    if (impersonatedByUser) {
-      session.user.impersonatedBy = {
-        id: impersonatedByUser?.id,
-        role: impersonatedByUser.role,
-      };
-    }
-  }
 
   CACHE.set(JSON.stringify(token), session);
 
