@@ -16,8 +16,6 @@ import {
   getAllUserBookings,
   handleInstantMeeting,
   handleCancelBooking,
-  roundRobinReassignment,
-  roundRobinManualReassignment,
   handleMarkNoShow,
   confirmBookingHandler,
 } from "@calcom/platform-libraries";
@@ -29,7 +27,6 @@ import {
   GetBookingsInput_2024_08_13,
   CreateInstantBookingInput_2024_08_13,
   MarkAbsentBookingInput_2024_08_13,
-  ReassignToUserBookingInput_2024_08_13,
   BookingOutput_2024_08_13,
   RecurringBookingOutput_2024_08_13,
   GetSeatedBookingOutput_2024_08_13,
@@ -385,72 +382,6 @@ export class BookingsService_2024_08_13 {
       return this.outputService.getOutputRecurringBooking(booking);
     }
     return this.outputService.getOutputBooking(booking);
-  }
-
-  async reassignBooking(bookingUid: string, requestUser: UserWithProfile) {
-    const booking = await this.bookingsRepository.getByUid(bookingUid);
-    if (!booking) {
-      throw new NotFoundException(`Booking with uid=${bookingUid} was not found in the database`);
-    }
-
-    const platformClientParams = booking.eventTypeId
-      ? await this.inputService.getOAuthClientParams(booking.eventTypeId)
-      : undefined;
-
-    const emailsEnabled = platformClientParams ? platformClientParams.arePlatformEmailsEnabled : true;
-
-    const profile = this.usersService.getUserMainProfile(requestUser);
-
-    await roundRobinReassignment({
-      bookingId: booking.id,
-      orgId: profile?.organizationId || null,
-      emailsEnabled,
-      platformClientParams,
-    });
-
-    const reassigned = await this.bookingsRepository.getByUidWithUser(bookingUid);
-    if (!reassigned) {
-      throw new NotFoundException(`Reassigned booking with uid=${bookingUid} was not found in the database`);
-    }
-
-    return this.outputService.getOutputReassignedBooking(reassigned);
-  }
-
-  async reassignBookingToUser(
-    bookingUid: string,
-    newUserId: number,
-    reassignedById: number,
-    body: ReassignToUserBookingInput_2024_08_13
-  ) {
-    const booking = await this.bookingsRepository.getByUid(bookingUid);
-    if (!booking) {
-      throw new NotFoundException(`Booking with uid=${bookingUid} was not found in the database`);
-    }
-
-    const user = await this.usersRepository.findByIdWithProfile(newUserId);
-    if (!user) {
-      throw new NotFoundException(`User with id=${newUserId} was not found in the database`);
-    }
-
-    const platformClientParams = booking.eventTypeId
-      ? await this.inputService.getOAuthClientParams(booking.eventTypeId)
-      : undefined;
-
-    const emailsEnabled = platformClientParams ? platformClientParams.arePlatformEmailsEnabled : true;
-
-    const profile = this.usersService.getUserMainProfile(user);
-
-    const reassigned = await roundRobinManualReassignment({
-      bookingId: booking.id,
-      newUserId,
-      orgId: profile?.organizationId || null,
-      reassignReason: body.reason,
-      reassignedById,
-      emailsEnabled,
-      platformClientParams,
-    });
-
-    return this.outputService.getOutputReassignedBooking(reassigned);
   }
 
   async confirmBooking(bookingUid: string, requestUser: UserWithProfile) {

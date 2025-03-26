@@ -82,5 +82,4 @@ test.describe("Onboarding", () => {
 
   testOnboarding(IdentityProvider.GOOGLE);
   testOnboarding(IdentityProvider.CAL);
-  testOnboarding(IdentityProvider.SAML);
 });

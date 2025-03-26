@@ -5,20 +5,18 @@ import classNames from "classnames";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { SAMLLogin } from "@calcom/features/auth/SAMLLogin";
 import { ErrorCode } from "@calcom/features/auth/lib/ErrorCode";
-import { HOSTED_CAL_FEATURES, WEBAPP_URL, WEBSITE_URL } from "@calcom/lib/constants";
+import { WEBAPP_URL, WEBSITE_URL } from "@calcom/lib/constants";
 import { emailRegex } from "@calcom/lib/emailSchema";
 import { getSafeRedirectUrl } from "@calcom/lib/getSafeRedirectUrl";
 import { useCompatSearchParams } from "@calcom/lib/hooks/useCompatSearchParams";
 import { useLastUsed, LastUsed } from "@calcom/lib/hooks/useLastUsed";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { collectPageParameters, telemetryEventTypes, useTelemetry } from "@calcom/lib/telemetry";
-import { trpc } from "@calcom/trpc/react";
 import { Alert, Button, EmailField, PasswordField } from "@calcom/ui";
 
 import type { inferSSRProps } from "@lib/types/inferSSRProps";
@@ -46,9 +44,6 @@ export type PageProps = inferSSRProps<typeof getServerSideProps>;
 export default function Login({
   csrfToken,
   isGoogleLoginEnabled,
-  isSAMLLoginEnabled,
-  samlTenantID,
-  samlProductID,
   totpEmail,
 }: // eslint-disable-next-line @typescript-eslint/ban-types
 PageProps & WithNonceProps<{}>) {
@@ -164,21 +159,6 @@ PageProps & WithNonceProps<{}>) {
     else setErrorMessage(errorMessages[res.error] || t("something_went_wrong"));
   };
 
-  const { data, isPending, error } = trpc.viewer.public.ssoConnections.useQuery();
-
-  useEffect(
-    function refactorMeWithoutEffect() {
-      if (error) {
-        setErrorMessage(error.message);
-      }
-    },
-    [error]
-  );
-
-  const displaySSOLogin = HOSTED_CAL_FEATURES
-    ? true
-    : isSAMLLoginEnabled && !isPending && data?.connectionExists;
-
   return (
     <div className="dark:bg-brand dark:text-brand-contrast text-emphasis min-h-screen [--cal-brand-emphasis:#101010] [--cal-brand-subtle:#9CA3AF] [--cal-brand-text:white] [--cal-brand:#111827] dark:[--cal-brand-emphasis:#e1e1e1] dark:[--cal-brand-text:black] dark:[--cal-brand:white]">
       <AuthContainer
@@ -217,16 +197,8 @@ PageProps & WithNonceProps<{}>) {
                     {lastUsed === "google" && <LastUsed />}
                   </Button>
                 )}
-                {displaySSOLogin && (
-                  <SAMLLogin
-                    disabled={formState.isSubmitting}
-                    samlTenantID={samlTenantID}
-                    samlProductID={samlProductID}
-                    setErrorMessage={setErrorMessage}
-                  />
-                )}
               </div>
-              {(isGoogleLoginEnabled || displaySSOLogin) && (
+              {isGoogleLoginEnabled && (
                 <div className="my-8">
                   <div className="relative flex items-center">
                     <div className="border-subtle flex-grow border-t" />

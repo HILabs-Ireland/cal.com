@@ -6,7 +6,6 @@ import { i18nInputSchema } from "./i18n.schema";
 import { ZMarkHostAsNoShowInputSchema } from "./markHostAsNoShow.schema";
 import { event } from "./procedures/event";
 import { session } from "./procedures/session";
-import { ZSamlTenantProductInputSchema } from "./samlTenantProduct.schema";
 import { ZSubmitRatingInputSchema } from "./submitRating.schema";
 
 const NAMESPACE = "publicViewer";
@@ -35,24 +34,8 @@ export const publicViewerRouter = router({
     );
     return handler(opts);
   }),
-  samlTenantProduct: publicProcedure.input(ZSamlTenantProductInputSchema).mutation(async (opts) => {
-    const handler = await importHandler(
-      namespaced("samlTenantProduct"),
-      () => import("./samlTenantProduct.handler")
-    );
-    return handler(opts);
-  }),
-  // REVIEW: This router is part of both the public and private viewer router?
   slots: slotsRouter,
   event,
-  ssoConnections: publicProcedure.query(async () => {
-    const handler = await importHandler(
-      namespaced("ssoConnections"),
-      () => import("./ssoConnections.handler")
-    );
-    return handler();
-  }),
-
   checkIfUserEmailVerificationRequired: publicProcedure
     .input(ZUserEmailVerificationRequiredSchema)
     .query(async (opts) => {
