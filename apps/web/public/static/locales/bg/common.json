@@ -1692,7 +1692,6 @@
   "already_have_account": "Вече имате акаунт?",
   "already_have_key": "Вече имам ключ:",
   "already_have_key_suggestion": "Моля, копирайте съществуващата си CALCOM_LICENSE_KEY променлива на средата тук.",
-  "create_license_key": "Създаване на лицензионен ключ",
   "app_is_enabled": "{{appName}} е активирано",
   "app_is_disabled": "{{appName}} е деактивирано",
   "keys_have_been_saved": "Ключовете са запазени",

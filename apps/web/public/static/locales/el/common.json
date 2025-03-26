@@ -1692,7 +1692,6 @@
   "already_have_account": "Έχετε ήδη λογαριασμό;",
   "already_have_key": "Έχω ήδη κλειδί:",
   "already_have_key_suggestion": "Παρακαλώ αντιγράψτε το υπάρχον CALCOM_LICENSE_KEY environment variable εδώ.",
-  "create_license_key": "Δημιουργία κλειδιού άδειας χρήσης",
   "app_is_enabled": "Το {{appName}} είναι ενεργοποιημένο",
   "app_is_disabled": "Το {{appName}} είναι απενεργοποιημένο",
   "keys_have_been_saved": "Τα κλειδιά αποθηκεύτηκαν",
