@@ -137,9 +137,6 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
     if (tab.name === "admin" && IS_CALCOM) {
       tab.children?.push({ name: "create_your_org", href: "/settings/organizations/new" });
     }
-    if (tab.name === "admin" && IS_CALCOM) {
-      tab.children?.push({ name: "create_license_key", href: "/settings/license-key/new" });
-    }
   });
 
   return tabs;
@@ -424,7 +421,7 @@ const SettingsSidebarContainer = ({
         tabMembers?.scrollIntoView({ behavior: "smooth" });
       }, 100);
     }
-  }, [otherTeams, searchParams]);
+  }, [otherTeams, searchParams?.get("id")]);
 
   const isOrgAdminOrOwner =
     currentOrg && currentOrg?.user?.role && ["OWNER", "ADMIN"].includes(currentOrg?.user?.role);
