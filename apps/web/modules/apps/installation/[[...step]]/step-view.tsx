@@ -242,14 +242,6 @@ const OnboardingPage = ({
                   const promises = group.eventTypes
                     .filter((eventType) => eventType.selected)
                     .map((value: TEventType) => {
-                      if (value.metadata) {
-                        // Prevent two payment apps to be enabled
-                        // Ok to cast type here because this metadata will be updated as the event type metadata
-                        if (value.seatsPerTimeSlot) {
-                          throw new Error(t("seats_and_no_show_fee_error"));
-                        }
-                      }
-
                       let updateObject: TUpdateObject = { id: value.id };
                       if (isConferencing) {
                         updateObject = {

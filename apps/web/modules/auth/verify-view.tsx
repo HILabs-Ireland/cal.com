@@ -10,12 +10,9 @@ import { classNames } from "@calcom/lib";
 import { APP_NAME, WEBAPP_URL } from "@calcom/lib/constants";
 import { useCompatSearchParams } from "@calcom/lib/hooks/useCompatSearchParams";
 import { useRouterQuery } from "@calcom/lib/hooks/useRouterQuery";
-import { trpc } from "@calcom/trpc/react";
 import type { inferSSRProps } from "@calcom/types/inferSSRProps";
 import { Button, showToast } from "@calcom/ui";
 import { Icon } from "@calcom/ui";
-
-import Loader from "@components/Loader";
 
 import type { getServerSideProps } from "@server/lib/auth/verify/getServerSideProps";
 
@@ -71,18 +68,9 @@ export default function Verify(props: PageProps) {
   const pathname = usePathname();
   const router = useRouter();
   const routerQuery = useRouterQuery();
-  const { t, sessionId } = querySchema.parse(routerQuery);
+  const { t } = querySchema.parse(routerQuery);
   const [secondsLeft, setSecondsLeft] = useState(30);
-  const { data } = trpc.viewer.public.stripeCheckoutSession.useQuery(
-    {
-      checkoutSessionId: sessionId,
-    },
-    {
-      enabled: !!sessionId,
-      staleTime: Infinity,
-    }
-  );
-  useSendFirstVerificationLogin({ email: data?.customer?.email, username: data?.customer?.username });
+
   // @note: check for t=timestamp and apply disabled state and secondsLeft accordingly
   // to avoid refresh to skip waiting 30 seconds to re-send email
   useEffect(() => {
@@ -109,19 +97,6 @@ export default function Verify(props: PageProps) {
     }
   }, [secondsLeft]);
 
-  if (!data) {
-    // Loading state
-    return <Loader />;
-  }
-  const { valid, customer } = data;
-  if (!valid) {
-    throw new Error("Invalid session or customer id");
-  }
-
-  if (!sessionId) {
-    return <div>Invalid Link</div>;
-  }
-
   return (
     <div className="text-default bg-muted bg-opacity-90 backdrop-blur-md backdrop-grayscale backdrop-filter">
       <Head>
@@ -132,9 +107,6 @@ export default function Verify(props: PageProps) {
           <MailOpenIcon />
           <h3 className="font-cal text-emphasis my-6 text-2xl font-normal leading-none">Check your Inbox</h3>
 
-          <p className="text-muted dark:text-subtle text-base font-normal">
-            We have sent an email to <b>{customer?.email} </b>with a link to activate your account.
-          </p>
           <div className="mt-7">
             <Button
               color="secondary"
@@ -158,16 +130,13 @@ export default function Verify(props: PageProps) {
             )}
             disabled={secondsLeft > 0}
             onClick={async (e) => {
-              if (!customer) {
-                return;
-              }
               e.preventDefault();
               setSecondsLeft(30);
               // Update query params with t:timestamp, shallow: true doesn't re-render the page
               const _searchParams = new URLSearchParams(searchParams?.toString());
               _searchParams.set("t", `${Date.now()}`);
               router.replace(`${pathname}?${_searchParams.toString()}`);
-              return await sendVerificationLogin(customer.email, customer.username);
+              // return await sendVerificationLogin(customer.email, customer.username); TODO: Reimpliment customer now that stripe is removed
             }}>
             {secondsLeft > 0 ? `Resend in ${secondsLeft} seconds` : "Resend"}
           </button>

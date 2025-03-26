@@ -197,6 +197,13 @@ export default function Signup({
   const loadingSubmitState = isSubmitSuccessful || isSubmitting;
   const displayBackButton = token ? false : displayEmailForm;
 
+  const handleErrors = async (resp: Response) => {
+    if (!resp.ok) {
+      const err = await resp.json();
+      throw new Error(err.message);
+    }
+  };
+
   const isPlatformUser = redirectUrl?.includes("platform") && redirectUrl?.includes("new");
 
   const signUp: SubmitHandler<FormValues> = async (_data) => {
@@ -213,6 +220,7 @@ export default function Signup({
       },
       method: "POST",
     })
+      .then(handleErrors)
       .then(async () => {
         if (process.env.NEXT_PUBLIC_GTM_ID)
           pushGTMEvent("create_account", { email: data.email, user: data.username, lang: data.language });

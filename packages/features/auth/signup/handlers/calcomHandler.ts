@@ -169,14 +169,6 @@ async function handler(req: RequestWithUsernameStatus, res: NextApiResponse) {
     });
   }
 
-  if (checkoutSessionId) {
-    console.log("Created user but missing payment", checkoutSessionId);
-    return res.status(402).json({
-      message: "Created user but missing payment",
-      checkoutSessionId,
-    });
-  }
-
   return res.status(201).json({ message: "Created user" });
 }
 
