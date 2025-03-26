@@ -92,7 +92,7 @@ const useRecordingDownload = () => {
   };
 };
 
-const ViewRecordingsList = ({ roomName, hasTeamPlan }: { roomName: string; hasTeamPlan: boolean }) => {
+const ViewRecordingsList = ({ roomName }: { roomName: string }) => {
   const { t } = useLocale();
   const { setRecordingId, isFetching, recordingId } = useRecordingDownload();
   const router = useRouter();

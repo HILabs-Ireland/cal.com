@@ -11,8 +11,8 @@ import type {
   NewCalendarEventType,
 } from "@calcom/types/Calendar";
 import type { CredentialPayload } from "@calcom/types/Credential";
-import type { Contact, ContactCreateInput, CRM } from "@calcom/types/CrmService";
 
+import type { Contact, ContactCreateInput, CRM } from "../../../types/CrmService.d";
 import getAppKeysFromSlug from "../../_utils/getAppKeysFromSlug";
 import refreshOAuthTokens from "../../_utils/oauth/refreshOAuthTokens";
 import { appKeysSchema } from "../zod";

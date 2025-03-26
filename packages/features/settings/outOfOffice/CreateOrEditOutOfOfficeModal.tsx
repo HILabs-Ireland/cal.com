@@ -88,8 +88,6 @@ export const CreateOrEditOutOfOfficeEntryModal = ({
 
   const [profileRedirect, setProfileRedirect] = useState(!!currentlyEditingOutOfOfficeEntry?.toTeamUserId);
 
-  const { hasTeamPlan } = useHasTeamPlan();
-
   const {
     handleSubmit,
     setValue,
@@ -214,7 +212,6 @@ export const CreateOrEditOutOfOfficeEntryModal = ({
             <div className="bg-muted my-4 rounded-xl p-5">
               <div className="flex flex-row">
                 <Switch
-                  disabled={!hasTeamPlan}
                   data-testid="profile-redirect-switch"
                   checked={profileRedirect}
                   id="profile-redirect-switch"
@@ -224,7 +221,7 @@ export const CreateOrEditOutOfOfficeEntryModal = ({
                       setValue("toTeamUserId", null);
                     }
                   }}
-                  label={hasTeamPlan ? t("redirect_team_enabled") : t("redirect_team_disabled")}
+                  label={t("redirect_team_enabled")}
                 />
               </div>
 

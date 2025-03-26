@@ -60,7 +60,6 @@ export const InstallAppButton = (
   const { isPending: isUserLoading, data: user } = trpc.viewer.me.useQuery();
   const router = useRouter();
   const proProtectionElementRef = useRef<HTMLDivElement | null>(null);
-  const { isPending: isTeamPlanStatusLoading, hasTeamPlan } = useHasTeamPlan();
 
   useEffect(() => {
     const el = proProtectionElementRef.current;
@@ -80,9 +79,9 @@ export const InstallAppButton = (
       },
       true
     );
-  }, [isUserLoading, user, router, hasTeamPlan]);
+  }, [isUserLoading, user, router]);
 
-  if (isUserLoading || isTeamPlanStatusLoading) {
+  if (isUserLoading) {
     return null;
   }
 

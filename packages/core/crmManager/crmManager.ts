@@ -2,7 +2,8 @@ import getCrm from "@calcom/app-store/_utils/getCrm";
 import logger from "@calcom/lib/logger";
 import type { CalendarEvent, CalEventResponses } from "@calcom/types/Calendar";
 import type { CredentialPayload } from "@calcom/types/Credential";
-import type { CRM, ContactCreateInput } from "@calcom/types/CrmService";
+
+import type { CRM, ContactCreateInput } from "../../types/CrmService.d";
 
 const log = logger.getSubLogger({ prefix: ["CrmManager"] });
 export default class CrmManager {

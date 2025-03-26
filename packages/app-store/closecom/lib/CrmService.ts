@@ -7,7 +7,8 @@ import { symmetricDecrypt } from "@calcom/lib/crypto";
 import logger from "@calcom/lib/logger";
 import type { CalendarEvent } from "@calcom/types/Calendar";
 import type { CredentialPayload } from "@calcom/types/Credential";
-import type { CRM, ContactCreateInput, CrmEvent, Contact } from "@calcom/types/CrmService";
+
+import type { CRM, ContactCreateInput, CrmEvent, Contact } from "../../../CrmService.d";
 
 // Schema that supports both OAuth and API key credentials
 const credentialSchema = z

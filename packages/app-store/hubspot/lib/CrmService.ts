@@ -14,8 +14,8 @@ import logger from "@calcom/lib/logger";
 import prisma from "@calcom/prisma";
 import type { CalendarEvent } from "@calcom/types/Calendar";
 import type { CredentialPayload } from "@calcom/types/Credential";
-import type { CRM, ContactCreateInput, Contact, CrmEvent } from "@calcom/types/CrmService";
 
+import type { CRM, ContactCreateInput, Contact, CrmEvent } from "../../../types/CrmService.d";
 import getAppKeysFromSlug from "../../_utils/getAppKeysFromSlug";
 import refreshOAuthTokens from "../../_utils/oauth/refreshOAuthTokens";
 import type { HubspotToken } from "../api/callback";
