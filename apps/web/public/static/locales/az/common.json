@@ -796,11 +796,6 @@
   "teams": "Komandalar",
   "team": "Komanda",
   "organization": "Təşkilat",
-<<<<<<< HEAD
-=======
-  "upgrade_to_flexible_pro_title": "Komandalar üçün ödənişi dəyişdirdik",
-  "upgrade_to_flexible_pro_message": "Komandanızda oturacaq olmayan üzvlər var. Əskik oturacaqları əhatə etmək üçün pro planınızı yüksəldin.",
->>>>>>> origin/development
   "create_manage_teams_collaborative": "Əməkdaşlıq xüsusiyyətlərindən istifadə etmək üçün komandalar yaradın və idarə edin.",
   "only_available_on_pro_plan": "Bu xüsusiyyət yalnız Pro planında mövcuddur",
   "edit_profile_info_description": "Planlaşdırma linkinizdə göstərilən profil məlumatlarını redaktə edin.",
@@ -1183,9 +1178,6 @@
   "developer_documentation": "İnkişaf etdirici sənədləri",
   "get_in_touch": "Əlaqə saxlayın",
   "contact_support": "Dəstək ilə əlaqə",
-<<<<<<< HEAD
-  =======
->>>>>>> origin/development
   "feedback": "Rəy",
   "submitted_feedback": "Rəyiniz üçün təşəkkür edirik!",
   "feedback_error": "Rəy göndərilərkən səhv baş verdi",
@@ -1243,22 +1235,10 @@
   "new_workflow_description": "İş axınları xatırlatmaları və bildirişləri avtomatlaşdırmağa imkan verir.",
   "active_on": "Aktivdir",
   "workflow_updated_successfully": "{{workflowName}} iş axını uğurla yeniləndi",
-<<<<<<< HEAD
-=======
-  "premium_username": "Bu premium istifadəçi adıdır, özünüz üçün {{price}} qiymətinə əldə edin",
->>>>>>> origin/development
   "current": "Cari",
   "standard": "standart",
   "confirm_username_change_dialog_title": "İstifadəçi adının dəyişdirilməsini təsdiqləyin",
-<<<<<<< HEAD
-"remove_app": "Tətbiqi sil",
-=======
-  "change_username_standard_to_premium": "Standart istifadəçi adından premium istifadəçi adına keçdiyiniz üçün, yüksəltmək üçün ödəniş səhifəsinə yönləndiriləcəksiniz.",
-  "change_username_premium_to_standard": "Premium istifadəçi adından standart istifadəçi adına keçdiyiniz üçün, aşağı salmaq üçün ödəniş səhifəsinə yönləndiriləcəksiniz.",
-  "stripe_description": "Rezervasiyalar üçün ödəniş tələb olunur (hər əməliyyat üçün 0.5% + €0.10 komissiya)",
-  "trial_expired": "Sınaq müddətiniz bitib",
   "remove_app": "Tətbiqi sil",
->>>>>>> origin/development
   "yes_remove_app": "Bəli, tətbiqi sil",
   "are_you_sure_you_want_to_remove_this_app": "Bu tətbiqi silmək istədiyinizə əminsiniz?",
   "app_removed_successfully": "Tətbiq uğurla silindi",
@@ -2321,17 +2301,8 @@
   "advanced_managed_events": "İrəli Səviyyəli İdarə Edilən Tədbir Növləri",
   "advanced_managed_events_description": "Bütün komandanızın abunəliklərini ödəmək üçün bir kredit kartı əlavə edin",
   "enterprise": "Müəssisə",
-<<<<<<< HEAD
   "create_your_org": "Təşkilatınızı Yaradın",
   "admin_delete_organization_title": "{{organizationName}} silinsin?",
-=======
-  "enterprise_description": "Təşkilatınızı yaratmaq üçün Enterprise-ə yüksəldin",
-  "create_your_org": "Təşkilatınızı Yaradın",
-  "create_your_enterprise_description": "Enterprise-ə yüksəlin və Active Directory Sync, SCIM Avtomatik İstifadəçi təminatı, Cal.ai Səs Agentləri, Admin API-ləri və daha çoxuna giriş əldə edin!",
-  "other_payment_app_enabled": "Hər tədbir növü üçün yalnız bir ödəniş tətbiqini aktivləşdirə bilərsiniz",
-  "admin_delete_organization_description": "<ul><li>Bu təşkilatın üzvü olan komandalar da tədbir növləri ilə birlikdə silinəcək</li><li>Təşkilatın bir hissəsi olan istifadəçilər silinməyəcək, lakin onların istifadəçi adları təşkilatdan kənarda mövcud olmalarına imkan vermək üçün dəyişdiriləcək</li><li>İstifadəçi təşkilatda olduqdan sonra yaradılan tədbir növləri silinəcək</li><li>Köçürülmüş istifadəçi tədbir növləri silinməyəcək</li></ul>",
-  "admin_delete_organization_title": "{{organizationName}} silinsin?",
->>>>>>> origin/development
   "published": "Dərc Edildi",
   "unpublished": "Dərc Edilmədi",
   "publish": "Dərc Et",
