@@ -62,7 +62,7 @@
     "jsforce": "^1.11.0",
     "luxon": "^3.4.4",
     "nest-winston": "^1.9.4",
-    "next-auth": "^4.22.1",
+    "next-auth": "^4.24.11",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "qs-stringify": "^1.2.1",

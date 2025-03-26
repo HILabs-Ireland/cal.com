@@ -4,11 +4,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { validateCustomEventName } from "@calcom/core/event";
-import {
-  DEFAULT_PROMPT_VALUE,
-  DEFAULT_BEGIN_MESSAGE,
-} from "@calcom/features/ee/cal-ai-phone/promptTemplates";
-import type { TemplateType } from "@calcom/features/ee/cal-ai-phone/zod-utils";
 import { sortHosts } from "@calcom/features/eventtypes/components/HostEditDialogs";
 import type {
   FormValues,
@@ -114,18 +109,6 @@ export const useEventTypeForm = ({
       assignAllTeamMembers: eventType.assignAllTeamMembers,
       assignRRMembersUsingSegment: eventType.assignRRMembersUsingSegment,
       rrSegmentQueryValue: eventType.rrSegmentQueryValue,
-      aiPhoneCallConfig: {
-        generalPrompt: eventType.aiPhoneCallConfig?.generalPrompt ?? DEFAULT_PROMPT_VALUE,
-        enabled: eventType.aiPhoneCallConfig?.enabled,
-        beginMessage: eventType.aiPhoneCallConfig?.beginMessage ?? DEFAULT_BEGIN_MESSAGE,
-        guestName: eventType.aiPhoneCallConfig?.guestName,
-        guestEmail: eventType.aiPhoneCallConfig?.guestEmail,
-        guestCompany: eventType.aiPhoneCallConfig?.guestCompany,
-        yourPhoneNumber: eventType.aiPhoneCallConfig?.yourPhoneNumber,
-        numberToCall: eventType.aiPhoneCallConfig?.numberToCall,
-        templateType: eventType.aiPhoneCallConfig?.templateType ?? "CUSTOM_TEMPLATE",
-        schedulerName: eventType.aiPhoneCallConfig?.schedulerName,
-      },
       isRRWeightsEnabled: eventType.isRRWeightsEnabled,
       maxLeadThreshold: eventType.maxLeadThreshold,
       useEventLevelSelectedCalendars: eventType.useEventLevelSelectedCalendars,
@@ -346,9 +329,6 @@ export const useEventTypeForm = ({
       children,
       assignAllTeamMembers,
       multiplePrivateLinks: values.multiplePrivateLinks,
-      aiPhoneCallConfig: rest.aiPhoneCallConfig
-        ? { ...rest.aiPhoneCallConfig, templateType: rest.aiPhoneCallConfig.templateType as TemplateType }
-        : undefined,
     } satisfies EventTypeUpdateInput;
     // Filter out undefined values
     const filteredPayload = Object.entries(payload).reduce((acc, [key, value]) => {

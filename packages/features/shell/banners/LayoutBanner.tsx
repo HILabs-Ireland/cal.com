@@ -1,6 +1,3 @@
-import ImpersonatingBanner, {
-  type ImpersonatingBannerProps,
-} from "@calcom/features/ee/impersonation/components/ImpersonatingBanner";
 import AdminPasswordBanner, {
   type AdminPasswordBannerProps,
 } from "@calcom/features/users/components/AdminPasswordBanner";
@@ -18,7 +15,6 @@ import VerifyEmailBanner, {
 type BannerTypeProps = {
   verifyEmailBanner: VerifyEmailBannerProps;
   adminPasswordBanner: AdminPasswordBannerProps;
-  impersonationBanner: ImpersonatingBannerProps;
   calendarCredentialBanner: CalendarCredentialBannerProps;
   invalidAppCredentialBanners: InvalidAppCredentialBannersProps;
 };
@@ -34,7 +30,6 @@ export type AllBannerProps = { [Key in BannerType]: BannerTypeProps[Key]["data"]
 export const BannerComponent: BannerComponent = {
   verifyEmailBanner: (props: VerifyEmailBannerProps) => <VerifyEmailBanner {...props} />,
   adminPasswordBanner: (props: AdminPasswordBannerProps) => <AdminPasswordBanner {...props} />,
-  impersonationBanner: (props: ImpersonatingBannerProps) => <ImpersonatingBanner {...props} />,
   calendarCredentialBanner: (props: CalendarCredentialBannerProps) => <CalendarCredentialBanner {...props} />,
   invalidAppCredentialBanners: (props: InvalidAppCredentialBannersProps) => (
     <InvalidAppCredentialBanners {...props} />
@@ -53,9 +48,6 @@ export const BannerContainer: React.FC<BannerContainerProps> = ({ banners }) => 
           const Banner = BannerComponent[key];
           return <Banner data={banners[key]} key={key} />;
         } else if (key === "adminPasswordBanner") {
-          const Banner = BannerComponent[key];
-          return <Banner data={banners[key]} key={key} />;
-        } else if (key === "impersonationBanner") {
           const Banner = BannerComponent[key];
           return <Banner data={banners[key]} key={key} />;
         } else if (key === "calendarCredentialBanner") {

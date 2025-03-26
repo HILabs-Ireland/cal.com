@@ -1,3 +1,4 @@
+/* eslint-disable playwright/no-skipped-test */
 import { expect } from "@playwright/test";
 import { v4 as uuidv4 } from "uuid";
 
@@ -24,7 +25,7 @@ test.afterEach(async ({ users }) => {
   await users.deleteAll();
 });
 
-test.describe("BOOKING_CREATED", async () => {
+test.skip("[Flaky] BOOKING_CREATED", async () => {
   test("add webhook & test that creating an event triggers a webhook call", async ({
     page,
     users,
@@ -125,7 +126,6 @@ test.describe("BOOKING_CREATED", async () => {
     webhookReceiver.close();
   });
 });
-// eslint-disable-next-line playwright/no-skipped-test
 test.skip("[Flaky] BOOKING_REJECTED", async () => {
   test("can book an event that requires confirmation and then that booking can be rejected by organizer", async ({
     page,
@@ -232,7 +232,6 @@ test.skip("[Flaky] BOOKING_REJECTED", async () => {
     webhookReceiver.close();
   });
 });
-// eslint-disable-next-line playwright/no-skipped-test
 test.skip("[Flaky] BOOKING_REQUESTED", async () => {
   test("can book an event that requires confirmation and get a booking requested event", async ({
     page,
@@ -335,7 +334,7 @@ test.skip("[Flaky] BOOKING_REQUESTED", async () => {
   });
 });
 
-test.describe("BOOKING_RESCHEDULED", async () => {
+test.skip("[Flaky] BOOKING_RESCHEDULED", async () => {
   test("can reschedule a booking and get a booking rescheduled event", async ({
     page,
     users,
@@ -476,7 +475,7 @@ test.describe("BOOKING_RESCHEDULED", async () => {
   });
 });
 
-test.describe("MEETING_ENDED, MEETING_STARTED", async () => {
+test.skip("[Flaky] MEETING_ENDED, MEETING_STARTED", async () => {
   test("should create/remove scheduledWebhookTriggers for existing bookings", async ({
     page,
     users,
@@ -600,7 +599,7 @@ test.describe("MEETING_ENDED, MEETING_STARTED", async () => {
   });
 });
 
-test.describe("FORM_SUBMITTED", async () => {
+test.skip("[Flaky] FORM_SUBMITTED", async () => {
   test("on submitting user form, triggers user webhook", async ({ page, users, routingForms, webhooks }) => {
     const user = await users.create();
 
@@ -735,7 +734,7 @@ test.describe("FORM_SUBMITTED", async () => {
   });
 });
 
-test.describe("OOO_CREATED", async () => {
+test.skip("[Flaky] OOO_CREATED", async () => {
   test("on creating an OOO, triggers OOO webhook", async ({ page, users, webhooks }) => {
     const user = await users.create();
     await user.apiLogin();

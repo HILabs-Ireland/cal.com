@@ -1,6 +1,5 @@
 {
 "identity_provider": "Identitätsanbieter",
-
 "day_one": "{{count}} Tag",
 "day_other": "{{count}} Tage",
 "second_one": "{{count}} Sekunde",
@@ -1179,7 +1178,6 @@
 "developer_documentation": "Entwickler-Dokumentation",
 "get_in_touch": "Kontakt aufnehmen",
 "contact_support": "Support kontaktieren",
-"community_support": "Community Support",
 "feedback": "Feedback",
 "submitted_feedback": "Vielen Dank für Ihr Feedback!",
 "feedback_error": "Fehler beim Senden des Feedbacks",
