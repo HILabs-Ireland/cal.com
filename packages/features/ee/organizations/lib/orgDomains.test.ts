@@ -23,7 +23,6 @@ function setupEnvs({ WEBAPP_URL = "https://app.cal.com", WEBSITE_URL } = {}) {
       "go",
       "status",
       "api",
-      "saml",
       "www",
       "matrix",
       "developer",

@@ -74,7 +74,6 @@ export const UserForm = ({
   const identityProviderOptions = [
     { value: "CAL", label: "CAL" },
     { value: "GOOGLE", label: "GOOGLE" },
-    { value: "SAML", label: "SAML" },
   ];
   const defaultLocale = defaultValues?.locale || defaultLocaleOption.value;
 

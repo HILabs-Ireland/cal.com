@@ -25,7 +25,6 @@ import { viewerOrganizationsRouter } from "./organizations/_router";
 import { paymentsRouter } from "./payments/_router";
 import { routingFormsRouter } from "./routing-forms/_router";
 import { slotsRouter } from "./slots/_router";
-import { ssoRouter } from "./sso/_router";
 import { viewerTeamsRouter } from "./teams/_router";
 import { webhookRouter } from "./webhook/_router";
 import { workflowsRouter } from "./workflows/_router";
@@ -49,7 +48,6 @@ export const viewerRouter = mergeRouters(
     apiKeys: apiKeysRouter,
     slots: slotsRouter,
     workflows: workflowsRouter,
-    saml: ssoRouter,
     insights: insightsRouter,
     payments: paymentsRouter,
     // NOTE: Add all app related routes in the bottom till the problem described in @calcom/app-store/trpc-routers.ts is solved.
