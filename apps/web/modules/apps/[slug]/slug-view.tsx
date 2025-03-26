@@ -60,7 +60,6 @@ function SingleAppPage(props: PageProps) {
       website={data.url}
       email={data.email}
       licenseRequired={data.licenseRequired}
-      teamsPlanRequired={data.teamsPlanRequired}
       descriptionItems={source.data?.items as string[] | undefined}
       isTemplate={data.isTemplate}
       dependencies={data.dependencies}

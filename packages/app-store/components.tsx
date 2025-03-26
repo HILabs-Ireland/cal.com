@@ -52,7 +52,6 @@ export const InstallAppButtonWithoutPlanCheck = (
 
 export const InstallAppButton = (
   props: {
-    teamsPlanRequired?: App["teamsPlanRequired"];
     type: App["type"];
     wrapperClassName?: string;
     disableInstall?: boolean;
@@ -81,7 +80,7 @@ export const InstallAppButton = (
       },
       true
     );
-  }, [isUserLoading, user, router, hasTeamPlan, props.teamsPlanRequired]);
+  }, [isUserLoading, user, router, hasTeamPlan]);
 
   if (isUserLoading || isTeamPlanStatusLoading) {
     return null;
