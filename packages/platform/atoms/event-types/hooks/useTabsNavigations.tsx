@@ -124,7 +124,7 @@ export const useTabsNavigations = ({
       icon: "webhook",
       info: `${activeWebhooksNumber} ${t("active")}`,
     });
-    if (team && hidden) {
+    if (team) {
       navigation.push({
         name: "Cal.ai",
         href: `/event-types/${eventType.id}?tabName=ai`,

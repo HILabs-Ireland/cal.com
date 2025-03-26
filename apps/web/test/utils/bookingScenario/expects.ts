@@ -941,7 +941,6 @@ export function expectBookingCreatedWebhookToHaveBeenFired({
   booker,
   location,
   subscriberUrl,
-  paidEvent,
   videoCallUrl,
   isEmailHidden = false,
   isAttendeePhoneNumberHidden = false,
@@ -950,69 +949,36 @@ export function expectBookingCreatedWebhookToHaveBeenFired({
   booker: { email: string; name: string; attendeePhoneNumber?: string };
   subscriberUrl: string;
   location: string;
-  paidEvent?: boolean;
   videoCallUrl?: string | null;
   isEmailHidden?: boolean;
   isAttendeePhoneNumberHidden?: boolean;
 }) {
-  if (!paidEvent) {
-    expectWebhookToHaveBeenCalledWith(subscriberUrl, {
-      triggerEvent: "BOOKING_CREATED",
-      payload: {
-        metadata: {
-          ...(videoCallUrl ? { videoCallUrl } : null),
-        },
-        responses: {
-          name: { label: "your_name", value: booker.name, isHidden: false },
-          email: { label: "email_address", value: booker.email, isHidden: isEmailHidden },
-          ...(booker.attendeePhoneNumber
-            ? {
-                attendeePhoneNumber: {
-                  label: "phone_number",
-                  value: booker.attendeePhoneNumber,
-                  isHidden: isAttendeePhoneNumberHidden,
-                },
-              }
-            : null),
-          location: {
-            label: "location",
-            value: { optionValue: "", value: location },
-            isHidden: false,
-          },
+  expectWebhookToHaveBeenCalledWith(subscriberUrl, {
+    triggerEvent: "BOOKING_CREATED",
+    payload: {
+      metadata: {
+        ...(videoCallUrl ? { videoCallUrl } : null),
+      },
+      responses: {
+        name: { label: "your_name", value: booker.name, isHidden: false },
+        email: { label: "email_address", value: booker.email, isHidden: isEmailHidden },
+        ...(booker.attendeePhoneNumber
+          ? {
+              attendeePhoneNumber: {
+                label: "phone_number",
+                value: booker.attendeePhoneNumber,
+                isHidden: isAttendeePhoneNumberHidden,
+              },
+            }
+          : null),
+        location: {
+          label: "location",
+          value: { optionValue: "", value: location },
+          isHidden: false,
         },
       },
-    });
-  } else {
-    expectWebhookToHaveBeenCalledWith(subscriberUrl, {
-      triggerEvent: "BOOKING_CREATED",
-      payload: {
-        // FIXME: File this bug and link ticket here. This is a bug in the code. metadata must be sent here like other BOOKING_CREATED webhook
-        metadata: null,
-        responses: {
-          name: {
-            label: "name",
-            value: booker.name,
-          },
-          email: {
-            label: "email",
-            value: booker.email,
-          },
-          ...(booker.attendeePhoneNumber
-            ? {
-                attendeePhoneNumber: {
-                  label: "phone_number",
-                  value: booker.attendeePhoneNumber,
-                },
-              }
-            : null),
-          location: {
-            label: "location",
-            value: { optionValue: "", value: location },
-          },
-        },
-      },
-    });
-  }
+    },
+  });
 }
 
 export function expectBookingRescheduledWebhookToHaveBeenFired({
@@ -1026,7 +992,6 @@ export function expectBookingRescheduledWebhookToHaveBeenFired({
   booker: { email: string; name: string };
   subscriberUrl: string;
   location: string;
-  paidEvent?: boolean;
   videoCallUrl?: string;
   payload?: Record<string, unknown>;
 }) {

@@ -119,7 +119,8 @@ export const getTeamAndEventTypeOptions = async ({ ctx, input }: GetTeamAndEvent
       name: profile.name,
       eventTypesLockedByOrg: parentOrgHasLockedEventTypes,
     },
-    eventTypes: profileEventTypes,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    eventTypes: profileEventTypes!,
   });
 
   eventTypeGroups = ([] as EventTypeGroup[]).concat(

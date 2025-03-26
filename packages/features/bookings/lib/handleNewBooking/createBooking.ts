@@ -101,7 +101,7 @@ export async function createBooking({
     originalRescheduledBooking,
   });
 
-  return await saveBooking(bookingAndAssociatedData, originalRescheduledBooking, eventType.organizerUser);
+  return await saveBooking(bookingAndAssociatedData);
 
   function shouldConnectBookingToFormResponse() {
     const isRerouting = !!reroutingFormResponses;

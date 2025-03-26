@@ -6,14 +6,12 @@ import { ZQueryForDependenciesInputSchema } from "./queryForDependencies.schema"
 import { ZSaveKeysInputSchema } from "./saveKeys.schema";
 import { ZSetDefaultConferencingAppSchema } from "./setDefaultConferencingApp.schema";
 import { ZToggleInputSchema } from "./toggle.schema";
-import { ZUpdateAppCredentialsInputSchema } from "./updateAppCredentials.schema";
 
 type AppsRouterHandlerCache = {
   listLocal?: typeof import("./listLocal.handler").listLocalHandler;
   toggle?: typeof import("./toggle.handler").toggleHandler;
   saveKeys?: typeof import("./saveKeys.handler").saveKeysHandler;
   checkForGCal?: typeof import("./checkForGCal.handler").checkForGCalHandler;
-  updateAppCredentials?: typeof import("./updateAppCredentials.handler").updateAppCredentialsHandler;
   queryForDependencies?: typeof import("./queryForDependencies.handler").queryForDependenciesHandler;
   checkGlobalKeys?: typeof import("./checkGlobalKeys.handler").checkForGlobalKeysHandler;
   setDefaultConferencingApp?: typeof import("./setDefaultConferencingApp.handler").setDefaultConferencingAppHandler;
@@ -108,26 +106,6 @@ export const appsRouter = router({
         input,
       });
     }),
-  updateAppCredentials: authedProcedure
-    .input(ZUpdateAppCredentialsInputSchema)
-    .mutation(async ({ ctx, input }) => {
-      if (!UNSTABLE_HANDLER_CACHE.updateAppCredentials) {
-        UNSTABLE_HANDLER_CACHE.updateAppCredentials = await import("./updateAppCredentials.handler").then(
-          (mod) => mod.updateAppCredentialsHandler
-        );
-      }
-
-      // Unreachable code but required for type safety
-      if (!UNSTABLE_HANDLER_CACHE.updateAppCredentials) {
-        throw new Error("Failed to load handler");
-      }
-
-      return UNSTABLE_HANDLER_CACHE.updateAppCredentials({
-        ctx,
-        input,
-      });
-    }),
-
   queryForDependencies: authedProcedure
     .input(ZQueryForDependenciesInputSchema)
     .query(async ({ ctx, input }) => {

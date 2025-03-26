@@ -1,8 +1,8 @@
 import { z } from "zod";
 
 import { TIME_UNIT } from "@calcom/features/ee/workflows/lib/constants";
-import { WEBHOOK_TRIGGER_EVENTS } from "@calcom/features/webhooks/lib/constants";
 
+import { WEBHOOK_TRIGGER_EVENTS } from "../../../../../../packages/features/webhooks/lib/constants";
 import { webhookIdAndEventTypeIdSchema } from "./types";
 
 export const ZEditInputSchema = webhookIdAndEventTypeIdSchema.extend({

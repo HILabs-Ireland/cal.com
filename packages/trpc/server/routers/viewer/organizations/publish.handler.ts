@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { WEBAPP_URL } from "@calcom/lib/constants";
 import { isOrganisationAdmin } from "@calcom/lib/server/queries/organisations";
 import { prisma } from "@calcom/prisma";
@@ -15,8 +16,9 @@ type PublishOptions = {
 
 export const publishHandler = async ({ ctx }: PublishOptions) => {
   const orgId = ctx.user.organizationId;
+  if (!orgId) throw new TRPCError({ code: "UNAUTHORIZED", message: "You do not have an organization" });
 
-  if (!(await isOrganisationAdmin(ctx.user.id, orgId))) throw new TRPCError({ code: "UNAUTHORIZED" });
+  if (!(await isOrganisationAdmin(ctx.user.id, orgId!))) throw new TRPCError({ code: "UNAUTHORIZED" });
 
   const prevTeam = await prisma.team.findFirst({
     where: {
@@ -42,7 +44,7 @@ export const publishHandler = async ({ ctx }: PublishOptions) => {
 
   try {
     updatedTeam = await prisma.team.update({
-      where: { id: orgId },
+      where: { id: orgId! },
       data: {
         slug: requestedSlug,
         metadata: { ...newMetadata },

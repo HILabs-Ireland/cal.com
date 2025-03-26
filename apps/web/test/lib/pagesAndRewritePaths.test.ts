@@ -9,7 +9,6 @@ describe("pagesAndRewritePaths", () => {
       "availability",
       "booking",
       "connect-and-join",
-      "enterprise",
       "error",
       "getting-started",
       "insights",
