@@ -3458,20 +3458,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@calcom/alby@workspace:packages/app-store/alby":
-  version: 0.0.0-use.local
-  resolution: "@calcom/alby@workspace:packages/app-store/alby"
-  dependencies:
-    "@calcom/lib": "*"
-    "@calcom/types": "*"
-    "@getalby/lightning-tools": ^4.0.2
-    "@getalby/sdk": ^2.4.0
-    "@webbtc/webln-types": ^2.0.1
-    react-qr-code: ^2.0.12
-    svix: ^0.85.1
-  languageName: unknown
-  linkType: soft
-
 "@calcom/amie@workspace:packages/app-store/amie":
   version: 0.0.0-use.local
   resolution: "@calcom/amie@workspace:packages/app-store/amie"
@@ -3553,7 +3539,6 @@ __metadata:
     reflect-metadata: ^0.1.13
     rxjs: ^7.8.1
     source-map-support: ^0.5.21
-    stripe: ^15.3.0
     supertest: ^6.3.3
     ts-jest: ^29.1.1
     ts-loader: ^9.4.3
@@ -3634,7 +3619,6 @@ __metadata:
     lodash: ^4.17.21
     qs-stringify: ^1.2.1
     react-i18next: ^12.2.0
-    stripe: ^9.16.0
   languageName: unknown
   linkType: soft
 
@@ -4160,7 +4144,6 @@ __metadata:
     lexical: ^0.9.0
     react-select: ^5.7.0
     react-sticky-box: ^2.0.4
-    stripe-event-types: ^3.1.0
     web-push: ^3.6.7
     zustand: ^4.3.2
   languageName: unknown
@@ -4227,16 +4210,6 @@ __metadata:
   resolution: "@calcom/gtm@workspace:packages/app-store/gtm"
   dependencies:
     "@calcom/lib": "*"
-    "@calcom/types": "*"
-  languageName: unknown
-  linkType: soft
-
-"@calcom/hitpay@workspace:packages/app-store/hitpay":
-  version: 0.0.0-use.local
-  resolution: "@calcom/hitpay@workspace:packages/app-store/hitpay"
-  dependencies:
-    "@calcom/lib": "*"
-    "@calcom/prisma": "*"
     "@calcom/types": "*"
   languageName: unknown
   linkType: soft
@@ -4416,15 +4389,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@calcom/mock-payment-app@workspace:packages/app-store/mock-payment-app":
-  version: 0.0.0-use.local
-  resolution: "@calcom/mock-payment-app@workspace:packages/app-store/mock-payment-app"
-  dependencies:
-    "@calcom/lib": "*"
-    "@calcom/types": "*"
-  languageName: unknown
-  linkType: soft
-
 "@calcom/n8n@workspace:packages/app-store/n8n":
   version: 0.0.0-use.local
   resolution: "@calcom/n8n@workspace:packages/app-store/n8n"
@@ -4459,15 +4423,6 @@ __metadata:
   dependencies:
     "@calcom/lib": "*"
     "@calcom/prisma": "*"
-    "@calcom/types": "*"
-  languageName: unknown
-  linkType: soft
-
-"@calcom/paypal@workspace:packages/app-store/paypal":
-  version: 0.0.0-use.local
-  resolution: "@calcom/paypal@workspace:packages/app-store/paypal"
-  dependencies:
-    "@calcom/lib": "*"
     "@calcom/types": "*"
   languageName: unknown
   linkType: soft
@@ -4798,26 +4753,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@calcom/stripepayment@workspace:packages/app-store/stripepayment":
-  version: 0.0.0-use.local
-  resolution: "@calcom/stripepayment@workspace:packages/app-store/stripepayment"
-  dependencies:
-    "@calcom/app-store": "*"
-    "@calcom/dayjs": "*"
-    "@calcom/emails": "*"
-    "@calcom/features": "*"
-    "@calcom/lib": "*"
-    "@calcom/prisma": "*"
-    "@calcom/types": "*"
-    "@stripe/react-stripe-js": ^1.10.0
-    "@stripe/stripe-js": ^1.35.0
-    stripe: ^9.16.0
-    ts-node: ^10.9.1
-    uuid: ^8.3.2
-    zod: ^3.22.4
-  languageName: unknown
-  linkType: soft
-
 "@calcom/swagger@workspace:apps/swagger":
   version: 0.0.0-use.local
   resolution: "@calcom/swagger@workspace:apps/swagger"
@@ -5062,8 +4997,6 @@ __metadata:
     "@radix-ui/react-tooltip": ^1.0.0
     "@replexica/sdk": ^0.7.0
     "@sentry/nextjs": ^8.8.0
-    "@stripe/react-stripe-js": ^1.10.0
-    "@stripe/stripe-js": ^1.35.0
     "@tanstack/react-query": ^5.17.15
     "@testing-library/react": ^13.3.0
     "@tremor/react": ^2.0.0
@@ -5087,7 +5020,6 @@ __metadata:
     "@types/react-phone-number-input": ^3.0.14
     "@types/remove-markdown": ^0.3.1
     "@types/sanitize-html": ^2.9.0
-    "@types/stripe": ^8.0.417
     "@types/turndown": ^5.0.1
     "@types/uuid": 8.3.1
     "@unkey/ratelimit": ^0.1.1
@@ -5168,7 +5100,6 @@ __metadata:
     sanitize-html: ^2.12.1
     schema-dts: ^1.1.0
     short-uuid: ^4.2.0
-    stripe: ^9.16.0
     superjson: 1.9.1
     tailwindcss: ^3.3.3
     tailwindcss-animate: ^1.0.6
@@ -6537,27 +6468,6 @@ __metadata:
   version: 1.1.3
   resolution: "@gar/promisify@npm:1.1.3"
   checksum: 4059f790e2d07bf3c3ff3e0fec0daa8144fe35c1f6e0111c9921bd32106adaa97a4ab096ad7dab1e28ee6a9060083c4d1a4ada42a7f5f3f7a96b8812e2b757c1
-  languageName: node
-  linkType: hard
-
-"@getalby/lightning-tools@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "@getalby/lightning-tools@npm:4.0.2"
-  dependencies:
-    crypto-js: ^4.1.1
-    light-bolt11-decoder: ^3.0.0
-  checksum: 661fe1efe2478a2e747f1f9206dda61cd786b76d4aac15fd27d69772ad7d32f4dc898b3352cc6e99372cee9d3d31c63d0beb5bdf948baa85a5a2b8b4947e6cf2
-  languageName: node
-  linkType: hard
-
-"@getalby/sdk@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "@getalby/sdk@npm:2.4.0"
-  dependencies:
-    crypto-js: ^4.1.1
-    events: ^3.3.0
-    nostr-tools: 1.13.1
-  checksum: 70441646784a51f9664a5e929c1db30f62e54907ec637ce9874f43df9064096a0b348ec11bed11f1dcfbd3920eda684f4a7c1ab1c81fc5eecf17495a9d931a5e
   languageName: node
   linkType: hard
 
@@ -8585,23 +8495,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@noble/curves@npm:1.1.0, @noble/curves@npm:~1.1.0":
-  version: 1.1.0
-  resolution: "@noble/curves@npm:1.1.0"
-  dependencies:
-    "@noble/hashes": 1.3.1
-  checksum: 2658cdd3f84f71079b4e3516c47559d22cf4b55c23ac8ee9d2b1f8e5b72916d9689e59820e0f9d9cb4a46a8423af5b56dc6bb7782405c88be06a015180508db5
-  languageName: node
-  linkType: hard
-
-"@noble/hashes@npm:1.3.1":
-  version: 1.3.1
-  resolution: "@noble/hashes@npm:1.3.1"
-  checksum: 7fdefc0f7a0c1ec27acc6ff88841793e3f93ec4ce6b8a6a12bfc0dd70ae6b7c4c82fe305fdfeda1735d5ad4a9eebe761e6693b3d355689c559e91242f4bc95b1
-  languageName: node
-  linkType: hard
-
-"@noble/hashes@npm:^1.1.5, @noble/hashes@npm:~1.3.0, @noble/hashes@npm:~1.3.1":
+"@noble/hashes@npm:^1.1.5":
   version: 1.3.2
   resolution: "@noble/hashes@npm:1.3.2"
   checksum: fe23536b436539d13f90e4b9be843cc63b1b17666a07634a2b1259dded6f490be3d050249e6af98076ea8f2ea0d56f578773c2197f2aa0eeaa5fba5bc18ba474
@@ -12941,41 +12835,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@scure/base@npm:1.1.1":
-  version: 1.1.1
-  resolution: "@scure/base@npm:1.1.1"
-  checksum: b4fc810b492693e7e8d0107313ac74c3646970c198bbe26d7332820886fa4f09441991023ec9aa3a2a51246b74409ab5ebae2e8ef148bbc253da79ac49130309
-  languageName: node
-  linkType: hard
-
-"@scure/base@npm:~1.1.0":
-  version: 1.1.3
-  resolution: "@scure/base@npm:1.1.3"
-  checksum: 1606ab8a4db898cb3a1ada16c15437c3bce4e25854fadc8eb03ae93cbbbac1ed90655af4b0be3da37e12056fef11c0374499f69b9e658c9e5b7b3e06353c630c
-  languageName: node
-  linkType: hard
-
-"@scure/bip32@npm:1.3.1":
-  version: 1.3.1
-  resolution: "@scure/bip32@npm:1.3.1"
-  dependencies:
-    "@noble/curves": ~1.1.0
-    "@noble/hashes": ~1.3.1
-    "@scure/base": ~1.1.0
-  checksum: 394d65f77a40651eba21a5096da0f4233c3b50d422864751d373fcf142eeedb94a1149f9ab1dbb078086dab2d0bc27e2b1afec8321bf22d4403c7df2fea5bfe2
-  languageName: node
-  linkType: hard
-
-"@scure/bip39@npm:1.2.1":
-  version: 1.2.1
-  resolution: "@scure/bip39@npm:1.2.1"
-  dependencies:
-    "@noble/hashes": ~1.3.0
-    "@scure/base": ~1.1.0
-  checksum: c5bd6f1328fdbeae2dcdd891825b1610225310e5e62a4942714db51066866e4f7bef242c7b06a1b9dcc8043a4a13412cf5c5df76d3b10aa9e36b82e9b6e3eeaa
-  languageName: node
-  linkType: hard
-
 "@sec-ant/readable-stream@npm:^0.4.1":
   version: 0.4.1
   resolution: "@sec-ant/readable-stream@npm:0.4.1"
@@ -14995,26 +14854,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stripe/react-stripe-js@npm:^1.10.0":
-  version: 1.10.0
-  resolution: "@stripe/react-stripe-js@npm:1.10.0"
-  dependencies:
-    prop-types: ^15.7.2
-  peerDependencies:
-    "@stripe/stripe-js": ^1.34.0
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 718085cedc5aae06366278d99850845e0be52678369a80e71c7b0f9e1a47ff60ee36a707e7143c723abdf4a945d2d3027d818da3cff929efabd64165b95d52b7
-  languageName: node
-  linkType: hard
-
-"@stripe/stripe-js@npm:^1.35.0":
-  version: 1.35.0
-  resolution: "@stripe/stripe-js@npm:1.35.0"
-  checksum: 18322cbb372aefda4b8ae167ff67bf4a0f40d059753b67ff3f12ea0b5cc438ecaa16e0b0200941e1f8912456e9a356434d34f80e4b2d524df851f8482f02eda0
-  languageName: node
-  linkType: hard
-
 "@swc/core-darwin-arm64@npm:1.3.100":
   version: 1.3.100
   resolution: "@swc/core-darwin-arm64@npm:1.3.100"
@@ -16902,15 +16741,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/stripe@npm:^8.0.417":
-  version: 8.0.417
-  resolution: "@types/stripe@npm:8.0.417"
-  dependencies:
-    stripe: "*"
-  checksum: 9ce7a189ef35d10da2b0a1947a53526024d62a7475f97dcf937c447dbc625b93ef4aeff1748b7ff661e68ef5380f72d5b2d5d08b70d36e878ac736d5c85d7bb8
-  languageName: node
-  linkType: hard
-
 "@types/superagent@npm:*":
   version: 8.1.4
   resolution: "@types/superagent@npm:8.1.4"
@@ -17899,13 +17729,6 @@ __metadata:
     "@webassemblyjs/ast": 1.11.6
     "@xtuc/long": 4.2.2
   checksum: d2fa6a4c427325ec81463e9c809aa6572af6d47f619f3091bf4c4a6fc34f1da3df7caddaac50b8e7a457f8784c62cd58c6311b6cb69b0162ccd8d4c072f79cf8
-  languageName: node
-  linkType: hard
-
-"@webbtc/webln-types@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@webbtc/webln-types@npm:2.0.1"
-  checksum: c9fc0e3b4ad37f6b1a14f3a681dae8bd74bc53104bdf8b8bda99d35a08057649abc5a9248916f648a277d9ccf60aa0a8a2138d5827dad5702be6f32307f6c824
   languageName: node
   linkType: hard
 
@@ -22118,13 +21941,6 @@ __metadata:
     randombytes: ^2.0.0
     randomfill: ^1.0.3
   checksum: c1609af82605474262f3eaa07daa0b2140026bd264ab316d4bf1170272570dbe02f0c49e29407fe0d3634f96c507c27a19a6765fb856fed854a625f9d15618e2
-  languageName: node
-  linkType: hard
-
-"crypto-js@npm:^4.1.1":
-  version: 4.1.1
-  resolution: "crypto-js@npm:4.1.1"
-  checksum: b3747c12ee3a7632fab3b3e171ea50f78b182545f0714f6d3e7e2858385f0f4101a15f2517e033802ce9d12ba50a391575ff4638c9de3dd9b2c4bc47768d5425
   languageName: node
   linkType: hard
 
@@ -31304,15 +31120,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"light-bolt11-decoder@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "light-bolt11-decoder@npm:3.0.0"
-  dependencies:
-    "@scure/base": 1.1.1
-  checksum: 027c2f3be7369f7cf0f1eb566002b5fbbd6132875a678867411bad3162403db52bfc3e9ed30afc19bdae8bd970642efe1b84006cf087ebdb9071effa6c3cbe53
-  languageName: node
-  linkType: hard
-
 "lilconfig@npm:2.0.5, lilconfig@npm:^2.0.5":
   version: 2.0.5
   resolution: "lilconfig@npm:2.0.5"
@@ -34203,19 +34010,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nostr-tools@npm:1.13.1":
-  version: 1.13.1
-  resolution: "nostr-tools@npm:1.13.1"
-  dependencies:
-    "@noble/curves": 1.1.0
-    "@noble/hashes": 1.3.1
-    "@scure/base": 1.1.1
-    "@scure/bip32": 1.3.1
-    "@scure/bip39": 1.2.1
-  checksum: 49695f94b5d399a29c9d7173fa2927c24247e365a7b17586434c4b442b99b6a35b6b015c01736b12fcaaba5b88884e25c1af1367880111403ea0718db85d5467
-  languageName: node
-  linkType: hard
-
 "npm-bundled@npm:^2.0.0":
   version: 2.0.1
   resolution: "npm-bundled@npm:2.0.1"
@@ -37085,13 +36879,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qr.js@npm:0.0.0":
-  version: 0.0.0
-  resolution: "qr.js@npm:0.0.0"
-  checksum: 5ac6c393967bdeaa660e7fd3a501a25eb538c1f6008a4d30ab2b97bbe520e5c236530090773f1578aa0a523cdaa6923c866615e21143f9e7cd22abd41c789b69
-  languageName: node
-  linkType: hard
-
 "qrcode@npm:^1.5.1":
   version: 1.5.1
   resolution: "qrcode@npm:1.5.1"
@@ -37122,7 +36909,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qs@npm:^6.10.2, qs@npm:^6.10.3, qs@npm:^6.7.0, qs@npm:^6.9.4":
+"qs@npm:^6.10.2, qs@npm:^6.7.0, qs@npm:^6.9.4":
   version: 6.10.3
   resolution: "qs@npm:6.10.3"
   dependencies:
@@ -37751,22 +37538,6 @@ __metadata:
     react: ">=16.8"
     react-dom: ">=16.8"
   checksum: 601c27426c84dbff2cd4d3d3c4998adbb5334c3ff7a995b408b46e7be04b2a787fe8da63399dd8dd6c260f1961f7656a7f4f9c5681c72e18d64a05ffc5585a2b
-  languageName: node
-  linkType: hard
-
-"react-qr-code@npm:^2.0.12":
-  version: 2.0.12
-  resolution: "react-qr-code@npm:2.0.12"
-  dependencies:
-    prop-types: ^15.8.1
-    qr.js: 0.0.0
-  peerDependencies:
-    react: ^16.x || ^17.x || ^18.x
-    react-native-svg: "*"
-  peerDependenciesMeta:
-    react-native-svg:
-      optional: true
-  checksum: b7bad40d7d5f04f7ff336ae499920dd5ea0e7616ed7fec5f849e54f8f26b5e4acd1ba8e69198be8617dc7fecdf36cf4302c99ff74885320b55bb95d19a09de7c
   languageName: node
   linkType: hard
 
@@ -41368,45 +41139,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stripe-event-types@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "stripe-event-types@npm:3.1.0"
-  peerDependencies:
-    stripe: ">=10.0.0"
-  checksum: fcabbfba20a953851ee61015897ec497d4c31d7fa480e8a6bb17f04e0ca167b90e30bd09bae5d807d0182fd1cdfd9fd05c299d643d80db9568506165523967e8
-  languageName: node
-  linkType: hard
-
-"stripe@npm:*":
-  version: 8.215.0
-  resolution: "stripe@npm:8.215.0"
-  dependencies:
-    "@types/node": ">=8.1.0"
-    qs: ^6.10.3
-  checksum: 0ccf3c66a259450a63b8d6f27920e04be1fad1207fb6a9c93bdffc250008e1dc915c44bac1d8b4a63be10fcd1865d4aa3de90c79f7966798c43fecab7e4f489d
-  languageName: node
-  linkType: hard
-
-"stripe@npm:^15.3.0":
-  version: 15.4.0
-  resolution: "stripe@npm:15.4.0"
-  dependencies:
-    "@types/node": ">=8.1.0"
-    qs: ^6.11.0
-  checksum: 0302b740ef76084b8cc0fbec14f80c864101a0b04b1d85ecd120d921f3d665a512230a905be1388f777d9677850ffcf066c8cce37935e2f8f3d0d3d5d29d7a4b
-  languageName: node
-  linkType: hard
-
-"stripe@npm:^9.16.0":
-  version: 9.16.0
-  resolution: "stripe@npm:9.16.0"
-  dependencies:
-    "@types/node": ">=8.1.0"
-    qs: ^6.10.3
-  checksum: d84eb9ef3fa0c50e1b62271bf822d3e9da22272ec7364ae8334db7277e42f657c42c10f6fa535c634c36081e17d1c8c5a1efc509b3747f84bfbe4cf2a94ade4b
-  languageName: node
-  linkType: hard
-
 "strnum@npm:^1.0.5":
   version: 1.0.5
   resolution: "strnum@npm:1.0.5"
@@ -41612,19 +41344,6 @@ __metadata:
     svix-fetch: ^3.0.0
     url-parse: ^1.4.3
   checksum: 578d8e278805c2111fd1663fec3ed8db1f411636307a99790e3afc1a348030a811563b1d05c8c6903265f158a8396c8f7a233e873c18ab0724b9ddeebcb5b194
-  languageName: node
-  linkType: hard
-
-"svix@npm:^0.85.1":
-  version: 0.85.1
-  resolution: "svix@npm:0.85.1"
-  dependencies:
-    "@stablelib/base64": ^1.0.0
-    es6-promise: ^4.2.4
-    fast-sha256: ^1.3.0
-    svix-fetch: ^3.0.0
-    url-parse: ^1.4.3
-  checksum: cc1fe601affadff33058b0ed18be7ef92f17e893835ded04db133d9d4930ea0a8836c2d9fe289a1c76c566a3f9eb18d2262f94b715c7055615cc561e7d4e546c
   languageName: node
   linkType: hard
 
