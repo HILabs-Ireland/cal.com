@@ -1,5 +1,4 @@
 import { checkRateLimitAndThrowError } from "@calcom/lib/checkRateLimitAndThrowError";
-import { EventTypeRepository } from "@calcom/lib/server/repository/eventType";
 import { MembershipRepository } from "@calcom/lib/server/repository/membership";
 import { ProfileRepository } from "@calcom/lib/server/repository/profile";
 import type { PrismaClient } from "@calcom/prisma";
@@ -9,6 +8,7 @@ import { EventTypeMetaDataSchema } from "@calcom/prisma/zod-utils";
 
 import { TRPCError } from "@trpc/server";
 
+import { EventTypeRepository } from "../../../../../lib/server/repository/eventType";
 import type { TrpcSessionUser } from "../../../trpc";
 import { listOtherTeamHandler } from "../organizations/listOtherTeams.handler";
 import type { TGetTeamAndEventTypeOptionsSchema } from "./getTeamAndEventTypeOptions.schema";
@@ -119,8 +119,7 @@ export const getTeamAndEventTypeOptions = async ({ ctx, input }: GetTeamAndEvent
       name: profile.name,
       eventTypesLockedByOrg: parentOrgHasLockedEventTypes,
     },
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    eventTypes: profileEventTypes!,
+    eventTypes: profileEventTypes,
   });
 
   eventTypeGroups = ([] as EventTypeGroup[]).concat(
