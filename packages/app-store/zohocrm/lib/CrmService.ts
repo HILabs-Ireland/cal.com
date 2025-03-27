@@ -7,8 +7,8 @@ import logger from "@calcom/lib/logger";
 import prisma from "@calcom/prisma";
 import type { CalendarEvent, NewCalendarEventType } from "@calcom/types/Calendar";
 import type { CredentialPayload } from "@calcom/types/Credential";
+import type { CRM, Contact, ContactCreateInput } from "@calcom/types/CrmService";
 
-import type { CRM, Contact, ContactCreateInput } from "../../../types/CrmService.d";
 import getAppKeysFromSlug from "../../_utils/getAppKeysFromSlug";
 import refreshOAuthTokens from "../../_utils/oauth/refreshOAuthTokens";
 
