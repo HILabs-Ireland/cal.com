@@ -6,7 +6,7 @@ import { useAppContextWithSchema } from "@calcom/app-store/EventTypeAppContext";
 import { useIsPlatform } from "@calcom/atoms/monorepo";
 import { classNames } from "@calcom/lib";
 import type { RouterOutputs } from "@calcom/trpc/react";
-import { Switch, Badge, Avatar, Button, Icon } from "@calcom/ui";
+import { Switch, Badge, Avatar, Button } from "@calcom/ui";
 
 import type { CredentialOwner } from "../types";
 import OmniInstallAppButton from "./OmniInstallAppButton";
@@ -128,24 +128,25 @@ export default function AppCard({
           {app?.isInstalled && switchChecked && <hr className="border-subtle" />}
 
           {app?.isInstalled && switchChecked ? (
-            app?.isSetupAlready === undefined || app?.isSetupAlready ? (
-              <div className="relative p-4 pt-5 text-sm [&_input]:mb-0 [&_input]:leading-4">
-                {!hideSettingsIcon && !isPlatform && (
-                  <Link href={`/apps/${app.slug}/setup`} className="absolute right-4 top-4">
-                    <Icon name="settings" className="text-default h-4 w-4" aria-hidden="true" />
-                  </Link>
-                )}
-                {children}
-              </div>
-            ) : (
-              <div className="flex h-64 w-full flex-col items-center justify-center gap-4 ">
-                <p>{t("this_app_is_not_setup_already")}</p>
-                <Link href={`/apps/${app.slug}/setup`}>
-                  <Button StartIcon="settings">{t("setup")}</Button>
-                </Link>
-              </div>
-            )
-          ) : null}
+            // TODO: isSetupAlready is a v2 api call, and may need to be reworked after v2 removal
+            // app?.isSetupAlready === undefined || app?.isSetupAlready ? (
+            //   <div className="relative p-4 pt-5 text-sm [&_input]:mb-0 [&_input]:leading-4">
+            //     {!hideSettingsIcon && !isPlatform && (
+            //       <Link href={`/apps/${app.slug}/setup`} className="absolute right-4 top-4">
+            //         <Icon name="settings" className="text-default h-4 w-4" aria-hidden="true" />
+            //       </Link>
+            //     )}
+            //     {children}
+            //   </div>
+            // ) : (
+            <div className="flex h-64 w-full flex-col items-center justify-center gap-4 ">
+              <p>{t("this_app_is_not_setup_already")}</p>
+              <Link href={`/apps/${app.slug}/setup`}>
+                <Button StartIcon="settings">{t("setup")}</Button>
+              </Link>
+            </div>
+          ) : // )
+          null}
         </div>
       )}
     </div>

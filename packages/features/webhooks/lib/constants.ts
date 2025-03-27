@@ -5,6 +5,8 @@ import { WebhookTriggerEvents } from "@calcom/prisma/enums";
 export const WEBHOOK_TRIGGER_EVENTS_GROUPED_BY_APP = {
   core: [
     WebhookTriggerEvents.BOOKING_CANCELLED,
+    WebhookTriggerEvents.BOOKING_PAYMENT_INITIATED,
+    WebhookTriggerEvents.BOOKING_PAID,
     WebhookTriggerEvents.BOOKING_CREATED,
     WebhookTriggerEvents.BOOKING_RESCHEDULED,
     WebhookTriggerEvents.MEETING_ENDED,

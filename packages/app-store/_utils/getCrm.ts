@@ -1,8 +1,8 @@
 import logger from "@calcom/lib/logger";
 import type { CredentialPayload } from "@calcom/types/Credential";
+import type { CRM } from "@calcom/types/CrmService";
 
 import appStore from "..";
-import type { CRM } from "../../types/CrmService.d";
 
 type Class<I, Args extends any[] = any[]> = new (...args: Args) => I;
 
@@ -25,8 +25,13 @@ export const getCrm = async (credential: CredentialPayload, appOptions: any) => 
   const crmApp = await crmAppImportFn();
 
   if (crmApp && "lib" in crmApp && "CrmService" in crmApp.lib) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const CrmService = crmApp.lib.CrmService as CrmClass;
     return new CrmService(credential, appOptions);
+  } else {
+    log.warn(`crm of type ${crmType} is not implemented`);
+    return null;
   }
 };
 

@@ -1,4 +1,5 @@
 import { checkRateLimitAndThrowError } from "@calcom/lib/checkRateLimitAndThrowError";
+import { EventTypeRepository } from "@calcom/lib/server/repository/eventType";
 import { MembershipRepository } from "@calcom/lib/server/repository/membership";
 import { ProfileRepository } from "@calcom/lib/server/repository/profile";
 import type { PrismaClient } from "@calcom/prisma";
@@ -8,7 +9,6 @@ import { EventTypeMetaDataSchema } from "@calcom/prisma/zod-utils";
 
 import { TRPCError } from "@trpc/server";
 
-import { EventTypeRepository } from "../../../../../lib/server/repository/eventType";
 import type { TrpcSessionUser } from "../../../trpc";
 import { listOtherTeamHandler } from "../organizations/listOtherTeams.handler";
 import type { TGetTeamAndEventTypeOptionsSchema } from "./getTeamAndEventTypeOptions.schema";
@@ -30,7 +30,9 @@ type res = Awaited<
   ReturnType<typeof MembershipRepository.findAllByUpIdIncludeMinimalEventTypes>
 >[number]["team"]["eventTypes"][number];
 
-type EventType = Omit<res, "forwardParamsSuccessRedirect"> & { children?: { id: number }[] };
+type EventType = Omit<res, "forwardParamsSuccessRedirect" | "price" | "currency"> & {
+  children?: { id: number }[];
+};
 
 export const getTeamAndEventTypeOptions = async ({ ctx, input }: GetTeamAndEventTypeOptions) => {
   await checkRateLimitAndThrowError({

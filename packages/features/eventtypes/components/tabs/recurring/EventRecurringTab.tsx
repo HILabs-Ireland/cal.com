@@ -1,8 +1,10 @@
+import type { EventTypeSetup } from "@calcom/features/eventtypes/lib/types";
+
 import type { RecurringEventControllerProps } from "./RecurringEventController";
 import RecurringEventController from "./RecurringEventController";
 
 export interface EventRecurringTabProps {
-  eventType: SomeType;
+  eventType: EventTypeSetup;
   customClassNames?: string;
 }
 

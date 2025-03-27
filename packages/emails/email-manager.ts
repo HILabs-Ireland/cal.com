@@ -643,15 +643,6 @@ export const sendSlugReplacementEmail = async ({
   await sendEmail(() => new SlugReplacementEmail(email, name, teamName, slug, t));
 };
 
-export const sendNoShowFeeChargedEmail = async (
-  attendee: Person,
-  evt: CalendarEvent,
-  eventTypeMetadata?: EventTypeMetadata
-) => {
-  if (eventTypeDisableAttendeeEmail(eventTypeMetadata)) return;
-  await sendEmail(() => new NoShowFeeChargedEmail(evt, attendee));
-};
-
 export const sendDailyVideoRecordingEmails = async (calEvent: CalendarEvent, downloadLink: string) => {
   const calendarEvent = formatCalEvent(calEvent);
   const emailsToSend: Promise<unknown>[] = [];
