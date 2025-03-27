@@ -33,7 +33,6 @@ import { getBookingFieldsWithSystemFields } from "@calcom/features/bookings/lib/
 import { handleWebhookTrigger } from "@calcom/features/bookings/lib/handleWebhookTrigger";
 import { isEventTypeLoggingEnabled } from "@calcom/features/bookings/lib/isEventTypeLoggingEnabled";
 import { getShouldServeCache } from "@calcom/features/calendar-cache/lib/getShouldServeCache";
-import AssignmentReasonRecorder from "@calcom/features/ee/round-robin/assignmentReason/AssignmentReasonRecorder";
 import {
   allowDisablingAttendeeConfirmationEmails,
   allowDisablingHostConfirmationEmails,
@@ -1200,26 +1199,6 @@ async function handler(
       if (booking?.userId) {
         const usersRepository = new UsersRepository();
         await usersRepository.updateLastActiveAt(booking.userId);
-      }
-
-      // If it's a round robin event, record the reason for the host assignment
-      if (eventType.schedulingType === SchedulingType.ROUND_ROBIN) {
-        if (reqBody.crmOwnerRecordType && reqBody.crmAppSlug && contactOwnerEmail && routingFormResponseId) {
-          await monitorCallbackAsync(AssignmentReasonRecorder.CRMOwnership, {
-            bookingId: booking.id,
-            crmAppSlug: reqBody.crmAppSlug,
-            teamMemberEmail: contactOwnerEmail,
-            recordType: reqBody.crmOwnerRecordType,
-            routingFormResponseId,
-          });
-        } else if (routingFormResponseId && teamId) {
-          await monitorCallbackAsync(AssignmentReasonRecorder.routingFormRoute, {
-            bookingId: booking.id,
-            routingFormResponseId,
-            organizerId: organizerUser.id,
-            teamId,
-          });
-        }
       }
 
       evt.uid = booking.uid ?? null;

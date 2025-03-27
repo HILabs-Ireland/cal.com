@@ -2,7 +2,6 @@ import { BookingUidGuard } from "@/ee/bookings/2024-08-13/guards/booking-uid.gua
 import { CancelBookingOutput_2024_08_13 } from "@/ee/bookings/2024-08-13/outputs/cancel-booking.output";
 import { CreateBookingOutput_2024_08_13 } from "@/ee/bookings/2024-08-13/outputs/create-booking.output";
 import { MarkAbsentBookingOutput_2024_08_13 } from "@/ee/bookings/2024-08-13/outputs/mark-absent.output";
-import { ReassignBookingOutput_2024_08_13 } from "@/ee/bookings/2024-08-13/outputs/reassign-booking.output";
 import { RescheduleBookingOutput_2024_08_13 } from "@/ee/bookings/2024-08-13/outputs/reschedule-booking.output";
 import { BookingsService_2024_08_13 } from "@/ee/bookings/2024-08-13/services/bookings.service";
 import { VERSION_2024_08_13_VALUE, VERSION_2024_08_13 } from "@/lib/api-versions";
@@ -48,7 +47,6 @@ import {
   CreateBookingInputPipe,
   CreateBookingInput,
   GetBookingsInput_2024_08_13,
-  ReassignToUserBookingInput_2024_08_13,
   MarkAbsentBookingInput_2024_08_13,
   CreateBookingInput_2024_08_13,
   CreateInstantBookingInput_2024_08_13,
@@ -221,59 +219,6 @@ export class BookingsController_2024_08_13 {
     @GetUser("id") ownerId: number
   ): Promise<MarkAbsentBookingOutput_2024_08_13> {
     const booking = await this.bookingsService.markAbsent(bookingUid, ownerId, body);
-
-    return {
-      status: SUCCESS_STATUS,
-      data: booking,
-    };
-  }
-
-  @Post("/:bookingUid/reassign")
-  @HttpCode(HttpStatus.OK)
-  @Permissions([BOOKING_WRITE])
-  @UseGuards(ApiAuthGuard, BookingUidGuard)
-  @ApiHeader({
-    name: "Authorization",
-    description:
-      "value must be `Bearer <token>` where `<token>` either managed user access token or api key prefixed with cal_",
-    required: true,
-  })
-  @ApiOperation({ summary: "Automatically reassign booking to a new host" })
-  async reassignBooking(
-    @Param("bookingUid") bookingUid: string,
-    @GetUser() user: UserWithProfile
-  ): Promise<ReassignBookingOutput_2024_08_13> {
-    const booking = await this.bookingsService.reassignBooking(bookingUid, user);
-
-    return {
-      status: SUCCESS_STATUS,
-      data: booking,
-    };
-  }
-
-  @Post("/:bookingUid/reassign/:userId")
-  @HttpCode(HttpStatus.OK)
-  @Permissions([BOOKING_WRITE])
-  @UseGuards(ApiAuthGuard, BookingUidGuard)
-  @ApiHeader({
-    name: "Authorization",
-    description:
-      "value must be `Bearer <token>` where `<token>` either managed user access token or api key prefixed with cal_",
-    required: true,
-  })
-  @ApiOperation({ summary: "Reassign a booking to a specific user" })
-  async reassignBookingToUser(
-    @Param("bookingUid") bookingUid: string,
-    @Param("userId") userId: number,
-    @GetUser("id") reassignedById: number,
-    @Body() body: ReassignToUserBookingInput_2024_08_13
-  ): Promise<ReassignBookingOutput_2024_08_13> {
-    const booking = await this.bookingsService.reassignBookingToUser(
-      bookingUid,
-      userId,
-      reassignedById,
-      body
-    );
 
     return {
       status: SUCCESS_STATUS,
