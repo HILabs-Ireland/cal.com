@@ -902,6 +902,79 @@ async function main() {
     },
   });
 
+  await createTeamAndAddUsers(
+    {
+      name: "Alternaleaf - Nurses",
+      slug: "alternaleaf-nurses",
+      isOrganization: false,
+      isPlatform: false,
+      eventTypes: {
+        createMany: {
+          data: [
+            {
+              title: "Round Robin Nurse Team Event",
+              slug: "round-robin-nurse-team-event",
+              length: 15,
+              schedulingType: "ROUND_ROBIN",
+            },
+          ],
+        },
+      },
+      createdAt: new Date(),
+    },
+    []
+  );
+
+  await createTeamAndAddUsers(
+    {
+      name: "Alternaleaf - Doctors",
+      slug: "alternaleaf-doctors",
+      isOrganization: false,
+      isPlatform: false,
+      eventTypes: {
+        createMany: {
+          data: [
+            {
+              title: "Round Robin Doctor Team Event",
+              slug: "round-robin-doctor-team-event",
+              length: 15,
+              schedulingType: "ROUND_ROBIN",
+            },
+          ],
+        },
+      },
+      createdAt: new Date(),
+    },
+    []
+  );
+
+  const adminUser = await prisma.user.findUnique({
+    where: { email: "admin@example.com" },
+  });
+
+  if (adminUser) {
+    await prisma.membership.createMany({
+      data: [
+        {
+          teamId: 1,
+          userId: adminUser.id,
+          accepted: true,
+          role: "ADMIN",
+          disableImpersonation: false,
+        },
+        {
+          teamId: 2,
+          userId: adminUser.id,
+          accepted: true,
+          role: "ADMIN",
+          disableImpersonation: false,
+        },
+      ],
+    });
+  } else {
+    throw Error("Admin user not found");
+  }
+
   await createPlatformAndSetupUser({
     teamInput: {
       name: "Platform Team",
@@ -1208,8 +1281,8 @@ async function main() {
 }
 
 main()
-  .then(() => mainAppStore())
-  .then(() => mainHugeEventTypesSeed())
+  .then(mainAppStore)
+  .then(mainHugeEventTypesSeed)
   .catch((e) => {
     console.error(e);
     process.exit(1);
