@@ -163,7 +163,7 @@ export const useBookingSuccessRedirect = () => {
     successRedirectUrl: EventType["successRedirectUrl"];
     forwardParamsSuccessRedirect: EventType["forwardParamsSuccessRedirect"];
     query: Record<string, string | null | undefined | boolean>;
-    booking: SuccessRedirectBookingType;
+    booking: SuccessRedirectBookingType | any;
   }) => {
     // Ensures that the param is added both to external redirect url and booking success page URL
     query = {

@@ -16,7 +16,7 @@ import { BookingStatus } from "@calcom/prisma/enums";
 import { eventTypeAppMetadataOptionalSchema } from "@calcom/prisma/zod-utils";
 
 import { findBookingQuery } from "../../handleNewBooking/findBookingQuery";
-import type { SeatedBooking, NewSeatedBookingObject } from "../types";
+import type { SeatedBooking, NewSeatedBookingObject, HandleSeatsResultBooking } from "../types";
 
 const createNewSeat = async (
   rescheduleSeatedBookingObject: NewSeatedBookingObject,
@@ -39,6 +39,7 @@ const createNewSeat = async (
     bookerPhoneNumber,
   } = rescheduleSeatedBookingObject;
   let { evt } = rescheduleSeatedBookingObject;
+  let resultBooking: HandleSeatsResultBooking;
   // Need to add translation for attendees to pass type checks. Since these values are never written to the db we can just use the new attendee language
   const bookingAttendees = seatedBooking.attendees.map((attendee) => {
     return { ...attendee, language: { translate: tAttendees, locale: attendeeLanguage ?? "en" } };
@@ -150,7 +151,8 @@ const createNewSeat = async (
 
   const foundBooking = await findBookingQuery(seatedBooking.id);
 
-  const resultBooking = { ...foundBooking };
+  // eslint-disable-next-line prefer-const
+  resultBooking = { ...foundBooking };
 
   resultBooking["seatReferenceUid"] = evt.attendeeSeatId;
 
