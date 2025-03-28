@@ -8,7 +8,6 @@ import { getSuccessPageLocationMessage, guessEventLocationType } from "@calcom/a
 import dayjs from "@calcom/dayjs";
 // TODO: Use browser locale, implement Intl in Dayjs maybe?
 import "@calcom/dayjs/locales";
-import ViewRecordingsDialog from "@calcom/features/ee/video/ViewRecordingsDialog";
 import classNames from "@calcom/lib/classNames";
 import { formatTime } from "@calcom/lib/date-fns";
 import { useCopy } from "@calcom/lib/hooks/useCopy";
@@ -112,7 +111,6 @@ function BookingListItem(booking: BookingItemProps) {
   const utils = trpc.useUtils();
   const [rejectionReason, setRejectionReason] = useState<string>("");
   const [rejectionDialogIsOpen, setRejectionDialogIsOpen] = useState(false);
-  const [viewRecordingsDialogIsOpen, setViewRecordingsDialogIsOpen] = useState<boolean>(false);
   const [isNoShowDialogOpen, setIsNoShowDialogOpen] = useState<boolean>(false);
   const mutation = trpc.viewer.bookings.confirm.useMutation({
     onSuccess: (data) => {
@@ -368,25 +366,6 @@ function BookingListItem(booking: BookingItemProps) {
 
   const title = booking.title;
 
-  const showViewRecordingsButton = !!(booking.isRecorded && isBookingInPast && isConfirmed);
-  const showCheckRecordingButton =
-    isBookingInPast &&
-    isConfirmed &&
-    !booking.isRecorded &&
-    (!booking.location || booking.location === "integrations:daily" || booking?.location?.trim() === "");
-
-  const showRecordingActions: ActionType[] = [
-    {
-      id: "view_recordings",
-      label: showCheckRecordingButton ? t("check_for_recordings") : t("view_recordings"),
-      onClick: () => {
-        setViewRecordingsDialogIsOpen(true);
-      },
-      color: showCheckRecordingButton ? "secondary" : "primary",
-      disabled: mutation.isPending,
-    },
-  ];
-
   const attendeeList = booking.attendees.map((attendee) => {
     return {
       name: attendee.name,
@@ -416,14 +395,6 @@ function BookingListItem(booking: BookingItemProps) {
         setIsOpenDialog={setIsOpenAddGuestsDialog}
         bookingId={booking.id}
       />
-      {(showViewRecordingsButton || showCheckRecordingButton) && (
-        <ViewRecordingsDialog
-          booking={booking}
-          isOpenDialog={viewRecordingsDialogIsOpen}
-          setIsOpenDialog={setViewRecordingsDialogIsOpen}
-          timeFormat={userTimeFormat ?? null}
-        />
-      )}
       {isNoShowDialogOpen && (
         <NoShowAttendeesDialog
           bookingUid={booking.uid}
@@ -603,9 +574,6 @@ function BookingListItem(booking: BookingItemProps) {
             ) : null}
             {isBookingInPast && isPending && !isConfirmed ? <TableActions actions={bookedActions} /> : null}
             {isBookingInPast && isConfirmed ? <TableActions actions={bookedActions} /> : null}
-            {(showViewRecordingsButton || showCheckRecordingButton) && (
-              <TableActions actions={showRecordingActions} />
-            )}
             {isCancelled && booking.rescheduled && (
               <div className="hidden h-full items-center md:flex">
                 <RequestSentMessage />
