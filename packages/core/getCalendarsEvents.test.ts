@@ -29,6 +29,9 @@ describe("getCalendarsEvents", () => {
       teamId: null,
       appId: "exampleApp",
       invalid: false,
+      user: {
+        email: "user@example.com",
+      },
     };
   });
 
@@ -70,10 +73,19 @@ describe("getCalendarsEvents", () => {
 
   it("should return unmatched calendars as empty", async () => {
     const selectedCalendar: SelectedCalendar = {
+      id: "calendarId",
       credentialId: 100,
       externalId: "externalId",
       integration: "office365_calendar",
       userId: 200,
+      googleChannelId: null,
+      googleChannelKind: null,
+      googleChannelResourceId: null,
+      googleChannelExpiration: null,
+      eventTypeId: null,
+      googleChannelResourceUri: null,
+      domainWideDelegationCredentialId: null,
+      error: null,
     };
     const result = await getCalendarsEvents(
       [
@@ -111,6 +123,15 @@ describe("getCalendarsEvents", () => {
       externalId: "externalId",
       integration: "google_calendar",
       userId: 200,
+      id: "",
+      googleChannelId: null,
+      googleChannelKind: null,
+      googleChannelResourceId: null,
+      googleChannelResourceUri: null,
+      googleChannelExpiration: null,
+      domainWideDelegationCredentialId: null,
+      error: null,
+      eventTypeId: null,
     };
     const result = await getCalendarsEvents(
       [
@@ -164,12 +185,30 @@ describe("getCalendarsEvents", () => {
       externalId: "externalId",
       integration: "google_calendar",
       userId: 200,
+      id: "",
+      googleChannelId: null,
+      googleChannelKind: null,
+      googleChannelResourceId: null,
+      googleChannelResourceUri: null,
+      googleChannelExpiration: null,
+      domainWideDelegationCredentialId: null,
+      error: null,
+      eventTypeId: null,
     };
     const selectedOfficeCalendar: SelectedCalendar = {
       credentialId: 100,
       externalId: "externalId",
       integration: "office365_calendar",
       userId: 200,
+      id: "",
+      googleChannelId: null,
+      googleChannelKind: null,
+      googleChannelResourceId: null,
+      googleChannelResourceUri: null,
+      googleChannelExpiration: null,
+      domainWideDelegationCredentialId: null,
+      error: null,
+      eventTypeId: null,
     };
     const result = await getCalendarsEvents(
       [

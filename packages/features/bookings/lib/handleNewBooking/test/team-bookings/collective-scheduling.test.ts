@@ -1857,7 +1857,12 @@ describe("handleNewBooking", () => {
               responses: {
                 email: booker.email,
                 name: booker.name,
-                location: { optionValue: "", value: OrganizerDefaultConferencingAppType },
+                location: { optionValue: "", value: OrganizerDefaultConferencingAppType } as {
+                  optionValue: "";
+                  value: string;
+                },
+                attendeePhoneNumber: undefined,
+                smsReminderNumber: undefined,
               },
             },
           });
@@ -2214,7 +2219,7 @@ describe("handleNewBooking", () => {
           responses: {
             email: booker.email,
             name: booker.name,
-            location: { optionValue: "", value: OrganizerDefaultConferencingAppType },
+            location: { optionValue: "" as const, value: OrganizerDefaultConferencingAppType },
           },
         };
 

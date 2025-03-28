@@ -44,7 +44,7 @@ export const AppForm = ({
       initialConfig = {
         ...config,
         category: config.categories[0],
-        template: config.__template,
+        template: config.__template ?? "",
       };
     } catch (e) {}
 
