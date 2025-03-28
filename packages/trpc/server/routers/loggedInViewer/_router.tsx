@@ -9,8 +9,6 @@ import { ZConnectedCalendarsInputSchema } from "./connectedCalendars.schema";
 import { ZDeleteCredentialInputSchema } from "./deleteCredential.schema";
 import { ZDeleteMeInputSchema } from "./deleteMe.schema";
 import { ZEventTypeOrderInputSchema } from "./eventTypeOrder.schema";
-import { ZGetCalVideoRecordingsInputSchema } from "./getCalVideoRecordings.schema";
-import { ZGetDownloadLinkOfCalVideoRecordingsInputSchema } from "./getDownloadLinkOfCalVideoRecordings.schema";
 import { ZIntegrationsInputSchema } from "./integrations.schema";
 import { ZLocationOptionsInputSchema } from "./locationOptions.schema";
 import { ZNoShowInputSchema } from "./markNoShow.schema";
@@ -52,8 +50,6 @@ type AppsRouterHandlerCache = {
   locationOptions?: typeof import("./locationOptions.handler").locationOptionsHandler;
   deleteCredential?: typeof import("./deleteCredential.handler").deleteCredentialHandler;
   bookingUnconfirmedCount?: typeof import("./bookingUnconfirmedCount.handler").bookingUnconfirmedCountHandler;
-  getCalVideoRecordings?: typeof import("./getCalVideoRecordings.handler").getCalVideoRecordingsHandler;
-  getDownloadLinkOfCalVideoRecordings?: typeof import("./getDownloadLinkOfCalVideoRecordings.handler").getDownloadLinkOfCalVideoRecordingsHandler;
   getUsersDefaultConferencingApp?: typeof import("./getUsersDefaultConferencingApp.handler").getUsersDefaultConferencingAppHandler;
   updateUserDefaultConferencingApp?: typeof import("./updateUserDefaultConferencingApp.handler").updateUserDefaultConferencingAppHandler;
   teamsAndUserProfilesQuery?: typeof import("./teamsAndUserProfilesQuery.handler").teamsAndUserProfilesQuery;
@@ -320,23 +316,6 @@ export const loggedInViewerRouter = router({
     return UNSTABLE_HANDLER_CACHE.bookingUnconfirmedCount({ ctx });
   }),
 
-  getCalVideoRecordings: authedProcedure
-    .input(ZGetCalVideoRecordingsInputSchema)
-    .query(async ({ ctx, input }) => {
-      if (!UNSTABLE_HANDLER_CACHE.getCalVideoRecordings) {
-        UNSTABLE_HANDLER_CACHE.getCalVideoRecordings = (
-          await import("./getCalVideoRecordings.handler")
-        ).getCalVideoRecordingsHandler;
-      }
-
-      // Unreachable code but required for type safety
-      if (!UNSTABLE_HANDLER_CACHE.getCalVideoRecordings) {
-        throw new Error("Failed to load handler");
-      }
-
-      return UNSTABLE_HANDLER_CACHE.getCalVideoRecordings({ ctx, input });
-    }),
-
   getUserTopBanners: authedProcedure.query(async ({ ctx }) => {
     if (!UNSTABLE_HANDLER_CACHE.getUserTopBanners) {
       UNSTABLE_HANDLER_CACHE.getUserTopBanners = (
@@ -351,23 +330,6 @@ export const loggedInViewerRouter = router({
 
     return UNSTABLE_HANDLER_CACHE.getUserTopBanners({ ctx });
   }),
-
-  getDownloadLinkOfCalVideoRecordings: authedProcedure
-    .input(ZGetDownloadLinkOfCalVideoRecordingsInputSchema)
-    .query(async ({ ctx, input }) => {
-      if (!UNSTABLE_HANDLER_CACHE.getDownloadLinkOfCalVideoRecordings) {
-        UNSTABLE_HANDLER_CACHE.getDownloadLinkOfCalVideoRecordings = (
-          await import("./getDownloadLinkOfCalVideoRecordings.handler")
-        ).getDownloadLinkOfCalVideoRecordingsHandler;
-      }
-
-      // Unreachable code but required for type safety
-      if (!UNSTABLE_HANDLER_CACHE.getDownloadLinkOfCalVideoRecordings) {
-        throw new Error("Failed to load handler");
-      }
-
-      return UNSTABLE_HANDLER_CACHE.getDownloadLinkOfCalVideoRecordings({ ctx, input });
-    }),
 
   getUsersDefaultConferencingApp: authedProcedure.query(async ({ ctx }) => {
     if (!UNSTABLE_HANDLER_CACHE.getUsersDefaultConferencingApp) {
