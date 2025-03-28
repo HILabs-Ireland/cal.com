@@ -903,7 +903,7 @@ export default function WorkflowStepContainer(props: WorkflowStepProps) {
                         refEmailSubject.current = e;
                       }}
                       rows={1}
-                      disabled={props.readOnly || !hasActiveTeamPlan}
+                      disabled={props.readOnly}
                       className="my-0 focus:ring-transparent"
                       required
                       {...restEmailSubjectForm}
@@ -936,7 +936,7 @@ export default function WorkflowStepContainer(props: WorkflowStepProps) {
                   updateTemplate={updateTemplate}
                   firstRender={firstRender}
                   setFirstRender={setFirstRender}
-                  editable={!props.readOnly && !isWhatsappAction(step.action) && hasActiveTeamPlan}
+                  editable={!props.readOnly && !isWhatsappAction(step.action)}
                   excludedToolbarItems={
                     !isSMSAction(step.action) ? [] : ["blockType", "bold", "italic", "link"]
                   }

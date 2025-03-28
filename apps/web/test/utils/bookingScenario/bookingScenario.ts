@@ -1550,9 +1550,11 @@ export function mockVideoApp({
   appStoreMock.default[appStoreLookupKey as keyof typeof appStoreMock.default].mockImplementation(() => {
     return new Promise((resolve) => {
       resolve({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         lib: {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          //@ts-ignore
+          // @ts-ignore
           VideoApiAdapter: (credential) => {
             return {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any

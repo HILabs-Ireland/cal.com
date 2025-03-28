@@ -23,7 +23,8 @@ export const getCrm = async (credential: CredentialPayload, appOptions: any) => 
   }
 
   const crmApp = await crmAppImportFn();
-
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   if (crmApp && "lib" in crmApp && "CrmService" in crmApp.lib) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
