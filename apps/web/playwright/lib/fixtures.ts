@@ -6,7 +6,6 @@ import { noop } from "lodash";
 import prisma from "@calcom/prisma";
 
 import type { ExpectedUrlDetails } from "../../../../playwright.config";
-import { createAppsFixture } from "../fixtures/apps";
 import { createBookingsFixture } from "../fixtures/bookings";
 import { createEmailsFixture } from "../fixtures/emails";
 import { createEmbedsFixture } from "../fixtures/embeds";
@@ -34,7 +33,6 @@ export interface Fixtures {
   workflowPage: ReturnType<typeof createWorkflowPageFixture>;
   features: ReturnType<typeof createFeatureFixture>;
   eventTypePage: ReturnType<typeof createEventTypeFixture>;
-  appsPage: ReturnType<typeof createAppsFixture>;
   webhooks: ReturnType<typeof createWebhookPageFixture>;
 }
 
@@ -104,10 +102,7 @@ export const test = base.extend<Fixtures>({
     const eventTypePage = createEventTypeFixture(page);
     await use(eventTypePage);
   },
-  appsPage: async ({ page }, use) => {
-    const appsPage = createAppsFixture(page);
-    await use(appsPage);
-  },
+
   webhooks: async ({ page }, use) => {
     const webhooks = createWebhookPageFixture(page);
     await use(webhooks);
