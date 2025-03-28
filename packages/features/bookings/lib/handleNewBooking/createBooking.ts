@@ -14,7 +14,6 @@ import type {
   EventTypeId,
   AwaitedBookingData,
   NewBookingEventType,
-  PaymentAppData,
   OriginalRescheduledBooking,
   LoadedUsers,
 } from "./types";
@@ -40,7 +39,6 @@ type CreateBookingParams = {
       metadata?: Prisma.JsonValue;
     };
     isConfirmedByDefault: boolean;
-    paymentAppData: PaymentAppData;
   };
   input: {
     bookerEmail: AwaitedBookingData["email"];
@@ -103,12 +101,7 @@ export async function createBooking({
     originalRescheduledBooking,
   });
 
-  return await saveBooking(
-    bookingAndAssociatedData,
-    originalRescheduledBooking,
-    eventType.paymentAppData,
-    eventType.organizerUser
-  );
+  return await saveBooking(bookingAndAssociatedData);
 
   function shouldConnectBookingToFormResponse() {
     const isRerouting = !!reroutingFormResponses;
@@ -128,12 +121,7 @@ export async function createBooking({
   }
 }
 
-async function saveBooking(
-  bookingAndAssociatedData: ReturnType<typeof buildNewBookingData>,
-  originalRescheduledBooking: OriginalRescheduledBooking,
-  paymentAppData: PaymentAppData,
-  organizerUser: CreateBookingParams["eventType"]["organizerUser"]
-) {
+async function saveBooking(bookingAndAssociatedData: ReturnType<typeof buildNewBookingData>) {
   const { newBookingData, reroutingFormResponseUpdateData, originalBookingUpdateDataForCancellation } =
     bookingAndAssociatedData;
   const createBookingObj = {
@@ -142,28 +130,10 @@ async function saveBooking(
         select: { email: true, name: true, timeZone: true, username: true },
       },
       attendees: true,
-      payment: true,
       references: true,
     },
     data: newBookingData,
   };
-
-  if (originalRescheduledBooking?.paid && originalRescheduledBooking?.payment) {
-    const bookingPayment = originalRescheduledBooking.payment.find((payment) => payment.success);
-    if (bookingPayment) {
-      createBookingObj.data.payment = { connect: { id: bookingPayment.id } };
-    }
-  }
-
-  if (typeof paymentAppData.price === "number" && paymentAppData.price > 0) {
-    await prisma.credential.findFirstOrThrow({
-      where: {
-        appId: paymentAppData.appId,
-        ...(paymentAppData.credentialId ? { id: paymentAppData.credentialId } : { userId: organizerUser.id }),
-      },
-      select: { id: true },
-    });
-  }
 
   /**
    * Reschedule(Cancellation + Creation) with an update of reroutingFormResponse should be atomic
@@ -271,7 +241,6 @@ function buildNewBookingData(params: CreateBookingParams) {
       ...(typeof originalRescheduledBooking.metadata === "object" && originalRescheduledBooking.metadata),
       ...reqBody.metadata,
     };
-    newBookingData.paid = originalRescheduledBooking.paid;
     newBookingData.fromReschedule = originalRescheduledBooking.uid;
     if (originalRescheduledBooking.uid) {
       newBookingData.cancellationReason = input.rescheduleReason;

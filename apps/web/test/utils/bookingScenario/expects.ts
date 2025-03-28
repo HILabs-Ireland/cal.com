@@ -800,27 +800,6 @@ export function expectSuccesfulLocationChangeEmails({
   );
 }
 
-export function expectAwaitingPaymentEmails({
-  emails,
-  booker,
-  subject,
-}: {
-  emails: Fixtures["emails"];
-  organizer: { email: string; name: string };
-  booker: { email: string; name: string };
-  subject?: string;
-}) {
-  expect(emails).toHaveEmail(
-    {
-      titleTag: "awaiting_payment_subject",
-      to: `${booker.name} <${booker.email}>`,
-      noIcs: true,
-    },
-    `${booker.email}`,
-    subject
-  );
-}
-
 export function expectBookingRequestedEmails({
   emails,
   organizer,
@@ -908,7 +887,6 @@ export function expectBookingRequestedWebhookToHaveBeenFired({
   booker,
   location,
   subscriberUrl,
-  paidEvent,
   eventType,
   isEmailHidden = false,
   isAttendeePhoneNumberHidden = false,
@@ -917,84 +895,52 @@ export function expectBookingRequestedWebhookToHaveBeenFired({
   booker: { email: string; name: string; attendeePhoneNumber?: string };
   subscriberUrl: string;
   location: string;
-  paidEvent?: boolean;
   eventType: InputEventType;
   isEmailHidden?: boolean;
   isAttendeePhoneNumberHidden?: boolean;
 }) {
-  // There is an inconsistency in the way we send the data to the webhook for paid events and unpaid events. Fix that and then remove this if statement.
-  if (!paidEvent) {
-    expectWebhookToHaveBeenCalledWith(subscriberUrl, {
-      triggerEvent: "BOOKING_REQUESTED",
-      payload: {
-        eventTitle: eventType.title,
-        eventDescription: eventType.description,
-        metadata: {
-          // In a Pending Booking Request, we don't send the video call url
+  expectWebhookToHaveBeenCalledWith(subscriberUrl, {
+    triggerEvent: "BOOKING_REQUESTED",
+    payload: {
+      eventTitle: eventType.title,
+      eventDescription: eventType.description,
+      metadata: {
+        // In a Pending Booking Request, we don't send the video call url
+      },
+      responses: {
+        name: {
+          label: "your_name",
+          value: booker.name,
+          isHidden: false,
         },
-        responses: {
-          name: {
-            label: "your_name",
-            value: booker.name,
-            isHidden: false,
-          },
-          email: {
-            label: "email_address",
-            value: booker.email,
-            isHidden: isEmailHidden,
-          },
-          ...(booker.attendeePhoneNumber
-            ? {
-                attendeePhoneNumber: {
-                  label: "phone_number",
-                  value: booker.attendeePhoneNumber,
-                  isHidden: isAttendeePhoneNumberHidden,
-                },
-              }
-            : null),
-          location: {
-            label: "location",
-            value: { optionValue: "", value: location },
-            isHidden: false,
-          },
+        email: {
+          label: "email_address",
+          value: booker.email,
+          isHidden: isEmailHidden,
+        },
+        ...(booker.attendeePhoneNumber
+          ? {
+              attendeePhoneNumber: {
+                label: "phone_number",
+                value: booker.attendeePhoneNumber,
+                isHidden: isAttendeePhoneNumberHidden,
+              },
+            }
+          : null),
+        location: {
+          label: "location",
+          value: { optionValue: "", value: location },
+          isHidden: false,
         },
       },
-    });
-  } else {
-    expectWebhookToHaveBeenCalledWith(subscriberUrl, {
-      triggerEvent: "BOOKING_REQUESTED",
-      payload: {
-        eventTitle: eventType.title,
-        eventDescription: eventType.description,
-        metadata: {
-          // In a Pending Booking Request, we don't send the video call url
-        },
-        responses: {
-          name: { label: "name", value: booker.name },
-          email: { label: "email", value: booker.email },
-          ...(booker.attendeePhoneNumber
-            ? {
-                attendeePhoneNumber: {
-                  label: "phone_number",
-                  value: booker.attendeePhoneNumber,
-                },
-              }
-            : null),
-          location: {
-            label: "location",
-            value: { optionValue: "", value: location },
-          },
-        },
-      },
-    });
-  }
+    },
+  });
 }
 
 export function expectBookingCreatedWebhookToHaveBeenFired({
   booker,
   location,
   subscriberUrl,
-  paidEvent,
   videoCallUrl,
   isEmailHidden = false,
   isAttendeePhoneNumberHidden = false,
@@ -1003,69 +949,36 @@ export function expectBookingCreatedWebhookToHaveBeenFired({
   booker: { email: string; name: string; attendeePhoneNumber?: string };
   subscriberUrl: string;
   location: string;
-  paidEvent?: boolean;
   videoCallUrl?: string | null;
   isEmailHidden?: boolean;
   isAttendeePhoneNumberHidden?: boolean;
 }) {
-  if (!paidEvent) {
-    expectWebhookToHaveBeenCalledWith(subscriberUrl, {
-      triggerEvent: "BOOKING_CREATED",
-      payload: {
-        metadata: {
-          ...(videoCallUrl ? { videoCallUrl } : null),
-        },
-        responses: {
-          name: { label: "your_name", value: booker.name, isHidden: false },
-          email: { label: "email_address", value: booker.email, isHidden: isEmailHidden },
-          ...(booker.attendeePhoneNumber
-            ? {
-                attendeePhoneNumber: {
-                  label: "phone_number",
-                  value: booker.attendeePhoneNumber,
-                  isHidden: isAttendeePhoneNumberHidden,
-                },
-              }
-            : null),
-          location: {
-            label: "location",
-            value: { optionValue: "", value: location },
-            isHidden: false,
-          },
+  expectWebhookToHaveBeenCalledWith(subscriberUrl, {
+    triggerEvent: "BOOKING_CREATED",
+    payload: {
+      metadata: {
+        ...(videoCallUrl ? { videoCallUrl } : null),
+      },
+      responses: {
+        name: { label: "your_name", value: booker.name, isHidden: false },
+        email: { label: "email_address", value: booker.email, isHidden: isEmailHidden },
+        ...(booker.attendeePhoneNumber
+          ? {
+              attendeePhoneNumber: {
+                label: "phone_number",
+                value: booker.attendeePhoneNumber,
+                isHidden: isAttendeePhoneNumberHidden,
+              },
+            }
+          : null),
+        location: {
+          label: "location",
+          value: { optionValue: "", value: location },
+          isHidden: false,
         },
       },
-    });
-  } else {
-    expectWebhookToHaveBeenCalledWith(subscriberUrl, {
-      triggerEvent: "BOOKING_CREATED",
-      payload: {
-        // FIXME: File this bug and link ticket here. This is a bug in the code. metadata must be sent here like other BOOKING_CREATED webhook
-        metadata: null,
-        responses: {
-          name: {
-            label: "name",
-            value: booker.name,
-          },
-          email: {
-            label: "email",
-            value: booker.email,
-          },
-          ...(booker.attendeePhoneNumber
-            ? {
-                attendeePhoneNumber: {
-                  label: "phone_number",
-                  value: booker.attendeePhoneNumber,
-                },
-              }
-            : null),
-          location: {
-            label: "location",
-            value: { optionValue: "", value: location },
-          },
-        },
-      },
-    });
-  }
+    },
+  });
 }
 
 export function expectBookingRescheduledWebhookToHaveBeenFired({
@@ -1079,7 +992,6 @@ export function expectBookingRescheduledWebhookToHaveBeenFired({
   booker: { email: string; name: string };
   subscriberUrl: string;
   location: string;
-  paidEvent?: boolean;
   videoCallUrl?: string;
   payload?: Record<string, unknown>;
 }) {
@@ -1132,38 +1044,6 @@ export function expectBookingCancelledWebhookToHaveBeenFired({
         location: {
           label: "location",
           value: { optionValue: "", value: location },
-        },
-      },
-    },
-  });
-}
-
-export function expectBookingPaymentIntiatedWebhookToHaveBeenFired({
-  booker,
-  location,
-  subscriberUrl,
-  paymentId,
-}: {
-  organizer: { email: string; name: string };
-  booker: { email: string; name: string };
-  subscriberUrl: string;
-  location: string;
-  paymentId: number;
-}) {
-  expectWebhookToHaveBeenCalledWith(subscriberUrl, {
-    triggerEvent: "BOOKING_PAYMENT_INITIATED",
-    payload: {
-      paymentId: paymentId,
-      metadata: {
-        // In a Pending Booking Request, we don't send the video call url
-      },
-      responses: {
-        name: { label: "your_name", value: booker.name, isHidden: false },
-        email: { label: "email_address", value: booker.email, isHidden: false },
-        location: {
-          label: "location",
-          value: { optionValue: "", value: location },
-          isHidden: false,
         },
       },
     },

@@ -441,7 +441,6 @@ export default class EventManager {
           },
         },
         destinationCalendar: true,
-        payment: true,
         eventType: {
           select: {
             seatsPerTimeSlot: true,
@@ -507,22 +506,6 @@ export default class EventManager {
 
         results.push(...(await this.updateAllCRMEvents(evt, booking)));
       }
-    }
-    const bookingPayment = booking?.payment;
-
-    // Updating all payment to new
-    if (bookingPayment && newBookingId) {
-      const paymentIds = bookingPayment.map((payment) => payment.id);
-      await prisma.payment.updateMany({
-        where: {
-          id: {
-            in: paymentIds,
-          },
-        },
-        data: {
-          bookingId: newBookingId,
-        },
-      });
     }
 
     return {

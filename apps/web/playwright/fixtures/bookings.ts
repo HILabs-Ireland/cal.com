@@ -24,7 +24,6 @@ export const createBookingsFixture = (page: Page, workerInfo: WorkerInfo) => {
       {
         title = "",
         rescheduled = false,
-        paid = false,
         status = "ACCEPTED",
         startTime,
         endTime,
@@ -62,7 +61,6 @@ export const createBookingsFixture = (page: Page, workerInfo: WorkerInfo) => {
             },
           },
           rescheduled,
-          paid,
           status,
           iCalUID: `${uid}@cal.com`,
         },

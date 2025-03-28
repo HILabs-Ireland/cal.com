@@ -36,8 +36,11 @@ const getVideoAdapters = async (withCredentials: CredentialPayload[]): Promise<V
       log.error(`Couldn't get adapter for ${appName}`);
       continue;
     }
-
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     if ("lib" in app && "VideoApiAdapter" in app.lib) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       const makeVideoApiAdapter = app.lib.VideoApiAdapter as VideoApiAdapterFactory;
       const videoAdapter = makeVideoApiAdapter(cred);
       videoAdapters.push(videoAdapter);

@@ -51,8 +51,6 @@ export type EventType = {
   seatsShowAvailabilityCount: boolean;
   schedulingType: unknown | null;
   scheduleId: number | null;
-  price: number;
-  currency: "usd";
   slotInterval: number | null;
   metadata: Record<string, unknown> | null;
   successRedirectUrl: string | null;

@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 import { Toaster } from "react-hot-toast";
 import type { z } from "zod";
 
-import checkForMultiplePaymentApps from "@calcom/app-store/_utils/payments/checkForMultiplePaymentApps";
 import useAddAppMutation from "@calcom/app-store/_utils/useAddAppMutation";
 import type { EventTypeAppSettingsComponentProps, EventTypeModel } from "@calcom/app-store/types";
 import type { LocationObject } from "@calcom/core/location";
@@ -18,7 +17,6 @@ import { WEBAPP_URL } from "@calcom/lib/constants";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import type { Team } from "@calcom/prisma/client";
 import type { eventTypeBookingFields } from "@calcom/prisma/zod-utils";
-import { eventTypeMetaDataSchemaWithTypedApps } from "@calcom/prisma/zod-utils";
 import type { EventTypeMetaDataSchema } from "@calcom/prisma/zod-utils";
 import { trpc } from "@calcom/trpc/react";
 import type { AppMeta } from "@calcom/types/App";
@@ -244,20 +242,6 @@ const OnboardingPage = ({
                   const promises = group.eventTypes
                     .filter((eventType) => eventType.selected)
                     .map((value: TEventType) => {
-                      if (value.metadata) {
-                        const metadata = eventTypeMetaDataSchemaWithTypedApps.parse(value.metadata);
-                        // Prevent two payment apps to be enabled
-                        // Ok to cast type here because this metadata will be updated as the event type metadata
-                        if (checkForMultiplePaymentApps(metadata))
-                          throw new Error(t("event_setup_multiple_payment_apps_error"));
-                        if (
-                          value.metadata?.apps?.stripe?.paymentOption === "HOLD" &&
-                          value.seatsPerTimeSlot
-                        ) {
-                          throw new Error(t("seats_and_no_show_fee_error"));
-                        }
-                      }
-
                       let updateObject: TUpdateObject = { id: value.id };
                       if (isConferencing) {
                         updateObject = {

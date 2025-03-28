@@ -2,18 +2,12 @@ import type { Prisma } from "@prisma/client";
 import z from "zod";
 
 import { getCalendar } from "@calcom/app-store/_utils/getCalendar";
-import { appStoreMetadata } from "@calcom/app-store/appStoreMetaData";
 import { DailyLocationType } from "@calcom/core/location";
-import { sendCancelledEmailsAndSMS } from "@calcom/emails";
-import { getCalEventResponses } from "@calcom/features/bookings/lib/getCalEventResponses";
 import { deleteWebhookScheduledTriggers } from "@calcom/features/webhooks/lib/scheduleTrigger";
-import { isPrismaObjOrUndefined, parseRecurringEvent } from "@calcom/lib";
-import { deletePayment } from "@calcom/lib/payment/deletePayment";
-import { getTranslation } from "@calcom/lib/server/i18n";
-import { bookingMinimalSelect, prisma } from "@calcom/prisma";
-import { AppCategories, BookingStatus } from "@calcom/prisma/enums";
+import { prisma } from "@calcom/prisma";
+import { AppCategories } from "@calcom/prisma/enums";
 import { credentialForCalendarServiceSelect } from "@calcom/prisma/selects/credential";
-import type { EventTypeAppMetadataSchema, EventTypeMetadata } from "@calcom/prisma/zod-utils";
+import type { EventTypeAppMetadataSchema } from "@calcom/prisma/zod-utils";
 import { eventTypeMetaDataSchemaWithTypedApps } from "@calcom/prisma/zod-utils";
 import { EventTypeMetaDataSchema, eventTypeAppMetadataOptionalSchema } from "@calcom/prisma/zod-utils";
 import { userMetadata as userMetadataSchema } from "@calcom/prisma/zod-utils";
@@ -87,8 +81,6 @@ const handleDeleteCredential = async ({
           credential: true,
         },
       },
-      price: true,
-      currency: true,
       metadata: true,
     },
   });
@@ -177,212 +169,24 @@ const handleDeleteCredential = async ({
       }
     }
 
-    // If it's a payment, hide the event type and set the price to 0. Also cancel all pending bookings
-    if (credential.app?.categories.includes(AppCategories.payment)) {
-      const metadata = EventTypeMetaDataSchema.parse(eventType.metadata);
-      const appSlug = credential.app?.slug;
-      if (appSlug) {
-        const apps = eventTypeAppMetadataOptionalSchema.parse(metadata?.apps);
-        const appMetadata = removeAppFromEventTypeMetadata(appSlug, {
-          apps,
-        });
-
-        await prisma.$transaction(async () => {
-          await prisma.eventType.update({
-            where: {
-              id: eventType.id,
-            },
-            data: {
-              hidden: true,
-              metadata: {
-                ...metadata,
-                apps: {
-                  ...appMetadata,
-                },
-              },
-            },
-          });
-
-          // Assuming that all bookings under this eventType need to be paid
-          const unpaidBookings = await prisma.booking.findMany({
-            where: {
-              userId: userId,
-              eventTypeId: eventType.id,
-              status: "PENDING",
-              paid: false,
-              payment: {
-                every: {
-                  success: false,
-                },
-              },
-            },
-            select: {
-              ...bookingMinimalSelect,
-              recurringEventId: true,
-              userId: true,
-              responses: true,
-              user: {
-                select: {
-                  id: true,
-                  credentials: true,
-                  email: true,
-                  timeZone: true,
-                  name: true,
-                  destinationCalendar: true,
-                  locale: true,
-                },
-              },
-              location: true,
-              references: {
-                select: {
-                  uid: true,
-                  type: true,
-                  externalCalendarId: true,
-                },
-              },
-              payment: true,
-              paid: true,
-              eventType: {
-                select: {
-                  recurringEvent: true,
-                  title: true,
-                  bookingFields: true,
-                  seatsPerTimeSlot: true,
-                  seatsShowAttendees: true,
-                  eventName: true,
-                  team: {
-                    select: {
-                      id: true,
-                      name: true,
-                    },
-                  },
-                  metadata: true,
-                },
-              },
-              uid: true,
-              eventTypeId: true,
-              destinationCalendar: true,
-            },
-          });
-
-          for (const booking of unpaidBookings) {
-            await prisma.booking.update({
-              where: {
-                id: booking.id,
-              },
-              data: {
-                status: BookingStatus.CANCELLED,
-                cancellationReason: "Payment method removed",
-              },
-            });
-
-            for (const payment of booking.payment) {
-              try {
-                await deletePayment(payment.id, credential);
-              } catch (e) {
-                console.error(e);
-              }
-              await prisma.payment.delete({
-                where: {
-                  id: payment.id,
-                },
-              });
-            }
-
-            await prisma.attendee.deleteMany({
-              where: {
-                bookingId: booking.id,
-              },
-            });
-
-            await prisma.bookingReference.deleteMany({
-              where: {
-                bookingId: booking.id,
-              },
-            });
-
-            const attendeesListPromises = booking.attendees.map(async (attendee) => {
-              return {
-                name: attendee.name,
-                email: attendee.email,
-                timeZone: attendee.timeZone,
-                language: {
-                  translate: await getTranslation(attendee.locale ?? "en", "common"),
-                  locale: attendee.locale ?? "en",
-                },
-              };
-            });
-
-            const attendeesList = await Promise.all(attendeesListPromises);
-            const tOrganizer = await getTranslation(booking?.user?.locale ?? "en", "common");
-            await sendCancelledEmailsAndSMS(
-              {
-                type: booking?.eventType?.title as string,
-                title: booking.title,
-                description: booking.description,
-                customInputs: isPrismaObjOrUndefined(booking.customInputs),
-                ...getCalEventResponses({
-                  bookingFields: booking.eventType?.bookingFields ?? null,
-                  booking,
-                }),
-                startTime: booking.startTime.toISOString(),
-                endTime: booking.endTime.toISOString(),
-                organizer: {
-                  email: booking?.userPrimaryEmail ?? (booking?.user?.email as string),
-                  name: booking?.user?.name ?? "Nameless",
-                  timeZone: booking?.user?.timeZone as string,
-                  language: { translate: tOrganizer, locale: booking?.user?.locale ?? "en" },
-                },
-                attendees: attendeesList,
-                uid: booking.uid,
-                recurringEvent: parseRecurringEvent(booking.eventType?.recurringEvent),
-                location: booking.location,
-                destinationCalendar: booking.destinationCalendar
-                  ? [booking.destinationCalendar]
-                  : booking.user?.destinationCalendar
-                  ? [booking.user?.destinationCalendar]
-                  : [],
-                cancellationReason: "Payment method removed by organizer",
-                seatsPerTimeSlot: booking.eventType?.seatsPerTimeSlot,
-                seatsShowAttendees: booking.eventType?.seatsShowAttendees,
-                team: !!booking.eventType?.team
-                  ? {
-                      name: booking.eventType.team.name,
-                      id: booking.eventType.team.id,
-                      members: [],
-                    }
-                  : undefined,
-              },
-              {
-                eventName: booking?.eventType?.eventName,
-              },
-              booking?.eventType?.metadata as EventTypeMetadata
-            );
-          }
-        });
-      }
-    } else if (
-      appStoreMetadata[credential.app?.slug as keyof typeof appStoreMetadata]?.extendsFeature === "EventType"
-    ) {
-      const metadata = eventTypeMetaDataSchemaWithTypedApps.parse(eventType.metadata);
-      const appSlug = credential.app?.slug;
-      if (appSlug) {
-        await prisma.eventType.update({
-          where: {
-            id: eventType.id,
-          },
-          data: {
-            hidden: true,
-            metadata: {
-              ...metadata,
-              apps: {
-                ...metadata?.apps,
-                [appSlug]: undefined,
-              },
+    const metadata = eventTypeMetaDataSchemaWithTypedApps.parse(eventType.metadata);
+    const appSlug = credential.app?.slug;
+    if (appSlug) {
+      await prisma.eventType.update({
+        where: {
+          id: eventType.id,
+        },
+        data: {
+          hidden: true,
+          metadata: {
+            ...metadata,
+            apps: {
+              ...metadata?.apps,
+              [appSlug]: undefined,
             },
           },
-        });
-      }
+        },
+      });
     }
   }
 

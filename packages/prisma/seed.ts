@@ -668,12 +668,6 @@ async function main() {
         },
       },
       {
-        title: "paid",
-        slug: "paid",
-        length: 60,
-        price: 100,
-      },
-      {
         title: "In person meeting",
         slug: "in-person",
         length: 60,
@@ -843,27 +837,6 @@ async function main() {
 
   await createUserAndEventType({
     user: {
-      email: "trial@example.com",
-      password: "trial",
-      username: "trial",
-      name: "Trial Example",
-    },
-    eventTypes: [
-      {
-        title: "30min",
-        slug: "30min",
-        length: 30,
-      },
-      {
-        title: "60min",
-        slug: "60min",
-        length: 60,
-      },
-    ],
-  });
-
-  await createUserAndEventType({
-    user: {
       email: "free@example.com",
       password: "free",
       username: "free",
@@ -980,24 +953,26 @@ async function main() {
   });
 
   if (adminUser) {
-    await prisma.membership.createMany({
-      data: [
-        {
-          teamId: 1,
-          userId: adminUser.id,
-          accepted: true,
-          role: "ADMIN",
-          disableImpersonation: false,
-        },
-        {
-          teamId: 2,
-          userId: adminUser.id,
-          accepted: true,
-          role: "ADMIN",
-          disableImpersonation: false,
-        },
-      ],
-    });
+    try {
+      await prisma.membership.createMany({
+        data: [
+          {
+            teamId: 1,
+            userId: adminUser.id,
+            accepted: true,
+            role: "ADMIN",
+            disableImpersonation: false,
+          },
+          {
+            teamId: 2,
+            userId: adminUser.id,
+            accepted: true,
+            role: "ADMIN",
+            disableImpersonation: false,
+          },
+        ],
+      });
+    } catch {}
   } else {
     throw Error("Admin user not found");
   }

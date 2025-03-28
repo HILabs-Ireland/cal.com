@@ -223,7 +223,7 @@ function ConnectOrDisconnectIntegrationMenuItem(props: {
   const { type, credentialId, isGlobal, installed, handleDisconnect, teamId, app } = props;
   const { t } = useLocale();
 
-  if (credentialId || type === "stripe_payment" || isGlobal) {
+  if (credentialId || isGlobal) {
     return (
       <DropdownMenuItem>
         <DropdownItem

@@ -49,11 +49,6 @@ const getAppCategories = (baseURL: string, useQueryParam: boolean): AppCategoryE
       icon: "mail",
     },
     {
-      name: "payment",
-      href: getHref(baseURL, "payment", useQueryParam),
-      icon: "credit-card",
-    },
-    {
       name: "other",
       href: getHref(baseURL, "other", useQueryParam),
       icon: "grid-3x3",

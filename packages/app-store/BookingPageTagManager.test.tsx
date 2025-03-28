@@ -44,8 +44,6 @@ describe("BookingPageTagManager", () => {
               gtm: GTM_CONFIG,
             },
           },
-          price: 0,
-          currency: "USD",
         }}
       />
     );
@@ -69,8 +67,6 @@ describe("BookingPageTagManager", () => {
               gtm: GTM_CONFIG,
             },
           },
-          price: 0,
-          currency: "USD",
         }}
       />
     );
@@ -89,8 +85,6 @@ describe("BookingPageTagManager", () => {
               },
             },
           },
-          price: 0,
-          currency: "USD",
         }}
       />
     );
@@ -110,8 +104,6 @@ describe("BookingPageTagManager", () => {
               },
             },
           },
-          price: 0,
-          currency: "USD",
         }}
       />
     );

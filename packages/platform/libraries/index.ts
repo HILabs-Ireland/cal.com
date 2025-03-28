@@ -22,7 +22,6 @@ import getBookingInfo from "@calcom/features/bookings/lib/getBookingInfo";
 import handleCancelBooking from "@calcom/features/bookings/lib/handleCancelBooking";
 import * as newBookingMethods from "@calcom/features/bookings/lib/handleNewBooking";
 import handleDeleteCredential from "@calcom/features/credentials/handleDeleteCredential";
-import { getClientSecretFromPayment } from "@calcom/features/ee/payments/pages/getClientSecretFromPayment";
 import { getPublicEvent } from "@calcom/features/eventtypes/lib/getPublicEvent";
 import handleMarkNoShow from "@calcom/features/handleMarkNoShow";
 import * as instantMeetingMethods from "@calcom/features/instant-meeting/handleInstantMeeting";
@@ -33,7 +32,6 @@ import getBulkEventTypes from "@calcom/lib/event-types/getBulkEventTypes";
 import { getTranslation } from "@calcom/lib/server/i18n";
 import { MembershipRole } from "@calcom/prisma/enums";
 import { credentialForCalendarServiceSelect } from "@calcom/prisma/selects/credential";
-import { paymentDataSelect } from "@calcom/prisma/selects/payment";
 import type { TeamQuery } from "@calcom/trpc/server/routers/loggedInViewer/integrations.handler";
 import { updateHandler as updateScheduleHandler } from "@calcom/trpc/server/routers/viewer/availability/schedule/update.handler";
 import { getAvailableSlots } from "@calcom/trpc/server/routers/viewer/slots/util";
@@ -194,9 +192,6 @@ export type { CredentialPayload };
 export { getAppFromSlug };
 export { credentialForCalendarServiceSelect };
 export { MembershipRole };
-
-export { paymentDataSelect };
-export { getClientSecretFromPayment };
 
 export { confirmHandler as confirmBookingHandler } from "@calcom/trpc/server/routers/viewer/bookings/confirm.handler";
 

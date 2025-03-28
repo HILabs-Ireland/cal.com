@@ -19,7 +19,6 @@ import { ZInviteMemberByTokenSchemaInputSchema } from "./inviteMemberByToken.sch
 import { ZLegacyListMembersInputSchema } from "./legacyListMembers.schema";
 import { ZGetListSchema } from "./list.schema";
 import { ZListMembersInputSchema } from "./listMembers.schema";
-import { hasTeamPlan } from "./procedures/hasTeamPlan";
 import { ZPublishInputSchema } from "./publish.schema";
 import { ZRemoveHostsFromEventTypes } from "./removeHostsFromEventTypes.schema";
 import { ZRemoveMemberInputSchema } from "./removeMember.schema";
@@ -110,14 +109,6 @@ export const viewerTeamsRouter = router({
       message: "This endpoint is deprecated",
     };
   }),
-  /** This is a temporal endpoint so we can progressively upgrade teams to the new billing system. */
-  getUpgradeable: authedProcedure.query(async ({ ctx }) => {
-    const handler = await importHandler(
-      namespaced("getUpgradeable"),
-      () => import("./getUpgradeable.handler")
-    );
-    return handler({ userId: ctx.user.id });
-  }),
   listMembers: authedProcedure.input(ZListMembersInputSchema).query(async (opts) => {
     const handler = await importHandler(namespaced("listMembers"), () => import("./listMembers.handler"));
     return handler(opts);
@@ -134,11 +125,6 @@ export const viewerTeamsRouter = router({
       namespaced("getUserConnectedApps"),
       () => import("./getUserConnectedApps.handler")
     );
-    return handler(opts);
-  }),
-  hasTeamPlan,
-  listInvites: authedProcedure.query(async (opts) => {
-    const handler = await importHandler(namespaced("listInvites"), () => import("./listInvites.handler"));
     return handler(opts);
   }),
   createInvite: authedProcedure.input(ZCreateInviteInputSchema).mutation(async (opts) => {

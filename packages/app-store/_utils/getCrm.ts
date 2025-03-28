@@ -23,10 +23,16 @@ export const getCrm = async (credential: CredentialPayload, appOptions: any) => 
   }
 
   const crmApp = await crmAppImportFn();
-
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   if (crmApp && "lib" in crmApp && "CrmService" in crmApp.lib) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const CrmService = crmApp.lib.CrmService as CrmClass;
     return new CrmService(credential, appOptions);
+  } else {
+    log.warn(`crm of type ${crmType} is not implemented`);
+    return null;
   }
 };
 

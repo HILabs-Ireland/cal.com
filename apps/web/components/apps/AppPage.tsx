@@ -31,7 +31,6 @@ export type AppPageProps = {
   categories: string[];
   author: string;
   pro?: boolean;
-  price?: number;
   feeType?: AppType["feeType"];
   docs?: string;
   website?: string;
@@ -39,13 +38,11 @@ export type AppPageProps = {
   tos?: string;
   privacy?: string;
   licenseRequired: AppType["licenseRequired"];
-  teamsPlanRequired: AppType["teamsPlanRequired"];
   descriptionItems?: Array<string | { iframe: IframeHTMLAttributes<HTMLIFrameElement> }>;
   isTemplate?: boolean;
   disableInstall?: boolean;
   dependencies?: string[];
   concurrentMeetings: AppType["concurrentMeetings"];
-  paid?: AppType["paid"];
 };
 
 export const AppPage = ({
@@ -57,22 +54,18 @@ export const AppPage = ({
   body,
   categories,
   author,
-  price = 0,
   isGlobal = false,
-  feeType,
   docs,
   website,
   email,
   tos,
   privacy,
-  teamsPlanRequired,
   descriptionItems,
   isTemplate,
   dependencies,
   concurrentMeetings,
-  paid,
 }: AppPageProps) => {
-  const { t, i18n } = useLocale();
+  const { t } = useLocale();
   const router = useRouter();
   const searchParams = useCompatSearchParams();
 
@@ -115,7 +108,6 @@ export const AppPage = ({
       !doesAppSupportTeamInstall({
         appCategories: categories,
         concurrentMeetings: concurrentMeetings,
-        isPaid: !!paid,
       })
     ) {
       mutation.mutate({ type });
@@ -123,12 +115,6 @@ export const AppPage = ({
       router.push(getAppOnboardingUrl({ slug, step: AppOnboardingSteps.ACCOUNTS_STEP }));
     }
   };
-
-  const priceInDollar = Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    useGrouping: false,
-  }).format(price);
 
   const [existingCredentials, setExistingCredentials] = useState<number[]>([]);
   const [showDisconnectIntegration, setShowDisconnectIntegration] = useState(false);
@@ -213,19 +199,6 @@ export const AppPage = ({
                 className="bg-subtle text-emphasis rounded-md p-1 text-xs capitalize">
                 {categories[0]}
               </Link>{" "}
-              {paid && (
-                <>
-                  <Badge className="mr-1">
-                    {Intl.NumberFormat(i18n.language, {
-                      style: "currency",
-                      currency: "USD",
-                      useGrouping: false,
-                      maximumFractionDigits: 0,
-                    }).format(paid.priceInUsd)}
-                    /{t("month")}
-                  </Badge>
-                </>
-              )}
               •{" "}
               <a target="_blank" rel="noreferrer" href={website}>
                 {t("published_by", { author })}
@@ -251,7 +224,6 @@ export const AppPage = ({
                 <InstallAppButton
                   type={type}
                   disableInstall={disableInstall}
-                  teamsPlanRequired={teamsPlanRequired}
                   render={({ useDefaultComponent, ...props }) => {
                     if (useDefaultComponent) {
                       props = {
@@ -262,7 +234,7 @@ export const AppPage = ({
                         loading: isLoading,
                       };
                     }
-                    return <InstallAppButtonChild multiInstall paid={paid} {...props} />;
+                    return <InstallAppButtonChild multiInstall {...props} />;
                   }}
                 />
               )}
@@ -280,7 +252,6 @@ export const AppPage = ({
             <InstallAppButton
               type={type}
               disableInstall={disableInstall}
-              teamsPlanRequired={teamsPlanRequired}
               render={({ useDefaultComponent, ...props }) => {
                 if (useDefaultComponent) {
                   props = {
@@ -291,9 +262,7 @@ export const AppPage = ({
                     loading: isLoading,
                   };
                 }
-                return (
-                  <InstallAppButtonChild credentials={appDbQuery.data?.credentials} paid={paid} {...props} />
-                );
+                return <InstallAppButtonChild credentials={appDbQuery.data?.credentials} {...props} />;
               }}
             />
           ))
@@ -313,27 +282,6 @@ export const AppPage = ({
         <div className="prose-sm prose prose-a:text-default prose-headings:text-emphasis prose-code:text-default prose-strong:text-default text-default mt-8">
           {body}
         </div>
-        {!paid && (
-          <>
-            <h4 className="text-emphasis mt-8 font-semibold ">{t("pricing")}</h4>
-            <span className="text-default">
-              {teamsPlanRequired ? (
-                t("teams_plan_required")
-              ) : price === 0 ? (
-                t("free_to_use_apps")
-              ) : (
-                <>
-                  {Intl.NumberFormat(i18n.language, {
-                    style: "currency",
-                    currency: "USD",
-                    useGrouping: false,
-                  }).format(price)}
-                  {feeType === "monthly" && `/${t("month")}`}
-                </>
-              )}
-            </span>
-          </>
-        )}
 
         <h4 className="text-emphasis mb-2 mt-8 font-semibold ">{t("contact")}</h4>
         <ul className="prose-sm -ml-1 -mr-1 leading-5">

@@ -12,7 +12,6 @@ import { safeStringify } from "@calcom/lib/safeStringify";
 import type { EventTypeMetaDataSchema } from "@calcom/prisma/zod-utils";
 import type { CalendarEvent, Person } from "@calcom/types/Calendar";
 
-import AwaitingPaymentSMS from "../sms/attendee/awaiting-payment-sms";
 import CancelledSeatSMS from "../sms/attendee/cancelled-seat-sms";
 import EventCancelledSMS from "../sms/attendee/event-cancelled-sms";
 import EventDeclinedSMS from "../sms/attendee/event-declined-sms";
@@ -28,7 +27,6 @@ import AccountVerifyEmail from "./templates/account-verify-email";
 import type { OrganizationNotification } from "./templates/admin-organization-notification";
 import AdminOrganizationNotification from "./templates/admin-organization-notification";
 import AttendeeAddGuestsEmail from "./templates/attendee-add-guests-email";
-import AttendeeAwaitingPaymentEmail from "./templates/attendee-awaiting-payment-email";
 import AttendeeCancelledEmail from "./templates/attendee-cancelled-email";
 import AttendeeCancelledSeatEmail from "./templates/attendee-cancelled-seat-email";
 import AttendeeDailyVideoDownloadRecordingEmail from "./templates/attendee-daily-video-download-recording-email";
@@ -53,7 +51,6 @@ import FeedbackEmail from "./templates/feedback-email";
 import type { PasswordReset } from "./templates/forgot-password-email";
 import ForgotPasswordEmail from "./templates/forgot-password-email";
 import MonthlyDigestEmail from "./templates/monthly-digest-email";
-import NoShowFeeChargedEmail from "./templates/no-show-fee-charged-email";
 import OrganizationAdminNoSlotsEmail from "./templates/organization-admin-no-slots-email";
 import type { OrganizationCreation } from "./templates/organization-creation-email";
 import OrganizationCreationEmail from "./templates/organization-creation-email";
@@ -65,7 +62,6 @@ import OrganizerCancelledEmail from "./templates/organizer-cancelled-email";
 import OrganizerDailyVideoDownloadRecordingEmail from "./templates/organizer-daily-video-download-recording-email";
 import OrganizerDailyVideoDownloadTranscriptEmail from "./templates/organizer-daily-video-download-transcript-email";
 import OrganizerLocationChangeEmail from "./templates/organizer-location-change-email";
-import OrganizerPaymentRefundFailedEmail from "./templates/organizer-payment-refund-failed-email";
 import OrganizerReassignedEmail from "./templates/organizer-reassigned-email";
 import OrganizerRequestEmail from "./templates/organizer-request-email";
 import OrganizerRequestReminderEmail from "./templates/organizer-request-reminder-email";
@@ -496,36 +492,6 @@ export const sendOrganizerRequestReminderEmail = async (
   }
 };
 
-export const sendAwaitingPaymentEmailAndSMS = async (
-  calEvent: CalendarEvent,
-  eventTypeMetadata?: EventTypeMetadata
-) => {
-  if (eventTypeDisableAttendeeEmail(eventTypeMetadata)) return;
-  const emailsToSend: Promise<unknown>[] = [];
-
-  emailsToSend.push(
-    ...calEvent.attendees.map((attendee) => {
-      return sendEmail(() => new AttendeeAwaitingPaymentEmail(calEvent, attendee));
-    })
-  );
-  await Promise.all(emailsToSend);
-  const awaitingPaymentSMS = new AwaitingPaymentSMS(calEvent);
-  await awaitingPaymentSMS.sendSMSToAttendees();
-};
-
-export const sendOrganizerPaymentRefundFailedEmail = async (calEvent: CalendarEvent) => {
-  const emailsToSend: Promise<unknown>[] = [];
-  emailsToSend.push(sendEmail(() => new OrganizerPaymentRefundFailedEmail({ calEvent })));
-
-  if (calEvent.team?.members) {
-    for (const teamMember of calEvent.team.members) {
-      emailsToSend.push(sendEmail(() => new OrganizerPaymentRefundFailedEmail({ calEvent, teamMember })));
-    }
-  }
-
-  await Promise.all(emailsToSend);
-};
-
 export const sendPasswordResetEmail = async (passwordResetEvent: PasswordReset) => {
   await sendEmail(() => new ForgotPasswordEmail(passwordResetEvent));
 };
@@ -675,15 +641,6 @@ export const sendSlugReplacementEmail = async ({
   slug: string;
 }) => {
   await sendEmail(() => new SlugReplacementEmail(email, name, teamName, slug, t));
-};
-
-export const sendNoShowFeeChargedEmail = async (
-  attendee: Person,
-  evt: CalendarEvent,
-  eventTypeMetadata?: EventTypeMetadata
-) => {
-  if (eventTypeDisableAttendeeEmail(eventTypeMetadata)) return;
-  await sendEmail(() => new NoShowFeeChargedEmail(evt, attendee));
 };
 
 export const sendDailyVideoRecordingEmails = async (calEvent: CalendarEvent, downloadLink: string) => {

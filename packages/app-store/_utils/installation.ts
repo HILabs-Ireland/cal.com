@@ -26,7 +26,6 @@ type InstallationArgs = {
   key?: Prisma.InputJsonValue;
   teamId?: number;
   subscriptionId?: string | null;
-  paymentStatus?: string | null;
 };
 
 export async function createDefaultInstallation({
@@ -35,7 +34,6 @@ export async function createDefaultInstallation({
   slug,
   key = {},
   teamId,
-  paymentStatus,
   subscriptionId,
 }: InstallationArgs) {
   const installation = await prisma.credential.create({
@@ -45,7 +43,6 @@ export async function createDefaultInstallation({
       ...(teamId ? { teamId } : { userId: user.id }),
       appId: slug,
       subscriptionId,
-      paymentStatus,
     },
   });
   if (!installation) {

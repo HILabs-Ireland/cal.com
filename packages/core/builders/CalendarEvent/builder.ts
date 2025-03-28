@@ -141,8 +141,6 @@ export class CalendarEventBuilder implements ICalendarEventBuilder {
           periodCountCalendarDays: true,
           requiresConfirmation: true,
           userId: true,
-          price: true,
-          currency: true,
           metadata: true,
           destinationCalendar: true,
           hideCalendarNotes: true,

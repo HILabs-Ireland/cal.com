@@ -1,4 +1,4 @@
-import type { Payment, Webhook } from "@prisma/client";
+import type { Webhook } from "@prisma/client";
 import { createHmac } from "crypto";
 import { compile } from "handlebars";
 
@@ -13,8 +13,6 @@ export type EventTypeInfo = {
   eventTitle?: string | null;
   eventDescription?: string | null;
   requiresConfirmation?: boolean | null;
-  price?: number | null;
-  currency?: string | null;
   length?: number | null;
 };
 
@@ -87,10 +85,8 @@ export type EventPayloadType = CalendarEvent &
     rescheduleStartTime?: string;
     rescheduleEndTime?: string;
     downloadLink?: string;
-    paymentId?: number;
     rescheduledBy?: string;
     cancelledBy?: string;
-    paymentData?: Payment;
   };
 
 export type WebhookPayloadType = EventPayloadType | OOOEntryPayloadType | BookingNoShowUpdatedPayload;
@@ -152,8 +148,6 @@ function getZapierPayload(data: WithUTCOffsetType<EventPayloadType & { createdAt
       title: data.eventTitle,
       description: data.eventDescription,
       requiresConfirmation: data.requiresConfirmation,
-      price: data.price,
-      currency: data.currency,
       length: data.length,
     },
     attendees: attendees,

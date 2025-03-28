@@ -3,6 +3,8 @@ import fs from "fs";
 // eslint-disable-next-line no-restricted-imports
 import { debounce } from "lodash";
 import path from "path";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import prettier from "prettier";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -24,7 +26,7 @@ const formatOutput = (source: string) =>
 const getVariableName = (appName: string) => appName.replace(/[-.]/g, "_");
 
 // INFO: Handle stripe separately as it's an old app with different dirName than slug/appId
-const getAppId = (app: { name: string }) => (app.name === "stripepayment" ? "stripe" : app.name);
+const getAppId = (app: { name: string }) => app.name;
 
 type App = Partial<AppMeta> & {
   name: string;

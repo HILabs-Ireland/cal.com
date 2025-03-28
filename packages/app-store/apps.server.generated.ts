@@ -3,7 +3,6 @@
     Don't modify this file manually.
 **/
 export const apiHandlers = {
-  alby: import("./alby/api"),
   amie: import("./amie/api"),
   applecalendar: import("./applecalendar/api"),
   around: import("./around/api"),
@@ -36,7 +35,6 @@ export const apiHandlers = {
   googlevideo: import("./googlevideo/api"),
   granola: import("./granola/api"),
   gtm: import("./gtm/api"),
-  hitpay: import("./hitpay/api"),
   "horizon-workrooms": import("./horizon-workrooms/api"),
   hubspot: import("./hubspot/api"),
   huddle01video: import("./huddle01video/api"),
@@ -51,12 +49,10 @@ export const apiHandlers = {
   matomo: import("./matomo/api"),
   metapixel: import("./metapixel/api"),
   mirotalk: import("./mirotalk/api"),
-  "mock-payment-app": import("./mock-payment-app/api"),
   n8n: import("./n8n/api"),
   nextcloudtalk: import("./nextcloudtalk/api"),
   office365calendar: import("./office365calendar/api"),
   office365video: import("./office365video/api"),
-  paypal: import("./paypal/api"),
   ping: import("./ping/api"),
   pipedream: import("./pipedream/api"),
   "pipedrive-crm": import("./pipedrive-crm/api"),
@@ -74,7 +70,6 @@ export const apiHandlers = {
   signal: import("./signal/api"),
   sirius_video: import("./sirius_video/api"),
   skype: import("./skype/api"),
-  stripepayment: import("./stripepayment/api"),
   sylapsvideo: import("./sylapsvideo/api"),
   synthflow: import("./synthflow/api"),
   tandemvideo: import("./tandemvideo/api"),

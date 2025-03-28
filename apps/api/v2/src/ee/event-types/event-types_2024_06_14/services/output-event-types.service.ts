@@ -53,8 +53,6 @@ type Input = Pick<
   | "slug"
   | "schedulingType"
   | "requiresConfirmation"
-  | "price"
-  | "currency"
   | "lockTimeZoneToggleOnBookingPage"
   | "seatsPerTimeSlot"
   | "forwardParamsSuccessRedirect"
@@ -105,8 +103,6 @@ export class OutputEventTypesService_2024_06_14 {
       beforeEventBuffer,
       afterEventBuffer,
       slug,
-      price,
-      currency,
       lockTimeZoneToggleOnBookingPage,
       seatsPerTimeSlot,
       forwardParamsSuccessRedirect,
@@ -172,8 +168,6 @@ export class OutputEventTypesService_2024_06_14 {
       beforeEventBuffer,
       afterEventBuffer,
       metadata,
-      price,
-      currency,
       lockTimeZoneToggleOnBookingPage,
       forwardParamsSuccessRedirect,
       successRedirectUrl,

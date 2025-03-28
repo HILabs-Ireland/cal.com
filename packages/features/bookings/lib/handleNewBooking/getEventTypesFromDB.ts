@@ -62,8 +62,6 @@ export const getEventTypesFromDB = async (eventTypeId: number) => {
       maxLeadThreshold: true,
       minimumBookingNotice: true,
       userId: true,
-      price: true,
-      currency: true,
       metadata: true,
       destinationCalendar: true,
       hideCalendarNotes: true,

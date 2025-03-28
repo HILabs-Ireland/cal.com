@@ -24,7 +24,6 @@ export const getHandler = async ({ ctx, input }: GetOptions) => {
       endTime: true,
       description: true,
       status: true,
-      paid: true,
       eventTypeId: true,
     },
   });

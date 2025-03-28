@@ -54,11 +54,9 @@ import { getErrorFromUnknown } from "@calcom/lib/errors";
 import { extractBaseEmail } from "@calcom/lib/extract-base-email";
 import { getBookerBaseUrl } from "@calcom/lib/getBookerUrl/server";
 import getOrgIdFromMemberOrTeamId from "@calcom/lib/getOrgIdFromMemberOrTeamId";
-import { getPaymentAppData } from "@calcom/lib/getPaymentAppData";
 import { getTeamIdFromEventType } from "@calcom/lib/getTeamIdFromEventType";
 import { HttpError } from "@calcom/lib/http-error";
 import logger from "@calcom/lib/logger";
-import { handlePayment } from "@calcom/lib/payment/handlePayment";
 import { getPiiFreeCalendarEvent, getPiiFreeEventType } from "@calcom/lib/piiFreeData";
 import { safeStringify } from "@calcom/lib/safeStringify";
 import { getLuckyUser } from "@calcom/lib/server/getLuckyUser";
@@ -98,13 +96,7 @@ import { getVideoCallDetails } from "./handleNewBooking/getVideoCallDetails";
 import { handleAppsStatus } from "./handleNewBooking/handleAppsStatus";
 import { loadAndValidateUsers } from "./handleNewBooking/loadAndValidateUsers";
 import { scheduleNoShowTriggers } from "./handleNewBooking/scheduleNoShowTriggers";
-import type {
-  Booking,
-  BookingType,
-  IEventTypePaymentCredentialType,
-  Invitee,
-  IsFixedAwareUser,
-} from "./handleNewBooking/types";
+import type { Booking, BookingType, Invitee, IsFixedAwareUser } from "./handleNewBooking/types";
 import { validateBookingTimeIsNotOutOfBounds } from "./handleNewBooking/validateBookingTimeIsNotOutOfBounds";
 import { validateEventLength } from "./handleNewBooking/validateEventLength";
 import handleSeats from "./handleSeats/handleSeats";
@@ -196,7 +188,7 @@ function buildLuckyUsersWithJustContactOwner({
   return luckyUsers;
 }
 
-type CreatedBooking = Booking & { appsStatus?: AppsStatus[]; paymentUid?: string; paymentId?: number };
+type CreatedBooking = Booking & { appsStatus?: AppsStatus[] };
 
 const buildDryRunBooking = ({
   eventTypeId,
@@ -240,7 +232,6 @@ const buildDryRunBooking = ({
     updatedAt: new Date(),
     attendees: [],
     references: [],
-    payment: [],
     oneTimePassword: null,
     smsReminderNumber: null,
     metadata: {},
@@ -250,7 +241,6 @@ const buildDryRunBooking = ({
     customInputs: null,
     responses: null,
     location: null,
-    paid: false,
     destinationCalendar: null,
     cancellationReason: null,
     rejectionReason: null,
@@ -276,7 +266,7 @@ const buildDryRunBooking = ({
     ratingFeedback: null,
     noShowHost: null,
     cancelledBy: null,
-  } as CreatedBooking;
+  } as unknown as CreatedBooking;
 
   /**
    * Troubleshooting data
@@ -424,10 +414,6 @@ async function handler(
   const isTeamEventType =
     !!eventType.schedulingType && ["COLLECTIVE", "ROUND_ROBIN"].includes(eventType.schedulingType);
 
-  const paymentAppData = getPaymentAppData({
-    ...eventType,
-    metadata: eventTypeMetaDataSchemaWithTypedApps.parse(eventType.metadata),
-  });
   loggerWithEventDetails.info(
     `Booking eventType ${eventTypeId} started`,
     safeStringify({
@@ -444,13 +430,6 @@ async function handler(
       isTeamEventType,
       eventType: getPiiFreeEventType(eventType),
       dynamicUserList,
-      paymentAppData: {
-        enabled: paymentAppData.enabled,
-        price: paymentAppData.price,
-        paymentOption: paymentAppData.paymentOption,
-        currency: paymentAppData.currency,
-        appId: paymentAppData.appId,
-      },
     })
   );
 
@@ -770,7 +749,6 @@ async function handler(
     bookingStartTime: reqBody.start,
     userId,
     originalRescheduledBookingOrganizerId: originalRescheduledBooking?.user?.id,
-    paymentAppData,
     bookerEmail,
   });
 
@@ -1011,8 +989,6 @@ async function handler(
   const eventTypeInfo: EventTypeInfo = {
     eventTitle: eventType.title,
     eventDescription: eventType.description,
-    price: paymentAppData.price,
-    currency: eventType.currency,
     length: dayjs(reqBody.end).diff(dayjs(reqBody.start), "minutes"),
   };
 
@@ -1096,7 +1072,6 @@ async function handler(
       additionalNotes,
       reqAppsStatus,
       attendeeLanguage,
-      paymentAppData,
       fullName,
       smsReminderNumber,
       eventTypeInfo,
@@ -1119,7 +1094,6 @@ async function handler(
           ...newBooking.user,
           email: null,
         },
-        paymentRequired: false,
         isDryRun: isDryRun,
         ...(isDryRun ? { troubleshooterData } : {}),
       };
@@ -1183,7 +1157,6 @@ async function handler(
           slug: eventTypeSlug,
           organizerUser,
           isConfirmedByDefault,
-          paymentAppData,
         },
         input: {
           bookerEmail,
@@ -1667,18 +1640,11 @@ async function handler(
       safeStringify({
         calEvent: getPiiFreeCalendarEvent(evt),
         isConfirmedByDefault,
-        paymentValue: paymentAppData.price,
       })
     );
   }
 
-  const bookingRequiresPayment =
-    !Number.isNaN(paymentAppData.price) &&
-    paymentAppData.price > 0 &&
-    !originalRescheduledBooking?.paid &&
-    !!booking;
-
-  if (!isConfirmedByDefault && noEmail !== true && !bookingRequiresPayment) {
+  if (!isConfirmedByDefault && noEmail !== true) {
     loggerWithEventDetails.debug(
       `Emails: Booking ${organizerUser.username} requires confirmation, sending request emails`,
       safeStringify({
@@ -1724,90 +1690,6 @@ async function handler(
     smsReminderNumber: booking?.smsReminderNumber || undefined,
     rescheduledBy: reqBody.rescheduledBy,
   };
-
-  if (bookingRequiresPayment) {
-    loggerWithEventDetails.debug(`Booking ${organizerUser.username} requires payment`);
-    // Load credentials.app.categories
-    const credentialPaymentAppCategories = await prisma.credential.findMany({
-      where: {
-        ...(paymentAppData.credentialId ? { id: paymentAppData.credentialId } : { userId: organizerUser.id }),
-        app: {
-          categories: {
-            hasSome: ["payment"],
-          },
-        },
-      },
-      select: {
-        key: true,
-        appId: true,
-        app: {
-          select: {
-            categories: true,
-            dirName: true,
-          },
-        },
-      },
-    });
-    const eventTypePaymentAppCredential = credentialPaymentAppCategories.find((credential) => {
-      return credential.appId === paymentAppData.appId;
-    });
-
-    if (!eventTypePaymentAppCredential) {
-      throw new HttpError({ statusCode: 400, message: "Missing payment credentials" });
-    }
-
-    // Convert type of eventTypePaymentAppCredential to appId: EventTypeAppList
-    if (!booking.user) booking.user = organizerUser;
-    const payment = await handlePayment({
-      evt,
-      selectedEventType: eventType,
-      paymentAppCredentials: eventTypePaymentAppCredential as IEventTypePaymentCredentialType,
-      booking,
-      bookerName: fullName,
-      bookerEmail,
-      bookerPhoneNumber,
-      isDryRun,
-    });
-    const subscriberOptionsPaymentInitiated: GetSubscriberOptions = {
-      userId: triggerForUser ? organizerUser.id : null,
-      eventTypeId,
-      triggerEvent: WebhookTriggerEvents.BOOKING_PAYMENT_INITIATED,
-      teamId,
-      orgId,
-      oAuthClientId: platformClientId,
-    };
-    await handleWebhookTrigger({
-      subscriberOptions: subscriberOptionsPaymentInitiated,
-      eventTrigger: WebhookTriggerEvents.BOOKING_PAYMENT_INITIATED,
-      webhookData: {
-        ...webhookData,
-        paymentId: payment?.id,
-      },
-      isDryRun,
-    });
-
-    req.statusCode = 201;
-    // TODO: Refactor better so this booking object is not passed
-    // all around and instead the individual fields are sent as args.
-    const bookingResponse = {
-      ...booking,
-      user: {
-        ...booking.user,
-        email: null,
-      },
-    };
-
-    return {
-      ...bookingResponse,
-      ...luckyUserResponse,
-      message: "Payment required",
-      paymentRequired: true,
-      paymentUid: payment?.uid,
-      paymentId: payment?.id,
-      isDryRun,
-      ...(isDryRun ? { troubleshooterData } : {}),
-    };
-  }
 
   loggerWithEventDetails.debug(`Booking ${organizerUser.username} completed`);
 
@@ -1985,7 +1867,6 @@ async function handler(
       ...booking.user,
       email: null,
     },
-    paymentRequired: false,
   };
 
   return {

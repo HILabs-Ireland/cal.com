@@ -4,7 +4,6 @@ import slugify from "@calcom/lib/slugify";
 import prisma from "@calcom/prisma";
 import { RedirectType } from "@calcom/prisma/enums";
 
-import { IS_PREMIUM_USERNAME_ENABLED } from "../constants";
 import logger from "../logger";
 import notEmpty from "../notEmpty";
 
@@ -24,7 +23,6 @@ export type RequestWithUsernameStatus = NextApiRequest & {
     requestedUserName: string;
     json: {
       available: boolean;
-      premium: boolean;
       message?: string;
       suggestion?: string;
     };
@@ -47,13 +45,6 @@ export async function isBlacklisted(username: string) {
   return cachedData.has(username);
 }
 
-export const isPremiumUserName = IS_PREMIUM_USERNAME_ENABLED
-  ? async (username: string) => {
-      return username.length <= 4 || isBlacklisted(username);
-    }
-  : // outside of cal.com the concept of premium username needs not exist.
-    () => Promise.resolve(false);
-
 export const generateUsernameSuggestion = async (users: string[], username: string) => {
   const limit = username.length < 2 ? 9999 : 999;
   let rand = 1;
@@ -64,7 +55,7 @@ export const generateUsernameSuggestion = async (users: string[], username: stri
 };
 
 const processResult = (
-  result: "ok" | "username_exists" | "is_premium"
+  result: "ok" | "username_exists"
 ): // explicitly assign return value to ensure statusCode is typehinted
 { statusCode: RequestWithUsernameStatus["usernameStatus"]["statusCode"]; message: string } => {
   // using a switch statement instead of multiple ifs to make sure typescript knows
@@ -80,8 +71,6 @@ const processResult = (
         statusCode: 418,
         message: "A user exists with that username or email",
       };
-    case "is_premium":
-      return { statusCode: 402, message: "This is a premium username." };
   }
 };
 
@@ -92,7 +81,6 @@ const usernameHandler =
     const check = await usernameCheckForSignup({ username, email: req.body.email });
 
     let result: Parameters<typeof processResult>[0] = "ok";
-    if (check.premium) result = "is_premium";
     if (!check.available) result = "username_exists";
 
     const { statusCode, message } = processResult(result);
@@ -101,7 +89,6 @@ const usernameHandler =
       requestedUserName: username,
       json: {
         available: result !== "username_exists",
-        premium: result === "is_premium",
         message,
         suggestion: check.suggestedUsername,
       },
@@ -114,7 +101,6 @@ const usernameCheck = async (usernameRaw: string, currentOrgDomain?: string | nu
   const isCheckingUsernameInGlobalNamespace = !currentOrgDomain;
   const response = {
     available: true,
-    premium: false,
     suggestedUsername: "",
   };
 
@@ -138,10 +124,6 @@ const usernameCheck = async (usernameRaw: string, currentOrgDomain?: string | nu
     response.available = isCheckingUsernameInGlobalNamespace
       ? !(await isUsernameReservedDueToMigration(username))
       : true;
-  }
-
-  if (await isPremiumUserName(username)) {
-    response.premium = true;
   }
 
   // get list of similar usernames in the db
@@ -195,7 +177,6 @@ const usernameCheckForSignup = async ({
 }) => {
   const response = {
     available: true,
-    premium: false,
     suggestedUsername: "",
   };
 
@@ -230,12 +211,9 @@ const usernameCheckForSignup = async ({
       const isClaimingAlreadySetUsername = user.username === username;
       const isClaimingUnsetUsername = !user.username;
       response.available = isClaimingUnsetUsername || isClaimingAlreadySetUsername;
-      // There are premium users outside an organization only
-      response.premium = await isPremiumUserName(username);
     }
     // If user isn't found, it's a direct signup and that can't be of an organization
   } else {
-    response.premium = await isPremiumUserName(username);
     response.available = !(await isUsernameReservedDueToMigration(username));
   }
 

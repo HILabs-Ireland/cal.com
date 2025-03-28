@@ -81,8 +81,6 @@ const commons = {
   teamId: null,
   scheduleId: null,
   availability: [],
-  price: 0,
-  currency: "usd",
   schedulingType: SchedulingType.COLLECTIVE,
   seatsPerTimeSlot: null,
   seatsShowAttendees: null,

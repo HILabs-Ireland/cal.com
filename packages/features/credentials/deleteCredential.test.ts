@@ -126,7 +126,6 @@ describe("deleteCredential", () => {
       expect(eventTypeCalendarAfter).toBeNull();
     });
 
-    // TODO: Add test for payment apps
     // TODO: Add test for event type apps
   });
 });

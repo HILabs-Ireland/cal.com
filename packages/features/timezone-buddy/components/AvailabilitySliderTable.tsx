@@ -7,17 +7,14 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import dayjs from "@calcom/dayjs";
 import { DataTable, DataTableToolbar } from "@calcom/features/data-table";
-import { APP_NAME, WEBAPP_URL } from "@calcom/lib/constants";
 import { CURRENT_TIMEZONE } from "@calcom/lib/constants";
 import type { DateRange } from "@calcom/lib/date-ranges";
 import { useDebounce } from "@calcom/lib/hooks/useDebounce";
-import { useLocale } from "@calcom/lib/hooks/useLocale";
 import type { MembershipRole } from "@calcom/prisma/enums";
 import { trpc } from "@calcom/trpc";
 import type { UserProfile } from "@calcom/types/UserProfile";
 import { Button, ButtonGroup, UserAvatar } from "@calcom/ui";
 
-import { UpgradeTip } from "../../tips/UpgradeTip";
 import { createTimezoneBuddyStore, TBContext } from "../store";
 import { AvailabilityEditSheet } from "./AvailabilityEditSheet";
 import { CellHighlightContainer } from "./CellHighlightContainer";
@@ -37,33 +34,6 @@ export interface SliderUser {
   profile: UserProfile;
 }
 
-function UpgradeTeamTip() {
-  const { t } = useLocale();
-
-  return (
-    <UpgradeTip
-      plan="team"
-      title={t("calcom_is_better_with_team", { appName: APP_NAME }) as string}
-      description="add_your_team_members"
-      background="/tips/teams"
-      features={[]}
-      buttons={
-        <div className="space-y-2 rtl:space-x-reverse sm:space-x-2">
-          <ButtonGroup>
-            <Button color="primary" href={`${WEBAPP_URL}/settings/teams/new`}>
-              {t("create_team")}
-            </Button>
-            <Button color="minimal" href="https://go.cal.com/teams-video" target="_blank">
-              {t("learn_more")}
-            </Button>
-          </ButtonGroup>
-        </div>
-      }>
-      <></>
-    </UpgradeTip>
-  );
-}
-
 export function AvailabilitySliderTable(props: { userTimeFormat: number | null; isOrg: boolean }) {
   const tableContainerRef = useRef<HTMLDivElement>(null);
   const [browsingDate, setBrowsingDate] = useState(dayjs());
@@ -71,10 +41,6 @@ export function AvailabilitySliderTable(props: { userTimeFormat: number | null; 
   const [selectedUser, setSelectedUser] = useState<SliderUser | null>(null);
   const [searchString, setSearchString] = useState("");
   const debouncedSearchString = useDebounce(searchString, 500);
-
-  const tbStore = createTimezoneBuddyStore({
-    browsingDate: browsingDate.toDate(),
-  });
 
   const { data, isPending, fetchNextPage, isFetching } = trpc.viewer.availability.listTeam.useInfiniteQuery(
     {
@@ -213,9 +179,6 @@ export function AvailabilitySliderTable(props: { userTimeFormat: number | null; 
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
   });
-
-  // This means they are not apart of any teams so we show the upgrade tip
-  if (!flatData.length && !data?.pages?.[0]?.meta?.isApartOfAnyTeam) return <UpgradeTeamTip />;
 
   return (
     <TBContext.Provider

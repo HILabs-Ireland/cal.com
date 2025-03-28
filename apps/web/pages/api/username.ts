@@ -6,7 +6,6 @@ import { checkUsername } from "@calcom/lib/server/checkUsername";
 
 type Response = {
   available: boolean;
-  premium: boolean;
 };
 
 const bodySchema = z.object({

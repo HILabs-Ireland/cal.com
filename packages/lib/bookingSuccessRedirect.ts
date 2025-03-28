@@ -2,7 +2,6 @@ import type { EventType } from "@prisma/client";
 import { useRouter } from "next/navigation";
 
 import dayjs from "@calcom/dayjs";
-import type { PaymentPageProps } from "@calcom/ee/payments/pages/payment";
 import { useIsEmbed } from "@calcom/embed-core/embed-iframe";
 import type { BookingResponse } from "@calcom/features/bookings/types";
 import { useCompatSearchParams } from "@calcom/lib/hooks/useCompatSearchParams";
@@ -24,7 +23,7 @@ function getNewSearchParams(args: {
 }
 
 type SuccessRedirectBookingType = Pick<
-  BookingResponse | PaymentPageProps["booking"],
+  BookingResponse,
   "uid" | "title" | "description" | "startTime" | "endTime" | "location" | "attendees" | "user" | "responses"
 >;
 
@@ -164,7 +163,7 @@ export const useBookingSuccessRedirect = () => {
     successRedirectUrl: EventType["successRedirectUrl"];
     forwardParamsSuccessRedirect: EventType["forwardParamsSuccessRedirect"];
     query: Record<string, string | null | undefined | boolean>;
-    booking: SuccessRedirectBookingType;
+    booking: SuccessRedirectBookingType | any;
   }) => {
     // Ensures that the param is added both to external redirect url and booking success page URL
     query = {

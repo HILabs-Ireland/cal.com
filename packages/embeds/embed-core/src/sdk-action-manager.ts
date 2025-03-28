@@ -29,7 +29,6 @@ export type EventDataMap = {
     endTime: string | undefined;
     eventTypeId: number | null | undefined;
     status: string | undefined;
-    paymentRequired: boolean;
     isRecurring: boolean;
     /**
      * This is only used for recurring bookings
@@ -60,7 +59,6 @@ export type EventDataMap = {
     endTime: string | undefined;
     eventTypeId: number | null | undefined;
     status: string | undefined;
-    paymentRequired: boolean;
     isRecurring: boolean;
     /**
      * This is only used for recurring bookings

@@ -5,7 +5,6 @@ import { withAccelerate } from "@prisma/extension-accelerate";
 import { bookingIdempotencyKeyExtension } from "./extensions/booking-idempotency-key";
 import { disallowUndefinedDeleteUpdateManyExtension } from "./extensions/disallow-undefined-delete-update-many";
 import { excludeLockedUsersExtension } from "./extensions/exclude-locked-users";
-import { excludePendingPaymentsExtension } from "./extensions/exclude-pending-payment-teams";
 import { bookingReferenceMiddleware } from "./middleware";
 
 const prismaOptions: Prisma.PrismaClientOptions = {};
@@ -43,7 +42,6 @@ const prismaWithoutClientExtensions =
 export const customPrisma = (options?: Prisma.PrismaClientOptions) =>
   new PrismaClientWithoutExtension({ ...prismaOptions, ...options })
     .$extends(excludeLockedUsersExtension())
-    .$extends(excludePendingPaymentsExtension())
     .$extends(bookingIdempotencyKeyExtension())
     .$extends(disallowUndefinedDeleteUpdateManyExtension())
     .$extends(withAccelerate());
@@ -56,7 +54,6 @@ bookingReferenceMiddleware(prismaWithoutClientExtensions);
 // Specifically we get errors like `Type 'string | Date | null | undefined' is not assignable to type 'Exact<string | Date | null | undefined, string | Date | null | undefined>'`
 const prismaWithClientExtensions = prismaWithoutClientExtensions
   .$extends(excludeLockedUsersExtension())
-  .$extends(excludePendingPaymentsExtension())
   .$extends(bookingIdempotencyKeyExtension())
   .$extends(disallowUndefinedDeleteUpdateManyExtension())
   .$extends(withAccelerate());

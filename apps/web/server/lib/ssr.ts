@@ -13,7 +13,6 @@ import { teamsAndUserProfilesQuery } from "@calcom/trpc/server/routers/loggedInV
 import { event } from "@calcom/trpc/server/routers/publicViewer/procedures/event";
 import { session } from "@calcom/trpc/server/routers/publicViewer/procedures/session";
 import { get } from "@calcom/trpc/server/routers/viewer/eventTypes/procedures/get";
-import { hasTeamPlan } from "@calcom/trpc/server/routers/viewer/teams/procedures/hasTeamPlan";
 import { router, mergeRouters } from "@calcom/trpc/server/trpc";
 
 const loggedInRouter = router({
@@ -31,9 +30,6 @@ const routerSlice = router({
       public: router({
         session,
         event,
-      }),
-      teams: router({
-        hasTeamPlan,
       }),
       appRoutingForms: router({
         forms,
@@ -79,7 +75,6 @@ export async function ssrInit(context: GetServerSidePropsContext, options?: { no
     // So feature flags are available on first render
     ssr.viewer.features.map.prefetch(),
     // Provides a better UX to the users who have already upgraded.
-    ssr.viewer.teams.hasTeamPlan.prefetch(),
     ssr.viewer.public.session.prefetch(),
     ssr.viewer.me.prefetch(),
   ]);
