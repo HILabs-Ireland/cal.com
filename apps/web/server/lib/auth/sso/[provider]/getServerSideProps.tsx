@@ -2,9 +2,6 @@
 import type { GetServerSidePropsContext } from "next";
 
 import { getServerSession } from "@calcom/features/auth/lib/getServerSession";
-import { hostedCal, isSAMLLoginEnabled, samlProductID, samlTenantID } from "@calcom/features/ee/sso/lib/saml";
-import { ssoTenantProduct } from "@calcom/features/ee/sso/lib/sso";
-import prisma from "@calcom/prisma";
 
 import { asStringOrNull } from "@lib/asStringOrNull";
 
@@ -14,7 +11,6 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   // get query params and typecast them to string
   // (would be even better to assert them instead of typecasting)
   const providerParam = asStringOrNull(context.query.provider);
-  const emailParam = asStringOrNull(context.query.email);
   const usernameParam = asStringOrNull(context.query.username);
   const successDestination = `/getting-started${usernameParam ? `?username=${usernameParam}` : ""}`;
   if (!providerParam) {
@@ -35,26 +31,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     };
   }
 
-  let error: string | null = null;
-
-  let tenant = samlTenantID;
-  let product = samlProductID;
-
-  if (providerParam === "saml" && hostedCal) {
-    if (!emailParam) {
-      error = "Email not provided";
-    } else {
-      try {
-        const ret = await ssoTenantProduct(prisma, emailParam);
-        tenant = ret.tenant;
-        product = ret.product;
-      } catch (e) {
-        if (e instanceof Error) {
-          error = e.message;
-        }
-      }
-    }
-  }
+  const error: string | null = null;
 
   if (error) {
     return {
@@ -69,10 +46,10 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     props: {
       trpcState: ssr.dehydrate(),
       provider: providerParam,
-      isSAMLLoginEnabled,
-      hostedCal,
-      tenant,
-      product,
+      isSAMLLoginEnabled: false,
+      hostedCal: false,
+      tenant: "",
+      product: "",
       error,
     },
   };

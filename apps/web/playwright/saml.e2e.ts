@@ -1,7 +1,5 @@
 import { expect } from "@playwright/test";
 
-import { isSAMLLoginEnabled } from "@calcom/features/ee/sso/lib/saml";
-
 import { login } from "./fixtures/users";
 import { test } from "./lib/fixtures";
 
@@ -9,7 +7,6 @@ test.describe.configure({ mode: "parallel" });
 
 test.describe("SAML tests", () => {
   // eslint-disable-next-line playwright/no-skipped-test
-  test.skip(!isSAMLLoginEnabled, "Skipping due to SAML login being disabled");
 
   test("test SAML configuration UI with pro@example.com", async ({ page }) => {
     // TODO: Figure out a way to use the users from fixtures here, right now we cannot set

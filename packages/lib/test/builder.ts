@@ -39,6 +39,7 @@ export const buildBooking = (
     id: faker.datatype.number(),
     uid,
     userId: null,
+    paid: false,
     eventTypeId: null,
     idempotencyKey: null,
     userPrimaryEmail: null,
@@ -81,6 +82,7 @@ export const buildBooking = (
 
 export const buildEventType = (eventType?: Partial<EventType>): EventType => {
   return {
+    currency: "USD",
     id: faker.datatype.number(),
     title: faker.lorem.sentence(),
     slug: faker.lorem.slug(),
@@ -141,6 +143,7 @@ export const buildEventType = (eventType?: Partial<EventType>): EventType => {
     rrSegmentQueryValue: null,
     autoTranslateDescriptionEnabled: false,
     useEventLevelSelectedCalendars: false,
+    price: faker.datatype.number({ min: 0, max: 1000 }), // Add this line
     ...eventType,
   };
 };

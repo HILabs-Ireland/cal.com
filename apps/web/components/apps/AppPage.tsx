@@ -55,7 +55,6 @@ export const AppPage = ({
   categories,
   author,
   isGlobal = false,
-  feeType,
   docs,
   website,
   email,
@@ -66,7 +65,7 @@ export const AppPage = ({
   dependencies,
   concurrentMeetings,
 }: AppPageProps) => {
-  const { t, i18n } = useLocale();
+  const { t } = useLocale();
   const router = useRouter();
   const searchParams = useCompatSearchParams();
 

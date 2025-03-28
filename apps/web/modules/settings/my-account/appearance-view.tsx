@@ -429,7 +429,7 @@ const AppearanceView = ({ user }: { user: RouterOutputs["viewer"]["me"] }) => {
 const AppearancePage = () => {
   const { data: user, isPending } = trpc.viewer.me.useQuery();
 
-  if (isPending || isTeamPlanStatusLoading || !user) return <SkeletonLoader />;
+  if (isPending || !user) return <SkeletonLoader />;
 
   return <AppearanceView user={user} />;
 };

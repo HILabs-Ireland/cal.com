@@ -419,9 +419,7 @@ export default function Signup({
                       isSubmitting ||
                       usernameTaken
                     }>
-                    {premiumUsername && !usernameTaken
-                      ? `${t("create_account")} (${getPremiumPlanPriceValue()})`
-                      : t("create_account")}
+                    {t("create_account")}
                   </Button>
                 </Form>
               </div>
