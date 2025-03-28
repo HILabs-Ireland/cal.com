@@ -953,24 +953,26 @@ async function main() {
   });
 
   if (adminUser) {
-    await prisma.membership.createMany({
-      data: [
-        {
-          teamId: 1,
-          userId: adminUser.id,
-          accepted: true,
-          role: "ADMIN",
-          disableImpersonation: false,
-        },
-        {
-          teamId: 2,
-          userId: adminUser.id,
-          accepted: true,
-          role: "ADMIN",
-          disableImpersonation: false,
-        },
-      ],
-    });
+    try {
+      await prisma.membership.createMany({
+        data: [
+          {
+            teamId: 1,
+            userId: adminUser.id,
+            accepted: true,
+            role: "ADMIN",
+            disableImpersonation: false,
+          },
+          {
+            teamId: 2,
+            userId: adminUser.id,
+            accepted: true,
+            role: "ADMIN",
+            disableImpersonation: false,
+          },
+        ],
+      });
+    } catch {}
   } else {
     throw Error("Admin user not found");
   }
