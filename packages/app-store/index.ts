@@ -6,7 +6,7 @@ const appStore = {
   closecom: () => import("./closecom"),
   // TODO: REMOVE APP STORE - THESE ARE CAUSE TYPESCRIPT TO BLOW UP
   // dailyvideo: () => import("./dailyvideo"),
-  // googlecalendar: () => import("./googlecalendar"),
+  googlecalendar: () => import("./googlecalendar"),
   // googlevideo: () => import("./googlevideo"),
   // hubspot: () => import("./hubspot"),
   // huddle01video: () => import("./huddle01video"),
@@ -15,7 +15,7 @@ const appStore = {
   // jitsivideo: () => import("./jitsivideo"),
   // larkcalendar: () => import("./larkcalendar"),
   // nextcloudtalkvideo: () => import("./nextcloudtalk"),
-  // office365calendar: () => import("./office365calendar"),
+  office365calendar: () => import("./office365calendar"),
   // office365video: () => import("./office365video"),
   // plausible: () => import("./plausible"),
   // "pipedrive-crm": () => import("./pipedrive-crm"),
