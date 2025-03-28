@@ -117,7 +117,6 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
         { name: "features", href: "/settings/admin/flags" },
         { name: "license", href: "/auth/setup?step=1" },
         { name: "apps", href: "/settings/admin/apps/calendar" },
-        { name: "users", href: "/settings/admin/users" },
         { name: "organizations", href: "/settings/admin/organizations" },
         { name: "lockedSMS", href: "/settings/admin/lockedSMS" },
         { name: "oAuth", href: "/settings/admin/oAuth" },
