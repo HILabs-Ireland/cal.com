@@ -422,8 +422,11 @@ describe("handleChildrenEventTypes", () => {
       const mockUpdatedEventType = {
         id: 2,
         userId: 4,
+        price: 123,
+        currency: "USD",
         timeZone: "UTC",
         teamId: 1,
+        instantMeetingScheduleId: null,
         autoTranslateDescriptionEnabled: false,
         secondaryEmailId: null,
         schedulingType: SchedulingType.MANAGED,
