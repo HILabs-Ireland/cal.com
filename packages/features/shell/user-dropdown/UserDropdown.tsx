@@ -138,14 +138,6 @@ export function UserDropdown({ small }: UserDropdownProps) {
                     {t("my_settings")}
                   </DropdownItem>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <DropdownItem
-                    type="button"
-                    CustomStartIcon={<Icon name="moon" className="text-default h-4 w-4" aria-hidden="true" />}
-                    href="/settings/my-account/out-of-office">
-                    {t("out_of_office")}
-                  </DropdownItem>
-                </DropdownMenuItem>
                 <DropdownMenuSeparator />
               </>
             )}

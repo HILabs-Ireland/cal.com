@@ -1,7 +1,6 @@
 import type { Prisma } from "@prisma/client";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 
-import { getDefaultLocations } from "@calcom/lib/server";
 import { EventTypeRepository } from "@calcom/lib/server/repository/eventType";
 import type { PrismaClient } from "@calcom/prisma";
 import { SchedulingType } from "@calcom/prisma/enums";
@@ -41,8 +40,7 @@ export const createHandler = async ({ ctx, input }: CreateOptions) => {
   const isManagedEventType = schedulingType === SchedulingType.MANAGED;
   const isOrgAdmin = !!ctx.user?.organization?.isOrgAdmin;
 
-  const locations: EventTypeLocation[] =
-    inputLocations && inputLocations.length !== 0 ? inputLocations : await getDefaultLocations(ctx.user);
+  const locations: EventTypeLocation[] = inputLocations && inputLocations.length !== 0 ? inputLocations : [];
 
   const data: Prisma.EventTypeCreateInput = {
     ...rest,

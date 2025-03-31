@@ -236,13 +236,6 @@ export async function gotoRoutingLink({
   await new Promise((resolve) => setTimeout(resolve, 2000));
 }
 
-export async function installAppleCalendar(page: Page) {
-  await page.goto("/apps/categories/calendar");
-  await page.click('[data-testid="app-store-app-card-apple-calendar"]');
-  await page.waitForURL("/apps/apple-calendar");
-  await page.click('[data-testid="install-app-button"]');
-}
-
 export async function getInviteLink(page: Page) {
   const json = await submitAndWaitForJsonResponse(page, "/api/trpc/teams/createInvite?batch=1", {
     action: () => page.locator(`[data-testid="copy-invite-link-button"]`).click(),

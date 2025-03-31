@@ -60,7 +60,6 @@ async function NotFound() {
   const { username, pageType, url } = getPageInfo(pathname, host);
   const isBookingSuccessPage = pathname?.startsWith("/booking");
   const isSubpage = pathname?.includes("/", 2) || isBookingSuccessPage;
-  const isInsights = pathname?.startsWith("/insights");
 
   const links = [
     {
@@ -82,33 +81,6 @@ async function NotFound() {
       href: `${WEBSITE_URL}/blog`,
     },
   ];
-
-  /**
-   * If we're on 404 and the route is insights it means it is disabled
-   * TODO: Abstract this for all disabled features
-   **/
-  if (isInsights) {
-    return (
-      <div className="min-h-screen bg-white px-4" data-testid="404-page">
-        <main className="mx-auto max-w-xl pb-6 pt-16 sm:pt-24">
-          <div className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-wide text-black">{t("error_404")}</p>
-            <h1 className="font-cal mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
-              {t("feature_currently_disabled") ?? "Feature is currently disabled"}
-            </h1>
-          </div>
-          <div className="mt-12">
-            <div className="mt-8">
-              <Link href={WEBSITE_URL} className="text-base font-medium text-black hover:text-gray-500">
-                {t("or_go_back_home")}
-                <span aria-hidden="true"> &rarr;</span>
-              </Link>
-            </div>
-          </div>
-        </main>
-      </div>
-    );
-  }
 
   return (
     <div className="bg-default min-h-screen px-4" data-testid="404-page">
@@ -224,13 +196,9 @@ async function NotFound() {
 export const generateMetadata = async () => {
   const headersList = headers();
   const pathname = headersList.get("x-pathname") ?? "";
-  const isInsights = pathname?.startsWith("/insights");
 
   const metadata = await _generateMetadata(
-    (t) =>
-      isInsights
-        ? t("feature_currently_disabled") ?? "Feature is currently disabled"
-        : t("404_page_not_found"),
+    (t) => t("404_page_not_found"),
     (t) => t("404_page_not_found")
   );
   return {

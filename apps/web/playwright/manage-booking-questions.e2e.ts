@@ -556,6 +556,7 @@ async function addQuestionAndSave({
 
   if (question.label !== undefined) {
     if (question.type === "Checkbox") {
+      await page.waitForTimeout(1000);
       const editorInput = page.locator('[data-testid="editor-input"]');
       await editorInput.fill(md.render(question.label));
     } else {

@@ -50,7 +50,7 @@ const otherTeamMembers = [
     credentials: [getGoogleCalendarCredential()],
     selectedCalendars: [TestData.selectedCalendars.google],
     destinationCalendar: {
-      integration: TestData.apps["google-calendar"].type,
+      integration: "TestData.apps['google-calendar'].type",
       externalId: "other-team-member-1@google-calendar.com",
     },
   },

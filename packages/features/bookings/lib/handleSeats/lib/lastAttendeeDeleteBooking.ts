@@ -2,7 +2,6 @@ import type { Attendee } from "@prisma/client";
 
 // eslint-disable-next-line no-restricted-imports
 import { getCalendar } from "@calcom/app-store/_utils/getCalendar";
-import { deleteMeeting } from "@calcom/core/videoClient";
 import prisma from "@calcom/prisma";
 import { BookingStatus } from "@calcom/prisma/enums";
 import { credentialForCalendarServiceSelect } from "@calcom/prisma/selects/credential";
@@ -31,9 +30,6 @@ const lastAttendeeDeleteBooking = async (
         });
 
         if (credential) {
-          if (reference.type.includes("_video")) {
-            integrationsToDelete.push(deleteMeeting(credential, reference.uid));
-          }
           if (reference.type.includes("_calendar") && originalBookingEvt) {
             const calendar = await getCalendar(credential);
             if (calendar) {

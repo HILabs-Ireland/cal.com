@@ -64,17 +64,6 @@ export type {
   TimezoneSelectProps,
   TimezoneSelectComponentProps,
 } from "./components/form";
-export {
-  AllApps,
-  AppCard,
-  AppSkeletonLoader,
-  SkeletonLoader,
-  Slider,
-  PopularAppsSlider,
-  RecentAppsSlider,
-  useShouldShowArrows,
-  AppStoreCategories,
-} from "./components/apps";
 export { TopBanner } from "./components/top-banner";
 export type { TopBannerProps } from "./components/top-banner";
 export { AnimatedPopover, MeetingTimeInTimezones } from "./components/popover";
@@ -117,8 +106,6 @@ export {
   ConfirmationContent,
 } from "./components/dialog";
 export type { DialogProps, ConfirmationDialogContentProps } from "./components/dialog";
-export { AppListCard } from "./components/app-list-card";
-export { DisconnectIntegrationComponent } from "./components/disconnect-calendar-integration";
 export { CalendarSwitchComponent } from "./components/calendar-switch";
 export { showToast } from "./components/toast"; // We don't export the toast components as they are only used in local storybook file
 export { Meta, MetaProvider, useMeta } from "./components/meta";

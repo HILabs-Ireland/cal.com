@@ -14,10 +14,7 @@ import { z } from "zod";
 import {
   handleNewRecurringBooking,
   getAllUserBookings,
-  handleInstantMeeting,
   handleCancelBooking,
-  handleMarkNoShow,
-  confirmBookingHandler,
 } from "@calcom/platform-libraries";
 import { handleNewBooking } from "@calcom/platform-libraries";
 import {
@@ -121,17 +118,7 @@ export class BookingsService_2024_08_13 {
   }
 
   async createInstantBooking(request: Request, body: CreateInstantBookingInput_2024_08_13) {
-    const bookingRequest = await this.inputService.createBookingRequest(request, body);
-    const booking = await handleInstantMeeting(bookingRequest);
-
-    const databaseBooking = await this.bookingsRepository.getByIdWithAttendeesAndUserAndEvent(
-      booking.bookingId
-    );
-    if (!databaseBooking) {
-      throw new Error(`Booking with id=${booking.bookingId} was not found in the database`);
-    }
-
-    return this.outputService.getOutputBooking(databaseBooking);
+    throw new Error(`Booking was not found in the database`);
   }
 
   async createRecurringBooking(request: Request, body: CreateRecurringBookingInput_2024_08_13) {

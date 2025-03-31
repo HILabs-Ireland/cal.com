@@ -3,14 +3,12 @@ import { useMemo, useEffect } from "react";
 import dayjs from "@calcom/dayjs";
 import type { BookerEvent } from "@calcom/features/bookings/types";
 import { Calendar } from "@calcom/features/calendars/weeklyview";
-import type { CalendarEvent } from "@calcom/features/calendars/weeklyview/types/events";
 import type { CalendarAvailableTimeslots } from "@calcom/features/calendars/weeklyview/types/state";
 import { localStorage } from "@calcom/lib/webstorage";
 
 import { useBookerStore } from "../store";
 import type { useScheduleForEventReturnType } from "../utils/event";
 import { getQueryParam } from "../utils/query-param";
-import { useOverlayCalendarStore } from "./OverlayCalendar/store";
 
 export const LargeCalendar = ({
   extraDays,
@@ -28,7 +26,6 @@ export const LargeCalendar = ({
   const selectedDate = useBookerStore((state) => state.selectedDate);
   const setSelectedTimeslot = useBookerStore((state) => state.setSelectedTimeslot);
   const selectedEventDuration = useBookerStore((state) => state.selectedDuration);
-  const overlayEvents = useOverlayCalendarStore((state) => state.overlayBusyDates);
   const displayOverlay =
     getQueryParam("overlayCalendar") === "true" || localStorage?.getItem("overlayCalendarSwitchDefault");
 
@@ -63,21 +60,6 @@ export const LargeCalendar = ({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   useEffect(() => {}, [displayOverlay]);
 
-  const overlayEventsForDate = useMemo(() => {
-    if (!overlayEvents || !displayOverlay) return [];
-    return overlayEvents.map((event, id) => {
-      return {
-        id,
-        start: dayjs(event.start).toDate(),
-        end: dayjs(event.end).toDate(),
-        title: "Busy",
-        options: {
-          status: "ACCEPTED",
-        },
-      } as CalendarEvent;
-    });
-  }, [overlayEvents, displayOverlay]);
-
   return (
     <div className="h-full [--calendar-dates-sticky-offset:66px]">
       <Calendar
@@ -85,7 +67,7 @@ export const LargeCalendar = ({
         availableTimeslots={availableSlots}
         startHour={0}
         endHour={23}
-        events={overlayEventsForDate}
+        events={[]}
         startDate={startDate}
         endDate={endDate}
         onEmptyCellClick={(date) => setSelectedTimeslot(date.toISOString())}

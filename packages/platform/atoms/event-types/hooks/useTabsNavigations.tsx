@@ -38,7 +38,6 @@ export const useTabsNavigations = ({
   const watchSchedulingType = formMethods.watch("schedulingType");
   const watchChildrenCount = formMethods.watch("children").length;
   const availability = formMethods.watch("availability");
-  const appsMetadata = formMethods.getValues("metadata")?.apps;
 
   const { isManagedEventType, isChildrenManagedEventType } = useLockedFieldsManager({
     eventType,
@@ -46,18 +45,9 @@ export const useTabsNavigations = ({
     formMethods,
   });
 
-  let enabledAppsNumber = 0;
-
-  if (appsMetadata) {
-    enabledAppsNumber = Object.entries(appsMetadata).filter(
-      ([appId, appData]) =>
-        eventTypeApps?.items.find((app) => app.slug === appId)?.isInstalled && appData.enabled
-    ).length;
-  }
+  const enabledAppsNumber = 0;
 
   const activeWebhooksNumber = eventType.webhooks.filter((webhook) => webhook.active).length;
-
-  const installedAppsNumber = eventTypeApps?.items.length || 0;
 
   const enabledWorkflowsNumber = allActiveWorkflows ? allActiveWorkflows.length : 0;
 
@@ -68,7 +58,6 @@ export const useTabsNavigations = ({
       multipleDuration,
       id: formMethods.getValues("id"),
       enabledAppsNumber,
-      installedAppsNumber,
       enabledWorkflowsNumber,
       availability,
     });
@@ -136,7 +125,6 @@ export const useTabsNavigations = ({
   }, [
     t,
     enabledAppsNumber,
-    installedAppsNumber,
     enabledWorkflowsNumber,
     availability,
     isManagedEventType,
@@ -160,7 +148,6 @@ type getNavigationProps = {
   multipleDuration?: EventTypeSetupProps["eventType"]["metadata"]["multipleDuration"];
   enabledAppsNumber: number;
   enabledWorkflowsNumber: number;
-  installedAppsNumber: number;
   availability: AvailabilityOption | undefined;
 };
 
@@ -170,7 +157,6 @@ function getNavigation({
   multipleDuration,
   t,
   enabledAppsNumber,
-  installedAppsNumber,
   enabledWorkflowsNumber,
 }: getNavigationProps) {
   const duration = multipleDuration?.map((duration) => ` ${duration}`) || length;
@@ -194,13 +180,7 @@ function getNavigation({
       icon: "sliders-vertical",
       info: `event_advanced_tab_description`,
     },
-    {
-      name: "apps",
-      href: `/event-types/${id}?tabName=apps`,
-      icon: "grid-3x3",
-      //TODO: Handle proper translation with count handling
-      info: `${installedAppsNumber} apps, ${enabledAppsNumber} ${t("active")}`,
-    },
+
     {
       name: "workflows",
       href: `/event-types/${id}?tabName=workflows`,

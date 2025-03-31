@@ -17,8 +17,6 @@ import {
   getScenarioData,
   getGoogleCalendarCredential,
   BookingLocations,
-  mockSuccessfulVideoMeetingCreation,
-  mockCalendarToHaveNoBusySlots,
 } from "@calcom/web/test/utils/bookingScenario/bookingScenario";
 import { createMockNextJsRequest } from "@calcom/web/test/utils/bookingScenario/createMockNextJsRequest";
 import { expectBookingToBeInDatabase } from "@calcom/web/test/utils/bookingScenario/expects";
@@ -720,7 +718,6 @@ describe("handleNewBooking", () => {
         id: 101,
         schedules: [TestData.schedules.IstWorkHours],
         credentials: [getGoogleCalendarCredential()],
-        selectedCalendars: [TestData.selectedCalendars.google],
       });
 
       const mockBookingData = getMockRequestDataForBooking({
@@ -766,10 +763,8 @@ describe("handleNewBooking", () => {
           },
         ],
         organizer,
-        apps: [TestData.apps["google-calendar"], TestData.apps["daily-video"]],
       });
 
-      mockCalendarToHaveNoBusySlots("googlecalendar", {});
       await createBookingScenario(scenarioData);
 
       await expect(() => handleNewBooking(req)).rejects.toThrowError("book a meeting in the past");
@@ -797,7 +792,7 @@ describe("handleNewBooking", () => {
           id: 101,
           schedules: [TestData.schedules.IstWorkHours],
           credentials: [getGoogleCalendarCredential()],
-          selectedCalendars: [TestData.selectedCalendars.google],
+
           destinationCalendar: {
             integration: "google_calendar",
             externalId: "organizer@google-calendar.com",
@@ -848,21 +843,6 @@ describe("handleNewBooking", () => {
         const { req } = createMockNextJsRequest({
           method: "POST",
           body: mockBookingData,
-        });
-
-        mockCalendarToHaveNoBusySlots("googlecalendar", {
-          create: {
-            id: "MOCKED_GOOGLE_CALENDAR_EVENT_ID",
-          },
-        });
-
-        mockSuccessfulVideoMeetingCreation({
-          metadataLookupKey: "dailyvideo",
-          videoMeetingData: {
-            id: "MOCK_ID",
-            password: "MOCK_PASS",
-            url: `http://mock-dailyvideo.example.com/meeting-1`,
-          },
         });
 
         expect(() => handleNewBooking(req)).rejects.toThrowError("cannot be booked at this time");

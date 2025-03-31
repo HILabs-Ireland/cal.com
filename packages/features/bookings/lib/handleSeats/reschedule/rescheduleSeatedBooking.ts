@@ -1,7 +1,5 @@
 // eslint-disable-next-line no-restricted-imports
-import EventManager from "@calcom/core/EventManager";
 import dayjs from "@calcom/dayjs";
-import { refreshCredentials } from "@calcom/features/bookings/lib/getAllCredentialsForUsersOnEvent/refreshCredentials";
 import { HttpError } from "@calcom/lib/http-error";
 import prisma from "@calcom/prisma";
 import { BookingStatus } from "@calcom/prisma/enums";
@@ -49,9 +47,6 @@ const rescheduleSeatedBooking = async (
       references: true,
     },
   });
-
-  const credentials = await refreshCredentials(allCredentials);
-  const eventManager = new EventManager({ ...organizerUser, credentials });
 
   if (!originalRescheduledBooking) {
     // typescript isn't smart enough;
@@ -121,7 +116,6 @@ const rescheduleSeatedBooking = async (
       newTimeSlotBooking,
       seatedBooking,
       resultBooking,
-      eventManager,
       loggerWithEventDetails
     );
   }
@@ -133,8 +127,7 @@ const rescheduleSeatedBooking = async (
       rescheduleSeatedBookingObject,
       seatAttendee,
       newTimeSlotBooking,
-      originalBookingEvt,
-      eventManager
+      originalBookingEvt
     );
   }
 

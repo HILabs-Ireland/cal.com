@@ -21,10 +21,8 @@ import { getBookingFieldsWithSystemFields } from "@calcom/features/bookings/lib/
 import getBookingInfo from "@calcom/features/bookings/lib/getBookingInfo";
 import handleCancelBooking from "@calcom/features/bookings/lib/handleCancelBooking";
 import * as newBookingMethods from "@calcom/features/bookings/lib/handleNewBooking";
-import handleDeleteCredential from "@calcom/features/credentials/handleDeleteCredential";
 import { getPublicEvent } from "@calcom/features/eventtypes/lib/getPublicEvent";
 import handleMarkNoShow from "@calcom/features/handleMarkNoShow";
-import * as instantMeetingMethods from "@calcom/features/instant-meeting/handleInstantMeeting";
 import getEnabledAppsFromCredentials from "@calcom/lib/apps/getEnabledAppsFromCredentials";
 import getAllUserBookings from "@calcom/lib/bookings/getAllUserBookings";
 import { symmetricEncrypt, symmetricDecrypt } from "@calcom/lib/crypto";
@@ -69,8 +67,6 @@ export { getUsernameList } from "@calcom/lib/defaultEvents";
 
 const handleNewBooking = newBookingMethods.default;
 export { handleNewBooking };
-const handleInstantMeeting = instantMeetingMethods.default;
-export { handleInstantMeeting };
 
 export { handleMarkNoShow };
 
@@ -78,12 +74,7 @@ export { getAvailableSlots };
 export type AvailableSlotsType = Awaited<ReturnType<typeof getAvailableSlots>>;
 export { handleNewRecurringBooking } from "@calcom/features/bookings/lib/handleNewRecurringBooking";
 
-export { getConnectedDestinationCalendarsAndEnsureDefaultsInDb } from "@calcom/lib/getConnectedDestinationCalendars";
-export type { ConnectedDestinationCalendars } from "@calcom/lib/getConnectedDestinationCalendars";
-
-export { getConnectedApps } from "@calcom/lib/getConnectedApps";
 export { bulkUpdateEventsToDefaultLocation } from "@calcom/lib/bulkUpdateEventsToDefaultLocation";
-export type { ConnectedApps } from "@calcom/lib/getConnectedApps";
 
 export {
   transformWorkingHoursForAtom,
@@ -216,7 +207,6 @@ export { AttendeeUpdatedEmail };
 export { OrganizerRequestEmail };
 
 export { AttendeeRequestEmail };
-export { handleDeleteCredential };
 export { getBulkEventTypes };
 
 export { getBookingFieldsWithSystemFields };

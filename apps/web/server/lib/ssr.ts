@@ -2,7 +2,6 @@ import type { GetServerSidePropsContext } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import superjson from "superjson";
 
-import { forms } from "@calcom/app-store/routing-forms/trpc/procedures/forms";
 import { getLocale } from "@calcom/features/auth/lib/getLocale";
 import { map } from "@calcom/features/flags/server/procedures/map";
 import { CALCOM_VERSION } from "@calcom/lib/constants";
@@ -31,9 +30,7 @@ const routerSlice = router({
         session,
         event,
       }),
-      appRoutingForms: router({
-        forms,
-      }),
+
       teamsAndUserProfilesQuery: router({
         teamsAndUserProfilesQuery,
       }),

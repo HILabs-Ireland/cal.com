@@ -5,20 +5,17 @@ import { pages } from "../../pagesAndRewritePaths.js";
 describe("pagesAndRewritePaths", () => {
   describe("beforeFiles must exclude routes in pages/app router", () => {
     const BEFORE_REWRITE_EXCLUDE_PAGES = [
-      "apps",
       "availability",
       "booking",
       "connect-and-join",
       "error",
       "getting-started",
-      "insights",
       "maintenance",
       "more",
       "not-found",
       "reschedule",
       "settings",
       "teams",
-      "video",
       "workflows",
       "403",
       "500",
@@ -26,7 +23,6 @@ describe("pagesAndRewritePaths", () => {
       "event-types",
       "icons",
       "org",
-      "routing-forms",
       "signup",
       "team",
       "d",

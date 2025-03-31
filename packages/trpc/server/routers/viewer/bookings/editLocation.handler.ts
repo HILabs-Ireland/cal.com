@@ -1,24 +1,20 @@
 import type { z } from "zod";
 
-import { getEventLocationType, OrganizerDefaultConferencingAppType } from "@calcom/app-store/locations";
-import { getAppFromSlug } from "@calcom/app-store/utils";
-import EventManager from "@calcom/core/EventManager";
+import { OrganizerDefaultConferencingAppType } from "@calcom/app-store/locations";
 import { sendLocationChangeEmailsAndSMS } from "@calcom/emails";
 import { getVideoCallUrlFromCalEvent } from "@calcom/lib/CalEventParser";
 import { buildCalEventFromBooking } from "@calcom/lib/buildCalEventFromBooking";
-import logger from "@calcom/lib/logger";
 import { safeStringify } from "@calcom/lib/safeStringify";
 import { getTranslation } from "@calcom/lib/server";
 import { getUsersCredentials } from "@calcom/lib/server/getUsersCredentials";
 import { CredentialRepository } from "@calcom/lib/server/repository/credential";
 import { UserRepository } from "@calcom/lib/server/repository/user";
 import { prisma } from "@calcom/prisma";
-import type { Booking, BookingReference } from "@calcom/prisma/client";
+import type { Booking } from "@calcom/prisma/client";
 import type { userMetadata } from "@calcom/prisma/zod-utils";
 import type { EventTypeMetadata } from "@calcom/prisma/zod-utils";
 import type { AdditionalInformation, CalendarEvent } from "@calcom/types/Calendar";
 import type { CredentialPayload } from "@calcom/types/Credential";
-import type { PartialReference } from "@calcom/types/EventManager";
 import type { Ensure } from "@calcom/types/utils";
 
 import { TRPCError } from "@trpc/server";
@@ -37,31 +33,6 @@ type EditLocationOptions = {
 
 type UserMetadata = z.infer<typeof userMetadata>;
 
-async function updateLocationInConnectedAppForBooking({
-  evt,
-  eventManager,
-  booking,
-}: {
-  evt: CalendarEvent;
-  eventManager: EventManager;
-  booking: Booking & {
-    references: BookingReference[];
-  };
-}) {
-  const updatedResult = await eventManager.updateLocation(evt, booking);
-  const results = updatedResult.results;
-  if (results.length > 0 && results.every((res) => !res.success)) {
-    const error = {
-      errorCode: "BookingUpdateLocationFailed",
-      message: "Updating location failed",
-    };
-    logger.error(`Updating location failed`, safeStringify(error), safeStringify(results));
-    throw new SystemError("Updating location failed");
-  }
-  logger.info(`Got results from updateLocationInConnectedApp`, safeStringify(updatedResult.results));
-  return updatedResult;
-}
-
 function extractAdditionalInformation(result: {
   updatedEvent: AdditionalInformation;
 }): AdditionalInformation {
@@ -77,7 +48,6 @@ function extractAdditionalInformation(result: {
 async function updateBookingLocationInDb({
   booking,
   evt,
-  references,
 }: {
   booking: {
     id: number;
@@ -85,18 +55,10 @@ async function updateBookingLocationInDb({
     responses: Booking["responses"];
   };
   evt: Ensure<CalendarEvent, "location">;
-  references: PartialReference[];
 }) {
   const bookingMetadataUpdate = {
     videoCallUrl: getVideoCallUrlFromCalEvent(evt),
   };
-  const referencesToCreate = references.map((reference) => {
-    const { credentialId, ...restReference } = reference;
-    return {
-      ...restReference,
-      ...(credentialId && credentialId > 0 ? { credentialId } : {}),
-    };
-  });
 
   await prisma.booking.update({
     where: {
@@ -107,9 +69,6 @@ async function updateBookingLocationInDb({
       metadata: {
         ...(typeof booking.metadata === "object" && booking.metadata),
         ...bookingMetadataUpdate,
-      },
-      references: {
-        create: referencesToCreate,
       },
       responses: {
         ...(typeof booking.responses === "object" && booking.responses),
@@ -157,21 +116,7 @@ async function getLocationInEvtFormatOrThrow({
     return location;
   }
 
-  try {
-    return getLocationForOrganizerDefaultConferencingAppInEvtFormat({
-      organizer: {
-        name: organizer.name ?? "Organizer",
-        metadata: organizer.metadata,
-      },
-      loggedInUserTranslate,
-    });
-  } catch (e) {
-    if (e instanceof UserError) {
-      throw new TRPCError({ code: "BAD_REQUEST", message: e.message });
-    }
-    logger.error(safeStringify(e));
-    throw e;
-  }
+  throw new TRPCError({ code: "BAD_REQUEST", message: "Default conferencing app not set" });
 }
 // #endregion
 
@@ -195,56 +140,6 @@ export class SystemError extends Error {
   }
 }
 
-export function getLocationForOrganizerDefaultConferencingAppInEvtFormat({
-  organizer,
-  loggedInUserTranslate: translate,
-}: {
-  organizer: {
-    name: string;
-    metadata: {
-      defaultConferencingApp?: NonNullable<UserMetadata>["defaultConferencingApp"];
-    } | null;
-  };
-  /**
-   * translate is used to translate if any error is thrown
-   */
-  loggedInUserTranslate: Awaited<ReturnType<typeof getTranslation>>;
-}) {
-  const organizerMetadata = organizer.metadata;
-  const defaultConferencingApp = organizerMetadata?.defaultConferencingApp;
-  if (!defaultConferencingApp) {
-    throw new UserError(
-      translate("organizer_default_conferencing_app_not_found", { organizer: organizer.name })
-    );
-  }
-  const defaultConferencingAppSlug = defaultConferencingApp.appSlug;
-  const app = getAppFromSlug(defaultConferencingAppSlug);
-  if (!app) {
-    throw new SystemError(`Default conferencing app ${defaultConferencingAppSlug} not found`);
-  }
-  const defaultConferencingAppLocationType = app.appData?.location?.type;
-  if (!defaultConferencingAppLocationType) {
-    throw new SystemError("Default conferencing app has no location type");
-  }
-
-  const location = defaultConferencingAppLocationType;
-  const locationType = getEventLocationType(location);
-  if (!locationType) {
-    throw new SystemError(`Location type not found: ${location}`);
-  }
-
-  if (locationType.linkType === "dynamic") {
-    // Dynamic location type need to return the location as it is e.g. integrations:zoom_video
-    return location;
-  }
-
-  const appLink = defaultConferencingApp.appLink;
-  if (!appLink) {
-    throw new SystemError(`Default conferencing app ${defaultConferencingAppSlug} has no app link`);
-  }
-  return appLink;
-}
-
 export async function editLocationHandler({ ctx, input }: EditLocationOptions) {
   const { newLocation, credentialId: conferenceCredentialId } = input;
   const { booking, user: loggedInUser } = ctx;
@@ -264,30 +159,13 @@ export async function editLocationHandler({ ctx, input }: EditLocationOptions) {
     conferenceCredentialId,
   });
 
-  const eventManager = new EventManager({
-    ...ctx.user,
-    credentials: await getAllCredentials({ user: ctx.user, conferenceCredentialId }),
-  });
-
-  const updatedResult = await updateLocationInConnectedAppForBooking({
-    booking,
-    eventManager,
-    evt,
-  });
-
-  const additionalInformation = extractAdditionalInformation(updatedResult.results[0]);
-
   await updateBookingLocationInDb({
     booking,
-    evt: { ...evt, additionalInformation },
-    references: updatedResult.referencesToCreate,
+    evt: { ...evt },
   });
 
   try {
-    await sendLocationChangeEmailsAndSMS(
-      { ...evt, additionalInformation },
-      booking?.eventType?.metadata as EventTypeMetadata
-    );
+    await sendLocationChangeEmailsAndSMS({ ...evt }, booking?.eventType?.metadata as EventTypeMetadata);
   } catch (error) {
     console.log("Error sending LocationChangeEmails", safeStringify(error));
   }
