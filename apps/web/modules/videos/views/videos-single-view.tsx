@@ -22,7 +22,7 @@ import { CalAiTranscribe } from "~/videos/ai/ai-transcribe";
 export type PageProps = inferSSRProps<typeof getServerSideProps>;
 
 export default function JoinCall(props: PageProps) {
-  const { meetingUrl, meetingPassword, booking, hasTeamPlan, calVideoLogo } = props;
+  const { meetingUrl, meetingPassword, booking, calVideoLogo } = props;
   const [daily, setDaily] = useState<DailyCall | null>(null);
 
   useEffect(() => {
@@ -51,22 +51,21 @@ export default function JoinCall(props: PageProps) {
         },
         url: meetingUrl,
         ...(typeof meetingPassword === "string" && { token: meetingPassword }),
-        ...(hasTeamPlan && {
-          customTrayButtons: {
-            recording: {
-              label: "Record",
-              tooltip: "Start or stop recording",
-              iconPath: RECORDING_DEFAULT_ICON,
-              iconPathDarkMode: RECORDING_DEFAULT_ICON,
-            },
-            transcription: {
-              label: "Cal.ai",
-              tooltip: "Transcription powered by AI",
-              iconPath: TRANSCRIPTION_STOPPED_ICON,
-              iconPathDarkMode: TRANSCRIPTION_STOPPED_ICON,
-            },
+
+        customTrayButtons: {
+          recording: {
+            label: "Record",
+            tooltip: "Start or stop recording",
+            iconPath: RECORDING_DEFAULT_ICON,
+            iconPathDarkMode: RECORDING_DEFAULT_ICON,
           },
-        }),
+          transcription: {
+            label: "Cal.ai",
+            tooltip: "Transcription powered by AI",
+            iconPath: TRANSCRIPTION_STOPPED_ICON,
+            iconPathDarkMode: TRANSCRIPTION_STOPPED_ICON,
+          },
+        },
       });
     } catch (err) {
       callFrame = DailyIframe.getCallInstance();

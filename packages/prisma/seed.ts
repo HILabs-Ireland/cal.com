@@ -668,12 +668,6 @@ async function main() {
         },
       },
       {
-        title: "paid",
-        slug: "paid",
-        length: 60,
-        price: 100,
-      },
-      {
         title: "In person meeting",
         slug: "in-person",
         length: 60,
@@ -843,27 +837,6 @@ async function main() {
 
   await createUserAndEventType({
     user: {
-      email: "trial@example.com",
-      password: "trial",
-      username: "trial",
-      name: "Trial Example",
-    },
-    eventTypes: [
-      {
-        title: "30min",
-        slug: "30min",
-        length: 30,
-      },
-      {
-        title: "60min",
-        slug: "60min",
-        length: 60,
-      },
-    ],
-  });
-
-  await createUserAndEventType({
-    user: {
       email: "free@example.com",
       password: "free",
       username: "free",
@@ -928,6 +901,81 @@ async function main() {
       role: "ADMIN",
     },
   });
+
+  await createTeamAndAddUsers(
+    {
+      name: "Alternaleaf - Nurses",
+      slug: "alternaleaf-nurses",
+      isOrganization: false,
+      isPlatform: false,
+      eventTypes: {
+        createMany: {
+          data: [
+            {
+              title: "Round Robin Nurse Team Event",
+              slug: "round-robin-nurse-team-event",
+              length: 15,
+              schedulingType: "ROUND_ROBIN",
+            },
+          ],
+        },
+      },
+      createdAt: new Date(),
+    },
+    []
+  );
+
+  await createTeamAndAddUsers(
+    {
+      name: "Alternaleaf - Doctors",
+      slug: "alternaleaf-doctors",
+      isOrganization: false,
+      isPlatform: false,
+      eventTypes: {
+        createMany: {
+          data: [
+            {
+              title: "Round Robin Doctor Team Event",
+              slug: "round-robin-doctor-team-event",
+              length: 15,
+              schedulingType: "ROUND_ROBIN",
+            },
+          ],
+        },
+      },
+      createdAt: new Date(),
+    },
+    []
+  );
+
+  const adminUser = await prisma.user.findUnique({
+    where: { email: "admin@example.com" },
+  });
+
+  if (adminUser) {
+    try {
+      await prisma.membership.createMany({
+        data: [
+          {
+            teamId: 1,
+            userId: adminUser.id,
+            accepted: true,
+            role: "ADMIN",
+            disableImpersonation: false,
+          },
+          {
+            teamId: 2,
+            userId: adminUser.id,
+            accepted: true,
+            role: "ADMIN",
+            disableImpersonation: false,
+          },
+        ],
+      });
+    } catch {}
+  } else {
+    throw Error("Admin user not found");
+  }
 
   await createPlatformAndSetupUser({
     teamInput: {
@@ -1235,8 +1283,8 @@ async function main() {
 }
 
 main()
-  .then(() => mainAppStore())
-  .then(() => mainHugeEventTypesSeed())
+  .then(mainAppStore)
+  .then(mainHugeEventTypesSeed)
   .catch((e) => {
     console.error(e);
     process.exit(1);

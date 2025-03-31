@@ -159,24 +159,6 @@
                   "example": "en"
                 }
               }
-            },
-            "payment": {
-              "items": {
-                "properties": {
-                  "id": {
-                    "type": "number",
-                    "example": 1
-                  },
-                  "success": {
-                    "type": "boolean",
-                    "example": true
-                  },
-                  "paymentOption": {
-                    "type": "string",
-                    "example": "ON_BOOKING"
-                  }
-                }
-              }
             }
           }
         }
@@ -309,24 +291,6 @@
                 "example": "en"
               }
             }
-          },
-          "payment": {
-            "items": {
-              "properties": {
-                "id": {
-                  "type": "number",
-                  "example": 1
-                },
-                "success": {
-                  "type": "boolean",
-                  "example": true
-                },
-                "paymentOption": {
-                  "type": "string",
-                  "example": "ON_BOOKING"
-                }
-              }
-            }
           }
         }
       }
@@ -349,9 +313,6 @@
     },
     {
       "name": "Attendees"
-    },
-    {
-      "name": "Payments"
     },
     {
       "name": "Schedules"
@@ -1455,13 +1416,6 @@
                           "timeZone": "Asia/Kolkata",
                           "locale": "en"
                         },
-                        "payment": [
-                          {
-                            "id": 1,
-                            "success": true,
-                            "paymentOption": "ON_BOOKING"
-                          }
-                        ],
                         "metadata": {},
                         "status": "ACCEPTED",
                         "responses": {
@@ -1649,24 +1603,6 @@
                           "example": "en"
                         }
                       }
-                    },
-                    "payment": {
-                      "items": {
-                        "properties": {
-                          "id": {
-                            "type": "number",
-                            "example": 1
-                          },
-                          "success": {
-                            "type": "boolean",
-                            "example": true
-                          },
-                          "paymentOption": {
-                            "type": "string",
-                            "example": "ON_BOOKING"
-                          }
-                        }
-                      }
                     }
                   }
                 },
@@ -1696,13 +1632,6 @@
                           "timeZone": "Asia/Kolkata",
                           "locale": "en"
                         },
-                        "payment": [
-                          {
-                            "id": 1,
-                            "success": true,
-                            "paymentOption": "ON_BOOKING"
-                          }
-                        ],
                         "metadata": {},
                         "status": "ACCEPTED",
                         "responses": {
@@ -2613,17 +2542,9 @@
                     "description": "The type of scheduling if a Team event. Required for team events only",
                     "enum": ["ROUND_ROBIN", "COLLECTIVE", "MANAGED"]
                   },
-                  "price": {
-                    "type": "integer",
-                    "description": "Price of the event type booking"
-                  },
                   "parentId": {
                     "type": "integer",
                     "description": "EventTypeId of the parent managed event"
-                  },
-                  "currency": {
-                    "type": "string",
-                    "description": "Currency acronym. Eg- usd, eur, gbp, etc."
                   },
                   "slotInterval": {
                     "type": "integer",
@@ -2723,20 +2644,9 @@
                     "minimumBookingNotice": 120,
                     "beforeEventBuffer": 0,
                     "afterEventBuffer": 0,
-                    "price": 0,
-                    "currency": "usd",
                     "slotInterval": null,
                     "successRedirectUrl": null,
-                    "description": "A test event type",
-                    "metadata": {
-                      "apps": {
-                        "stripe": {
-                          "price": 0,
-                          "enabled": false,
-                          "currency": "usd"
-                        }
-                      }
-                    }
+                    "description": "A test event type"
                   }
                 },
                 "team-event-type": {
@@ -2767,8 +2677,6 @@
                     "beforeEventBuffer": 0,
                     "afterEventBuffer": 0,
                     "schedulingType": "COLLECTIVE",
-                    "price": 0,
-                    "currency": "usd",
                     "slotInterval": null,
                     "successRedirectUrl": null,
                     "description": null,
@@ -3027,14 +2935,6 @@
                     "description": "The type of scheduling if a Team event. Required for team events only",
                     "enum": ["ROUND_ROBIN", "COLLECTIVE"]
                   },
-                  "price": {
-                    "type": "integer",
-                    "description": "Price of the event type booking"
-                  },
-                  "currency": {
-                    "type": "string",
-                    "description": "Currency acronym. Eg- usd, eur, gbp, etc."
-                  },
                   "slotInterval": {
                     "type": "integer",
                     "description": "The intervals of available bookable slots in minutes"
@@ -3285,60 +3185,6 @@
           },
           "401": {
             "description": "Authorization information is missing or invalid."
-          }
-        }
-      }
-    },
-    "/payments/{id}": {
-      "get": {
-        "summary": "Find a payment",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "apiKey",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Your API key"
-          },
-          {
-            "in": "path",
-            "name": "id",
-            "schema": {
-              "type": "integer"
-            },
-            "required": true,
-            "description": "ID of the payment to get"
-          }
-        ],
-        "tags": ["Payments"],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Authorization information is missing or invalid."
-          },
-          "404": {
-            "description": "Payment was not found"
-          }
-        }
-      }
-    },
-    "/payments": {
-      "get": {
-        "summary": "Find all payments",
-        "tags": ["Payments"],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Authorization information is missing or invalid."
-          },
-          "404": {
-            "description": "No payments were found"
           }
         }
       }

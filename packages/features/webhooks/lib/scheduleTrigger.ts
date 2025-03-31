@@ -220,8 +220,6 @@ export async function listBookings(
             title: true,
             description: true,
             requiresConfirmation: true,
-            price: true,
-            currency: true,
             length: true,
             bookingFields: true,
             team: true,

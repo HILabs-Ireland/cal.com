@@ -56,17 +56,14 @@ function SingleAppPage(props: PageProps) {
       categories={data.categories ?? [data.category]}
       author={data.publisher}
       feeType={data.feeType || "usage-based"}
-      price={data.price || 0}
       docs={data.docsUrl}
       website={data.url}
       email={data.email}
       licenseRequired={data.licenseRequired}
-      teamsPlanRequired={data.teamsPlanRequired}
       descriptionItems={source.data?.items as string[] | undefined}
       isTemplate={data.isTemplate}
       dependencies={data.dependencies}
       concurrentMeetings={data.concurrentMeetings}
-      paid={data.paid}
       //   tos="https://zoom.us/terms"
       //   privacy="https://zoom.us/privacy"
       body={

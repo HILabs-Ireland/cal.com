@@ -8,7 +8,7 @@ import { Card } from "@calcom/ui";
 
 export const tips = [
   {
-    id: 13,
+    id: 12,
     thumbnailUrl: "https://img.youtube.com/vi/ihE8OYTdklg/0.jpg",
     mediaLink: "https://go.cal.com/ooo",
     title: "ooo.new",
@@ -16,7 +16,7 @@ export const tips = [
     href: "https://ooo.new",
   },
   {
-    id: 12,
+    id: 11,
     thumbnailUrl: "https://cal.com/og-image-cal-ai.jpg",
     mediaLink: "https://go.cal.com/cal-ai",
     title: "Cal.ai",
@@ -24,7 +24,7 @@ export const tips = [
     href: "https://go.cal.com/cal-ai",
   },
   {
-    id: 11,
+    id: 10,
     thumbnailUrl: "https://img.youtube.com/vi/KTg_qzA9NEc/0.jpg",
     mediaLink: "https://go.cal.com/insights",
     title: "Insights",
@@ -32,7 +32,7 @@ export const tips = [
     href: "https://go.cal.com/insights",
   },
   {
-    id: 10,
+    id: 9,
     thumbnailUrl: "https://img.youtube.com/vi/jvaBafzVUQc/0.jpg",
     mediaLink: "https://go.cal.com/video",
     title: "Cal Video",
@@ -40,7 +40,7 @@ export const tips = [
     href: "https://go.cal.com/video",
   },
   {
-    id: 9,
+    id: 8,
     thumbnailUrl: "https://img.youtube.com/vi/93iOmzHieCU/0.jpg",
     mediaLink: "https://go.cal.com/round-robin",
     title: "Round-Robin",
@@ -48,7 +48,7 @@ export const tips = [
     href: "https://go.cal.com/round-robin",
   },
   {
-    id: 8,
+    id: 7,
     thumbnailUrl: "https://img.youtube.com/vi/piKlAiibAFo/0.jpg",
     mediaLink: "https://go.cal.com/workflows",
     title: "Automate Workflows",
@@ -56,7 +56,7 @@ export const tips = [
     href: "https://go.cal.com/workflows",
   },
   {
-    id: 7,
+    id: 6,
     thumbnailUrl: "https://img.youtube.com/vi/UVXgo12cY4g/0.jpg",
     mediaLink: "https://go.cal.com/routing-forms",
     title: "Routing Forms",
@@ -70,14 +70,6 @@ export const tips = [
     title: "Recurring Bookings",
     description: "Learn how to create a recurring schedule",
     href: "https://go.cal.com/recurring-video",
-  },
-  {
-    id: 5,
-    thumbnailUrl: "https://img.youtube.com/vi/0v_nQtpxC_4/0.jpg",
-    mediaLink: "https://go.cal.com/payments-video",
-    title: "Accept Payments",
-    description: "Charge for your time with Cal.com's Stripe App",
-    href: "https://app.cal.com/apps/stripe",
   },
   {
     id: 4,

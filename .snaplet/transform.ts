@@ -31,8 +31,6 @@ function replaceSensitiveKeys(record: object) {
     ...replaceKeyIfExists(record, "signing_secret"),
     ...replaceKeyIfExists(record, "access_token"),
     ...replaceKeyIfExists(record, "refresh_token"),
-    ...replaceKeyIfExists(record, "stripe_user_id"),
-    ...replaceKeyIfExists(record, "stripe_publishable_key"),
     ...replaceKeyIfExists(record, "accessToken"),
     ...replaceKeyIfExists(record, "refreshToken"),
     ...replaceKeyIfExists(record, "bot_user_id"),
@@ -115,7 +113,6 @@ export default defineConfig({
         slug: generateSlug(row.slug),
         timeZone: c.timezone(row.timeZone),
         eventName: c.words(row.eventName, { max: 3 }),
-        currency: c.sentence(row.currency),
       }),
       EventTypeCustomInput({ row }) {
         return {
@@ -142,18 +139,6 @@ export default defineConfig({
           start: c.dateString(row.start, {
             minYear: 2020,
           }),
-        };
-      },
-      Payment({ row }) {
-        return {
-          amount: c.int(row.amount, {
-            min: 0,
-            max: Math.pow(4, 8) - 1,
-          }),
-          currency: c.sentence(row.currency),
-          data: {
-            [c.word(row.data)]: c.words(row.data),
-          },
         };
       },
       ResetPasswordRequest: ({ row }) => ({

@@ -3,7 +3,6 @@ import { Suspense, useEffect, useState } from "react";
 
 import dayjs from "@calcom/dayjs";
 import LicenseRequired from "@calcom/features/ee/common/components/LicenseRequired";
-import { useHasTeamPlan } from "@calcom/lib/hooks/useHasPaidPlan";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import type { RecordingItemSchema } from "@calcom/prisma/zod-utils";
 import type { RouterOutputs } from "@calcom/trpc/react";
@@ -93,7 +92,7 @@ const useRecordingDownload = () => {
   };
 };
 
-const ViewRecordingsList = ({ roomName, hasTeamPlan }: { roomName: string; hasTeamPlan: boolean }) => {
+const ViewRecordingsList = ({ roomName }: { roomName: string }) => {
   const { t } = useLocale();
   const { setRecordingId, isFetching, recordingId } = useRecordingDownload();
   const router = useRouter();
@@ -125,22 +124,13 @@ const ViewRecordingsList = ({ roomName, hasTeamPlan }: { roomName: string; hasTe
                   </h1>
                   <p className="text-subtle text-sm font-normal">{convertSecondsToMs(recording.duration)}</p>
                 </div>
-                {hasTeamPlan ? (
-                  <Button
-                    StartIcon="download"
-                    className="ml-4 lg:ml-0"
-                    loading={isFetching && recordingId === recording.id}
-                    onClick={() => handleDownloadClick(recording.id)}>
-                    {t("download")}
-                  </Button>
-                ) : (
-                  <Button
-                    tooltip={t("upgrade_to_access_recordings_description")}
-                    className="ml-4 lg:ml-0"
-                    onClick={() => router.push("/teams")}>
-                    {t("upgrade")}
-                  </Button>
-                )}
+                <Button
+                  StartIcon="download"
+                  className="ml-4 lg:ml-0"
+                  loading={isFetching && recordingId === recording.id}
+                  onClick={() => handleDownloadClick(recording.id)}>
+                  {t("download")}
+                </Button>
               </div>
             );
           })}
@@ -157,8 +147,6 @@ const ViewRecordingsList = ({ roomName, hasTeamPlan }: { roomName: string; hasTe
 export const ViewRecordingsDialog = (props: IViewRecordingsDialog) => {
   const { t, i18n } = useLocale();
   const { isOpenDialog, setIsOpenDialog, booking, timeFormat } = props;
-
-  const { hasTeamPlan, isPending: isTeamPlanStatusLoading } = useHasTeamPlan();
 
   const roomName =
     booking?.references?.find((reference: PartialReference) => reference.type === "daily_video")?.meetingId ??
@@ -179,13 +167,9 @@ export const ViewRecordingsDialog = (props: IViewRecordingsDialog) => {
         <DialogHeader title={t("recordings_title")} subtitle={subtitle} />
         {roomName ? (
           <LicenseRequired>
-            {isTeamPlanStatusLoading ? (
-              <RecordingListSkeleton />
-            ) : (
-              <Suspense fallback={<RecordingListSkeleton />}>
-                <ViewRecordingsList hasTeamPlan={!!hasTeamPlan} roomName={roomName} />
-              </Suspense>
-            )}
+            <Suspense fallback={<RecordingListSkeleton />}>
+              <ViewRecordingsList roomName={roomName} />
+            </Suspense>
           </LicenseRequired>
         ) : (
           <p className="font-semibold">{t("no_recordings_found")}</p>

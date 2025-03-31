@@ -507,7 +507,6 @@ export class EventTypeRepository {
       rescheduleWithSameRoundRobinHost: true,
       successRedirectUrl: true,
       forwardParamsSuccessRedirect: true,
-      currency: true,
       bookingFields: true,
       useEventTypeDestinationCalendarEmail: true,
       owner: {
@@ -582,7 +581,6 @@ export class EventTypeRepository {
         },
       },
       userId: true,
-      price: true,
       children: {
         select: {
           owner: {

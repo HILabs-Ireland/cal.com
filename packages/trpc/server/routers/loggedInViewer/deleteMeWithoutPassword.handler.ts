@@ -1,4 +1,3 @@
-import { deleteStripeCustomer } from "@calcom/app-store/stripepayment/lib/customer";
 import { ErrorCode } from "@calcom/features/auth/lib/ErrorCode";
 import { prisma } from "@calcom/prisma";
 import { IdentityProvider } from "@calcom/prisma/enums";
@@ -27,9 +26,6 @@ export const deleteMeWithoutPasswordHandler = async ({ ctx }: DeleteMeWithoutPas
   if (user.twoFactorEnabled) {
     throw new Error(ErrorCode.SocialIdentityProviderRequired);
   }
-
-  // Remove me from Stripe
-  await deleteStripeCustomer(user).catch(console.warn);
 
   // Remove my account
   await prisma.user.delete({

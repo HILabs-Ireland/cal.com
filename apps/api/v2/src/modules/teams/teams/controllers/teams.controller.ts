@@ -37,16 +37,6 @@ export class TeamsController {
   ): Promise<CreateTeamOutput> {
     const team = await this.teamsService.createTeam(body, user.id);
 
-    if ("paymentLink" in team) {
-      return {
-        status: SUCCESS_STATUS,
-        data: {
-          pendingTeam: plainToClass(TeamOutputDto, team.pendingTeam, { strategy: "excludeAll" }),
-          message: team.message,
-        },
-      };
-    }
-
     return {
       status: SUCCESS_STATUS,
       data: plainToClass(TeamOutputDto, team, { strategy: "excludeAll" }),

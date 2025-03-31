@@ -327,7 +327,7 @@ type RichDescriptionCalEvent = Parameters<typeof getCancellationReason>[0] &
   Parameters<typeof getUserFieldsResponses>[0] &
   Parameters<typeof getAppsStatus>[0] &
   Parameters<typeof getManageLink>[0] &
-  Pick<CalendarEvent, "organizer" | "paymentInfo">;
+  Pick<CalendarEvent, "organizer">;
 
 export const getRichDescription = (
   calEvent: RichDescriptionCalEvent,
@@ -351,14 +351,6 @@ ${
   // TODO: Only the original attendee can make changes to the event
   // Guests cannot
   calEvent.seatsPerTimeSlot ? "" : getManageLink(calEvent, t)
-}
-${
-  calEvent.paymentInfo
-    ? `
-${t("pay_now")}:
-${calEvent.paymentInfo.link}
-`
-    : ""
 }
   `.trim();
 };

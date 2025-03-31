@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 
 import notEmpty from "@calcom/lib/notEmpty";
-import { isPremiumUserName, generateUsernameSuggestion } from "@calcom/lib/server/username";
+import { generateUsernameSuggestion } from "@calcom/lib/server/username";
 import slugify from "@calcom/lib/slugify";
 import prisma from "@calcom/prisma";
 
@@ -19,7 +19,6 @@ export type RequestWithUsernameStatus = NextApiRequest & {
     requestedUserName: string;
     json: {
       available: boolean;
-      premium: boolean;
       message?: string;
       suggestion?: string;
     };
@@ -30,7 +29,6 @@ export const usernameStatusSchema = z.object({
   requestedUserName: z.string(),
   json: z.object({
     available: z.boolean(),
-    premium: z.boolean(),
     message: z.string().optional(),
     suggestion: z.string().optional(),
   }),
@@ -52,16 +50,9 @@ const usernameHandler =
       requestedUserName: username,
       json: {
         available: true,
-        premium: false,
         message: "Username is available",
       },
     };
-
-    if (check.premium) {
-      req.usernameStatus.statusCode = 402;
-      req.usernameStatus.json.premium = true;
-      req.usernameStatus.json.message = "This is a premium username.";
-    }
 
     if (!check.available) {
       req.usernameStatus.statusCode = 418;
@@ -77,7 +68,6 @@ const usernameHandler =
 const usernameCheck = async (usernameRaw: string) => {
   const response = {
     available: true,
-    premium: false,
     suggestedUsername: "",
   };
 
@@ -96,10 +86,6 @@ const usernameCheck = async (usernameRaw: string) => {
 
   if (user) {
     response.available = false;
-  }
-
-  if (await isPremiumUserName(username)) {
-    response.premium = true;
   }
 
   // get list of similar usernames in the db

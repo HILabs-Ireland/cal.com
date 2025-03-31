@@ -93,7 +93,6 @@
             "event-types/event-buffer",
             "event-types/hide-notes",
             "event-types/how-to-add-location",
-            "event-types/how-to-receive-payments",
             "event-types/how-to-requires",
             "event-types/how-to-set-buffer",
             "event-types/how-to-time-slot-intervals",
@@ -126,7 +125,7 @@
           "group": "Bookings",
           "icon": "calendar-check",
           "iconType": "solid",
-          "pages": ["bookings/no-show", "bookings/paid-bookings", "bookings/prefill-fields"]
+          "pages": ["bookings/no-show", "bookings/prefill-fields"]
         },
         {
           "group": "Embedding",

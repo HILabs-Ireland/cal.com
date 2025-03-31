@@ -36,12 +36,12 @@ type WebhookTriggerEventOptions = readonly { value: WebhookTriggerEvents; label:
 const WEBHOOK_TRIGGER_EVENTS_GROUPED_BY_APP_V2: Record<string, WebhookTriggerEventOptions> = {
   core: [
     { value: WebhookTriggerEvents.BOOKING_CANCELLED, label: "booking_cancelled" },
+    { value: WebhookTriggerEvents.BOOKING_PAYMENT_INITIATED, label: "booking_payment_initiated" },
+    { value: WebhookTriggerEvents.BOOKING_PAID, label: "booking_paid" },
     { value: WebhookTriggerEvents.BOOKING_CREATED, label: "booking_created" },
     { value: WebhookTriggerEvents.BOOKING_REJECTED, label: "booking_rejected" },
     { value: WebhookTriggerEvents.BOOKING_REQUESTED, label: "booking_requested" },
-    { value: WebhookTriggerEvents.BOOKING_PAYMENT_INITIATED, label: "booking_payment_initiated" },
     { value: WebhookTriggerEvents.BOOKING_RESCHEDULED, label: "booking_rescheduled" },
-    { value: WebhookTriggerEvents.BOOKING_PAID, label: "booking_paid" },
     { value: WebhookTriggerEvents.BOOKING_NO_SHOW_UPDATED, label: "booking_no_show_updated" },
     { value: WebhookTriggerEvents.MEETING_ENDED, label: "meeting_ended" },
     { value: WebhookTriggerEvents.MEETING_STARTED, label: "meeting_started" },

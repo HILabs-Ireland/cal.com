@@ -251,14 +251,8 @@ export async function getTeamWithMembers(args: {
   // Don't leak invite tokens to the frontend
   const { inviteTokens, ...teamWithoutInviteTokens } = teamOrOrg;
 
-  // Don't leak stripe payment ids
   const teamMetadata = teamOrOrg.metadata;
-  const {
-    paymentId: _,
-    subscriptionId: __,
-    subscriptionItemId: ___,
-    ...restTeamMetadata
-  } = teamMetadata || {};
+  const { subscriptionId: __, subscriptionItemId: ___, ...restTeamMetadata } = teamMetadata || {};
 
   return {
     ...teamWithoutInviteTokens,
@@ -353,14 +347,8 @@ export async function getTeamWithoutMembers(args: {
   // Don't leak invite tokens to the frontend
   const { inviteTokens, ...teamWithoutInviteTokens } = teamOrOrg;
 
-  // Don't leak stripe payment ids
   const teamMetadata = teamOrOrg.metadata;
-  const {
-    paymentId: _,
-    subscriptionId: __,
-    subscriptionItemId: ___,
-    ...restTeamMetadata
-  } = teamMetadata || {};
+  const { subscriptionId: __, subscriptionItemId: ___, ...restTeamMetadata } = teamMetadata || {};
 
   return {
     ...teamWithoutInviteTokens,

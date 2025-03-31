@@ -38,7 +38,6 @@ export const getSampleUserInSession = function () {
     theme: "",
     appTheme: "",
     createdDate: new Date(),
-    trialEndsAt: new Date(),
     completedOnboarding: false,
     allowSEOIndexing: false,
     receiveMonthlyDigestEmail: false,

@@ -3,13 +3,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { NextApiResponse } from "next";
 
-import stripe from "@calcom/app-store/stripepayment/lib/server";
 import { hashPassword } from "@calcom/features/auth/lib/hashPassword";
 import { sendEmailVerification } from "@calcom/features/auth/lib/verifyEmail";
 import { createOrUpdateMemberships } from "@calcom/features/auth/signup/utils/createOrUpdateMemberships";
 import { prefillAvatar } from "@calcom/features/auth/signup/utils/prefillAvatar";
 import { checkIfEmailIsBlockedInWatchlistController } from "@calcom/features/watchlist/operations/check-if-email-in-watchlist.controller";
-import { WEBAPP_URL } from "@calcom/lib/constants";
 import { getLocaleFromRequest } from "@calcom/lib/getLocaleFromRequest";
 import { HttpError } from "@calcom/lib/http-error";
 import logger from "@calcom/lib/logger";
@@ -46,12 +44,6 @@ async function handler(req: RequestWithUsernameStatus, res: NextApiResponse) {
   log.debug("handler", { email: _email });
 
   let username: string | null = req.usernameStatus.requestedUserName;
-  let checkoutSessionId: string | null = null;
-
-  // Check for premium username
-  if (req.usernameStatus.statusCode === 418) {
-    return res.status(req.usernameStatus.statusCode).json(req.usernameStatus.json);
-  }
 
   // Validate the user
   if (!username) {
@@ -94,38 +86,6 @@ async function handler(req: RequestWithUsernameStatus, res: NextApiResponse) {
     }
 
     username = usernameAndEmailValidation.username;
-  }
-
-  // Create the customer in Stripe
-  const customer = await stripe.customers.create({
-    email,
-    metadata: {
-      email /* Stripe customer email can be changed, so we add this to keep track of which email was used to signup */,
-      username,
-    },
-  });
-
-  const returnUrl = `${WEBAPP_URL}/api/integrations/stripepayment/paymentCallback?checkoutSessionId={CHECKOUT_SESSION_ID}&callbackUrl=/auth/verify?sessionId={CHECKOUT_SESSION_ID}`;
-
-  // Pro username, must be purchased
-  if (req.usernameStatus.statusCode === 402) {
-    const checkoutSession = await stripe.checkout.sessions.create({
-      mode: "subscription",
-      customer: customer.id,
-      line_items: [
-        {
-          price: "0",
-          quantity: 1,
-        },
-      ],
-      success_url: returnUrl,
-      cancel_url: returnUrl,
-      allow_promotion_codes: true,
-    });
-
-    /** We create a username-less user until he pays */
-    checkoutSessionId = checkoutSession.id;
-    username = null;
   }
 
   // Hash the password
@@ -197,10 +157,6 @@ async function handler(req: RequestWithUsernameStatus, res: NextApiResponse) {
         email,
         locked: shouldLockByDefault,
         password: { create: { hash: hashedPassword } },
-        metadata: {
-          stripeCustomerId: customer.id,
-          checkoutSessionId,
-        },
       },
     });
     if (process.env.AVATARAPI_USERNAME && process.env.AVATARAPI_PASSWORD) {
@@ -213,15 +169,7 @@ async function handler(req: RequestWithUsernameStatus, res: NextApiResponse) {
     });
   }
 
-  if (checkoutSessionId) {
-    console.log("Created user but missing payment", checkoutSessionId);
-    return res.status(402).json({
-      message: "Created user but missing payment",
-      checkoutSessionId,
-    });
-  }
-
-  return res.status(201).json({ message: "Created user", stripeCustomerId: customer.id });
+  return res.status(201).json({ message: "Created user" });
 }
 
 export default usernameHandler(handler);

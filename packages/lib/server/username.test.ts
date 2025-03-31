@@ -22,7 +22,6 @@ describe("usernameCheckForSignup ", async () => {
     const res = await usernameCheckForSignup({ username: "johnny", email: "johnny@example.com" });
     expect(res).toEqual({
       available: true,
-      premium: false,
       suggestedUsername: "",
     });
   });
@@ -36,7 +35,6 @@ describe("usernameCheckForSignup ", async () => {
     const res = await usernameCheckForSignup({ username: "johnny", email: "john@example.com" });
     expect(res).toEqual({
       available: false,
-      premium: false,
       suggestedUsername: "johnny001",
     });
   });
@@ -52,8 +50,6 @@ describe("usernameCheckForSignup ", async () => {
     const res = await usernameCheckForSignup({ username: "john", email: "john@example.com" });
     expect(res).toEqual({
       available: true,
-      // An organization can't have premium username
-      premium: false,
       suggestedUsername: "",
     });
   });

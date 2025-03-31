@@ -4,7 +4,6 @@ import {
   _AttendeeModel,
   _BookingModel as Booking,
   _EventTypeModel,
-  _PaymentModel,
   _TeamModel,
   _UserModel,
 } from "@calcom/prisma/zod";
@@ -98,15 +97,6 @@ export const schemaBookingReadPublic = Booking.extend({
       locale: true,
     })
     .nullish(),
-  payment: z
-    .array(
-      _PaymentModel.pick({
-        id: true,
-        success: true,
-        paymentOption: true,
-      })
-    )
-    .optional(),
   responses: z.record(z.any()).nullable(),
 }).pick({
   id: true,
@@ -121,7 +111,6 @@ export const schemaBookingReadPublic = Booking.extend({
   attendees: true,
   user: true,
   eventType: true,
-  payment: true,
   metadata: true,
   status: true,
   responses: true,

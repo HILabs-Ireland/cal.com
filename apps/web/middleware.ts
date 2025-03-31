@@ -159,7 +159,6 @@ export const config = {
     "/more/:path*",
     "/maintenance/:path*",
     "/enterprise/:path*",
-    "/upgrade/:path*",
     "/connect-and-join/:path*",
     "/insights/:path*",
     "/:path*/embed",

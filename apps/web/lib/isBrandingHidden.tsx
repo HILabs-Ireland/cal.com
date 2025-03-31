@@ -1,3 +1,3 @@
-export function isBrandingHidden(hideBrandingSetting: boolean, hasPaidPlan: boolean) {
-  return hasPaidPlan && hideBrandingSetting;
+export function isBrandingHidden(hideBrandingSetting: boolean) {
+  return hideBrandingSetting;
 }

@@ -430,7 +430,6 @@ Cal.com, Inc. is a commercial open source company, which means some parts of thi
 | Impersonation                     | ❌     | ✅  |
 | Managed Event Types               | ❌     | ✅  |
 | Organizations                     | ❌     | ✅  |
-| Payments                          | ❌     | ✅  |
 | Platform                          | ❌     | ✅  |
 | Teams                             | ❌     | ✅  |
 | Users                             | ❌     | ✅  |

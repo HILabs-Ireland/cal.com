@@ -26,8 +26,6 @@ export const testName = "Test Testson";
 export const teamEventTitle = "Team Event - 30min";
 export const teamEventSlug = "team-event-30min";
 
-export const IS_STRIPE_ENABLED = !!(process.env.PAYMENT_FEE_FIXED && process.env.PAYMENT_FEE_PERCENTAGE);
-
 export function createHttpServer(opts: { requestHandler?: RequestHandler } = {}) {
   const {
     requestHandler = ({ res }) => {

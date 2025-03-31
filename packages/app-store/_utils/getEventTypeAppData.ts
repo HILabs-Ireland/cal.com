@@ -9,7 +9,7 @@ export type EventTypeApps = NonNullable<
 export type EventTypeAppsList = keyof EventTypeApps;
 
 export const getEventTypeAppData = <T extends EventTypeAppsList>(
-  eventType: Pick<BookerEvent, "price" | "currency" | "metadata">,
+  eventType: Pick<BookerEvent, "metadata">,
   appId: T,
   forcedGet?: boolean
 ): EventTypeApps[T] => {
@@ -20,9 +20,6 @@ export const getEventTypeAppData = <T extends EventTypeAppsList>(
     return allowDataGet
       ? {
           ...appMetadata,
-          // We should favor eventType's price and currency over appMetadata's price and currency
-          price: eventType.price || appMetadata.price || null,
-          currency: eventType.currency || appMetadata.currency || null,
           // trackingId is legacy way to store value for TRACKING_ID. So, we need to support both.
           TRACKING_ID: appMetadata.TRACKING_ID || appMetadata.trackingId || null,
         }
@@ -32,14 +29,6 @@ export const getEventTypeAppData = <T extends EventTypeAppsList>(
   // TODO: After the new AppStore EventType App flow is stable, write a migration to migrate metadata to new format which will let us remove this compatibility code
   // Migration isn't being done right now, to allow a revert if needed
   const legacyAppsData = {
-    stripe: {
-      enabled: !!eventType.price,
-      // Price default is 0 in DB. So, it would always be non nullish.
-      price: eventType.price,
-      // Currency default is "usd" in DB.So, it would also be available always
-      currency: eventType.currency,
-      paymentOption: "ON_BOOKING",
-    },
     giphy: {
       enabled: !!eventType.metadata?.giphyThankYouPage,
       thankYouPage: eventType.metadata?.giphyThankYouPage || "",

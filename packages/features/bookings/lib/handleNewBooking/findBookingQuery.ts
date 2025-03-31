@@ -27,12 +27,10 @@ export const findBookingQuery = async (bookingId: number) => {
         select: {
           title: true,
           description: true,
-          currency: true,
           length: true,
           lockTimeZoneToggleOnBookingPage: true,
           requiresConfirmation: true,
           requiresBookerEmailVerification: true,
-          price: true,
         },
       },
     },

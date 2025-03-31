@@ -21,15 +21,6 @@ import type { Ensure } from "./utils";
 
 export type { VideoCallData } from "./VideoApiAdapter";
 
-type PaymentInfo = {
-  link?: string | null;
-  reason?: string | null;
-  id?: string | null;
-  paymentOption?: string | null;
-  amount?: number;
-  currency?: string;
-};
-
 export type Person = {
   name: string;
   email: string;
@@ -188,7 +179,6 @@ export interface CalendarEvent {
   existingRecurringEvent?: ExistingRecurringEvent | null;
   bookingId?: number;
   videoCallData?: VideoCallData;
-  paymentInfo?: PaymentInfo | null;
   requiresConfirmation?: boolean | null;
   destinationCalendar?: DestinationCalendar[] | null;
   cancellationReason?: string | null;

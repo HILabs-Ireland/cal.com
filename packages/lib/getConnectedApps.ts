@@ -1,4 +1,3 @@
-import appStore from "@calcom/app-store";
 import type { TDependencyData } from "@calcom/app-store/_appRegistry";
 import type { CredentialOwner } from "@calcom/app-store/types";
 import { getAppFromSlug } from "@calcom/app-store/utils";
@@ -12,7 +11,6 @@ import { credentialForCalendarServiceSelect } from "@calcom/prisma/selects/crede
 import type { TeamQuery } from "@calcom/trpc/server/routers/loggedInViewer/integrations.handler";
 import type { TIntegrationsInputSchema } from "@calcom/trpc/server/routers/loggedInViewer/integrations.schema";
 import type { CredentialPayload } from "@calcom/types/Credential";
-import type { PaymentApp } from "@calcom/types/PaymentService";
 
 export type ConnectedApps = Awaited<ReturnType<typeof getConnectedApps>>;
 
@@ -149,18 +147,6 @@ export async function getConnectedApps({
         avatar: user?.avatar ?? user?.avatarUrl,
       };
 
-      // We need to know if app is payment type
-      // undefined it means that app don't require app/setup/page
-      let isSetupAlready = undefined;
-      if (credential && app.categories.includes("payment")) {
-        const paymentApp = (await appStore[app.dirName as keyof typeof appStore]?.()) as PaymentApp | null;
-        if (paymentApp && "lib" in paymentApp && paymentApp?.lib && "PaymentService" in paymentApp?.lib) {
-          const PaymentService = paymentApp.lib.PaymentService;
-          const paymentInstance = new PaymentService(credential);
-          isSetupAlready = paymentInstance.isSetupAlready();
-        }
-      }
-
       let dependencyData: TDependencyData = [];
       if (app.dependencies?.length) {
         dependencyData = app.dependencies.map((dependency) => {
@@ -182,7 +168,7 @@ export async function getConnectedApps({
         invalidCredentialIds,
         teams,
         isInstalled: !!userCredentialIds.length || !!teams.length || app.isGlobal,
-        isSetupAlready,
+
         ...(app.dependencies && { dependencyData }),
       };
     })

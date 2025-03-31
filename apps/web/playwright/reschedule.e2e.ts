@@ -13,7 +13,6 @@ import {
   confirmReschedule,
   doOnOrgDomain,
   goToUrlWithErrorHandling,
-  IS_STRIPE_ENABLED,
   selectFirstAvailableTimeSlotNextMonth,
   submitAndWaitForResponse,
 } from "./lib/testUtils";
@@ -114,74 +113,6 @@ test.describe("Reschedule Tests", async () => {
     });
   });
 
-  test("Unpaid rescheduling should go to payment page", async ({ page, users, bookings, payments }) => {
-    // eslint-disable-next-line playwright/no-skipped-test
-    test.skip(!IS_STRIPE_ENABLED, "Skipped as Stripe is not installed");
-    const user = await users.create();
-    await user.apiLogin();
-    await user.installStripePersonal({ skip: true });
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const eventType = user.eventTypes.find((e) => e.slug === "paid")!;
-    const booking = await bookings.create(user.id, user.username, eventType.id, {
-      rescheduled: true,
-      status: BookingStatus.ACCEPTED,
-      paid: false,
-    });
-    await prisma.eventType.update({
-      where: {
-        id: eventType.id,
-      },
-      data: {
-        metadata: {
-          apps: {
-            stripe: {
-              price: 20000,
-              enabled: true,
-              currency: "usd",
-            },
-          },
-        },
-      },
-    });
-    const payment = await payments.create(booking.id);
-    await page.goto(`/reschedule/${booking.uid}`);
-
-    await selectFirstAvailableTimeSlotNextMonth(page);
-
-    await confirmReschedule(page);
-
-    await page.waitForURL((url) => {
-      return url.pathname.indexOf("/payment") > -1;
-    });
-
-    await expect(page).toHaveURL(/.*payment/);
-  });
-
-  test("Paid rescheduling should go to success page", async ({ page, users, bookings, payments }) => {
-    // eslint-disable-next-line playwright/no-skipped-test
-    test.skip(!IS_STRIPE_ENABLED, "Skipped as Stripe is not installed");
-
-    const user = await users.create();
-    await user.apiLogin();
-    await user.installStripePersonal({ skip: true });
-    await users.logout();
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const eventType = user.eventTypes.find((e) => e.slug === "paid")!;
-    const booking = await bookings.create(user.id, user.username, eventType.id, {
-      rescheduled: true,
-      status: BookingStatus.ACCEPTED,
-      paid: true,
-    });
-
-    const payment = await payments.create(booking.id);
-    await page.goto(`/reschedule/${booking?.uid}`);
-
-    await selectFirstAvailableTimeSlotNextMonth(page);
-
-    await confirmReschedule(page);
-
-    await expect(page).toHaveURL(/.*booking/);
-  });
   // eslint-disable-next-line playwright/no-skipped-test
   test.skip("[EE feature] Opt in event should be PENDING when rescheduled by USER", async ({
     page,

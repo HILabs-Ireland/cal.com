@@ -11,7 +11,6 @@ import { getCalVideoReference } from "@calcom/features/get-cal-video-reference";
 import { BookingRepository } from "@calcom/lib/server/repository/booking";
 import { OrganizationRepository } from "@calcom/lib/server/repository/organization";
 import { UserRepository } from "@calcom/lib/server/repository/user";
-import prisma from "@calcom/prisma";
 
 import { ssrInit } from "@server/lib/ssr";
 
@@ -34,19 +33,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       },
     };
   }
-
-  const hasTeamPlan = booking.user?.id
-    ? await prisma.membership.findFirst({
-        where: {
-          userId: booking.user.id,
-          team: {
-            slug: {
-              not: null,
-            },
-          },
-        },
-      })
-    : false;
 
   const profile = booking.user
     ? (
@@ -138,7 +124,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             }
           : bookingObj.user,
       },
-      hasTeamPlan: !!hasTeamPlan,
       calVideoLogo,
       trpcState: ssr.dehydrate(),
     },

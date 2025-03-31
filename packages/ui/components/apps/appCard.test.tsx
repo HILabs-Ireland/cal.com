@@ -14,7 +14,6 @@ describe("Tests for AppCard component", () => {
     description: "Test description for the app.",
     categories: ["calendar"],
     concurrentMeetings: true,
-    teamsPlanRequired: { upgradeUrl: "test" },
     type: "test_calendar",
     variant: "calendar",
     publisher: "test",

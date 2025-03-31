@@ -34,14 +34,13 @@ type RawEventType = BaseEventType & {
 const getEventTypesWithHiddenFromDB = async (userId: number) => {
   const eventTypes = await prisma.$queryRaw<RawEventType[]>`
     SELECT data."id", data."title", data."description", data."length", data."schedulingType"::text,
-      data."recurringEvent", data."slug", data."hidden", data."price", data."currency",
+      data."recurringEvent", data."slug", data."hidden",
       data."lockTimeZoneToggleOnBookingPage", data."requiresConfirmation", data."requiresBookerEmailVerification",
       data."metadata"
       FROM (
         SELECT "EventType"."id", "EventType"."title", "EventType"."description",
           "EventType"."position", "EventType"."length", "EventType"."schedulingType"::text,
           "EventType"."recurringEvent", "EventType"."slug", "EventType"."hidden",
-          "EventType"."price", "EventType"."currency",
           "EventType"."lockTimeZoneToggleOnBookingPage", "EventType"."requiresConfirmation",
           "EventType"."requiresBookerEmailVerification", "EventType"."metadata"
         FROM "EventType"
@@ -50,7 +49,6 @@ const getEventTypesWithHiddenFromDB = async (userId: number) => {
         SELECT "EventType"."id", "EventType"."title", "EventType"."description",
         "EventType"."position", "EventType"."length", "EventType"."schedulingType"::text,
         "EventType"."recurringEvent", "EventType"."slug", "EventType"."hidden",
-        "EventType"."price", "EventType"."currency",
         "EventType"."lockTimeZoneToggleOnBookingPage", "EventType"."requiresConfirmation",
         "EventType"."requiresBookerEmailVerification", "EventType"."metadata"
         FROM "EventType"

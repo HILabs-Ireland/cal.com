@@ -44,7 +44,7 @@ export const AppForm = ({
       initialConfig = {
         ...config,
         category: config.categories[0],
-        template: config.__template,
+        template: config.__template ?? "",
       };
     } catch (e) {}
 
@@ -92,7 +92,6 @@ export const AppForm = ({
         { label: "Conferencing", value: "conferencing" },
         { label: "CRM", value: "crm" },
         { label: "Messaging", value: "messaging" },
-        { label: "Payment", value: "payment" },
         { label: "Other", value: "other" },
       ],
       defaultValue: "",

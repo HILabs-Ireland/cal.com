@@ -3,8 +3,6 @@ import { prisma } from "@calcom/prisma";
 import { credentialForCalendarServiceSelect } from "@calcom/prisma/selects/credential";
 import type { TrpcSessionUser } from "@calcom/trpc/server/trpc";
 
-import { checkIfOrgNeedsUpgradeHandler } from "../viewer/organizations/checkIfOrgNeedsUpgrade.handler";
-import { getUpgradeableHandler } from "../viewer/teams/getUpgradeable.handler";
 import { checkInvalidAppCredentials } from "./checkForInvalidAppCredentials";
 import { shouldVerifyEmailHandler } from "./shouldVerifyEmail.handler";
 
@@ -35,29 +33,15 @@ const checkInvalidGoogleCalendarCredentials = async ({ ctx }: Props) => {
 };
 
 export const getUserTopBannersHandler = async ({ ctx }: Props) => {
-  const upgradeableTeamMememberships = getUpgradeableHandler({ userId: ctx.user.id });
-  const upgradeableOrgMememberships = checkIfOrgNeedsUpgradeHandler({ ctx });
   const shouldEmailVerify = shouldVerifyEmailHandler({ ctx });
   const isInvalidCalendarCredential = checkInvalidGoogleCalendarCredentials({ ctx });
   const appsWithInavlidCredentials = checkInvalidAppCredentials({ ctx });
 
-  const [
-    teamUpgradeBanner,
-    orgUpgradeBanner,
-    verifyEmailBanner,
-    calendarCredentialBanner,
-    invalidAppCredentialBanners,
-  ] = await Promise.allSettled([
-    upgradeableTeamMememberships,
-    upgradeableOrgMememberships,
-    shouldEmailVerify,
-    isInvalidCalendarCredential,
-    appsWithInavlidCredentials,
-  ]);
+  const [verifyEmailBanner, calendarCredentialBanner, invalidAppCredentialBanners] = await Promise.allSettled(
+    [shouldEmailVerify, isInvalidCalendarCredential, appsWithInavlidCredentials]
+  );
 
   return {
-    teamUpgradeBanner: teamUpgradeBanner.status === "fulfilled" ? teamUpgradeBanner.value : [],
-    orgUpgradeBanner: orgUpgradeBanner.status === "fulfilled" ? orgUpgradeBanner.value : [],
     verifyEmailBanner: verifyEmailBanner.status === "fulfilled" ? !verifyEmailBanner.value.isVerified : false,
     calendarCredentialBanner:
       calendarCredentialBanner.status === "fulfilled" ? calendarCredentialBanner.value : false,
