@@ -12,7 +12,6 @@ import type { ParsedUrlQuery } from "querystring";
 import type { PropsWithChildren, ReactNode } from "react";
 import { useEffect } from "react";
 
-import DynamicPostHogProvider from "@calcom/features/ee/event-tracking/lib/posthog/providerDynamic";
 import { OrgBrandingProvider } from "@calcom/features/ee/organizations/context/provider";
 import { FeatureProvider } from "@calcom/features/flags/context/provider";
 import { useFlags } from "@calcom/features/flags/hooks";
@@ -314,18 +313,7 @@ const AppProviders = (props: AppPropsWithChildren) => {
     </EventCollectionProvider>
   );
 
-  if (isBookingPage) {
-    return RemainingProviders;
-  }
-
-  return (
-    <>
-      <DynamicPostHogProvider>
-        <PostHogPageView />
-        {RemainingProviders}
-      </DynamicPostHogProvider>
-    </>
-  );
+  return RemainingProviders;
 };
 
 export default AppProviders;
