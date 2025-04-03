@@ -1,7 +1,7 @@
-import type { EventRecurringTabProps } from "@calcom/features/eventtypes/components/tabs/recurring/EventRecurringTab";
 import { EventRecurringTab } from "@calcom/features/eventtypes/components/tabs/recurring/EventRecurringTab";
+import type { RecurringEventControllerProps } from "@calcom/features/eventtypes/components/tabs/recurring/RecurringEventController";
 
-const EventRecurringWebWrapper = (props: EventRecurringTabProps) => {
+const EventRecurringWebWrapper = (props: RecurringEventControllerProps) => {
   return <EventRecurringTab {...props} />;
 };
 

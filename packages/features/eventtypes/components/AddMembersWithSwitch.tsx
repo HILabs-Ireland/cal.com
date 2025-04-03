@@ -8,7 +8,6 @@ import {
   AddMembersWithSwitchWebWrapper,
   AddMembersWithSwitchPlatformWrapper,
 } from "@calcom/atoms/monorepo";
-import { Segment } from "@calcom/features/Segment";
 import type {
   FormValues,
   Host,
@@ -146,16 +145,8 @@ function MembersSegmentWithToggle({
           checked={assignRRMembersUsingSegment}
           onCheckedChange={(active) => {
             setAssignRRMembersUsingSegment(active);
-          }}>
-          {!isPlatform && (
-            <Segment
-              teamId={teamId}
-              queryValue={rrSegmentQueryValue}
-              onQueryValueChange={onQueryValueChange}
-              className={className}
-            />
-          )}
-        </SettingsToggle>
+          }}
+        />
       )}
     />
   );

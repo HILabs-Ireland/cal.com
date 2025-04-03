@@ -50,13 +50,6 @@ export const viewerOrganizationsRouter = router({
     const handler = await importHandler(namespaced("listCurrent"), () => import("./list.handler"));
     return handler(opts);
   }),
-  checkIfOrgNeedsUpgrade: authedProcedure.query(async (opts) => {
-    const handler = await importHandler(
-      namespaced("checkIfOrgNeedsUpgrade"),
-      () => import("./checkIfOrgNeedsUpgrade.handler")
-    );
-    return handler(opts);
-  }),
   publish: authedProcedure.mutation(async (opts) => {
     const handler = await importHandler(namespaced("publish"), () => import("./publish.handler"));
     return handler(opts);

@@ -1,10 +1,7 @@
-import type { App } from "@prisma/client";
 import type { Prisma } from "@prisma/client";
 import type { TFunction } from "next-i18next";
 
-import type { EventTypeAppsList } from "@calcom/app-store/utils";
 import type { DefaultEvent } from "@calcom/lib/defaultEvents";
-import type { PaymentAppData } from "@calcom/lib/getPaymentAppData";
 import type { userSelect } from "@calcom/prisma";
 import type { SelectedCalendar } from "@calcom/prisma/client";
 import type { CredentialPayload } from "@calcom/types/Credential";
@@ -44,15 +41,6 @@ export type Invitee = {
   };
 }[];
 
-export interface IEventTypePaymentCredentialType {
-  appId: EventTypeAppsList;
-  app: {
-    categories: App["categories"];
-    dirName: string;
-  };
-  key: Prisma.JsonValue;
-}
-
 export type IsFixedAwareUser = User & {
   isFixed: boolean;
   credentials: CredentialPayload[];
@@ -74,7 +62,6 @@ export type {
   SmsReminderNumber,
   EventTypeId,
   ReqBodyMetadata,
-  PaymentAppData,
   BookingType,
   Booking,
   OriginalRescheduledBooking,

@@ -86,7 +86,6 @@ That's where Cal.com comes in. Self-hosted or hosted by us. White-label by desig
 - [React.js](https://reactjs.org/?ref=cal.com)
 - [Tailwind CSS](https://tailwindcss.com/?ref=cal.com)
 - [Prisma.io](https://prisma.io/?ref=cal.com)
-- [Daily.co](https://go.cal.com/daily)
 
 ## Contact us
 
@@ -430,7 +429,6 @@ Cal.com, Inc. is a commercial open source company, which means some parts of thi
 | Impersonation                     | ❌     | ✅  |
 | Managed Event Types               | ❌     | ✅  |
 | Organizations                     | ❌     | ✅  |
-| Payments                          | ❌     | ✅  |
 | Platform                          | ❌     | ✅  |
 | Teams                             | ❌     | ✅  |
 | Users                             | ❌     | ✅  |
@@ -510,22 +508,6 @@ Note: It causes root to serve the dashboard and not the organization profile pag
 10. The key will be created and you will be redirected back to the Credentials page. Select the newly generated client ID under OAuth 2.0 Client IDs.
 11. Select Download JSON. Copy the contents of this file and paste the entire JSON string in the `.env` file as the value for `GOOGLE_API_CREDENTIALS` key.
 
-#### _Adding google calendar to Cal.com App Store_
-
-After adding Google credentials, you can now Google Calendar App to the app store.
-You can repopulate the App store by running
-
-```
-cd packages/prisma
-yarn seed-app-store
-```
-
-You will need to complete a few more steps to activate Google Calendar App.
-Make sure to complete section "Obtaining the Google API Credentials". After that do the
-following
-
-1. Add extra redirect URL `<Cal.com URL>/api/auth/callback/google`
-1. Under 'OAuth consent screen', click "PUBLISH APP"
 
 ### Obtaining Microsoft Graph Client ID and Secret
 
@@ -553,13 +535,7 @@ following
 11. Click "Done".
 12. You're good to go. Now you can easily add your Zoom integration in the Cal.com settings.
 
-### Obtaining Daily API Credentials
 
-1. Visit our [Daily.co Partnership Form](https://go.cal.com/daily) and enter your information
-2. From within your dashboard, go to the [developers](https://dashboard.daily.co/developers) tab.
-3. Copy your API key.
-4. Now paste the API key to your `.env` file into the `DAILY_API_KEY` field in your `.env` file.
-5. If you have the [Daily Scale Plan](https://daily.co/pricing) set the `DAILY_SCALE_PLAN` variable to `true` in order to use features like video recording.
 
 ### Obtaining Basecamp Client ID and Secret
 
@@ -585,9 +561,6 @@ following
 9. Click the "Save" button at the bottom footer.
 10. You're good to go. Now you can see any booking in Cal.com created as a meeting in HubSpot for your contacts.
 
-### Obtaining Webex Client ID and Secret
-
-[See Webex Readme](./packages/app-store/webex/)
 
 ### Obtaining ZohoCRM Client ID and Secret
 
@@ -602,17 +575,6 @@ following
 9. Click the "Save"/ "UPDATE" button at the bottom footer.
 10. You're good to go. Now you can easily add your ZohoCRM integration in the Cal.com settings.
 
-### Obtaining Zoho Calendar Client ID and Secret
-
-[Follow these steps](./packages/app-store/zohocalendar/)
-
-### Obtaining Zoho Bigin Client ID and Secret
-
-[Follow these steps](./packages/app-store/zoho-bigin/)
-
-### Obtaining Pipedrive Client ID and Secret
-
-[Follow these steps](./packages/app-store/pipedrive-crm/)
 
 ## Workflows
 

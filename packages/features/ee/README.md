@@ -15,14 +15,6 @@ The [/ee](https://github.com/calcom/cal.com/tree/main/packages/features/ee) subf
 
 > _❗ WARNING: This repository is copyrighted (unlike our [main repo](https://github.com/calcom/cal.com)). You are not allowed to use this code to host your own version of app.cal.com without obtaining a proper [license](https://cal.com/sales) first❗_
 
-## Setting up Stripe
-
-1. Create a stripe account or use an existing one. For testing, you should use all stripe dashboard functions with the Test-Mode toggle in the top right activated.
-2. Open [Stripe ApiKeys](https://dashboard.stripe.com/apikeys) save the token starting with `pk_...` to `NEXT_PUBLIC_STRIPE_PUBLIC_KEY` in the .env file.
-3. Open [Stripe Connect Settings](https://dashboard.stripe.com/settings/connect) and activate OAuth for Standard Accounts
-4. Add `<CALENDSO URL>/api/integrations/stripepayment/callback` as redirect URL.
-5. Select all `payment_intent` events for the webhook.
-
 ## Setting up SAML login
 
 1. Set SAML_DATABASE_URL to a postgres database. Please use a different database than the main Cal instance since the migrations are separate for this database. For example `postgresql://postgres:@localhost:5450/cal-saml`

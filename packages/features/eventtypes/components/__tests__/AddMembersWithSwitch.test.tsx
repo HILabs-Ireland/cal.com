@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, act } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import * as React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { describe, expect, it, vi } from "vitest";
@@ -13,13 +13,6 @@ vi.mock("@formkit/auto-animate/react", () => ({
 }));
 
 // Mock Segment component
-vi.mock("@calcom/features/Segment", () => ({
-  Segment: vi.fn().mockImplementation(({ onQueryValueChange }) => (
-    <div data-testid="mock-segment">
-      <button onClick={() => onQueryValueChange({ queryValue: { id: "test" } })}>Update Query</button>
-    </div>
-  )),
-}));
 
 const mockTeamMembers: TeamMember[] = [
   {
@@ -139,24 +132,6 @@ describe("AddMembersWithSwitch", () => {
     expect(screen.queryByText("filter_by_attributes")).not.toBeInTheDocument();
   });
 
-  it("should render segment toggle in enabled state when isSegmentApplicable is true and assignRRMembersUsingSegment is also true(even if assignAllTeamMembers is false)", () => {
-    renderComponent({
-      componentProps: {
-        ...defaultProps,
-        assignAllTeamMembers: false,
-        isSegmentApplicable: true,
-      },
-      formDefaultValues: {
-        assignRRMembersUsingSegment: true,
-        rrSegmentQueryValue: null,
-        hosts: [],
-      },
-    });
-
-    expect(screen.getByTestId("segment-toggle")).toBeInTheDocument();
-    expect(screen.getByTestId("segment-toggle").getAttribute("aria-checked")).toBe("true");
-  });
-
   it("should call onChange when team members are selected", () => {
     renderComponent({ componentProps: defaultProps });
 
@@ -166,36 +141,6 @@ describe("AddMembersWithSwitch", () => {
     fireEvent.click(screen.getByText("John Doe"));
 
     expect(defaultProps.onChange).toHaveBeenCalled();
-  });
-
-  it("should show Segment when 'Automatically add all team members' is toggled on and then segment toggle is switched on", () => {
-    renderComponent({
-      componentProps: {
-        ...defaultProps,
-        assignAllTeamMembers: true,
-        isSegmentApplicable: true,
-        automaticAddAllEnabled: true,
-      },
-      formDefaultValues: {
-        assignRRMembersUsingSegment: false,
-        rrSegmentQueryValue: null,
-        hosts: [],
-      },
-    });
-
-    expect(screen.queryByTestId("segment-toggle")).not.toBeInTheDocument();
-
-    act(() => {
-      screen.getByTestId("assign-all-team-members-toggle").click();
-    });
-
-    expect(screen.queryByTestId("mock-segment")).not.toBeInTheDocument();
-
-    act(() => {
-      screen.getByTestId("segment-toggle").click();
-    });
-
-    expect(screen.getByTestId("mock-segment")).toBeInTheDocument();
   });
 });
 

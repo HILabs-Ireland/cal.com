@@ -399,11 +399,6 @@ Cal("init", "popupTeamLinksList", {
   origin: origin,
 });
 
-Cal("init", "popupPaidEvent", {
-  debug: true,
-  origin: origin,
-});
-
 Cal("init", "childElementTarget", {
   debug: true,
   origin: origin,

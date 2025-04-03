@@ -26,8 +26,6 @@ export const testName = "Test Testson";
 export const teamEventTitle = "Team Event - 30min";
 export const teamEventSlug = "team-event-30min";
 
-export const IS_STRIPE_ENABLED = !!(process.env.PAYMENT_FEE_FIXED && process.env.PAYMENT_FEE_PERCENTAGE);
-
 export function createHttpServer(opts: { requestHandler?: RequestHandler } = {}) {
   const {
     requestHandler = ({ res }) => {
@@ -236,13 +234,6 @@ export async function gotoRoutingLink({
 
   // HACK: There seems to be some issue with the inputs to the form getting reset if we don't wait.
   await new Promise((resolve) => setTimeout(resolve, 2000));
-}
-
-export async function installAppleCalendar(page: Page) {
-  await page.goto("/apps/categories/calendar");
-  await page.click('[data-testid="app-store-app-card-apple-calendar"]');
-  await page.waitForURL("/apps/apple-calendar");
-  await page.click('[data-testid="install-app-button"]');
 }
 
 export async function getInviteLink(page: Page) {

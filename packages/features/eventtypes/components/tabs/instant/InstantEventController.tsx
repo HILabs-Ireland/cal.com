@@ -32,7 +32,6 @@ import {
 
 type InstantEventControllerProps = {
   eventType: EventTypeSetup;
-  paymentEnabled: boolean;
   isTeamEvent: boolean;
 };
 
@@ -66,11 +65,7 @@ const SingleValue = ({ ...props }: SingleValueProps<AvailabilityOption>) => {
   );
 };
 
-export default function InstantEventController({
-  eventType,
-  paymentEnabled,
-  isTeamEvent,
-}: InstantEventControllerProps) {
+export default function InstantEventController({ eventType, isTeamEvent }: InstantEventControllerProps) {
   const { t } = useLocale();
   const session = useSession();
   const [instantEventState, setInstantEventState] = useState<boolean>(eventType?.isInstantEvent ?? false);
@@ -106,156 +101,139 @@ export default function InstantEventController({
   return (
     <LicenseRequired>
       <div className="block items-start sm:flex">
-        {!isOrg || !isTeamEvent ? (
-          <EmptyScreen
-            headline={t("instant_tab_title")}
-            Icon="phone-call"
-            description={t("uprade_to_create_instant_bookings")}
-            buttonRaw={<Button href="/enterprise">{t("upgrade")}</Button>}
-          />
-        ) : (
-          <div className={!paymentEnabled ? "w-full" : ""}>
-            {paymentEnabled ? (
-              <Alert severity="warning" title={t("warning_payment_instant_meeting_event")} />
-            ) : (
-              <>
-                <Alert
-                  className="mb-4"
-                  severity="warning"
-                  title={t("warning_instant_meeting_experimental")}
-                />
-                <SettingsToggle
-                  labelClassName="text-sm"
-                  toggleSwitchAtTheEnd={true}
-                  switchContainerClassName={classNames(
-                    "border-subtle rounded-lg border py-6 px-4 sm:px-6",
-                    instantEventState && "rounded-b-none"
-                  )}
-                  childrenClassName="lg:ml-0"
-                  title={t("instant_tab_title")}
-                  {...instantLocked}
-                  description={t("instant_event_tab_description")}
-                  checked={instantEventState}
-                  data-testid="instant-event-check"
-                  onCheckedChange={(e) => {
-                    if (!e) {
-                      formMethods.setValue("isInstantEvent", false, { shouldDirty: true });
-                      setInstantEventState(false);
-                    } else {
-                      formMethods.setValue("isInstantEvent", true, { shouldDirty: true });
-                      setInstantEventState(true);
-                    }
-                  }}>
-                  <div className="border-subtle rounded-b-lg border border-t-0 p-6">
-                    {instantEventState && (
-                      <div className="flex flex-col gap-2">
-                        <Controller
-                          name="instantMeetingSchedule"
-                          render={({ field: { onChange, value } }) => {
-                            const optionValue: AvailabilityOption | undefined = options.find(
-                              (option) => option.value === value
-                            );
-                            return (
-                              <>
-                                <Label>{t("instant_meeting_availability")}</Label>
-                                <Select
-                                  placeholder={t("select")}
-                                  options={options}
-                                  isDisabled={shouldLockDisableProps("instantMeetingSchedule").disabled}
-                                  isSearchable={false}
-                                  onChange={(selected) => {
-                                    if (selected) onChange(selected.value);
-                                  }}
-                                  className="mb-4 block w-full min-w-0 flex-1 rounded-sm text-sm"
-                                  value={optionValue}
-                                  components={{ Option, SingleValue }}
-                                  isMulti={false}
-                                />
-                              </>
-                            );
-                          }}
-                        />
-                        <div>
-                          <Label>{t("only_show_if_parameter_set")}</Label>
-                          <div className="space-y-2">
-                            {parameters.map((parameter, index) => (
-                              <div key={index} className="flex gap-2">
-                                <TextField
-                                  required
-                                  name={`parameter-${index}`}
-                                  labelSrOnly
-                                  type="text"
-                                  value={parameter}
-                                  containerClassName="flex-1 max-w-80"
-                                  onChange={(e) => {
-                                    const newParameters = [...parameters];
-                                    newParameters[index] = e.target.value;
-                                    setParameters(newParameters);
-                                    formMethods.setValue("instantMeetingParameters", newParameters, {
-                                      shouldDirty: true,
-                                    });
-                                  }}
-                                />
-                                <Button
-                                  type="button"
-                                  color="destructive"
-                                  variant="icon"
-                                  StartIcon="trash"
-                                  onClick={() => {
-                                    const newParameters = parameters.filter((_, i) => i !== index);
-                                    setParameters(newParameters);
-                                    formMethods.setValue("instantMeetingParameters", newParameters, {
-                                      shouldDirty: true,
-                                    });
-                                  }}
-                                />
-                              </div>
-                            ))}
+        <div className="w-full">
+          <>
+            <Alert className="mb-4" severity="warning" title={t("warning_instant_meeting_experimental")} />
+            <SettingsToggle
+              labelClassName="text-sm"
+              toggleSwitchAtTheEnd={true}
+              switchContainerClassName={classNames(
+                "border-subtle rounded-lg border py-6 px-4 sm:px-6",
+                instantEventState && "rounded-b-none"
+              )}
+              childrenClassName="lg:ml-0"
+              title={t("instant_tab_title")}
+              {...instantLocked}
+              description={t("instant_event_tab_description")}
+              checked={instantEventState}
+              data-testid="instant-event-check"
+              onCheckedChange={(e) => {
+                if (!e) {
+                  formMethods.setValue("isInstantEvent", false, { shouldDirty: true });
+                  setInstantEventState(false);
+                } else {
+                  formMethods.setValue("isInstantEvent", true, { shouldDirty: true });
+                  setInstantEventState(true);
+                }
+              }}>
+              <div className="border-subtle rounded-b-lg border border-t-0 p-6">
+                {instantEventState && (
+                  <div className="flex flex-col gap-2">
+                    <Controller
+                      name="instantMeetingSchedule"
+                      render={({ field: { onChange, value } }) => {
+                        const optionValue: AvailabilityOption | undefined = options.find(
+                          (option) => option.value === value
+                        );
+                        return (
+                          <>
+                            <Label>{t("instant_meeting_availability")}</Label>
+                            <Select
+                              placeholder={t("select")}
+                              options={options}
+                              isDisabled={shouldLockDisableProps("instantMeetingSchedule").disabled}
+                              isSearchable={false}
+                              onChange={(selected) => {
+                                if (selected) onChange(selected.value);
+                              }}
+                              className="mb-4 block w-full min-w-0 flex-1 rounded-sm text-sm"
+                              value={optionValue}
+                              components={{ Option, SingleValue }}
+                              isMulti={false}
+                            />
+                          </>
+                        );
+                      }}
+                    />
+                    <div>
+                      <Label>{t("only_show_if_parameter_set")}</Label>
+                      <div className="space-y-2">
+                        {parameters.map((parameter, index) => (
+                          <div key={index} className="flex gap-2">
+                            <TextField
+                              required
+                              name={`parameter-${index}`}
+                              labelSrOnly
+                              type="text"
+                              value={parameter}
+                              containerClassName="flex-1 max-w-80"
+                              onChange={(e) => {
+                                const newParameters = [...parameters];
+                                newParameters[index] = e.target.value;
+                                setParameters(newParameters);
+                                formMethods.setValue("instantMeetingParameters", newParameters, {
+                                  shouldDirty: true,
+                                });
+                              }}
+                            />
+                            <Button
+                              type="button"
+                              color="destructive"
+                              variant="icon"
+                              StartIcon="trash"
+                              onClick={() => {
+                                const newParameters = parameters.filter((_, i) => i !== index);
+                                setParameters(newParameters);
+                                formMethods.setValue("instantMeetingParameters", newParameters, {
+                                  shouldDirty: true,
+                                });
+                              }}
+                            />
                           </div>
-                          <Button
-                            color="minimal"
-                            StartIcon="plus"
-                            onClick={() => {
-                              const newParameters = [...parameters, ""];
-                              setParameters(newParameters);
-                              formMethods.setValue("instantMeetingParameters", newParameters, {
-                                shouldDirty: true,
-                              });
-                            }}>
-                            {t("add_parameter")}
-                          </Button>
-                        </div>
-                        <Controller
-                          name="instantMeetingExpiryTimeOffsetInSeconds"
-                          render={({ field: { value, onChange } }) => (
-                            <>
-                              <Label>{t("set_instant_meeting_expiry_time_offset_description")}</Label>
-                              <TextField
-                                required
-                                name="instantMeetingExpiryTimeOffsetInSeconds"
-                                labelSrOnly
-                                type="number"
-                                defaultValue={value}
-                                min={10}
-                                containerClassName="max-w-80"
-                                addOnSuffix={<>{t("seconds")}</>}
-                                onChange={(e) => {
-                                  onChange(Math.abs(Number(e.target.value)));
-                                }}
-                                data-testid="instant-meeting-expiry-time-offset"
-                              />
-                            </>
-                          )}
-                        />
-                        <InstantMeetingWebhooks eventType={eventType} />
+                        ))}
                       </div>
-                    )}
+                      <Button
+                        color="minimal"
+                        StartIcon="plus"
+                        onClick={() => {
+                          const newParameters = [...parameters, ""];
+                          setParameters(newParameters);
+                          formMethods.setValue("instantMeetingParameters", newParameters, {
+                            shouldDirty: true,
+                          });
+                        }}>
+                        {t("add_parameter")}
+                      </Button>
+                    </div>
+                    <Controller
+                      name="instantMeetingExpiryTimeOffsetInSeconds"
+                      render={({ field: { value, onChange } }) => (
+                        <>
+                          <Label>{t("set_instant_meeting_expiry_time_offset_description")}</Label>
+                          <TextField
+                            required
+                            name="instantMeetingExpiryTimeOffsetInSeconds"
+                            labelSrOnly
+                            type="number"
+                            defaultValue={value}
+                            min={10}
+                            containerClassName="max-w-80"
+                            addOnSuffix={<>{t("seconds")}</>}
+                            onChange={(e) => {
+                              onChange(Math.abs(Number(e.target.value)));
+                            }}
+                            data-testid="instant-meeting-expiry-time-offset"
+                          />
+                        </>
+                      )}
+                    />
+                    <InstantMeetingWebhooks eventType={eventType} />
                   </div>
-                </SettingsToggle>
-              </>
-            )}
-          </div>
-        )}
+                )}
+              </div>
+            </SettingsToggle>
+          </>
+        </div>
       </div>
     </LicenseRequired>
   );
@@ -371,9 +349,6 @@ const InstantMeetingWebhooks = ({ eventType }: { eventType: EventTypeSetup }) =>
                     );
                   })}
                 </div>
-                <p className="text-default text-sm font-normal">
-                  {t("warning_payment_instant_meeting_event")}
-                </p>
               </>
             ) : (
               <>
@@ -405,7 +380,7 @@ const InstantMeetingWebhooks = ({ eventType }: { eventType: EventTypeSetup }) =>
                 noRoutingFormTriggers={true}
                 onSubmit={onCreateWebhook}
                 onCancel={() => setCreateModalOpen(false)}
-                apps={installedApps?.items.map((app) => app.slug)}
+                apps={[]}
                 selectOnlyInstantMeetingOption={true}
               />
             </DialogContent>
@@ -416,7 +391,7 @@ const InstantMeetingWebhooks = ({ eventType }: { eventType: EventTypeSetup }) =>
               <WebhookForm
                 noRoutingFormTriggers={true}
                 webhook={webhookToEdit}
-                apps={installedApps?.items.map((app) => app.slug)}
+                apps={[]}
                 onCancel={() => setEditModalOpen(false)}
                 onSubmit={(values: WebhookFormSubmitData) => {
                   if (

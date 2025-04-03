@@ -15,18 +15,13 @@
     "lint:report": "eslint . --format json --output-file ../../lint-results/app-store.json"
   },
   "dependencies": {
-    "@calcom/dailyvideo": "*",
-    "@calcom/dayjs": "*",
     "@calcom/features": "*",
     "@calcom/lib": "*",
-    "@calcom/office365video": "*",
     "@calcom/trpc": "*",
     "@calcom/ui": "*",
-    "@calcom/zoomvideo": "*",
     "lodash": "^4.17.21",
     "qs-stringify": "^1.2.1",
-    "react-i18next": "^12.2.0",
-    "stripe": "^9.16.0"
+    "react-i18next": "^12.2.0"
   },
   "devDependencies": {
     "@calcom/types": "*"

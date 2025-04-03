@@ -31,10 +31,8 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
       children: [
         { name: "profile", href: "/settings/my-account/profile" },
         { name: "general", href: "/settings/my-account/general" },
-        { name: "calendars", href: "/settings/my-account/calendars" },
         { name: "conferencing", href: "/settings/my-account/conferencing" },
         { name: "appearance", href: "/settings/my-account/appearance" },
-        { name: "out_of_office", href: "/settings/my-account/out-of-office" },
         // TODO
         // { name: "referrals", href: "/settings/my-account/referrals" },
       ],
@@ -117,7 +115,6 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
         { name: "features", href: "/settings/admin/flags" },
         { name: "license", href: "/auth/setup?step=1" },
         { name: "apps", href: "/settings/admin/apps/calendar" },
-        { name: "users", href: "/settings/admin/users" },
         { name: "organizations", href: "/settings/admin/organizations" },
         { name: "lockedSMS", href: "/settings/admin/lockedSMS" },
         { name: "oAuth", href: "/settings/admin/oAuth" },

@@ -1,7 +1,6 @@
 "use client";
 
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { useCallback, useState } from "react";
 
@@ -101,10 +100,6 @@ export function AvailabilityList({ schedules }: RouterOutputs["viewer"]["availab
     );
   };
 
-  const handleBulkEditDialogToggle = () => {
-    utils.viewer.getUsersDefaultConferencingApp.invalidate();
-  };
-
   const duplicateMutation = trpc.viewer.availability.schedule.duplicate.useMutation({
     onSuccess: async ({ schedule }) => {
       await router.push(`/availability/${schedule.id}`);
@@ -155,12 +150,6 @@ export function AvailabilityList({ schedules }: RouterOutputs["viewer"]["availab
               ))}
             </ul>
           </div>
-          <div className="text-default mb-16 mt-4 hidden text-center text-sm md:block">
-            {t("temporarily_out_of_office")}{" "}
-            <Link href="settings/my-account/out-of-office" className="underline">
-              {t("add_a_redirect")}
-            </Link>
-          </div>
           {bulkUpdateModal && (
             <BulkEditDefaultForEventsModal
               isPending={bulkUpdateDefaultAvailabilityMutation.isPending}
@@ -170,7 +159,6 @@ export function AvailabilityList({ schedules }: RouterOutputs["viewer"]["availab
               description={t("default_schedules_bulk_description")}
               eventTypes={eventTypesQueryData?.eventTypes}
               isEventTypesFetching={isEventTypesFetching}
-              handleBulkEditDialogToggle={handleBulkEditDialogToggle}
             />
           )}
         </>

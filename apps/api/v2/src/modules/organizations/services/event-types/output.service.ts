@@ -33,8 +33,6 @@ type Input = Pick<
   | "slug"
   | "schedulingType"
   | "requiresConfirmation"
-  | "price"
-  | "currency"
   | "lockTimeZoneToggleOnBookingPage"
   | "seatsPerTimeSlot"
   | "forwardParamsSuccessRedirect"

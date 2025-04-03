@@ -164,13 +164,6 @@ import { getAccessibleUsers } from "~/lib/utils/retrieveScopedAccessibleUsers";
  *                         "timeZone": "Asia/Kolkata",
  *                         "locale": "en"
  *                       },
- *                       "payment": [
- *                         {
- *                           "id": 1,
- *                           "success": true,
- *                           "paymentOption": "ON_BOOKING"
- *                         }
- *                       ],
  *                       "metadata": {},
  *                       "status": "ACCEPTED",
  *                       "responses": {

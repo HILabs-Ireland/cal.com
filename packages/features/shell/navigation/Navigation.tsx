@@ -10,7 +10,6 @@ import {
 import { KBarTrigger } from "@calcom/features/kbar/Kbar";
 import { classNames } from "@calcom/lib";
 
-import { TeamInviteBadge } from "../TeamInviteBadge";
 import type { NavigationItemType } from "./NavigationItem";
 import { NavigationItem, MobileNavigationItem, MobileNavigationMoreItem } from "./NavigationItem";
 
@@ -49,7 +48,6 @@ const getNavigationItems = (orgBranding: OrganizationBranding): NavigationItemTy
     href: "/teams",
     icon: "users",
     onlyDesktop: true,
-    badge: <TeamInviteBadge />,
   },
   {
     name: "apps",

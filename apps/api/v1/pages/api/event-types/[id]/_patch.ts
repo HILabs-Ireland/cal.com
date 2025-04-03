@@ -125,12 +125,6 @@ import checkTeamEventEditPermission from "../_utils/checkTeamEventEditPermission
  *                 type: string
  *                 description: The type of scheduling if a Team event. Required for team events only
  *                 enum: [ROUND_ROBIN, COLLECTIVE]
- *               price:
- *                 type: integer
- *                 description: Price of the event type booking
- *               currency:
- *                 type: string
- *                 description: Currency acronym. Eg- usd, eur, gbp, etc.
  *               slotInterval:
  *                 type: integer
  *                 description: The intervals of available bookable slots in minutes

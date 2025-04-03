@@ -8,7 +8,7 @@ export {
 export type { AvatarProps, AvatarGroupProps } from "./components/avatar";
 export { ArrowButton } from "./components/arrow-button";
 export type { ArrowButtonProps } from "./components/arrow-button";
-export { Badge, UpgradeTeamsBadge, InfoBadge } from "./components/badge";
+export { Badge, InfoBadge } from "./components/badge";
 export type { BadgeProps } from "./components/badge";
 export { Breadcrumb, BreadcrumbContainer, BreadcrumbItem } from "./components/breadcrumb";
 export { Button, LinkIconButton, buttonClasses } from "./components/button";
@@ -64,17 +64,6 @@ export type {
   TimezoneSelectProps,
   TimezoneSelectComponentProps,
 } from "./components/form";
-export {
-  AllApps,
-  AppCard,
-  AppSkeletonLoader,
-  SkeletonLoader,
-  Slider,
-  PopularAppsSlider,
-  RecentAppsSlider,
-  useShouldShowArrows,
-  AppStoreCategories,
-} from "./components/apps";
 export { TopBanner } from "./components/top-banner";
 export type { TopBannerProps } from "./components/top-banner";
 export { AnimatedPopover, MeetingTimeInTimezones } from "./components/popover";
@@ -117,8 +106,6 @@ export {
   ConfirmationContent,
 } from "./components/dialog";
 export type { DialogProps, ConfirmationDialogContentProps } from "./components/dialog";
-export { AppListCard } from "./components/app-list-card";
-export { DisconnectIntegrationComponent } from "./components/disconnect-calendar-integration";
 export { CalendarSwitchComponent } from "./components/calendar-switch";
 export { showToast } from "./components/toast"; // We don't export the toast components as they are only used in local storybook file
 export { Meta, MetaProvider, useMeta } from "./components/meta";

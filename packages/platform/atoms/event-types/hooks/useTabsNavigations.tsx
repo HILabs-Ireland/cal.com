@@ -13,9 +13,7 @@ import type {
   FormValues,
   EventTypeApps,
 } from "@calcom/features/eventtypes/lib/types";
-import { getPaymentAppData } from "@calcom/lib/getPaymentAppData";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
-import { eventTypeMetaDataSchemaWithTypedApps } from "@calcom/prisma/zod-utils";
 import type { VerticalTabItemProps } from "@calcom/ui";
 
 type Props = {
@@ -40,7 +38,6 @@ export const useTabsNavigations = ({
   const watchSchedulingType = formMethods.watch("schedulingType");
   const watchChildrenCount = formMethods.watch("children").length;
   const availability = formMethods.watch("availability");
-  const appsMetadata = formMethods.getValues("metadata")?.apps;
 
   const { isManagedEventType, isChildrenManagedEventType } = useLockedFieldsManager({
     eventType,
@@ -48,24 +45,9 @@ export const useTabsNavigations = ({
     formMethods,
   });
 
-  let enabledAppsNumber = 0;
-
-  if (appsMetadata) {
-    enabledAppsNumber = Object.entries(appsMetadata).filter(
-      ([appId, appData]) =>
-        eventTypeApps?.items.find((app) => app.slug === appId)?.isInstalled && appData.enabled
-    ).length;
-  }
-  const paymentAppData = getPaymentAppData({
-    ...eventType,
-    metadata: eventTypeMetaDataSchemaWithTypedApps.parse(eventType.metadata),
-  });
-
-  const requirePayment = paymentAppData.price > 0;
+  const enabledAppsNumber = 0;
 
   const activeWebhooksNumber = eventType.webhooks.filter((webhook) => webhook.active).length;
-
-  const installedAppsNumber = eventTypeApps?.items.length || 0;
 
   const enabledWorkflowsNumber = allActiveWorkflows ? allActiveWorkflows.length : 0;
 
@@ -76,19 +58,16 @@ export const useTabsNavigations = ({
       multipleDuration,
       id: formMethods.getValues("id"),
       enabledAppsNumber,
-      installedAppsNumber,
       enabledWorkflowsNumber,
       availability,
     });
 
-    if (!requirePayment) {
-      navigation.splice(3, 0, {
-        name: "recurring",
-        href: `/event-types/${formMethods.getValues("id")}?tabName=recurring`,
-        icon: "repeat",
-        info: `recurring_event_tab_description`,
-      });
-    }
+    navigation.splice(3, 0, {
+      name: "recurring",
+      href: `/event-types/${formMethods.getValues("id")}?tabName=recurring`,
+      icon: "repeat",
+      info: `recurring_event_tab_description`,
+    });
     navigation.splice(1, 0, {
       name: "availability",
       href: `/event-types/${formMethods.getValues("id")}?tabName=availability`,
@@ -134,8 +113,7 @@ export const useTabsNavigations = ({
       icon: "webhook",
       info: `${activeWebhooksNumber} ${t("active")}`,
     });
-    const hidden = true; // hidden while in alpha trial. you can access it with tabName=ai
-    if (team && hidden) {
+    if (team) {
       navigation.push({
         name: "Cal.ai",
         href: `/event-types/${eventType.id}?tabName=ai`,
@@ -147,14 +125,12 @@ export const useTabsNavigations = ({
   }, [
     t,
     enabledAppsNumber,
-    installedAppsNumber,
     enabledWorkflowsNumber,
     availability,
     isManagedEventType,
     isChildrenManagedEventType,
     team,
     length,
-    requirePayment,
     multipleDuration,
     formMethods.getValues("id"),
     watchSchedulingType,
@@ -172,7 +148,6 @@ type getNavigationProps = {
   multipleDuration?: EventTypeSetupProps["eventType"]["metadata"]["multipleDuration"];
   enabledAppsNumber: number;
   enabledWorkflowsNumber: number;
-  installedAppsNumber: number;
   availability: AvailabilityOption | undefined;
 };
 
@@ -182,7 +157,6 @@ function getNavigation({
   multipleDuration,
   t,
   enabledAppsNumber,
-  installedAppsNumber,
   enabledWorkflowsNumber,
 }: getNavigationProps) {
   const duration = multipleDuration?.map((duration) => ` ${duration}`) || length;
@@ -206,13 +180,7 @@ function getNavigation({
       icon: "sliders-vertical",
       info: `event_advanced_tab_description`,
     },
-    {
-      name: "apps",
-      href: `/event-types/${id}?tabName=apps`,
-      icon: "grid-3x3",
-      //TODO: Handle proper translation with count handling
-      info: `${installedAppsNumber} apps, ${enabledAppsNumber} ${t("active")}`,
-    },
+
     {
       name: "workflows",
       href: `/event-types/${id}?tabName=workflows`,

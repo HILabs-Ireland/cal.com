@@ -66,17 +66,9 @@ class EventType {
   @ApiProperty({ type: String, nullable: true })
   eventName?: string | null;
 
-  @IsInt()
-  @ApiProperty()
-  price!: number;
-
   @IsOptional()
   @ApiPropertyOptional()
   recurringEvent?: any;
-
-  @IsString()
-  @ApiProperty()
-  currency!: string;
 
   @IsObject()
   @ApiProperty()
@@ -220,14 +212,6 @@ class GetBookingsDataEntry {
   @IsEnum(Status)
   @ApiProperty({ enum: Status, type: String })
   status!: Status;
-
-  @IsBoolean()
-  @ApiProperty({ type: Boolean })
-  paid!: boolean;
-
-  @IsArray()
-  @ApiProperty()
-  payment!: any[];
 
   @ValidateNested()
   @Type(() => Reference)

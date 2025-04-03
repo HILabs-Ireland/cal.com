@@ -1,7 +1,6 @@
 import { Prisma } from "@prisma/client";
 
 import { getLocationGroupedOptions } from "@calcom/app-store/server";
-import { getEventTypeAppData } from "@calcom/app-store/utils";
 import type { LocationObject } from "@calcom/core/location";
 import { getBookingFieldsWithSystemFields } from "@calcom/features/bookings/lib/getBookingFields";
 import { parseBookingLimit, parseDurationLimit, parseRecurringEvent, parseEventTypeColor } from "@calcom/lib";
@@ -59,8 +58,7 @@ export const getEventTypeById = async ({
 
   const { locations, metadata, ...restEventType } = rawEventType;
   const newMetadata = eventTypeMetaDataSchemaWithTypedApps.parse(metadata || {}) || {};
-  const apps = newMetadata?.apps || {};
-  const eventTypeWithParsedMetadata = { ...rawEventType, metadata: newMetadata };
+
   const eventTeamMembershipsWithUserProfile = [];
   for (const eventTeamMembership of rawEventType.team?.members || []) {
     eventTeamMembershipsWithUserProfile.push({
@@ -91,11 +89,6 @@ export const getEventTypeById = async ({
       })
     );
   }
-
-  newMetadata.apps = {
-    ...apps,
-    giphy: getEventTypeAppData(eventTypeWithParsedMetadata, "giphy", true),
-  };
 
   const parsedMetaData = newMetadata;
 

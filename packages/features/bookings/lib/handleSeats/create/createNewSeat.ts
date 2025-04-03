@@ -2,22 +2,17 @@
 import { cloneDeep } from "lodash";
 import { uuid } from "short-uuid";
 
-import EventManager from "@calcom/core/EventManager";
 import { sendScheduledSeatsEmailsAndSMS } from "@calcom/emails";
-import { refreshCredentials } from "@calcom/features/bookings/lib/getAllCredentialsForUsersOnEvent/refreshCredentials";
 import {
   allowDisablingAttendeeConfirmationEmails,
   allowDisablingHostConfirmationEmails,
 } from "@calcom/features/ee/workflows/lib/allowDisablingStandardEmails";
 import { ErrorCode } from "@calcom/lib/errorCodes";
 import { HttpError } from "@calcom/lib/http-error";
-import { handlePayment } from "@calcom/lib/payment/handlePayment";
 import prisma from "@calcom/prisma";
 import { BookingStatus } from "@calcom/prisma/enums";
-import { eventTypeAppMetadataOptionalSchema } from "@calcom/prisma/zod-utils";
 
 import { findBookingQuery } from "../../handleNewBooking/findBookingQuery";
-import type { IEventTypePaymentCredentialType } from "../../handleNewBooking/types";
 import type { SeatedBooking, NewSeatedBookingObject, HandleSeatsResultBooking } from "../types";
 
 const createNewSeat = async (
@@ -32,7 +27,6 @@ const createNewSeat = async (
     eventType,
     additionalNotes,
     noEmail,
-    paymentAppData,
     allCredentials,
     organizerUser,
     fullName,
@@ -147,63 +141,11 @@ const createNewSeat = async (
       eventType.metadata
     );
   }
-  const credentials = await refreshCredentials(allCredentials);
-  const apps = eventTypeAppMetadataOptionalSchema.parse(eventType?.metadata?.apps);
-  const eventManager = new EventManager({ ...organizerUser, credentials }, apps);
-  await eventManager.updateCalendarAttendees(evt, seatedBooking);
 
   const foundBooking = await findBookingQuery(seatedBooking.id);
 
-  if (!Number.isNaN(paymentAppData.price) && paymentAppData.price > 0 && !!seatedBooking) {
-    const credentialPaymentAppCategories = await prisma.credential.findMany({
-      where: {
-        ...(paymentAppData.credentialId ? { id: paymentAppData.credentialId } : { userId: organizerUser.id }),
-        app: {
-          categories: {
-            hasSome: ["payment"],
-          },
-        },
-      },
-      select: {
-        key: true,
-        appId: true,
-        app: {
-          select: {
-            categories: true,
-            dirName: true,
-          },
-        },
-      },
-    });
-
-    const eventTypePaymentAppCredential = credentialPaymentAppCategories.find((credential) => {
-      return credential.appId === paymentAppData.appId;
-    });
-
-    if (!eventTypePaymentAppCredential) {
-      throw new HttpError({ statusCode: 400, message: ErrorCode.MissingPaymentCredential });
-    }
-    if (!eventTypePaymentAppCredential?.appId) {
-      throw new HttpError({ statusCode: 400, message: ErrorCode.MissingPaymentAppId });
-    }
-
-    const payment = await handlePayment({
-      evt,
-      selectedEventType: eventType,
-      paymentAppCredentials: eventTypePaymentAppCredential as IEventTypePaymentCredentialType,
-      booking: seatedBooking,
-      bookerName: fullName,
-      bookerEmail,
-      bookerPhoneNumber,
-    });
-
-    resultBooking = { ...foundBooking };
-    resultBooking["message"] = "Payment required";
-    resultBooking["paymentUid"] = payment?.uid;
-    resultBooking["id"] = payment?.id;
-  } else {
-    resultBooking = { ...foundBooking };
-  }
+  // eslint-disable-next-line prefer-const
+  resultBooking = { ...foundBooking };
 
   resultBooking["seatReferenceUid"] = evt.attendeeSeatId;
 

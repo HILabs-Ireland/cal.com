@@ -5,9 +5,8 @@ import { APP_NAME, WEBAPP_URL } from "@calcom/lib/constants";
 import { useCompatSearchParams } from "@calcom/lib/hooks/useCompatSearchParams";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { trpc } from "@calcom/trpc/react";
-import { Alert, Button, ButtonGroup, EmptyScreen, Icon, Label, showToast } from "@calcom/ui";
+import { Alert, Button, EmptyScreen, Icon, Label, showToast } from "@calcom/ui";
 
-import { UpgradeTip } from "../../../tips";
 import SkeletonLoaderTeamList from "./SkeletonloaderTeamList";
 import TeamList from "./TeamList";
 
@@ -84,7 +83,6 @@ export function TeamsListing() {
     {
       icon: <Icon name="video" className="h-5 w-5 text-purple-500" />,
       title: `Cal Video ${t("recordings_title")}`,
-      description: t("upgrade_to_access_recordings_description"),
     },
     {
       icon: <Icon name="eye-off" className="h-5 w-5 text-indigo-500" />,
@@ -121,50 +119,27 @@ export function TeamsListing() {
         </div>
       )}
 
-      <UpgradeTip
-        plan="team"
-        title={t("calcom_is_better_with_team", { appName: APP_NAME })}
-        description="add_your_team_members"
-        features={features}
-        background="/tips/teams"
-        buttons={
-          !user?.organizationId || user?.organization.isOrgAdmin ? (
-            <div className="space-y-2 rtl:space-x-reverse sm:space-x-2">
-              <ButtonGroup>
-                <Button color="primary" href={`${WEBAPP_URL}/settings/teams/new`}>
-                  {t("create_team")}
-                </Button>
-                <Button color="minimal" href="https://go.cal.com/teams-video" target="_blank">
-                  {t("learn_more")}
-                </Button>
-              </ButtonGroup>
-            </div>
-          ) : (
-            <p>{t("org_admins_can_create_new_teams")}</p>
-          )
-        }>
-        {teams.length > 0 ? (
-          <TeamList teams={teams} />
-        ) : (
-          <EmptyScreen
-            Icon="users"
-            headline={t("create_team_to_get_started")}
-            description={t("create_first_team_and_invite_others")}
-            buttonRaw={
-              <Button
-                color="secondary"
-                data-testid="create-team-btn"
-                disabled={!!isCreateTeamButtonDisabled}
-                tooltip={
-                  isCreateTeamButtonDisabled ? t("org_admins_can_create_new_teams") : t("create_new_team")
-                }
-                onClick={() => router.push(`${WEBAPP_URL}/settings/teams/new?returnTo=${WEBAPP_URL}/teams`)}>
-                {t(`create_new_team`)}
-              </Button>
-            }
-          />
-        )}
-      </UpgradeTip>
+      {teams.length > 0 ? (
+        <TeamList teams={teams} />
+      ) : (
+        <EmptyScreen
+          Icon="users"
+          headline={t("create_team_to_get_started")}
+          description={t("create_first_team_and_invite_others")}
+          buttonRaw={
+            <Button
+              color="secondary"
+              data-testid="create-team-btn"
+              disabled={!!isCreateTeamButtonDisabled}
+              tooltip={
+                isCreateTeamButtonDisabled ? t("org_admins_can_create_new_teams") : t("create_new_team")
+              }
+              onClick={() => router.push(`${WEBAPP_URL}/settings/teams/new?returnTo=${WEBAPP_URL}/teams`)}>
+              {t(`create_new_team`)}
+            </Button>
+          }
+        />
+      )}
     </>
   );
 }

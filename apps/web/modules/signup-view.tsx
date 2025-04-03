@@ -14,8 +14,6 @@ import { useForm, useFormContext } from "react-hook-form";
 import { Toaster } from "react-hot-toast";
 import { z } from "zod";
 
-import getStripe from "@calcom/app-store/stripepayment/lib/client";
-import { getPremiumPlanPriceValue } from "@calcom/app-store/stripepayment/lib/utils";
 import { getOrgUsernameFromEmail } from "@calcom/features/auth/signup/utils/getOrgUsernameFromEmail";
 import { getOrgFullOrigin } from "@calcom/features/ee/organizations/lib/orgDomains";
 import { classNames } from "@calcom/lib";
@@ -80,8 +78,6 @@ const FEATURES = [
 
 function UsernameField({
   username,
-  setPremium,
-  premium,
   setUsernameTaken,
   orgSlug,
   usernameTaken,
@@ -89,8 +85,6 @@ function UsernameField({
   ...props
 }: React.ComponentProps<typeof TextField> & {
   username: string;
-  setPremium: (value: boolean) => void;
-  premium: boolean;
   usernameTaken: boolean;
   orgSlug?: string;
   setUsernameTaken: (value: boolean) => void;
@@ -106,12 +100,10 @@ function UsernameField({
       // If the username can't be changed, there is no point in doing the username availability check
       if (disabled) return;
       if (!debouncedUsername) {
-        setPremium(false);
         setUsernameTaken(false);
         return;
       }
       fetchUsername(debouncedUsername, orgSlug ?? null).then(({ data }) => {
-        setPremium(data.premium);
         setUsernameTaken(!data.available);
       });
     }
@@ -135,15 +127,6 @@ function UsernameField({
               <div className="text-error flex items-center">
                 <Icon name="info" className="mr-1 inline-block h-4 w-4" />
                 <p>{t("already_in_use_error")}</p>
-              </div>
-            ) : premium ? (
-              <div data-testid="premium-username-warning" className="flex items-center">
-                <Icon name="star" className="mr-1 inline-block h-4 w-4" />
-                <p>
-                  {t("premium_username", {
-                    price: getPremiumPlanPriceValue(),
-                  })}
-                </p>
               </div>
             ) : null}
           </div>
@@ -169,7 +152,6 @@ export default function Signup({
   emailVerificationEnabled,
 }: SignupProps) {
   const isOrgInviteByLink = orgSlug && !prepopulateFormValues?.username;
-  const [premiumUsername, setPremiumUsername] = useState(false);
   const [usernameTaken, setUsernameTaken] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [displayEmailForm, setDisplayEmailForm] = useState(token);
@@ -203,21 +185,10 @@ export default function Signup({
   const loadingSubmitState = isSubmitSuccessful || isSubmitting;
   const displayBackButton = token ? false : displayEmailForm;
 
-  const handleErrorsAndStripe = async (resp: Response) => {
+  const handleErrors = async (resp: Response) => {
     if (!resp.ok) {
       const err = await resp.json();
-      if (err.checkoutSessionId) {
-        const stripe = await getStripe();
-        if (stripe) {
-          console.log("Redirecting to stripe checkout");
-          const { error } = await stripe.redirectToCheckout({
-            sessionId: err.checkoutSessionId,
-          });
-          console.warn(error.message);
-        }
-      } else {
-        throw new Error(err.message);
-      }
+      throw new Error(err.message);
     }
   };
 
@@ -237,7 +208,7 @@ export default function Signup({
       },
       method: "POST",
     })
-      .then(handleErrorsAndStripe)
+      .then(handleErrors)
       .then(async () => {
         if (process.env.NEXT_PUBLIC_GTM_ID)
           pushGTMEvent("create_account", { email: data.email, user: data.username, lang: data.language });
@@ -245,7 +216,6 @@ export default function Signup({
         telemetry.event(telemetryEventTypes.signup, collectPageParameters());
 
         const verifyOrGettingStarted = emailVerificationEnabled ? "auth/verify-email" : "getting-started";
-        const gettingStartedWithPlatform = "settings/platform/new";
 
         const constructCallBackIfUrlPresent = () => {
           if (isOrgInviteByLink) {
@@ -256,10 +226,6 @@ export default function Signup({
         };
 
         const constructCallBackIfUrlNotPresent = () => {
-          if (!!isPlatformUser) {
-            return `${WEBAPP_URL}/${gettingStartedWithPlatform}?from=signup`;
-          }
-
           return `${WEBAPP_URL}/${verifyOrGettingStarted}?from=signup`;
         };
 
@@ -379,12 +345,10 @@ export default function Signup({
                       orgSlug={orgSlug}
                       label={t("username")}
                       username={watch("username") || ""}
-                      premium={premiumUsername}
                       usernameTaken={usernameTaken}
                       disabled={!!orgSlug}
                       setUsernameTaken={(value) => setUsernameTaken(value)}
                       data-testid="signup-usernamefield"
-                      setPremium={(value) => setPremiumUsername(value)}
                       addOnLeading={
                         orgSlug
                           ? `${getOrgFullOrigin(orgSlug, { protocol: true }).replace(
@@ -450,9 +414,7 @@ export default function Signup({
                       isSubmitting ||
                       usernameTaken
                     }>
-                    {premiumUsername && !usernameTaken
-                      ? `${t("create_account")} (${getPremiumPlanPriceValue()})`
-                      : t("create_account")}
+                    {t("create_account")}
                   </Button>
                 </Form>
               </div>
@@ -467,7 +429,7 @@ export default function Signup({
                       loading={isGoogleLoading}
                       CustomStartIcon={
                         <img
-                          className={classNames("text-subtle  mr-2 h-4 w-4", premiumUsername && "opacity-50")}
+                          className={classNames("text-subtle  mr-2 h-4 w-4")}
                           src="/google-icon-colored.svg"
                           alt="Continue with Google Icon"
                         />

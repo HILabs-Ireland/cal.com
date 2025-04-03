@@ -157,9 +157,11 @@ test.describe("Teams - NonOrg", () => {
 
     await test.step("Can create team with same name", async () => {
       // Click text=Create Team
-      await page.locator("text=Create Team").click();
-      await page.waitForURL("/settings/teams/new");
+      await page.locator("text=Create a new team").click();
+      const url = await page.url();
+      await page.waitForURL((url) => url.href.includes("/settings/teams/new"));
       // Fill input[name="name"]
+
       await page.locator('input[name="name"]').fill(uniqueName);
       // Click text=Continue
       await page.click("[type=submit]");
@@ -295,5 +297,6 @@ test.describe("Teams - NonOrg", () => {
     await confirmReschedule(page);
     await expect(page.locator("[data-testid=success-page]")).toBeVisible();
   });
+
   todo("Reschedule a Round Robin EventType booking");
 });

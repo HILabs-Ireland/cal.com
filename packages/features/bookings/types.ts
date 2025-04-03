@@ -38,8 +38,6 @@ export type BookerEvent = Pick<
   | "metadata"
   | "isDynamic"
   | "requiresConfirmation"
-  | "price"
-  | "currency"
   | "lockTimeZoneToggleOnBookingPage"
   | "schedule"
   | "seatsPerTimeSlot"
@@ -58,8 +56,6 @@ export type BookerEvent = Pick<
 
 export type ValidationErrors<T extends object> = { key: FieldPath<T>; error: ErrorOption }[];
 
-export type EventPrice = { currency: string; price: number; displayAlternateSymbol?: boolean };
-
 export enum EventDetailBlocks {
   // Includes duration select when event has multiple durations.
   DURATION,
@@ -67,7 +63,6 @@ export enum EventDetailBlocks {
   REQUIRES_CONFIRMATION,
   // Includes input to select # of occurences.
   OCCURENCES,
-  PRICE,
 }
 
 export type { BookingCreateBody };
@@ -83,12 +78,4 @@ export type RecurringBookingCreateBody = BookingCreateBody & {
 
 export type BookingResponse = Awaited<
   ReturnType<typeof import("@calcom/features/bookings/lib/handleNewBooking").default>
->;
-
-export type InstantBookingResponse = Awaited<
-  ReturnType<typeof import("@calcom/features/instant-meeting/handleInstantMeeting").default>
->;
-
-export type MarkNoShowResponse = Awaited<
-  ReturnType<typeof import("@calcom/features/handleMarkNoShow").default>
 >;

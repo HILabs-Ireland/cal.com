@@ -94,11 +94,7 @@ export default function Bookings(props: { calUsername: string; calEmail: string 
               eventSlug={eventTypeSlug}
               onCreateBookingSuccess={(data) => {
                 setBookingTitle(data.data.title ?? "");
-                if (data.data.paymentRequired) {
-                  router.push(`/payment/${data.data.paymentUid}`);
-                } else {
-                  router.push(`/${data.data.uid}`);
-                }
+                router.push(`/${data.data.uid}`);
               }}
               metadata={{ CustomKey: "CustomValue" }}
               duration={eventTypeDuration}

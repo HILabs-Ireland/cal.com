@@ -183,14 +183,6 @@ export class EventTypeOutput {
   @IsOptional()
   scheduleId?: number | null;
 
-  @IsNumber()
-  @ApiHideProperty()
-  price!: number;
-
-  @IsString()
-  @ApiHideProperty()
-  currency!: string;
-
   @IsInt()
   @ApiHideProperty()
   slotInterval!: number | null;

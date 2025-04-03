@@ -29,17 +29,6 @@ export const OrganizationCreationEmail = (
         alt=""
       />
       <p
-        style={{
-          fontWeight: 400,
-          lineHeight: "24px",
-          marginBottom: "32px",
-          marginTop: "32px",
-          lineHeightStep: "24px",
-        }}>
-        You have been added as an owner of the organization. To publish your new organization, visit{" "}
-        <a href={`${WEBAPP_URL}/upgrade`}>{WEBAPP_URL}/upgrade</a>
-      </p>
-      <p
         data-testid="organization-link-info"
         style={{
           fontWeight: 400,

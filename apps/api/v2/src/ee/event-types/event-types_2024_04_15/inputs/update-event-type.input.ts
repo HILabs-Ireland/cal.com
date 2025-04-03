@@ -438,14 +438,6 @@ export class UpdateEventTypeInput_2024_04_15 {
   // @IsOptional()
   // scheduleId?: number;
 
-  // @IsInt()
-  // @IsOptional()
-  // price?: number;
-
-  // @IsString()
-  // @IsOptional()
-  // currency?: string;
-
   @IsInt()
   @Min(0)
   @IsOptional()

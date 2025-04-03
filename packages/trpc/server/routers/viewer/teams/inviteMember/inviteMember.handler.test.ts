@@ -171,9 +171,6 @@ describe("inviteMemberHandler", () => {
           autoAcceptEmailDomain: null,
         });
 
-        // TODO: Fix this test
-        // expect(paymentsMock.updateQuantitySubscriptionFromStripe).toHaveBeenCalledWith(input.teamId);
-
         expect(inviteMemberUtilsMock.handleExistingUsersInvites).not.toHaveBeenCalled();
 
         expect(inviteMemberUtilsMock.getUniqueInvitationsOrThrowIfEmpty).toHaveBeenCalledWith([
@@ -283,9 +280,6 @@ describe("inviteMemberHandler", () => {
           autoAcceptEmailDomain: null,
           isOrg: false,
         });
-
-        // TODO: Fix this test
-        // expect(paymentsMock.updateQuantitySubscriptionFromStripe).toHaveBeenCalledWith(input.teamId);
 
         expect(inviteMemberUtilsMock.handleExistingUsersInvites).toHaveBeenCalledWith({
           invitableExistingUsers: retValueOfFindUsersWithInviteStatus,

@@ -60,7 +60,6 @@ export const IS_SELF_HOSTED = !(
   new URL(WEBAPP_URL).hostname.endsWith(".cal.dev") || new URL(WEBAPP_URL).hostname.endsWith(".cal.com")
 );
 export const EMBED_LIB_URL = process.env.NEXT_PUBLIC_EMBED_LIB_URL || `${WEBAPP_URL}/embed/embed.js`;
-export const TRIAL_LIMIT_DAYS = 14;
 
 export const HOSTED_CAL_FEATURES = process.env.NEXT_PUBLIC_HOSTED_CAL_FEATURES || !IS_SELF_HOSTED;
 
@@ -92,7 +91,6 @@ export const SEO_IMG_DEFAULT = `${CAL_URL}/og-image.png`;
 // as well, otherwise the URL won't be valid.
 export const SEO_IMG_OGIMG = `${CAL_URL}/_next/image?w=1200&q=100&url=`;
 export const SEO_IMG_OGIMG_VIDEO = `${CAL_URL}/video-og-image.png`;
-export const IS_STRIPE_ENABLED = !!process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY;
 
 export const FULL_NAME_LENGTH_MAX_LIMIT = 50;
 export const MINUTES_TO_BOOK = process.env.NEXT_PUBLIC_MINUTES_TO_BOOK || "5";
@@ -103,7 +101,6 @@ export const RESERVED_SUBDOMAINS = JSON.parse(`[${process.env.RESERVED_SUBDOMAIN
 
 export const ORGANIZATION_SELF_SERVE_MIN_SEATS =
   process.env.NEXT_PUBLIC_ORGANIZATIONS_MIN_SELF_SERVE_SEATS || 30;
-export const ORGANIZATION_SELF_SERVE_PRICE = process.env.NEXT_PUBLIC_ORGANIZATIONS_SELF_SERVE_PRICE || 3700;
 
 export const ORGANIZATION_MIN_SEATS = 30;
 
@@ -131,8 +128,6 @@ export const AB_TEST_BUCKET_PROBABILITY = defaultOnNaN(
   parseInt(process.env.AB_TEST_BUCKET_PROBABILITY ?? "10", 10),
   10
 );
-
-export const IS_PREMIUM_USERNAME_ENABLED = IS_CALCOM || (process.env.NEXT_PUBLIC_IS_E2E && IS_STRIPE_ENABLED);
 
 // Max number of invites to join a team/org that can be sent at once
 export const MAX_NB_INVITES = 100;

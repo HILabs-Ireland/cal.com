@@ -8,18 +8,8 @@ export type InvalidAppCredentialBannersProps = {
   data: RouterOutputs["viewer"]["getUserTopBanners"]["invalidAppCredentialBanners"];
 };
 
-export function InvalidAppCredentialBanners({ data }: InvalidAppCredentialBannersProps) {
-  if (data.length === 0) {
-    return null; // No need to show banner if the array is empty
-  }
-
-  return (
-    <div>
-      {data.map((app) => (
-        <InvalidAppCredentialBanner key={app.slug} name={app.name} slug={app.slug} />
-      ))}
-    </div>
-  );
+export function InvalidAppCredentialBanners() {
+  return null;
 }
 
 export type InvalidAppCredentialBannerProps = {

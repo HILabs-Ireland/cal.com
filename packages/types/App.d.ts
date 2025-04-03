@@ -30,13 +30,6 @@ type DynamicLinkBasedEventLocation = {
 
 export type EventLocationTypeFromAppMeta = StaticLinkBasedEventLocation | DynamicLinkBasedEventLocation;
 
-type PaidAppData = {
-  priceInUsd: number;
-  priceId: string;
-  trial?: number;
-  mode?: "subscription" | "one_time";
-};
-
 type AppData = {
   /**
    * TODO: We must assert that if `location` is set in App config.json, then it must have atleast Messaging or Conferencing as a category.
@@ -61,7 +54,6 @@ export interface App {
   type:
     | `${string}_calendar`
     | `${string}_messaging`
-    | `${string}_payment`
     | `${string}_video`
     | `${string}_other`
     | `${string}_automation`
@@ -80,15 +72,7 @@ export interface App {
   /** A brief description, usually found in the app's package.json */
   description: string;
   /** TODO determine if we should use this instead of category */
-  variant:
-    | "calendar"
-    | "payment"
-    | "conferencing"
-    | "video"
-    | "other"
-    | "other_calendar"
-    | "automation"
-    | "crm";
+  variant: "calendar" | "conferencing" | "video" | "other" | "other_calendar" | "automation" | "crm";
   /** The slug for the app store public page inside `/apps/[slug] */
   slug: string;
 
@@ -129,10 +113,6 @@ export interface App {
    * Used to show Connect/Disconnect buttons in App Store
    * */
   isGlobal?: boolean;
-  /**
-   * For apps that are accessible on an alternate URL(which is simpler and shorter), this can be set.
-   * e.g. Routing Forms App is available as /routing-forms in addition to regular /apps/routing-forms.
-   */
   simplePath?: string;
   /** A contact email, mainly to ask for support */
   email: string;
@@ -140,15 +120,8 @@ export interface App {
   key?: Prisma.JsonValue;
   /** If not free, what kind of fees does the app have */
   feeType?: "monthly" | "usage-based" | "one-time" | "free";
-  /** 0 = free. if type="usage-based" it's the price per booking */
-  price?: number;
   licenseRequired?: boolean;
-  teamsPlanRequired?: {
-    upgradeUrl: string;
-  };
   appData?: AppData;
-  /** Represents paid app data, such as price, trials, etc */
-  paid?: PaidAppData;
 
   /**
    * @deprecated

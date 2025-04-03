@@ -489,7 +489,6 @@ export default function Bookings(props: { calUsername: string; calEmail: string 
                     container: "border border-purple-200 bg-purple-100 rounded-lg",
                   },
                   experimentalAlert: "border border-red-300 bg-red-50 rounded-lg text-red-900 shadow-sm",
-                  paymentAlert: "border border-purple-300 bg-purple-100 rounded-lg text-purple-900 shadow-md",
                 },
                 eventLimitsTab: {
                   bufferAndNoticeSection: {
@@ -724,7 +723,7 @@ export default function Bookings(props: { calUsername: string; calEmail: string 
               }}
               allowDelete={true}
               id={eventTypeId}
-              tabs={["setup", "limits", "recurring", "advanced", "availability", "team", "payments"]}
+              tabs={["setup", "limits", "recurring", "advanced", "availability", "team"]}
               onSuccess={(eventType) => {
                 setEventTypeId(null);
                 refetch();

@@ -31,7 +31,6 @@ export type NewSeatedBookingObject = {
   additionalNotes: AdditionalNotes;
   reqAppsStatus: ReqAppsStatus;
   attendeeLanguage: string | null;
-  paymentAppData: PaymentAppData;
   fullName: ReturnType<typeof getFullName>;
   smsReminderNumber: SmsReminderNumber;
   eventTypeInfo: EventTypeInfo;
@@ -67,9 +66,7 @@ export type HandleSeatsResultBooking =
   | (Partial<Booking> & {
       appsStatus?: AppsStatus[];
       seatReferenceUid?: string;
-      paymentUid?: string;
       message?: string;
-      paymentId?: number;
     })
   | null;
 
