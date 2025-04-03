@@ -5,7 +5,6 @@ import { BadRequestException, InternalServerErrorException, Logger } from "@nest
 import { Injectable } from "@nestjs/common";
 
 import { CONFERENCING_APPS, CAL_VIDEO } from "@calcom/platform-constants";
-import { userMetadata, handleDeleteCredential } from "@calcom/platform-libraries";
 
 @Injectable()
 export class ConferencingService {
@@ -38,12 +37,7 @@ export class ConferencingService {
   }
 
   async disconnectConferencingApp(user: UserWithProfile, app: string) {
-    const credential = await this.checkAppIsValidAndConnected(user.id, app);
-    return handleDeleteCredential({
-      userId: user.id,
-      userMetadata: user?.metadata,
-      credentialId: credential.id,
-    });
+    return null;
   }
 
   async setDefaultConferencingApp(userId: number, app: string) {

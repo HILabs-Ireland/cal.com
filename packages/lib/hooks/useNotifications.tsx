@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 import { useLocale } from "@calcom/lib/hooks/useLocale";
-import { trpc } from "@calcom/trpc/react";
 import { showToast } from "@calcom/ui";
 
 export enum ButtonState {
@@ -15,31 +14,6 @@ export const useNotifications = () => {
   const [buttonToShow, setButtonToShow] = useState<ButtonState>(ButtonState.NONE);
   const [isLoading, setIsLoading] = useState(false);
   const { t } = useLocale();
-
-  const { mutate: addSubscription } = trpc.viewer.addNotificationsSubscription.useMutation({
-    onSuccess: () => {
-      setButtonToShow(ButtonState.DISABLE);
-      showToast(t("browser_notifications_turned_on"), "success");
-    },
-    onError: (error) => {
-      showToast(`Error: ${error.message}`, "error");
-    },
-    onSettled: () => {
-      setIsLoading(false);
-    },
-  });
-  const { mutate: removeSubscription } = trpc.viewer.removeNotificationsSubscription.useMutation({
-    onSuccess: () => {
-      setButtonToShow(ButtonState.ALLOW);
-      showToast(t("browser_notifications_turned_off"), "success");
-    },
-    onError: (error) => {
-      showToast(`Error: ${error.message}`, "error");
-    },
-    onSettled: () => {
-      setIsLoading(false);
-    },
-  });
 
   useEffect(() => {
     const decideButtonToShow = async () => {
@@ -112,15 +86,6 @@ export const useNotifications = () => {
       showToast(t("browser_notifications_not_supported"), "error");
       return;
     }
-
-    addSubscription(
-      { subscription: JSON.stringify(subscription) },
-      {
-        onError: async () => {
-          await subscription.unsubscribe();
-        },
-      }
-    );
   };
 
   const disableNotifications = async () => {
@@ -135,14 +100,6 @@ export const useNotifications = () => {
       // This will not happen ideally as the button will not be shown if the subscription is not present
       return;
     }
-    removeSubscription(
-      { subscription: JSON.stringify(subscription) },
-      {
-        onSuccess: async () => {
-          await subscription.unsubscribe();
-        },
-      }
-    );
   };
 
   return {

@@ -1,28 +1,20 @@
 import authedProcedure from "../../procedures/authedProcedure";
 import { importHandler, router } from "../../trpc";
-import { ZAddNotificationsSubscriptionInputSchema } from "./addNotificationsSubscription.schema";
 import { ZAddSecondaryEmailInputSchema } from "./addSecondaryEmail.schema";
-import { ZAppByIdInputSchema } from "./appById.schema";
-import { ZAppCredentialsByTypeInputSchema } from "./appCredentialsByType.schema";
 import { ZConnectAndJoinInputSchema } from "./connectAndJoin.schema";
-import { ZConnectedCalendarsInputSchema } from "./connectedCalendars.schema";
-import { ZDeleteCredentialInputSchema } from "./deleteCredential.schema";
 import { ZDeleteMeInputSchema } from "./deleteMe.schema";
 import { ZEventTypeOrderInputSchema } from "./eventTypeOrder.schema";
 import { ZIntegrationsInputSchema } from "./integrations.schema";
 import { ZLocationOptionsInputSchema } from "./locationOptions.schema";
 import { ZNoShowInputSchema } from "./markNoShow.schema";
-import { ZOutOfOfficeInputSchema, ZOutOfOfficeDelete } from "./outOfOffice.schema";
 import { me } from "./procedures/me";
 import { myStats } from "./procedures/myStats";
 import { platformMe } from "./procedures/platformMe";
 import { teamsAndUserProfilesQuery } from "./procedures/teamsAndUserProfilesQuery";
 import { ZRemoveNotificationsSubscriptionInputSchema } from "./removeNotificationsSubscription.schema";
 import { ZRoutingFormOrderInputSchema } from "./routingFormOrder.schema";
-import { ZSetDestinationCalendarInputSchema } from "./setDestinationCalendar.schema";
 import { ZSubmitFeedbackInputSchema } from "./submitFeedback.schema";
 import { ZUpdateProfileInputSchema } from "./updateProfile.schema";
-import { ZUpdateUserDefaultConferencingAppInputSchema } from "./updateUserDefaultConferencingApp.schema";
 import { ZWorkflowOrderInputSchema } from "./workflowOrder.schema";
 
 const NAMESPACE = "loggedInViewer";
@@ -36,31 +28,20 @@ type AppsRouterHandlerCache = {
   shouldVerifyEmail?: typeof import("./shouldVerifyEmail.handler").shouldVerifyEmailHandler;
   deleteMe?: typeof import("./deleteMe.handler").deleteMeHandler;
   deleteMeWithoutPassword?: typeof import("./deleteMeWithoutPassword.handler").deleteMeWithoutPasswordHandler;
-  connectedCalendars?: typeof import("./connectedCalendars.handler").connectedCalendarsHandler;
-  setDestinationCalendar?: typeof import("./setDestinationCalendar.handler").setDestinationCalendarHandler;
   integrations?: typeof import("./integrations.handler").integrationsHandler;
-  appById?: typeof import("./appById.handler").appByIdHandler;
-  appCredentialsByType?: typeof import("./appCredentialsByType.handler").appCredentialsByTypeHandler;
   updateProfile?: typeof import("./updateProfile.handler").updateProfileHandler;
   eventTypeOrder?: typeof import("./eventTypeOrder.handler").eventTypeOrderHandler;
   routingFormOrder?: typeof import("./routingFormOrder.handler").routingFormOrderHandler;
   workflowOrder?: typeof import("./workflowOrder.handler").workflowOrderHandler;
   submitFeedback?: typeof import("./submitFeedback.handler").submitFeedbackHandler;
   locationOptions?: typeof import("./locationOptions.handler").locationOptionsHandler;
-  deleteCredential?: typeof import("./deleteCredential.handler").deleteCredentialHandler;
   bookingUnconfirmedCount?: typeof import("./bookingUnconfirmedCount.handler").bookingUnconfirmedCountHandler;
-  getUsersDefaultConferencingApp?: typeof import("./getUsersDefaultConferencingApp.handler").getUsersDefaultConferencingAppHandler;
-  updateUserDefaultConferencingApp?: typeof import("./updateUserDefaultConferencingApp.handler").updateUserDefaultConferencingAppHandler;
   teamsAndUserProfilesQuery?: typeof import("./teamsAndUserProfilesQuery.handler").teamsAndUserProfilesQuery;
   getUserTopBanners?: typeof import("./getUserTopBanners.handler").getUserTopBannersHandler;
   connectAndJoin?: typeof import("./connectAndJoin.handler").Handler;
-  outOfOfficeCreateOrUpdate?: typeof import("./outOfOffice.handler").outOfOfficeCreateOrUpdate;
-  outOfOfficeEntriesList?: typeof import("./outOfOffice.handler").outOfOfficeEntriesList;
-  outOfOfficeEntryDelete?: typeof import("./outOfOffice.handler").outOfOfficeEntryDelete;
   addSecondaryEmail?: typeof import("./addSecondaryEmail.handler").addSecondaryEmailHandler;
   getTravelSchedules?: typeof import("./getTravelSchedules.handler").getTravelSchedulesHandler;
   outOfOfficeReasonList?: typeof import("./outOfOfficeReasons.handler").outOfOfficeReasonList;
-  addNotificationsSubscription?: typeof import("./addNotificationsSubscription.handler").addNotificationsSubscriptionHandler;
   removeNotificationsSubscription?: typeof import("./removeNotificationsSubscription.handler").removeNotificationsSubscriptionHandler;
   markNoShow?: typeof import("./markNoShow.handler").markNoShow;
 };
@@ -100,38 +81,6 @@ export const loggedInViewerRouter = router({
     return UNSTABLE_HANDLER_CACHE.deleteMeWithoutPassword({ ctx });
   }),
 
-  connectedCalendars: authedProcedure.input(ZConnectedCalendarsInputSchema).query(async ({ ctx, input }) => {
-    if (!UNSTABLE_HANDLER_CACHE.connectedCalendars) {
-      UNSTABLE_HANDLER_CACHE.connectedCalendars = (
-        await import("./connectedCalendars.handler")
-      ).connectedCalendarsHandler;
-    }
-
-    // Unreachable code but required for type safety
-    if (!UNSTABLE_HANDLER_CACHE.connectedCalendars) {
-      throw new Error("Failed to load handler");
-    }
-
-    return UNSTABLE_HANDLER_CACHE.connectedCalendars({ ctx, input });
-  }),
-
-  setDestinationCalendar: authedProcedure
-    .input(ZSetDestinationCalendarInputSchema)
-    .mutation(async ({ ctx, input }) => {
-      if (!UNSTABLE_HANDLER_CACHE.setDestinationCalendar) {
-        UNSTABLE_HANDLER_CACHE.setDestinationCalendar = (
-          await import("./setDestinationCalendar.handler")
-        ).setDestinationCalendarHandler;
-      }
-
-      // Unreachable code but required for type safety
-      if (!UNSTABLE_HANDLER_CACHE.setDestinationCalendar) {
-        throw new Error("Failed to load handler");
-      }
-
-      return UNSTABLE_HANDLER_CACHE.setDestinationCalendar({ ctx, input });
-    }),
-
   integrations: authedProcedure.input(ZIntegrationsInputSchema).query(async ({ ctx, input }) => {
     if (!UNSTABLE_HANDLER_CACHE.integrations) {
       UNSTABLE_HANDLER_CACHE.integrations = (await import("./integrations.handler")).integrationsHandler;
@@ -144,36 +93,6 @@ export const loggedInViewerRouter = router({
 
     return UNSTABLE_HANDLER_CACHE.integrations({ ctx, input });
   }),
-
-  appById: authedProcedure.input(ZAppByIdInputSchema).query(async ({ ctx, input }) => {
-    if (!UNSTABLE_HANDLER_CACHE.appById) {
-      UNSTABLE_HANDLER_CACHE.appById = (await import("./appById.handler")).appByIdHandler;
-    }
-
-    // Unreachable code but required for type safety
-    if (!UNSTABLE_HANDLER_CACHE.appById) {
-      throw new Error("Failed to load handler");
-    }
-
-    return UNSTABLE_HANDLER_CACHE.appById({ ctx, input });
-  }),
-
-  appCredentialsByType: authedProcedure
-    .input(ZAppCredentialsByTypeInputSchema)
-    .query(async ({ ctx, input }) => {
-      if (!UNSTABLE_HANDLER_CACHE.appCredentialsByType) {
-        UNSTABLE_HANDLER_CACHE.appCredentialsByType = (
-          await import("./appCredentialsByType.handler")
-        ).appCredentialsByTypeHandler;
-      }
-
-      // Unreachable code but required for type safety
-      if (!UNSTABLE_HANDLER_CACHE.appCredentialsByType) {
-        throw new Error("Failed to load handler");
-      }
-
-      return UNSTABLE_HANDLER_CACHE.appCredentialsByType({ ctx, input });
-    }),
 
   updateProfile: authedProcedure.input(ZUpdateProfileInputSchema).mutation(async ({ ctx, input }) => {
     if (!UNSTABLE_HANDLER_CACHE.updateProfile) {
@@ -270,21 +189,6 @@ export const loggedInViewerRouter = router({
     return UNSTABLE_HANDLER_CACHE.locationOptions({ ctx, input });
   }),
 
-  deleteCredential: authedProcedure.input(ZDeleteCredentialInputSchema).mutation(async ({ ctx, input }) => {
-    if (!UNSTABLE_HANDLER_CACHE.deleteCredential) {
-      UNSTABLE_HANDLER_CACHE.deleteCredential = (
-        await import("./deleteCredential.handler")
-      ).deleteCredentialHandler;
-    }
-
-    // Unreachable code but required for type safety
-    if (!UNSTABLE_HANDLER_CACHE.deleteCredential) {
-      throw new Error("Failed to load handler");
-    }
-
-    return UNSTABLE_HANDLER_CACHE.deleteCredential({ ctx, input });
-  }),
-
   bookingUnconfirmedCount: authedProcedure.query(async ({ ctx }) => {
     if (!UNSTABLE_HANDLER_CACHE.bookingUnconfirmedCount) {
       UNSTABLE_HANDLER_CACHE.bookingUnconfirmedCount = (
@@ -315,37 +219,6 @@ export const loggedInViewerRouter = router({
     return UNSTABLE_HANDLER_CACHE.getUserTopBanners({ ctx });
   }),
 
-  getUsersDefaultConferencingApp: authedProcedure.query(async ({ ctx }) => {
-    if (!UNSTABLE_HANDLER_CACHE.getUsersDefaultConferencingApp) {
-      UNSTABLE_HANDLER_CACHE.getUsersDefaultConferencingApp = (
-        await import("./getUsersDefaultConferencingApp.handler")
-      ).getUsersDefaultConferencingAppHandler;
-    }
-
-    // Unreachable code but required for type safety
-    if (!UNSTABLE_HANDLER_CACHE.getUsersDefaultConferencingApp) {
-      throw new Error("Failed to load handler");
-    }
-
-    return UNSTABLE_HANDLER_CACHE.getUsersDefaultConferencingApp({ ctx });
-  }),
-
-  updateUserDefaultConferencingApp: authedProcedure
-    .input(ZUpdateUserDefaultConferencingAppInputSchema)
-    .mutation(async ({ ctx, input }) => {
-      if (!UNSTABLE_HANDLER_CACHE.updateUserDefaultConferencingApp) {
-        UNSTABLE_HANDLER_CACHE.updateUserDefaultConferencingApp = (
-          await import("./updateUserDefaultConferencingApp.handler")
-        ).updateUserDefaultConferencingAppHandler;
-      }
-
-      // Unreachable code but required for type safety
-      if (!UNSTABLE_HANDLER_CACHE.updateUserDefaultConferencingApp) {
-        throw new Error("Failed to load handler");
-      }
-
-      return UNSTABLE_HANDLER_CACHE.updateUserDefaultConferencingApp({ ctx, input });
-    }),
   shouldVerifyEmail: authedProcedure.query(async ({ ctx }) => {
     if (!UNSTABLE_HANDLER_CACHE.shouldVerifyEmail) {
       UNSTABLE_HANDLER_CACHE.shouldVerifyEmail = (
@@ -372,50 +245,6 @@ export const loggedInViewerRouter = router({
     }
 
     return UNSTABLE_HANDLER_CACHE.connectAndJoin({ ctx, input });
-  }),
-  outOfOfficeCreateOrUpdate: authedProcedure
-    .input(ZOutOfOfficeInputSchema)
-    .mutation(async ({ ctx, input }) => {
-      if (!UNSTABLE_HANDLER_CACHE.outOfOfficeCreateOrUpdate) {
-        UNSTABLE_HANDLER_CACHE.outOfOfficeCreateOrUpdate = (
-          await import("./outOfOffice.handler")
-        ).outOfOfficeCreateOrUpdate;
-      }
-
-      // Unreachable code but required for type safety
-      if (!UNSTABLE_HANDLER_CACHE.outOfOfficeCreateOrUpdate) {
-        throw new Error("Failed to load handler");
-      }
-
-      return UNSTABLE_HANDLER_CACHE.outOfOfficeCreateOrUpdate({ ctx, input });
-    }),
-  outOfOfficeEntriesList: authedProcedure.query(async ({ ctx }) => {
-    if (!UNSTABLE_HANDLER_CACHE.outOfOfficeEntriesList) {
-      UNSTABLE_HANDLER_CACHE.outOfOfficeEntriesList = (
-        await import("./outOfOffice.handler")
-      ).outOfOfficeEntriesList;
-    }
-
-    // Unreachable code but required for type safety
-    if (!UNSTABLE_HANDLER_CACHE.outOfOfficeEntriesList) {
-      throw new Error("Failed to load handler");
-    }
-
-    return UNSTABLE_HANDLER_CACHE.outOfOfficeEntriesList({ ctx });
-  }),
-  outOfOfficeEntryDelete: authedProcedure.input(ZOutOfOfficeDelete).mutation(async ({ ctx, input }) => {
-    if (!UNSTABLE_HANDLER_CACHE.outOfOfficeEntryDelete) {
-      UNSTABLE_HANDLER_CACHE.outOfOfficeEntryDelete = (
-        await import("./outOfOffice.handler")
-      ).outOfOfficeEntryDelete;
-    }
-
-    // Unreachable code but required for type safety
-    if (!UNSTABLE_HANDLER_CACHE.outOfOfficeEntryDelete) {
-      throw new Error("Failed to load handler");
-    }
-
-    return UNSTABLE_HANDLER_CACHE.outOfOfficeEntryDelete({ ctx, input });
   }),
   addSecondaryEmail: authedProcedure.input(ZAddSecondaryEmailInputSchema).mutation(async ({ ctx, input }) => {
     if (!UNSTABLE_HANDLER_CACHE.addSecondaryEmail) {
@@ -459,22 +288,7 @@ export const loggedInViewerRouter = router({
 
     return UNSTABLE_HANDLER_CACHE.outOfOfficeReasonList();
   }),
-  addNotificationsSubscription: authedProcedure
-    .input(ZAddNotificationsSubscriptionInputSchema)
-    .mutation(async ({ ctx, input }) => {
-      if (!UNSTABLE_HANDLER_CACHE.addNotificationsSubscription) {
-        UNSTABLE_HANDLER_CACHE.addNotificationsSubscription = (
-          await import("./addNotificationsSubscription.handler")
-        ).addNotificationsSubscriptionHandler;
-      }
 
-      // Unreachable code but required for type safety
-      if (!UNSTABLE_HANDLER_CACHE.addNotificationsSubscription) {
-        throw new Error("Failed to load handler");
-      }
-
-      return UNSTABLE_HANDLER_CACHE.addNotificationsSubscription({ ctx, input });
-    }),
   removeNotificationsSubscription: authedProcedure
     .input(ZRemoveNotificationsSubscriptionInputSchema)
     .mutation(async ({ ctx, input }) => {

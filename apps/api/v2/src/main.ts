@@ -9,7 +9,6 @@ import {
   PathItemObject,
   PathsObject,
   OperationObject,
-  TagObject,
 } from "@nestjs/swagger/dist/interfaces/open-api-spec.interface";
 import "dotenv/config";
 import * as fs from "fs";

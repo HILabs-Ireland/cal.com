@@ -13,26 +13,14 @@ import {
 import { useRouter } from "next/navigation";
 import { useMemo } from "react";
 
-import { appStoreMetadata } from "@calcom/app-store/appStoreMetaData";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { isMac } from "@calcom/lib/isMac";
 import { trpc } from "@calcom/trpc/react";
-import type { RouterOutputs } from "@calcom/trpc/react";
 import { Icon, Tooltip } from "@calcom/ui";
 
 type shortcutArrayType = {
   shortcuts?: string[];
 };
-
-type EventTypeGroups = RouterOutputs["viewer"]["eventTypes"]["getByViewer"]["eventTypeGroups"];
-type EventTypeGroup = EventTypeGroups[number];
-
-const getApps = Object.values(appStoreMetadata).map(({ name, slug }) => ({
-  id: slug,
-  name,
-  section: "Installable Apps",
-  keywords: `app ${name}`,
-}));
 
 const useEventTypesAction = () => {
   const router = useRouter();
@@ -73,10 +61,6 @@ export const KBarRoot = ({ children }: { children: React.ReactNode }) => {
   // quick nested actions would be extremely useful
 
   const actions = useMemo(() => {
-    const appStoreActions = getApps.map((item) => ({
-      ...item,
-      perform: () => router.push(`/apps/${item.id}`),
-    }));
     return [
       {
         id: "workflows",
@@ -229,7 +213,6 @@ export const KBarRoot = ({ children }: { children: React.ReactNode }) => {
         keywords: "api keys",
         perform: () => router.push("/settings/developer/api-keys"),
       },
-      ...appStoreActions,
     ];
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

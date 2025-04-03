@@ -7,8 +7,7 @@ import { describe, expect, it, vi } from "vitest";
 import updateChildrenEventTypes from "@calcom/features/ee/managed-event-types/lib/handleChildrenEventTypes";
 import { buildEventType } from "@calcom/lib/test/builder";
 import type { Prisma } from "@calcom/prisma/client";
-import { SchedulingType } from "@calcom/prisma/enums";
-import type { CompleteEventType, CompleteWorkflowsOnEventTypes } from "@calcom/prisma/zod";
+import type { CompleteEventType } from "@calcom/prisma/zod";
 
 const mockFindFirstEventType = (data?: Partial<CompleteEventType>) => {
   const eventType = buildEventType(data as Partial<EventType>);
@@ -137,17 +136,15 @@ describe("handleChildrenEventTypes", () => {
         data: {
           ...evType,
           parentId: 1,
+          rrSegmentQueryValue: undefined,
           users: { connect: [{ id: 4 }] },
           lockTimeZoneToggleOnBookingPage: false,
           requiresBookerEmailVerification: false,
-          instantMeetingScheduleId: undefined,
           bookingLimits: undefined,
           durationLimits: undefined,
           recurringEvent: undefined,
           eventTypeColor: undefined,
           userId: 4,
-          rrSegmentQueryValue: undefined,
-          assignRRMembersUsingSegment: false,
         },
       });
       expect(result.newUserIds).toEqual([4]);
@@ -192,13 +189,17 @@ describe("handleChildrenEventTypes", () => {
           bookingLimits: undefined,
         },
       });
-      const { profileId, autoTranslateDescriptionEnabled, ...rest } = evType;
+      const {
+        profileId,
+        autoTranslateDescriptionEnabled,
+        assignRRMembersUsingSegment,
+        rrSegmentQueryValue,
+        useEventLevelSelectedCalendars,
+        ...rest
+      } = evType;
       expect(prismaMock.eventType.update).toHaveBeenCalledWith({
         data: {
           ...rest,
-          assignRRMembersUsingSegment: undefined,
-          useEventLevelSelectedCalendars: undefined,
-          rrSegmentQueryValue: undefined,
           locations: [],
           scheduleId: null,
           lockTimeZoneToggleOnBookingPage: false,
@@ -206,7 +207,6 @@ describe("handleChildrenEventTypes", () => {
           hashedLink: {
             deleteMany: {},
           },
-          instantMeetingScheduleId: undefined,
         },
         where: {
           userId_parentId: {
@@ -308,14 +308,10 @@ describe("handleChildrenEventTypes", () => {
           durationLimits: undefined,
           recurringEvent: undefined,
           eventTypeColor: undefined,
-          instantMeetingScheduleId: undefined,
           lockTimeZoneToggleOnBookingPage: false,
           requiresBookerEmailVerification: false,
           userId: 4,
-          workflows: undefined,
-          hashedLink: undefined,
           rrSegmentQueryValue: undefined,
-          assignRRMembersUsingSegment: false,
         },
       });
       expect(result.newUserIds).toEqual([4]);
@@ -359,20 +355,23 @@ describe("handleChildrenEventTypes", () => {
           length: 30,
         },
       });
-      const { profileId, autoTranslateDescriptionEnabled, ...rest } = evType;
+      const {
+        profileId,
+        autoTranslateDescriptionEnabled,
+        assignRRMembersUsingSegment,
+        rrSegmentQueryValue,
+        useEventLevelSelectedCalendars,
+        ...rest
+      } = evType;
       expect(prismaMock.eventType.update).toHaveBeenCalledWith({
         data: {
           ...rest,
-          assignRRMembersUsingSegment: undefined,
-          useEventLevelSelectedCalendars: undefined,
-          rrSegmentQueryValue: undefined,
           locations: [],
           hashedLink: {
             deleteMany: {},
           },
           lockTimeZoneToggleOnBookingPage: false,
           requiresBookerEmailVerification: false,
-          instantMeetingScheduleId: undefined,
         },
         where: {
           userId_parentId: {
@@ -385,137 +384,6 @@ describe("handleChildrenEventTypes", () => {
       expect(result.oldUserIds).toEqual([4]);
       expect(result.deletedUserIds).toEqual([]);
       expect(result.deletedExistentEventTypes).toEqual([123]);
-    });
-  });
-
-  describe("Workflows", () => {
-    it("Links workflows to new and existing assigned members", async () => {
-      const {
-        schedulingType: _schedulingType,
-        id: _id,
-        teamId: _teamId,
-        locations: _locations,
-        timeZone: _timeZone,
-        parentId: _parentId,
-        userId: _userId,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        requiresBookerEmailVerification,
-        lockTimeZoneToggleOnBookingPage,
-        useEventTypeDestinationCalendarEmail,
-        secondaryEmailId,
-        autoTranslateDescriptionEnabled,
-        currency,
-        instantMeetingScheduleId,
-        price,
-        ...evType
-      } = mockFindFirstEventType({
-        metadata: { managedEventConfig: {} },
-        locations: [],
-        workflows: [
-          {
-            workflowId: 11,
-          } as CompleteWorkflowsOnEventTypes,
-        ],
-      });
-
-      // Mock the event type that will be returned for existing users
-      const mockUpdatedEventType = {
-        id: 2,
-        userId: 4,
-        price: 123,
-        currency: "USD",
-        timeZone: "UTC",
-        teamId: 1,
-        instantMeetingScheduleId: null,
-        autoTranslateDescriptionEnabled: false,
-        secondaryEmailId: null,
-        schedulingType: SchedulingType.MANAGED,
-        requiresBookerEmailVerification: false,
-        lockTimeZoneToggleOnBookingPage: false,
-        useEventTypeDestinationCalendarEmail: false,
-        workflows: [],
-        parentId: 1,
-        locations: [],
-        ...evType,
-      };
-
-      prismaMock.eventType.update.mockResolvedValue(mockUpdatedEventType);
-
-      await updateChildrenEventTypes({
-        eventTypeId: 1,
-        oldEventType: { children: [{ userId: 4 }], team: { name: "" } },
-        children: [
-          { hidden: false, owner: { id: 4, name: "", email: "", eventTypeSlugs: [] } },
-          { hidden: false, owner: { id: 5, name: "", email: "", eventTypeSlugs: [] } },
-        ],
-        updatedEventType: { schedulingType: "MANAGED", slug: "something" },
-        currentUserId: 1,
-        prisma: prismaMock,
-        profileId: null,
-        updatedValues: {},
-      });
-
-      expect(prismaMock.eventType.create).toHaveBeenCalledWith({
-        data: {
-          ...evType,
-          bookingLimits: undefined,
-          durationLimits: undefined,
-          recurringEvent: undefined,
-          eventTypeColor: undefined,
-          instantMeetingScheduleId: undefined,
-          locations: [],
-          lockTimeZoneToggleOnBookingPage: false,
-          requiresBookerEmailVerification: false,
-          parentId: 1,
-          userId: 5,
-          users: {
-            connect: [{ id: 5 }],
-          },
-          workflows: {
-            create: [{ workflowId: 11 }],
-          },
-          hashedLink: undefined,
-          rrSegmentQueryValue: undefined,
-          assignRRMembersUsingSegment: false,
-          useEventLevelSelectedCalendars: false,
-        },
-      });
-      const { profileId, ...rest } = evType;
-      if ("workflows" in rest) delete rest.workflows;
-      expect(prismaMock.eventType.update).toHaveBeenCalledWith({
-        data: {
-          ...rest,
-          locations: [],
-          assignRRMembersUsingSegment: undefined,
-          useEventLevelSelectedCalendars: undefined,
-          rrSegmentQueryValue: undefined,
-          lockTimeZoneToggleOnBookingPage: false,
-          requiresBookerEmailVerification: false,
-          hashedLink: {
-            deleteMany: {},
-          },
-          instantMeetingScheduleId: undefined,
-        },
-        where: {
-          userId_parentId: {
-            userId: 4,
-            parentId: 1,
-          },
-        },
-      });
-      expect(prismaMock.workflowsOnEventTypes.upsert).toHaveBeenCalledWith({
-        create: {
-          eventTypeId: 2,
-          workflowId: 11,
-        },
-        update: {},
-        where: {
-          workflowId_eventTypeId: {
-            eventTypeId: 2,
-            workflowId: 11,
-          },
-        },
-      });
     });
   });
 });

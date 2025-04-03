@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { Icon, Skeleton } from "@calcom/ui";
 
-import { CalendarToggleContainer } from "./CalendarToggleContainer";
 import { EventScheduleItem } from "./EventScheduleItem";
 import { EventTypeSelect } from "./EventTypeSelect";
 
@@ -35,7 +34,6 @@ export const TroubleshooterSidebar = () => {
       <BackButtonInSidebar name={t("troubleshooter")} />
       <EventTypeSelect />
       <EventScheduleItem />
-      <CalendarToggleContainer />
     </div>
   );
 };

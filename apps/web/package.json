@@ -27,8 +27,6 @@
     "yarn": "3.4.1"
   },
   "dependencies": {
-    "@calcom/app-store": "*",
-    "@calcom/app-store-cli": "*",
     "@calcom/core": "*",
     "@calcom/dayjs": "*",
     "@calcom/embed-core": "workspace:*",
@@ -42,8 +40,6 @@
     "@calcom/trpc": "*",
     "@calcom/tsconfig": "*",
     "@calcom/ui": "*",
-    "@daily-co/daily-js": "^0.59.0",
-    "@daily-co/daily-react": "^0.17.2",
     "@dub/analytics": "^0.0.15",
     "@formkit/auto-animate": "1.0.0-beta.5",
     "@glidejs/glide": "^3.5.2",

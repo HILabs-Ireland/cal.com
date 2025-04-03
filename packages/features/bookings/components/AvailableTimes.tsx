@@ -18,7 +18,6 @@ import { Button, Icon, SkeletonText } from "@calcom/ui";
 import { useBookerTime } from "../Booker/components/hooks/useBookerTime";
 import { useBookerStore } from "../Booker/store";
 import { getQueryParam } from "../Booker/utils/query-param";
-import { useCheckOverlapWithOverlay } from "../lib/useCheckOverlapWithOverlay";
 import { SeatsAvailabilityText } from "./SeatsAvailabilityText";
 
 type TOnTimeSelect = (
@@ -82,29 +81,17 @@ const SlotItem = ({
 
   const offset = (usersTimezoneDate.utcOffset() - nowDate.utcOffset()) / 60;
 
-  const { isOverlapping, overlappingTimeEnd, overlappingTimeStart } = useCheckOverlapWithOverlay({
-    start: computedDateWithUsersTimezone,
-    selectedDuration: eventData?.length ?? 0,
-    offset,
-  });
-
   const [overlapConfirm, setOverlapConfirm] = useState(false);
 
   const onButtonClick = useCallback(() => {
-    if (!overlayCalendarToggled || (isOverlapping && overlapConfirm)) {
+    if (!overlayCalendarToggled || overlapConfirm) {
       onTimeSelect(slot.time, slot?.attendees || 0, seatsPerTimeSlot, slot.bookingUid);
-      return;
-    }
-
-    if (isOverlapping) {
-      setOverlapConfirm(true);
       return;
     }
 
     onTimeSelect(slot.time, slot?.attendees || 0, seatsPerTimeSlot, slot.bookingUid);
   }, [
     overlayCalendarToggled,
-    isOverlapping,
     overlapConfirm,
     onTimeSelect,
     slot.time,
@@ -131,12 +118,7 @@ const SlotItem = ({
           color="secondary">
           <div className="flex items-center gap-2">
             {!hasTimeSlots && overlayCalendarToggled && (
-              <span
-                className={classNames(
-                  "inline-block h-2 w-2 rounded-full",
-                  isOverlapping ? "bg-rose-600" : "bg-emerald-400"
-                )}
-              />
+              <span className={classNames("inline-block h-2 w-2 rounded-full", "bg-emerald-400")} />
             )}
             {computedDateWithUsersTimezone.format(timeFormat)}
           </div>
@@ -155,7 +137,7 @@ const SlotItem = ({
             </p>
           )}
         </Button>
-        {overlapConfirm && isOverlapping && (
+        {overlapConfirm && (
           <HoverCard.Root>
             <HoverCard.Trigger asChild>
               <m.div initial={{ width: 0 }} animate={{ width: "auto" }} exit={{ width: 0 }}>
@@ -175,9 +157,6 @@ const SlotItem = ({
                   <div className="flex items-center gap-2">
                     <p>Busy</p>
                   </div>
-                  <p className="text-muted">
-                    {overlappingTimeStart} - {overlappingTimeEnd}
-                  </p>
                 </div>
               </HoverCard.Content>
             </HoverCard.Portal>

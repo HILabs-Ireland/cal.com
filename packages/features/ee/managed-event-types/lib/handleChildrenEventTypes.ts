@@ -262,7 +262,6 @@ export default async function handleChildrenEventTypes({
               ...(metadata?.multipleDuration && "length" in unlockedFieldProps
                 ? { multipleDuration: metadata.multipleDuration }
                 : {}),
-              ...(metadata?.apps && "apps" in unlockedFieldProps ? { apps: metadata.apps } : {}),
             },
           },
         });

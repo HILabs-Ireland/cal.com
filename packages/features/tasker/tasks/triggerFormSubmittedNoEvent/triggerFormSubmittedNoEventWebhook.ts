@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-import incompleteBookingActionFunctions from "@calcom/app-store/routing-forms/lib/incompleteBooking/actionFunctions";
 import type { FORM_SUBMITTED_WEBHOOK_RESPONSES } from "@calcom/app-store/routing-forms/trpc/utils";
 import { sendGenericWebhookPayload } from "@calcom/features/webhooks/lib/sendPayload";
 import prisma from "@calcom/prisma";
@@ -120,17 +119,4 @@ export async function triggerFormSubmittedNoEventWebhook(payload: string): Promi
       formId: form.id,
     },
   });
-
-  if (incompleteBookingActions) {
-    for (const incompleteBookingAction of incompleteBookingActions) {
-      const actionType = incompleteBookingAction.actionType;
-
-      // Get action function
-      const bookingActionFunction = incompleteBookingActionFunctions[actionType];
-
-      if (emailValue) {
-        await bookingActionFunction(incompleteBookingAction, emailValue);
-      }
-    }
-  }
 }

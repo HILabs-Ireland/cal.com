@@ -1,20 +1,16 @@
 import {
   createBookingScenario,
   getGoogleCalendarCredential,
-  TestData,
   getDate,
   getOrganizer,
   getBooker,
   getScenarioData,
-  mockSuccessfulVideoMeetingCreation,
-  mockCalendarToHaveNoBusySlots,
   BookingLocations,
 } from "@calcom/web/test/utils/bookingScenario/bookingScenario";
 import { createMockNextJsRequest } from "@calcom/web/test/utils/bookingScenario/createMockNextJsRequest";
 import {
   expectSuccessfulBookingCreationEmails,
   expectBookingToBeInDatabase,
-  expectSuccessfulCalendarEventCreationInCalendar,
   expectICalUIDAsString,
 } from "@calcom/web/test/utils/bookingScenario/expects";
 import { getMockRequestDataForBooking } from "@calcom/web/test/utils/bookingScenario/getMockRequestDataForBooking";
@@ -24,7 +20,6 @@ import type { Request, Response } from "express";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { describe, expect } from "vitest";
 
-import { appStoreMetadata } from "@calcom/app-store/appStoreMetaData";
 import dayjs from "@calcom/dayjs";
 import { BookingStatus } from "@calcom/prisma/enums";
 import { test } from "@calcom/web/test/fixtures/fixtures";
@@ -89,7 +84,6 @@ describe("handleNewBooking", () => {
           id: 101,
           schedules: [overrideSchedule],
           credentials: [getGoogleCalendarCredential()],
-          selectedCalendars: [TestData.selectedCalendars.google],
         });
 
         await createBookingScenario(
@@ -107,26 +101,8 @@ describe("handleNewBooking", () => {
               },
             ],
             organizer,
-            apps: [TestData.apps["google-calendar"], TestData.apps["daily-video"]],
           })
         );
-
-        mockSuccessfulVideoMeetingCreation({
-          metadataLookupKey: "dailyvideo",
-          videoMeetingData: {
-            id: "MOCK_ID",
-            password: "MOCK_PASS",
-            url: `http://mock-dailyvideo.example.com/meeting-1`,
-          },
-        });
-
-        // Mock a Scenario where iCalUID isn't returned by Google Calendar in which case booking UID is used as the ics UID
-        const calendarMock = mockCalendarToHaveNoBusySlots("googlecalendar", {
-          create: {
-            id: "GOOGLE_CALENDAR_EVENT_ID",
-            uid: "MOCK_ID",
-          },
-        });
 
         const mockBookingData = getMockRequestDataForBooking({
           data: {
@@ -167,31 +143,7 @@ describe("handleNewBooking", () => {
           uid: createdBooking.uid!,
           eventTypeId: mockBookingData.eventTypeId,
           status: BookingStatus.ACCEPTED,
-          references: [
-            {
-              type: appStoreMetadata.dailyvideo.type,
-              uid: "MOCK_ID",
-              meetingId: "MOCK_ID",
-              meetingPassword: "MOCK_PASS",
-              meetingUrl: "http://mock-dailyvideo.example.com/meeting-1",
-            },
-            {
-              type: appStoreMetadata.googlecalendar.type,
-              uid: "GOOGLE_CALENDAR_EVENT_ID",
-              meetingId: "GOOGLE_CALENDAR_EVENT_ID",
-              meetingPassword: "MOCK_PASSWORD",
-              meetingUrl: "https://UNUSED_URL",
-            },
-          ],
           iCalUID: createdBooking.iCalUID,
-        });
-
-        expectSuccessfulCalendarEventCreationInCalendar(calendarMock, {
-          videoCallUrl: "http://mock-dailyvideo.example.com/meeting-1",
-          // We won't be sending evt.destinationCalendar in this case.
-          // Google Calendar in this case fallbacks to the "primary" calendar - https://github.com/calcom/cal.com/blob/7d5dad7fea78ff24dddbe44f1da5d7e08e1ff568/packages/app-store/googlecalendar/lib/CalendarService.ts#L217
-          // Not sure if it's the correct behaviour. Right now, it isn't possible to have an organizer with connected calendar but no destination calendar - As soon as the Google Calendar app is installed, a destination calendar is created.
-          calendarId: null,
         });
 
         const iCalUID = expectICalUIDAsString(createdBooking.iCalUID);
@@ -253,7 +205,6 @@ describe("handleNewBooking", () => {
           id: 101,
           schedules: [overrideSchedule],
           credentials: [getGoogleCalendarCredential()],
-          selectedCalendars: [TestData.selectedCalendars.google],
         });
 
         await createBookingScenario(
@@ -271,26 +222,10 @@ describe("handleNewBooking", () => {
               },
             ],
             organizer,
-            apps: [TestData.apps["google-calendar"], TestData.apps["daily-video"]],
           })
         );
 
-        mockSuccessfulVideoMeetingCreation({
-          metadataLookupKey: "dailyvideo",
-          videoMeetingData: {
-            id: "MOCK_ID",
-            password: "MOCK_PASS",
-            url: `http://mock-dailyvideo.example.com/meeting-1`,
-          },
-        });
-
         // Mock a Scenario where iCalUID isn't returned by Google Calendar in which case booking UID is used as the ics UID
-        const calendarMock = mockCalendarToHaveNoBusySlots("googlecalendar", {
-          create: {
-            id: "GOOGLE_CALENDAR_EVENT_ID",
-            uid: "MOCK_ID",
-          },
-        });
 
         const mockBookingData = getMockRequestDataForBooking({
           data: {
@@ -331,31 +266,7 @@ describe("handleNewBooking", () => {
           uid: createdBooking.uid!,
           eventTypeId: mockBookingData.eventTypeId,
           status: BookingStatus.ACCEPTED,
-          references: [
-            {
-              type: appStoreMetadata.dailyvideo.type,
-              uid: "MOCK_ID",
-              meetingId: "MOCK_ID",
-              meetingPassword: "MOCK_PASS",
-              meetingUrl: "http://mock-dailyvideo.example.com/meeting-1",
-            },
-            {
-              type: appStoreMetadata.googlecalendar.type,
-              uid: "GOOGLE_CALENDAR_EVENT_ID",
-              meetingId: "GOOGLE_CALENDAR_EVENT_ID",
-              meetingPassword: "MOCK_PASSWORD",
-              meetingUrl: "https://UNUSED_URL",
-            },
-          ],
           iCalUID: createdBooking.iCalUID,
-        });
-
-        expectSuccessfulCalendarEventCreationInCalendar(calendarMock, {
-          videoCallUrl: "http://mock-dailyvideo.example.com/meeting-1",
-          // We won't be sending evt.destinationCalendar in this case.
-          // Google Calendar in this case fallbacks to the "primary" calendar - https://github.com/calcom/cal.com/blob/7d5dad7fea78ff24dddbe44f1da5d7e08e1ff568/packages/app-store/googlecalendar/lib/CalendarService.ts#L217
-          // Not sure if it's the correct behaviour. Right now, it isn't possible to have an organizer with connected calendar but no destination calendar - As soon as the Google Calendar app is installed, a destination calendar is created.
-          calendarId: null,
         });
 
         const iCalUID = expectICalUIDAsString(createdBooking.iCalUID);

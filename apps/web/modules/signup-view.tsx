@@ -216,7 +216,6 @@ export default function Signup({
         telemetry.event(telemetryEventTypes.signup, collectPageParameters());
 
         const verifyOrGettingStarted = emailVerificationEnabled ? "auth/verify-email" : "getting-started";
-        const gettingStartedWithPlatform = "settings/platform/new";
 
         const constructCallBackIfUrlPresent = () => {
           if (isOrgInviteByLink) {
@@ -227,10 +226,6 @@ export default function Signup({
         };
 
         const constructCallBackIfUrlNotPresent = () => {
-          if (!!isPlatformUser) {
-            return `${WEBAPP_URL}/${gettingStartedWithPlatform}?from=signup`;
-          }
-
           return `${WEBAPP_URL}/${verifyOrGettingStarted}?from=signup`;
         };
 

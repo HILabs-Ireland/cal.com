@@ -2,9 +2,7 @@ import type { Prisma } from "@prisma/client";
 import type { TFunction } from "next-i18next";
 
 import { defaultVideoAppCategories } from "@calcom/app-store/utils";
-import getEnabledAppsFromCredentials from "@calcom/lib/apps/getEnabledAppsFromCredentials";
 import { prisma } from "@calcom/prisma";
-import { AppCategories } from "@calcom/prisma/enums";
 import { credentialForCalendarServiceSelect } from "@calcom/prisma/selects/credential";
 
 import { defaultLocations } from "./locations";
@@ -71,40 +69,6 @@ export async function getLocationGroupedOptions(
         },
       },
     },
-  });
-
-  const integrations = await getEnabledAppsFromCredentials(credentials, { filterOnCredentials: true });
-
-  integrations.forEach((app) => {
-    // All apps that are labeled as a locationOption are video apps.
-    if (app.locationOption) {
-      // All apps that are labeled as a locationOption are video apps. Extract the secondary category if available
-      let groupByCategory =
-        app.categories.length >= 2
-          ? app.categories.find((groupByCategory) => !defaultVideoAppCategories.includes(groupByCategory))
-          : app.categories[0] || app.category;
-      if (!groupByCategory) groupByCategory = AppCategories.conferencing;
-
-      for (const { teamName } of app.credentials.map((credential) => ({
-        teamName: credential.team?.name,
-      }))) {
-        const label = `${app.locationOption.label} ${teamName ? `(${teamName})` : ""}`;
-        const option = {
-          ...app.locationOption,
-          label,
-          icon: app.logo,
-          slug: app.slug,
-          ...(app.credential
-            ? { credentialId: app.credential.id, teamName: app.credential.team?.name ?? null }
-            : {}),
-        };
-        if (apps[groupByCategory]) {
-          apps[groupByCategory] = [...apps[groupByCategory], option];
-        } else {
-          apps[groupByCategory] = [option];
-        }
-      }
-    }
   });
 
   defaultLocations.forEach((l) => {

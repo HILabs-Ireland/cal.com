@@ -1,8 +1,5 @@
 // eslint-disable-next-line no-restricted-imports
-import { sortBy } from "lodash";
-
 import { getCalendar } from "@calcom/app-store/_utils/getCalendar";
-import getApps from "@calcom/app-store/utils";
 import dayjs from "@calcom/dayjs";
 import { getUid } from "@calcom/lib/CalEventParser";
 import logger from "@calcom/lib/logger";
@@ -11,12 +8,10 @@ import { safeStringify } from "@calcom/lib/safeStringify";
 import type {
   CalendarEvent,
   EventBusyDate,
-  IntegrationCalendar,
   NewCalendarEventType,
   SelectedCalendar,
 } from "@calcom/types/Calendar";
 import type { CredentialPayload } from "@calcom/types/Credential";
-import type { EventResult } from "@calcom/types/EventManager";
 
 import getCalendarsEvents from "./getCalendarsEvents";
 import { getCalendarsEventsWithTimezones } from "./getCalendarsEvents";
@@ -24,133 +19,7 @@ import { getCalendarsEventsWithTimezones } from "./getCalendarsEvents";
 const log = logger.getSubLogger({ prefix: ["CalendarManager"] });
 
 export const getCalendarCredentials = (credentials: Array<CredentialPayload>) => {
-  const calendarCredentials = getApps(credentials, true)
-    .filter((app) => app.type.endsWith("_calendar"))
-    .flatMap((app) => {
-      const credentials = app.credentials.flatMap((credential) => {
-        const calendar = getCalendar(credential);
-        return app.variant === "calendar" ? [{ integration: app, credential, calendar }] : [];
-      });
-
-      return credentials.length ? credentials : [];
-    });
-
-  return calendarCredentials;
-};
-
-export const getConnectedCalendars = async (
-  calendarCredentials: ReturnType<typeof getCalendarCredentials>,
-  selectedCalendars: { externalId: string }[],
-  destinationCalendarExternalId?: string
-) => {
-  let destinationCalendar: IntegrationCalendar | undefined;
-  const connectedCalendars = await Promise.all(
-    calendarCredentials.map(async (item) => {
-      try {
-        const { integration, credential } = item;
-        const calendar = await item.calendar;
-        // Don't leak credentials to the client
-        const credentialId = credential.id;
-        if (!calendar) {
-          return {
-            integration,
-            credentialId,
-          };
-        }
-        const cals = await calendar.listCalendars();
-        const calendars = sortBy(
-          cals.map((cal: IntegrationCalendar) => {
-            if (cal.externalId === destinationCalendarExternalId) destinationCalendar = cal;
-            return {
-              ...cal,
-              readOnly: cal.readOnly || false,
-              primary: cal.primary || null,
-              isSelected: selectedCalendars.some((selected) => selected.externalId === cal.externalId),
-              credentialId,
-            };
-          }),
-          ["primary"]
-        );
-        const primary = calendars.find((item) => item.primary) ?? calendars.find((cal) => cal !== undefined);
-        if (!primary) {
-          return {
-            integration,
-            credentialId,
-            error: {
-              message: "No primary calendar found",
-            },
-          };
-        }
-        // HACK https://github.com/calcom/cal.com/pull/7644/files#r1131508414
-        if (destinationCalendar && !Object.isFrozen(destinationCalendar)) {
-          destinationCalendar.primaryEmail = primary.email;
-          destinationCalendar.integrationTitle = integration.title;
-          destinationCalendar = Object.freeze(destinationCalendar);
-        }
-
-        return {
-          integration: cleanIntegrationKeys(integration),
-          credentialId,
-          primary,
-          calendars,
-        };
-      } catch (error) {
-        let errorMessage = "Could not get connected calendars";
-
-        // Here you can expect for specific errors
-        if (error instanceof Error) {
-          if (error.message === "invalid_grant") {
-            errorMessage = "Access token expired or revoked";
-          }
-        }
-
-        log.error("getConnectedCalendars failed", safeStringify(error), safeStringify({ item }));
-
-        return {
-          integration: cleanIntegrationKeys(item.integration),
-          credentialId: item.credential.id,
-          error: {
-            message: errorMessage,
-          },
-        };
-      }
-    })
-  );
-
-  return { connectedCalendars, destinationCalendar };
-};
-
-/**
- * Important function to prevent leaking credentials to the client
- * @param appIntegration
- * @returns App
- */
-const cleanIntegrationKeys = (
-  appIntegration: ReturnType<typeof getCalendarCredentials>[number]["integration"] & {
-    credentials?: Array<CredentialPayload>;
-    credential: CredentialPayload;
-  }
-) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { credentials, credential, ...rest } = appIntegration;
-  return rest;
-};
-
-/**
- * Get months between given dates
- * @returns ["2023-04", "2024-05"]
- */
-const getMonths = (dateFrom: string, dateTo: string): string[] => {
-  const months: string[] = [dayjs(dateFrom).format("YYYY-MM")];
-  for (
-    let i = 1;
-    dayjs(dateFrom).add(i, "month").isBefore(dateTo) ||
-    dayjs(dateFrom).add(i, "month").isSame(dateTo, "month");
-    i++
-  ) {
-    months.push(dayjs(dateFrom).add(i, "month").format("YYYY-MM"));
-  }
-  return months;
+  return [];
 };
 
 export const getBusyCalendarTimes = async (
@@ -190,7 +59,7 @@ export const createEvent = async (
   credential: CredentialPayload,
   calEvent: CalendarEvent,
   externalId?: string
-): Promise<EventResult<NewCalendarEventType>> => {
+): Promise<any> => {
   const uid: string = getUid(calEvent);
   const calendar = await getCalendar(credential);
   let success = true;
@@ -272,7 +141,7 @@ export const updateEvent = async (
   calEvent: CalendarEvent,
   bookingRefUid: string | null,
   externalCalendarId: string | null
-): Promise<EventResult<NewCalendarEventType>> => {
+): Promise<any> => {
   const uid = getUid(calEvent);
   const calendar = await getCalendar(credential);
   let success = false;
