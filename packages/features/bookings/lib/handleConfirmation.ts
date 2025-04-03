@@ -2,13 +2,7 @@ import type { Prisma } from "@prisma/client";
 
 import type { EventManagerUser } from "@calcom/core/EventManager";
 import EventManager from "@calcom/core/EventManager";
-import { scheduleMandatoryReminder } from "@calcom/ee/workflows/lib/reminders/scheduleMandatoryReminder";
 import { sendScheduledEmailsAndSMS } from "@calcom/emails";
-import {
-  allowDisablingAttendeeConfirmationEmails,
-  allowDisablingHostConfirmationEmails,
-} from "@calcom/features/ee/workflows/lib/allowDisablingStandardEmails";
-import { scheduleWorkflowReminders } from "@calcom/features/ee/workflows/lib/reminders/reminderScheduler";
 import type { Workflow } from "@calcom/features/ee/workflows/lib/types";
 import getWebhooks from "@calcom/features/webhooks/lib/getWebhooks";
 import { scheduleTrigger } from "@calcom/features/webhooks/lib/scheduleTrigger";
@@ -25,7 +19,6 @@ import type { SchedulingType } from "@calcom/prisma/enums";
 import { BookingStatus, WebhookTriggerEvents } from "@calcom/prisma/enums";
 import type { PlatformClientParams } from "@calcom/prisma/zod-utils";
 import { EventTypeMetaDataSchema, eventTypeAppMetadataOptionalSchema } from "@calcom/prisma/zod-utils";
-import { getAllWorkflowsFromEventType } from "@calcom/trpc/server/routers/viewer/workflows/util";
 import type { AdditionalInformation, CalendarEvent } from "@calcom/types/Calendar";
 
 import { getCalEventResponses } from "./getCalEventResponses";
@@ -86,7 +79,6 @@ export async function handleConfirmation(args: {
   const scheduleResult = await eventManager.create(evt);
   const results = scheduleResult.results;
   const metadata: AdditionalInformation = {};
-  const workflows = await getAllWorkflowsFromEventType(eventType, booking.userId);
 
   if (results.length > 0 && results.every((res) => !res.success)) {
     const error = {
@@ -105,23 +97,8 @@ export async function handleConfirmation(args: {
     try {
       const eventType = booking.eventType;
 
-      let isHostConfirmationEmailsDisabled = false;
-      let isAttendeeConfirmationEmailDisabled = false;
-
-      if (workflows) {
-        isHostConfirmationEmailsDisabled =
-          eventTypeMetadata?.disableStandardEmails?.confirmation?.host || false;
-        isAttendeeConfirmationEmailDisabled =
-          eventTypeMetadata?.disableStandardEmails?.confirmation?.attendee || false;
-
-        if (isHostConfirmationEmailsDisabled) {
-          isHostConfirmationEmailsDisabled = allowDisablingHostConfirmationEmails(workflows);
-        }
-
-        if (isAttendeeConfirmationEmailDisabled) {
-          isAttendeeConfirmationEmailDisabled = allowDisablingAttendeeConfirmationEmails(workflows);
-        }
-      }
+      const isHostConfirmationEmailsDisabled = false;
+      const isAttendeeConfirmationEmailDisabled = false;
 
       if (emailsEnabled) {
         await sendScheduledEmailsAndSMS(
@@ -341,26 +318,6 @@ export async function handleConfirmation(args: {
       evtOfBooking.startTime = updatedBookings[index].startTime.toISOString();
       evtOfBooking.endTime = updatedBookings[index].endTime.toISOString();
       evtOfBooking.uid = updatedBookings[index].uid;
-      const isFirstBooking = index === 0;
-
-      if (!eventTypeMetadata?.disableStandardEmails?.all?.attendee) {
-        await scheduleMandatoryReminder({
-          evt: evtOfBooking,
-          workflows,
-          requiresConfirmation: false,
-          hideBranding: !!updatedBookings[index].eventType?.owner?.hideBranding,
-          seatReferenceUid: evt.attendeeSeatId,
-          isPlatformNoEmail: !emailsEnabled && Boolean(platformClientParams?.platformClientId),
-        });
-      }
-
-      await scheduleWorkflowReminders({
-        workflows,
-        smsReminderNumber: updatedBookings[index].smsReminderNumber,
-        calendarEvent: evtOfBooking,
-        isFirstRecurringEvent: isFirstBooking,
-        hideBranding: !!updatedBookings[index].eventType?.owner?.hideBranding,
-      });
     }
   } catch (error) {
     // Silently fail
