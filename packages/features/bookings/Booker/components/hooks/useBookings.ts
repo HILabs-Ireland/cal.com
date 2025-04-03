@@ -270,7 +270,7 @@ export const useBookings = ({ event, hashedLink, bookingForm, metadata, teamMemb
 
   const createInstantBookingMutation = useMutation({
     mutationFn: createInstantBooking,
-    onSuccess: (responseData) => {
+    onSuccess: (responseData: any) => {
       if (eventTypeId) {
         storeInLocalStorage({
           eventTypeId,

@@ -3,7 +3,6 @@ import {
   TestData,
   getOrganizer,
   getScenarioData,
-  mockSuccessfulVideoMeetingCreation,
   getDate,
 } from "@calcom/web/test/utils/bookingScenario/bookingScenario";
 import { setupAndTeardown } from "@calcom/web/test/utils/bookingScenario/setupAndTeardown";
@@ -83,13 +82,8 @@ describe("confirmHandler", () => {
           },
         ],
         organizer,
-        apps: [TestData.apps["daily-video"]],
       })
     );
-
-    mockSuccessfulVideoMeetingCreation({
-      metadataLookupKey: "dailyvideo",
-    });
 
     const ctx = {
       user: {

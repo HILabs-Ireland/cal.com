@@ -5,8 +5,6 @@ import {
   getGoogleCalendarCredential,
   getOrganizer,
   getScenarioData,
-  mockCalendarToHaveNoBusySlots,
-  mockSuccessfulVideoMeetingCreation,
   TestData,
   getDate,
 } from "@calcom/web/test/utils/bookingScenario/bookingScenario";
@@ -36,7 +34,6 @@ describe("Cancel Booking", () => {
       id: 101,
       schedules: [TestData.schedules.IstWorkHours],
       credentials: [getGoogleCalendarCredential()],
-      selectedCalendars: [TestData.selectedCalendars.google],
     });
 
     const uidOfBookingToBeCancelled = "h5Wv3eHgconAED2j4gcVhP";
@@ -87,23 +84,8 @@ describe("Cancel Booking", () => {
           },
         ],
         organizer,
-        apps: [TestData.apps["daily-video"]],
       })
     );
-    mockSuccessfulVideoMeetingCreation({
-      metadataLookupKey: "dailyvideo",
-      videoMeetingData: {
-        id: "MOCK_ID",
-        password: "MOCK_PASS",
-        url: `http://mock-dailyvideo.example.com/meeting-1`,
-      },
-    });
-
-    mockCalendarToHaveNoBusySlots("googlecalendar", {
-      create: {
-        id: "MOCKED_GOOGLE_CALENDAR_EVENT_ID",
-      },
-    });
 
     const { req } = createMockNextJsRequest({
       method: "POST",

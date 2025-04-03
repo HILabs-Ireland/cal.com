@@ -5,8 +5,6 @@ import {
   getOrganizer,
   getBooker,
   getScenarioData,
-  mockSuccessfulVideoMeetingCreation,
-  mockCalendarToHaveNoBusySlots,
   BookingLocations,
   getDate,
   Timezones,
@@ -56,7 +54,7 @@ describe("handleNewBooking", () => {
           id: 101,
           schedules: [TestData.schedules.IstWorkHours],
           credentials: [getGoogleCalendarCredential()],
-          selectedCalendars: [TestData.selectedCalendars.google],
+
           destinationCalendar: {
             integration: "google_calendar",
             externalId: "organizer@google-calendar.com",
@@ -101,24 +99,8 @@ describe("handleNewBooking", () => {
               },
             ],
             organizer,
-            apps: [TestData.apps["google-calendar"], TestData.apps["daily-video"]],
           })
         );
-
-        mockSuccessfulVideoMeetingCreation({
-          metadataLookupKey: "dailyvideo",
-          videoMeetingData: {
-            id: "MOCK_ID",
-            password: "MOCK_PASS",
-            url: `http://mock-dailyvideo.example.com/meeting-1`,
-          },
-        });
-
-        mockCalendarToHaveNoBusySlots("googlecalendar", {
-          create: {
-            id: "MOCKED_GOOGLE_CALENDAR_EVENT_ID",
-          },
-        });
 
         const mockBookingData = getMockRequestDataForBooking({
           data: {
@@ -170,7 +152,7 @@ describe("handleNewBooking", () => {
           id: 101,
           schedules: [TestData.schedules.IstWorkHours],
           credentials: [getGoogleCalendarCredential()],
-          selectedCalendars: [TestData.selectedCalendars.google],
+
           destinationCalendar: {
             integration: "google_calendar",
             externalId: "organizer@google-calendar.com",
@@ -209,15 +191,8 @@ describe("handleNewBooking", () => {
               },
             ],
             organizer,
-            apps: [TestData.apps["google-calendar"], TestData.apps["daily-video"]],
           })
         );
-
-        mockCalendarToHaveNoBusySlots("googlecalendar", {
-          create: {
-            id: "MOCKED_GOOGLE_CALENDAR_EVENT_ID",
-          },
-        });
 
         const mockBookingData = getMockRequestDataForBooking({
           data: {
@@ -265,7 +240,7 @@ describe("handleNewBooking", () => {
           id: 101,
           schedules: [TestData.schedules.IstWorkHours],
           credentials: [getGoogleCalendarCredential()],
-          selectedCalendars: [TestData.selectedCalendars.google],
+
           destinationCalendar: {
             integration: "google_calendar",
             externalId: "organizer@google-calendar.com",
@@ -295,9 +270,9 @@ describe("handleNewBooking", () => {
             id: 102,
             schedules: [TestData.schedules.IstWorkHours],
             credentials: [getGoogleCalendarCredential()],
-            selectedCalendars: [TestData.selectedCalendars.google],
+
             destinationCalendar: {
-              integration: TestData.apps["google-calendar"].type,
+              integration: "TestData.apps['google-calendar'].type",
               externalId: "other-team-member-1@google-calendar.com",
             },
           },
@@ -337,32 +312,15 @@ describe("handleNewBooking", () => {
                 ],
                 teamId: 1,
                 destinationCalendar: {
-                  integration: TestData.apps["google-calendar"].type,
+                  integration: "TestData.apps['google-calendar'].type",
                   externalId: "event-type-1@google-calendar.com",
                 },
               },
             ],
             organizer,
             usersApartFromOrganizer: otherTeamMembers,
-            apps: [TestData.apps["google-calendar"], TestData.apps["daily-video"]],
           })
         );
-
-        mockSuccessfulVideoMeetingCreation({
-          metadataLookupKey: "dailyvideo",
-          videoMeetingData: {
-            id: "MOCK_ID",
-            password: "MOCK_PASS",
-            url: `http://mock-dailyvideo.example.com/meeting-1`,
-          },
-        });
-
-        mockCalendarToHaveNoBusySlots("googlecalendar", {
-          create: {
-            id: "MOCKED_GOOGLE_CALENDAR_EVENT_ID",
-            iCalUID: "MOCKED_GOOGLE_CALENDAR_ICS_ID",
-          },
-        });
 
         const mockBookingData = getMockRequestDataForBooking({
           data: {
@@ -416,7 +374,7 @@ describe("handleNewBooking", () => {
           id: 101,
           schedules: [TestData.schedules.IstWorkHours],
           credentials: [getGoogleCalendarCredential()],
-          selectedCalendars: [TestData.selectedCalendars.google],
+
           destinationCalendar: {
             integration: "google_calendar",
             externalId: "organizer@google-calendar.com",
@@ -447,9 +405,9 @@ describe("handleNewBooking", () => {
             id: 102,
             schedules: [TestData.schedules.IstWorkHours],
             credentials: [getGoogleCalendarCredential()],
-            selectedCalendars: [TestData.selectedCalendars.google],
+
             destinationCalendar: {
-              integration: TestData.apps["google-calendar"].type,
+              integration: "TestData.apps['google-calendar'].type",
               externalId: "other-team-member-1@google-calendar.com",
             },
           },
@@ -482,32 +440,15 @@ describe("handleNewBooking", () => {
                 ],
                 teamId: 1,
                 destinationCalendar: {
-                  integration: TestData.apps["google-calendar"].type,
+                  integration: "TestData.apps['google-calendar'].type",
                   externalId: "event-type-1@google-calendar.com",
                 },
               },
             ],
             organizer,
             usersApartFromOrganizer: otherTeamMembers,
-            apps: [TestData.apps["google-calendar"], TestData.apps["daily-video"]],
           })
         );
-
-        mockSuccessfulVideoMeetingCreation({
-          metadataLookupKey: "dailyvideo",
-          videoMeetingData: {
-            id: "MOCK_ID",
-            password: "MOCK_PASS",
-            url: `http://mock-dailyvideo.example.com/meeting-1`,
-          },
-        });
-
-        mockCalendarToHaveNoBusySlots("googlecalendar", {
-          create: {
-            id: "MOCKED_GOOGLE_CALENDAR_EVENT_ID",
-            iCalUID: "MOCKED_GOOGLE_CALENDAR_ICS_ID",
-          },
-        });
 
         const mockBookingData = getMockRequestDataForBooking({
           data: {
@@ -616,19 +557,10 @@ describe("handleNewBooking", () => {
               ...organizer,
               username: "organizer",
             },
-            apps: [TestData.apps["daily-video"]],
           },
           { id: org.id }
         )
       );
-      mockSuccessfulVideoMeetingCreation({
-        metadataLookupKey: "dailyvideo",
-        videoMeetingData: {
-          id: "MOCK_ID",
-          password: "MOCK_PASS",
-          url: `http://mock-dailyvideo.example.com/meeting-1`,
-        },
-      });
 
       const mockBookingData = getMockRequestDataForBooking({
         data: {
@@ -731,19 +663,10 @@ describe("handleNewBooking", () => {
               ...organizer,
               username: "organizer",
             },
-            apps: [TestData.apps["daily-video"]],
           },
           { id: org.id }
         )
       );
-      mockSuccessfulVideoMeetingCreation({
-        metadataLookupKey: "dailyvideo",
-        videoMeetingData: {
-          id: "MOCK_ID",
-          password: "MOCK_PASS",
-          url: `http://mock-dailyvideo.example.com/meeting-1`,
-        },
-      });
 
       const mockBookingData = getMockRequestDataForBooking({
         data: {

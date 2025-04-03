@@ -13,7 +13,6 @@ import { Booker as BookerComponent } from "@calcom/features/bookings/Booker";
 import { useBookerLayout } from "@calcom/features/bookings/Booker/components/hooks/useBookerLayout";
 import { useBookingForm } from "@calcom/features/bookings/Booker/components/hooks/useBookingForm";
 import { useBookings } from "@calcom/features/bookings/Booker/components/hooks/useBookings";
-import { useCalendars } from "@calcom/features/bookings/Booker/components/hooks/useCalendars";
 import { useSlots } from "@calcom/features/bookings/Booker/components/hooks/useSlots";
 import { useVerifyCode } from "@calcom/features/bookings/Booker/components/hooks/useVerifyCode";
 import { useVerifyEmail } from "@calcom/features/bookings/Booker/components/hooks/useVerifyEmail";
@@ -100,7 +99,6 @@ export const BookerWebWrapper = (props: BookerWebWrapperAtomProps) => {
     prefillFormParams,
     lastBookingResponse,
   });
-  const calendars = useCalendars({ hasSession });
   const verifyEmail = useVerifyEmail({
     email: bookerForm.formEmail,
     name: bookerForm.formName,
@@ -221,7 +219,6 @@ export const BookerWebWrapper = (props: BookerWebWrapperAtomProps) => {
       hasValidLicense={session?.hasValidLicense ?? false}
       extraOptions={routerQuery}
       bookings={bookings}
-      calendars={calendars}
       slots={slots}
       verifyEmail={verifyEmail}
       bookerForm={bookerForm}

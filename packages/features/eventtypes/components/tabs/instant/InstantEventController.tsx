@@ -380,7 +380,7 @@ const InstantMeetingWebhooks = ({ eventType }: { eventType: EventTypeSetup }) =>
                 noRoutingFormTriggers={true}
                 onSubmit={onCreateWebhook}
                 onCancel={() => setCreateModalOpen(false)}
-                apps={installedApps?.items.map((app) => app.slug)}
+                apps={[]}
                 selectOnlyInstantMeetingOption={true}
               />
             </DialogContent>
@@ -391,7 +391,7 @@ const InstantMeetingWebhooks = ({ eventType }: { eventType: EventTypeSetup }) =>
               <WebhookForm
                 noRoutingFormTriggers={true}
                 webhook={webhookToEdit}
-                apps={installedApps?.items.map((app) => app.slug)}
+                apps={[]}
                 onCancel={() => setEditModalOpen(false)}
                 onSubmit={(values: WebhookFormSubmitData) => {
                   if (

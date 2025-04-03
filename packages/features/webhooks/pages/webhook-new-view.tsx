@@ -79,13 +79,7 @@ export const NewWebhookView = () => {
 
   if (isPending) return null;
 
-  return (
-    <WebhookForm
-      noRoutingFormTriggers={false}
-      onSubmit={onCreateWebhook}
-      apps={installedApps?.items.map((app) => app.slug)}
-    />
-  );
+  return <WebhookForm noRoutingFormTriggers={false} onSubmit={onCreateWebhook} apps={[]} />;
 };
 
 export default NewWebhookView;

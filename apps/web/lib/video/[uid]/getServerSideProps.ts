@@ -1,12 +1,6 @@
 import MarkdownIt from "markdown-it";
 import type { GetServerSidePropsContext } from "next";
 
-import {
-  generateGuestMeetingTokenFromOwnerMeetingToken,
-  setEnableRecordingUIAndUserIdForOrganizer,
-  updateMeetingTokenIfExpired,
-} from "@calcom/app-store/dailyvideo/lib/VideoApiAdapter";
-import { getServerSession } from "@calcom/features/auth/lib/getServerSession";
 import { getCalVideoReference } from "@calcom/features/get-cal-video-reference";
 import { BookingRepository } from "@calcom/lib/server/repository/booking";
 import { OrganizationRepository } from "@calcom/lib/server/repository/organization";
@@ -17,8 +11,6 @@ import { ssrInit } from "@server/lib/ssr";
 const md = new MarkdownIt("default", { html: true, breaks: true, linkify: true });
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const { req } = context;
-
   const ssr = await ssrInit(context);
 
   const booking = await BookingRepository.findBookingForMeetingPage({
@@ -65,46 +57,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     startTime: booking.startTime.toString(),
     endTime: booking.endTime.toString(),
   });
-
-  const session = await getServerSession({ req });
-
-  const oldVideoReference = getCalVideoReference(bookingObj.references);
-
-  const endTime = new Date(booking.endTime);
-  const fourteenDaysAfter = new Date(endTime.getTime() + 14 * 24 * 60 * 60 * 1000);
-  const epochTimeFourteenDaysAfter = Math.floor(fourteenDaysAfter.getTime() / 1000);
-
-  const videoReferencePassword = await updateMeetingTokenIfExpired({
-    bookingReferenceId: oldVideoReference.id,
-    roomName: oldVideoReference.uid,
-    meetingToken: oldVideoReference.meetingPassword,
-    exp: epochTimeFourteenDaysAfter,
-  });
-
-  // set meetingPassword for guests
-  if (session?.user.id !== bookingObj.user?.id) {
-    const guestMeetingPassword = await generateGuestMeetingTokenFromOwnerMeetingToken(
-      videoReferencePassword,
-      session?.user.id
-    );
-
-    bookingObj.references.forEach((bookRef) => {
-      bookRef.meetingPassword = guestMeetingPassword;
-    });
-  }
-  // Only for backward compatibility and setting user id in particpants for organizer
-  else {
-    const meetingPassword = await setEnableRecordingUIAndUserIdForOrganizer(
-      oldVideoReference.id,
-      videoReferencePassword,
-      session?.user.id
-    );
-    if (!!meetingPassword) {
-      bookingObj.references.forEach((bookRef) => {
-        bookRef.meetingPassword = meetingPassword;
-      });
-    }
-  }
 
   const videoReference = getCalVideoReference(bookingObj.references);
 

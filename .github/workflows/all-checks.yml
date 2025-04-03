@@ -56,12 +56,6 @@ jobs:
     uses: ./.github/workflows/e2e.yml
     secrets: inherit
 
-  e2e-app-store:
-    name: Tests
-    needs: [lint, build, build-api-v1]
-    uses: ./.github/workflows/e2e-app-store.yml
-    secrets: inherit
-
   e2e-embed:
     name: Tests
     needs: [lint, build, build-api-v1]
@@ -75,7 +69,7 @@ jobs:
     secrets: inherit
 
   required:
-    needs: [lint, type-check, unit-test, integration-test, build, build-api-v1, e2e, e2e-embed, e2e-embed-react, e2e-app-store]
+    needs: [lint, type-check, unit-test, integration-test, build, build-api-v1, e2e, e2e-embed, e2e-embed-react]
     if: always()
     runs-on: ubuntu-latest
     steps:

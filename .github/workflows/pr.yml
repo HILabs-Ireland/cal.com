@@ -171,13 +171,6 @@ jobs:
 #    uses: ./.github/workflows/e2e-api-v2.yml
 #    secrets: inherit
 
-#  e2e-app-store:
-#    name: Tests
-#    needs: [changes, build, build-api-v1]
-#    if: ${{ needs.changes.outputs.has-files-requiring-all-checks == 'true' }}
-#    uses: ./.github/workflows/e2e-app-store.yml
-#    secrets: inherit
-
   e2e-embed:
     name: Tests
     needs: [changes, build, build-api-v1]

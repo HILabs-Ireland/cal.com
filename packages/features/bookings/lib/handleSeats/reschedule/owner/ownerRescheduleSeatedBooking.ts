@@ -1,6 +1,4 @@
 // eslint-disable-next-line no-restricted-imports
-import type EventManager from "@calcom/core/EventManager";
-
 import type { createLoggerWithEventDetails } from "../../../handleNewBooking";
 import type {
   NewTimeSlotBooking,
@@ -16,7 +14,6 @@ const ownerRescheduleSeatedBooking = async (
   newTimeSlotBooking: NewTimeSlotBooking | null,
   seatedBooking: SeatedBooking,
   resultBooking: HandleSeatsResultBooking | null,
-  eventManager: EventManager,
   loggerWithEventDetails: ReturnType<typeof createLoggerWithEventDetails>
 ) => {
   const { originalRescheduledBooking, tAttendees } = rescheduleSeatedBookingObject;
@@ -37,7 +34,6 @@ const ownerRescheduleSeatedBooking = async (
     resultBooking = await moveSeatedBookingToNewTimeSlot(
       rescheduleSeatedBookingObject,
       seatedBooking,
-      eventManager,
       loggerWithEventDetails
     );
   } else {
@@ -46,7 +42,6 @@ const ownerRescheduleSeatedBooking = async (
       rescheduleSeatedBookingObject,
       seatedBooking,
       newTimeSlotBooking,
-      eventManager,
       loggerWithEventDetails
     );
   }

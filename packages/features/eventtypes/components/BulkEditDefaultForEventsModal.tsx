@@ -24,7 +24,6 @@ export function BulkEditDefaultForEventsModal({
   description: string;
   isEventTypesFetching?: boolean;
   eventTypes?: EventTypes;
-  handleBulkEditDialogToggle: () => void;
 }) {
   const { t } = useLocale();
 
@@ -87,11 +86,7 @@ export function BulkEditDefaultForEventsModal({
             ))}
           </div>
           <DialogFooter showDivider className="mt-10">
-            <DialogClose
-              onClick={() => {
-                props.handleBulkEditDialogToggle();
-              }}
-            />
+            <DialogClose />
             <Button type="submit" color="primary" loading={props.isPending} disabled={isButtonDisabled}>
               {t("update")}
             </Button>

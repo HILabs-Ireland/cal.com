@@ -11,7 +11,6 @@ import type { ReactElement } from "react";
 import { useMemo, useState } from "react";
 import type { z } from "zod";
 
-import { WipeMyCalActionButton } from "@calcom/app-store/wipemycalother/components";
 import dayjs from "@calcom/dayjs";
 import { FilterToggle } from "@calcom/features/bookings/components/FilterToggle";
 import { FiltersContainer } from "@calcom/features/bookings/components/FiltersContainer";
@@ -257,9 +256,6 @@ function BookingsContent({ status }: BookingsProps) {
           {(query.status === "pending" || query.isPaused) && <SkeletonLoader />}
           {query.status === "success" && !isEmpty && (
             <>
-              {!!bookingsToday.length && status === "upcoming" && (
-                <WipeMyCalActionButton bookingStatus={status} bookingsEmpty={isEmpty} />
-              )}
               <DataTableWrapper
                 table={table}
                 testId={`${status}-bookings`}

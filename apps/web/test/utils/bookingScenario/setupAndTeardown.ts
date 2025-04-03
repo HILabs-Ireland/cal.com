@@ -11,7 +11,6 @@ export function setupAndTeardown() {
     //@ts-expect-error - It is a readonly variable
     process.env.CALENDSO_ENCRYPTION_KEY = "abcdefghjnmkljhjklmnhjklkmnbhjui";
     // We are setting it in vitest.config.ts because otherwise it's too late to set it.
-    // process.env.DAILY_API_KEY = "MOCK_DAILY_API_KEY";
 
     // Ensure that Rate Limiting isn't enforced for tests
     delete process.env.UNKEY_ROOT_KEY;
@@ -24,7 +23,6 @@ export function setupAndTeardown() {
   afterEach(() => {
     //@ts-expect-error - It is a readonly variable
     delete process.env.CALENDSO_ENCRYPTION_KEY;
-    delete process.env.DAILY_API_KEY;
     globalThis.testEmails = [];
     fetchMock.resetMocks();
     // process.env.DAILY_API_KEY = "MOCK_DAILY_API_KEY";

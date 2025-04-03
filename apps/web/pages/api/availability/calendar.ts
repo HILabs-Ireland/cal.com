@@ -1,11 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 
-import { getCalendarCredentials, getConnectedCalendars } from "@calcom/core/CalendarManager";
 import { getServerSession } from "@calcom/features/auth/lib/getServerSession";
 import { CalendarCache } from "@calcom/features/calendar-cache/calendar-cache";
 import { HttpError } from "@calcom/lib/http-error";
-import notEmpty from "@calcom/lib/notEmpty";
 import { defaultHandler, defaultResponder } from "@calcom/lib/server";
 import { SelectedCalendarRepository } from "@calcom/lib/server/repository/selectedCalendar";
 import { UserRepository } from "@calcom/lib/server/repository/user";
@@ -85,17 +83,9 @@ async function getHandler(req: CustomNextApiRequest) {
     select: { externalId: true },
   });
   // get user's credentials + their connected integrations
-  const calendarCredentials = getCalendarCredentials(user.credentials);
   // get all the connected integrations' calendars (from third party)
-  const { connectedCalendars } = await getConnectedCalendars(
-    calendarCredentials,
-    user.userLevelSelectedCalendars
-  );
-  const calendars = connectedCalendars.flatMap((c) => c.calendars).filter(notEmpty);
-  const selectableCalendars = calendars.map((cal) => {
-    return { selected: selectedCalendarIds.findIndex((s) => s.externalId === cal.externalId) > -1, ...cal };
-  });
-  return selectableCalendars;
+
+  return selectedCalendarIds;
 }
 
 export default defaultResponder(async (req: NextApiRequest, res: NextApiResponse) => {

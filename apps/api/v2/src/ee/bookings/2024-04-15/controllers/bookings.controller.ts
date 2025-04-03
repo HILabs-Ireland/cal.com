@@ -43,7 +43,6 @@ import {
   handleNewBooking,
   BookingResponse,
   HttpError,
-  handleInstantMeeting,
   handleMarkNoShow,
   getAllUserBookings,
   getBookingInfo,
@@ -270,23 +269,13 @@ export class BookingsController_2024_04_15 {
     @Body() _: CreateBookingInput_2024_04_15,
     @Headers(X_CAL_CLIENT_ID) clientId?: string,
     @Headers(X_CAL_PLATFORM_EMBED) isEmbed?: string
-  ): Promise<ApiResponse<Awaited<ReturnType<typeof handleInstantMeeting>>>> {
+  ): Promise<any> {
     const oAuthClientId = clientId?.toString();
     req.userId = (await this.getOwnerId(req)) ?? -1;
     try {
-      const instantMeeting = await handleInstantMeeting(
-        await this.createNextApiBookingRequest(req, oAuthClientId, undefined, isEmbed)
-      );
-
-      if (instantMeeting.userId && instantMeeting.bookingUid) {
-        const now = new Date();
-        // add a 10 secondes delay to the usage incrementation to give some time to cancel the booking if needed
-        now.setSeconds(now.getSeconds() + 10);
-      }
-
       return {
         status: SUCCESS_STATUS,
-        data: instantMeeting,
+        data: null,
       };
     } catch (err) {
       this.handleBookingErrors(err, "instant");
