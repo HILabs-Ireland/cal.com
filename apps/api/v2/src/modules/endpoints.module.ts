@@ -1,4 +1,3 @@
-import { PlatformEndpointsModule } from "@/ee/platform-endpoints-module";
 import { AtomsModule } from "@/modules/atoms/atoms.module";
 import { ConferencingModule } from "@/modules/conferencing/conferencing.module";
 import { DestinationCalendarsModule } from "@/modules/destination-calendars/destination-calendars.module";
@@ -13,7 +12,6 @@ import { WebhooksModule } from "./webhooks/webhooks.module";
 @Module({
   imports: [
     OAuthClientModule,
-    PlatformEndpointsModule,
     TimezoneModule,
     UsersModule,
     WebhooksModule,
