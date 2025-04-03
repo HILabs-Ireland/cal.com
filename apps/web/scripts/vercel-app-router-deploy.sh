@@ -24,7 +24,6 @@ rm -rf \
    app/future/d\
    app/future/enterprise\
    app/future/org\
-   app/future/payment\
    app/future/reschedule\
    app/future/routing-forms\
    app/future/signup\

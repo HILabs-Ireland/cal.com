@@ -149,19 +149,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     );
   }
 
-  const payment = await prisma.payment.findFirst({
-    where: {
-      bookingId: bookingInfo.id,
-    },
-    select: {
-      success: true,
-      refunded: true,
-      currency: true,
-      amount: true,
-      paymentOption: true,
-    },
-  });
-
   const userId = session?.user?.id;
   const isLoggedInUserHost =
     userId &&
@@ -190,7 +177,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       trpcState: ssr.dehydrate(),
       dynamicEventName: bookingInfo?.eventType?.eventName || "",
       bookingInfo,
-      paymentStatus: payment,
       ...(tz && { tz }),
       userTimeFormat,
       requiresLoginToUpdate,

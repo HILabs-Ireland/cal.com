@@ -6,7 +6,6 @@ import { i18nInputSchema } from "./i18n.schema";
 import { ZMarkHostAsNoShowInputSchema } from "./markHostAsNoShow.schema";
 import { event } from "./procedures/event";
 import { session } from "./procedures/session";
-import { ZStripeCheckoutSessionInputSchema } from "./stripeCheckoutSession.schema";
 import { ZSubmitRatingInputSchema } from "./submitRating.schema";
 
 const NAMESPACE = "publicViewer";
@@ -32,13 +31,6 @@ export const publicViewerRouter = router({
     const handler = await importHandler(
       namespaced("markHostAsNoShow"),
       () => import("./markHostAsNoShow.handler")
-    );
-    return handler(opts);
-  }),
-  stripeCheckoutSession: publicProcedure.input(ZStripeCheckoutSessionInputSchema).query(async (opts) => {
-    const handler = await importHandler(
-      namespaced("stripeCheckoutSession"),
-      () => import("./stripeCheckoutSession.handler")
     );
     return handler(opts);
   }),

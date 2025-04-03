@@ -80,7 +80,6 @@ const addLocationIntegrationToFirstEvent = async function ({ user }: { user: { u
           username: user.username,
         },
       },
-      price: 0,
     },
   });
 

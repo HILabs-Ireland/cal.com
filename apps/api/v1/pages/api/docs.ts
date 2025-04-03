@@ -134,25 +134,6 @@ const swaggerHandler = withSwagger({
                 },
               },
             },
-            payment: {
-              type: Array,
-              items: {
-                properties: {
-                  id: {
-                    type: "number",
-                    example: 1,
-                  },
-                  success: {
-                    type: "boolean",
-                    example: true,
-                  },
-                  paymentOption: {
-                    type: "string",
-                    example: "ON_BOOKING",
-                  },
-                },
-              },
-            },
           },
         },
       },
@@ -163,7 +144,6 @@ const swaggerHandler = withSwagger({
       { name: "event-types" },
       { name: "bookings" },
       { name: "attendees" },
-      { name: "payments" },
       { name: "schedules" },
       { name: "teams" },
       { name: "memberships" },

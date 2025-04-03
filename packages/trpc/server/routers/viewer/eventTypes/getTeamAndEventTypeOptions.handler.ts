@@ -30,7 +30,9 @@ type res = Awaited<
   ReturnType<typeof MembershipRepository.findAllByUpIdIncludeMinimalEventTypes>
 >[number]["team"]["eventTypes"][number];
 
-type EventType = Omit<res, "forwardParamsSuccessRedirect"> & { children?: { id: number }[] };
+type EventType = Omit<res, "forwardParamsSuccessRedirect" | "price" | "currency"> & {
+  children?: { id: number }[];
+};
 
 export const getTeamAndEventTypeOptions = async ({ ctx, input }: GetTeamAndEventTypeOptions) => {
   await checkRateLimitAndThrowError({

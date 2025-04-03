@@ -220,16 +220,6 @@ const DailyVideoApiAdapter = (): VideoApiAdapter => {
     // Adds 14 days from the end of the booking as the expiration date
     const exp = Math.round(new Date(event.endTime).getTime() / 1000) + 60 * 60 * 24 * 14;
     const { scale_plan: scalePlan } = await getDailyAppKeys();
-    const hasTeamPlan = await prisma.membership.findFirst({
-      where: {
-        userId: event.organizer.id,
-        team: {
-          slug: {
-            not: null,
-          },
-        },
-      },
-    });
 
     return {
       privacy: "public",
@@ -239,13 +229,11 @@ const DailyVideoApiAdapter = (): VideoApiAdapter => {
         enable_screenshare: true,
         enable_chat: true,
         exp: exp,
-        enable_recording: scalePlan === "true" && !!hasTeamPlan === true ? "cloud" : undefined,
-        enable_transcription_storage: !!hasTeamPlan,
-        ...(!!hasTeamPlan && {
-          permissions: {
-            canAdmin: ["transcription"],
-          },
-        }),
+        enable_recording: scalePlan === "true" && "cloud",
+        enable_transcription_storage: true,
+        permissions: {
+          canAdmin: ["transcription"],
+        },
       },
     };
   };

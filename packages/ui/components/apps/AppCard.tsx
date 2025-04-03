@@ -34,7 +34,6 @@ export function AppCard({ app, credentials, searchText, userAdminTeams }: AppCar
   const enabledOnTeams = doesAppSupportTeamInstall({
     appCategories: app.categories,
     concurrentMeetings: app.concurrentMeetings,
-    isPaid: !!app.paid,
   });
 
   const appInstalled = enabledOnTeams && userAdminTeams ? userAdminTeams.length < appAdded : appAdded > 0;
@@ -72,7 +71,6 @@ export function AppCard({ app, credentials, searchText, userAdminTeams }: AppCar
       !doesAppSupportTeamInstall({
         appCategories: app.categories,
         concurrentMeetings: app.concurrentMeetings,
-        isPaid: !!app.paid,
       })
     ) {
       mutation.mutate({ type: app.type });
@@ -135,7 +133,6 @@ export function AppCard({ app, credentials, searchText, userAdminTeams }: AppCar
           ? !app.isGlobal && (
               <InstallAppButton
                 type={app.type}
-                teamsPlanRequired={app.teamsPlanRequired}
                 disableInstall={!!app.dependencies && !app.dependencyData?.some((data) => !data.installed)}
                 wrapperClassName="[@media(max-width:260px)]:w-full"
                 render={({ useDefaultComponent, ...props }) => {
@@ -148,7 +145,7 @@ export function AppCard({ app, credentials, searchText, userAdminTeams }: AppCar
                       loading: mutation.isPending,
                     };
                   }
-                  return <InstallAppButtonChild paid={app.paid} {...props} />;
+                  return <InstallAppButtonChild {...props} />;
                 }}
               />
             )
@@ -158,7 +155,6 @@ export function AppCard({ app, credentials, searchText, userAdminTeams }: AppCar
                 type={app.type}
                 wrapperClassName="[@media(max-width:260px)]:w-full"
                 disableInstall={!!app.dependencies && app.dependencyData?.some((data) => !data.installed)}
-                teamsPlanRequired={app.teamsPlanRequired}
                 render={({ useDefaultComponent, ...props }) => {
                   if (useDefaultComponent) {
                     props = {
@@ -170,7 +166,7 @@ export function AppCard({ app, credentials, searchText, userAdminTeams }: AppCar
                       loading: mutation.isPending,
                     };
                   }
-                  return <InstallAppButtonChild paid={app.paid} {...props} />;
+                  return <InstallAppButtonChild {...props} />;
                 }}
               />
             )}
@@ -190,27 +186,8 @@ export function AppCard({ app, credentials, searchText, userAdminTeams }: AppCar
   );
 }
 
-const InstallAppButtonChild = ({
-  paid,
-  ...props
-}: {
-  paid: App["paid"];
-} & ButtonProps) => {
+const InstallAppButtonChild = ({ ...props }: ButtonProps) => {
   const { t } = useLocale();
-  // Paid apps don't support team installs at the moment
-  // Also, cal.ai(the only paid app at the moment) doesn't support team install either
-  if (paid) {
-    return (
-      <Button
-        color="secondary"
-        className="[@media(max-width:260px)]:w-full [@media(max-width:260px)]:justify-center"
-        StartIcon="plus"
-        data-testid="install-app-button"
-        {...props}>
-        {paid.trial ? t("start_paid_trial") : t("subscribe")}
-      </Button>
-    );
-  }
 
   return (
     <Button

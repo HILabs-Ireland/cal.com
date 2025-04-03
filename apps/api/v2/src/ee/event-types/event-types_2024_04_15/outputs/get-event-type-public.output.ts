@@ -363,14 +363,6 @@ class PublicEventTypeOutput {
   @ApiPropertyOptional()
   recurringEvent?: any;
 
-  @IsNumber()
-  @ApiProperty()
-  price!: number;
-
-  @IsString()
-  @ApiProperty()
-  currency!: string;
-
   @IsOptional()
   @ApiPropertyOptional({ type: Number, nullable: true })
   seatsPerTimeSlot?: number | null;

@@ -9,7 +9,6 @@ import type {
   EventType,
   EventTypeCustomInput,
   Membership,
-  Payment,
   ReminderMail,
   Schedule,
   SelectedCalendar,
@@ -152,14 +151,6 @@ export type EventTypeResponse = BaseResponse & {
 };
 export type EventTypesResponse = BaseResponse & {
   event_types?: Partial<EventType | EventTypeExtended>[];
-};
-
-// Payment
-export type PaymentResponse = BaseResponse & {
-  payment?: Partial<Payment>;
-};
-export type PaymentsResponse = BaseResponse & {
-  payments?: Partial<Payment>[];
 };
 
 // Schedule

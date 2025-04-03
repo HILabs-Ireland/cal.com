@@ -1,13 +1,12 @@
 import type { TFunction } from "next-i18next";
 import { Trans } from "next-i18next";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import type { FieldError } from "react-hook-form";
 
 import { useIsPlatformBookerEmbed } from "@calcom/atoms/monorepo";
 import type { BookerEvent } from "@calcom/features/bookings/types";
 import { WEBSITE_PRIVACY_POLICY_URL, WEBSITE_TERMS_URL } from "@calcom/lib/constants";
-import { getPaymentAppData } from "@calcom/lib/getPaymentAppData";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { Alert, Button, EmptyScreen, Form } from "@calcom/ui";
 
@@ -49,7 +48,7 @@ export const BookEventForm = ({
   eventQuery: {
     isError: boolean;
     isPending: boolean;
-    data?: Pick<BookerEvent, "price" | "currency" | "metadata" | "bookingFields" | "locations"> | null;
+    data?: Pick<BookerEvent, "metadata" | "bookingFields" | "locations"> | null;
   };
   rescheduleUid: string | null;
 }) => {
@@ -63,12 +62,6 @@ export const BookEventForm = ({
 
   const [responseVercelIdHeader] = useState<string | null>(null);
   const { t } = useLocale();
-
-  const isPaidEvent = useMemo(() => {
-    if (!eventType?.price) return false;
-    const paymentAppData = getPaymentAppData(eventType);
-    return eventType?.price > 0 && !Number.isNaN(paymentAppData.price) && paymentAppData.price > 0;
-  }, [eventType]);
 
   if (eventQuery.isError) return <Alert severity="warning" message={t("error_booking_event")} />;
   if (eventQuery.isPending || !eventQuery.data) return <FormSkeleton />;
@@ -167,7 +160,7 @@ export const BookEventForm = ({
         <div className="modalsticky mt-auto flex justify-end space-x-2 rtl:space-x-reverse">
           {isInstantMeeting ? (
             <Button type="submit" color="primary" loading={loadingStates.creatingInstantBooking}>
-              {isPaidEvent ? t("pay_and_book") : t("confirm")}
+              {t("confirm")}
             </Button>
           ) : (
             <>
@@ -190,9 +183,7 @@ export const BookEventForm = ({
                 {rescheduleUid && bookingData
                   ? t("reschedule")
                   : renderConfirmNotVerifyEmailButtonCond
-                  ? isPaidEvent
-                    ? t("pay_and_book")
-                    : t("confirm")
+                  ? t("confirm")
                   : t("verify_email_email_button")}
               </Button>
             </>

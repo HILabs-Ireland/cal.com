@@ -1,9 +1,9 @@
 import type { TFunction } from "next-i18next";
 
 import type { WorkflowActions } from "@calcom/prisma/enums";
-import { WorkflowTemplates, WorkflowTriggerEvents } from "@calcom/prisma/enums";
+import { WorkflowTriggerEvents } from "@calcom/prisma/enums";
 
-import { isSMSOrWhatsappAction, isWhatsappAction, isEmailToAttendeeAction } from "./actionHelperFunctions";
+import { isWhatsappAction, isEmailToAttendeeAction } from "./actionHelperFunctions";
 import {
   WHATSAPP_WORKFLOW_TEMPLATES,
   WORKFLOW_ACTIONS,
@@ -12,14 +12,13 @@ import {
   ATTENDEE_WORKFLOW_TEMPLATES,
 } from "./constants";
 
-export function getWorkflowActionOptions(t: TFunction, isTeamsPlan?: boolean, isOrgsPlan?: boolean) {
+export function getWorkflowActionOptions(t: TFunction) {
   return WORKFLOW_ACTIONS.map((action) => {
     const actionString = t(`${action.toLowerCase()}_action`);
 
     return {
       label: actionString.charAt(0).toUpperCase() + actionString.slice(1),
       value: action,
-      needsTeamsUpgrade: isSMSOrWhatsappAction(action) && !isTeamsPlan,
     };
   });
 }
@@ -39,11 +38,7 @@ export function getWorkflowTriggerOptions(t: TFunction) {
   });
 }
 
-export function getWorkflowTemplateOptions(
-  t: TFunction,
-  action: WorkflowActions | undefined,
-  hasPaidPlan: boolean
-) {
+export function getWorkflowTemplateOptions(t: TFunction, action: WorkflowActions | undefined) {
   const TEMPLATES =
     action && isWhatsappAction(action)
       ? WHATSAPP_WORKFLOW_TEMPLATES
@@ -54,7 +49,6 @@ export function getWorkflowTemplateOptions(
     return {
       label: t(`${template.toLowerCase()}`),
       value: template,
-      needsTeamsUpgrade: !hasPaidPlan && template == WorkflowTemplates.CUSTOM,
     };
-  }) as { label: string; value: any; needsTeamsUpgrade: boolean }[];
+  }) as { label: string; value: any }[];
 }

@@ -5,16 +5,13 @@ import prismock from "../../../../../tests/libs/__mocks__/prisma";
 import type { BookingReference, Attendee, Booking, Membership } from "@prisma/client";
 import type { Prisma } from "@prisma/client";
 import type { WebhookTriggerEvents } from "@prisma/client";
-import type Stripe from "stripe";
 import { v4 as uuidv4 } from "uuid";
 import { vi } from "vitest";
 import "vitest-fetch-mock";
 import type { z } from "zod";
 
 import { appStoreMetadata } from "@calcom/app-store/appStoreMetaData";
-import { handleStripePaymentSuccess } from "@calcom/features/ee/payments/api/webhook";
 import { weekdayToWeekIndex, type WeekDays } from "@calcom/lib/date-fns";
-import type { HttpError } from "@calcom/lib/http-error";
 import logger from "@calcom/lib/logger";
 import { safeStringify } from "@calcom/lib/safeStringify";
 import { ProfileRepository } from "@calcom/lib/server/repository/profile";
@@ -24,7 +21,7 @@ import type {
   WorkflowTriggerEvents,
   WorkflowMethods,
 } from "@calcom/prisma/client";
-import type { PaymentOption, SchedulingType, SMSLockState, TimeUnit } from "@calcom/prisma/enums";
+import type { SchedulingType, SMSLockState, TimeUnit } from "@calcom/prisma/enums";
 import type { BookingStatus } from "@calcom/prisma/enums";
 import type { teamMetadataSchema } from "@calcom/prisma/zod-utils";
 import type { userMetadataType } from "@calcom/prisma/zod-utils";
@@ -33,7 +30,6 @@ import type { AppMeta } from "@calcom/types/App";
 import type { NewCalendarEventType } from "@calcom/types/Calendar";
 import type { EventBusyDate, IntervalLimit } from "@calcom/types/Calendar";
 
-import { getMockPaymentService } from "./MockPaymentService";
 import type { getMockRequestDataForBooking } from "./getMockRequestDataForBooking";
 
 // We don't need to test it. Also, it causes Formbricks error when imported
@@ -74,21 +70,6 @@ type InputWorkflow = {
   sendTo?: string;
 };
 
-type InputPayment = {
-  id?: number;
-  uid: string;
-  appId?: string | null;
-  bookingId: number;
-  amount: number;
-  fee: number;
-  currency: string;
-  success: boolean;
-  refunded: boolean;
-  data: Record<string, any>;
-  externalId: string;
-  paymentOption?: PaymentOption;
-};
-
 type InputWorkflowReminder = {
   id?: number;
   bookingUid: string;
@@ -123,7 +104,6 @@ export type ScenarioData = {
   bookings?: InputBooking[];
   webhooks?: InputWebhook[];
   workflows?: InputWorkflow[];
-  payment?: InputPayment[];
 };
 
 type InputCredential = typeof TestData.credentials.google & {
@@ -551,12 +531,6 @@ async function addWebhooksToDb(webhooks: any[]) {
   });
 }
 
-async function addPaymentToDb(payment: InputPayment[]) {
-  await prismock.payment.createMany({
-    data: payment,
-  });
-}
-
 async function addWebhooks(webhooks: InputWebhook[]) {
   log.silly("TestData: Creating Webhooks", safeStringify(webhooks));
 
@@ -830,9 +804,7 @@ export async function createBookingScenario(data: ScenarioData) {
   await addBookings(data.bookings);
   // mockBusyCalendarTimes([]);
   await addWebhooks(data.webhooks || []);
-  // addPaymentMock();
   const workflows = await addWorkflows(data.workflows || []);
-  await addPaymentToDb(data.payment || []);
 
   return {
     eventTypes,
@@ -899,12 +871,6 @@ export async function createCredentials(
   });
   return credentials;
 }
-
-// async function addPaymentsToDb(payments: Prisma.PaymentCreateInput[]) {
-//   await prismaMock.payment.createMany({
-//     data: payments,
-//   });
-// }
 
 /**
  * This fn indents to /ally compute day, month, year for the purpose of testing.
@@ -1049,15 +1015,6 @@ export function getZoomAppCredential() {
     metadataLookupKey: "zoomvideo",
     key: {
       scope: "meeting:write",
-    },
-  });
-}
-
-export function getStripeAppCredential() {
-  return getMockedCredential({
-    metadataLookupKey: "stripepayment",
-    key: {
-      scope: "read_write",
     },
   });
 }
@@ -1236,19 +1193,6 @@ export const TestData = {
         redirect_uris: ["http://localhost:3000/auth/callback"],
       },
     },
-    "stripe-payment": {
-      ...appStoreMetadata.stripepayment,
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      //@ts-ignore
-      keys: {
-        expiry_date: Infinity,
-        api_key: "",
-        scale_plan: "false",
-        client_id: "client_id",
-        client_secret: "client_secret",
-        redirect_uris: ["http://localhost:3000/auth/callback"],
-      },
-    },
   },
 };
 
@@ -1327,7 +1271,6 @@ export function getScenarioData(
     webhooks,
     workflows,
     bookings,
-    payment,
   }: {
     organizer?: ReturnType<typeof getOrganizer>;
     eventTypes: ScenarioData["eventTypes"];
@@ -1337,7 +1280,6 @@ export function getScenarioData(
     webhooks?: ScenarioData["webhooks"];
     workflows?: ScenarioData["workflows"];
     bookings?: ScenarioData["bookings"];
-    payment?: ScenarioData["payment"];
   },
   org?: { id: number | null } | undefined | null
 ) {
@@ -1398,7 +1340,6 @@ export function getScenarioData(
     webhooks,
     bookings: bookings || [],
     workflows,
-    payment,
   } satisfies ScenarioData;
 }
 
@@ -1609,9 +1550,11 @@ export function mockVideoApp({
   appStoreMock.default[appStoreLookupKey as keyof typeof appStoreMock.default].mockImplementation(() => {
     return new Promise((resolve) => {
       resolve({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         lib: {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          //@ts-ignore
+          // @ts-ignore
           VideoApiAdapter: (credential) => {
             return {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -1704,33 +1647,6 @@ export function mockVideoAppToCrashOnCreateMeeting({
     appStoreLookupKey,
     creationCrash: true,
   });
-}
-
-export function mockPaymentApp({
-  metadataLookupKey,
-  appStoreLookupKey,
-}: {
-  metadataLookupKey: string;
-  appStoreLookupKey?: string;
-}) {
-  appStoreLookupKey = appStoreLookupKey || metadataLookupKey;
-  const { paymentUid, externalId, MockPaymentService } = getMockPaymentService();
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  //@ts-ignore
-  appStoreMock.default[appStoreLookupKey as keyof typeof appStoreMock.default].mockImplementation(() => {
-    return new Promise((resolve) => {
-      resolve({
-        lib: {
-          PaymentService: MockPaymentService,
-        },
-      });
-    });
-  });
-
-  return {
-    paymentUid,
-    externalId,
-  };
 }
 
 export function mockErrorOnVideoMeetingCreation({
@@ -1842,28 +1758,6 @@ export function getBooker({
     email,
     attendeePhoneNumber,
   };
-}
-
-export function getMockedStripePaymentEvent({ paymentIntentId }: { paymentIntentId: string }) {
-  return {
-    id: null,
-    data: {
-      object: {
-        id: paymentIntentId,
-      },
-    },
-  } as unknown as Stripe.Event;
-}
-
-export async function mockPaymentSuccessWebhookFromStripe({ externalId }: { externalId: string }) {
-  let webhookResponse = null;
-  try {
-    await handleStripePaymentSuccess(getMockedStripePaymentEvent({ paymentIntentId: externalId }));
-  } catch (e) {
-    log.silly("mockPaymentSuccessWebhookFromStripe:catch", JSON.stringify(e));
-    webhookResponse = e as HttpError;
-  }
-  return { webhookResponse };
 }
 
 export function getExpectedCalEventForBookingRequest({

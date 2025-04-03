@@ -9,7 +9,6 @@ import useAddAppMutation from "@calcom/app-store/_utils/useAddAppMutation";
 import classNames from "@calcom/lib/classNames";
 import { WEBAPP_URL } from "@calcom/lib/constants";
 import { deriveAppDictKeyFromType } from "@calcom/lib/deriveAppDictKeyFromType";
-import { useHasTeamPlan } from "@calcom/lib/hooks/useHasPaidPlan";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { trpc } from "@calcom/trpc/react";
 import type { RouterOutputs } from "@calcom/trpc/react";
@@ -53,7 +52,6 @@ export const InstallAppButtonWithoutPlanCheck = (
 
 export const InstallAppButton = (
   props: {
-    teamsPlanRequired?: App["teamsPlanRequired"];
     type: App["type"];
     wrapperClassName?: string;
     disableInstall?: boolean;
@@ -62,7 +60,6 @@ export const InstallAppButton = (
   const { isPending: isUserLoading, data: user } = trpc.viewer.me.useQuery();
   const router = useRouter();
   const proProtectionElementRef = useRef<HTMLDivElement | null>(null);
-  const { isPending: isTeamPlanStatusLoading, hasTeamPlan } = useHasTeamPlan();
 
   useEffect(() => {
     const el = proProtectionElementRef.current;
@@ -79,19 +76,12 @@ export const InstallAppButton = (
           e.stopPropagation();
           return;
         }
-
-        if (props.teamsPlanRequired && !hasTeamPlan) {
-          // TODO: I think we should show the UpgradeTip in a Dialog here. This would solve the problem of no way to go back to the App page from the UpgradeTip page(except browser's back button)
-          router.push(props.teamsPlanRequired.upgradeUrl);
-          e.stopPropagation();
-          return;
-        }
       },
       true
     );
-  }, [isUserLoading, user, router, hasTeamPlan, props.teamsPlanRequired]);
+  }, [isUserLoading, user, router]);
 
-  if (isUserLoading || isTeamPlanStatusLoading) {
+  if (isUserLoading) {
     return null;
   }
 

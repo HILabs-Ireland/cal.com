@@ -3,11 +3,8 @@
 import type { ReactElement } from "react";
 
 import Shell from "@calcom/features/shell/Shell";
-import { UpgradeTip } from "@calcom/features/tips";
-import { WEBAPP_URL } from "@calcom/lib/constants";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { trpc } from "@calcom/trpc";
-import { Button, ButtonGroup } from "@calcom/ui";
 import { Icon } from "@calcom/ui";
 
 export default function InsightsLayout({ children }: { children: React.ReactNode }) {
@@ -41,26 +38,7 @@ export default function InsightsLayout({ children }: { children: React.ReactNode
         subtitle={t("insights_subtitle")}
         title={t("insights")}
         description={t("insights_subtitle")}>
-        <UpgradeTip
-          plan="team"
-          title={t("make_informed_decisions")}
-          description={t("make_informed_decisions_description")}
-          features={features}
-          background="/tips/insights"
-          buttons={
-            <div className="space-y-2 rtl:space-x-reverse sm:space-x-2">
-              <ButtonGroup>
-                <Button color="primary" href={`${WEBAPP_URL}/settings/teams/new`}>
-                  {t("create_team")}
-                </Button>
-                <Button color="minimal" href="https://go.cal.com/insights" target="_blank">
-                  {t("learn_more")}
-                </Button>
-              </ButtonGroup>
-            </div>
-          }>
-          {!user ? null : children}
-        </UpgradeTip>
+        {!user ? null : children}
       </Shell>
     </div>
   );

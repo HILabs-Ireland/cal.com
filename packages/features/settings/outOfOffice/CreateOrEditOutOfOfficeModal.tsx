@@ -4,7 +4,6 @@ import { Controller, useForm } from "react-hook-form";
 import dayjs from "@calcom/dayjs";
 import { classNames } from "@calcom/lib";
 import { useDebounce } from "@calcom/lib/hooks/useDebounce";
-import { useHasTeamPlan } from "@calcom/lib/hooks/useHasPaidPlan";
 import { useInViewObserver } from "@calcom/lib/hooks/useInViewObserver";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { trpc } from "@calcom/trpc/react";
@@ -20,7 +19,6 @@ import {
   showToast,
   Switch,
   TextArea,
-  UpgradeTeamsBadge,
   Label,
   Input,
 } from "@calcom/ui";
@@ -89,8 +87,6 @@ export const CreateOrEditOutOfOfficeEntryModal = ({
   }));
 
   const [profileRedirect, setProfileRedirect] = useState(!!currentlyEditingOutOfOfficeEntry?.toTeamUserId);
-
-  const { hasTeamPlan } = useHasTeamPlan();
 
   const {
     handleSubmit,
@@ -216,7 +212,6 @@ export const CreateOrEditOutOfOfficeEntryModal = ({
             <div className="bg-muted my-4 rounded-xl p-5">
               <div className="flex flex-row">
                 <Switch
-                  disabled={!hasTeamPlan}
                   data-testid="profile-redirect-switch"
                   checked={profileRedirect}
                   id="profile-redirect-switch"
@@ -226,13 +221,8 @@ export const CreateOrEditOutOfOfficeEntryModal = ({
                       setValue("toTeamUserId", null);
                     }
                   }}
-                  label={hasTeamPlan ? t("redirect_team_enabled") : t("redirect_team_disabled")}
+                  label={t("redirect_team_enabled")}
                 />
-                {!hasTeamPlan && (
-                  <div className="mx-2" data-testid="upgrade-team-badge">
-                    <UpgradeTeamsBadge />
-                  </div>
-                )}
               </div>
 
               {profileRedirect && (

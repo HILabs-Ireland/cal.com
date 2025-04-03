@@ -1857,7 +1857,12 @@ describe("handleNewBooking", () => {
               responses: {
                 email: booker.email,
                 name: booker.name,
-                location: { optionValue: "", value: OrganizerDefaultConferencingAppType },
+                location: { optionValue: "", value: OrganizerDefaultConferencingAppType } as {
+                  optionValue: "";
+                  value: string;
+                },
+                attendeePhoneNumber: undefined,
+                smsReminderNumber: undefined,
               },
             },
           });
@@ -2214,7 +2219,7 @@ describe("handleNewBooking", () => {
           responses: {
             email: booker.email,
             name: booker.name,
-            location: { optionValue: "", value: OrganizerDefaultConferencingAppType },
+            location: { optionValue: "" as const, value: OrganizerDefaultConferencingAppType },
           },
         };
 
@@ -2252,11 +2257,6 @@ describe("handleNewBooking", () => {
         expect(createdBooking2.userId).toBe(102);
       });
     });
-  });
-
-  describe("Team Plus Paid Events", () => {
-    test.todo("Collective event booking");
-    test.todo("Round Robin booking");
   });
   test.todo("Calendar and video Apps installed on a Team  Account");
 });

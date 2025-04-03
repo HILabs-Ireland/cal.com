@@ -124,15 +124,9 @@ import ensureOnlyMembersAsHosts from "./_utils/ensureOnlyMembersAsHosts";
  *                 type: string
  *                 description: The type of scheduling if a Team event. Required for team events only
  *                 enum: [ROUND_ROBIN, COLLECTIVE, MANAGED]
- *               price:
- *                 type: integer
- *                 description: Price of the event type booking
  *               parentId:
  *                 type: integer
  *                 description: EventTypeId of the parent managed event
- *               currency:
- *                 type: string
- *                 description: Currency acronym. Eg- usd, eur, gbp, etc.
  *               slotInterval:
  *                 type: integer
  *                 description: The intervals of available bookable slots in minutes
@@ -202,20 +196,9 @@ import ensureOnlyMembersAsHosts from "./_utils/ensureOnlyMembersAsHosts";
  *                  minimumBookingNotice: 120
  *                  beforeEventBuffer: 0
  *                  afterEventBuffer: 0
- *                  price: 0
- *                  currency: usd
  *                  slotInterval: null
  *                  successRedirectUrl: null
  *                  description: A test event type
- *                  metadata: {
- *                    apps: {
- *                      stripe: {
- *                        price: 0,
- *                        enabled: false,
- *                        currency: usd
- *                      }
- *                    }
- *                  }
  *              team-event-type:
  *                summary: An example of a team event type POST request
  *                value:
@@ -243,8 +226,6 @@ import ensureOnlyMembersAsHosts from "./_utils/ensureOnlyMembersAsHosts";
  *                  beforeEventBuffer: 0
  *                  afterEventBuffer: 0
  *                  schedulingType: "COLLECTIVE"
- *                  price: 0
- *                  currency: "usd"
  *                  slotInterval: null
  *                  successRedirectUrl: null
  *                  description: null

@@ -114,6 +114,9 @@ describe("handleChildrenEventTypes", () => {
         useEventTypeDestinationCalendarEmail,
         secondaryEmailId,
         autoTranslateDescriptionEnabled,
+        currency,
+        instantMeetingScheduleId,
+        price,
         ...evType
       } = mockFindFirstEventType({
         id: 123,
@@ -169,6 +172,9 @@ describe("handleChildrenEventTypes", () => {
         lockTimeZoneToggleOnBookingPage,
         useEventTypeDestinationCalendarEmail,
         secondaryEmailId,
+        currency,
+        instantMeetingScheduleId,
+        price,
         ...evType
       } = mockFindFirstEventType({
         metadata: { managedEventConfig: {} },
@@ -273,6 +279,9 @@ describe("handleChildrenEventTypes", () => {
         useEventTypeDestinationCalendarEmail,
         secondaryEmailId,
         autoTranslateDescriptionEnabled,
+        currency,
+        instantMeetingScheduleId,
+        price,
         ...evType
       } = mockFindFirstEventType({
         id: 123,
@@ -329,6 +338,9 @@ describe("handleChildrenEventTypes", () => {
         lockTimeZoneToggleOnBookingPage,
         useEventTypeDestinationCalendarEmail,
         secondaryEmailId,
+        currency,
+        instantMeetingScheduleId,
+        price,
         ...evType
       } = mockFindFirstEventType({
         metadata: { managedEventConfig: {} },
@@ -392,6 +404,9 @@ describe("handleChildrenEventTypes", () => {
         useEventTypeDestinationCalendarEmail,
         secondaryEmailId,
         autoTranslateDescriptionEnabled,
+        currency,
+        instantMeetingScheduleId,
+        price,
         ...evType
       } = mockFindFirstEventType({
         metadata: { managedEventConfig: {} },
@@ -407,8 +422,11 @@ describe("handleChildrenEventTypes", () => {
       const mockUpdatedEventType = {
         id: 2,
         userId: 4,
+        price: 123,
+        currency: "USD",
         timeZone: "UTC",
         teamId: 1,
+        instantMeetingScheduleId: null,
         autoTranslateDescriptionEnabled: false,
         secondaryEmailId: null,
         schedulingType: SchedulingType.MANAGED,

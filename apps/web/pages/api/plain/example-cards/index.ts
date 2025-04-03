@@ -13,6 +13,5 @@ export const cardExamples: ((
   lastActiveAt: Date | null,
   teamName: string | null,
   teamSlug: string | null,
-  isOrganization: boolean | null,
-  stripeCustomerId: string | null
+  isOrganization: boolean | null
 ) => Card)[] = [customerCardDisplay];

@@ -15,7 +15,6 @@ import type { RouterOutputs } from "@calcom/trpc/react";
 import { trpc } from "@calcom/trpc/react";
 import {
   Avatar,
-  Badge,
   Button,
   ButtonGroup,
   ConfirmationDialogContent,
@@ -59,8 +58,6 @@ export default function TeamListItem(props: Props) {
       showToast(t("success"), "success");
       utils.viewer.teams.get.invalidate();
       utils.viewer.teams.list.invalidate();
-      utils.viewer.teams.hasTeamPlan.invalidate();
-      utils.viewer.teams.listInvites.invalidate();
       const userOrganizationId = user?.profile?.organization?.id;
       const isSubTeamOfDifferentOrg = team.parentId ? team.parentId != userOrganizationId : false;
       const isDifferentOrg = team.isOrganization && team.id !== userOrganizationId;
@@ -104,9 +101,7 @@ export default function TeamListItem(props: Props) {
       />
       <div className="ms-3 inline-block truncate">
         <span className="text-default text-sm font-bold">{team.name}</span>
-        <span className="text-muted block text-xs">
-          {team.slug ? `${teamUrl}` : <Badge>{t("upgrade")}</Badge>}
-        </span>
+        <span className="text-muted block text-xs">{team.slug ?? teamUrl}</span>
       </div>
     </div>
   );

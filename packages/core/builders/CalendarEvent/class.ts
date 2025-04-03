@@ -25,7 +25,6 @@ class CalendarEventClass implements CalendarEvent {
   uid?: string | null;
   existingRecurringEvent?: ExistingRecurringEvent | null;
   videoCallData?: VideoCallData;
-  paymentInfo?: any;
   destinationCalendar?: DestinationCalendar[] | null;
   cancellationReason?: string | null;
   rejectionReason?: string | null;

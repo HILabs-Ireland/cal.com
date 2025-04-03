@@ -91,18 +91,6 @@ export class AtomsController {
     };
   }
 
-  @Get("payment/:uid")
-  @Version(VERSION_NEUTRAL)
-  @UseGuards(ApiAuthGuard)
-  async getUserPaymentInfoById(@Param("uid") uid: string): Promise<ApiResponse<unknown>> {
-    const data = await this.eventTypesService.getUserPaymentInfo(uid);
-
-    return {
-      status: SUCCESS_STATUS,
-      data,
-    };
-  }
-
   @Patch("/event-types/bulk-update-to-default-location")
   @Version(VERSION_NEUTRAL)
   @UseGuards(ApiAuthGuard)
