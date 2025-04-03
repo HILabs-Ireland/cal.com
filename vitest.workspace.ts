@@ -113,15 +113,6 @@ const workspaces = packagedEmbedTestsOnly
           setupFiles: ["setupVitest.ts", "packages/ui/components/test-setup.ts"],
         },
       },
-
-      {
-        test: {
-          name: "@calcom/closecom",
-          include: ["packages/app-store/closecom/**/*.{test,spec}.{ts,js}"],
-          environment: "jsdom",
-          setupFiles: ["packages/app-store/closecom/test/globals.ts"],
-        },
-      },
       {
         test: {
           globals: true,
@@ -174,15 +165,6 @@ const workspaces = packagedEmbedTestsOnly
           include: ["apps/web/components/**/*.{test,spec}.[jt]sx"],
           environment: "jsdom",
           setupFiles: ["packages/ui/components/test-setup.ts"],
-        },
-      },
-      {
-        test: {
-          globals: true,
-          name: "EventTypeAppCardInterface components",
-          include: ["packages/app-store/_components/**/*.{test,spec}.[jt]s?(x)"],
-          environment: "jsdom",
-          setupFiles: ["packages/app-store/test-setup.ts"],
         },
       },
       {

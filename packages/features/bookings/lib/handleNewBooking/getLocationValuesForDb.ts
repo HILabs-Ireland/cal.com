@@ -1,5 +1,3 @@
-import { userMetadata as userMetadataSchema } from "@calcom/prisma/zod-utils";
-
 import type { loadAndValidateUsers } from "./loadAndValidateUsers";
 
 type Users = Awaited<ReturnType<typeof loadAndValidateUsers>>;
@@ -18,13 +16,9 @@ export const getLocationValuesForDb = (
   locationBodyString: string
 ) => {
   // TODO: It's definition should be moved to getLocationValueForDb
-  let organizerOrFirstDynamicGroupMemberDefaultLocationUrl;
   if (dynamicUserList.length > 1) {
     users = sortUsersByDynamicList(users, dynamicUserList);
-    const firstUsersMetadata = userMetadataSchema.parse(users[0].metadata);
-    locationBodyString = firstUsersMetadata?.defaultConferencingApp?.appLink || locationBodyString;
-    organizerOrFirstDynamicGroupMemberDefaultLocationUrl =
-      firstUsersMetadata?.defaultConferencingApp?.appLink;
+    locationBodyString = locationBodyString;
   }
-  return { locationBodyString, organizerOrFirstDynamicGroupMemberDefaultLocationUrl };
+  return { locationBodyString };
 };

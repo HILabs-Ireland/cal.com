@@ -1,7 +1,6 @@
 import type { UseBookerLayoutType } from "@calcom/features/bookings/Booker/components/hooks/useBookerLayout";
 import type { UseBookingFormReturnType } from "@calcom/features/bookings/Booker/components/hooks/useBookingForm";
 import type { UseBookingsReturnType } from "@calcom/features/bookings/Booker/components/hooks/useBookings";
-import type { UseCalendarsReturnType } from "@calcom/features/bookings/Booker/components/hooks/useCalendars";
 import type { UseSlotsReturnType } from "@calcom/features/bookings/Booker/components/hooks/useSlots";
 import type { UseVerifyCodeReturnType } from "@calcom/features/bookings/Booker/components/hooks/useVerifyCode";
 import type { UseVerifyEmailReturnType } from "@calcom/features/bookings/Booker/components/hooks/useVerifyEmail";
@@ -111,7 +110,6 @@ export type WrappedBookerPropsMain = {
   extraOptions: Record<string, string | string[]>;
   bookings: UseBookingsReturnType;
   slots: UseSlotsReturnType;
-  calendars: UseCalendarsReturnType;
   bookerForm: UseBookingFormReturnType;
   event: BookerEventQuery;
   schedule: useScheduleForEventReturnType;

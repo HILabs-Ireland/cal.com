@@ -1,5 +1,4 @@
 import { getCalendar } from "@calcom/app-store/_utils/getCalendar";
-import { updateMeeting } from "@calcom/core/videoClient";
 import { sendCancelledSeatEmailsAndSMS } from "@calcom/emails";
 import sendPayload from "@calcom/features/webhooks/lib/sendOrSchedulePayload";
 import type { EventPayloadType, EventTypeInfo } from "@calcom/features/webhooks/lib/sendPayload";
@@ -84,9 +83,7 @@ async function cancelAttendeeSeat(
             ...evt,
             attendees: evt.attendees.filter((evtAttendee) => attendee.email !== evtAttendee.email),
           };
-          if (reference.type.includes("_video")) {
-            integrationsToUpdate.push(updateMeeting(credential, updatedEvt, reference));
-          }
+
           if (reference.type.includes("_calendar")) {
             const calendar = await getCalendar(credential);
             if (calendar) {

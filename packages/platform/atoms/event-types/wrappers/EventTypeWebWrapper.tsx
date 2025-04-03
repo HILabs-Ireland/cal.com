@@ -8,6 +8,7 @@ import { z } from "zod";
 import { useOrgBranding } from "@calcom/features/ee/organizations/context/provider";
 import type { ChildrenEventType } from "@calcom/features/eventtypes/components/ChildrenEventTypeSelect";
 import { EventType as EventTypeComponent } from "@calcom/features/eventtypes/components/EventType";
+import { EventAdvancedTab } from "@calcom/features/eventtypes/components/tabs/advanced/EventAdvancedTab";
 import type { EventTypeSetupProps } from "@calcom/features/eventtypes/lib/types";
 import { WEBSITE_URL } from "@calcom/lib/constants";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
@@ -48,11 +49,6 @@ const EventLimitsTab = dynamic(() =>
   import("./EventLimitsTabWebWrapper").then((mod) => mod)
 );
 
-const EventAdvancedTab = dynamic(() =>
-  // import web wrapper when it's ready
-  import("./EventAdvancedWebWrapper").then((mod) => mod)
-);
-
 const EventInstantTab = dynamic(() =>
   import("@calcom/features/eventtypes/components/tabs/instant/EventInstantTab").then(
     (mod) => mod.EventInstantTab
@@ -62,10 +58,6 @@ const EventInstantTab = dynamic(() =>
 const EventRecurringTab = dynamic(() =>
   // import web wrapper when it's ready
   import("./EventRecurringWebWrapper").then((mod) => mod)
-);
-
-const EventAppsTab = dynamic(() =>
-  import("@calcom/features/eventtypes/components/tabs/apps/EventAppsTab").then((mod) => mod.EventAppsTab)
 );
 
 const EventWorkflowsTab = dynamic(
@@ -203,6 +195,7 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
     limits: <EventLimitsTab eventType={eventType} />,
     advanced: (
       <EventAdvancedTab
+        showBookerLayoutSelector
         eventType={eventType}
         team={team}
         user={user}
@@ -212,7 +205,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
     ),
     instant: <EventInstantTab eventType={eventType} isTeamEvent={!!team} />,
     recurring: <EventRecurringTab eventType={eventType} />,
-    apps: <EventAppsTab eventType={{ ...eventType, URL: permalink }} />,
     workflows: allActiveWorkflows ? (
       <EventWorkflowsTab eventType={eventType} workflows={allActiveWorkflows} />
     ) : (
@@ -251,7 +243,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
         EventAdvancedTab,
         EventInstantTab,
         EventRecurringTab,
-        EventAppsTab,
         EventWorkflowsTab,
         EventWebhooksTab,
       ];

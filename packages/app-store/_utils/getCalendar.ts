@@ -41,13 +41,5 @@ export const getCalendar = async (credential: CredentialPayload | null): Promise
     return null;
   }
 
-  const calendarApp = await calendarAppImportFn();
-
-  if (!isCalendarService(calendarApp)) {
-    log.warn(`calendar of type ${calendarType} is not implemented`);
-    return null;
-  }
-  log.info("Got calendarApp", calendarApp.lib.CalendarService);
-  const CalendarService = calendarApp.lib.CalendarService;
-  return new CalendarService(credential);
+  return null;
 };

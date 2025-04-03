@@ -1,6 +1,5 @@
 import type { Prisma } from "@prisma/client";
 
-import type { FormResponse } from "@calcom/app-store/routing-forms/types/types";
 import prisma, { bookingMinimalSelect } from "@calcom/prisma";
 import type { Booking } from "@calcom/prisma/client";
 import { BookingStatus } from "@calcom/prisma/enums";
@@ -202,30 +201,7 @@ export class BookingRepository {
       },
     });
 
-    let queueBookings = allBookings;
-
-    if (virtualQueuesData) {
-      queueBookings = allBookings.filter((booking) => {
-        const responses = booking.routedFromRoutingFormReponse;
-        const fieldId = virtualQueuesData.fieldOptionData.fieldId;
-        const selectedOptionIds = virtualQueuesData.fieldOptionData.selectedOptionIds;
-
-        const response = responses?.response as FormResponse;
-
-        const responseValue = response[fieldId].value;
-
-        if (Array.isArray(responseValue) && Array.isArray(selectedOptionIds)) {
-          //check if all values are the same (this only support 'all in' not 'any in')
-          return (
-            responseValue.length === selectedOptionIds.length &&
-            responseValue.every((value, index) => value === selectedOptionIds[index])
-          );
-        } else {
-          return responseValue === selectedOptionIds;
-        }
-      });
-    }
-    return queueBookings;
+    return allBookings;
   }
 
   static async findBookingByUid({ bookingUid }: { bookingUid: string }) {

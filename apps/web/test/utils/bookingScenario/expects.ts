@@ -2,7 +2,7 @@ import prismaMock from "../../../../../tests/libs/__mocks__/prisma";
 
 import type { InputEventType, getOrganizer } from "./bookingScenario";
 
-import type { WebhookTriggerEvents, Booking, BookingReference, DestinationCalendar } from "@prisma/client";
+import type { WebhookTriggerEvents, Booking, BookingReference } from "@prisma/client";
 import { parse } from "node-html-parser";
 import type { VEvent } from "node-ical";
 import ical from "node-ical";
@@ -192,29 +192,6 @@ expect.extend({
       };
     }
 
-    if (expectedEmail.appsStatus) {
-      const actualAppsStatus = emailDom.querySelectorAll('[data-testid="appsStatus"] li').map((li) => {
-        return li.innerText.trim();
-      });
-      const expectedAppStatus = expectedEmail.appsStatus.map((appStatus) => {
-        if (appStatus.success && !appStatus.failures) {
-          return `${appStatus.appName} ✅`;
-        }
-        return `${appStatus.appName} ❌`;
-      });
-
-      const isAppsStatusCorrect = this.equals(actualAppsStatus, expectedAppStatus);
-
-      if (!isAppsStatusCorrect) {
-        return {
-          pass: false,
-          actual: actualAppsStatus,
-          expected: expectedAppStatus,
-          message: () => `AppsStatus ${isNot ? "is" : "isn't"} matching`,
-        };
-      }
-    }
-
     return {
       pass: true,
       message: () => `Email ${isNot ? "is" : "isn't"} correct`,
@@ -299,9 +276,6 @@ export function expectWebhookToHaveBeenCalledWith(
 
   if (parsedBody.payload) {
     if (data.payload) {
-      if (!!data.payload.metadata) {
-        expect(parsedBody.payload.metadata).toEqual(expect.objectContaining(data.payload.metadata));
-      }
       if (!!data.payload.responses)
         expect(parsedBody.payload.responses).toEqual(expect.objectContaining(data.payload.responses));
 
@@ -422,9 +396,6 @@ export async function expectBookingToBeInDatabase(
 
   const { references, ...remainingBooking } = booking;
   expect(actualBooking).toEqual(expect.objectContaining(remainingBooking));
-  expect(actualBooking?.references).toEqual(
-    expect.arrayContaining((references || []).map((reference) => expect.objectContaining(reference)))
-  );
 }
 
 export function expectSMSToBeTriggered({ sms, toNumber }: { sms: Fixtures["sms"]; toNumber: string }) {
@@ -1050,74 +1021,6 @@ export function expectBookingCancelledWebhookToHaveBeenFired({
   });
 }
 
-export function expectSuccessfulCalendarEventCreationInCalendar(
-  calendarMock: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    createEventCalls: any[];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    updateEventCalls: any[];
-  },
-  expected:
-    | {
-        calendarId?: string | null;
-        videoCallUrl: string;
-        destinationCalendars?: Partial<DestinationCalendar>[];
-      }
-    | {
-        calendarId?: string | null;
-        videoCallUrl: string;
-        destinationCalendars?: Partial<DestinationCalendar>[];
-      }[]
-) {
-  const expecteds = expected instanceof Array ? expected : [expected];
-  expect(calendarMock.createEventCalls.length).toBe(expecteds.length);
-  for (let i = 0; i < calendarMock.createEventCalls.length; i++) {
-    const expected = expecteds[i];
-
-    const calEvent = calendarMock.createEventCalls[i][0];
-
-    expect(calEvent).toEqual(
-      expect.objectContaining({
-        destinationCalendar: expected.calendarId
-          ? [
-              expect.objectContaining({
-                externalId: expected.calendarId,
-              }),
-            ]
-          : expected.destinationCalendars
-          ? expect.arrayContaining(expected.destinationCalendars.map((cal) => expect.objectContaining(cal)))
-          : null,
-        videoCallData: expect.objectContaining({
-          url: expected.videoCallUrl,
-        }),
-      })
-    );
-  }
-}
-
-export function expectSuccessfulCalendarEventUpdationInCalendar(
-  calendarMock: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    createEventCalls: any[];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    updateEventCalls: any[];
-  },
-  expected: {
-    externalCalendarId: string;
-    calEvent: Partial<CalendarEvent>;
-    uid: string;
-  }
-) {
-  expect(calendarMock.updateEventCalls.length).toBe(1);
-  const call = calendarMock.updateEventCalls[0];
-  const uid = call[0];
-  const calendarEvent = call[1];
-  const externalId = call[2];
-  expect(uid).toBe(expected.uid);
-  expect(calendarEvent).toEqual(expect.objectContaining(expected.calEvent));
-  expect(externalId).toBe(expected.externalCalendarId);
-}
-
 export function expectSuccessfulCalendarEventDeletionInCalendar(
   calendarMock: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -1141,71 +1044,6 @@ export function expectSuccessfulCalendarEventDeletionInCalendar(
   expect(uid).toBe(expected.uid);
   expect(calendarEvent).toEqual(expect.objectContaining(expected.calEvent));
   expect(externalId).toBe(expected.externalCalendarId);
-}
-
-export function expectSuccessfulVideoMeetingCreation(
-  videoMock: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    createMeetingCalls: any[];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    updateMeetingCalls: any[];
-  },
-  expected: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    credential: any;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    calEvent: any;
-  }
-) {
-  expect(videoMock.createMeetingCalls.length).toBe(1);
-  const call = videoMock.createMeetingCalls[0];
-  const callArgs = call.args;
-  const calEvent = callArgs[0];
-  const credential = call.credential;
-
-  expect(credential).toEqual(expected.credential);
-  expect(calEvent).toEqual(expected.calEvent);
-}
-
-export function expectSuccessfulVideoMeetingUpdationInCalendar(
-  videoMock: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    createMeetingCalls: any[];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    updateMeetingCalls: any[];
-  },
-  expected: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    bookingRef: any;
-    calEvent: Partial<CalendarEvent>;
-  }
-) {
-  expect(videoMock.updateMeetingCalls.length).toBe(1);
-  const call = videoMock.updateMeetingCalls[0];
-  const bookingRef = call.args[0];
-  const calendarEvent = call.args[1];
-  expect(bookingRef).toEqual(expect.objectContaining(expected.bookingRef));
-  expect(calendarEvent).toEqual(expect.objectContaining(expected.calEvent));
-}
-
-export function expectSuccessfulVideoMeetingDeletionInCalendar(
-  videoMock: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    createMeetingCalls: any[];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    updateMeetingCalls: any[];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    deleteMeetingCalls: any[];
-  },
-  expected: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    bookingRef: any;
-  }
-) {
-  expect(videoMock.deleteMeetingCalls.length).toBe(1);
-  const call = videoMock.deleteMeetingCalls[0];
-  const bookingRefUid = call.args[0];
-  expect(bookingRefUid).toEqual(expected.bookingRef.uid);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -52,7 +52,6 @@ export const mapBookingToMutationInput = ({
   const routingFormResponseIdParam = searchParams.get("cal.routingFormResponseId");
   const routingFormResponseId = routingFormResponseIdParam ? Number(routingFormResponseIdParam) : undefined;
   const skipContactOwner = searchParams.get("cal.skipContactOwner") === "true";
-  const reroutingFormResponses = searchParams.get("cal.reroutingFormResponses");
   const _isDryRun = isBookingDryRun(searchParams);
   const _cacheParam = searchParams?.get("cal.cache");
   const _shouldServeCache = _cacheParam ? _cacheParam === "true" : undefined;
@@ -84,7 +83,6 @@ export const mapBookingToMutationInput = ({
     routingFormResponseId,
     skipContactOwner,
     // In case of rerouting, the form responses are actually the responses that we need to update.
-    reroutingFormResponses: reroutingFormResponses ? JSON.parse(reroutingFormResponses) : undefined,
     _isDryRun,
     _shouldServeCache,
   };

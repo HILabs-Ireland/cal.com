@@ -23,11 +23,6 @@ export const EventWebhooksTab = ({ eventType }: Pick<EventTypeSetupProps, "event
 
   const { data: webhooks } = trpc.viewer.webhook.list.useQuery({ eventTypeId: eventType.id });
 
-  const { data: installedApps, isLoading } = trpc.viewer.integrations.useQuery({
-    variant: "other",
-    onlyInstalled: true,
-  });
-
   const [createModalOpen, setCreateModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [webhookToEdit, setWebhookToEdit] = useState<Webhook>();
@@ -108,7 +103,7 @@ export const EventWebhooksTab = ({ eventType }: Pick<EventTypeSetupProps, "event
   const cannotEditWebhooks = isChildrenManagedEventType ? webhooksDisableProps.isLocked : false;
   return (
     <div>
-      {webhooks && !isLoading && (
+      {webhooks && (
         <>
           <div>
             <div>
@@ -218,7 +213,7 @@ export const EventWebhooksTab = ({ eventType }: Pick<EventTypeSetupProps, "event
                 noRoutingFormTriggers={true}
                 onSubmit={onCreateWebhook}
                 onCancel={() => setCreateModalOpen(false)}
-                apps={installedApps?.items.map((app) => app.slug)}
+                apps={[]}
               />
             </DialogContent>
           </Dialog>
@@ -228,7 +223,7 @@ export const EventWebhooksTab = ({ eventType }: Pick<EventTypeSetupProps, "event
               <WebhookForm
                 noRoutingFormTriggers={true}
                 webhook={webhookToEdit}
-                apps={installedApps?.items.map((app) => app.slug)}
+                apps={[]}
                 onCancel={() => setEditModalOpen(false)}
                 onSubmit={(values: WebhookFormSubmitData) => {
                   if (

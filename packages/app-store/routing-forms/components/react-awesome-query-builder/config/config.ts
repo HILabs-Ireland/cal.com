@@ -80,6 +80,7 @@ function getSettingsWithoutRenderFns() {
     showErrorMessage: true,
     // Disable groups
     maxNesting: 1,
+    jsonLogic: {},
   };
 }
 

@@ -85,7 +85,7 @@ export const calendarOverlayHandler = async ({ ctx, input }: ListOptions) => {
   // Convert to users timezone
 
   const userTimeZone = input.loggedInUsersTz;
-  const calendarBusyTimesConverted = calendarBusyTimes.map((busyTime) => {
+  const calendarBusyTimesConverted = calendarBusyTimes.map((busyTime: any) => {
     const busyTimeStart = dayjs(busyTime.start);
     const busyTimeEnd = dayjs(busyTime.end);
     const busyTimeStartDate = busyTimeStart.tz(userTimeZone).toDate();

@@ -18,7 +18,6 @@ import { SchedulingType, EventTypeAutoTranslatedField } from "@calcom/prisma/enu
 import { TRPCError } from "@trpc/server";
 
 import type { TrpcSessionUser } from "../../../trpc";
-import { setDestinationCalendarHandler } from "../../loggedInViewer/setDestinationCalendar.handler";
 import type { TUpdateInputSchema } from "./update.schema";
 import {
   ensureUniqueBookingFields,
@@ -197,17 +196,6 @@ export const updateHandler = async ({ ctx, input }: UpdateOptions) => {
     };
   } else if (recurringEvent === null) {
     data.recurringEvent = Prisma.DbNull;
-  }
-
-  if (destinationCalendar) {
-    /** We connect or create a destination calendar to the event type instead of the user */
-    await setDestinationCalendarHandler({
-      ctx,
-      input: {
-        ...destinationCalendar,
-        eventTypeId: id,
-      },
-    });
   }
 
   if (customInputs) {

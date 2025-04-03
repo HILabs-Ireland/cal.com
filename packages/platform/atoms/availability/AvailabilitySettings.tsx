@@ -114,7 +114,6 @@ type AvailabilitySettingsProps = {
     isSaving: boolean;
     eventTypes?: EventTypes;
     isEventTypesFetching?: boolean;
-    handleBulkEditDialogToggle: () => void;
   };
 };
 
@@ -387,7 +386,6 @@ export function AvailabilitySettings({
               description={t("default_schedules_bulk_description")}
               eventTypes={bulkUpdateModalProps?.eventTypes}
               isEventTypesFetching={bulkUpdateModalProps?.isEventTypesFetching}
-              handleBulkEditDialogToggle={bulkUpdateModalProps.handleBulkEditDialogToggle}
             />
           )}
 
