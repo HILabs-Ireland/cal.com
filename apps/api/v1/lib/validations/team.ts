@@ -2,7 +2,11 @@ import { z } from "zod";
 
 import { _TeamModel as Team } from "@calcom/prisma/zod";
 
-export const schemaTeamBaseBodyParams = Team.omit({ id: true, createdAt: true }).partial({
+export const schemaTeamBaseBodyParams = Team.omit({
+  id: true,
+  createdAt: true,
+  pendingPayment: true,
+}).partial({
   hideBranding: true,
   metadata: true,
   isOrganization: true,
