@@ -3,7 +3,6 @@ import type { Prisma } from "@prisma/client";
 import type { EventManagerUser } from "@calcom/core/EventManager";
 import EventManager from "@calcom/core/EventManager";
 import { sendScheduledEmailsAndSMS } from "@calcom/emails";
-import type { Workflow } from "@calcom/features/ee/workflows/lib/types";
 import getWebhooks from "@calcom/features/webhooks/lib/getWebhooks";
 import { scheduleTrigger } from "@calcom/features/webhooks/lib/scheduleTrigger";
 import sendPayload from "@calcom/features/webhooks/lib/sendOrSchedulePayload";
@@ -50,9 +49,6 @@ export async function handleConfirmation(args: {
       parent?: {
         teamId: number | null;
       } | null;
-      workflows?: {
-        workflow: Workflow;
-      }[];
     } | null;
     metadata?: Prisma.JsonValue;
     eventTypeId: number | null;
