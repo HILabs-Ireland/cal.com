@@ -78,7 +78,6 @@ export const createHandler = async ({ ctx, input }: CreateOptions) => {
 
   return {
     url: `${WEBAPP_URL}/settings/teams/${createdTeam.id}/onboard-members`,
-    message: "Team billing is disabled, not generating a checkout session.",
     team: createdTeam,
   };
 };
