@@ -1,7 +1,5 @@
 import { bootstrap } from "@/app";
 import { AppModule } from "@/app.module";
-import { CreateOrgTeamMembershipDto } from "@/modules/organizations/inputs/create-organization-team-membership.input";
-import { UpdateOrgTeamMembershipDto } from "@/modules/organizations/inputs/update-organization-team-membership.input";
 import { OrgTeamMembershipOutputDto } from "@/modules/organizations/outputs/organization-teams-memberships.output";
 import { PrismaModule } from "@/modules/prisma/prisma.module";
 import { CreateTeamMembershipInput } from "@/modules/teams/memberships/inputs/create-team-membership.input";
@@ -27,7 +25,6 @@ import { UserRepositoryFixture } from "test/fixtures/repository/users.repository
 import { randomNumber } from "test/utils/randomNumber";
 import { withApiAuth } from "test/utils/withApiAuth";
 
-import { api } from "@calcom/app-store/alby";
 import { SUCCESS_STATUS } from "@calcom/platform-constants";
 import { ApiSuccessResponse } from "@calcom/platform-types";
 import { Membership, Team } from "@calcom/prisma/client";
@@ -46,7 +43,6 @@ describe("Teams Memberships Endpoints", () => {
 
     let team: Team;
     let teamEventType: EventType;
-    let managedEventType: EventType;
     let teamAdminMembership: Membership;
     let teamMemberMembership: Membership;
     let membershipCreatedViaApi: TeamMembershipOutput;
@@ -109,19 +105,6 @@ describe("Teams Memberships Endpoints", () => {
         title: "Collective Event Type",
         slug: "collective-event-type",
         length: 30,
-        assignAllTeamMembers: true,
-        bookingFields: [],
-        locations: [],
-      });
-
-      managedEventType = await eventTypesRepositoryFixture.createTeamEventType({
-        schedulingType: "MANAGED",
-        team: {
-          connect: { id: team.id },
-        },
-        title: "Managed Event Type",
-        slug: "managed-event-type",
-        length: 60,
         assignAllTeamMembers: true,
         bookingFields: [],
         locations: [],
@@ -240,15 +223,12 @@ describe("Teams Memberships Endpoints", () => {
     });
 
     async function userHasCorrectEventTypes(userId: number) {
-      const managedEventTypes = await eventTypesRepositoryFixture.getAllUserEventTypes(userId);
       const teamEventTypes = await eventTypesRepositoryFixture.getAllTeamEventTypes(team.id);
-      expect(managedEventTypes?.length).toEqual(1);
       expect(teamEventTypes?.length).toEqual(2);
       const collectiveEvenType = teamEventTypes?.find((eventType) => eventType.slug === teamEventType.slug);
       expect(collectiveEvenType).toBeTruthy();
       const userHost = collectiveEvenType?.hosts.find((host) => host.userId === userId);
       expect(userHost).toBeTruthy();
-      expect(managedEventTypes?.find((eventType) => eventType.slug === managedEventType.slug)).toBeTruthy();
     }
 
     it("should update the membership of the org's team", async () => {

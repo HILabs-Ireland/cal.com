@@ -525,18 +525,6 @@ export const updateHandler = async ({ ctx, input }: UpdateOptions) => {
     return acc;
   }, {});
 
-  // Handling updates to children event types (managed events types)
-  await updateChildrenEventTypes({
-    eventTypeId: id,
-    currentUserId: ctx.user.id,
-    oldEventType: eventType,
-    updatedEventType,
-    children,
-    profileId: ctx.user.profile.id,
-    prisma: ctx.prisma,
-    updatedValues,
-  });
-
   const res = ctx.res as NextApiResponse;
   if (typeof res?.revalidate !== "undefined") {
     try {

@@ -58,7 +58,6 @@ describe("Organizations Event Types Endpoints", () => {
     let falseTestUser: User;
 
     let collectiveEventType: TeamEventTypeOutput_2024_06_14;
-    let managedEventType: TeamEventTypeOutput_2024_06_14;
 
     beforeAll(async () => {
       const moduleRef = await withApiAuth(
@@ -273,72 +272,6 @@ describe("Organizations Event Types Endpoints", () => {
         });
     });
 
-    it("should create a managed team event-type", async () => {
-      const body: CreateTeamEventTypeInput_2024_06_14 = {
-        title: "Coding consultation managed",
-        slug: "coding-consultation-managed",
-        description: "Our team will review your codebase.",
-        lengthInMinutes: 60,
-        locations: [
-          {
-            type: "integration",
-            integration: "cal-video",
-          },
-        ],
-        schedulingType: "MANAGED",
-        hosts: [
-          {
-            userId: teamMember1.id,
-            mandatory: true,
-            priority: "high",
-          },
-          {
-            userId: teamMember2.id,
-            mandatory: false,
-            priority: "low",
-          },
-        ],
-      };
-
-      return request(app.getHttpServer())
-        .post(`/v2/teams/${team.id}/event-types`)
-        .send(body)
-        .expect(201)
-        .then(async (response) => {
-          const responseBody: ApiSuccessResponse<TeamEventTypeOutput_2024_06_14[]> = response.body;
-          expect(responseBody.status).toEqual(SUCCESS_STATUS);
-
-          const data = responseBody.data;
-          expect(data.length).toEqual(3);
-
-          const teammate1EventTypes = await eventTypesRepositoryFixture.getAllUserEventTypes(teamMember1.id);
-          const teammate2EventTypes = await eventTypesRepositoryFixture.getAllUserEventTypes(teamMember2.id);
-          const teamEventTypes = await eventTypesRepositoryFixture.getAllTeamEventTypes(team.id);
-
-          expect(teammate1EventTypes.length).toEqual(1);
-          expect(teammate2EventTypes.length).toEqual(1);
-          expect(teamEventTypes.filter((eventType) => eventType.schedulingType === "MANAGED").length).toEqual(
-            1
-          );
-
-          const responseTeamEvent = responseBody.data.find((event) => event.teamId === team.id);
-          expect(responseTeamEvent).toBeDefined();
-          if (!responseTeamEvent) {
-            throw new Error("Team event not found");
-          }
-
-          const responseTeammate1Event = responseBody.data.find((event) => event.ownerId === teamMember1.id);
-          expect(responseTeammate1Event).toBeDefined();
-          expect(responseTeammate1Event?.parentEventTypeId).toEqual(responseTeamEvent?.id);
-
-          const responseTeammate2Event = responseBody.data.find((event) => event.ownerId === teamMember2.id);
-          expect(responseTeammate2Event).toBeDefined();
-          expect(responseTeammate2Event?.parentEventTypeId).toEqual(responseTeamEvent?.id);
-
-          managedEventType = responseTeamEvent;
-        });
-    });
-
     it("should not get a non existing event-type", async () => {
       return request(app.getHttpServer()).get(`/v2/teams/${team.id}/event-types/999999`).expect(404);
     });
@@ -373,13 +306,10 @@ describe("Organizations Event Types Endpoints", () => {
           expect(data.length).toEqual(2);
 
           const eventTypeCollective = data.find((eventType) => eventType.schedulingType === "COLLECTIVE");
-          const eventTypeManaged = data.find((eventType) => eventType.schedulingType === "MANAGED");
 
           expect(eventTypeCollective?.title).toEqual(collectiveEventType.title);
           expect(eventTypeCollective?.hosts.length).toEqual(2);
 
-          expect(eventTypeManaged?.title).toEqual(managedEventType.title);
-          expect(eventTypeManaged?.hosts.length).toEqual(2);
           evaluateHost(collectiveEventType.hosts[0], eventTypeCollective?.hosts[0]);
           evaluateHost(collectiveEventType.hosts[1], eventTypeCollective?.hosts[1]);
         });
@@ -422,119 +352,6 @@ describe("Organizations Event Types Endpoints", () => {
         });
     });
 
-    it("should update managed event-type", async () => {
-      const newTitle = "Coding consultation managed updated";
-      const newHosts: UpdateTeamEventTypeInput_2024_06_14["hosts"] = [
-        {
-          userId: teamMember1.id,
-          mandatory: true,
-          priority: "medium",
-        },
-      ];
-
-      const body: UpdateTeamEventTypeInput_2024_06_14 = {
-        title: newTitle,
-        hosts: newHosts,
-      };
-
-      return request(app.getHttpServer())
-        .patch(`/v2/teams/${team.id}/event-types/${managedEventType.id}`)
-        .send(body)
-        .expect(200)
-        .then(async (response) => {
-          const responseBody: ApiSuccessResponse<TeamEventTypeOutput_2024_06_14[]> = response.body;
-          expect(responseBody.status).toEqual(SUCCESS_STATUS);
-
-          const data = responseBody.data;
-          expect(data.length).toEqual(2);
-
-          const teammate1EventTypes = await eventTypesRepositoryFixture.getAllUserEventTypes(teamMember1.id);
-          const teammate2EventTypes = await eventTypesRepositoryFixture.getAllUserEventTypes(teamMember2.id);
-          const teamEventTypes = await eventTypesRepositoryFixture.getAllTeamEventTypes(team.id);
-          const managedTeamEventTypes = teamEventTypes.filter(
-            (eventType) => eventType.schedulingType === "MANAGED"
-          );
-
-          expect(teammate1EventTypes.length).toEqual(1);
-          expect(teammate1EventTypes[0].title).toEqual(newTitle);
-          expect(teammate2EventTypes.length).toEqual(0);
-          expect(managedTeamEventTypes.length).toEqual(1);
-          expect(managedTeamEventTypes[0].assignAllTeamMembers).toEqual(false);
-          expect(
-            teamEventTypes.filter((eventType) => eventType.schedulingType === "MANAGED")?.[0]?.title
-          ).toEqual(newTitle);
-
-          const responseTeamEvent = responseBody.data.find(
-            (eventType) => eventType.schedulingType === "MANAGED"
-          );
-          expect(responseTeamEvent).toBeDefined();
-          expect(responseTeamEvent?.title).toEqual(newTitle);
-          expect(responseTeamEvent?.assignAllTeamMembers).toEqual(false);
-
-          const responseTeammate1Event = responseBody.data.find(
-            (eventType) => eventType.ownerId === teamMember1.id
-          );
-          expect(responseTeammate1Event).toBeDefined();
-          expect(responseTeammate1Event?.title).toEqual(newTitle);
-
-          managedEventType = responseBody.data[0];
-        });
-    });
-
-    it("should assign all members to managed event-type", async () => {
-      const body: UpdateTeamEventTypeInput_2024_06_14 = {
-        assignAllTeamMembers: true,
-      };
-
-      return request(app.getHttpServer())
-        .patch(`/v2/teams/${team.id}/event-types/${managedEventType.id}`)
-        .send(body)
-        .expect(200)
-        .then(async (response) => {
-          const responseBody: ApiSuccessResponse<TeamEventTypeOutput_2024_06_14[]> = response.body;
-          expect(responseBody.status).toEqual(SUCCESS_STATUS);
-
-          const data = responseBody.data;
-          // note(Lauris): we expect 4 because we have 2 team members, 1 team admin and 4th is the event object itself.
-          expect(data.length).toEqual(4);
-
-          const teammate1EventTypes = await eventTypesRepositoryFixture.getAllUserEventTypes(teamMember1.id);
-          const teammate2EventTypes = await eventTypesRepositoryFixture.getAllUserEventTypes(teamMember2.id);
-          const teamEventTypes = await eventTypesRepositoryFixture.getAllTeamEventTypes(team.id);
-          const managedTeamEventTypes = teamEventTypes.filter(
-            (eventType) => eventType.schedulingType === "MANAGED"
-          );
-
-          expect(teammate1EventTypes.length).toEqual(1);
-          expect(teammate2EventTypes.length).toEqual(1);
-          expect(managedTeamEventTypes.length).toEqual(1);
-          expect(managedTeamEventTypes[0].assignAllTeamMembers).toEqual(true);
-
-          const responseTeamEvent = responseBody.data.find(
-            (eventType) => eventType.schedulingType === "MANAGED"
-          );
-          expect(responseTeamEvent).toBeDefined();
-          expect(responseTeamEvent?.teamId).toEqual(team.id);
-          expect(responseTeamEvent?.assignAllTeamMembers).toEqual(true);
-
-          const responseTeammate1Event = responseBody.data.find(
-            (eventType) => eventType.ownerId === teamMember1.id
-          );
-          expect(responseTeammate1Event).toBeDefined();
-          expect(responseTeammate1Event?.parentEventTypeId).toEqual(responseTeamEvent?.id);
-
-          const responseTeammate2Event = responseBody.data.find(
-            (eventType) => eventType.ownerId === teamMember2.id
-          );
-          expect(responseTeammate1Event).toBeDefined();
-          expect(responseTeammate2Event?.parentEventTypeId).toEqual(responseTeamEvent?.id);
-
-          if (responseTeamEvent) {
-            managedEventType = responseTeamEvent;
-          }
-        });
-    });
-
     it("should delete event-type not part of the team", async () => {
       return request(app.getHttpServer()).delete(`/v2/teams/${team.id}/event-types/99999`).expect(404);
     });
@@ -542,12 +359,6 @@ describe("Organizations Event Types Endpoints", () => {
     it("should delete collective event-type", async () => {
       return request(app.getHttpServer())
         .delete(`/v2/teams/${team.id}/event-types/${collectiveEventType.id}`)
-        .expect(200);
-    });
-
-    it("should delete managed event-type", async () => {
-      return request(app.getHttpServer())
-        .delete(`/v2/teams/${team.id}/event-types/${managedEventType.id}`)
         .expect(200);
     });
 

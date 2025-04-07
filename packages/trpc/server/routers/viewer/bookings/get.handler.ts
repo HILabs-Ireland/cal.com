@@ -303,7 +303,6 @@ export async function getBookings({
     bookingsQueryUserId,
     bookingsQueryAttendees,
     bookingsQueryTeamMember,
-    bookingsQueryManagedEvents,
     bookingsQueryOrganizationMembers,
     bookingsQuerySeatReference,
     //////////////////////////
@@ -353,21 +352,6 @@ export async function getBookings({
             },
           },
         ],
-        AND: [passedBookingsStatusFilter, ...filtersCombined],
-      },
-      orderBy,
-      take: take + 1,
-      skip,
-    }),
-    prisma.booking.findMany({
-      where: {
-        eventType: {
-          parent: {
-            team: {
-              members: membershipConditionWhereUserIsAdminOwner,
-            },
-          },
-        },
         AND: [passedBookingsStatusFilter, ...filtersCombined],
       },
       orderBy,
@@ -480,7 +464,6 @@ export async function getBookings({
     bookingsQueryUserId
       .concat(bookingsQueryAttendees)
       .concat(bookingsQueryTeamMember)
-      .concat(bookingsQueryManagedEvents)
       .concat(bookingsQueryOrganizationMembers)
       .concat(bookingsQuerySeatReference)
   );
