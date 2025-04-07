@@ -39,7 +39,6 @@ describe("Organizations Teams Memberships Endpoints", () => {
     let orgTeam: Team;
     let nonOrgTeam: Team;
     let teamEventType: EventType;
-    let managedEventType: EventType;
     let membership: Membership;
     let membership2: Membership;
     let membershipCreatedViaApi: OrgTeamMembershipOutputDto;
@@ -110,19 +109,6 @@ describe("Organizations Teams Memberships Endpoints", () => {
         title: "Collective Event Type",
         slug: "collective-event-type",
         length: 30,
-        assignAllTeamMembers: true,
-        bookingFields: [],
-        locations: [],
-      });
-
-      managedEventType = await eventTypesRepositoryFixture.createTeamEventType({
-        schedulingType: "MANAGED",
-        team: {
-          connect: { id: orgTeam.id },
-        },
-        title: "Managed Event Type",
-        slug: "managed-event-type",
-        length: 60,
         assignAllTeamMembers: true,
         bookingFields: [],
         locations: [],
@@ -317,15 +303,12 @@ describe("Organizations Teams Memberships Endpoints", () => {
     });
 
     async function userHasCorrectEventTypes(userId: number) {
-      const managedEventTypes = await eventTypesRepositoryFixture.getAllUserEventTypes(userId);
       const teamEventTypes = await eventTypesRepositoryFixture.getAllTeamEventTypes(orgTeam.id);
-      expect(managedEventTypes?.length).toEqual(1);
       expect(teamEventTypes?.length).toEqual(2);
       const collectiveEvenType = teamEventTypes?.find((eventType) => eventType.slug === teamEventType.slug);
       expect(collectiveEvenType).toBeTruthy();
       const userHost = collectiveEvenType?.hosts.find((host) => host.userId === userId);
       expect(userHost).toBeTruthy();
-      expect(managedEventTypes?.find((eventType) => eventType.slug === managedEventType.slug)).toBeTruthy();
     }
 
     it("should fail to create the membership of the org's team for a non org user", async () => {

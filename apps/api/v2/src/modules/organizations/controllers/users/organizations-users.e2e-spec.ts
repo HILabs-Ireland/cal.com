@@ -370,7 +370,6 @@ describe("Organizations Users Endpoints", () => {
     let user: User;
     let org: Team;
     let team: Team;
-    let managedEventType: EventType;
     let createdUser: User;
 
     beforeAll(async () => {
@@ -431,19 +430,6 @@ describe("Organizations Users Endpoints", () => {
         title: "Collective Event Type",
         slug: "collective-event-type",
         length: 30,
-        assignAllTeamMembers: true,
-        bookingFields: [],
-        locations: [],
-      });
-
-      managedEventType = await eventTypesRepositoryFixture.createTeamEventType({
-        schedulingType: "MANAGED",
-        team: {
-          connect: { id: team.id },
-        },
-        title: "Managed Event Type",
-        slug: "managed-event-type",
-        length: 60,
         assignAllTeamMembers: true,
         bookingFields: [],
         locations: [],
