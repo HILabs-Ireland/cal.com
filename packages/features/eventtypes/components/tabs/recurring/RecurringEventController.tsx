@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 
-import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
 import type {
   EventTypeSetup,
   InputClassNames,
@@ -50,10 +49,6 @@ export default function RecurringEventController({
       label: t(`${key.toString().toLowerCase()}`, { count: recurringEventState?.interval }),
       value: value.toString(),
     }));
-
-  const { shouldLockDisableProps } = useLockedFieldsManager({ eventType, translate: t, formMethods });
-
-  const recurringLocked = shouldLockDisableProps("recurringEvent");
 
   return (
     <div className={classNames("block items-start sm:flex", customClassNames?.container)}>

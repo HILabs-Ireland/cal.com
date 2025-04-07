@@ -23,7 +23,7 @@ import type {
 } from "@calcom/features/eventtypes/lib/types";
 import { classNames } from "@calcom/lib";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
-import { SchedulingType } from "@calcom/prisma/enums";
+import type { SchedulingType } from "@calcom/prisma/enums";
 import { Label, Select, SettingsToggle, RadioGroup as RadioArea } from "@calcom/ui";
 
 import { EditWeightsForAllTeamMembers } from "../../EditWeightsForAllTeamMembers";
@@ -554,7 +554,6 @@ const Hosts = ({
               />
             </>
           ),
-          MANAGED: <></>,
         };
         return !!schedulingType ? schedulingTypeRender[schedulingType] : <></>;
       }}
@@ -605,7 +604,6 @@ export const EventTeamAssignmentTab = ({
       t("pending")
     );
   });
-  const isManagedEventType = eventType.schedulingType === SchedulingType.MANAGED;
   const { getValues, setValue } = useFormContext<FormValues>();
   const [assignAllTeamMembers, setAssignAllTeamMembers] = useState<boolean>(
     getValues("assignAllTeamMembers") ?? false
@@ -619,7 +617,7 @@ export const EventTeamAssignmentTab = ({
 
   return (
     <div>
-      {team && !isManagedEventType && (
+      {team && (
         <>
           <div
             className={classNames(
@@ -716,7 +714,7 @@ export const EventTeamAssignmentTab = ({
           />
         </>
       )}
-      {team && isManagedEventType && (
+      {team && (
         <ChildrenEventTypes
           assignAllTeamMembers={assignAllTeamMembers}
           setAssignAllTeamMembers={setAssignAllTeamMembers}

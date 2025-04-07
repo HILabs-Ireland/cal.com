@@ -6,7 +6,6 @@ import { components } from "react-select";
 import type { OptionProps, SingleValueProps } from "react-select";
 
 import LicenseRequired from "@calcom/features/ee/common/components/LicenseRequired";
-import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
 import type { EventTypeSetup, FormValues, AvailabilityOption } from "@calcom/features/eventtypes/lib/types";
 import { WebhookForm } from "@calcom/features/webhooks/components";
 import type { WebhookFormSubmitData } from "@calcom/features/webhooks/components/WebhookForm";
@@ -75,14 +74,6 @@ export default function InstantEventController({ eventType, isTeamEvent }: Insta
     formMethods.getValues("instantMeetingParameters") || []
   );
 
-  const { shouldLockDisableProps } = useLockedFieldsManager({
-    eventType,
-    translate: t,
-    formMethods,
-  });
-
-  const instantLocked = shouldLockDisableProps("isInstantEvent");
-
   const isOrg = !!session.data?.user?.org?.id;
 
   const { data, isPending } = trpc.viewer.availability.list.useQuery(undefined);
@@ -95,7 +86,6 @@ export default function InstantEventController({ eventType, isTeamEvent }: Insta
     value: schedule.id,
     label: schedule.name,
     isDefault: schedule.isDefault,
-    isManaged: false,
   }));
 
   return (
@@ -319,13 +309,6 @@ const InstantMeetingWebhooks = ({ eventType }: { eventType: EventTypeSetup }) =>
     );
   };
 
-  const { shouldLockDisableProps, isChildrenManagedEventType, isManagedEventType } = useLockedFieldsManager({
-    eventType,
-    formMethods,
-    translate: t,
-  });
-  const webhookLockedStatus = shouldLockDisableProps("webhooks");
-
   return (
     <div>
       {webhooks && !isPending && (
@@ -340,7 +323,6 @@ const InstantMeetingWebhooks = ({ eventType }: { eventType: EventTypeSetup }) =>
                         key={webhook.id}
                         webhook={webhook}
                         lastItem={webhooks.length === index + 1}
-                        canEditWebhook={!webhookLockedStatus.disabled}
                         onEditWebhook={() => {
                           setEditModalOpen(true);
                           setWebhookToEdit(webhook);
@@ -356,15 +338,7 @@ const InstantMeetingWebhooks = ({ eventType }: { eventType: EventTypeSetup }) =>
                   Icon="webhook"
                   headline={t("create_your_first_webhook")}
                   description={t("create_instant_meeting_webhook_description")}
-                  buttonRaw={
-                    isChildrenManagedEventType && !isManagedEventType ? (
-                      <Button StartIcon="lock" color="secondary" disabled>
-                        {t("locked_by_admin")}
-                      </Button>
-                    ) : (
-                      <NewWebhookButton />
-                    )
-                  }
+                  buttonRaw={<NewWebhookButton />}
                 />
               </>
             )}
