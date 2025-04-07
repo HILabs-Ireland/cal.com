@@ -3,46 +3,11 @@ import { describe, expect, it } from "vitest";
 import { checkForEmptyAssignment } from "@calcom/lib/event-types/utils/checkForEmptyAssignment";
 
 describe("Tests to Check if Event Types have empty Assignment", () => {
-  it("should return true if managed event type has no assigned users", () => {
+  it("should return true if event type has no hosts assigned", () => {
     expect(
       checkForEmptyAssignment({
-        assignedUsers: [],
-        assignAllTeamMembers: false,
-        hosts: [{ userId: 101, isFixed: false, priority: 2, weight: 100, scheduleId: null }],
-        isManagedEventType: true,
-      })
-    ).toBe(true);
-  });
-  it("should return true if non-managed event type has no hosts assigned", () => {
-    expect(
-      checkForEmptyAssignment({
-        assignedUsers: [
-          {
-            created: true,
-            owner: {
-              id: 101,
-              avatar: "avatar.svg",
-              email: "firstuser@cal.com",
-              membership: "OWNER",
-              name: "First user",
-              username: "firstuser",
-              profile: {
-                username: "firstuser",
-                upId: "usr-101",
-                id: null,
-                organization: null,
-                organizationId: null,
-              },
-              avatarUrl: null,
-              nonProfileUsername: null,
-            },
-            slug: "managedevent",
-            hidden: false,
-          },
-        ],
         assignAllTeamMembers: false,
         hosts: [],
-        isManagedEventType: false,
       })
     ).toBe(true);
   });
@@ -52,50 +17,15 @@ describe("Tests to Check if Event Types have empty Assignment", () => {
         assignedUsers: [],
         assignAllTeamMembers: true,
         hosts: [],
-        isManagedEventType: false,
       })
     ).toBe(false);
   });
-  it("should return false if non-managed event type has hosts assigned", () => {
+  it("should return false if event type has hosts assigned", () => {
     expect(
       checkForEmptyAssignment({
         assignedUsers: [],
         assignAllTeamMembers: false,
         hosts: [{ userId: 101, isFixed: false, priority: 2, weight: 100, scheduleId: null }],
-        isManagedEventType: false,
-      })
-    ).toBe(false);
-  });
-  it("should return false if managed event type has assigned users", () => {
-    expect(
-      checkForEmptyAssignment({
-        assignedUsers: [
-          {
-            created: true,
-            owner: {
-              id: 101,
-              avatar: "avatar.svg",
-              email: "firstuser@cal.com",
-              membership: "OWNER",
-              name: "First user",
-              username: "firstuser",
-              profile: {
-                username: "firstuser",
-                upId: "usr-101",
-                id: null,
-                organization: null,
-                organizationId: null,
-              },
-              avatarUrl: null,
-              nonProfileUsername: null,
-            },
-            slug: "managedevent",
-            hidden: false,
-          },
-        ],
-        assignAllTeamMembers: false,
-        hosts: [],
-        isManagedEventType: true,
       })
     ).toBe(false);
   });
