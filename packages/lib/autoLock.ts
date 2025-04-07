@@ -1,7 +1,7 @@
 import * as Sentry from "@sentry/nextjs";
 import type { RatelimitResponse } from "@unkey/ratelimit";
 
-import { hashAPIKey } from "@calcom/features/ee/api-keys/lib/apiKeys";
+import { hashAPIKey } from "@calcom/features/api-keys/apiKeys";
 import { RedisService } from "@calcom/features/redis/RedisService";
 import prisma from "@calcom/prisma";
 

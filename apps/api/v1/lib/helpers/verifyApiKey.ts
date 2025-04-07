@@ -1,6 +1,6 @@
 import type { NextMiddleware } from "next-api-middleware";
 
-import { hashAPIKey } from "@calcom/features/ee/api-keys/lib/apiKeys";
+import { hashAPIKey } from "@calcom/features/api-keys/apiKeys";
 import prisma from "@calcom/prisma";
 
 import { isAdminGuard } from "../utils/isAdmin";

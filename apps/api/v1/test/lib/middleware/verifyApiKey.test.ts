@@ -8,7 +8,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import prisma from "@calcom/prisma";
 import { MembershipRole, UserPermissionRole } from "@calcom/prisma/enums";
 
-import { hashAPIKey } from "~/../../../packages/features/ee/api-keys/lib/apiKeys";
+import { hashAPIKey } from "~/../../../packages/features/api-keys/apiKeys";
 
 import { verifyApiKey } from "../../../lib/helpers/verifyApiKey";
 
