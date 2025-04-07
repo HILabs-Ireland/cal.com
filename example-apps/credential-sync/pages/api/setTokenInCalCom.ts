@@ -6,7 +6,7 @@ import {
   CALCOM_APP_CREDENTIAL_ENCRYPTION_KEY,
   CALCOM_CREDENTIAL_SYNC_SECRET,
   CALCOM_CREDENTIAL_SYNC_HEADER_NAME,
-  CALCOM_ADMIN_API_KEY,
+  CALOS_ADMIN_API_KEY,
 } from "../../constants";
 import { generateGoogleCalendarAccessToken, generateZoomAccessToken } from "../../lib/integrations";
 
@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res) {
     }
 
     const result = await fetch(
-      `http://localhost:3002/api/v1/credential-sync?apiKey=${CALCOM_ADMIN_API_KEY}&userId=${userId}`,
+      `http://localhost:3002/api/v1/credential-sync?apiKey=${CALOS_ADMIN_API_KEY}&userId=${userId}`,
       {
         method: "POST",
         headers: {

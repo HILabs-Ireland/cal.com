@@ -330,10 +330,6 @@ const nextConfig = {
     ].filter(Boolean);
 
     let afterFiles = [
-      // {
-      //   source: "/api/v2/:path*",
-      //   destination: `${process.env.NEXT_PUBLIC_API_V2_URL}/:path*`,
-      // },
       {
         source: "/org/:slug",
         destination: "/team/:slug",
@@ -527,7 +523,6 @@ const nextConfig = {
         destination: "/settings/admin/flags",
         permanent: true,
       },
-      /* V2 testers get redirected to the new settings */
       {
         source: "/settings/profile",
         destination: "/settings/my-account/profile",
