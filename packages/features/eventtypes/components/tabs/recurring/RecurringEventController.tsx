@@ -70,7 +70,6 @@ export default function RecurringEventController({
             childrenClassName={classNames("lg:ml-0", customClassNames?.recurringToggle?.children)}
             descriptionClassName={customClassNames?.recurringToggle?.description}
             title={t("recurring_event")}
-            {...recurringLocked}
             description={t("recurring_event_description")}
             checked={recurringEventState !== null}
             data-testid="recurring-event-check"
@@ -100,7 +99,6 @@ export default function RecurringEventController({
                       {t("repeats_every")}
                     </p>
                     <TextField
-                      disabled={recurringLocked.disabled}
                       type="number"
                       min="1"
                       max="20"
@@ -124,7 +122,6 @@ export default function RecurringEventController({
                         customClassNames?.frequencyUnitSelect?.select
                       )}
                       innerClassNames={customClassNames?.frequencyUnitSelect?.innerClassNames}
-                      isDisabled={recurringLocked.disabled}
                       onChange={(event) => {
                         const newVal = {
                           ...recurringEventState,
@@ -148,7 +145,6 @@ export default function RecurringEventController({
                       {t("for_a_maximum_of")}
                     </p>
                     <TextField
-                      disabled={recurringLocked.disabled}
                       type="number"
                       min="1"
                       max="24"

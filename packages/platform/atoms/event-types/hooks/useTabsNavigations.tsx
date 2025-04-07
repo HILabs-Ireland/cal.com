@@ -37,7 +37,6 @@ export const useTabsNavigations = ({
   const watchSchedulingType = formMethods.watch("schedulingType");
   const watchChildrenCount = formMethods.watch("children").length;
   const availability = formMethods.watch("availability");
-  const appsMetadata = formMethods.getValues("metadata")?.apps;
 
   const enabledAppsNumber = 0;
 

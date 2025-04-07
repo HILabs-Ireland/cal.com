@@ -103,7 +103,6 @@ export default function InstantEventController({ eventType, isTeamEvent }: Insta
               )}
               childrenClassName="lg:ml-0"
               title={t("instant_tab_title")}
-              {...instantLocked}
               description={t("instant_event_tab_description")}
               checked={instantEventState}
               data-testid="instant-event-check"
@@ -131,7 +130,6 @@ export default function InstantEventController({ eventType, isTeamEvent }: Insta
                             <Select
                               placeholder={t("select")}
                               options={options}
-                              isDisabled={shouldLockDisableProps("instantMeetingSchedule").disabled}
                               isSearchable={false}
                               onChange={(selected) => {
                                 if (selected) onChange(selected.value);
