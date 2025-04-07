@@ -1,10 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import type { CollectOpts, EventHandler } from "next-collect";
+import type { CollectOpts } from "next-collect";
 import { useCollector } from "next-collect/client";
 // Importing types so we're not directly importing next/server
 import type { NextRequest, NextResponse } from "next/server";
-
-import { CONSOLE_URL } from "./constants";
 
 export const telemetryEventTypes = {
   pageView: "page_view",
@@ -39,25 +37,25 @@ export function collectPageParameters(
   };
 }
 
-const reportUsage: EventHandler = async (event, { fetch }) => {
-  const ets = telemetryEventTypes;
-  if ([ets.bookingConfirmed, ets.embedBookingConfirmed].includes(event.eventType)) {
-    const key = process.env.CALCOM_LICENSE_KEY;
-    const url = `${CONSOLE_URL}/api/deployments/usage?key=${key}&quantity=1`;
-    try {
-      return fetch(url, { method: "POST", mode: "cors" });
-    } catch (e) {
-      console.error(`Error reporting booking for key: '${key}'`, e);
-      return Promise.resolve();
-    }
-  } else {
-    return Promise.resolve();
-  }
-};
+// const reportUsage: EventHandler = async (event, { fetch }) => {
+//   const ets = telemetryEventTypes;
+//   if ([ets.bookingConfirmed, ets.embedBookingConfirmed].includes(event.eventType)) {
+//     const key = process.env.CALCOM_LICENSE_KEY;
+//     const url = `${CONSOLE_URL}/api/deployments/usage?key=${key}&quantity=1`;
+//     try {
+//       return fetch(url, { method: "POST", mode: "cors" });
+//     } catch (e) {
+//       console.error(`Error reporting booking for key: '${key}'`, e);
+//       return Promise.resolve();
+//     }
+//   } else {
+//     return Promise.resolve();
+//   }
+// };
 
 export const nextCollectBasicSettings: CollectOpts = {
   drivers: [
-    process.env.CALCOM_LICENSE_KEY && process.env.NEXT_PUBLIC_IS_E2E !== "1" ? reportUsage : undefined,
+    undefined,
     process.env.CALCOM_TELEMETRY_DISABLED === "1" || process.env.NEXT_PUBLIC_IS_E2E === "1"
       ? undefined
       : {
@@ -101,7 +99,6 @@ export const extendEventData = (
     ipAddress: "",
     queryString: "",
     page_url: pageUrl,
-    licensekey: process.env.CALCOM_LICENSE_KEY,
     isTeamBooking:
       original?.isTeamBooking === undefined
         ? pageUrl?.includes("team/") || undefined

@@ -1691,7 +1691,6 @@
   "purchase_license": "Compra una llicència",
   "already_have_account": "Ja tens un compte?",
   "already_have_key": "Ja tinc una clau:",
-  "already_have_key_suggestion": "Si us plau, copia la teva variable d'entorn CALCOM_LICENSE_KEY existent aquí",
   "app_is_enabled": "{{appName}} està activat",
   "app_is_disabled": "{{appName}} està desactivat",
   "keys_have_been_saved": "Les claus s'han desat",

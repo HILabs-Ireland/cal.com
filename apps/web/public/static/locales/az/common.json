@@ -1691,7 +1691,6 @@
   "purchase_license": "Lisenziya Alın",
   "already_have_account": "Artıq hesabınız var?",
   "already_have_key": "Artıq açarım var:",
-  "already_have_key_suggestion": "Mövcud CALCOM_LICENSE_KEY mühit dəyişənini bura kopyalayın.",
   "app_is_enabled": "{{appName}} aktivdir",
   "app_is_disabled": "{{appName}} deaktivdir",
   "keys_have_been_saved": "Açarlar saxlanıldı",
