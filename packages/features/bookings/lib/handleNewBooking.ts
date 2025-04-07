@@ -181,7 +181,6 @@ const buildDryRunBooking = ({
   contactOwnerFromReq,
   contactOwnerEmail,
   allHostUsers,
-  isManagedEventType,
 }: {
   eventTypeId: number;
   organizerUser: {
@@ -197,7 +196,6 @@ const buildDryRunBooking = ({
   contactOwnerFromReq: string | null;
   contactOwnerEmail: string | null;
   allHostUsers: { id: number }[];
-  isManagedEventType: boolean;
 }) => {
   const booking = {
     id: -101,
@@ -259,7 +257,6 @@ const buildDryRunBooking = ({
     askedContactOwnerEmail: contactOwnerFromReq,
     usedContactOwnerEmail: contactOwnerEmail,
     allHostUsers: allHostUsers.map((user) => user.id),
-    isManagedEventType: isManagedEventType,
   };
 
   return {
@@ -291,7 +288,6 @@ function buildTroubleshooterData({
     luckyUsersFromFirstBooking: number[];
     usedContactOwnerEmail: string | null;
     askedContactOwnerEmail: string | null;
-    isManagedEventType: boolean;
   } = {
     organizerUser: null,
     eventType: {
@@ -305,7 +301,6 @@ function buildTroubleshooterData({
     usedContactOwnerEmail: null,
     allHostUsers: [],
     askedContactOwnerEmail: null,
-    isManagedEventType: false,
   };
   return troubleshooterData;
 }
@@ -733,8 +728,6 @@ async function handler(
 
   const tAttendees = await getTranslation(attendeeLanguage ?? "en", "common");
 
-  const isManagedEventType = !!eventType.parentId;
-
   // If location passed is empty , use default location of event
   // If location of event is not set , use host default
   if (locationBodyString.trim().length == 0) {
@@ -1157,7 +1150,6 @@ async function handler(
         contactOwnerFromReq,
         contactOwnerEmail,
         allHostUsers,
-        isManagedEventType,
       });
       booking = dryRunBooking;
       troubleshooterData = {
