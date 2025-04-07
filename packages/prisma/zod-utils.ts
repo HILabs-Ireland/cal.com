@@ -1,4 +1,3 @@
-import type { Prisma } from "@prisma/client";
 import type { UnitTypeLongPlural } from "dayjs";
 import type { TFunction } from "next-i18next";
 import z, { ZodNullable, ZodObject, ZodOptional } from "zod";
@@ -89,11 +88,6 @@ const _eventTypeMetaDataSchemaWithoutApps = z.object({
           attendee: z.boolean().optional(),
         })
         .optional(),
-    })
-    .optional(),
-  managedEventConfig: z
-    .object({
-      unlockedFields: z.custom<{ [k in keyof Omit<Prisma.EventTypeSelect, "id">]: true }>().optional(),
     })
     .optional(),
   requiresConfirmationThreshold: z
@@ -649,72 +643,6 @@ export const getParserWithGeneric =
 export const downloadLinkSchema = z.object({
   download_link: z.string(),
 });
-
-// All properties within event type that can and will be updated if needed
-export const allManagedEventTypeProps: { [k in keyof Omit<Prisma.EventTypeSelect, "id">]: true } = {
-  title: true,
-  description: true,
-  isInstantEvent: true,
-  instantMeetingParameters: true,
-  instantMeetingExpiryTimeOffsetInSeconds: true,
-  aiPhoneCallConfig: true,
-  periodDays: true,
-  position: true,
-  slug: true,
-  length: true,
-  offsetStart: true,
-  locations: true,
-  hidden: true,
-  availability: true,
-  recurringEvent: true,
-  customInputs: true,
-  disableGuests: true,
-  requiresConfirmation: true,
-  requiresConfirmationForFreeEmail: true,
-  requiresConfirmationWillBlockSlot: true,
-  eventName: true,
-  metadata: true,
-  children: true,
-  hideCalendarNotes: true,
-  hideCalendarEventDetails: true,
-  minimumBookingNotice: true,
-  beforeEventBuffer: true,
-  afterEventBuffer: true,
-  successRedirectUrl: true,
-  seatsPerTimeSlot: true,
-  seatsShowAttendees: true,
-  seatsShowAvailabilityCount: true,
-  forwardParamsSuccessRedirect: true,
-  periodType: true,
-  hashedLink: true,
-  webhooks: true,
-  periodStartDate: true,
-  periodEndDate: true,
-  destinationCalendar: true,
-  periodCountCalendarDays: true,
-  bookingLimits: true,
-  onlyShowFirstAvailableSlot: true,
-  slotInterval: true,
-  scheduleId: true,
-  workflows: true,
-  bookingFields: true,
-  durationLimits: true,
-  lockTimeZoneToggleOnBookingPage: true,
-  requiresBookerEmailVerification: true,
-  assignAllTeamMembers: true,
-  isRRWeightsEnabled: true,
-  eventTypeColor: true,
-  rescheduleWithSameRoundRobinHost: true,
-  maxLeadThreshold: true,
-};
-
-// All properties that are defined as unlocked based on all managed props
-// Eventually this is going to be just a default and the user can change the config through the UI
-export const unlockedManagedEventTypeProps = {
-  locations: allManagedEventTypeProps.locations,
-  scheduleId: allManagedEventTypeProps.scheduleId,
-  destinationCalendar: allManagedEventTypeProps.destinationCalendar,
-};
 
 export const emailSchema = emailRegexSchema;
 
