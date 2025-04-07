@@ -6,7 +6,6 @@ import type { TFunction } from "next-i18next";
 import { useMemo, useState, useEffect } from "react";
 import type { UseFormReturn } from "react-hook-form";
 
-import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
 import type { EventTypeSetupProps, FormValues } from "@calcom/features/eventtypes/lib/types";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import type { VerticalTabItemProps } from "@calcom/ui";
@@ -37,12 +36,6 @@ export const usePlatformTabsNavigations = ({ formMethods, eventType, team, tabs 
   const watchSchedulingType = formMethods.watch("schedulingType");
   const watchChildrenCount = formMethods.watch("children").length;
   const availability = formMethods.watch("availability");
-
-  const { isManagedEventType, isChildrenManagedEventType } = useLockedFieldsManager({
-    eventType,
-    translate: t,
-    formMethods,
-  });
 
   const EventTypeTabs = useMemo(() => {
     const navigation: VerticalTabItemProps[] = getNavigation({
@@ -76,18 +69,7 @@ export const usePlatformTabsNavigations = ({ formMethods, eventType, team, tabs 
         isActive: currentTab === "availability",
         href: `${url}?tabName=availability`,
         icon: "calendar",
-        info:
-          isManagedEventType || isChildrenManagedEventType
-            ? formMethods.getValues("schedule") === null
-              ? "members_default_schedule"
-              : isChildrenManagedEventType
-              ? `${
-                  formMethods.getValues("scheduleName")
-                    ? `${formMethods.getValues("scheduleName")} - ${t("managed")}`
-                    : `default_schedule_name`
-                }`
-              : formMethods.getValues("scheduleName") ?? `default_schedule_name`
-            : formMethods.getValues("scheduleName") ?? `default_schedule_name`,
+        info: formMethods.getValues("scheduleName") ?? `default_schedule_name`,
       });
 
     // If there is a team put this navigation item within the tabs
@@ -98,9 +80,7 @@ export const usePlatformTabsNavigations = ({ formMethods, eventType, team, tabs 
         isActive: currentTab === "team",
         href: `${url}?tabName=team`,
         icon: "users",
-        info: `${t(watchSchedulingType?.toLowerCase() ?? "")}${
-          isManagedEventType ? ` - ${t("number_member", { count: watchChildrenCount || 0 })}` : ""
-        }`,
+        info: `${t(watchSchedulingType?.toLowerCase() ?? "")}`,
       });
     }
 
@@ -108,8 +88,6 @@ export const usePlatformTabsNavigations = ({ formMethods, eventType, team, tabs 
   }, [
     t,
     availability,
-    isManagedEventType,
-    isChildrenManagedEventType,
     team,
     length,
     multipleDuration,

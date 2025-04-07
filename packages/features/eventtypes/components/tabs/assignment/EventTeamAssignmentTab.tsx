@@ -554,6 +554,7 @@ const Hosts = ({
               />
             </>
           ),
+          MANAGED: <></>, // TODO: Remove this once we have a managed scheduling type is removed from prisma enums
         };
         return !!schedulingType ? schedulingTypeRender[schedulingType] : <></>;
       }}

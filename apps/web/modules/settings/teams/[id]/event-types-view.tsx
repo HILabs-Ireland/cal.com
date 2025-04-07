@@ -43,7 +43,7 @@ export const CreateTeamEventType = () => {
     { enabled: !!teamId }
   );
 
-  const { form, createMutation, isManagedEventType } = useCreateEventType(onSuccessMutation, onErrorMutation);
+  const { form, createMutation } = useCreateEventType(onSuccessMutation, onErrorMutation);
 
   const orgBranding = useOrgBranding();
   const urlPrefix = orgBranding?.fullDomain ?? process.env.NEXT_PUBLIC_WEBSITE_URL;
@@ -56,7 +56,6 @@ export const CreateTeamEventType = () => {
       urlPrefix={urlPrefix}
       isPending={createMutation.isPending}
       form={form}
-      isManagedEventType={isManagedEventType}
       handleSubmit={(values) => {
         createMutation.mutate(values);
       }}
