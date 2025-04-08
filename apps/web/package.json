@@ -23,8 +23,8 @@
     "translate-locales": "ts-node scripts/check-missing-translations.ts"
   },
   "engines": {
-    "node": "18",
-    "yarn": "3.4.1"
+    "node": ">=18.x",
+    "yarn": "1.22.22"
   },
   "dependencies": {
     "@calcom/core": "*",

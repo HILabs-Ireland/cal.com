@@ -13,7 +13,7 @@
     "release": "release-it --only-version",
     "generate-types": "openapi-typescript http://localhost:5555/docs-yaml -o ./src/swagger-types.d.ts"
   },
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@1.22.22",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-json": "^6.1.0",
