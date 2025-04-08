@@ -68,10 +68,6 @@ const EventAppsTab = dynamic(() =>
   import("@calcom/features/eventtypes/components/tabs/apps/EventAppsTab").then((mod) => mod.EventAppsTab)
 );
 
-const EventWorkflowsTab = dynamic(
-  () => import("@calcom/features/eventtypes/components/tabs/workflows/EventWorkfowsTab")
-);
-
 const EventWebhooksTab = dynamic(() =>
   import("@calcom/features/eventtypes/components/tabs/webhooks/EventWebhooksTab").then(
     (mod) => mod.EventWebhooksTab
@@ -213,11 +209,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
     instant: <EventInstantTab eventType={eventType} isTeamEvent={!!team} />,
     recurring: <EventRecurringTab eventType={eventType} />,
     apps: <EventAppsTab eventType={{ ...eventType, URL: permalink }} />,
-    workflows: allActiveWorkflows ? (
-      <EventWorkflowsTab eventType={eventType} workflows={allActiveWorkflows} />
-    ) : (
-      <></>
-    ),
     webhooks: <EventWebhooksTab eventType={eventType} />,
     ai: <EventAITab eventType={eventType} isTeamEvent={!!team} />,
   } as const;
@@ -252,7 +243,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
         EventInstantTab,
         EventRecurringTab,
         EventAppsTab,
-        EventWorkflowsTab,
         EventWebhooksTab,
       ];
 

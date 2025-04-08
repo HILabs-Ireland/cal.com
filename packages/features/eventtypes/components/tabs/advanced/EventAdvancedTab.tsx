@@ -14,10 +14,6 @@ import { getEventName } from "@calcom/core/event";
 import getLocationsOptionsForSelect from "@calcom/features/bookings/lib/getLocationOptionsForSelect";
 import DestinationCalendarSelector from "@calcom/features/calendars/DestinationCalendarSelector";
 import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
-import {
-  allowDisablingAttendeeConfirmationEmails,
-  allowDisablingHostConfirmationEmails,
-} from "@calcom/features/ee/workflows/lib/allowDisablingStandardEmails";
 import { MultiplePrivateLinksController } from "@calcom/features/eventtypes/components";
 import type {
   FormValues,
@@ -405,7 +401,6 @@ export const EventAdvancedTab = ({
   const [redirectUrlVisible, setRedirectUrlVisible] = useState(!!formMethods.getValues("successRedirectUrl"));
 
   const bookingFields: Prisma.JsonObject = {};
-  const workflows = eventType.workflows.map((workflowOnEventType) => workflowOnEventType.workflow);
   const selectedThemeIsDark =
     user?.theme === "dark" ||
     (!user?.theme && typeof document !== "undefined" && document.documentElement.classList.contains("dark"));
@@ -986,51 +981,6 @@ export const EventAdvancedTab = ({
               checked={value}
               onCheckedChange={(e) => onChange(e)}
             />
-          )}
-        />
-      )}
-      {allowDisablingAttendeeConfirmationEmails(workflows) && (
-        <Controller
-          name="metadata.disableStandardEmails.confirmation.attendee"
-          render={({ field: { value, onChange } }) => (
-            <>
-              <SettingsToggle
-                labelClassName={classNames("text-sm", customClassNames?.emailNotifications?.label)}
-                toggleSwitchAtTheEnd={true}
-                switchContainerClassName={classNames(
-                  "border-subtle rounded-lg border py-6 px-4 sm:px-6",
-                  customClassNames?.emailNotifications?.container
-                )}
-                title={t("disable_attendees_confirmation_emails")}
-                description={t("disable_attendees_confirmation_emails_description")}
-                descriptionClassName={customClassNames?.emailNotifications?.description}
-                checked={value}
-                onCheckedChange={(e) => onChange(e)}
-              />
-            </>
-          )}
-        />
-      )}
-      {allowDisablingHostConfirmationEmails(workflows) && (
-        <Controller
-          name="metadata.disableStandardEmails.confirmation.host"
-          defaultValue={!!formMethods.getValues("seatsPerTimeSlot")}
-          render={({ field: { value, onChange } }) => (
-            <>
-              <SettingsToggle
-                labelClassName={classNames("text-sm", customClassNames?.emailNotifications?.label)}
-                toggleSwitchAtTheEnd={true}
-                switchContainerClassName={classNames(
-                  "border-subtle rounded-lg border py-6 px-4 sm:px-6",
-                  customClassNames?.emailNotifications?.container
-                )}
-                descriptionClassName={customClassNames?.emailNotifications?.description}
-                title={t("disable_host_confirmation_emails")}
-                description={t("disable_host_confirmation_emails_description")}
-                checked={value}
-                onCheckedChange={(e) => onChange(e)}
-              />
-            </>
           )}
         />
       )}
