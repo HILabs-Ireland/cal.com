@@ -37,22 +37,6 @@ export function collectPageParameters(
   };
 }
 
-// const reportUsage: EventHandler = async (event, { fetch }) => {
-//   const ets = telemetryEventTypes;
-//   if ([ets.bookingConfirmed, ets.embedBookingConfirmed].includes(event.eventType)) {
-//     const key = process.env.CALCOM_LICENSE_KEY;
-//     const url = `${CONSOLE_URL}/api/deployments/usage?key=${key}&quantity=1`;
-//     try {
-//       return fetch(url, { method: "POST", mode: "cors" });
-//     } catch (e) {
-//       console.error(`Error reporting booking for key: '${key}'`, e);
-//       return Promise.resolve();
-//     }
-//   } else {
-//     return Promise.resolve();
-//   }
-// };
-
 export const nextCollectBasicSettings: CollectOpts = {
   drivers: [
     undefined,
