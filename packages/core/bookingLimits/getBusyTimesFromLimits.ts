@@ -91,7 +91,6 @@ const _getBusyTimesFromBookingLimits = async (params: {
   eventTypeId?: number;
   teamId?: number;
   user?: { id: number; email: string };
-  includeManagedEvents?: boolean;
   timeZone?: string | null;
 }) => {
   const {
@@ -104,7 +103,6 @@ const _getBusyTimesFromBookingLimits = async (params: {
     teamId,
     user,
     rescheduleUid,
-    includeManagedEvents = false,
     timeZone,
   } = params;
 
@@ -129,7 +127,6 @@ const _getBusyTimesFromBookingLimits = async (params: {
             teamId,
             user,
             rescheduleUid,
-            includeManagedEvents,
             timeZone,
           });
         } catch (_) {
@@ -239,7 +236,6 @@ const _getBusyTimesFromTeamLimits = async (
   dateFrom: Dayjs,
   dateTo: Dayjs,
   teamId: number,
-  includeManagedEvents: boolean,
   timeZone: string,
   rescheduleUid?: string
 ) => {
@@ -255,7 +251,6 @@ const _getBusyTimesFromTeamLimits = async (
     startDate: limitDateFrom.toDate(),
     endDate: limitDateTo.toDate(),
     excludedUid: rescheduleUid,
-    includeManagedEvents,
   });
 
   const busyTimes = bookings.map(({ id, startTime, endTime, eventTypeId, title, userId }) => ({
@@ -277,7 +272,6 @@ const _getBusyTimesFromTeamLimits = async (
     rescheduleUid,
     teamId,
     user,
-    includeManagedEvents,
     timeZone,
   });
 

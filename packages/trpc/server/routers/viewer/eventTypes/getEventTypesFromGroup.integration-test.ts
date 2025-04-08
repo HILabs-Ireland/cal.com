@@ -1,7 +1,6 @@
 import { describe, it, expect } from "vitest";
 
 import prisma from "@calcom/prisma";
-import { SchedulingType } from "@calcom/prisma/enums";
 import type { TrpcSessionUser } from "@calcom/trpc/server/trpc";
 
 import { getEventTypesFromGroup } from "./getEventTypesFromGroup.handler";
@@ -47,47 +46,6 @@ describe("getEventTypesFromGroup", async () => {
       },
     } as NonNullable<TrpcSessionUser>,
     prisma,
-  };
-
-  const createManagedEventTypes = async () => {
-    const childEventType = await prisma.eventType.create({
-      data: {
-        title: "Child Event Type",
-        slug: "managed-event-type",
-        schedulingType: null,
-        length: 30,
-        userId: teamProUser.id,
-      },
-    });
-
-    const parentEventType = await prisma.eventType.create({
-      data: {
-        title: "Managed Event Type",
-        slug: "managed-event-type",
-        schedulingType: SchedulingType.MANAGED,
-        length: 30,
-        teamId,
-      },
-    });
-
-    // Connect child event type to parent event type
-    await prisma.eventType.update({
-      where: {
-        id: childEventType.id,
-      },
-      data: {
-        parent: {
-          connect: {
-            id: parentEventType.id,
-          },
-        },
-      },
-    });
-
-    return {
-      parentEventType,
-      childEventType,
-    };
   };
 
   it("should return personal event types for a user", async () => {
@@ -136,39 +94,6 @@ describe("getEventTypesFromGroup", async () => {
     expect(response.eventTypes.length).toBeGreaterThan(0);
     expect(resEventTypeIds).toEqual(expect.arrayContaining(teamProUserEventTypeIds));
     expect(resEventTypeIds.length).toBe(teamProUserEventTypeIds.length);
-  });
-
-  it("should return managed event types event types", async () => {
-    const { parentEventType, childEventType } = await createManagedEventTypes();
-
-    const res = await getEventTypesFromGroup({
-      ctx: teamProUserCtx,
-      input: {
-        group: {
-          teamId: null,
-          parentId: null,
-        },
-        limit: 10,
-        cursor: null,
-      },
-    });
-
-    const resEventTypeIds = res.eventTypes.map((et) => et.id);
-
-    const managedEventType = await prisma.eventType.findFirstOrThrow({
-      where: {
-        parentId: {
-          not: null,
-        },
-        schedulingType: null,
-        userId: teamProUser.id,
-      },
-    });
-
-    expect(res.eventTypes).toBeDefined();
-    expect(resEventTypeIds).toContain(managedEventType.id);
-
-    await deleteEventTypes({ ids: [parentEventType.id, childEventType.id] });
   });
 });
 

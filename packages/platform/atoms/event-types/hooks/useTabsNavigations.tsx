@@ -5,7 +5,6 @@ import type { TFunction } from "next-i18next";
 import { useMemo } from "react";
 import type { UseFormReturn } from "react-hook-form";
 
-import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
 import type { Workflow } from "@calcom/features/ee/workflows/lib/types";
 import type {
   EventTypeSetupProps,
@@ -39,12 +38,6 @@ export const useTabsNavigations = ({
   const watchChildrenCount = formMethods.watch("children").length;
   const availability = formMethods.watch("availability");
 
-  const { isManagedEventType, isChildrenManagedEventType } = useLockedFieldsManager({
-    eventType,
-    translate: t,
-    formMethods,
-  });
-
   const enabledAppsNumber = 0;
 
   const activeWebhooksNumber = eventType.webhooks.filter((webhook) => webhook.active).length;
@@ -72,18 +65,7 @@ export const useTabsNavigations = ({
       name: "availability",
       href: `/event-types/${formMethods.getValues("id")}?tabName=availability`,
       icon: "calendar",
-      info:
-        isManagedEventType || isChildrenManagedEventType
-          ? formMethods.getValues("schedule") === null
-            ? "members_default_schedule"
-            : isChildrenManagedEventType
-            ? `${
-                formMethods.getValues("scheduleName")
-                  ? `${formMethods.getValues("scheduleName")} - ${t("managed")}`
-                  : `default_schedule_name`
-              }`
-            : formMethods.getValues("scheduleName") ?? `default_schedule_name`
-          : formMethods.getValues("scheduleName") ?? `default_schedule_name`,
+      info: formMethods.getValues("scheduleName") ?? `default_schedule_name`,
     });
     // If there is a team put this navigation item within the tabs
     if (team) {
@@ -91,22 +73,10 @@ export const useTabsNavigations = ({
         name: "assignment",
         href: `/event-types/${formMethods.getValues("id")}?tabName=team`,
         icon: "users",
-        info: `${t(watchSchedulingType?.toLowerCase() ?? "")}${
-          isManagedEventType ? ` - ${t("number_member", { count: watchChildrenCount || 0 })}` : ""
-        }`,
+        info: `${t(watchSchedulingType?.toLowerCase() ?? "")}`,
       });
     }
-    const showInstant = !(isManagedEventType || isChildrenManagedEventType);
-    if (showInstant) {
-      if (team) {
-        navigation.push({
-          name: "instant_tab_title",
-          href: `/event-types/${eventType.id}?tabName=instant`,
-          icon: "phone-call",
-          info: `instant_event_tab_description`,
-        });
-      }
-    }
+
     navigation.push({
       name: "webhooks",
       href: `/event-types/${formMethods.getValues("id")}?tabName=webhooks`,
@@ -127,8 +97,6 @@ export const useTabsNavigations = ({
     enabledAppsNumber,
     enabledWorkflowsNumber,
     availability,
-    isManagedEventType,
-    isChildrenManagedEventType,
     team,
     length,
     multipleDuration,

@@ -30,8 +30,7 @@ export const getAllWorkflows = async (
   eventTypeWorkflows: Workflow[],
   userId?: number | null,
   teamId?: number | null,
-  orgId?: number | null,
-  workflowsLockedForUser = true
+  orgId?: number | null
 ) => {
   const allWorkflows = eventTypeWorkflows;
 
@@ -95,7 +94,7 @@ export const getAllWorkflows = async (
     allWorkflows.push(...activeOnAllTeamWorkflows);
   }
 
-  if ((!teamId || !workflowsLockedForUser) && userId) {
+  if (!teamId && userId) {
     const activeOnAllUserWorkflows = await prisma.workflow.findMany({
       where: {
         userId,

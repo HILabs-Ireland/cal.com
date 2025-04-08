@@ -383,7 +383,7 @@ describe("OAuth Client Users Endpoints", () => {
     let team2: Team;
     let owner: User;
 
-    let managedEventType1: EventType;
+    let roundRobinEventType1: EventType;
     let userRepositoryFixture: UserRepositoryFixture;
     let oauthClientRepositoryFixture: OAuthClientRepositoryFixture;
     let teamRepositoryFixture: TeamRepositoryFixture;
@@ -475,13 +475,13 @@ describe("OAuth Client Users Endpoints", () => {
         locations: [],
       });
 
-      managedEventType1 = await eventTypesRepositoryFixture.createTeamEventType({
-        schedulingType: "MANAGED",
+      roundRobinEventType1 = await eventTypesRepositoryFixture.createTeamEventType({
+        schedulingType: "ROUND_ROBIN",
         team: {
           connect: { id: team1.id },
         },
-        title: "Managed Event Type",
-        slug: "managed-event-type",
+        title: "Round Robin Event Type",
+        slug: "round-robin-event-type",
         length: 60,
         assignAllTeamMembers: true,
         bookingFields: [],
@@ -503,12 +503,12 @@ describe("OAuth Client Users Endpoints", () => {
       });
 
       await eventTypesRepositoryFixture.createTeamEventType({
-        schedulingType: "MANAGED",
+        schedulingType: "ROUND_ROBIN",
         team: {
           connect: { id: team2.id },
         },
-        title: "Managed Event Type team 2",
-        slug: "managed-event-type-team-2",
+        title: "Round Robin Event Type team 2",
+        slug: "round-robin-event-type-team-2",
         length: 60,
         assignAllTeamMembers: true,
         bookingFields: [],

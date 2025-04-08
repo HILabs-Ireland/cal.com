@@ -931,7 +931,16 @@ async function main() {
   });
 
   if (adminUser) {
-    try {
+    const existingMembership = await prisma.membership.findUnique({
+      where: {
+        userId_teamId: {
+          userId: adminUser.id,
+          teamId: 1,
+        },
+      },
+    });
+
+    if (!existingMembership) {
       await prisma.membership.createMany({
         data: [
           {
@@ -950,7 +959,7 @@ async function main() {
           },
         ],
       });
-    } catch {}
+    }
   } else {
     throw Error("Admin user not found");
   }

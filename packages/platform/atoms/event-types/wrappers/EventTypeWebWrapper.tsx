@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 
 import { useOrgBranding } from "@calcom/features/ee/organizations/context/provider";
-import type { ChildrenEventType } from "@calcom/features/eventtypes/components/ChildrenEventTypeSelect";
 import { EventType as EventTypeComponent } from "@calcom/features/eventtypes/components/EventType";
 import { EventAdvancedTab } from "@calcom/features/eventtypes/components/tabs/advanced/EventAdvancedTab";
 import type { EventTypeSetupProps } from "@calcom/features/eventtypes/lib/types";
@@ -14,8 +13,7 @@ import { WEBSITE_URL } from "@calcom/lib/constants";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { useTypedQuery } from "@calcom/lib/hooks/useTypedQuery";
 import { HttpError } from "@calcom/lib/http-error";
-import { telemetryEventTypes, useTelemetry } from "@calcom/lib/telemetry";
-import { SchedulingType } from "@calcom/prisma/enums";
+import { useTelemetry } from "@calcom/lib/telemetry";
 import { trpc, TRPCClientError } from "@calcom/trpc/react";
 import useMeQuery from "@calcom/trpc/react/hooks/useMeQuery";
 import { showToast } from "@calcom/ui";
@@ -23,10 +21,6 @@ import { showToast } from "@calcom/ui";
 import { useEventTypeForm } from "../hooks/useEventTypeForm";
 import { useHandleRouteChange } from "../hooks/useHandleRouteChange";
 import { useTabsNavigations } from "../hooks/useTabsNavigations";
-
-const ManagedEventTypeDialog = dynamic(
-  () => import("@calcom/features/eventtypes/components/dialogs/ManagedEventDialog")
-);
 
 const AssignmentWarningDialog = dynamic(
   () => import("@calcom/features/eventtypes/components/dialogs/AssignmentWarningDialog")
@@ -98,7 +92,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
   const [isOpenAssignmentWarnDialog, setIsOpenAssignmentWarnDialog] = useState<boolean>(false);
   const [pendingRoute, setPendingRoute] = useState("");
   const { eventType, locationOptions, team, teamMembers, destinationCalendar } = rest;
-  const [slugExistsChildrenDialogOpen, setSlugExistsChildrenDialogOpen] = useState<ChildrenEventType[]>([]);
   const { data: eventTypeApps } = trpc.viewer.integrations.useQuery({
     extendsFeature: "EventType",
     teamId: eventType.team?.id || eventType.parent?.teamId,
@@ -222,7 +215,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
     assignedUsers: eventType.children,
     hosts: eventType.hosts,
     assignAllTeamMembers: eventType.assignAllTeamMembers,
-    isManagedEventType: eventType.schedulingType === SchedulingType.MANAGED,
     onError: (url) => {
       setIsOpenAssignmentWarnDialog(true);
       setPendingRoute(url);
@@ -259,10 +251,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
     };
   }, []);
 
-  const onConflict = (conflicts: ChildrenEventType[]) => {
-    setSlugExistsChildrenDialogOpen(conflicts);
-  };
-
   const querySchema = z.object({
     tabName: z
       .enum([
@@ -292,14 +280,12 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
       showToast(t("event_type_deleted_successfully"), "success");
       isTeamEventTypeDeleted.current = true;
       appRouter.push("/event-types");
-      setSlugExistsChildrenDialogOpen([]);
       setIsOpenAssignmentWarnDialog(false);
     },
     onError: (err) => {
       if (err instanceof HttpError) {
         const message = `${err.statusCode}: ${err.message}`;
         showToast(message, "error");
-        setSlugExistsChildrenDialogOpen([]);
       } else if (err instanceof TRPCClientError) {
         showToast(err.message, "error");
       }
@@ -323,7 +309,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
         deleteMutation.mutate({ id });
       }}
       isDeleting={deleteMutation.isPending}
-      onConflict={onConflict}
       handleSubmit={handleSubmit}
       eventTypeApps={eventTypeApps}
       formMethods={form}
@@ -332,22 +317,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
       tabName={tabName}
       tabsNavigation={tabsNavigation}>
       <>
-        {slugExistsChildrenDialogOpen.length ? (
-          <ManagedEventTypeDialog
-            slugExistsChildrenDialogOpen={slugExistsChildrenDialogOpen}
-            isPending={form.formState.isSubmitting}
-            onOpenChange={() => {
-              setSlugExistsChildrenDialogOpen([]);
-            }}
-            slug={slug}
-            onConfirm={(e: { preventDefault: () => void }) => {
-              e.preventDefault();
-              handleSubmit(form.getValues());
-              telemetry.event(telemetryEventTypes.slugReplacementAction);
-              setSlugExistsChildrenDialogOpen([]);
-            }}
-          />
-        ) : null}
         <AssignmentWarningDialog
           isOpenAssignmentWarnDialog={isOpenAssignmentWarnDialog}
           setIsOpenAssignmentWarnDialog={setIsOpenAssignmentWarnDialog}
