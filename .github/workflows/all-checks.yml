@@ -29,11 +29,6 @@ jobs:
     uses: ./.github/workflows/api-v1-production-build.yml
     secrets: inherit
 
-  #build-api-v2:
-  #  name: Production builds
-  #  uses: ./.github/workflows/api-v2-production-build.yml
-  #  secrets: inherit
-
   #build-atoms:
   #  name: Production builds
   #  uses: ./.github/workflows/atoms-production-build.yml
