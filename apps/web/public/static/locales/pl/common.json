@@ -1691,7 +1691,6 @@
   "purchase_license": "Kup licencję",
   "already_have_account": "Masz już konto?",
   "already_have_key": "Mam już klucz:",
-  "already_have_key_suggestion": "Skopiuj istniejącą zmienną środowiskową CALCOM_LICENSE_KEY tutaj.",
   "app_is_enabled": "Aplikacja {{appName}} jest włączona",
   "app_is_disabled": "Aplikacja {{appName}} jest wyłączona",
   "keys_have_been_saved": "Klucze zostały zapisane",

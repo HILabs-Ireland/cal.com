@@ -1693,7 +1693,6 @@
 "purchase_license": "Ostke litsents",
 "already_have_account": "On juba konto?",
 "already_have_key": "Mul on võti juba olemas:",
-"already_have_key_suggestion": "Palun kopeerige siia oma olemasolev keskkonnamuutuja CALCOM_LICENSE_KEY.",
 "create_license_key": "Loo litsentsivõti",
 "app_is_enabled": "{{appName}} on lubatud",
 "app_is_disabled": "{{appName}} on keelatud",
