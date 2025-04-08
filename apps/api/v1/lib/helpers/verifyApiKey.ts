@@ -19,7 +19,7 @@ export const dateNotInPast = function (date: Date) {
 export const verifyApiKey: NextMiddleware = async (req, res, next) => {
   if (!req.query.apiKey) return res.status(401).json({ message: "No apiKey provided" });
 
-  const strippedApiKey = `${req.query.apiKey}`.replace(process.env.API_KEY_PREFIX || "calos_", "");
+  const strippedApiKey = `${req.query.apiKey}`.replace(process.env.API_KEY_PREFIX || "cal_", "");
   const hashedKey = hashAPIKey(strippedApiKey);
   const apiKey = await prisma.apiKey.findUnique({
     where: { hashedKey },

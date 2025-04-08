@@ -67,7 +67,7 @@ describe("Verify API key", () => {
       method: "POST",
       body: {},
       query: {
-        apiKey: "calos_test_key",
+        apiKey: "cal_test_key",
       },
       prisma,
     });
@@ -106,7 +106,7 @@ describe("Verify API key", () => {
       method: "POST",
       body: {},
       query: {
-        apiKey: "calos_test_key",
+        apiKey: "cal_test_key",
       },
       prisma,
     });
@@ -163,7 +163,7 @@ describe("Verify API key", () => {
       method: "POST",
       body: {},
       query: {
-        apiKey: "calos_test_key",
+        apiKey: "cal_test_key",
       },
       prisma,
     });

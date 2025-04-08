@@ -37,7 +37,7 @@ async function postHandler(req: NextApiRequest) {
   return {
     api_key: {
       ...apiKeyPublicSchema.parse(result),
-      key: `${process.env.API_KEY_PREFIX ?? "calos_"}${apiKey}`,
+      key: `${process.env.API_KEY_PREFIX ?? "cal_"}${apiKey}`,
     },
     message: "API key created successfully. Save the `key` value as it won't be displayed again.",
   };
