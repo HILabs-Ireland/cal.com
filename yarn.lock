@@ -3065,7 +3065,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@calcom/routing-forms@workspace:*, @calcom/routing-forms@workspace:packages/app-store/routing-forms":
+"@calcom/routing-forms@workspace:packages/app-store/routing-forms":
   version: 0.0.0-use.local
   resolution: "@calcom/routing-forms@workspace:packages/app-store/routing-forms"
   dependencies:
@@ -3172,7 +3172,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@calcom/trpc@workspace:packages/trpc"
   dependencies:
-    "@calcom/routing-forms": "workspace:*"
     "@tanstack/react-query": ^5.17.15
     "@trpc/client": 11.0.0-next-beta.222
     "@trpc/next": 11.0.0-next-beta.222

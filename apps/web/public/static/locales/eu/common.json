@@ -1693,7 +1693,6 @@
 "purchase_license": "Erosi lizentzia",
 "already_have_account": "Baduzu kontua dagoeneko?",
 "already_have_key": "Dagoeneko badut gako bat:",
-"already_have_key_suggestion": "Mesedez, kopiatu zure CALCOM_LICENSE_KEY ingurune aldagaia hemen.",
 "create_license_key": "Sortu lizentzia gakoa",
 "app_is_enabled": "{{appName}} gaituta dago",
 "app_is_disabled": "{{appName}} desgaituta dago",
