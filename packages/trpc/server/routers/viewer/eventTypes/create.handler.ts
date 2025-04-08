@@ -3,7 +3,6 @@ import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 
 import { EventTypeRepository } from "@calcom/lib/server/repository/eventType";
 import type { PrismaClient } from "@calcom/prisma";
-import { SchedulingType } from "@calcom/prisma/enums";
 import type { EventTypeLocation } from "@calcom/prisma/zod/custom/eventtype";
 
 import { TRPCError } from "@trpc/server";
@@ -37,7 +36,6 @@ export const createHandler = async ({ ctx, input }: CreateOptions) => {
   const { schedulingType, teamId, metadata, locations: inputLocations, scheduleId, ...rest } = input;
 
   const userId = ctx.user.id;
-  const isManagedEventType = schedulingType === SchedulingType.MANAGED;
   const isOrgAdmin = !!ctx.user?.organization?.isOrgAdmin;
 
   const locations: EventTypeLocation[] = inputLocations && inputLocations.length !== 0 ? inputLocations : [];
@@ -46,8 +44,8 @@ export const createHandler = async ({ ctx, input }: CreateOptions) => {
     ...rest,
     owner: teamId ? undefined : { connect: { id: userId } },
     metadata: (metadata as Prisma.InputJsonObject) ?? undefined,
-    // Only connecting the current user for non-managed event types and non team event types
-    users: isManagedEventType || schedulingType ? undefined : { connect: { id: userId } },
+    // Only connecting the current user for non team event types
+    users: schedulingType ? undefined : { connect: { id: userId } },
     locations,
     schedule: scheduleId ? { connect: { id: scheduleId } } : undefined,
   };

@@ -741,23 +741,6 @@ export class EventTypeRepository {
     };
   }
 
-  static async findAllByTeamIdIncludeManagedEventTypes({ teamId }: { teamId?: number }) {
-    return await prisma.eventType.findMany({
-      where: {
-        OR: [
-          {
-            teamId,
-          },
-          {
-            parent: {
-              teamId,
-            },
-          },
-        ],
-      },
-    });
-  }
-
   static async findForSlots({ id }: { id: number }) {
     const eventType = await prisma.eventType.findUnique({
       where: {
@@ -794,7 +777,6 @@ export class EventTypeRepository {
           select: {
             id: true,
             bookingLimits: true,
-            includeManagedEventsInLimits: true,
             parentId: true,
           },
         },
@@ -804,7 +786,6 @@ export class EventTypeRepository {
               select: {
                 id: true,
                 bookingLimits: true,
-                includeManagedEventsInLimits: true,
               },
             },
           },

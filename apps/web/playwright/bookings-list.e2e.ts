@@ -5,7 +5,7 @@ import { BookingStatus } from "@calcom/prisma/client";
 
 import type { Fixtures } from "./lib/fixtures";
 import { test } from "./lib/fixtures";
-import { setupManagedEvent } from "./lib/testUtils";
+import { setupCollectiveEvent } from "./lib/testUtils";
 
 test.afterEach(({ users }) => users.deleteAll());
 
@@ -158,7 +158,7 @@ test.describe("Bookings", () => {
       bookings,
       webhooks,
     }) => {
-      const { adminUser, memberUser, managedEvent } = await setupManagedEvent({ users });
+      const { adminUser, memberUser, event } = await setupCollectiveEvent({ users });
 
       const bookingFixture = await createBooking({
         title: "Managed Event Booking",
@@ -166,7 +166,7 @@ test.describe("Bookings", () => {
         // Create a booking 3 days ago
         relativeDate: -3,
         organizer: memberUser,
-        organizerEventType: managedEvent,
+        organizerEventType: event,
         attendees: [
           { name: "First Guest", email: "first@cal.com", timeZone: "Europe/Berlin" },
           { name: "Second Guest", email: "second@cal.com", timeZone: "Europe/Berlin" },

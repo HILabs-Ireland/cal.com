@@ -1,14 +1,12 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { EventType } from "@prisma/client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
 
 import { useDebounce } from "@calcom/lib/hooks/useDebounce";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { HttpError } from "@calcom/lib/http-error";
-import { SchedulingType } from "@calcom/prisma/enums";
-import { unlockedManagedEventTypeProps } from "@calcom/prisma/zod-utils";
 import { createEventTypeInput } from "@calcom/prisma/zod/custom/eventtype";
 import { trpc } from "@calcom/trpc/react";
 
@@ -22,18 +20,7 @@ export const useCreateEventTypeForm = () => {
     resolver: zodResolver(createEventTypeInput),
   });
 
-  const schedulingTypeWatch = form.watch("schedulingType");
-  const isManagedEventType = schedulingTypeWatch === SchedulingType.MANAGED;
-
-  useEffect(() => {
-    if (isManagedEventType) {
-      form.setValue("metadata.managedEventConfig.unlockedFields", unlockedManagedEventTypeProps);
-    } else {
-      form.setValue("metadata", null);
-    }
-  }, [schedulingTypeWatch]);
-
-  return { form, isManagedEventType };
+  return form;
 };
 
 export const useCreateEventType = (
@@ -42,7 +29,7 @@ export const useCreateEventType = (
 ) => {
   const utils = trpc.useUtils();
   const { t } = useLocale();
-  const { form, isManagedEventType } = useCreateEventTypeForm();
+  const form = useCreateEventTypeForm();
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
@@ -75,5 +62,5 @@ export const useCreateEventType = (
     },
   });
 
-  return { form, createMutation, isManagedEventType };
+  return { form, createMutation };
 };
