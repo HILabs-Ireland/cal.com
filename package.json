@@ -136,13 +136,13 @@
   "engines": {
     "node": ">=18.x",
     "npm": ">=7.0.0",
-    "yarn": "3.4.1"
+    "yarn": "1.22.22"
   },
   "prisma": {
     "schema": "packages/prisma/schema.prisma",
     "seed": "ts-node --transpile-only ./packages/prisma/seed.ts"
   },
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@1.22.22",
   "syncpack": {
     "filter": "^(?!@calcom).*",
     "semverRange": ""
