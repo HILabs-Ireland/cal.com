@@ -14,7 +14,6 @@ describe("Tests to Check if Event Types have empty Assignment", () => {
   it("should return false if assignAllTeamMembers is selected", () => {
     expect(
       checkForEmptyAssignment({
-        assignedUsers: [],
         assignAllTeamMembers: true,
         hosts: [],
       })
@@ -23,7 +22,6 @@ describe("Tests to Check if Event Types have empty Assignment", () => {
   it("should return false if event type has hosts assigned", () => {
     expect(
       checkForEmptyAssignment({
-        assignedUsers: [],
         assignAllTeamMembers: false,
         hosts: [{ userId: 101, isFixed: false, priority: 2, weight: 100, scheduleId: null }],
       })
