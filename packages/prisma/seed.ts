@@ -4,9 +4,6 @@ import type { UserPermissionRole } from "@prisma/client";
 import { uuid } from "short-uuid";
 import type z from "zod";
 
-import dailyMeta from "@calcom/app-store/dailyvideo/_metadata";
-import googleMeetMeta from "@calcom/app-store/googlevideo/_metadata";
-import zoomMeta from "@calcom/app-store/zoomvideo/_metadata";
 import dayjs from "@calcom/dayjs";
 import { getOrgFullOrigin } from "@calcom/ee/organizations/lib/orgDomains";
 import { hashPassword } from "@calcom/features/auth/lib/hashPassword";
@@ -15,7 +12,6 @@ import { BookingStatus, MembershipRole, RedirectType, SchedulingType } from "@ca
 import type { Ensure } from "@calcom/types/utils";
 
 import prisma from ".";
-import mainAppStore from "./seed-app-store";
 import mainHugeEventTypesSeed from "./seed-huge-event-types";
 import { createUserAndEventType } from "./seed-utils";
 import type { teamMetadataSchema } from "./zod-utils";
@@ -674,24 +670,6 @@ async function main() {
         locations: [{ type: "inPerson", address: "London" }],
       },
       {
-        title: "Zoom Event",
-        slug: "zoom",
-        length: 60,
-        locations: [{ type: zoomMeta.appData?.location?.type }],
-      },
-      {
-        title: "Daily Event",
-        slug: "daily",
-        length: 60,
-        locations: [{ type: dailyMeta.appData?.location?.type }],
-      },
-      {
-        title: "Google Meet",
-        slug: "google-meet",
-        length: 60,
-        locations: [{ type: googleMeetMeta.appData?.location?.type }],
-      },
-      {
         title: "Yoga class",
         slug: "yoga-class",
         length: 30,
@@ -953,7 +931,16 @@ async function main() {
   });
 
   if (adminUser) {
-    try {
+    const existingMembership = await prisma.membership.findUnique({
+      where: {
+        userId_teamId: {
+          userId: adminUser.id,
+          teamId: 1,
+        },
+      },
+    });
+
+    if (!existingMembership) {
       await prisma.membership.createMany({
         data: [
           {
@@ -972,7 +959,7 @@ async function main() {
           },
         ],
       });
-    } catch {}
+    }
   } else {
     throw Error("Admin user not found");
   }
@@ -1283,7 +1270,6 @@ async function main() {
 }
 
 main()
-  .then(mainAppStore)
   .then(mainHugeEventTypesSeed)
   .catch((e) => {
     console.error(e);

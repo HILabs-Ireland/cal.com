@@ -1,7 +1,5 @@
 import type { Prisma } from "@prisma/client";
 
-import type { EventManagerUser } from "@calcom/core/EventManager";
-import EventManager from "@calcom/core/EventManager";
 import { sendScheduledEmailsAndSMS } from "@calcom/emails";
 import getWebhooks from "@calcom/features/webhooks/lib/getWebhooks";
 import { scheduleTrigger } from "@calcom/features/webhooks/lib/scheduleTrigger";
@@ -12,21 +10,18 @@ import { getBookerBaseUrl } from "@calcom/lib/getBookerUrl/server";
 import getOrgIdFromMemberOrTeamId from "@calcom/lib/getOrgIdFromMemberOrTeamId";
 import { getTeamIdFromEventType } from "@calcom/lib/getTeamIdFromEventType";
 import logger from "@calcom/lib/logger";
-import { safeStringify } from "@calcom/lib/safeStringify";
 import type { PrismaClient } from "@calcom/prisma";
 import type { SchedulingType } from "@calcom/prisma/enums";
 import { BookingStatus, WebhookTriggerEvents } from "@calcom/prisma/enums";
-import type { PlatformClientParams } from "@calcom/prisma/zod-utils";
-import { EventTypeMetaDataSchema, eventTypeAppMetadataOptionalSchema } from "@calcom/prisma/zod-utils";
+import { EventTypeMetaDataSchema, type PlatformClientParams } from "@calcom/prisma/zod-utils";
 import type { AdditionalInformation, CalendarEvent } from "@calcom/types/Calendar";
 
 import { getCalEventResponses } from "./getCalEventResponses";
-import { scheduleNoShowTriggers } from "./handleNewBooking/scheduleNoShowTriggers";
 
 const log = logger.getSubLogger({ prefix: ["[handleConfirmation] book:user"] });
 
 export async function handleConfirmation(args: {
-  user: EventManagerUser & { username: string | null };
+  user: { username: string | null };
   evt: CalendarEvent;
   recurringEventId?: string;
   prisma: PrismaClient;
@@ -59,7 +54,6 @@ export async function handleConfirmation(args: {
   platformClientParams?: PlatformClientParams;
 }) {
   const {
-    user,
     evt,
     recurringEventId,
     prisma,
@@ -70,45 +64,25 @@ export async function handleConfirmation(args: {
   } = args;
   const eventType = booking.eventType;
   const eventTypeMetadata = EventTypeMetaDataSchema.parse(eventType?.metadata || {});
-  const apps = eventTypeAppMetadataOptionalSchema.parse(eventTypeMetadata?.apps);
-  const eventManager = new EventManager(user, apps);
-  const scheduleResult = await eventManager.create(evt);
-  const results = scheduleResult.results;
   const metadata: AdditionalInformation = {};
 
-  if (results.length > 0 && results.every((res) => !res.success)) {
-    const error = {
-      errorCode: "BookingCreatingMeetingFailed",
-      message: "Booking failed",
-    };
+  try {
+    const isHostConfirmationEmailsDisabled = false;
+    const isAttendeeConfirmationEmailDisabled = false;
 
-    log.error(`Booking ${user.username} failed`, safeStringify({ error, results }));
-  } else {
-    if (results.length) {
-      // TODO: Handle created event metadata more elegantly
-      metadata.hangoutLink = results[0].createdEvent?.hangoutLink;
-      metadata.conferenceData = results[0].createdEvent?.conferenceData;
-      metadata.entryPoints = results[0].createdEvent?.entryPoints;
+    if (emailsEnabled) {
+      await sendScheduledEmailsAndSMS(
+        { ...evt, additionalInformation: metadata },
+        undefined,
+        isHostConfirmationEmailsDisabled,
+        isAttendeeConfirmationEmailDisabled,
+        eventTypeMetadata
+      );
     }
-    try {
-      const eventType = booking.eventType;
-
-      const isHostConfirmationEmailsDisabled = false;
-      const isAttendeeConfirmationEmailDisabled = false;
-
-      if (emailsEnabled) {
-        await sendScheduledEmailsAndSMS(
-          { ...evt, additionalInformation: metadata },
-          undefined,
-          isHostConfirmationEmailsDisabled,
-          isAttendeeConfirmationEmailDisabled,
-          eventTypeMetadata
-        );
-      }
-    } catch (error) {
-      log.error(error);
-    }
+  } catch (error) {
+    log.error(error);
   }
+
   let updatedBookings: {
     id: number;
     description: string | null;
@@ -165,9 +139,6 @@ export async function handleConfirmation(args: {
         },
         data: {
           status: BookingStatus.ACCEPTED,
-          references: {
-            create: scheduleResult.referencesToCreate,
-          },
           metadata: {
             ...(typeof recurringBooking.metadata === "object" ? recurringBooking.metadata : {}),
             videoCallUrl: meetingUrl,
@@ -228,9 +199,6 @@ export async function handleConfirmation(args: {
       },
       data: {
         status: BookingStatus.ACCEPTED,
-        references: {
-          create: scheduleResult.referencesToCreate,
-        },
         metadata: {
           ...(typeof booking.metadata === "object" ? booking.metadata : {}),
           videoCallUrl: meetingUrl,
@@ -384,19 +352,6 @@ export async function handleConfirmation(args: {
     });
 
     await Promise.all(scheduleTriggerPromises);
-
-    await scheduleNoShowTriggers({
-      booking: {
-        startTime: booking.startTime,
-        id: booking.id,
-      },
-      triggerForUser,
-      organizerUser: { id: booking.userId },
-      eventTypeId: booking.eventTypeId,
-      teamId,
-      orgId,
-      oAuthClientId: platformClientParams?.platformClientId,
-    });
 
     const eventTypeInfo: EventTypeInfo = {
       eventTitle: eventType?.title,

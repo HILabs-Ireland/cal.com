@@ -18,20 +18,12 @@ import { Icon } from "@calcom/ui";
 
 import type { getServerSideProps } from "@lib/getting-started/[[...step]]/getServerSideProps";
 
-import { ConnectedCalendars } from "@components/getting-started/steps-views/ConnectCalendars";
-import { ConnectedVideoStep } from "@components/getting-started/steps-views/ConnectedVideoStep";
 import { SetupAvailability } from "@components/getting-started/steps-views/SetupAvailability";
 import UserProfile from "@components/getting-started/steps-views/UserProfile";
 import { UserSettings } from "@components/getting-started/steps-views/UserSettings";
 
 const INITIAL_STEP = "user-settings";
-const BASE_STEPS = [
-  "user-settings",
-  "connected-calendar",
-  "connected-video",
-  "setup-availability",
-  "user-profile",
-] as const;
+const BASE_STEPS = ["user-settings", "setup-availability", "user-profile"] as const;
 
 type StepType = (typeof BASE_STEPS)[number];
 
@@ -45,16 +37,7 @@ const getStepsAndHeadersForUser = (t: TFunction) => {
       title: t("welcome_to_cal_header", { appName: APP_NAME }),
       subtitle: [t("we_just_need_basic_info"), t("edit_form_later_subtitle")],
     },
-    {
-      title: t("connect_your_calendar"),
-      subtitle: [t("connect_your_calendar_instructions")],
-      skipText: t("connect_calendar_later"),
-    },
-    {
-      title: t("connect_your_video_app"),
-      subtitle: [t("connect_your_video_app_instructions")],
-      skipText: t("set_up_later"),
-    },
+
     {
       title: t("set_availability"),
       subtitle: [
@@ -75,11 +58,7 @@ const getStepsAndHeadersForUser = (t: TFunction) => {
 };
 
 const stepRouteSchema = z.object({
-  step: z
-    .array(
-      z.enum(["user-settings", "setup-availability", "user-profile", "connected-calendar", "connected-video"])
-    )
-    .default([INITIAL_STEP]),
+  step: z.array(z.enum(["user-settings", "setup-availability", "user-profile"])).default([INITIAL_STEP]),
   from: z.string().optional(),
 });
 
@@ -159,9 +138,6 @@ const OnboardingPage = (props: PageProps) => {
                 {currentStep === "user-settings" && (
                   <UserSettings nextStep={goToNextStep} hideUsername={from === "signup"} />
                 )}
-                {currentStep === "connected-calendar" && <ConnectedCalendars nextStep={goToNextStep} />}
-
-                {currentStep === "connected-video" && <ConnectedVideoStep nextStep={goToNextStep} />}
 
                 {currentStep === "setup-availability" && (
                   <SetupAvailability nextStep={goToNextStep} defaultScheduleId={user.defaultScheduleId} />

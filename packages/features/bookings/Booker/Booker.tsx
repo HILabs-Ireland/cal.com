@@ -5,7 +5,6 @@ import { Toaster } from "react-hot-toast";
 import StickyBox from "react-sticky-box";
 import { shallow } from "zustand/shallow";
 
-import BookingPageTagManager from "@calcom/app-store/BookingPageTagManager";
 import { useIsPlatformBookerEmbed } from "@calcom/atoms/monorepo";
 import dayjs from "@calcom/dayjs";
 import { getQueryParam } from "@calcom/features/bookings/Booker/utils/query-param";
@@ -24,7 +23,6 @@ import { HavingTroubleFindingTime } from "./components/HavingTroubleFindingTime"
 import { Header } from "./components/Header";
 import { InstantBooking } from "./components/InstantBooking";
 import { LargeCalendar } from "./components/LargeCalendar";
-import { OverlayCalendar } from "./components/OverlayCalendar/OverlayCalendar";
 import { RedirectToInstantMeetingModal } from "./components/RedirectToInstantMeetingModal";
 import { BookerSection } from "./components/Section";
 import { NotFound } from "./components/Unavailable";
@@ -59,7 +57,6 @@ const BookerComponent = ({
   bookings,
   verifyEmail,
   slots,
-  calendars,
   bookerForm,
   event,
   bookerLayout,
@@ -132,14 +129,6 @@ const BookerComponent = ({
     renderConfirmNotVerifyEmailButtonCond,
     isVerificationCodeSending,
   } = verifyEmail;
-
-  const {
-    overlayBusyDates,
-    isOverlayCalendarEnabled,
-    connectedCalendars,
-    loadingConnectedCalendar,
-    onToggleCalendar,
-  } = calendars;
 
   const scrolledToTimeslotsOnce = useRef(false);
   const scrollToTimeSlots = () => {
@@ -268,8 +257,6 @@ const BookerComponent = ({
 
   return (
     <>
-      {event.data && !isPlatform ? <BookingPageTagManager eventType={event.data} /> : <></>}
-
       {isBookingDryRun(searchParams) && <DryRunMessage isEmbed={isEmbed} />}
 
       <div
@@ -311,27 +298,7 @@ const BookerComponent = ({
                     extraDays={layout === BookerLayouts.COLUMN_VIEW ? columnViewExtraDays.current : extraDays}
                     isMobile={isMobile}
                     nextSlots={nextSlots}
-                    renderOverlay={() =>
-                      isEmbed ? (
-                        <></>
-                      ) : (
-                        <>
-                          <OverlayCalendar
-                            isOverlayCalendarEnabled={isOverlayCalendarEnabled}
-                            connectedCalendars={connectedCalendars}
-                            loadingConnectedCalendar={loadingConnectedCalendar}
-                            overlayBusyDates={overlayBusyDates}
-                            onToggleCalendar={onToggleCalendar}
-                            hasSession={hasSession}
-                            handleClickContinue={onClickOverlayContinue}
-                            handleSwitchStateChange={onOverlaySwitchStateChange}
-                            handleClickNoCalendar={() => {
-                              onOverlayClickNoCalendar();
-                            }}
-                          />
-                        </>
-                      )
-                    }
+                    renderOverlay={() => (isEmbed ? <></> : null)}
                   />
                 )}
               </BookerSection>

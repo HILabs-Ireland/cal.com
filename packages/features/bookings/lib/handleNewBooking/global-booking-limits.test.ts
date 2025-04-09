@@ -50,7 +50,7 @@ const otherTeamMembers = [
     credentials: [getGoogleCalendarCredential()],
     selectedCalendars: [TestData.selectedCalendars.google],
     destinationCalendar: {
-      integration: TestData.apps["google-calendar"].type,
+      integration: "TestData.apps['google-calendar'].type",
       externalId: "other-team-member-1@google-calendar.com",
     },
   },
@@ -85,7 +85,6 @@ describe(
                 team: {
                   id: 1,
                   bookingLimits: { PER_WEEK: 2 },
-                  includeManagedEventsInLimits: false,
                 },
                 schedulingType: SchedulingType.COLLECTIVE,
               },
@@ -112,7 +111,7 @@ describe(
                   },
                 ],
                 teamId: 1,
-                schedulingType: SchedulingType.MANAGED,
+                schedulingType: SchedulingType.ROUND_ROBIN,
               },
               {
                 id: 4,
@@ -147,7 +146,6 @@ describe(
                 endTime: `2024-08-06T05:00:00.000Z`,
               },
               {
-                // managed event type doesn't count, includeManagedEventsInLimits is false
                 eventTypeId: 4,
                 userId: 101,
                 status: BookingStatus.ACCEPTED,
@@ -319,7 +317,6 @@ describe(
                 team: {
                   id: 1,
                   bookingLimits: { PER_MONTH: 4 },
-                  includeManagedEventsInLimits: true,
                 },
                 schedulingType: SchedulingType.COLLECTIVE,
               },
@@ -346,16 +343,7 @@ describe(
                   },
                 ],
                 teamId: 1,
-                schedulingType: SchedulingType.MANAGED,
-              },
-              {
-                id: 4,
-                slotInterval: eventLength,
-                length: eventLength,
-                userId: 101,
-                parent: {
-                  id: 3,
-                },
+                schedulingType: SchedulingType.ROUND_ROBIN,
               },
             ],
             bookings: [
@@ -374,8 +362,7 @@ describe(
                 endTime: `2024-08-22T04:00:00.000Z`,
               },
               {
-                //managed event type also counts towards limits
-                eventTypeId: 4,
+                eventTypeId: 3,
                 userId: 101,
                 status: BookingStatus.ACCEPTED,
                 startTime: `2024-08-15T03:30:00.000Z`,
@@ -432,7 +419,7 @@ describe(
           body: mockBookingAboveLimit,
         });
 
-        // this is the firth team booking (incl. managed) of this month for user 101, limit reached
+        // this is the firth team booking of this month for user 101, limit reached
         await expect(async () => await handleNewBooking(req2)).rejects.toThrowError(
           "no_available_users_found_error"
         );
@@ -455,7 +442,6 @@ describe(
                 team: {
                   id: 1,
                   bookingLimits: { PER_YEAR: 3 },
-                  includeManagedEventsInLimits: true,
                 },
                 schedulingType: SchedulingType.COLLECTIVE,
               },
@@ -479,19 +465,11 @@ describe(
                 hosts: [
                   {
                     userId: 101,
+                    isFixed: true,
                   },
                 ],
                 teamId: 1,
-                schedulingType: SchedulingType.MANAGED,
-              },
-              {
-                id: 4,
-                slotInterval: eventLength,
-                length: eventLength,
-                userId: 101,
-                parent: {
-                  id: 3,
-                },
+                schedulingType: SchedulingType.ROUND_ROBIN,
               },
             ],
             bookings: [
@@ -503,7 +481,7 @@ describe(
                 endTime: `2024-02-03T04:00:00.000Z`,
               },
               {
-                eventTypeId: 4,
+                eventTypeId: 2,
                 userId: 101,
                 status: BookingStatus.ACCEPTED,
                 startTime: `2024-08-03T03:30:00.000Z`,
@@ -546,7 +524,7 @@ describe(
           data: {
             start: `2024-11-25T04:00:00.000Z`,
             end: `2024-11-25T04:30:00.000Z`,
-            eventTypeId: 2,
+            eventTypeId: 3,
             responses: {
               email: booker.email,
               name: booker.name,

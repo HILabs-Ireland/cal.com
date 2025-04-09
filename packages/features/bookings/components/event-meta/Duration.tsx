@@ -1,5 +1,9 @@
+"use client";
+
 import type { TFunction } from "next-i18next";
 import { useEffect, useRef } from "react";
+import type { UIEvent } from "react";
+import { useState } from "react";
 
 import { useIsPlatform } from "@calcom/atoms/monorepo";
 import { useIsEmbed } from "@calcom/embed-core/embed-iframe";
@@ -7,7 +11,38 @@ import { useBookerStore } from "@calcom/features/bookings/Booker/store";
 import type { BookerEvent } from "@calcom/features/bookings/types";
 import { classNames } from "@calcom/lib";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
-import { useShouldShowArrows, Icon } from "@calcom/ui";
+import { Icon } from "@calcom/ui";
+
+export function useShouldShowArrows() {
+  const ref = useRef<HTMLUListElement>(null);
+  const [showArrowScroll, setShowArrowScroll] = useState({
+    left: false,
+    right: false,
+  });
+
+  useEffect(() => {
+    const appCategoryList = ref.current;
+    if (appCategoryList) {
+      const isAtStart = appCategoryList.scrollLeft <= 0;
+      const isAtEnd = appCategoryList.scrollWidth <= appCategoryList.clientWidth + appCategoryList.scrollLeft;
+      setShowArrowScroll({
+        left: !isAtStart,
+        right: !isAtEnd,
+      });
+    }
+  }, [ref.current?.scrollWidth, ref.current?.clientWidth]);
+
+  const calculateScroll = (e: UIEvent<HTMLUListElement>) => {
+    const target = e.currentTarget;
+    const isAtEnd = target.scrollWidth <= target.clientWidth + target.scrollLeft + 1;
+    setShowArrowScroll({
+      left: target.scrollLeft > 0,
+      right: !isAtEnd,
+    });
+  };
+
+  return { ref, calculateScroll, leftVisible: showArrowScroll.left, rightVisible: showArrowScroll.right };
+}
 
 /** Render X mins as X hours or X hours Y mins instead of in minutes once >= 60 minutes */
 export const getDurationFormatted = (mins: number | undefined, t: TFunction) => {

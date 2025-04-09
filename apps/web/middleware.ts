@@ -40,11 +40,6 @@ const middleware = async (req: NextRequest): Promise<NextResponse<unknown>> => {
     }
   }
 
-  const routingFormRewriteResponse = routingForms.handleRewrite(url);
-  if (routingFormRewriteResponse) {
-    return responseWithHeaders({ url, res: routingFormRewriteResponse, req });
-  }
-
   if (url.pathname.startsWith("/api/trpc/")) {
     requestHeaders.set("x-cal-timezone", req.headers.get("x-vercel-ip-timezone") ?? "");
   }
@@ -61,24 +56,6 @@ const middleware = async (req: NextRequest): Promise<NextResponse<unknown>> => {
   if (url.pathname.startsWith("/auth/login") || url.pathname.startsWith("/login")) {
     // Use this header to actually enforce CSP, otherwise it is running in Report Only mode on all pages.
     requestHeaders.set("x-csp-enforce", "true");
-  }
-
-  if (url.pathname.startsWith("/future/apps/installed")) {
-    const returnTo = req.cookies.get("return-to")?.value;
-    if (returnTo !== undefined) {
-      requestHeaders.set("Set-Cookie", "return-to=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT");
-
-      let validPathname = returnTo;
-
-      try {
-        validPathname = new URL(returnTo).pathname;
-      } catch (e) {}
-
-      const nextUrl = url.clone();
-      nextUrl.pathname = validPathname;
-      // TODO: Consider using responseWithHeaders here
-      return NextResponse.redirect(nextUrl, { headers: requestHeaders });
-    }
   }
 
   if (url.pathname.startsWith("/future/auth/logout")) {
@@ -101,16 +78,6 @@ const middleware = async (req: NextRequest): Promise<NextResponse<unknown>> => {
   });
 
   return responseWithHeaders({ url, res, req });
-};
-
-const routingForms = {
-  handleRewrite: (url: URL) => {
-    // Don't 404 old routing_forms links
-    if (url.pathname.startsWith("/apps/routing_forms")) {
-      url.pathname = url.pathname.replace(/^\/apps\/routing_forms($|\/)/, "/apps/routing-forms/");
-      return NextResponse.rewrite(url);
-    }
-  },
 };
 
 const embeds = {
@@ -160,29 +127,15 @@ export const config = {
     "/maintenance/:path*",
     "/enterprise/:path*",
     "/connect-and-join/:path*",
-    "/insights/:path*",
     "/:path*/embed",
     "/api/auth/signup",
     "/api/trpc/:path*",
     "/login",
     "/auth/login",
     "/auth/error",
-    /**
-     * Paths required by routingForms.handle
-     */
-    "/apps/routing_forms/:path*",
 
     "/event-types/:path*",
-    "/apps/installed/:category/",
-    "/future/apps/installed/:category/",
-    "/apps/:slug/",
-    "/future/apps/:slug/",
-    "/apps/:slug/setup/",
-    "/future/apps/:slug/setup/",
-    "/apps/categories/",
-    "/future/apps/categories/",
-    "/apps/categories/:category/",
-    "/future/apps/categories/:category/",
+
     "/workflows/:path*",
     "/getting-started/:path*",
     "/apps",
@@ -194,7 +147,6 @@ export const config = {
     "/reschedule/:path*",
     "/availability/:path*",
     "/booking/:path*",
-    "/routing-forms/:path*",
     "/team/:path*",
     "/org/[orgSlug]/[user]/[type]",
     "/org/[orgSlug]/team/[slug]/[type]",

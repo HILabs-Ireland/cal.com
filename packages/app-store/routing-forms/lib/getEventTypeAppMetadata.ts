@@ -1,6 +1,5 @@
 import { EventTypeMetaDataSchema } from "@calcom/prisma/zod-utils";
 
-import { enabledAppSlugs } from "./enabledApps";
 import type { Prisma } from ".prisma/client";
 
 const getEventTypeAppMetadata = (metadata: Prisma.JsonValue) => {
@@ -8,17 +7,7 @@ const getEventTypeAppMetadata = (metadata: Prisma.JsonValue) => {
 
   if (!eventTypeMetadataParse.success || !eventTypeMetadataParse.data) return;
 
-  const appMetadata = eventTypeMetadataParse.data.apps;
-
   const eventTypeAppMetadata: Record<string, any> = {};
-
-  if (appMetadata) {
-    for (const appSlug of Object.keys(appMetadata)) {
-      if (enabledAppSlugs.includes(appSlug)) {
-        eventTypeAppMetadata[appSlug] = appMetadata[appSlug as keyof typeof appMetadata];
-      }
-    }
-  }
 
   return eventTypeAppMetadata;
 };

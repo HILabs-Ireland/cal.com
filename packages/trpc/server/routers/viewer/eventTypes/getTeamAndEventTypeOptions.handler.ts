@@ -3,9 +3,7 @@ import { EventTypeRepository } from "@calcom/lib/server/repository/eventType";
 import { MembershipRepository } from "@calcom/lib/server/repository/membership";
 import { ProfileRepository } from "@calcom/lib/server/repository/profile";
 import type { PrismaClient } from "@calcom/prisma";
-import { MembershipRole, SchedulingType } from "@calcom/prisma/enums";
 import { teamMetadataSchema } from "@calcom/prisma/zod-utils";
-import { EventTypeMetaDataSchema } from "@calcom/prisma/zod-utils";
 
 import { TRPCError } from "@trpc/server";
 
@@ -147,16 +145,10 @@ export const getTeamAndEventTypeOptions = async ({ ctx, input }: GetTeamAndEvent
             profile: {
               name: team.name,
             },
-            eventTypes: eventTypes
-              ?.filter((evType) => {
-                const res = evType.userId === null || evType.userId === user.id;
-                return res;
-              })
-              ?.filter((evType) =>
-                membership.role === MembershipRole.MEMBER
-                  ? evType.schedulingType !== SchedulingType.MANAGED
-                  : true
-              ),
+            eventTypes: eventTypes?.filter((evType) => {
+              const res = evType.userId === null || evType.userId === user.id;
+              return res;
+            }),
           };
         })
     )
@@ -201,13 +193,8 @@ export const getTeamAndEventTypeOptions = async ({ ctx, input }: GetTeamAndEvent
       return [
         ...options,
         ...(group?.eventTypes
-          ?.filter((evType) => {
-            const metadata = EventTypeMetaDataSchema.parse(evType.metadata);
-            return (
-              !metadata?.managedEventConfig ||
-              !!metadata?.managedEventConfig.unlockedFields?.workflows ||
-              !!teamId
-            );
+          ?.filter(() => {
+            return !!teamId;
           })
           ?.map((eventType) => ({
             value: String(eventType.id),

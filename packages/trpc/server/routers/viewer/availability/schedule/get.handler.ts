@@ -13,7 +13,6 @@ type GetOptions = {
 export const getHandler = async ({ ctx, input }: GetOptions) => {
   return await ScheduleRepository.findDetailedScheduleById({
     scheduleId: input.scheduleId,
-    isManagedEventType: input.isManagedEventType,
     userId: ctx.user.id,
     timeZone: ctx.user.timeZone,
     defaultScheduleId: ctx.user.defaultScheduleId,

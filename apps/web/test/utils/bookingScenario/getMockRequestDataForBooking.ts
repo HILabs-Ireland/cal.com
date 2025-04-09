@@ -40,6 +40,7 @@ export function getMockRequestDataForBooking({
   data: Partial<ReturnType<typeof getBasicMockRequestDataForBooking>> & {
     eventTypeId: number;
     user?: string;
+    id?: number;
   } & CommonPropsMockRequestData;
 }) {
   return {

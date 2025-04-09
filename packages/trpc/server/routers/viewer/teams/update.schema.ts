@@ -24,7 +24,6 @@ export const ZUpdateInputSchema = z.object({
   darkBrandColor: z.string().optional(),
   theme: z.string().optional().nullable(),
   bookingLimits: intervalLimitsType.optional(),
-  includeManagedEventsInLimits: z.boolean().optional(),
 });
 
 export type TUpdateInputSchema = z.infer<typeof ZUpdateInputSchema>;

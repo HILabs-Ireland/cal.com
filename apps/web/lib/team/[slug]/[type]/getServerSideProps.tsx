@@ -167,17 +167,6 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   const ssr = await ssrInit(context);
   const fromRedirectOfNonOrgLink = context.query.orgRedirection === "true";
   const isUnpublished = team.parent ? !team.parent.slug : !team.slug;
-  const { getTeamMemberEmailForResponseOrContactUsingUrlQuery } = await import(
-    "@calcom/web/lib/getTeamMemberEmailFromCrm"
-  );
-  const {
-    email: teamMemberEmail,
-    recordType: crmOwnerRecordType,
-    crmAppSlug,
-  } = await getTeamMemberEmailForResponseOrContactUsingUrlQuery({
-    query,
-    eventData,
-  });
 
   const organizationSettings = getOrganizationSEOSettings(team);
   const allowSEOIndexing = organizationSettings?.allowSEOIndexing ?? false;
@@ -221,9 +210,6 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
       isInstantMeeting: eventData && queryIsInstantMeeting ? true : false,
       themeBasis: null,
       orgBannerUrl: team.parent?.bannerUrl ?? "",
-      teamMemberEmail,
-      crmOwnerRecordType,
-      crmAppSlug,
       isSEOIndexable: allowSEOIndexing,
     },
   };

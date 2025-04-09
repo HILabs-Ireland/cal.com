@@ -2,7 +2,6 @@
 import { cloneDeep } from "lodash";
 import { uuid } from "short-uuid";
 
-import type EventManager from "@calcom/core/EventManager";
 import { sendRescheduledEmailsAndSMS } from "@calcom/emails";
 import { ErrorCode } from "@calcom/lib/errorCodes";
 import { HttpError } from "@calcom/lib/http-error";
@@ -18,7 +17,6 @@ const combineTwoSeatedBookings = async (
   rescheduleSeatedBookingObject: RescheduleSeatedBookingObject,
   seatedBooking: SeatedBooking,
   newTimeSlotBooking: NewTimeSlotBooking,
-  eventManager: EventManager,
   loggerWithEventDetails: ReturnType<typeof createLoggerWithEventDetails>
 ) => {
   const {
@@ -122,16 +120,6 @@ const combineTwoSeatedBookings = async (
   evt = { ...addVideoCallDataToEvent(updatedNewBooking.references, evt), bookerUrl: evt.bookerUrl };
 
   const copyEvent = cloneDeep(evt);
-
-  const updateManager = await eventManager.reschedule(copyEvent, rescheduleUid, newTimeSlotBooking.id);
-
-  const results = updateManager.results;
-
-  const calendarResult = results.find((result) => result.type.includes("_calendar"));
-
-  evt.iCalUID = Array.isArray(calendarResult?.updatedEvent)
-    ? calendarResult?.updatedEvent[0]?.iCalUID
-    : calendarResult?.updatedEvent?.iCalUID || undefined;
 
   if (noEmail !== true && isConfirmedByDefault) {
     // TODO send reschedule emails to attendees of the old booking

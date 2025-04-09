@@ -10,7 +10,6 @@ import {
   Timezones,
   TestData,
   createCredentials,
-  mockCrmApp,
 } from "../utils/bookingScenario/bookingScenario";
 
 import { describe, vi, test } from "vitest";
@@ -54,17 +53,6 @@ describe("getSchedule", () => {
       };
 
       await createCredentials([crmCredential]);
-
-      mockCrmApp("salesforce", {
-        getContacts: [
-          {
-            id: "contact-id",
-            email: "test@test.com",
-            ownerEmail: "example@example.com",
-          },
-        ],
-        createContacts: [{ id: "contact-id", email: "test@test.com" }],
-      });
 
       await createBookingScenario({
         eventTypes: [
@@ -186,22 +174,6 @@ describe("getSchedule", () => {
       };
 
       await createCredentials([crmCredential]);
-
-      mockCrmApp("salesforce", {
-        getContacts: [
-          {
-            id: "contact-id",
-            email: "test@test.com",
-            ownerEmail: "example@example.com",
-          },
-          {
-            id: "contact-id-1",
-            email: "test1@test.com",
-            ownerEmail: "example1@example.com",
-          },
-        ],
-        createContacts: [{ id: "contact-id", email: "test@test.com" }],
-      });
 
       await createBookingScenario({
         eventTypes: [
@@ -332,17 +304,6 @@ describe("getSchedule", () => {
 
       await createCredentials([crmCredential]);
 
-      mockCrmApp("salesforce", {
-        getContacts: [
-          {
-            id: "contact-id",
-            email: "test@test.com",
-            ownerEmail: "example@example.com",
-          },
-        ],
-        createContacts: [{ id: "contact-id", email: "test@test.com" }],
-      });
-
       await createBookingScenario({
         eventTypes: [
           {
@@ -460,17 +421,6 @@ describe("getSchedule", () => {
       };
 
       await createCredentials([crmCredential]);
-
-      mockCrmApp("salesforce", {
-        getContacts: [
-          {
-            id: "contact-id",
-            email: "test@test.com",
-            ownerEmail: "example@example.com",
-          },
-        ],
-        createContacts: [{ id: "contact-id", email: "test@test.com" }],
-      });
 
       await createBookingScenario({
         eventTypes: [
@@ -898,10 +848,8 @@ describe("getSchedule", () => {
             id: 101,
             schedules: [TestData.schedules.IstWorkHours],
             credentials: [getGoogleCalendarCredential()],
-            selectedCalendars: [TestData.selectedCalendars.google],
           },
         ],
-        apps: [TestData.apps["google-calendar"]],
       };
 
       await createBookingScenario(scenarioData);
@@ -964,7 +912,6 @@ describe("getSchedule", () => {
             id: 101,
             schedules: [TestData.schedules.IstWorkHours],
             credentials: [getGoogleCalendarCredential()],
-            selectedCalendars: [TestData.selectedCalendars.google],
           },
         ],
         bookings: [
@@ -976,7 +923,6 @@ describe("getSchedule", () => {
             status: "ACCEPTED" as BookingStatus,
           },
         ],
-        apps: [TestData.apps["google-calendar"]],
       };
 
       await createBookingScenario(scenarioData);
@@ -1032,10 +978,8 @@ describe("getSchedule", () => {
             id: 101,
             schedules: [TestData.schedules.IstWorkHours],
             credentials: [getGoogleCalendarCredential()],
-            selectedCalendars: [TestData.selectedCalendars.google],
           },
         ],
-        apps: [TestData.apps["google-calendar"]],
       };
 
       await createBookingScenario(scenarioData);

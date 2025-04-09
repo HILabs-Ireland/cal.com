@@ -5,42 +5,23 @@ import type { NextApiRequest } from "next";
 import short, { uuid } from "short-uuid";
 import { v5 as uuidv5 } from "uuid";
 
-import processExternalId from "@calcom/app-store/_utils/calendars/processExternalId";
-import { metadata as GoogleMeetMetadata } from "@calcom/app-store/googlevideo/_metadata";
-import {
-  getLocationValueForDB,
-  MeetLocationType,
-  OrganizerDefaultConferencingAppType,
-} from "@calcom/app-store/locations";
-import { DailyLocationType } from "@calcom/app-store/locations";
-import { getAppFromSlug } from "@calcom/app-store/utils";
-import EventManager from "@calcom/core/EventManager";
+import { getLocationValueForDB } from "@calcom/app-store/locations";
 import { getEventName } from "@calcom/core/event";
 import monitorCallbackAsync from "@calcom/core/sentryWrapper";
 import dayjs from "@calcom/dayjs";
 import {
-  sendAttendeeRequestEmailAndSMS,
-  sendOrganizerRequestEmail,
   sendRescheduledEmailsAndSMS,
   sendRoundRobinCancelledEmailsAndSMS,
   sendRoundRobinRescheduledEmailsAndSMS,
   sendRoundRobinScheduledEmailsAndSMS,
-  sendScheduledEmailsAndSMS,
 } from "@calcom/emails";
 import getICalUID from "@calcom/emails/lib/getICalUID";
 import { getBookingFieldsWithSystemFields } from "@calcom/features/bookings/lib/getBookingFields";
-import { handleWebhookTrigger } from "@calcom/features/bookings/lib/handleWebhookTrigger";
 import { isEventTypeLoggingEnabled } from "@calcom/features/bookings/lib/isEventTypeLoggingEnabled";
 import { getShouldServeCache } from "@calcom/features/calendar-cache/lib/getShouldServeCache";
 import { getFullName } from "@calcom/features/form-builder/utils";
 import { UsersRepository } from "@calcom/features/users/users.repository";
 import type { GetSubscriberOptions } from "@calcom/features/webhooks/lib/getWebhooks";
-import getWebhooks from "@calcom/features/webhooks/lib/getWebhooks";
-import {
-  deleteWebhookScheduledTriggers,
-  scheduleTrigger,
-} from "@calcom/features/webhooks/lib/scheduleTrigger";
-import { getVideoCallUrlFromCalEvent } from "@calcom/lib/CalEventParser";
 import { isRerouting, shouldIgnoreContactOwner } from "@calcom/lib/bookings/routing/utils";
 import { getDefaultEvent, getUsernameList } from "@calcom/lib/defaultEvents";
 import { ErrorCode } from "@calcom/lib/errorCodes";
@@ -58,15 +39,11 @@ import { getTranslation } from "@calcom/lib/server/i18n";
 import { getTimeFormatStringFromUserTimeFormat } from "@calcom/lib/timeFormat";
 import prisma from "@calcom/prisma";
 import { BookingStatus, SchedulingType, WebhookTriggerEvents } from "@calcom/prisma/enums";
-import { eventTypeAppMetadataOptionalSchema } from "@calcom/prisma/zod-utils";
 import type { PlatformClientParams } from "@calcom/prisma/zod-utils";
-import { userMetadata as userMetadataSchema } from "@calcom/prisma/zod-utils";
-import type { AdditionalInformation, AppsStatus, CalendarEvent, Person } from "@calcom/types/Calendar";
-import type { EventResult, PartialReference } from "@calcom/types/EventManager";
+import type { AppsStatus, CalendarEvent, Person } from "@calcom/types/Calendar";
 
-import type { EventPayloadType, EventTypeInfo } from "../../webhooks/lib/sendPayload";
+import type { EventTypeInfo } from "../../webhooks/lib/sendPayload";
 import { getAllCredentials } from "./getAllCredentialsForUsersOnEvent/getAllCredentials";
-import { refreshCredentials } from "./getAllCredentialsForUsersOnEvent/refreshCredentials";
 import getBookingDataSchema from "./getBookingDataSchema";
 import { addVideoCallDataToEvent } from "./handleNewBooking/addVideoCallDataToEvent";
 import { checkBookingAndDurationLimits } from "./handleNewBooking/checkBookingAndDurationLimits";
@@ -81,10 +58,7 @@ import { getLocationValuesForDb } from "./handleNewBooking/getLocationValuesForD
 import { getOriginalRescheduledBooking } from "./handleNewBooking/getOriginalRescheduledBooking";
 import { getRequiresConfirmationFlags } from "./handleNewBooking/getRequiresConfirmationFlags";
 import { getSeatedBooking } from "./handleNewBooking/getSeatedBooking";
-import { getVideoCallDetails } from "./handleNewBooking/getVideoCallDetails";
-import { handleAppsStatus } from "./handleNewBooking/handleAppsStatus";
 import { loadAndValidateUsers } from "./handleNewBooking/loadAndValidateUsers";
-import { scheduleNoShowTriggers } from "./handleNewBooking/scheduleNoShowTriggers";
 import type { Booking, BookingType, Invitee, IsFixedAwareUser } from "./handleNewBooking/types";
 import { validateBookingTimeIsNotOutOfBounds } from "./handleNewBooking/validateBookingTimeIsNotOutOfBounds";
 import { validateEventLength } from "./handleNewBooking/validateEventLength";
@@ -188,7 +162,6 @@ const buildDryRunBooking = ({
   contactOwnerFromReq,
   contactOwnerEmail,
   allHostUsers,
-  isManagedEventType,
 }: {
   eventTypeId: number;
   organizerUser: {
@@ -204,7 +177,6 @@ const buildDryRunBooking = ({
   contactOwnerFromReq: string | null;
   contactOwnerEmail: string | null;
   allHostUsers: { id: number }[];
-  isManagedEventType: boolean;
 }) => {
   const booking = {
     id: -101,
@@ -266,19 +238,11 @@ const buildDryRunBooking = ({
     askedContactOwnerEmail: contactOwnerFromReq,
     usedContactOwnerEmail: contactOwnerEmail,
     allHostUsers: allHostUsers.map((user) => user.id),
-    isManagedEventType: isManagedEventType,
   };
 
   return {
     booking,
     troubleshooterData,
-  };
-};
-
-const buildDryRunEventManager = () => {
-  return {
-    create: async () => ({ results: [], referencesToCreate: [] }),
-    reschedule: async () => ({ results: [], referencesToCreate: [] }),
   };
 };
 
@@ -305,7 +269,6 @@ function buildTroubleshooterData({
     luckyUsersFromFirstBooking: number[];
     usedContactOwnerEmail: string | null;
     askedContactOwnerEmail: string | null;
-    isManagedEventType: boolean;
   } = {
     organizerUser: null,
     eventType: {
@@ -319,7 +282,6 @@ function buildTroubleshooterData({
     usedContactOwnerEmail: null,
     allHostUsers: [],
     askedContactOwnerEmail: null,
-    isManagedEventType: false,
   };
   return troubleshooterData;
 }
@@ -373,7 +335,6 @@ async function handler(
     rescheduleReason,
     luckyUsers,
     routedTeamMemberIds,
-    reroutingFormResponses,
     routingFormResponseId,
     _isDryRun: isDryRun = false,
     _shouldServeCache,
@@ -471,11 +432,7 @@ async function handler(
   // We filter out users but ensure allHostUsers remain same.
   let users = allHostUsers;
 
-  let { locationBodyString, organizerOrFirstDynamicGroupMemberDefaultLocationUrl } = getLocationValuesForDb(
-    dynamicUserList,
-    users,
-    location
-  );
+  let { locationBodyString } = getLocationValuesForDb(dynamicUserList, users, location);
 
   await monitorCallbackAsync(checkBookingAndDurationLimits, {
     eventType,
@@ -752,30 +709,11 @@ async function handler(
 
   const tAttendees = await getTranslation(attendeeLanguage ?? "en", "common");
 
-  const isManagedEventType = !!eventType.parentId;
-
   // If location passed is empty , use default location of event
   // If location of event is not set , use host default
   if (locationBodyString.trim().length == 0) {
     if (eventType.locations.length > 0) {
       locationBodyString = eventType.locations[0].type;
-    } else {
-      locationBodyString = OrganizerDefaultConferencingAppType;
-    }
-  }
-  // use host default
-  if (locationBodyString == OrganizerDefaultConferencingAppType) {
-    const metadataParseResult = userMetadataSchema.safeParse(organizerUser.metadata);
-    const organizerMetadata = metadataParseResult.success ? metadataParseResult.data : undefined;
-    if (organizerMetadata?.defaultConferencingApp?.appSlug) {
-      const app = getAppFromSlug(organizerMetadata?.defaultConferencingApp?.appSlug);
-      locationBodyString = app?.appData?.location?.type || locationBodyString;
-      if (isManagedEventType || isTeamEventType) {
-        organizerOrFirstDynamicGroupMemberDefaultLocationUrl =
-          organizerMetadata?.defaultConferencingApp?.appLink;
-      }
-    } else {
-      locationBodyString = "integrations:daily";
     }
   }
 
@@ -826,12 +764,10 @@ async function handler(
 
   // For static link based video apps, it would have the static URL value instead of it's type(e.g. integrations:campfire_video)
   // This ensures that createMeeting isn't called for static video apps as bookingLocation becomes just a regular value for them.
-  const { bookingLocation, conferenceCredentialId } = organizerOrFirstDynamicGroupMemberDefaultLocationUrl
-    ? {
-        bookingLocation: organizerOrFirstDynamicGroupMemberDefaultLocationUrl,
-        conferenceCredentialId: undefined,
-      }
-    : getLocationValueForDB(locationBodyString, eventType.locations);
+  const { bookingLocation, conferenceCredentialId } = getLocationValueForDB(
+    locationBodyString,
+    eventType.locations
+  );
 
   const customInputs = getCustomInputsResponses(reqBody, eventType.customInputs);
   const teamDestinationCalendars: DestinationCalendar[] = [];
@@ -840,15 +776,6 @@ async function handler(
   const teamMemberPromises = users
     .filter((user) => user.email !== organizerUser.email)
     .map(async (user) => {
-      // TODO: Add back once EventManager tests are ready https://github.com/calcom/cal.com/pull/14610#discussion_r1567817120
-      // push to teamDestinationCalendars if it's a team event but collective only
-      if (isTeamEventType && eventType.schedulingType === "COLLECTIVE" && user.destinationCalendar) {
-        teamDestinationCalendars.push({
-          ...user.destinationCalendar,
-          externalId: processExternalId(user.destinationCalendar),
-        });
-      }
-
       return {
         id: user.id,
         email: user.email ?? "",
@@ -1103,9 +1030,6 @@ async function handler(
     eventType.schedulingType === SchedulingType.ROUND_ROBIN &&
     originalRescheduledBooking.userId !== evt.organizer.id;
 
-  let results: EventResult<AdditionalInformation & { url?: string; iCalUID?: string }>[] = [];
-  let referencesToCreate: PartialReference[] = [];
-
   let booking: CreatedBooking | null = null;
 
   loggerWithEventDetails.debug(
@@ -1125,7 +1049,7 @@ async function handler(
         uid,
         rescheduledBy: reqBody.rescheduledBy,
         routingFormResponseId: routingFormResponseId,
-        reroutingFormResponses: reroutingFormResponses ?? null,
+        reroutingFormResponses: null,
         reqBody: {
           user: reqBody.user,
           metadata: reqBody.metadata,
@@ -1198,7 +1122,6 @@ async function handler(
         contactOwnerFromReq,
         contactOwnerEmail,
         allHostUsers,
-        isManagedEventType,
       });
       booking = dryRunBooking;
       troubleshooterData = {
@@ -1219,13 +1142,6 @@ async function handler(
     throw err;
   }
 
-  // After polling videoBusyTimes, credentials might have been changed due to refreshment, so query them again.
-  const credentials = await monitorCallbackAsync(refreshCredentials, allCredentials);
-  const apps = eventTypeAppMetadataOptionalSchema.parse(eventType?.metadata?.apps);
-  const eventManager = !isDryRun
-    ? new EventManager({ ...organizerUser, credentials }, apps)
-    : buildDryRunEventManager();
-
   let videoCallUrl;
 
   //this is the actual rescheduling logic
@@ -1235,9 +1151,6 @@ async function handler(
     evt = addVideoCallDataToEvent(originalRescheduledBooking.references, evt);
 
     // If organizer is changed in RR event then we need to delete the previous host destination calendar events
-    const previousHostDestinationCalendar = originalRescheduledBooking?.destinationCalendar
-      ? [originalRescheduledBooking?.destinationCalendar]
-      : [];
 
     if (changedOrganizer) {
       evt.title = getEventName(eventNameObject);
@@ -1252,19 +1165,9 @@ async function handler(
         : evt.destinationCalendar;
     }
 
-    const updateManager = await eventManager.reschedule(
-      evt,
-      originalRescheduledBooking.uid,
-      undefined,
-      changedOrganizer,
-      previousHostDestinationCalendar
-    );
     // This gets overridden when updating the event - to check if notes have been hidden or not. We just reset this back
     // to the default description when we are sending the emails.
     evt.description = eventType.description;
-
-    results = updateManager.results;
-    referencesToCreate = updateManager.referencesToCreate;
 
     videoCallUrl = evt.videoCallData && evt.videoCallData.url ? evt.videoCallData.url : null;
 
@@ -1272,112 +1175,10 @@ async function handler(
     // to the default description when we are sending the emails.
     evt.description = eventType.description;
 
-    const { metadata: videoMetadata, videoCallUrl: _videoCallUrl } = getVideoCallDetails({
-      results,
-    });
-
-    let metadata: AdditionalInformation = {};
-    metadata = videoMetadata;
-    videoCallUrl = _videoCallUrl;
-
-    const isThereAnIntegrationError = results && results.some((res) => !res.success);
-
-    if (isThereAnIntegrationError) {
-      const error = {
-        errorCode: "BookingReschedulingMeetingFailed",
-        message: "Booking Rescheduling failed",
-      };
-
-      loggerWithEventDetails.error(
-        `EventManager.reschedule failure in some of the integrations ${organizerUser.username}`,
-        safeStringify({ error, results })
-      );
-    } else {
-      if (results.length) {
-        // Handle Google Meet results
-        // We use the original booking location since the evt location changes to daily
-        if (bookingLocation === MeetLocationType) {
-          const googleMeetResult = {
-            appName: GoogleMeetMetadata.name,
-            type: "conferencing",
-            uid: results[0].uid,
-            originalEvent: results[0].originalEvent,
-          };
-
-          // Find index of google_calendar inside createManager.referencesToCreate
-          const googleCalIndex = updateManager.referencesToCreate.findIndex(
-            (ref) => ref.type === "google_calendar"
-          );
-          const googleCalResult = results[googleCalIndex];
-
-          if (!googleCalResult) {
-            loggerWithEventDetails.warn("Google Calendar not installed but using Google Meet as location");
-            results.push({
-              ...googleMeetResult,
-              success: false,
-              calWarnings: [tOrganizer("google_meet_warning")],
-            });
-          }
-
-          const googleHangoutLink = Array.isArray(googleCalResult?.updatedEvent)
-            ? googleCalResult.updatedEvent[0]?.hangoutLink
-            : googleCalResult?.updatedEvent?.hangoutLink ?? googleCalResult?.createdEvent?.hangoutLink;
-
-          if (googleHangoutLink) {
-            results.push({
-              ...googleMeetResult,
-              success: true,
-            });
-
-            // Add google_meet to referencesToCreate in the same index as google_calendar
-            updateManager.referencesToCreate[googleCalIndex] = {
-              ...updateManager.referencesToCreate[googleCalIndex],
-              meetingUrl: googleHangoutLink,
-            };
-
-            // Also create a new referenceToCreate with type video for google_meet
-            updateManager.referencesToCreate.push({
-              type: "google_meet_video",
-              meetingUrl: googleHangoutLink,
-              uid: googleCalResult.uid,
-              credentialId: updateManager.referencesToCreate[googleCalIndex].credentialId,
-            });
-          } else if (googleCalResult && !googleHangoutLink) {
-            results.push({
-              ...googleMeetResult,
-              success: false,
-            });
-          }
-        }
-        const createdOrUpdatedEvent = Array.isArray(results[0]?.updatedEvent)
-          ? results[0]?.updatedEvent[0]
-          : results[0]?.updatedEvent ?? results[0]?.createdEvent;
-        metadata.hangoutLink = createdOrUpdatedEvent?.hangoutLink;
-        metadata.conferenceData = createdOrUpdatedEvent?.conferenceData;
-        metadata.entryPoints = createdOrUpdatedEvent?.entryPoints;
-        evt.appsStatus = handleAppsStatus(results, booking, reqAppsStatus);
-        videoCallUrl =
-          metadata.hangoutLink ||
-          createdOrUpdatedEvent?.url ||
-          organizerOrFirstDynamicGroupMemberDefaultLocationUrl ||
-          getVideoCallUrlFromCalEvent(evt) ||
-          videoCallUrl;
-      }
-
-      const calendarResult = results.find((result) => result.type.includes("_calendar"));
-
-      evt.iCalUID = Array.isArray(calendarResult?.updatedEvent)
-        ? calendarResult?.updatedEvent[0]?.iCalUID
-        : calendarResult?.updatedEvent?.iCalUID || undefined;
-    }
-
-    evt.appsStatus = handleAppsStatus(results, booking, reqAppsStatus);
-
     if (noEmail !== true && isConfirmedByDefault) {
       const copyEvent = cloneDeep(evt);
       const copyEventAdditionalInfo = {
         ...copyEvent,
-        additionalInformation: metadata,
         additionalNotes, // Resets back to the additionalNote input and not the override value
         cancellationReason: `$RCH$${rescheduleReason ? rescheduleReason : ""}`, // Removable code prefix to differentiate cancellation from rescheduling for email
       };
@@ -1438,7 +1239,6 @@ async function handler(
             matchOriginalMemberWithNewMember(orignalMember, member)
           )
         );
-
         if (!isDryRun) {
           sendRoundRobinRescheduledEmailsAndSMS(
             copyEventAdditionalInfo,
@@ -1458,7 +1258,6 @@ async function handler(
           await sendRescheduledEmailsAndSMS(
             {
               ...copyEvent,
-              additionalInformation: metadata,
               additionalNotes, // Resets back to the additionalNote input and not the override value
               cancellationReason: `$RCH$${rescheduleReason ? rescheduleReason : ""}`, // Removable code prefix to differentiate cancellation from rescheduling for email
             },
@@ -1470,8 +1269,6 @@ async function handler(
     // If it's not a reschedule, doesn't require confirmation and there's no price,
     // Create a booking
   } else if (isConfirmedByDefault) {
-    // Use EventManager to conditionally use all needed integrations.
-    const createManager = await eventManager.create(evt);
     if (evt.location) {
       booking.location = evt.location;
     }
@@ -1479,346 +1276,25 @@ async function handler(
     // to the default description when we are sending the emails.
     evt.description = eventType.description;
 
-    results = createManager.results;
-    referencesToCreate = createManager.referencesToCreate;
     videoCallUrl = evt.videoCallData && evt.videoCallData.url ? evt.videoCallData.url : null;
 
-    if (results.length > 0 && results.every((res) => !res.success)) {
-      const error = {
-        errorCode: "BookingCreatingMeetingFailed",
-        message: "Booking failed",
-      };
+    if (noEmail !== true) {
+      let isHostConfirmationEmailsDisabled = false;
+      let isAttendeeConfirmationEmailDisabled = false;
 
-      loggerWithEventDetails.error(
-        `EventManager.create failure in some of the integrations ${organizerUser.username}`,
-        safeStringify({ error, results })
-      );
-    } else {
-      const additionalInformation: AdditionalInformation = {};
+      isHostConfirmationEmailsDisabled =
+        eventType.metadata?.disableStandardEmails?.confirmation?.host || false;
+      isAttendeeConfirmationEmailDisabled =
+        eventType.metadata?.disableStandardEmails?.confirmation?.attendee || false;
 
-      if (results.length) {
-        // Handle Google Meet results
-        // We use the original booking location since the evt location changes to daily
-        if (bookingLocation === MeetLocationType) {
-          const googleMeetResult = {
-            appName: GoogleMeetMetadata.name,
-            type: "conferencing",
-            uid: results[0].uid,
-            originalEvent: results[0].originalEvent,
-          };
-
-          // Find index of google_calendar inside createManager.referencesToCreate
-          const googleCalIndex = createManager.referencesToCreate.findIndex(
-            (ref) => ref.type === "google_calendar"
-          );
-          const googleCalResult = results[googleCalIndex];
-
-          if (!googleCalResult) {
-            loggerWithEventDetails.warn("Google Calendar not installed but using Google Meet as location");
-            results.push({
-              ...googleMeetResult,
-              success: false,
-              calWarnings: [tOrganizer("google_meet_warning")],
-            });
-          }
-
-          if (googleCalResult?.createdEvent?.hangoutLink) {
-            results.push({
-              ...googleMeetResult,
-              success: true,
-            });
-
-            // Add google_meet to referencesToCreate in the same index as google_calendar
-            createManager.referencesToCreate[googleCalIndex] = {
-              ...createManager.referencesToCreate[googleCalIndex],
-              meetingUrl: googleCalResult.createdEvent.hangoutLink,
-            };
-
-            // Also create a new referenceToCreate with type video for google_meet
-            createManager.referencesToCreate.push({
-              type: "google_meet_video",
-              meetingUrl: googleCalResult.createdEvent.hangoutLink,
-              uid: googleCalResult.uid,
-              credentialId: createManager.referencesToCreate[googleCalIndex].credentialId,
-            });
-          } else if (googleCalResult && !googleCalResult.createdEvent?.hangoutLink) {
-            results.push({
-              ...googleMeetResult,
-              success: false,
-            });
-          }
-        }
-        // TODO: Handle created event metadata more elegantly
-        additionalInformation.hangoutLink = results[0].createdEvent?.hangoutLink;
-        additionalInformation.conferenceData = results[0].createdEvent?.conferenceData;
-        additionalInformation.entryPoints = results[0].createdEvent?.entryPoints;
-        evt.appsStatus = handleAppsStatus(results, booking, reqAppsStatus);
-        videoCallUrl =
-          additionalInformation.hangoutLink ||
-          organizerOrFirstDynamicGroupMemberDefaultLocationUrl ||
-          videoCallUrl;
-
-        if (!isDryRun && evt.iCalUID !== booking.iCalUID) {
-          // The eventManager could change the iCalUID. At this point we can update the DB record
-          await prisma.booking.update({
-            where: {
-              id: booking.id,
-            },
-            data: {
-              iCalUID: evt.iCalUID || booking.iCalUID,
-            },
-          });
-        }
-      }
-      if (noEmail !== true) {
-        let isHostConfirmationEmailsDisabled = false;
-        let isAttendeeConfirmationEmailDisabled = false;
-
-        isHostConfirmationEmailsDisabled =
-          eventType.metadata?.disableStandardEmails?.confirmation?.host || false;
-        isAttendeeConfirmationEmailDisabled =
-          eventType.metadata?.disableStandardEmails?.confirmation?.attendee || false;
-
-        loggerWithEventDetails.debug(
-          "Emails: Sending scheduled emails for booking confirmation",
-          safeStringify({
-            calEvent: getPiiFreeCalendarEvent(evt),
-          })
-        );
-
-        if (!isDryRun) {
-          await monitorCallbackAsync(
-            sendScheduledEmailsAndSMS,
-            {
-              ...evt,
-              additionalInformation,
-              additionalNotes,
-              customInputs,
-            },
-            eventNameObject,
-            isHostConfirmationEmailsDisabled,
-            isAttendeeConfirmationEmailDisabled,
-            eventType.metadata
-          );
-        }
-      }
-    }
-  } else {
-    // If isConfirmedByDefault is false, then booking can't be considered ACCEPTED and thus EventManager has no role to play. Booking is created as PENDING
-    loggerWithEventDetails.debug(
-      `EventManager doesn't need to create or reschedule event for booking ${organizerUser.username}`,
-      safeStringify({
-        calEvent: getPiiFreeCalendarEvent(evt),
-        isConfirmedByDefault,
-      })
-    );
-  }
-
-  if (!isConfirmedByDefault && noEmail !== true) {
-    loggerWithEventDetails.debug(
-      `Emails: Booking ${organizerUser.username} requires confirmation, sending request emails`,
-      safeStringify({
-        calEvent: getPiiFreeCalendarEvent(evt),
-      })
-    );
-    if (!isDryRun) {
-      await monitorCallbackAsync(sendOrganizerRequestEmail, { ...evt, additionalNotes }, eventType.metadata);
-      await monitorCallbackAsync(
-        sendAttendeeRequestEmailAndSMS,
-        { ...evt, additionalNotes },
-        attendeesList[0],
-        eventType.metadata
+      loggerWithEventDetails.debug(
+        "Emails: Sending scheduled emails for booking confirmation",
+        safeStringify({
+          calEvent: getPiiFreeCalendarEvent(evt),
+        })
       );
     }
   }
-
-  if (booking.location?.startsWith("http")) {
-    videoCallUrl = booking.location;
-  }
-
-  const metadata = videoCallUrl
-    ? {
-        videoCallUrl: getVideoCallUrlFromCalEvent(evt) || videoCallUrl,
-      }
-    : undefined;
-
-  const webhookData: EventPayloadType = {
-    ...evt,
-    ...eventTypeInfo,
-    bookingId: booking?.id,
-    rescheduleId: originalRescheduledBooking?.id || undefined,
-    rescheduleUid,
-    rescheduleStartTime: originalRescheduledBooking?.startTime
-      ? dayjs(originalRescheduledBooking?.startTime).utc().format()
-      : undefined,
-    rescheduleEndTime: originalRescheduledBooking?.endTime
-      ? dayjs(originalRescheduledBooking?.endTime).utc().format()
-      : undefined,
-    metadata: { ...metadata, ...reqBody.metadata },
-    eventTypeId,
-    status: "ACCEPTED",
-    smsReminderNumber: booking?.smsReminderNumber || undefined,
-    rescheduledBy: reqBody.rescheduledBy,
-  };
-
-  loggerWithEventDetails.debug(`Booking ${organizerUser.username} completed`);
-
-  // We are here so, booking doesn't require payment and booking is also created in DB already, through createBooking call
-  if (isConfirmedByDefault) {
-    const subscribersMeetingEnded = await monitorCallbackAsync(getWebhooks, subscriberOptionsMeetingEnded);
-    const subscribersMeetingStarted = await monitorCallbackAsync(
-      getWebhooks,
-      subscriberOptionsMeetingStarted
-    );
-
-    let deleteWebhookScheduledTriggerPromise: Promise<unknown> = Promise.resolve();
-    const scheduleTriggerPromises = [];
-
-    if (rescheduleUid && originalRescheduledBooking) {
-      //delete all scheduled triggers for meeting ended and meeting started of booking
-      deleteWebhookScheduledTriggerPromise = deleteWebhookScheduledTriggers({
-        booking: originalRescheduledBooking,
-        isDryRun,
-      });
-    }
-
-    if (booking && booking.status === BookingStatus.ACCEPTED) {
-      const bookingWithCalEventResponses = {
-        ...booking,
-        responses: reqBody.calEventResponses,
-      };
-      for (const subscriber of subscribersMeetingEnded) {
-        scheduleTriggerPromises.push(
-          scheduleTrigger({
-            booking: bookingWithCalEventResponses,
-            subscriberUrl: subscriber.subscriberUrl,
-            subscriber,
-            triggerEvent: WebhookTriggerEvents.MEETING_ENDED,
-            isDryRun,
-          })
-        );
-      }
-
-      for (const subscriber of subscribersMeetingStarted) {
-        scheduleTriggerPromises.push(
-          scheduleTrigger({
-            booking: bookingWithCalEventResponses,
-            subscriberUrl: subscriber.subscriberUrl,
-            subscriber,
-            triggerEvent: WebhookTriggerEvents.MEETING_STARTED,
-            isDryRun,
-          })
-        );
-      }
-    }
-
-    await Promise.all([deleteWebhookScheduledTriggerPromise, ...scheduleTriggerPromises]).catch((error) => {
-      loggerWithEventDetails.error(
-        "Error while scheduling or canceling webhook triggers",
-        JSON.stringify({ error })
-      );
-    });
-
-    // Send Webhook call if hooked to BOOKING_CREATED & BOOKING_RESCHEDULED
-    await monitorCallbackAsync(handleWebhookTrigger, {
-      subscriberOptions,
-      eventTrigger,
-      webhookData,
-      isDryRun,
-    });
-  } else {
-    // if eventType requires confirmation we will trigger the BOOKING REQUESTED Webhook
-    const eventTrigger: WebhookTriggerEvents = WebhookTriggerEvents.BOOKING_REQUESTED;
-    subscriberOptions.triggerEvent = eventTrigger;
-    webhookData.status = "PENDING";
-    await monitorCallbackAsync(handleWebhookTrigger, {
-      subscriberOptions,
-      eventTrigger,
-      webhookData,
-      isDryRun,
-    });
-  }
-
-  try {
-    if (hasHashedBookingLink && reqBody.hashedLink && !isDryRun) {
-      await prisma.hashedLink.delete({
-        where: {
-          link: reqBody.hashedLink as string,
-        },
-      });
-    }
-  } catch (error) {
-    loggerWithEventDetails.error("Error while updating hashed link", JSON.stringify({ error }));
-  }
-
-  if (!booking) throw new HttpError({ statusCode: 400, message: "Booking failed" });
-
-  try {
-    if (!isDryRun) {
-      await prisma.booking.update({
-        where: {
-          uid: booking.uid,
-        },
-        data: {
-          location: evt.location,
-          metadata: { ...(typeof booking.metadata === "object" && booking.metadata), ...metadata },
-          references: {
-            createMany: {
-              data: referencesToCreate,
-            },
-          },
-        },
-      });
-    }
-  } catch (error) {
-    loggerWithEventDetails.error("Error while creating booking references", JSON.stringify({ error }));
-  }
-
-  const evtWithMetadata = {
-    ...evt,
-    rescheduleReason,
-    metadata,
-    eventType: { slug: eventType.slug, schedulingType: eventType.schedulingType, hosts: eventType.hosts },
-    bookerUrl,
-  };
-
-  try {
-    if (isConfirmedByDefault && (booking.location === DailyLocationType || booking.location?.trim() === "")) {
-      await monitorCallbackAsync(scheduleNoShowTriggers, {
-        booking: { startTime: booking.startTime, id: booking.id },
-        triggerForUser,
-        organizerUser: { id: organizerUser.id },
-        eventTypeId,
-        teamId,
-        orgId,
-        isDryRun,
-      });
-    }
-  } catch (error) {
-    loggerWithEventDetails.error("Error while scheduling no show triggers", JSON.stringify({ error }));
-  }
-
-  // booking successful
-  req.statusCode = 201;
-
-  // TODO: Refactor better so this booking object is not passed
-  // all around and instead the individual fields are sent as args.
-  const bookingResponse = {
-    ...booking,
-    user: {
-      ...booking.user,
-      email: null,
-    },
-  };
-
-  return {
-    ...bookingResponse,
-    ...luckyUserResponse,
-    isDryRun,
-    ...(isDryRun ? { troubleshooterData } : {}),
-    references: referencesToCreate,
-    seatReferenceUid: evt.attendeeSeatId,
-  };
 }
 
 export default handler;

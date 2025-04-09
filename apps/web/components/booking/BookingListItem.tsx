@@ -48,7 +48,6 @@ import assignmentReasonBadgeTitleMap from "@lib/booking/assignmentReasonBadgeTit
 
 import { AddGuestsDialog } from "@components/dialog/AddGuestsDialog";
 import { EditLocationDialog } from "@components/dialog/EditLocationDialog";
-import { RerouteDialog } from "@components/dialog/RerouteDialog";
 import { RescheduleDialog } from "@components/dialog/RescheduleDialog";
 
 type BookingListingStatus = RouterInputs["viewer"]["bookings"]["get"]["filters"]["status"];
@@ -226,18 +225,7 @@ function BookingListItem(booking: BookingItemProps) {
             },
           },
         ]),
-    ...(isBookingReroutable(parsedBooking)
-      ? [
-          {
-            id: "reroute",
-            label: t("reroute"),
-            onClick: () => {
-              setRerouteDialogIsOpen(true);
-            },
-            icon: "waypoints" as const,
-          },
-        ]
-      : []),
+    ...[],
     {
       id: "change_location",
       label: t("edit_location"),
@@ -309,7 +297,6 @@ function BookingListItem(booking: BookingItemProps) {
   const [isOpenRescheduleDialog, setIsOpenRescheduleDialog] = useState(false);
   const [isOpenSetLocationDialog, setIsOpenLocationDialog] = useState(false);
   const [isOpenAddGuestsDialog, setIsOpenAddGuestsDialog] = useState(false);
-  const [rerouteDialogIsOpen, setRerouteDialogIsOpen] = useState(false);
   const setLocationMutation = trpc.viewer.bookings.editLocation.useMutation({
     onSuccess: () => {
       showToast(t("location_updated"), "success");
@@ -589,14 +576,6 @@ function BookingListItem(booking: BookingItemProps) {
           userTimeZone={userTimeZone}
         />
       </div>
-
-      {isBookingReroutable(parsedBooking) && (
-        <RerouteDialog
-          isOpenDialog={rerouteDialogIsOpen}
-          setIsOpenDialog={setRerouteDialogIsOpen}
-          booking={{ ...parsedBooking, eventType: parsedBooking.eventType }}
-        />
-      )}
     </>
   );
 }

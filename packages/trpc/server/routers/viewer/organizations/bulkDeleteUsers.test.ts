@@ -51,7 +51,6 @@ describe("Bulk Delete Users handler", () => {
         3: Remove profiles of users
         4: Not remove user events of removed users
         5: Remove host assignment from child team events of removed users
-        6: Remove managed events of removed users
     `, async () => {
     const org = {
       id: 1,
@@ -157,65 +156,6 @@ describe("Bulk Delete Users handler", () => {
       ],
     };
 
-    const parentManagedEvent: ScenarioData["eventTypes"][0] = {
-      id: 5,
-      title: "Parent Managed Event",
-      slug: "parent-managed-event",
-      teamId: team.id,
-      slotInterval: 30,
-      length: 30,
-    };
-
-    const user1ToBeRemovedManagedEvent: ScenarioData["eventTypes"][0] = {
-      id: 6,
-      title: "User 1 Managed Event",
-      slug: "user1-managed-event",
-      slotInterval: 30,
-      length: 30,
-      userId: userToBeRemoved1.id,
-      parent: {
-        id: parentManagedEvent.id,
-      },
-    };
-
-    const user2ToBeRemovedManagedEvent: ScenarioData["eventTypes"][0] = {
-      id: 7,
-      title: "User 2 Managed Event",
-      slug: "user2-managed-event",
-      slotInterval: 30,
-      length: 30,
-      userId: userToBeRemoved2.id,
-      parent: {
-        id: parentManagedEvent.id,
-      },
-    };
-
-    const userNotToBeRemovedManagedEvent: ScenarioData["eventTypes"][0] = {
-      id: 8,
-      title: "User 3 Managed Event",
-      slug: "user3-managed-event",
-      slotInterval: 30,
-      length: 30,
-      userId: userNotToBeRemoved.id,
-      parent: {
-        id: parentManagedEvent.id,
-      },
-    };
-
-    parentManagedEvent.children = {
-      connect: [
-        {
-          id: user1ToBeRemovedManagedEvent.id,
-        },
-        {
-          id: user2ToBeRemovedManagedEvent.id,
-        },
-        {
-          id: userNotToBeRemovedManagedEvent.id,
-        },
-      ],
-    };
-
     await createBookingScenario(
       getScenarioData(
         {
@@ -223,10 +163,6 @@ describe("Bulk Delete Users handler", () => {
             userToBeRemoved1Event1,
             userToBeRemoved2Event1,
             roundRobinEvent,
-            parentManagedEvent,
-            user1ToBeRemovedManagedEvent,
-            user2ToBeRemovedManagedEvent,
-            userNotToBeRemovedManagedEvent,
             userNotToBeRemovedEvent1,
           ],
           organizer: orgOwner,
@@ -340,19 +276,6 @@ describe("Bulk Delete Users handler", () => {
       },
     });
     expect(teamEvent?.hosts.length).toBe(2);
-
-    //Managed events of removed users should be deleted
-    const managedEvents = await prismock.eventType.findMany({
-      where: {
-        parent: {
-          id: parentManagedEvent.id,
-        },
-      },
-      select: {
-        id: true,
-      },
-    });
-    expect(managedEvents).toEqual([{ id: userNotToBeRemovedManagedEvent.id }]);
   });
 
   it("should throw error when user is not ADMIN/OWNER of the organization", async () => {

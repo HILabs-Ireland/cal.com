@@ -3,8 +3,6 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
-import AdminAppsList from "@calcom/features/apps/AdminAppsList";
-import { APP_NAME } from "@calcom/lib/constants";
 import { useCompatSearchParams } from "@calcom/lib/hooks/useCompatSearchParams";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import type { inferSSRProps } from "@calcom/types/inferSSRProps";
@@ -101,32 +99,6 @@ export function Setup(props: PageProps) {
       isEnabled: isEnabledEE,
     });
   }
-
-  steps.push({
-    title: t("enable_apps"),
-    description: t("enable_apps_description", { appName: APP_NAME }),
-    contentClassname: "!pb-0 mb-[-1px]",
-    content: (setIsPending) => {
-      const currentStep = isFreeLicense ? 3 : 4;
-      return (
-        <AdminAppsList
-          id={`wizard-step-${currentStep}`}
-          name={`wizard-step-${currentStep}`}
-          classNames={{
-            form: "mb-4 rounded-md bg-default px-0 pt-0 md:max-w-full",
-            appCategoryNavigationContainer: "max-h-[400px] overflow-y-auto md:p-4",
-            verticalTabsItem: "!w-48 md:p-4",
-          }}
-          baseURL={`/auth/setup?step=${currentStep}`}
-          useQueryParam={true}
-          onSubmit={() => {
-            setIsPending(true);
-            router.replace("/");
-          }}
-        />
-      );
-    },
-  });
 
   return (
     <main className="bg-subtle flex items-center print:h-full md:h-screen">

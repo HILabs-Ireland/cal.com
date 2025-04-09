@@ -2,14 +2,11 @@
 import { cloneDeep } from "lodash";
 import { uuid } from "short-uuid";
 
-import EventManager from "@calcom/core/EventManager";
 import { sendScheduledSeatsEmailsAndSMS } from "@calcom/emails";
-import { refreshCredentials } from "@calcom/features/bookings/lib/getAllCredentialsForUsersOnEvent/refreshCredentials";
 import { ErrorCode } from "@calcom/lib/errorCodes";
 import { HttpError } from "@calcom/lib/http-error";
 import prisma from "@calcom/prisma";
 import { BookingStatus } from "@calcom/prisma/enums";
-import { eventTypeAppMetadataOptionalSchema } from "@calcom/prisma/zod-utils";
 
 import { findBookingQuery } from "../../handleNewBooking/findBookingQuery";
 import type { SeatedBooking, NewSeatedBookingObject, HandleSeatsResultBooking } from "../types";
@@ -19,17 +16,8 @@ const createNewSeat = async (
   seatedBooking: SeatedBooking,
   metadata?: Record<string, string>
 ) => {
-  const {
-    tAttendees,
-    attendeeLanguage,
-    invitee,
-    eventType,
-    additionalNotes,
-    noEmail,
-    allCredentials,
-    organizerUser,
-    responses,
-  } = rescheduleSeatedBookingObject;
+  const { tAttendees, attendeeLanguage, invitee, eventType, additionalNotes, noEmail, responses } =
+    rescheduleSeatedBookingObject;
   let { evt } = rescheduleSeatedBookingObject;
   let resultBooking: HandleSeatsResultBooking;
   // Need to add translation for attendees to pass type checks. Since these values are never written to the db we can just use the new attendee language
@@ -129,10 +117,6 @@ const createNewSeat = async (
       eventType.metadata
     );
   }
-  const credentials = await refreshCredentials(allCredentials);
-  const apps = eventTypeAppMetadataOptionalSchema.parse(eventType?.metadata?.apps);
-  const eventManager = new EventManager({ ...organizerUser, credentials }, apps);
-  await eventManager.updateCalendarAttendees(evt, seatedBooking);
 
   const foundBooking = await findBookingQuery(seatedBooking.id);
 

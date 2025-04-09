@@ -1,7 +1,6 @@
 // eslint-disable-next-line no-restricted-imports
 import { cloneDeep } from "lodash";
 
-import type EventManager from "@calcom/core/EventManager";
 import { sendRescheduledSeatEmailAndSMS } from "@calcom/emails";
 import { getTranslation } from "@calcom/lib/server/i18n";
 import prisma from "@calcom/prisma";
@@ -15,30 +14,12 @@ const attendeeRescheduleSeatedBooking = async (
   rescheduleSeatedBookingObject: RescheduleSeatedBookingObject,
   seatAttendee: SeatAttendee,
   newTimeSlotBooking: NewTimeSlotBooking | null,
-  originalBookingEvt: CalendarEvent,
-  eventManager: EventManager
+  originalBookingEvt: CalendarEvent
 ) => {
   const { tAttendees, bookingSeat, bookerEmail, evt, eventType } = rescheduleSeatedBookingObject;
   let { originalRescheduledBooking } = rescheduleSeatedBookingObject;
 
   seatAttendee["language"] = { translate: tAttendees, locale: bookingSeat?.attendee.locale ?? "en" };
-
-  // Update the original calendar event by removing the attendee that is rescheduling
-  if (originalBookingEvt && originalRescheduledBooking) {
-    // Event would probably be deleted so we first check than instead of updating references
-    const filteredAttendees = originalRescheduledBooking?.attendees.filter((attendee) => {
-      return attendee.email !== bookerEmail;
-    });
-    const deletedReference = await lastAttendeeDeleteBooking(
-      originalRescheduledBooking,
-      filteredAttendees,
-      originalBookingEvt
-    );
-
-    if (!deletedReference) {
-      await eventManager.updateCalendarAttendees(originalBookingEvt, originalRescheduledBooking);
-    }
-  }
 
   // If there is no booking then remove the attendee from the old booking and create a new one
   if (!newTimeSlotBooking) {
@@ -88,8 +69,6 @@ const attendeeRescheduleSeatedBooking = async (
   }
 
   const copyEvent = cloneDeep({ ...evt, iCalUID: newTimeSlotBooking.iCalUID });
-
-  await eventManager.updateCalendarAttendees(copyEvent, newTimeSlotBooking);
 
   await sendRescheduledSeatEmailAndSMS(copyEvent, seatAttendee as Person, eventType.metadata);
   const filteredAttendees = originalRescheduledBooking?.attendees.filter((attendee) => {

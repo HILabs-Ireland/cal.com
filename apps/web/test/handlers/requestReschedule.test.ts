@@ -48,7 +48,6 @@ describe("Handler: requestReschedule", () => {
         id: 101,
         schedules: [TestData.schedules.IstWorkHours],
         credentials: [getGoogleCalendarCredential()],
-        selectedCalendars: [TestData.selectedCalendars.google],
       });
       const { dateString: plus1DateString } = getDate({ dateIncrement: 1 });
       const bookingUid = "MOCKED_BOOKING_UID";
@@ -101,7 +100,6 @@ describe("Handler: requestReschedule", () => {
             },
           ],
           organizer,
-          apps: [TestData.apps["google-calendar"], TestData.apps["daily-video"]],
         })
       );
 
@@ -166,7 +164,6 @@ describe("Handler: requestReschedule", () => {
         ],
         schedules: [TestData.schedules.IstWorkHours],
         credentials: [getGoogleCalendarCredential()],
-        selectedCalendars: [TestData.selectedCalendars.google],
       });
       const { dateString: plus1DateString } = getDate({ dateIncrement: 1 });
       const bookingUid = "MOCKED_BOOKING_UID";
@@ -221,7 +218,6 @@ describe("Handler: requestReschedule", () => {
             },
           ],
           organizer,
-          apps: [TestData.apps["google-calendar"], TestData.apps["daily-video"]],
         })
       );
 

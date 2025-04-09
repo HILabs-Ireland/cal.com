@@ -176,29 +176,21 @@ export const createNewEventType = async (page: Page, args: { eventTitle: string 
   });
 };
 
-export async function setupManagedEvent({
-  users,
-  unlockedFields,
-}: {
-  users: Fixtures["users"];
-  unlockedFields?: Record<string, boolean>;
-}) {
+export async function setupCollectiveEvent({ users }: { users: Fixtures["users"] }) {
   const teamMateName = "teammate-1";
-  const teamEventTitle = "Managed";
+  const teamEventTitle = "Collective";
   const adminUser = await users.create(null, {
     hasTeam: true,
     teammates: [{ name: teamMateName }],
     teamEventTitle,
-    teamEventSlug: "managed",
-    schedulingType: "MANAGED",
-    addManagedEventToTeamMates: true,
-    managedEventUnlockedFields: unlockedFields,
+    teamEventSlug: "collective",
+    schedulingType: SchedulingType.COLLECTIVE,
   });
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const memberUser = users.get().find((u) => u.name === teamMateName)!;
   const { team } = await adminUser.getFirstTeamMembership();
-  const managedEvent = await adminUser.getFirstTeamEvent(team.id, SchedulingType.MANAGED);
-  return { adminUser, memberUser, managedEvent, teamMateName, teamEventTitle, teamId: team.id };
+  const event = await adminUser.getFirstTeamEvent(team.id, SchedulingType.COLLECTIVE);
+  return { adminUser, memberUser, event, teamMateName, teamEventTitle, teamId: team.id };
 }
 
 export const createNewSeatedEventType = async (page: Page, args: { eventTitle: string }) => {
@@ -234,13 +226,6 @@ export async function gotoRoutingLink({
 
   // HACK: There seems to be some issue with the inputs to the form getting reset if we don't wait.
   await new Promise((resolve) => setTimeout(resolve, 2000));
-}
-
-export async function installAppleCalendar(page: Page) {
-  await page.goto("/apps/categories/calendar");
-  await page.click('[data-testid="app-store-app-card-apple-calendar"]');
-  await page.waitForURL("/apps/apple-calendar");
-  await page.click('[data-testid="install-app-button"]');
 }
 
 export async function getInviteLink(page: Page) {

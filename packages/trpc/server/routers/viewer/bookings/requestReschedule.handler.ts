@@ -4,7 +4,6 @@ import type { TFunction } from "next-i18next";
 import { getCalendar } from "@calcom/app-store/_utils/getCalendar";
 import { CalendarEventBuilder } from "@calcom/core/builders/CalendarEvent/builder";
 import { CalendarEventDirector } from "@calcom/core/builders/CalendarEvent/director";
-import { deleteMeeting } from "@calcom/core/videoClient";
 import dayjs from "@calcom/dayjs";
 import { sendRequestRescheduleEmailAndSMS } from "@calcom/emails";
 import { getCalEventResponses } from "@calcom/features/bookings/lib/getCalEventResponses";
@@ -242,11 +241,6 @@ export const requestRescheduleHandler = async ({ ctx, input }: RequestReschedule
           credentials.find((cred) => cred.id === bookingRef?.credentialId) || null
         );
         return calendar?.deleteEvent(bookingRef.uid, builder.calendarEvent, bookingRef.externalCalendarId);
-      } else if (bookingRef.type.endsWith("_video")) {
-        return deleteMeeting(
-          credentials.find((cred) => cred?.id === bookingRef?.credentialId) || null,
-          bookingRef.uid
-        );
       }
     })
   );

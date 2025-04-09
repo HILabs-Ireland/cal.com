@@ -1,9 +1,6 @@
 import type { Prisma } from "@prisma/client";
 import type { NextApiRequest } from "next";
 
-import { FAKE_DAILY_CREDENTIAL } from "@calcom/app-store/dailyvideo/lib/VideoApiAdapter";
-import { DailyLocationType } from "@calcom/app-store/locations";
-import EventManager from "@calcom/core/EventManager";
 import dayjs from "@calcom/dayjs";
 import { sendCancelledEmailsAndSMS } from "@calcom/emails";
 import { getCalEventResponses } from "@calcom/features/bookings/lib/getCalEventResponses";
@@ -25,11 +22,10 @@ import prisma, { bookingMinimalSelect } from "@calcom/prisma";
 import type { WebhookTriggerEvents } from "@calcom/prisma/enums";
 import { BookingStatus } from "@calcom/prisma/enums";
 import { credentialForCalendarServiceSelect } from "@calcom/prisma/selects/credential";
-import { bookingMetadataSchema, EventTypeMetaDataSchema, bookingCancelInput } from "@calcom/prisma/zod-utils";
+import { bookingMetadataSchema, bookingCancelInput } from "@calcom/prisma/zod-utils";
 import type { EventTypeMetadata } from "@calcom/prisma/zod-utils";
 import type { CalendarEvent } from "@calcom/types/Calendar";
 
-import { getAllCredentials } from "./getAllCredentialsForUsersOnEvent/getAllCredentials";
 import cancelAttendeeSeat from "./handleSeats/cancel/cancelAttendeeSeat";
 
 const log = logger.getSubLogger({ prefix: ["handleCancelBooking"] });
@@ -467,33 +463,6 @@ async function handler(req: CustomRequest) {
     });
     updatedBookings.push(updatedBooking);
   }
-
-  /** TODO: Remove this without breaking functionality */
-  if (bookingToDelete.location === DailyLocationType) {
-    bookingToDelete.user.credentials.push({
-      ...FAKE_DAILY_CREDENTIAL,
-      teamId: bookingToDelete.eventType?.team?.id || null,
-    });
-  }
-
-  const isBookingInRecurringSeries = !!(
-    bookingToDelete.eventType?.recurringEvent &&
-    bookingToDelete.recurringEventId &&
-    allRemainingBookings
-  );
-
-  const bookingToDeleteEventTypeMetadata = EventTypeMetaDataSchema.parse(
-    bookingToDelete.eventType?.metadata || null
-  );
-
-  const credentials = await getAllCredentials(bookingToDelete.user, {
-    ...bookingToDelete.eventType,
-    metadata: bookingToDeleteEventTypeMetadata,
-  });
-
-  const eventManager = new EventManager({ ...bookingToDelete.user, credentials });
-
-  await eventManager.cancelEvent(evt, bookingToDelete.references, isBookingInRecurringSeries);
 
   const bookingReferenceDeletes = prisma.bookingReference.deleteMany({
     where: {

@@ -363,10 +363,6 @@ ${calEvent.cancellationReason}
  `;
 };
 
-export const isDailyVideoCall = (calEvent: Pick<CalendarEvent, "videoCallData">): boolean => {
-  return calEvent?.videoCallData?.type === "daily_video";
-};
-
 export const getPublicVideoCallUrl = (calEvent: Pick<CalendarEvent, "uid">): string => {
   return `${WEBAPP_URL}/video/${getUid(calEvent)}`;
 };
@@ -376,9 +372,6 @@ export const getVideoCallUrlFromCalEvent = (
     Pick<CalendarEvent, "videoCallData" | "additionalInformation" | "location">
 ): string => {
   if (calEvent.videoCallData) {
-    if (isDailyVideoCall(calEvent)) {
-      return getPublicVideoCallUrl(calEvent);
-    }
     return calEvent.videoCallData.url;
   }
   if (calEvent.additionalInformation?.hangoutLink) {
@@ -391,5 +384,5 @@ export const getVideoCallUrlFromCalEvent = (
 };
 
 export const getVideoCallPassword = (calEvent: CalendarEvent): string => {
-  return isDailyVideoCall(calEvent) ? "" : calEvent?.videoCallData?.password ?? "";
+  return "";
 };

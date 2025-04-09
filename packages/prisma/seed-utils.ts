@@ -15,7 +15,6 @@ import type { teamMetadataSchema } from "./zod-utils";
 export async function createUserAndEventType({
   user,
   eventTypes = [],
-  credentials,
 }: {
   user: {
     email: string;
@@ -34,11 +33,6 @@ export async function createUserAndEventType({
       _numBookings?: number;
     }
   >;
-  credentials?: ({
-    type: string;
-    key: Prisma.JsonObject;
-    appId: string;
-  } | null)[];
 }) {
   const { password: _password, ...restOfUser } = user;
   const userData = {
@@ -172,20 +166,6 @@ export async function createUserAndEventType({
   }
   console.log("👤 User with it's event-types and bookings created", theUser.email);
 
-  if (credentials) {
-    for (const credential of credentials) {
-      if (credential) {
-        await prisma.credential.create({
-          data: {
-            ...credential,
-            userId: theUser.id,
-          },
-        });
-
-        console.log(`🔑 ${credential.type} credentials created for ${theUser.email}`);
-      }
-    }
-  }
   return theUser;
 }
 

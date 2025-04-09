@@ -1,7 +1,6 @@
 import { Prisma } from "@prisma/client";
 import type { NextApiResponse, GetServerSidePropsContext } from "next";
 
-import updateChildrenEventTypes from "@calcom/features/ee/managed-event-types/lib/handleChildrenEventTypes";
 import tasker from "@calcom/features/tasker";
 import { validateIntervalLimitOrder } from "@calcom/lib";
 import logger from "@calcom/lib/logger";
@@ -14,7 +13,6 @@ import { SchedulingType, EventTypeAutoTranslatedField } from "@calcom/prisma/enu
 import { TRPCError } from "@trpc/server";
 
 import type { TrpcSessionUser } from "../../../trpc";
-import { setDestinationCalendarHandler } from "../../loggedInViewer/setDestinationCalendar.handler";
 import type { TUpdateInputSchema } from "./update.schema";
 import {
   ensureUniqueBookingFields,
@@ -193,17 +191,6 @@ export const updateHandler = async ({ ctx, input }: UpdateOptions) => {
     };
   } else if (recurringEvent === null) {
     data.recurringEvent = Prisma.DbNull;
-  }
-
-  if (destinationCalendar) {
-    /** We connect or create a destination calendar to the event type instead of the user */
-    await setDestinationCalendarHandler({
-      ctx,
-      input: {
-        ...destinationCalendar,
-        eventTypeId: id,
-      },
-    });
   }
 
   if (customInputs) {
@@ -520,18 +507,6 @@ export const updateHandler = async ({ ctx, input }: UpdateOptions) => {
     }
     return acc;
   }, {});
-
-  // Handling updates to children event types (managed events types)
-  await updateChildrenEventTypes({
-    eventTypeId: id,
-    currentUserId: ctx.user.id,
-    oldEventType: eventType,
-    updatedEventType,
-    children,
-    profileId: ctx.user.profile.id,
-    prisma: ctx.prisma,
-    updatedValues,
-  });
 
   const res = ctx.res as NextApiResponse;
   if (typeof res?.revalidate !== "undefined") {

@@ -1,7 +1,5 @@
 import type { Prisma } from "@prisma/client";
 
-import { getConnectedApps } from "@calcom/lib/getConnectedApps";
-import { prisma } from "@calcom/prisma";
 import type { TrpcSessionUser } from "@calcom/trpc/server/trpc";
 
 import type { TIntegrationsInputSchema } from "./integrations.schema";
@@ -31,5 +29,5 @@ export type TeamQuery = Prisma.TeamGetPayload<{
 
 export const integrationsHandler = async ({ ctx, input }: IntegrationsOptions) => {
   const user = ctx.user;
-  return getConnectedApps({ user, input, prisma });
+  return null;
 };

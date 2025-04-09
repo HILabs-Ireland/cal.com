@@ -77,7 +77,6 @@ const workspaces = packagedEmbedTestsOnly
             "packages/lib/hooks/**/*",
             "packages/platform/**/*",
             "apps/api/v1/**/*",
-            "apps/api/v2/**/*",
           ],
           name: "@calcom/core",
           setupFiles: ["setupVitest.ts"],
@@ -92,7 +91,6 @@ const workspaces = packagedEmbedTestsOnly
             "packages/embeds/**/*",
             "packages/lib/hooks/**/*",
             "packages/platform/**/*",
-            "apps/api/v2/**/*",
           ],
           name: "@calcom/api",
           setupFiles: ["setupVitest.ts"],
@@ -111,15 +109,6 @@ const workspaces = packagedEmbedTestsOnly
           exclude: ["packages/features/form-builder/**/*", "packages/features/bookings/**/*"],
           environment: "jsdom",
           setupFiles: ["setupVitest.ts", "packages/ui/components/test-setup.ts"],
-        },
-      },
-
-      {
-        test: {
-          name: "@calcom/closecom",
-          include: ["packages/app-store/closecom/**/*.{test,spec}.{ts,js}"],
-          environment: "jsdom",
-          setupFiles: ["packages/app-store/closecom/test/globals.ts"],
         },
       },
       {
@@ -174,15 +163,6 @@ const workspaces = packagedEmbedTestsOnly
           include: ["apps/web/components/**/*.{test,spec}.[jt]sx"],
           environment: "jsdom",
           setupFiles: ["packages/ui/components/test-setup.ts"],
-        },
-      },
-      {
-        test: {
-          globals: true,
-          name: "EventTypeAppCardInterface components",
-          include: ["packages/app-store/_components/**/*.{test,spec}.[jt]s?(x)"],
-          environment: "jsdom",
-          setupFiles: ["packages/app-store/test-setup.ts"],
         },
       },
       {

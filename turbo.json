@@ -50,17 +50,6 @@
       "cache": false,
       "dependsOn": []
     },
-    "@calcom/api-v2#build": {
-      "dependsOn": ["^build"],
-      "env": [
-        "NODE_ENV",
-        "API_PORT",
-        "DATABASE_READ_URL",
-        "DATABASE_WRITE_URL",
-        "LOG_LEVEL",
-        "NEXTAUTH_SECRET"
-      ]
-    },
     "@calcom/ai#build": {
       "env": [
         "FRONTEND_URL",
@@ -171,11 +160,7 @@
       "cache": false,
       "outputs": ["dist/**", "build/**"]
     },
-    "@calcom/app-store-cli#build": {
-      "cache": false,
-      "inputs": ["../../app-store/**/**"],
-      "outputs": ["../../app-store/apps.server.generated.ts", "../../app-store/apps.browser.generated.tsx"]
-    },
+
     "@calcom/embed-react#type-check": {
       "dependsOn": ["@calcom/embed-core#build", "@calcom/embed-snippet#build"],
       "outputs": ["dist/**", "build/**"]
@@ -245,7 +230,6 @@
     "CALCOM_CREDENTIAL_SYNC_SECRET",
     "CALCOM_CREDENTIAL_SYNC_SECRET_HEADER_NAME",
     "CALCOM_ENV",
-    "CALCOM_LICENSE_KEY",
     "CALCOM_QA_EMAIL",
     "CALCOM_QA_PASSWORD",
     "CALCOM_TELEMETRY_DISABLED",
@@ -259,10 +243,6 @@
     "CRON_SECRET",
     "CRON_ENABLE_APP_SYNC",
     "CLOUDFLARE_TURNSTILE_SECRET",
-    "DAILY_API_KEY",
-    "DAILY_SCALE_PLAN",
-    "DAILY_WEBHOOK_SECRET",
-    "DAILY_MEETING_ENDED_WEBHOOK_SECRET",
     "DATABASE_DIRECT_URL",
     "DATABASE_URL",
     "DEBUG",

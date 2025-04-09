@@ -21,8 +21,6 @@ import AdminOrganizationNotification from "./templates/admin-organization-notifi
 import AttendeeAddGuestsEmail from "./templates/attendee-add-guests-email";
 import AttendeeCancelledEmail from "./templates/attendee-cancelled-email";
 import AttendeeCancelledSeatEmail from "./templates/attendee-cancelled-seat-email";
-import AttendeeDailyVideoDownloadRecordingEmail from "./templates/attendee-daily-video-download-recording-email";
-import AttendeeDailyVideoDownloadTranscriptEmail from "./templates/attendee-daily-video-download-transcript-email";
 import AttendeeDeclinedEmail from "./templates/attendee-declined-email";
 import AttendeeLocationChangeEmail from "./templates/attendee-location-change-email";
 import AttendeeRequestEmail from "./templates/attendee-request-email";
@@ -34,7 +32,6 @@ import AttendeeVerifyEmail from "./templates/attendee-verify-email";
 import AttendeeWasRequestedToRescheduleEmail from "./templates/attendee-was-requested-to-reschedule-email";
 import BookingRedirectEmailNotification from "./templates/booking-redirect-notification";
 import type { IBookingRedirect } from "./templates/booking-redirect-notification";
-import BrokenIntegrationEmail from "./templates/broken-integration-email";
 import type { ChangeOfEmailVerifyLink } from "./templates/change-account-email-verify";
 import ChangeOfEmailVerifyEmail from "./templates/change-account-email-verify";
 import DisabledAppEmail from "./templates/disabled-app-email";
@@ -51,8 +48,6 @@ import OrganizationEmailVerification from "./templates/organization-email-verifi
 import OrganizerAddGuestsEmail from "./templates/organizer-add-guests-email";
 import OrganizerAttendeeCancelledSeatEmail from "./templates/organizer-attendee-cancelled-seat-email";
 import OrganizerCancelledEmail from "./templates/organizer-cancelled-email";
-import OrganizerDailyVideoDownloadRecordingEmail from "./templates/organizer-daily-video-download-recording-email";
-import OrganizerDailyVideoDownloadTranscriptEmail from "./templates/organizer-daily-video-download-transcript-email";
 import OrganizerLocationChangeEmail from "./templates/organizer-location-change-email";
 import OrganizerReassignedEmail from "./templates/organizer-reassigned-email";
 import OrganizerRequestEmail from "./templates/organizer-request-email";
@@ -562,11 +557,6 @@ export const sendFeedbackEmail = async (feedback: Feedback) => {
   await sendEmail(() => new FeedbackEmail(feedback));
 };
 
-export const sendBrokenIntegrationEmail = async (evt: CalendarEvent, type: "video" | "calendar") => {
-  const calendarEvent = formatCalEvent(evt);
-  await sendEmail(() => new BrokenIntegrationEmail(calendarEvent, type));
-};
-
 export const sendDisabledAppEmail = async ({
   email,
   appName,
@@ -599,35 +589,6 @@ export const sendSlugReplacementEmail = async ({
   slug: string;
 }) => {
   await sendEmail(() => new SlugReplacementEmail(email, name, teamName, slug, t));
-};
-
-export const sendDailyVideoRecordingEmails = async (calEvent: CalendarEvent, downloadLink: string) => {
-  const calendarEvent = formatCalEvent(calEvent);
-  const emailsToSend: Promise<unknown>[] = [];
-
-  emailsToSend.push(
-    sendEmail(() => new OrganizerDailyVideoDownloadRecordingEmail(calendarEvent, downloadLink))
-  );
-
-  for (const attendee of calendarEvent.attendees) {
-    emailsToSend.push(
-      sendEmail(() => new AttendeeDailyVideoDownloadRecordingEmail(calendarEvent, attendee, downloadLink))
-    );
-  }
-  await Promise.all(emailsToSend);
-};
-
-export const sendDailyVideoTranscriptEmails = async (calEvent: CalendarEvent, transcripts: string[]) => {
-  const emailsToSend: Promise<unknown>[] = [];
-
-  emailsToSend.push(sendEmail(() => new OrganizerDailyVideoDownloadTranscriptEmail(calEvent, transcripts)));
-
-  for (const attendee of calEvent.attendees) {
-    emailsToSend.push(
-      sendEmail(() => new AttendeeDailyVideoDownloadTranscriptEmail(calEvent, attendee, transcripts))
-    );
-  }
-  await Promise.all(emailsToSend);
 };
 
 export const sendOrganizationEmailVerification = async (sendOrgInput: OrganizationEmailVerify) => {

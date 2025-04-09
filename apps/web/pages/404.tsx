@@ -87,44 +87,6 @@ export default function Custom404() {
   const isSuccessPage = pathname?.startsWith("/booking");
   const isSubpage = pathname?.includes("/", 2) || isSuccessPage;
 
-  /**
-   * If we're on 404 and the route is insights it means it is disabled
-   * TODO: Abstract this for all disabled features
-   **/
-  const isInsights = pathname?.startsWith("/insights");
-  if (isInsights) {
-    return (
-      <>
-        <HeadSeo
-          title="Feature is currently disabled"
-          description={t("404_page_not_found")}
-          nextSeoProps={{
-            nofollow: true,
-            noindex: true,
-          }}
-        />
-        <div className="min-h-screen bg-white px-4" data-testid="404-page">
-          <main className="mx-auto max-w-xl pb-6 pt-16 sm:pt-24">
-            <div className="text-center">
-              <p className="text-sm font-semibold uppercase tracking-wide text-black">{t("error_404")}</p>
-              <h1 className="font-cal mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
-                Feature is currently disabled
-              </h1>
-            </div>
-            <div className="mt-12">
-              <div className="mt-8">
-                <Link href={WEBSITE_URL} className="text-base font-medium text-black hover:text-gray-500">
-                  {t("or_go_back_home")}
-                  <span aria-hidden="true"> &rarr;</span>
-                </Link>
-              </div>
-            </div>
-          </main>
-        </div>
-      </>
-    );
-  }
-
   if (!username) return null;
 
   return (

@@ -1,7 +1,7 @@
-import { render, screen, cleanup } from "@testing-library/react";
+import { cleanup } from "@testing-library/react";
 import { vi } from "vitest";
 
-import BookingPageTagManager, { handleEvent } from "./BookingPageTagManager";
+import { handleEvent } from "./BookingPageTagManager";
 
 // NOTE:  We don't intentionally mock appStoreMetadata as that also tests config.json and generated files for us for no cost. If it becomes a pain in future, we could just start mocking it.
 
@@ -28,88 +28,6 @@ afterEach(() => {
   });
   windowProps.splice(0);
   cleanup();
-});
-
-describe("BookingPageTagManager", () => {
-  it("GTM App when enabled should have its scripts added with appropriate trackingID and $pushEvent replacement", () => {
-    const GTM_CONFIG = {
-      enabled: true,
-      trackingId: "GTM-123",
-    };
-    render(
-      <BookingPageTagManager
-        eventType={{
-          metadata: {
-            apps: {
-              gtm: GTM_CONFIG,
-            },
-          },
-        }}
-      />
-    );
-    const scripts = screen.getAllByTestId("cal-analytics-app-gtm");
-    const trackingScript = scripts[0];
-    const pushEventScript = scripts[1];
-    expect(trackingScript.innerHTML).toContain(GTM_CONFIG.trackingId);
-    expect(pushEventScript.innerHTML).toContain("cal_analytics_app__gtm");
-  });
-
-  it("GTM App when disabled should not have its scripts added", () => {
-    const GTM_CONFIG = {
-      enabled: false,
-      trackingId: "GTM-123",
-    };
-    render(
-      <BookingPageTagManager
-        eventType={{
-          metadata: {
-            apps: {
-              gtm: GTM_CONFIG,
-            },
-          },
-        }}
-      />
-    );
-    const scripts = screen.queryAllByTestId("cal-analytics-app-gtm");
-    expect(scripts.length).toBe(0);
-  });
-
-  it("should not add scripts for an app that doesnt have tag defined(i.e. non-analytics app)", () => {
-    render(
-      <BookingPageTagManager
-        eventType={{
-          metadata: {
-            apps: {
-              zoomvideo: {
-                enabled: true,
-              },
-            },
-          },
-        }}
-      />
-    );
-    const scripts = screen.queryAllByTestId("cal-analytics-app-zoomvideo");
-    expect(scripts.length).toBe(0);
-  });
-
-  it("should not crash for an app that doesnt exist", () => {
-    render(
-      <BookingPageTagManager
-        eventType={{
-          metadata: {
-            apps: {
-              //@ts-expect-error Testing for non-existent app
-              nonexistentapp: {
-                enabled: true,
-              },
-            },
-          },
-        }}
-      />
-    );
-    const scripts = screen.queryAllByTestId("cal-analytics-app-zoomvideo");
-    expect(scripts.length).toBe(0);
-  });
 });
 
 describe("handleEvent", () => {

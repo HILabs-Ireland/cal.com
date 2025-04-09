@@ -5,7 +5,6 @@ import type { TFunction } from "next-i18next";
 import { useMemo } from "react";
 import type { UseFormReturn } from "react-hook-form";
 
-import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
 import type { Workflow } from "@calcom/features/ee/workflows/lib/types";
 import type {
   EventTypeSetupProps,
@@ -38,26 +37,10 @@ export const useTabsNavigations = ({
   const watchSchedulingType = formMethods.watch("schedulingType");
   const watchChildrenCount = formMethods.watch("children").length;
   const availability = formMethods.watch("availability");
-  const appsMetadata = formMethods.getValues("metadata")?.apps;
 
-  const { isManagedEventType, isChildrenManagedEventType } = useLockedFieldsManager({
-    eventType,
-    translate: t,
-    formMethods,
-  });
-
-  let enabledAppsNumber = 0;
-
-  if (appsMetadata) {
-    enabledAppsNumber = Object.entries(appsMetadata).filter(
-      ([appId, appData]) =>
-        eventTypeApps?.items.find((app) => app.slug === appId)?.isInstalled && appData.enabled
-    ).length;
-  }
+  const enabledAppsNumber = 0;
 
   const activeWebhooksNumber = eventType.webhooks.filter((webhook) => webhook.active).length;
-
-  const installedAppsNumber = eventTypeApps?.items.length || 0;
 
   const enabledWorkflowsNumber = allActiveWorkflows ? allActiveWorkflows.length : 0;
 
@@ -68,7 +51,6 @@ export const useTabsNavigations = ({
       multipleDuration,
       id: formMethods.getValues("id"),
       enabledAppsNumber,
-      installedAppsNumber,
       enabledWorkflowsNumber,
       availability,
     });
@@ -83,18 +65,7 @@ export const useTabsNavigations = ({
       name: "availability",
       href: `/event-types/${formMethods.getValues("id")}?tabName=availability`,
       icon: "calendar",
-      info:
-        isManagedEventType || isChildrenManagedEventType
-          ? formMethods.getValues("schedule") === null
-            ? "members_default_schedule"
-            : isChildrenManagedEventType
-            ? `${
-                formMethods.getValues("scheduleName")
-                  ? `${formMethods.getValues("scheduleName")} - ${t("managed")}`
-                  : `default_schedule_name`
-              }`
-            : formMethods.getValues("scheduleName") ?? `default_schedule_name`
-          : formMethods.getValues("scheduleName") ?? `default_schedule_name`,
+      info: formMethods.getValues("scheduleName") ?? `default_schedule_name`,
     });
     // If there is a team put this navigation item within the tabs
     if (team) {
@@ -102,22 +73,10 @@ export const useTabsNavigations = ({
         name: "assignment",
         href: `/event-types/${formMethods.getValues("id")}?tabName=team`,
         icon: "users",
-        info: `${t(watchSchedulingType?.toLowerCase() ?? "")}${
-          isManagedEventType ? ` - ${t("number_member", { count: watchChildrenCount || 0 })}` : ""
-        }`,
+        info: `${t(watchSchedulingType?.toLowerCase() ?? "")}`,
       });
     }
-    const showInstant = !(isManagedEventType || isChildrenManagedEventType);
-    if (showInstant) {
-      if (team) {
-        navigation.push({
-          name: "instant_tab_title",
-          href: `/event-types/${eventType.id}?tabName=instant`,
-          icon: "phone-call",
-          info: `instant_event_tab_description`,
-        });
-      }
-    }
+
     navigation.push({
       name: "webhooks",
       href: `/event-types/${formMethods.getValues("id")}?tabName=webhooks`,
@@ -136,11 +95,8 @@ export const useTabsNavigations = ({
   }, [
     t,
     enabledAppsNumber,
-    installedAppsNumber,
     enabledWorkflowsNumber,
     availability,
-    isManagedEventType,
-    isChildrenManagedEventType,
     team,
     length,
     multipleDuration,
@@ -160,7 +116,6 @@ type getNavigationProps = {
   multipleDuration?: EventTypeSetupProps["eventType"]["metadata"]["multipleDuration"];
   enabledAppsNumber: number;
   enabledWorkflowsNumber: number;
-  installedAppsNumber: number;
   availability: AvailabilityOption | undefined;
 };
 
@@ -170,7 +125,6 @@ function getNavigation({
   multipleDuration,
   t,
   enabledAppsNumber,
-  installedAppsNumber,
   enabledWorkflowsNumber,
 }: getNavigationProps) {
   const duration = multipleDuration?.map((duration) => ` ${duration}`) || length;
@@ -194,13 +148,7 @@ function getNavigation({
       icon: "sliders-vertical",
       info: `event_advanced_tab_description`,
     },
-    {
-      name: "apps",
-      href: `/event-types/${id}?tabName=apps`,
-      icon: "grid-3x3",
-      //TODO: Handle proper translation with count handling
-      info: `${installedAppsNumber} apps, ${enabledAppsNumber} ${t("active")}`,
-    },
+
     {
       name: "workflows",
       href: `/event-types/${id}?tabName=workflows`,
