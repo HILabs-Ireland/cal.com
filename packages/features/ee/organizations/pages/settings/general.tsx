@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-import LicenseRequired from "@calcom/features/ee/common/components/LicenseRequired";
 import SectionBottomActions from "@calcom/features/settings/SectionBottomActions";
 import { classNames } from "@calcom/lib";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
@@ -78,7 +77,7 @@ const OrgGeneralView = () => {
   const isAdminOrOwner = orgRole === MembershipRole.OWNER || orgRole === MembershipRole.ADMIN;
 
   return (
-    <LicenseRequired>
+    <>
       <GeneralView
         currentOrg={currentOrg}
         isAdminOrOwner={isAdminOrOwner}
@@ -87,7 +86,7 @@ const OrgGeneralView = () => {
 
       <LockEventTypeSwitch currentOrg={currentOrg} isAdminOrOwner={!!isAdminOrOwner} />
       <NoSlotsNotificationSwitch currentOrg={currentOrg} isAdminOrOwner={!!isAdminOrOwner} />
-    </LicenseRequired>
+    </>
   );
 };
 

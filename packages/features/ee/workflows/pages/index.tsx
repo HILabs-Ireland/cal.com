@@ -18,7 +18,6 @@ import { AnimatedPopover, Avatar, CreateButtonWithTeamsList, showToast } from "@
 import { FilterResults } from "../../../filters/components/FilterResults";
 import { TeamsFilter } from "../../../filters/components/TeamsFilter";
 import { getTeamsFiltersFromQuery } from "../../../filters/lib/getTeamsFiltersFromQuery";
-import LicenseRequired from "../../common/components/LicenseRequired";
 import EmptyScreen from "../components/EmptyScreen";
 import SkeletonLoader from "../components/SkeletonLoaderList";
 import WorkflowList from "../components/WorkflowListPage";
@@ -64,53 +63,51 @@ function WorkflowsPage({ filteredList }: PageProps) {
 
   return (
     <Shell withoutMain withoutSeo={true}>
-      <LicenseRequired>
-        <ShellMain
-          heading={t("workflows")}
-          subtitle={t("workflows_to_automate_notifications")}
-          title={t("workflows")}
-          description={t("workflows_to_automate_notifications")}
-          hideHeadingOnMobile
-          CTA={
-            session.data?.hasValidLicense ? (
-              <CreateButtonWithTeamsList
-                subtitle={t("new_workflow_subtitle").toUpperCase()}
-                createFunction={(teamId?: number) => {
-                  createMutation.mutate({ teamId });
-                }}
-                isPending={createMutation.isPending}
-                disableMobileButton={true}
-                onlyShowWithNoTeams={true}
-                includeOrg={true}
-              />
-            ) : null
-          }>
-          <>
-            {filteredWorkflows?.totalCount ? (
-              <div className="flex">
-                <TeamsFilter />
-                <div className="mb-4 ml-auto">
-                  <CreateButtonWithTeamsList
-                    subtitle={t("new_workflow_subtitle").toUpperCase()}
-                    createFunction={(teamId?: number) => createMutation.mutate({ teamId })}
-                    isPending={createMutation.isPending}
-                    disableMobileButton={true}
-                    onlyShowWithTeams={true}
-                    includeOrg={true}
-                  />
-                </div>
+      <ShellMain
+        heading={t("workflows")}
+        subtitle={t("workflows_to_automate_notifications")}
+        title={t("workflows")}
+        description={t("workflows_to_automate_notifications")}
+        hideHeadingOnMobile
+        CTA={
+          session.data?.hasValidLicense ? (
+            <CreateButtonWithTeamsList
+              subtitle={t("new_workflow_subtitle").toUpperCase()}
+              createFunction={(teamId?: number) => {
+                createMutation.mutate({ teamId });
+              }}
+              isPending={createMutation.isPending}
+              disableMobileButton={true}
+              onlyShowWithNoTeams={true}
+              includeOrg={true}
+            />
+          ) : null
+        }>
+        <>
+          {filteredWorkflows?.totalCount ? (
+            <div className="flex">
+              <TeamsFilter />
+              <div className="mb-4 ml-auto">
+                <CreateButtonWithTeamsList
+                  subtitle={t("new_workflow_subtitle").toUpperCase()}
+                  createFunction={(teamId?: number) => createMutation.mutate({ teamId })}
+                  isPending={createMutation.isPending}
+                  disableMobileButton={true}
+                  onlyShowWithTeams={true}
+                  includeOrg={true}
+                />
               </div>
-            ) : null}
-            <FilterResults
-              queryRes={{ isPending, data: filteredWorkflows }}
-              emptyScreen={<EmptyScreen isFilteredView={false} />}
-              noResultsScreen={<EmptyScreen isFilteredView={true} />}
-              SkeletonLoader={SkeletonLoader}>
-              <WorkflowList workflows={filteredWorkflows?.filtered} />
-            </FilterResults>
-          </>
-        </ShellMain>
-      </LicenseRequired>
+            </div>
+          ) : null}
+          <FilterResults
+            queryRes={{ isPending, data: filteredWorkflows }}
+            emptyScreen={<EmptyScreen isFilteredView={false} />}
+            noResultsScreen={<EmptyScreen isFilteredView={true} />}
+            SkeletonLoader={SkeletonLoader}>
+            <WorkflowList workflows={filteredWorkflows?.filtered} />
+          </FilterResults>
+        </>
+      </ShellMain>
     </Shell>
   );
 }

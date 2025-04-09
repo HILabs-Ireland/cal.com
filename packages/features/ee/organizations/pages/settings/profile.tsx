@@ -7,7 +7,6 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
-import LicenseRequired from "@calcom/features/ee/common/components/LicenseRequired";
 import { subdomainSuffix } from "@calcom/features/ee/organizations/lib/orgDomains";
 import OrgAppearanceViewWrapper from "@calcom/features/ee/organizations/pages/settings/appearance";
 import SectionBottomActions from "@calcom/features/settings/SectionBottomActions";
@@ -126,48 +125,46 @@ const OrgProfileView = () => {
   };
 
   return (
-    <LicenseRequired>
-      <>
-        {isOrgAdminOrOwner ? (
-          <>
-            <OrgProfileForm defaultValues={defaultValues} />
-            <OrgAppearanceViewWrapper />
-          </>
-        ) : (
-          <div className="border-subtle flex rounded-b-md border border-t-0 px-4 py-8 sm:px-6">
-            <div className="flex-grow">
-              <div>
-                <Label className="text-emphasis">{t("organization_name")}</Label>
-                <p className="text-default text-sm">{currentOrganisation?.name}</p>
-              </div>
-              {!isBioEmpty && (
-                <>
-                  <Label className="text-emphasis mt-5">{t("about")}</Label>
-                  <div
-                    className="  text-subtle break-words text-sm [&_a]:text-blue-500 [&_a]:underline [&_a]:hover:text-blue-600"
-                    // eslint-disable-next-line react/no-danger
-                    dangerouslySetInnerHTML={{
-                      __html: markdownToSafeHTML(currentOrganisation.bio || ""),
-                    }}
-                  />
-                </>
-              )}
+    <>
+      {isOrgAdminOrOwner ? (
+        <>
+          <OrgProfileForm defaultValues={defaultValues} />
+          <OrgAppearanceViewWrapper />
+        </>
+      ) : (
+        <div className="border-subtle flex rounded-b-md border border-t-0 px-4 py-8 sm:px-6">
+          <div className="flex-grow">
+            <div>
+              <Label className="text-emphasis">{t("organization_name")}</Label>
+              <p className="text-default text-sm">{currentOrganisation?.name}</p>
             </div>
-            <div className="">
-              <LinkIconButton
-                Icon="link"
-                onClick={() => {
-                  navigator.clipboard.writeText(orgBranding.fullDomain);
-                  showToast("Copied to clipboard", "success");
-                }}>
-                {t("copy_link_org")}
-              </LinkIconButton>
-            </div>
+            {!isBioEmpty && (
+              <>
+                <Label className="text-emphasis mt-5">{t("about")}</Label>
+                <div
+                  className="  text-subtle break-words text-sm [&_a]:text-blue-500 [&_a]:underline [&_a]:hover:text-blue-600"
+                  // eslint-disable-next-line react/no-danger
+                  dangerouslySetInnerHTML={{
+                    __html: markdownToSafeHTML(currentOrganisation.bio || ""),
+                  }}
+                />
+              </>
+            )}
           </div>
-        )}
-        {/* LEAVE ORG should go above here ^ */}
-      </>
-    </LicenseRequired>
+          <div className="">
+            <LinkIconButton
+              Icon="link"
+              onClick={() => {
+                navigator.clipboard.writeText(orgBranding.fullDomain);
+                showToast("Copied to clipboard", "success");
+              }}>
+              {t("copy_link_org")}
+            </LinkIconButton>
+          </div>
+        </div>
+      )}
+      {/* LEAVE ORG should go above here ^ */}
+    </>
   );
 };
 

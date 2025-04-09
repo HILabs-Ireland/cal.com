@@ -1,6 +1,5 @@
 "use client";
 
-import LicenseRequired from "@calcom/features/ee/common/components/LicenseRequired";
 import MakeTeamPrivateSwitch from "@calcom/features/ee/teams/components/MakeTeamPrivateSwitch";
 import { MembershipRole } from "@calcom/prisma/enums";
 import { trpc } from "@calcom/trpc/react";
@@ -17,16 +16,14 @@ const PrivacyView = () => {
   if (!currentOrg) return null;
 
   return (
-    <LicenseRequired>
-      <div>
-        <MakeTeamPrivateSwitch
-          isOrg={true}
-          teamId={currentOrg.id}
-          isPrivate={currentOrg.isPrivate}
-          disabled={isDisabled}
-        />
-      </div>
-    </LicenseRequired>
+    <div>
+      <MakeTeamPrivateSwitch
+        isOrg={true}
+        teamId={currentOrg.id}
+        isPrivate={currentOrg.isPrivate}
+        disabled={isDisabled}
+      />
+    </div>
   );
 };
 
