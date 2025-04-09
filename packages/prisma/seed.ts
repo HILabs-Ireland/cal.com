@@ -2,10 +2,12 @@ import type { Membership, Team, User } from "@prisma/client";
 import { Prisma } from "@prisma/client";
 import type { UserPermissionRole } from "@prisma/client";
 import { uuid } from "short-uuid";
+import { v4 } from "uuid";
 import type z from "zod";
 
 import dayjs from "@calcom/dayjs";
 import { getOrgFullOrigin } from "@calcom/ee/organizations/lib/orgDomains";
+import { hashAPIKey } from "@calcom/features/api-keys/lib/apiKeys";
 import { hashPassword } from "@calcom/features/auth/lib/hashPassword";
 import { DEFAULT_SCHEDULE, getAvailabilityFromSchedule } from "@calcom/lib/availability";
 import { BookingStatus, MembershipRole, RedirectType, SchedulingType } from "@calcom/prisma/enums";
@@ -574,6 +576,37 @@ async function createOrganizationAndAddMembersAndTeams({
 async function main() {
   await createUserAndEventType({
     user: {
+      email: "admin@example.com",
+      /** To comply with admin password requirements  */
+      password: "ADMINadmin2022!",
+      username: "admin",
+      name: "Admin",
+      role: "ADMIN",
+    },
+  });
+
+  const adminUser = await prisma.user.findUnique({
+    where: { email: "admin@example.com" },
+  });
+
+  if (!adminUser) {
+    throw new Error("Admin user not found");
+  }
+
+  const adminApiKey = hashAPIKey("test-admin-key");
+
+  await prisma.apiKey.create({
+    data: {
+      id: v4(),
+      userId: adminUser.id,
+      note: "Admin API Key",
+      expiresAt: null,
+      hashedKey: adminApiKey,
+    },
+  });
+
+  await createUserAndEventType({
+    user: {
       email: "delete-me@example.com",
       password: "delete-me",
       username: "delete-me",
@@ -869,17 +902,6 @@ async function main() {
     },
   });
 
-  await createUserAndEventType({
-    user: {
-      email: "admin@example.com",
-      /** To comply with admin password requirements  */
-      password: "ADMINadmin2022!",
-      username: "admin",
-      name: "Admin Example",
-      role: "ADMIN",
-    },
-  });
-
   await createTeamAndAddUsers(
     {
       name: "Alternaleaf - Nurses",
@@ -926,42 +948,53 @@ async function main() {
     []
   );
 
-  const adminUser = await prisma.user.findUnique({
-    where: { email: "admin@example.com" },
+  await prisma.membership.createMany({
+    data: [
+      {
+        teamId: 1,
+        userId: adminUser.id,
+        accepted: true,
+        role: "ADMIN",
+        disableImpersonation: false,
+      },
+      {
+        teamId: 2,
+        userId: adminUser.id,
+        accepted: true,
+        role: "ADMIN",
+        disableImpersonation: false,
+      },
+    ],
   });
 
-  if (adminUser) {
-    const existingMembership = await prisma.membership.findUnique({
-      where: {
-        userId_teamId: {
-          userId: adminUser.id,
-          teamId: 1,
-        },
+  const existingMembership = await prisma.membership.findUnique({
+    where: {
+      userId_teamId: {
+        userId: adminUser.id,
+        teamId: 1,
       },
-    });
+    },
+  });
 
-    if (!existingMembership) {
-      await prisma.membership.createMany({
-        data: [
-          {
-            teamId: 1,
-            userId: adminUser.id,
-            accepted: true,
-            role: "ADMIN",
-            disableImpersonation: false,
-          },
-          {
-            teamId: 2,
-            userId: adminUser.id,
-            accepted: true,
-            role: "ADMIN",
-            disableImpersonation: false,
-          },
-        ],
-      });
-    }
-  } else {
-    throw Error("Admin user not found");
+  if (!existingMembership) {
+    await prisma.membership.createMany({
+      data: [
+        {
+          teamId: 1,
+          userId: adminUser.id,
+          accepted: true,
+          role: "ADMIN",
+          disableImpersonation: false,
+        },
+        {
+          teamId: 2,
+          userId: adminUser.id,
+          accepted: true,
+          role: "ADMIN",
+          disableImpersonation: false,
+        },
+      ],
+    });
   }
 
   await createPlatformAndSetupUser({
