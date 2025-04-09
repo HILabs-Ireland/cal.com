@@ -1,6 +1,5 @@
 "use client";
 
-import LicenseRequired from "@calcom/features/ee/common/components/LicenseRequired";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { Icon } from "@calcom/ui";
 
@@ -20,11 +19,9 @@ export const AdminAPIView = () => {
     },
   ];
   return (
-    <LicenseRequired>
-      <div className="mt-8">
-        <>Create Org</>
-      </div>
-    </LicenseRequired>
+    <div className="mt-8">
+      <>Create Org</>
+    </div>
   );
 };
 
