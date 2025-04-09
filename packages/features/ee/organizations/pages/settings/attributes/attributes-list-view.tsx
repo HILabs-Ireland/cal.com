@@ -3,7 +3,6 @@
 import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 
-import LicenseRequired from "@calcom/features/ee/common/components/LicenseRequired";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import type { RouterOutputs } from "@calcom/trpc/react";
 import { trpc } from "@calcom/trpc/react";
@@ -136,7 +135,7 @@ function OrganizationAttributesPage() {
   }
 
   return (
-    <LicenseRequired>
+    <>
       <div className="border-subtle bg-default flex flex-col gap-4 rounded-lg border p-6">
         {data && data?.length > 0 ? (
           <>
@@ -186,7 +185,7 @@ function OrganizationAttributesPage() {
           setAttributeToDelete={setAttributeToDelete}
         />
       )}
-    </LicenseRequired>
+    </>
   );
 }
 
