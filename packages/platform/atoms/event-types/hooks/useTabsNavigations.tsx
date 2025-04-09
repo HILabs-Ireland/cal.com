@@ -83,14 +83,6 @@ export const useTabsNavigations = ({
       icon: "webhook",
       info: `${activeWebhooksNumber} ${t("active")}`,
     });
-    if (team) {
-      navigation.push({
-        name: "Cal.ai",
-        href: `/event-types/${eventType.id}?tabName=ai`,
-        icon: "sparkles",
-        info: "cal_ai_event_tab_description", // todo `cal_ai_event_tab_description`,
-      });
-    }
     return navigation;
   }, [
     t,
