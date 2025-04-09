@@ -6,8 +6,6 @@ import { PERMISSIONS_GROUPED_MAP } from "@calcom/platform-constants";
 import type { Avatar } from "@calcom/prisma/client";
 import { Button, Icon, showToast } from "@calcom/ui";
 
-import { hasPermission } from "../../../../../../packages/platform/utils/permissions";
-
 type OAuthClientCardProps = {
   name: string;
   logo?: Avatar;
@@ -45,15 +43,13 @@ export const OAuthClientCard = ({
 
   const clientPermissions = Object.values(PERMISSIONS_GROUPED_MAP).map((value, index) => {
     let permissionsMessage = "";
-    const hasReadPermission = hasPermission(permissions, value.read);
-    const hasWritePermission = hasPermission(permissions, value.write);
-
-    if (hasReadPermission || hasWritePermission) {
-      permissionsMessage = hasReadPermission ? "read" : "write";
-    }
+    const hasReadPermission = true;
+    const hasWritePermission = true;
 
     if (hasReadPermission && hasWritePermission) {
-      permissionsMessage = "read/write";
+      permissionsMessage = "Read, write";
+    } else if (hasReadPermission || hasWritePermission) {
+      permissionsMessage = hasReadPermission ? "Read" : "Write";
     }
 
     return (

@@ -8,8 +8,6 @@ import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { PERMISSIONS_GROUPED_MAP } from "@calcom/platform-constants/permissions";
 import { Avatar, Button, Icon } from "@calcom/ui";
 
-import { hasPermission } from "../../../../../packages/platform/utils/permissions";
-
 export default function Authorize() {
   const { t } = useLocale();
   const router = useRouter();
@@ -34,15 +32,13 @@ export default function Authorize() {
 
   const permissions = Object.values(PERMISSIONS_GROUPED_MAP).map((value) => {
     let permissionsMessage = "";
-    const hasReadPermission = hasPermission(client.permissions, value.read);
-    const hasWritePermission = hasPermission(client.permissions, value.write);
-
-    if (hasReadPermission || hasWritePermission) {
-      permissionsMessage = hasReadPermission ? "Read" : "Write";
-    }
+    const hasReadPermission = true;
+    const hasWritePermission = true;
 
     if (hasReadPermission && hasWritePermission) {
       permissionsMessage = "Read, write";
+    } else if (hasReadPermission || hasWritePermission) {
+      permissionsMessage = hasReadPermission ? "Read" : "Write";
     }
 
     return (

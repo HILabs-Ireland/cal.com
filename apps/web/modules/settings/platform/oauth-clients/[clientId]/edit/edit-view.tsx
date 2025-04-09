@@ -16,19 +16,6 @@ import { useGetUserAttributes } from "@components/settings/platform/hooks/useGet
 import type { FormValues } from "@components/settings/platform/oauth-clients/oauth-client-form";
 import { OAuthClientForm as EditOAuthClientForm } from "@components/settings/platform/oauth-clients/oauth-client-form";
 
-import {
-  hasAppsReadPermission,
-  hasAppsWritePermission,
-  hasBookingReadPermission,
-  hasBookingWritePermission,
-  hasEventTypeReadPermission,
-  hasEventTypeWritePermission,
-  hasProfileReadPermission,
-  hasProfileWritePermission,
-  hasScheduleReadPermission,
-  hasScheduleWritePermission,
-} from "../../../../../../../../packages/platform/utils/permissions";
-
 export default function EditOAuthClient() {
   const { t } = useLocale();
   const router = useRouter();
@@ -101,16 +88,16 @@ export default function EditOAuthClient() {
                   bookingRedirectUri: data?.bookingRedirectUri ?? "",
                   bookingCancelRedirectUri: data?.bookingCancelRedirectUri ?? "",
                   bookingRescheduleRedirectUri: data?.bookingRescheduleRedirectUri ?? "",
-                  appsRead: hasAppsReadPermission(data?.permissions),
-                  appsWrite: hasAppsWritePermission(data?.permissions),
-                  bookingRead: hasBookingReadPermission(data?.permissions),
-                  bookingWrite: hasBookingWritePermission(data?.permissions),
-                  eventTypeRead: hasEventTypeReadPermission(data?.permissions),
-                  eventTypeWrite: hasEventTypeWritePermission(data?.permissions),
-                  profileRead: hasProfileReadPermission(data?.permissions),
-                  profileWrite: hasProfileWritePermission(data?.permissions),
-                  scheduleRead: hasScheduleReadPermission(data?.permissions),
-                  scheduleWrite: hasScheduleWritePermission(data?.permissions),
+                  appsRead: true,
+                  appsWrite: true,
+                  bookingRead: true,
+                  bookingWrite: true,
+                  eventTypeRead: true,
+                  eventTypeWrite: true,
+                  profileRead: true,
+                  profileWrite: true,
+                  scheduleRead: true,
+                  scheduleWrite: true,
                 }}
                 onSubmit={onSubmit}
                 isPending={isUpdating}
