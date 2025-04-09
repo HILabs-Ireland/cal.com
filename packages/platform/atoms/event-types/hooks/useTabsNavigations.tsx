@@ -148,12 +148,5 @@ function getNavigation({
       icon: "sliders-vertical",
       info: `event_advanced_tab_description`,
     },
-
-    {
-      name: "workflows",
-      href: `/event-types/${id}?tabName=workflows`,
-      icon: "zap",
-      info: `${enabledWorkflowsNumber} ${t("active")}`,
-    },
   ] satisfies VerticalTabItemProps[];
 }

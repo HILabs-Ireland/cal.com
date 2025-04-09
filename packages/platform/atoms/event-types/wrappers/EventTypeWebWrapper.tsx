@@ -252,7 +252,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
         "instant",
         "recurring",
         "apps",
-        "workflows",
         "webhooks",
         "ai",
       ])

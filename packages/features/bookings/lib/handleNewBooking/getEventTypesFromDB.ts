@@ -1,5 +1,4 @@
 import type { LocationObject } from "@calcom/app-store/locations";
-import { workflowSelect } from "@calcom/ee/workflows/lib/getAllWorkflows";
 import { getBookingFieldsWithSystemFields } from "@calcom/features/bookings/lib/getBookingFields";
 import { parseRecurringEvent } from "@calcom/lib";
 import { withSelectedCalendars } from "@calcom/lib/server/repository/user";
@@ -92,13 +91,6 @@ export const getEventTypesFromDB = async (eventTypeId: number) => {
       owner: {
         select: {
           hideBranding: true,
-        },
-      },
-      workflows: {
-        select: {
-          workflow: {
-            select: workflowSelect,
-          },
         },
       },
       locations: true,

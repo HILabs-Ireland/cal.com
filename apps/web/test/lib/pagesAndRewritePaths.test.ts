@@ -16,7 +16,6 @@ describe("pagesAndRewritePaths", () => {
       "reschedule",
       "settings",
       "teams",
-      "workflows",
       "403",
       "500",
       "bookings",

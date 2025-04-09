@@ -63,14 +63,6 @@ export const KBarRoot = ({ children }: { children: React.ReactNode }) => {
   const actions = useMemo(() => {
     return [
       {
-        id: "workflows",
-        name: "workflows",
-        section: "workflows",
-        shortcut: ["w", "f"],
-        keywords: "workflows automation",
-        perform: () => router.push("/workflows"),
-      },
-      {
         id: "event-types",
         name: "event_types_page_title",
         section: "event_types_page_title",

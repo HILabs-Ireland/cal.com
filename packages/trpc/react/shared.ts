@@ -22,7 +22,6 @@ export const ENDPOINTS = [
   "users",
   "viewer",
   "webhook",
-  "workflows",
   "appsRouter",
   "oAuth",
   "attributes",
