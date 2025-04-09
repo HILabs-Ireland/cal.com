@@ -28,7 +28,6 @@ export class OrganizationRepository {
       isOrganizationAdminReviewed: boolean;
       autoAcceptEmail: string;
       seats: number | null;
-      pricePerSeat: number | null;
       isPlatform: boolean;
     };
     owner: {
@@ -70,7 +69,6 @@ export class OrganizationRepository {
       isOrganizationAdminReviewed: boolean;
       autoAcceptEmail: string;
       seats: number | null;
-      pricePerSeat: number | null;
       isPlatform: boolean;
     };
     owner: {
@@ -111,7 +109,6 @@ export class OrganizationRepository {
     isOrganizationAdminReviewed: boolean;
     autoAcceptEmail: string;
     seats: number | null;
-    pricePerSeat: number | null;
     isPlatform: boolean;
   }) {
     return await prisma.team.create({
@@ -130,7 +127,6 @@ export class OrganizationRepository {
         metadata: {
           requestedSlug: orgData.slug,
           orgSeats: orgData.seats,
-          orgPricePerSeat: orgData.pricePerSeat,
           isPlatform: orgData.isPlatform,
         },
         isPlatform: orgData.isPlatform,
@@ -223,7 +219,6 @@ export class OrganizationRepository {
     const metadata = teamMetadataSchema.parse(membership?.team.metadata);
 
     return {
-      canAdminImpersonate: !!organizationSettings?.isAdminReviewed,
       organizationSettings: {
         lockEventTypeCreationForUsers: organizationSettings?.lockEventTypeCreationForUsers,
         adminGetsNoSlotsNotification: organizationSettings?.adminGetsNoSlotsNotification,

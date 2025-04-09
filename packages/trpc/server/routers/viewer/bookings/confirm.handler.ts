@@ -13,7 +13,6 @@ import { isPrismaObjOrUndefined, parseRecurringEvent } from "@calcom/lib";
 import { getBookerBaseUrl } from "@calcom/lib/getBookerUrl/server";
 import getOrgIdFromMemberOrTeamId from "@calcom/lib/getOrgIdFromMemberOrTeamId";
 import { getTeamIdFromEventType } from "@calcom/lib/getTeamIdFromEventType";
-import { processPaymentRefund } from "@calcom/lib/payment/processPaymentRefund";
 import { getTranslation } from "@calcom/lib/server";
 import { getUsersCredentials } from "@calcom/lib/server/getUsersCredentials";
 import { getTimeFormatStringFromUserTimeFormat } from "@calcom/lib/timeFormat";
@@ -76,10 +75,8 @@ export const confirmHandler = async ({ ctx, input }: ConfirmOptions) => {
           title: true,
           slug: true,
           requiresConfirmation: true,
-          currency: true,
           length: true,
           description: true,
-          price: true,
           bookingFields: true,
           disableGuests: true,
           metadata: true,
@@ -111,9 +108,7 @@ export const confirmHandler = async ({ ctx, input }: ConfirmOptions) => {
       userId: true,
       id: true,
       uid: true,
-      payment: true,
       destinationCalendar: true,
-      paid: true,
       recurringEventId: true,
       status: true,
       smsReminderNumber: true,
@@ -134,8 +129,7 @@ export const confirmHandler = async ({ ctx, input }: ConfirmOptions) => {
     throw new TRPCError({ code: "BAD_REQUEST", message: "Booking already confirmed" });
   }
 
-  // If booking requires payment and is not paid, we don't allow confirmation
-  if (confirmed && booking.payment.length > 0 && !booking.paid) {
+  if (confirmed) {
     await prisma.booking.update({
       where: {
         id: bookingId,
@@ -296,15 +290,6 @@ export const confirmHandler = async ({ ctx, input }: ConfirmOptions) => {
         },
       });
     } else {
-      // handle refunds
-      if (!!booking.payment.length) {
-        await processPaymentRefund({
-          booking: booking,
-          teamId: booking.eventType?.teamId,
-        });
-      }
-      // end handle refunds.
-
       await prisma.booking.update({
         where: {
           id: bookingId,
@@ -343,8 +328,6 @@ export const confirmHandler = async ({ ctx, input }: ConfirmOptions) => {
       eventTitle: booking.eventType?.title,
       eventDescription: booking.eventType?.description,
       requiresConfirmation: booking.eventType?.requiresConfirmation || null,
-      price: booking.eventType?.price,
-      currency: booking.eventType?.currency,
       length: booking.eventType?.length,
     };
     const webhookData: EventPayloadType = {

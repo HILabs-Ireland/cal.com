@@ -34,8 +34,6 @@ export const getEventTypesFromDB = async (id: number) => {
       successRedirectUrl: true,
       customInputs: true,
       locations: true,
-      price: true,
-      currency: true,
       bookingFields: true,
       disableGuests: true,
       timeZone: true,

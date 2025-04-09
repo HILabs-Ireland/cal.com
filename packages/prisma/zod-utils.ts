@@ -1,4 +1,3 @@
-import type { Prisma } from "@prisma/client";
 import type { UnitTypeLongPlural } from "dayjs";
 import type { TFunction } from "next-i18next";
 import z, { ZodNullable, ZodObject, ZodOptional } from "zod";
@@ -12,8 +11,6 @@ import type {
   ZodTypeAny,
 } from "zod";
 
-import { appDataSchemas } from "@calcom/app-store/apps.schemas.generated";
-import { routingFormResponseInDbSchema } from "@calcom/app-store/routing-forms/zod";
 import dayjs from "@calcom/dayjs";
 import { isPasswordValid } from "@calcom/features/auth/lib/isPasswordValid";
 import type { FieldType as FormBuilderFieldType } from "@calcom/features/form-builder/schema";
@@ -70,9 +67,6 @@ export type BookerLayoutSettings = z.infer<typeof bookerLayouts>;
 
 export const RequiresConfirmationThresholdUnits: z.ZodType<UnitTypeLongPlural> = z.enum(["hours", "minutes"]);
 
-export const EventTypeAppMetadataSchema = z.object(appDataSchemas).partial();
-export const eventTypeAppMetadataOptionalSchema = EventTypeAppMetadataSchema.optional();
-
 const _eventTypeMetaDataSchemaWithoutApps = z.object({
   smartContractAddress: z.string().optional(),
   blockchainId: z.number().optional(),
@@ -96,11 +90,6 @@ const _eventTypeMetaDataSchemaWithoutApps = z.object({
         .optional(),
     })
     .optional(),
-  managedEventConfig: z
-    .object({
-      unlockedFields: z.custom<{ [k in keyof Omit<Prisma.EventTypeSelect, "id">]: true }>().optional(),
-    })
-    .optional(),
   requiresConfirmationThreshold: z
     .object({
       time: z.number(),
@@ -115,21 +104,9 @@ const _eventTypeMetaDataSchemaWithoutApps = z.object({
   bookerLayouts: bookerLayouts.optional(),
 });
 
-export const eventTypeMetaDataSchemaWithUntypedApps = _eventTypeMetaDataSchemaWithoutApps.merge(
-  z.object({
-    apps: z.unknown().optional(),
-  })
-);
-
-export const EventTypeMetaDataSchema = eventTypeMetaDataSchemaWithUntypedApps.nullable();
+export const EventTypeMetaDataSchema = _eventTypeMetaDataSchemaWithoutApps.nullable();
 export const eventTypeMetaDataSchemaWithoutApps = _eventTypeMetaDataSchemaWithoutApps.nullable();
-export const eventTypeMetaDataSchemaWithTypedApps = _eventTypeMetaDataSchemaWithoutApps
-  .merge(
-    z.object({
-      apps: eventTypeAppMetadataOptionalSchema,
-    })
-  )
-  .nullable();
+export const eventTypeMetaDataSchemaWithTypedApps = _eventTypeMetaDataSchemaWithoutApps.nullable();
 
 export type EventTypeMetadata = z.infer<typeof EventTypeMetaDataSchema>;
 
@@ -278,7 +255,6 @@ export const bookingCreateBodySchema = z.object({
   /**
    * Holds the corrected responses of the Form for a booking, provided during rerouting
    */
-  reroutingFormResponses: routingFormResponseInDbSchema.optional(),
   /**
    * Used to identify if the booking is a dry run.
    */
@@ -404,19 +380,10 @@ export const createdEventSchema = z
   })
   .passthrough();
 
-const schemaDefaultConferencingApp = z.object({
-  appSlug: z.string().default("daily-video").optional(),
-  appLink: z.string().optional(),
-});
-
 export const userMetadata = z
   .object({
-    proPaidForByTeamId: z.number().optional(),
-    stripeCustomerId: z.string().optional(),
     vitalSettings: vitalSettingsUpdateSchema.optional(),
-    isPremium: z.boolean().optional(),
     sessionTimeout: z.number().optional(), // Minutes
-    defaultConferencingApp: schemaDefaultConferencingApp.optional(),
     defaultBookerLayouts: bookerLayouts.optional(),
     emailChangeWaitingForVerification: z
       .string()
@@ -433,8 +400,6 @@ export const userMetadata = z
   })
   .nullable();
 
-export type DefaultConferencingApp = z.infer<typeof schemaDefaultConferencingApp>;
-
 export const orgSettingsSchema = z
   .object({
     isOrganizationVerified: z.boolean().optional(),
@@ -449,11 +414,9 @@ export type userMetadataType = z.infer<typeof userMetadata>;
 export const teamMetadataSchema = z
   .object({
     requestedSlug: z.string().or(z.null()),
-    paymentId: z.string(),
     subscriptionId: z.string().nullable(),
     subscriptionItemId: z.string().nullable(),
     orgSeats: z.number().nullable(),
-    orgPricePerSeat: z.number().nullable(),
     migratedToOrgFrom: z
       .object({
         teamSlug: z.string().or(z.null()).optional(),
@@ -676,82 +639,10 @@ export const getParserWithGeneric =
       [key in keyof Data]: Data[key] extends SimpleFormValues ? Data[key] : Output[key];
     };
   };
-export const sendDailyVideoRecordingEmailsSchema = z.object({
-  recordingId: z.string(),
-  bookingUID: z.string(),
-});
 
 export const downloadLinkSchema = z.object({
   download_link: z.string(),
 });
-
-// All properties within event type that can and will be updated if needed
-export const allManagedEventTypeProps: { [k in keyof Omit<Prisma.EventTypeSelect, "id">]: true } = {
-  title: true,
-  description: true,
-  isInstantEvent: true,
-  instantMeetingParameters: true,
-  instantMeetingExpiryTimeOffsetInSeconds: true,
-  aiPhoneCallConfig: true,
-  currency: true,
-  periodDays: true,
-  position: true,
-  price: true,
-  slug: true,
-  length: true,
-  offsetStart: true,
-  locations: true,
-  hidden: true,
-  availability: true,
-  recurringEvent: true,
-  customInputs: true,
-  disableGuests: true,
-  requiresConfirmation: true,
-  requiresConfirmationForFreeEmail: true,
-  requiresConfirmationWillBlockSlot: true,
-  eventName: true,
-  metadata: true,
-  children: true,
-  hideCalendarNotes: true,
-  hideCalendarEventDetails: true,
-  minimumBookingNotice: true,
-  beforeEventBuffer: true,
-  afterEventBuffer: true,
-  successRedirectUrl: true,
-  seatsPerTimeSlot: true,
-  seatsShowAttendees: true,
-  seatsShowAvailabilityCount: true,
-  forwardParamsSuccessRedirect: true,
-  periodType: true,
-  hashedLink: true,
-  webhooks: true,
-  periodStartDate: true,
-  periodEndDate: true,
-  destinationCalendar: true,
-  periodCountCalendarDays: true,
-  bookingLimits: true,
-  onlyShowFirstAvailableSlot: true,
-  slotInterval: true,
-  scheduleId: true,
-  workflows: true,
-  bookingFields: true,
-  durationLimits: true,
-  lockTimeZoneToggleOnBookingPage: true,
-  requiresBookerEmailVerification: true,
-  assignAllTeamMembers: true,
-  isRRWeightsEnabled: true,
-  eventTypeColor: true,
-  rescheduleWithSameRoundRobinHost: true,
-  maxLeadThreshold: true,
-};
-
-// All properties that are defined as unlocked based on all managed props
-// Eventually this is going to be just a default and the user can change the config through the UI
-export const unlockedManagedEventTypeProps = {
-  locations: allManagedEventTypeProps.locations,
-  scheduleId: allManagedEventTypeProps.scheduleId,
-  destinationCalendar: allManagedEventTypeProps.destinationCalendar,
-};
 
 export const emailSchema = emailRegexSchema;
 

@@ -21,7 +21,6 @@ const inputSchema = z.object({
     teamName: z.string().optional(),
     teamSlug: z.string().optional(),
     isOrganization: z.boolean().optional(),
-    stripeCustomerId: z.string().optional(),
   }),
   cardKeys: z.array(z.string()),
 });
@@ -92,8 +91,7 @@ async function handler(request: Request) {
         user.lastActiveAt,
         firstTeam?.name || "Unknown",
         firstTeam?.slug || "Unknown",
-        firstTeam?.isOrganization || false,
-        (user.metadata as { stripeCustomerId?: string })?.stripeCustomerId || "Unknown"
+        firstTeam?.isOrganization || false
       );
     })
   );

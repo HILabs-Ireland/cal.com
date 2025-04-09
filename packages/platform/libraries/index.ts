@@ -21,12 +21,8 @@ import { getBookingFieldsWithSystemFields } from "@calcom/features/bookings/lib/
 import getBookingInfo from "@calcom/features/bookings/lib/getBookingInfo";
 import handleCancelBooking from "@calcom/features/bookings/lib/handleCancelBooking";
 import * as newBookingMethods from "@calcom/features/bookings/lib/handleNewBooking";
-import handleDeleteCredential from "@calcom/features/credentials/handleDeleteCredential";
-import { getClientSecretFromPayment } from "@calcom/features/ee/payments/pages/getClientSecretFromPayment";
 import { getPublicEvent } from "@calcom/features/eventtypes/lib/getPublicEvent";
-import { handleCreatePhoneCall } from "@calcom/features/handleCreatePhoneCall";
 import handleMarkNoShow from "@calcom/features/handleMarkNoShow";
-import * as instantMeetingMethods from "@calcom/features/instant-meeting/handleInstantMeeting";
 import getEnabledAppsFromCredentials from "@calcom/lib/apps/getEnabledAppsFromCredentials";
 import getAllUserBookings from "@calcom/lib/bookings/getAllUserBookings";
 import { symmetricEncrypt, symmetricDecrypt } from "@calcom/lib/crypto";
@@ -34,7 +30,6 @@ import getBulkEventTypes from "@calcom/lib/event-types/getBulkEventTypes";
 import { getTranslation } from "@calcom/lib/server/i18n";
 import { MembershipRole } from "@calcom/prisma/enums";
 import { credentialForCalendarServiceSelect } from "@calcom/prisma/selects/credential";
-import { paymentDataSelect } from "@calcom/prisma/selects/payment";
 import type { TeamQuery } from "@calcom/trpc/server/routers/loggedInViewer/integrations.handler";
 import { updateHandler as updateScheduleHandler } from "@calcom/trpc/server/routers/viewer/availability/schedule/update.handler";
 import { getAvailableSlots } from "@calcom/trpc/server/routers/viewer/slots/util";
@@ -72,23 +67,14 @@ export { getUsernameList } from "@calcom/lib/defaultEvents";
 
 const handleNewBooking = newBookingMethods.default;
 export { handleNewBooking };
-const handleInstantMeeting = instantMeetingMethods.default;
-export { handleInstantMeeting };
 
 export { handleMarkNoShow };
-export { handleCreatePhoneCall };
 
 export { getAvailableSlots };
 export type AvailableSlotsType = Awaited<ReturnType<typeof getAvailableSlots>>;
 export { handleNewRecurringBooking } from "@calcom/features/bookings/lib/handleNewRecurringBooking";
 
-export { getConnectedDestinationCalendarsAndEnsureDefaultsInDb } from "@calcom/lib/getConnectedDestinationCalendars";
-export type { ConnectedDestinationCalendars } from "@calcom/lib/getConnectedDestinationCalendars";
-
-export { getConnectedApps } from "@calcom/lib/getConnectedApps";
 export { bulkUpdateEventsToDefaultLocation } from "@calcom/lib/bulkUpdateEventsToDefaultLocation";
-export type { ConnectedApps } from "@calcom/lib/getConnectedApps";
-export { getBusyCalendarTimes } from "@calcom/core/CalendarManager";
 
 export {
   transformWorkingHoursForAtom,
@@ -182,13 +168,9 @@ export { getTranslation };
 
 export { updateNewTeamMemberEventTypes } from "@calcom/lib/server/queries";
 
-export { roundRobinReassignment } from "@calcom/features/ee/round-robin/roundRobinReassignment";
-export { roundRobinManualReassignment } from "@calcom/features/ee/round-robin/roundRobinManualReassignment";
-
 export { ErrorCode } from "@calcom/lib/errorCodes";
 
 export { IcsFeedCalendarService };
-export { validateCustomEventName } from "@calcom/core/event";
 export { getEnabledAppsFromCredentials };
 export type { App };
 export type { CredentialDataWithTeamName };
@@ -201,9 +183,6 @@ export type { CredentialPayload };
 export { getAppFromSlug };
 export { credentialForCalendarServiceSelect };
 export { MembershipRole };
-
-export { paymentDataSelect };
-export { getClientSecretFromPayment };
 
 export { confirmHandler as confirmBookingHandler } from "@calcom/trpc/server/routers/viewer/bookings/confirm.handler";
 
@@ -228,7 +207,6 @@ export { AttendeeUpdatedEmail };
 export { OrganizerRequestEmail };
 
 export { AttendeeRequestEmail };
-export { handleDeleteCredential };
 export { getBulkEventTypes };
 
 export { getBookingFieldsWithSystemFields };

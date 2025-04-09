@@ -3,7 +3,6 @@ import { Prisma } from "@prisma/client";
 
 import type { LocationObject } from "@calcom/app-store/locations";
 import { privacyFilteredLocations } from "@calcom/app-store/locations";
-import { getAppFromSlug } from "@calcom/app-store/utils";
 import dayjs from "@calcom/dayjs";
 import { getBookingFieldsWithSystemFields } from "@calcom/features/bookings/lib/getBookingFields";
 import { getSlugOrRequestedSlug } from "@calcom/features/ee/organizations/lib/orgDomains";
@@ -77,8 +76,6 @@ const publicEventSelect = Prisma.validator<Prisma.EventTypeSelect>()({
   },
   requiresBookerEmailVerification: true,
   recurringEvent: true,
-  price: true,
-  currency: true,
   seatsPerTimeSlot: true,
   seatsShowAvailabilityCount: true,
   bookingFields: true,
@@ -230,21 +227,10 @@ export const getPublicEvent = async (
     const users = usersInOrgContext;
 
     const defaultEvent = getDefaultEvent(eventSlug);
-    let locations = defaultEvent.locations ? (defaultEvent.locations as LocationObject[]) : [];
+    const locations = defaultEvent.locations ? (defaultEvent.locations as LocationObject[]) : [];
 
     // Get the prefered location type from the first user
     const firstUsersMetadata = userMetadataSchema.parse(users[0].metadata || {});
-    const preferedLocationType = firstUsersMetadata?.defaultConferencingApp;
-
-    if (preferedLocationType?.appSlug) {
-      const foundApp = getAppFromSlug(preferedLocationType.appSlug);
-      const appType = foundApp?.appData?.location?.type;
-      if (appType) {
-        // Replace the location with the prefered location type
-        // This will still be default to daily if the app is not found
-        locations = [{ type: appType, link: preferedLocationType.appLink }] as LocationObject[];
-      }
-    }
 
     const defaultEventBookerLayouts = {
       enabledLayouts: [...bookerLayoutOptions],

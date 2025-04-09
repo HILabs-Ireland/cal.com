@@ -17,23 +17,7 @@ export const DisabledAppEmail = (
 
   return (
     <BaseEmailHtml subject={t("app_disabled", { appName: appName })}>
-      {appType.some((type) => type === "payment") ? (
-        <>
-          <p>
-            <>{t("disabled_app_affects_event_type", { appName: appName, eventType: title })}</>
-          </p>
-          <p style={{ fontWeight: 400, lineHeight: "24px" }}>
-            <>{t("payment_disabled_still_able_to_book")}</>
-          </p>
-
-          <hr style={{ marginBottom: "24px" }} />
-
-          <CallToAction
-            label={t("edit_event_type")}
-            href={`${WEBAPP_URL}/event-types/${eventTypeId}?tabName=apps`}
-          />
-        </>
-      ) : title && eventTypeId ? (
+      {title && eventTypeId ? (
         <>
           <p>
             <>{(t("app_disabled_with_event_type"), { appName: appName, title: title })}</>

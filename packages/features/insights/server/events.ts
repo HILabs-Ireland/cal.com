@@ -394,7 +394,6 @@ class EventsInsights {
         eventLength: true,
         startTime: true,
         endTime: true,
-        paid: true,
         userEmail: true,
         username: true,
         rating: true,

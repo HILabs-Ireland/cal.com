@@ -6,7 +6,6 @@ import type { UseFormRegisterReturn, UseFormReturn } from "react-hook-form";
 import { Controller, useFormContext } from "react-hook-form";
 import type { SingleValue } from "react-select";
 
-import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
 import { getDefinedBufferTimes } from "@calcom/features/eventtypes/lib/getDefinedBufferTimes";
 import type { FormValues, EventTypeSetupProps, InputClassNames } from "@calcom/features/eventtypes/lib/types";
 import type { SelectClassNames, SettingsToggleClassNames } from "@calcom/features/eventtypes/lib/types";
@@ -361,18 +360,6 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
   const { t, i18n } = useLocale();
   const formMethods = useFormContext<FormValues>();
 
-  const { shouldLockIndicator, shouldLockDisableProps } = useLockedFieldsManager({
-    eventType,
-    translate: t,
-    formMethods,
-  });
-
-  const bookingLimitsLocked = shouldLockDisableProps("bookingLimits");
-  const durationLimitsLocked = shouldLockDisableProps("durationLimits");
-  const onlyFirstAvailableSlotLocked = shouldLockDisableProps("onlyShowFirstAvailableSlot");
-  const periodTypeLocked = shouldLockDisableProps("periodType");
-  const offsetStartLockedProps = shouldLockDisableProps("offsetStart");
-
   const [offsetToggle, setOffsetToggle] = useState(formMethods.getValues("offsetStart") > 0);
 
   // Preview how the offset will affect start times
@@ -398,7 +385,6 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
               htmlFor="beforeBufferTime"
               className={customClassNames?.bufferAndNoticeSection?.beforeBufferSelect?.label}>
               {t("before_event")}
-              {shouldLockIndicator("beforeBufferTime")}
             </Label>
             <Controller
               name="beforeEventBuffer"
@@ -419,7 +405,6 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
                     onChange={(val) => {
                       if (val) onChange(val.value);
                     }}
-                    isDisabled={shouldLockDisableProps("beforeBufferTime").disabled}
                     defaultValue={
                       beforeBufferOptions.find((option) => option.value === value) || beforeBufferOptions[0]
                     }
@@ -444,7 +429,6 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
               htmlFor="afterBufferTime"
               className={customClassNames?.bufferAndNoticeSection?.afterBufferSelect?.label}>
               {t("after_event")}
-              {shouldLockIndicator("afterBufferTime")}
             </Label>
             <Controller
               name="afterEventBuffer"
@@ -465,7 +449,6 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
                     onChange={(val) => {
                       if (val) onChange(val.value);
                     }}
-                    isDisabled={shouldLockDisableProps("afterBufferTime").disabled}
                     defaultValue={
                       afterBufferOptions.find((option) => option.value === value) || afterBufferOptions[0]
                     }
@@ -492,11 +475,9 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
               htmlFor="minimumBookingNotice"
               className={customClassNames?.bufferAndNoticeSection?.minimumNoticeInput?.label}>
               {t("minimum_booking_notice")}
-              {shouldLockIndicator("minimumBookingNotice")}
             </Label>
             <MinimumBookingNoticeInput
               customClassNames={customClassNames?.bufferAndNoticeSection?.minimumNoticeInput}
-              disabled={shouldLockDisableProps("minimumBookingNotice").disabled}
               {...formMethods.register("minimumBookingNotice")}
             />
           </div>
@@ -509,7 +490,6 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
               htmlFor="slotInterval"
               className={customClassNames?.bufferAndNoticeSection?.timeSlotIntervalSelect?.label}>
               {t("slot_interval")}
-              {shouldLockIndicator("slotInterval")}
             </Label>
             <Controller
               name="slotInterval"
@@ -527,7 +507,6 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
                 return (
                   <Select
                     isSearchable={false}
-                    isDisabled={shouldLockDisableProps("slotInterval").disabled}
                     onChange={(val) => {
                       formMethods.setValue("slotInterval", val && (val.value || 0) > 0 ? val.value : null, {
                         shouldDirty: true,
@@ -559,7 +538,6 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
               toggleSwitchAtTheEnd={true}
               labelClassName={classNames("text-sm", customClassNames?.bookingFrequencyLimit?.label)}
               title={t("limit_booking_frequency")}
-              {...bookingLimitsLocked}
               description={t("limit_booking_frequency_description")}
               checked={isChecked}
               onCheckedChange={(active) => {
@@ -588,7 +566,6 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
                   customClassNames?.bookingFrequencyLimit?.intervalLimitContainer
                 )}>
                 <IntervalLimitsManager
-                  disabled={bookingLimitsLocked.disabled}
                   propertyName="bookingLimits"
                   defaultLimit={1}
                   step={1}
@@ -610,7 +587,6 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
               title={t("only_show_first_available_slot")}
               description={t("only_show_first_available_slot_description")}
               checked={isChecked}
-              {...onlyFirstAvailableSlotLocked}
               onCheckedChange={(active) => {
                 onChange(active ?? false);
               }}
@@ -642,7 +618,6 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
               descriptionClassName={customClassNames?.totalDurationLimit?.description}
               title={t("limit_total_booking_duration")}
               description={t("limit_total_booking_duration_description")}
-              {...durationLimitsLocked}
               checked={isChecked}
               onCheckedChange={(active) => {
                 if (active) {
@@ -657,7 +632,6 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
                 <IntervalLimitsManager
                   propertyName="durationLimits"
                   defaultLimit={60}
-                  disabled={durationLimitsLocked.disabled}
                   step={15}
                   textFieldSuffix={t("minutes")}
                   customClassNames={customClassNames?.totalDurationLimit?.intervalLimitItem}
@@ -689,7 +663,6 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
               descriptionClassName={customClassNames?.futureBookingLimit?.description}
               title={t("limit_future_bookings")}
               description={t("limit_future_bookings_description")}
-              {...periodTypeLocked}
               checked={isChecked}
               onCheckedChange={(isEnabled) => {
                 if (isEnabled && !formMethods.getValues("periodDays")) {
@@ -712,11 +685,11 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
                       }
                     );
                   }}>
-                  {(periodTypeLocked.disabled ? watchPeriodTypeUiValue === PeriodType.ROLLING : true) && (
+                  {watchPeriodTypeUiValue === PeriodType.ROLLING && (
                     <RollingLimitRadioItem
                       rollingExcludeUnavailableDays={!!rollingExcludeUnavailableDays}
                       radioValue={PeriodType.ROLLING}
-                      isDisabled={periodTypeLocked.disabled}
+                      isDisabled={false}
                       formMethods={formMethods}
                       customClassNames={customClassNames?.futureBookingLimit?.rollingLimit}
                       onChange={(opt) => {
@@ -726,11 +699,11 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
                       }}
                     />
                   )}
-                  {(periodTypeLocked.disabled ? watchPeriodTypeUiValue === PeriodType.RANGE : true) && (
+                  {watchPeriodTypeUiValue === PeriodType.RANGE && (
                     <RangeLimitRadioItem
                       radioValue={PeriodType.RANGE}
                       customClassNames={customClassNames?.futureBookingLimit?.rangeLimit}
-                      isDisabled={periodTypeLocked.disabled}
+                      isDisabled={false}
                       formMethods={formMethods}
                     />
                   )}
@@ -752,7 +725,6 @@ export const EventLimitsTab = ({ eventType, customClassNames }: EventLimitsTabPr
         title={t("offset_toggle")}
         descriptionClassName={customClassNames?.offsetStartTimes?.description}
         description={t("offset_toggle_description")}
-        {...offsetStartLockedProps}
         checked={offsetToggle}
         onCheckedChange={(active) => {
           setOffsetToggle(active);

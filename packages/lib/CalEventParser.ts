@@ -327,7 +327,7 @@ type RichDescriptionCalEvent = Parameters<typeof getCancellationReason>[0] &
   Parameters<typeof getUserFieldsResponses>[0] &
   Parameters<typeof getAppsStatus>[0] &
   Parameters<typeof getManageLink>[0] &
-  Pick<CalendarEvent, "organizer" | "paymentInfo">;
+  Pick<CalendarEvent, "organizer">;
 
 export const getRichDescription = (
   calEvent: RichDescriptionCalEvent,
@@ -352,14 +352,6 @@ ${
   // Guests cannot
   calEvent.seatsPerTimeSlot ? "" : getManageLink(calEvent, t)
 }
-${
-  calEvent.paymentInfo
-    ? `
-${t("pay_now")}:
-${calEvent.paymentInfo.link}
-`
-    : ""
-}
   `.trim();
 };
 
@@ -371,10 +363,6 @@ ${calEvent.cancellationReason}
  `;
 };
 
-export const isDailyVideoCall = (calEvent: Pick<CalendarEvent, "videoCallData">): boolean => {
-  return calEvent?.videoCallData?.type === "daily_video";
-};
-
 export const getPublicVideoCallUrl = (calEvent: Pick<CalendarEvent, "uid">): string => {
   return `${WEBAPP_URL}/video/${getUid(calEvent)}`;
 };
@@ -384,9 +372,6 @@ export const getVideoCallUrlFromCalEvent = (
     Pick<CalendarEvent, "videoCallData" | "additionalInformation" | "location">
 ): string => {
   if (calEvent.videoCallData) {
-    if (isDailyVideoCall(calEvent)) {
-      return getPublicVideoCallUrl(calEvent);
-    }
     return calEvent.videoCallData.url;
   }
   if (calEvent.additionalInformation?.hangoutLink) {
@@ -399,5 +384,5 @@ export const getVideoCallUrlFromCalEvent = (
 };
 
 export const getVideoCallPassword = (calEvent: CalendarEvent): string => {
-  return isDailyVideoCall(calEvent) ? "" : calEvent?.videoCallData?.password ?? "";
+  return "";
 };

@@ -200,7 +200,6 @@ const nextConfig = {
     ignoreDuringBuilds: !!process.env.CI,
   },
   transpilePackages: [
-    "@calcom/app-store",
     "@calcom/core",
     "@calcom/dayjs",
     "@calcom/emails",
@@ -247,27 +246,6 @@ const nextConfig = {
       })
     );
 
-    config.plugins.push(
-      new CopyWebpackPlugin({
-        patterns: [
-          {
-            from: "../../packages/app-store/**/static/**",
-            to({ context, absoluteFilename }) {
-              // Adds compatibility for windows path
-              if (os.platform() === "win32") {
-                const absoluteFilenameWin = absoluteFilename.replaceAll("\\", "/");
-                const contextWin = context.replaceAll("\\", "/");
-                const appName = /app-store\/(.*)\/static/.exec(absoluteFilenameWin);
-                return Promise.resolve(`${contextWin}/public/app-store/${appName[1]}/[name][ext]`);
-              }
-              const appName = /app-store\/(.*)\/static/.exec(absoluteFilename);
-              return Promise.resolve(`${context}/public/app-store/${appName[1]}/[name][ext]`);
-            },
-          },
-        ],
-      })
-    );
-
     config.plugins.push(new webpack.DefinePlugin({ "process.env.BUILD_ID": JSON.stringify(buildId) }));
 
     config.resolve.fallback = {
@@ -293,10 +271,6 @@ const nextConfig = {
   async rewrites() {
     const { orgSlug } = nextJsOrgRewriteConfig;
     const beforeFiles = [
-      {
-        source: "/forms/:formQuery*",
-        destination: "/apps/routing-forms/routing-link/:formQuery*",
-      },
       {
         source: "/success/:path*",
         has: [
@@ -356,10 +330,6 @@ const nextConfig = {
     ].filter(Boolean);
 
     let afterFiles = [
-      {
-        source: "/api/v2/:path*",
-        destination: `${process.env.NEXT_PUBLIC_API_V2_URL}/:path*`,
-      },
       {
         source: "/org/:slug",
         destination: "/team/:slug",
@@ -529,11 +499,6 @@ const nextConfig = {
   async redirects() {
     const redirects = [
       {
-        source: "/api/app-store/:path*",
-        destination: "/app-store/:path*",
-        permanent: true,
-      },
-      {
         source: "/auth/signup",
         destination: "/signup",
         permanent: true,
@@ -610,21 +575,7 @@ const nextConfig = {
         destination: "/event-types?openPlain=true",
         permanent: true,
       },
-      {
-        source: "/apps/categories/video",
-        destination: "/apps/categories/conferencing",
-        permanent: true,
-      },
-      {
-        source: "/apps/installed/video",
-        destination: "/apps/installed/conferencing",
-        permanent: true,
-      },
-      {
-        source: "/apps/installed",
-        destination: "/apps/installed/calendar",
-        permanent: true,
-      },
+
       {
         source: "/settings/organizations/platform/:path*",
         destination: "/settings/platform",
@@ -652,26 +603,6 @@ const nextConfig = {
           ]
         : []),
     ];
-
-    if (process.env.NEXT_PUBLIC_WEBAPP_URL === "https://app.cal.com") {
-      redirects.push(
-        {
-          source: "/apps/dailyvideo",
-          destination: "/apps/daily-video",
-          permanent: true,
-        },
-        {
-          source: "/apps/huddle01_video",
-          destination: "/apps/huddle01",
-          permanent: true,
-        },
-        {
-          source: "/apps/jitsi_video",
-          destination: "/apps/jitsi",
-          permanent: true,
-        }
-      );
-    }
 
     return redirects;
   },

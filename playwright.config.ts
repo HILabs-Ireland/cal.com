@@ -116,17 +116,6 @@ const config: PlaywrightTestConfig = {
       use: DEFAULT_CHROMIUM,
     },
     {
-      name: "@calcom/app-store",
-      testDir: "./packages/app-store/",
-      testMatch: /.*\.e2e\.tsx?/,
-      expect: {
-        timeout: DEFAULT_EXPECT_TIMEOUT,
-      },
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore TS definitions for USE are wrong.
-      use: DEFAULT_CHROMIUM,
-    },
-    {
       name: "@calcom/embed-core",
       testDir: "./packages/embeds/embed-core/",
       testMatch: /.*\.e2e\.tsx?/,

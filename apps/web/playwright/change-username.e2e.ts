@@ -1,12 +1,11 @@
 import { expect } from "@playwright/test";
 
-import stripe from "@calcom/features/ee/payments/server/stripe";
 import { WEBAPP_URL } from "@calcom/lib/constants";
 import { MembershipRole } from "@calcom/prisma/enums";
 
 import { test } from "./lib/fixtures";
 import { moveUserToOrg } from "./lib/orgMigration";
-import { IS_STRIPE_ENABLED, submitAndWaitForResponse } from "./lib/testUtils";
+import { submitAndWaitForResponse } from "./lib/testUtils";
 
 test.describe.configure({ mode: "parallel" });
 
@@ -53,37 +52,6 @@ test.describe("Change username on settings", () => {
 
       expect(newUpdatedUser.username).toBe(item.username);
     });
-  });
-
-  test("User can update to PREMIUM username", async ({ page, users }, testInfo) => {
-    // eslint-disable-next-line playwright/no-skipped-test
-    test.skip(!IS_STRIPE_ENABLED, "It should only run if Stripe is installed");
-    // eslint-disable-next-line playwright/no-skipped-test
-    test.skip(IS_SELF_HOSTED, "It shouldn't run on self hosted");
-
-    const user = await users.create();
-    await stripe.customers.create({ email: `${user?.username}@example.com` });
-
-    await user.apiLogin();
-    await page.goto("/settings/my-account/profile");
-
-    // Change username from normal to premium
-    const usernameInput = page.locator("[data-testid=username-input]");
-
-    await usernameInput.fill(`xx${testInfo.workerIndex}`);
-
-    // Click on save button
-    await page.click('button[type="submit"]');
-
-    // Validate modal text fields
-    const currentUsernameText = page.locator("[data-testid=current-username]").innerText();
-    const newUsernameText = page.locator("[data-testid=new-username]").innerText();
-
-    expect(currentUsernameText).not.toBe(newUsernameText);
-
-    await page.waitForLoadState();
-
-    await expect(page).toHaveURL(/.*checkout.stripe.com/);
   });
 
   test("User can't take a username that has been migrated to a different username in an organization", async ({

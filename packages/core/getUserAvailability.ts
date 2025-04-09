@@ -70,7 +70,6 @@ const _getEventType = async (id: number) => {
             select: {
               id: true,
               bookingLimits: true,
-              includeManagedEventsInLimits: true,
             },
           },
         },
@@ -79,7 +78,6 @@ const _getEventType = async (id: number) => {
         select: {
           id: true,
           bookingLimits: true,
-          includeManagedEventsInLimits: true,
         },
       },
       hosts: {
@@ -218,9 +216,7 @@ const _getCurrentSeats = async (
   const { schedulingType, hosts, id } = eventType;
   const hostEmails = hosts?.map((host) => host.user.email);
   const isTeamEvent =
-    schedulingType === SchedulingType.MANAGED ||
-    schedulingType === SchedulingType.ROUND_ROBIN ||
-    schedulingType === SchedulingType.COLLECTIVE;
+    schedulingType === SchedulingType.ROUND_ROBIN || schedulingType === SchedulingType.COLLECTIVE;
 
   const bookings = await prisma.booking.findMany({
     where: {
@@ -365,9 +361,7 @@ const _getUserAvailability = async function getUsersWorkingHoursLifeTheUniverseA
         )
       : [];
 
-  const teamForBookingLimits =
-    eventType?.team ??
-    (eventType?.parent?.team?.includeManagedEventsInLimits ? eventType?.parent?.team : null);
+  const teamForBookingLimits = eventType?.team;
 
   const teamBookingLimits = parseBookingLimit(teamForBookingLimits?.bookingLimits);
 
@@ -379,7 +373,6 @@ const _getUserAvailability = async function getUsersWorkingHoursLifeTheUniverseA
           dateFrom.tz(timeZone),
           dateTo.tz(timeZone),
           teamForBookingLimits.id,
-          teamForBookingLimits.includeManagedEventsInLimits,
           timeZone,
           initialData?.rescheduleUid ?? undefined
         )

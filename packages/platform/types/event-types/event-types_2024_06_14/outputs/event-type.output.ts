@@ -307,14 +307,6 @@ class BaseEventTypeOutput_2024_06_14 {
   })
   metadata!: Record<string, unknown>;
 
-  @IsInt()
-  @DocsProperty()
-  price!: number;
-
-  @IsString()
-  @DocsProperty()
-  currency!: string;
-
   @IsBoolean()
   @DocsProperty()
   lockTimeZoneToggleOnBookingPage!: boolean;

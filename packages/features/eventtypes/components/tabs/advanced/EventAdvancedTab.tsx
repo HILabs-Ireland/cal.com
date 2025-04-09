@@ -1,19 +1,11 @@
-import { useState, Suspense } from "react";
-import type { Dispatch, SetStateAction } from "react";
+import { useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import type { z } from "zod";
 
 import { useAtomsContext, useIsPlatform } from "@calcom/atoms/monorepo";
-import {
-  SelectedCalendarsSettingsWebWrapper,
-  SelectedCalendarSettingsScope,
-  SelectedCalendarsSettingsWebWrapperSkeleton,
-} from "@calcom/atoms/monorepo";
 import type { EventNameObjectType } from "@calcom/core/event";
 import { getEventName } from "@calcom/core/event";
 import getLocationsOptionsForSelect from "@calcom/features/bookings/lib/getLocationOptionsForSelect";
-import DestinationCalendarSelector from "@calcom/features/calendars/DestinationCalendarSelector";
-import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
 import {
   allowDisablingAttendeeConfirmationEmails,
   allowDisablingHostConfirmationEmails,
@@ -32,7 +24,6 @@ import type { fieldSchema } from "@calcom/features/form-builder/schema";
 import type { EditableSchema } from "@calcom/features/form-builder/schema";
 import { BookerLayoutSelector } from "@calcom/features/settings/BookerLayoutSelector";
 import { classNames } from "@calcom/lib";
-import cx from "@calcom/lib/classNames";
 import { DEFAULT_LIGHT_BRAND_COLOR, DEFAULT_DARK_BRAND_COLOR, APP_NAME } from "@calcom/lib/constants";
 import { generateHashedLink } from "@calcom/lib/generateHashedLink";
 import { checkWCAGContrastColor } from "@calcom/lib/getBrandColours";
@@ -40,19 +31,7 @@ import { useLocale } from "@calcom/lib/hooks/useLocale";
 import type { Prisma } from "@calcom/prisma/client";
 import { SchedulingType } from "@calcom/prisma/enums";
 import type { RouterOutputs } from "@calcom/trpc/react";
-import {
-  Alert,
-  Button,
-  Badge,
-  CheckboxField,
-  Icon,
-  Label,
-  SelectField,
-  SettingsToggle,
-  Switch,
-  TextField,
-  ColorPicker,
-} from "@calcom/ui";
+import { Alert, CheckboxField, SettingsToggle, TextField, ColorPicker } from "@calcom/ui";
 
 import type { CustomEventTypeModalClassNames } from "./CustomEventTypeModal";
 import CustomEventTypeModal from "./CustomEventTypeModal";
@@ -108,286 +87,14 @@ export type EventAdvancedBaseProps = Pick<EventTypeSetupProps, "eventType" | "te
 };
 
 export type EventAdvancedTabProps = EventAdvancedBaseProps & {
-  calendarsQuery: {
-    data?: RouterOutputs["viewer"]["connectedCalendars"];
-    isPending: boolean;
-    error: unknown;
-  };
   showBookerLayoutSelector: boolean;
-};
-
-type CalendarSettingsProps = {
-  eventType: EventAdvancedTabProps["eventType"];
-  customClassNames?: EventAdvancedTabCustomClassNames;
-  calendarsQuery: NonNullable<EventAdvancedTabProps["calendarsQuery"]>;
-  eventNameLocked: {
-    disabled: boolean;
-    LockedIcon: false | JSX.Element;
-  };
-  eventNamePlaceholder: string;
-  setShowEventNameTip: Dispatch<SetStateAction<boolean>>;
-  showToast: EventAdvancedTabProps["showToast"];
-  verifiedSecondaryEmails: { label: string; value: number }[];
-  userEmail: string;
-  isTeamEventType: boolean;
-  isChildrenManagedEventType: boolean;
-};
-
-const destinationCalendarComponents = {
-  DestinationCalendarSettings({
-    showConnectedCalendarSettings,
-    customClassNames,
-    calendarsQuery,
-    eventNameLocked,
-    eventNamePlaceholder,
-    setShowEventNameTip,
-    verifiedSecondaryEmails,
-    userEmail,
-    isTeamEventType,
-    showToast,
-  }: Omit<CalendarSettingsProps, "eventType" | "isChildrenManagedEventType"> & {
-    showConnectedCalendarSettings: boolean;
-  }) {
-    const { t } = useLocale();
-    const formMethods = useFormContext<FormValues>();
-    const [useEventTypeDestinationCalendarEmail, setUseEventTypeDestinationCalendarEmail] = useState(
-      formMethods.getValues("useEventTypeDestinationCalendarEmail")
-    );
-    const selectedSecondaryEmailId = formMethods.getValues("secondaryEmailId") || -1;
-    return (
-      <div className="border-subtle space-y-6 rounded-lg border p-6">
-        <div className="flex flex-col space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0">
-          {showConnectedCalendarSettings && (
-            <div
-              className={classNames(
-                "flex w-full flex-col",
-                customClassNames?.destinationCalendar?.container
-              )}>
-              <Label
-                className={classNames(
-                  "text-emphasis mb-0 font-medium",
-                  customClassNames?.destinationCalendar?.label
-                )}>
-                {t("add_to_calendar")}
-              </Label>
-              <Controller
-                name="destinationCalendar"
-                render={({ field: { onChange, value } }) => (
-                  <DestinationCalendarSelector
-                    value={value ? value.externalId : undefined}
-                    onChange={onChange}
-                    hidePlaceholder
-                    hideAdvancedText
-                    calendarsQueryData={calendarsQuery.data}
-                    customClassNames={customClassNames?.destinationCalendar}
-                  />
-                )}
-              />
-              <p className="text-subtle text-sm">{t("select_which_cal")}</p>
-            </div>
-          )}
-          <div className={classNames("w-full", customClassNames?.eventName?.container)}>
-            <TextField
-              label={t("event_name_in_calendar")}
-              labelClassName={customClassNames?.eventName?.label}
-              addOnClassname={customClassNames?.eventName?.addOn}
-              className={customClassNames?.eventName?.input}
-              type="text"
-              {...eventNameLocked}
-              placeholder={eventNamePlaceholder}
-              {...formMethods.register("eventName")}
-              addOnSuffix={
-                <Button
-                  color="minimal"
-                  size="sm"
-                  aria-label="edit custom name"
-                  className="hover:stroke-3 hover:text-emphasis min-w-fit !py-0 px-0 hover:bg-transparent"
-                  onClick={() => setShowEventNameTip((old) => !old)}>
-                  <Icon name="pencil" className="h-4 w-4" />
-                </Button>
-              }
-            />
-          </div>
-        </div>
-        <div className="space-y-2">
-          {showConnectedCalendarSettings && (
-            <div className={classNames("w-full", customClassNames?.addToCalendarEmailOrganizer?.container)}>
-              <Switch
-                tooltip={t("if_enabled_email_address_as_organizer")}
-                label={
-                  <>
-                    {t("display_add_to_calendar_organizer")}
-                    <Icon
-                      name="info"
-                      className="text-default hover:text-attention hover:bg-attention ms-1 inline h-4 w-4 rounded-md"
-                    />
-                  </>
-                }
-                checked={useEventTypeDestinationCalendarEmail}
-                onCheckedChange={(val) => {
-                  setUseEventTypeDestinationCalendarEmail(val);
-                  formMethods.setValue("useEventTypeDestinationCalendarEmail", val, {
-                    shouldDirty: true,
-                  });
-                  if (val) {
-                    showToast(t("reconnect_calendar_to_use"), "warning");
-                  }
-                }}
-              />
-            </div>
-          )}
-          {!useEventTypeDestinationCalendarEmail &&
-            verifiedSecondaryEmails.length > 0 &&
-            !isTeamEventType && (
-              <div className={cx("flex w-full flex-col", showConnectedCalendarSettings && "pl-11")}>
-                <SelectField
-                  placeholder={
-                    selectedSecondaryEmailId === -1 && (
-                      <span className="text-default min-w-0 overflow-hidden truncate whitespace-nowrap">
-                        <Badge variant="blue">{t("default")}</Badge> {userEmail}
-                      </span>
-                    )
-                  }
-                  className={customClassNames?.addToCalendarEmailOrganizer?.emailSelect?.select}
-                  containerClassName={customClassNames?.addToCalendarEmailOrganizer?.emailSelect?.container}
-                  onChange={(option) =>
-                    formMethods.setValue("secondaryEmailId", option?.value, { shouldDirty: true })
-                  }
-                  value={verifiedSecondaryEmails.find(
-                    (secondaryEmail) =>
-                      selectedSecondaryEmailId !== -1 && secondaryEmail.value === selectedSecondaryEmailId
-                  )}
-                  options={verifiedSecondaryEmails}
-                />
-                <p
-                  className={classNames(
-                    "text-subtle mt-2 text-sm",
-                    customClassNames?.addToCalendarEmailOrganizer?.emailSelect?.displayEmailLabel
-                  )}>
-                  {t("display_email_as_organizer")}
-                </p>
-              </div>
-            )}
-        </div>
-      </div>
-    );
-  },
-  DestinationCalendarSettingsSkeleton() {
-    return (
-      <div className="border-subtle space-y-6 rounded-lg border p-6">
-        <div className="flex flex-col space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0">
-          <div className="flex w-full flex-col">
-            <div className="h-4 w-32 animate-pulse rounded-md bg-gray-200" />
-            <div className="mt-2 h-10 w-full animate-pulse rounded-md bg-gray-200" />
-            <div className="mt-2 h-4 w-48 animate-pulse rounded-md bg-gray-200" />
-          </div>
-          <div className="w-full">
-            <div className="h-4 w-32 animate-pulse rounded-md bg-gray-200" />
-            <div className="mt-2 h-10 w-full animate-pulse rounded-md bg-gray-200" />
-          </div>
-        </div>
-        <div className="space-y-2">
-          <div className="h-6 w-64 animate-pulse rounded-md bg-gray-200" />
-          <div className="h-10 w-full animate-pulse rounded-md bg-gray-200" />
-          <div className="h-4 w-48 animate-pulse rounded-md bg-gray-200" />
-        </div>
-      </div>
-    );
-  },
-};
-
-const calendarComponents = {
-  CalendarSettingsSkeleton() {
-    return (
-      <div>
-        <destinationCalendarComponents.DestinationCalendarSettingsSkeleton />
-        <SelectedCalendarsSettingsWebWrapperSkeleton />
-      </div>
-    );
-  },
-
-  CalendarSettings({
-    eventType,
-    calendarsQuery,
-    verifiedSecondaryEmails,
-    userEmail,
-    isTeamEventType,
-    isChildrenManagedEventType,
-    customClassNames,
-    eventNameLocked,
-    eventNamePlaceholder,
-    setShowEventNameTip,
-    showToast,
-  }: CalendarSettingsProps) {
-    const formMethods = useFormContext<FormValues>();
-    /**
-     * Only display calendar selector if user has connected calendars AND if it's not
-     * a team event. Since we don't have logic to handle each attendee calendar (for now).
-     */
-
-    const isConnectedCalendarSettingsApplicable = !isTeamEventType || isChildrenManagedEventType;
-    const isConnectedCalendarSettingsLoading = calendarsQuery.isPending;
-    const showConnectedCalendarSettings =
-      !!calendarsQuery.data?.connectedCalendars.length && isConnectedCalendarSettingsApplicable;
-
-    const selectedCalendarSettingsScope = formMethods.getValues("useEventLevelSelectedCalendars")
-      ? SelectedCalendarSettingsScope.EventType
-      : SelectedCalendarSettingsScope.User;
-
-    const destinationCalendar = calendarsQuery.data?.destinationCalendar;
-    if (isConnectedCalendarSettingsLoading && isConnectedCalendarSettingsApplicable) {
-      return <calendarComponents.CalendarSettingsSkeleton />;
-    }
-
-    return (
-      <div>
-        <destinationCalendarComponents.DestinationCalendarSettings
-          verifiedSecondaryEmails={verifiedSecondaryEmails}
-          userEmail={userEmail}
-          isTeamEventType={isTeamEventType}
-          calendarsQuery={calendarsQuery}
-          eventNameLocked={eventNameLocked}
-          eventNamePlaceholder={eventNamePlaceholder}
-          setShowEventNameTip={setShowEventNameTip}
-          showToast={showToast}
-          showConnectedCalendarSettings={showConnectedCalendarSettings}
-          customClassNames={customClassNames}
-        />
-        <div>
-          {isConnectedCalendarSettingsApplicable
-            ? showConnectedCalendarSettings && (
-                <div className="mt-4">
-                  <Suspense fallback={<SelectedCalendarsSettingsWebWrapperSkeleton />}>
-                    <SelectedCalendarsSettingsWebWrapper
-                      eventTypeId={eventType.id}
-                      disabledScope={SelectedCalendarSettingsScope.User}
-                      disableConnectionModification={true}
-                      scope={selectedCalendarSettingsScope}
-                      destinationCalendarId={destinationCalendar?.externalId}
-                      setScope={(scope) => {
-                        const chosenScopeIsEventLevel = scope === SelectedCalendarSettingsScope.EventType;
-                        formMethods.setValue("useEventLevelSelectedCalendars", chosenScopeIsEventLevel, {
-                          shouldDirty: true,
-                        });
-                      }}
-                    />
-                  </Suspense>
-                </div>
-              )
-            : null}
-        </div>
-      </div>
-    );
-  },
 };
 
 export const EventAdvancedTab = ({
   eventType,
   team,
-  calendarsQuery,
   user,
   isUserLoading,
-  showToast,
   showBookerLayoutSelector,
   customClassNames,
 }: EventAdvancedTabProps) => {
@@ -431,9 +138,6 @@ export const EventAdvancedTab = ({
   );
   const seatsEnabled = formMethods.watch("seatsPerTimeSlotEnabled");
   const multiLocation = (formMethods.getValues("locations") || []).length > 1;
-  const noShowFeeEnabled =
-    formMethods.getValues("metadata")?.apps?.stripe?.enabled === true &&
-    formMethods.getValues("metadata")?.apps?.stripe?.paymentOption === "HOLD";
 
   const isRoundRobinEventType =
     eventType.schedulingType && eventType.schedulingType === SchedulingType.ROUND_ROBIN;
@@ -458,29 +162,10 @@ export const EventAdvancedTab = ({
     );
   };
 
-  const { isChildrenManagedEventType, isManagedEventType, shouldLockDisableProps } = useLockedFieldsManager({
-    eventType,
-    translate: t,
-    formMethods,
-  });
   const eventNamePlaceholder = getEventName({
     ...eventNameObject,
     eventName: formMethods.watch("eventName"),
   });
-
-  const successRedirectUrlLocked = shouldLockDisableProps("successRedirectUrl");
-  const seatsLocked = shouldLockDisableProps("seatsPerTimeSlotEnabled");
-  const requiresBookerEmailVerificationProps = shouldLockDisableProps("requiresBookerEmailVerification");
-  const hideCalendarNotesLocked = shouldLockDisableProps("hideCalendarNotes");
-  const hideCalendarEventDetailsLocked = shouldLockDisableProps("hideCalendarEventDetails");
-  const eventTypeColorLocked = shouldLockDisableProps("eventTypeColor");
-  const lockTimeZoneToggleOnBookingPageLocked = shouldLockDisableProps("lockTimeZoneToggleOnBookingPage");
-  const multiplePrivateLinksLocked = shouldLockDisableProps("multiplePrivateLinks");
-  const { isLocked, ...eventNameLocked } = shouldLockDisableProps("eventName");
-
-  if (isManagedEventType) {
-    multiplePrivateLinksLocked.disabled = true;
-  }
 
   const closeEventNameTip = () => setShowEventNameTip(false);
 
@@ -518,21 +203,6 @@ export const EventAdvancedTab = ({
 
   return (
     <div className="flex flex-col space-y-4">
-      {!isPlatform && (
-        <calendarComponents.CalendarSettings
-          verifiedSecondaryEmails={verifiedSecondaryEmails}
-          userEmail={userEmail}
-          calendarsQuery={calendarsQuery}
-          isTeamEventType={!!team}
-          isChildrenManagedEventType={isChildrenManagedEventType}
-          customClassNames={customClassNames}
-          eventNameLocked={eventNameLocked}
-          eventNamePlaceholder={eventNamePlaceholder}
-          setShowEventNameTip={setShowEventNameTip}
-          showToast={showToast}
-          eventType={eventType}
-        />
-      )}
       {showBookerLayoutSelector && (
         <BookerLayoutSelector
           fallbackToUserSettings
@@ -548,7 +218,8 @@ export const EventAdvancedTab = ({
           description={t("booking_questions_description")}
           addFieldLabel={t("add_a_booking_question")}
           formProp="bookingFields"
-          {...shouldLockDisableProps("bookingFields")}
+          disabled={false}
+          LockedIcon={false}
           dataStore={{
             options: {
               locations: {
@@ -585,7 +256,6 @@ export const EventAdvancedTab = ({
             )}
             title={t("requires_booker_email_verification")}
             data-testid="requires-booker-email-verification"
-            {...requiresBookerEmailVerificationProps}
             description={t("description_requires_booker_email_verification")}
             descriptionClassName={customClassNames?.bookerEmailVerification?.description}
             checked={value}
@@ -606,7 +276,6 @@ export const EventAdvancedTab = ({
             descriptionClassName={customClassNames?.calendarNotes?.description}
             data-testid="disable-notes"
             title={t("disable_notes")}
-            {...hideCalendarNotesLocked}
             description={t("disable_notes_description")}
             checked={value}
             onCheckedChange={(e) => onChange(e)}
@@ -625,7 +294,6 @@ export const EventAdvancedTab = ({
             )}
             descriptionClassName={customClassNames?.eventDetailsVisibility?.description}
             title={t("hide_calendar_event_details")}
-            {...hideCalendarEventDetailsLocked}
             description={t("description_hide_calendar_event_details")}
             checked={value}
             onCheckedChange={(e) => onChange(e)}
@@ -648,7 +316,6 @@ export const EventAdvancedTab = ({
               descriptionClassName={customClassNames?.bookingRedirect?.description}
               title={t("redirect_success_booking")}
               data-testid="redirect-success-booking"
-              {...successRedirectUrlLocked}
               description={t("redirect_url_description")}
               checked={redirectUrlVisible}
               onCheckedChange={(e) => {
@@ -665,7 +332,6 @@ export const EventAdvancedTab = ({
                   label={t("redirect_success_booking")}
                   labelClassName={customClassNames?.bookingRedirect?.redirectUrlInput?.label}
                   labelSrOnly
-                  disabled={successRedirectUrlLocked.disabled}
                   placeholder={t("external_redirect_url")}
                   data-testid="external-redirect-url"
                   required={redirectUrlVisible}
@@ -683,7 +349,6 @@ export const EventAdvancedTab = ({
                     render={({ field: { value, onChange } }) => (
                       <CheckboxField
                         description={t("forward_params_redirect")}
-                        disabled={successRedirectUrlLocked.disabled}
                         className={customClassNames?.bookingRedirect?.forwardParamsCheckbox?.checkbox}
                         descriptionClassName={
                           customClassNames?.bookingRedirect?.forwardParamsCheckbox?.description
@@ -723,9 +388,7 @@ export const EventAdvancedTab = ({
                 childrenClassName="lg:ml-0"
                 data-testid="multiplePrivateLinksCheck"
                 title={t("multiple_private_links_title")}
-                {...multiplePrivateLinksLocked}
                 description={t("multiple_private_links_description", { appName: APP_NAME })}
-                tooltip={isManagedEventType ? t("managed_event_field_parent_control_disabled") : ""}
                 checked={multiplePrivateLinksVisible}
                 onCheckedChange={(e) => {
                   if (!e) {
@@ -739,11 +402,9 @@ export const EventAdvancedTab = ({
                   }
                   setMultiplePrivateLinksVisible(e);
                 }}>
-                {!isManagedEventType && (
-                  <div className="border-subtle rounded-b-lg border border-t-0 p-6">
-                    <MultiplePrivateLinksController team={team} bookerUrl={eventType.bookerUrl} />
-                  </div>
-                )}
+                <div className="border-subtle rounded-b-lg border border-t-0 p-6">
+                  <MultiplePrivateLinksController team={team} bookerUrl={eventType.bookerUrl} />
+                </div>
               </SettingsToggle>
             );
           }}
@@ -765,17 +426,10 @@ export const EventAdvancedTab = ({
               descriptionClassName={customClassNames?.seatsOptions?.description}
               data-testid="offer-seats-toggle"
               title={t("offer_seats")}
-              {...seatsLocked}
               description={t("offer_seats_description")}
               checked={value}
-              disabled={noShowFeeEnabled || multiLocation}
-              tooltip={
-                multiLocation
-                  ? t("multilocation_doesnt_support_seats")
-                  : noShowFeeEnabled
-                  ? t("no_show_fee_doesnt_support_seats")
-                  : undefined
-              }
+              disabled={multiLocation}
+              tooltip={multiLocation ? t("multilocation_doesnt_support_seats") : undefined}
               onCheckedChange={(e) => {
                 // Enabling seats will disable guests and requiring confirmation until fully supported
                 if (e) {
@@ -803,7 +457,6 @@ export const EventAdvancedTab = ({
                         labelSrOnly
                         label={t("number_of_seats")}
                         type="number"
-                        disabled={seatsLocked.disabled}
                         defaultValue={value}
                         min={1}
                         containerClassName={classNames(
@@ -834,7 +487,6 @@ export const EventAdvancedTab = ({
                               descriptionClassName={
                                 customClassNames?.seatsOptions?.showAttendeesCheckbox?.description
                               }
-                              disabled={seatsLocked.disabled}
                               onChange={(e) => onChange(e)}
                               checked={value}
                             />
@@ -851,7 +503,6 @@ export const EventAdvancedTab = ({
                           render={({ field: { value, onChange } }) => (
                             <CheckboxField
                               description={t("show_available_seats_count")}
-                              disabled={seatsLocked.disabled}
                               onChange={(e) => onChange(e)}
                               checked={value}
                               className={
@@ -869,7 +520,6 @@ export const EventAdvancedTab = ({
                 />
               </div>
             </SettingsToggle>
-            {noShowFeeEnabled && <Alert severity="warning" title={t("seats_and_no_show_fee_error")} />}
           </>
         )}
       />
@@ -885,7 +535,6 @@ export const EventAdvancedTab = ({
               customClassNames?.timezoneLock?.container
             )}
             title={t("lock_timezone_toggle_on_booking_page")}
-            {...lockTimeZoneToggleOnBookingPageLocked}
             description={t("description_lock_timezone_toggle_on_booking_page")}
             checked={value}
             onCheckedChange={(e) => onChange(e)}
@@ -905,7 +554,6 @@ export const EventAdvancedTab = ({
               customClassNames?.eventTypeColors?.container
             )}
             title={t("event_type_color")}
-            {...eventTypeColorLocked}
             description={t("event_type_color_description")}
             descriptionClassName={customClassNames?.eventTypeColors?.description}
             checked={isEventTypeColorChecked}

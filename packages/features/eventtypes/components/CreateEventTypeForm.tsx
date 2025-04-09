@@ -12,7 +12,6 @@ import { Editor, Form, TextAreaField, TextField, Tooltip } from "@calcom/ui";
 
 export default function CreateEventTypeForm({
   form,
-  isManagedEventType,
   handleSubmit,
   pageSlug,
   isPending,
@@ -20,7 +19,6 @@ export default function CreateEventTypeForm({
   SubmitButton,
 }: {
   form: UseFormReturn<CreateEventTypeFormValues>;
-  isManagedEventType: boolean;
   handleSubmit: (values: CreateEventTypeFormValues) => void;
   pageSlug?: string;
   isPending: boolean;
@@ -59,10 +57,8 @@ export default function CreateEventTypeForm({
               required
               addOnLeading={
                 !isPlatform ? (
-                  <Tooltip content={!isManagedEventType ? pageSlug : t("username_placeholder")}>
-                    <span className="max-w-24 md:max-w-56">
-                      /{!isManagedEventType ? pageSlug : t("username_placeholder")}/
-                    </span>
+                  <Tooltip content={pageSlug}>
+                    <span className="max-w-24 md:max-w-56">/{pageSlug}/</span>
                   </Tooltip>
                 ) : undefined
               }
@@ -71,10 +67,6 @@ export default function CreateEventTypeForm({
                 form.setValue("slug", slugify(e?.target.value), { shouldTouch: true });
               }}
             />
-
-            {isManagedEventType && !isPlatform && (
-              <p className="mt-2 text-sm text-gray-600">{t("managed_event_url_clarification")}</p>
-            )}
           </div>
         ) : (
           <div>
@@ -83,10 +75,9 @@ export default function CreateEventTypeForm({
               required
               addOnLeading={
                 !isPlatform ? (
-                  <Tooltip
-                    content={`${urlPrefix}/${!isManagedEventType ? pageSlug : t("username_placeholder")}/`}>
+                  <Tooltip content={`${urlPrefix}/${pageSlug}/`}>
                     <span className="max-w-24 md:max-w-56">
-                      {urlPrefix}/{!isManagedEventType ? pageSlug : t("username_placeholder")}/
+                      {urlPrefix}/{pageSlug}/
                     </span>
                   </Tooltip>
                 ) : undefined
@@ -96,9 +87,6 @@ export default function CreateEventTypeForm({
                 form.setValue("slug", slugify(e?.target.value), { shouldTouch: true });
               }}
             />
-            {isManagedEventType && !isPlatform && (
-              <p className="mt-2 text-sm text-gray-600">{t("managed_event_url_clarification")}</p>
-            )}
           </div>
         )}
         <>

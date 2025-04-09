@@ -37,6 +37,7 @@ export const evaluateRaqbLogic = (
     tree: QbUtils.checkTree(QbUtils.loadTree(queryValue), queryBuilderConfig),
     config: queryBuilderConfig,
   };
+  debugger;
   const jsonLogicQuery = QbUtils.jsonLogicFormat(state.tree, state.config);
   const logic = jsonLogicQuery.logic;
   if (!logic) {

@@ -80,7 +80,7 @@ const getIPAddress = async (url: string): Promise<string> => {
 };
 
 export const createHandler = async ({ input, ctx }: CreateOptions) => {
-  const { slug, name, orgOwnerEmail, seats, pricePerSeat, isPlatform } = input;
+  const { slug, name, orgOwnerEmail, seats, isPlatform } = input;
 
   const loggedInUser = await prisma.user.findUnique({
     where: {
@@ -205,7 +205,6 @@ export const createHandler = async ({ input, ctx }: CreateOptions) => {
     isOrganizationAdminReviewed: IS_USER_ADMIN,
     autoAcceptEmail,
     seats: seats ?? null,
-    pricePerSeat: pricePerSeat ?? null,
     isPlatform,
   };
 

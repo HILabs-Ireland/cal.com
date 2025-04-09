@@ -6,7 +6,6 @@ import { z } from "zod";
 
 import dayjs from "@calcom/dayjs";
 import { WEBAPP_URL, WEBSITE_URL } from "@calcom/lib/constants";
-import { useHasTeamPlan, useHasPaidPlan } from "@calcom/lib/hooks/useHasPaidPlan";
 import { localStorage } from "@calcom/lib/webstorage";
 import { trpc } from "@calcom/trpc/react";
 
@@ -33,8 +32,6 @@ export const useIntercom = () => {
       },
     },
   });
-  const { hasPaidPlan } = useHasPaidPlan();
-  const { hasTeamPlan } = useHasTeamPlan();
 
   const boot = async () => {
     if (!data || !statsData) return;
@@ -63,8 +60,6 @@ export const useIntercom = () => {
         identity_provider: data?.identityProvider,
         timezone: data?.timeZone,
         locale: data?.locale,
-        has_paid_plan: hasPaidPlan,
-        has_team_plan: hasTeamPlan,
         metadata: data?.metadata,
         completed_onboarding: data.completedOnboarding,
         is_logged_in: !!data,
@@ -75,7 +70,6 @@ export const useIntercom = () => {
         organization: data?.organization?.slug,
         sum_of_event_types: statsData?.sumOfEventTypes,
         sum_of_team_event_types: statsData?.sumOfTeamEventTypes,
-        is_premium: data?.isPremium,
       },
     });
   };
@@ -106,8 +100,6 @@ export const useIntercom = () => {
         identity_provider: data?.identityProvider,
         timezone: data?.timeZone,
         locale: data?.locale,
-        has_paid_plan: hasPaidPlan,
-        has_team_plan: hasTeamPlan,
         metadata: data?.metadata,
         completed_onboarding: data?.completedOnboarding,
         is_logged_in: !!data,
@@ -118,7 +110,6 @@ export const useIntercom = () => {
         organization: data?.organization?.slug,
         sum_of_event_types: statsData?.sumOfEventTypes,
         sum_of_team_event_types: statsData?.sumOfTeamEventTypes,
-        is_premium: data?.isPremium,
       },
     });
     hookData.show();

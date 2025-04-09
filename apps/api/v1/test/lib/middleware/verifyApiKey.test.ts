@@ -3,14 +3,12 @@ import prismock from "../../../../../../tests/libs/__mocks__/prisma";
 import type { Request, Response } from "express";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { createMocks } from "node-mocks-http";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
-import type { ILicenseKeyService } from "@calcom/ee/common/server/LicenseKeyService";
-import LicenseKeyService from "@calcom/ee/common/server/LicenseKeyService";
 import prisma from "@calcom/prisma";
 import { MembershipRole, UserPermissionRole } from "@calcom/prisma/enums";
 
-import { hashAPIKey } from "~/../../../packages/features/ee/api-keys/lib/apiKeys";
+import { hashAPIKey } from "~/../../../packages/features/api-keys/lib/apiKeys";
 
 import { verifyApiKey } from "../../../lib/helpers/verifyApiKey";
 
@@ -22,14 +20,6 @@ afterEach(() => {
 });
 
 describe("Verify API key", () => {
-  let service: ILicenseKeyService;
-
-  beforeEach(async () => {
-    service = await LicenseKeyService.create();
-
-    vi.spyOn(service, "checkLicense");
-  });
-
   it("should throw an error if the api key is not valid", async () => {
     const { req, res } = createMocks<CustomNextApiRequest, CustomNextApiResponse>({
       method: "POST",
@@ -39,8 +29,6 @@ describe("Verify API key", () => {
     const middleware = {
       fn: verifyApiKey,
     };
-
-    vi.mocked(service.checkLicense).mockResolvedValue(false);
 
     const serverNext = vi.fn((next: void) => Promise.resolve(next));
 
@@ -62,8 +50,6 @@ describe("Verify API key", () => {
     const middleware = {
       fn: verifyApiKey,
     };
-
-    vi.mocked(service.checkLicense).mockResolvedValue(true);
 
     const serverNext = vi.fn((next: void) => Promise.resolve(next));
 
@@ -102,8 +88,6 @@ describe("Verify API key", () => {
     const middleware = {
       fn: verifyApiKey,
     };
-
-    vi.mocked(service.checkLicense).mockResolvedValue(true);
 
     const serverNext = vi.fn((next: void) => Promise.resolve(next));
 
@@ -162,8 +146,6 @@ describe("Verify API key", () => {
       fn: verifyApiKey,
     };
 
-    vi.mocked(service.checkLicense).mockResolvedValue(true);
-
     const serverNext = vi.fn((next: void) => Promise.resolve(next));
 
     const middlewareSpy = vi.spyOn(middleware, "fn");
@@ -202,8 +184,6 @@ describe("Verify API key", () => {
     const middleware = {
       fn: verifyApiKey,
     };
-
-    vi.mocked(service.checkLicense).mockResolvedValue(true);
 
     const serverNext = vi.fn((next: void) => Promise.resolve(next));
     const middlewareSpy = vi.spyOn(middleware, "fn");

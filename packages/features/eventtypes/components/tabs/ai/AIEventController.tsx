@@ -1,29 +1,13 @@
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import { useSession } from "next-auth/react";
-import React, { useState } from "react";
-import { useFormContext, Controller } from "react-hook-form";
+import { useState } from "react";
+import { Controller, useFormContext } from "react-hook-form";
 import { z } from "zod";
 
-import { getTemplateFieldsSchema } from "@calcom/features/ee/cal-ai-phone/getTemplateFieldsSchema";
-import { TEMPLATES_FIELDS } from "@calcom/features/ee/cal-ai-phone/template-fields-map";
-import type { TemplateType } from "@calcom/features/ee/cal-ai-phone/zod-utils";
-import LicenseRequired from "@calcom/features/ee/common/components/LicenseRequired";
 import type { EventTypeSetup, FormValues } from "@calcom/features/eventtypes/lib/types";
-import { ComponentForField } from "@calcom/features/form-builder/FormBuilderField";
 import { classNames } from "@calcom/lib";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
-import { trpc } from "@calcom/trpc/react";
-import {
-  Button,
-  Label,
-  EmptyScreen,
-  SettingsToggle,
-  Divider,
-  TextField,
-  PhoneInput,
-  showToast,
-  Icon,
-} from "@calcom/ui";
+import { Button, Label, SettingsToggle, Divider, TextField, PhoneInput, showToast, Icon } from "@calcom/ui";
 
 type AIEventControllerProps = {
   eventType: EventTypeSetup;
@@ -41,50 +25,39 @@ export default function AIEventController({ eventType, isTeamEvent }: AIEventCon
   if (session.status === "loading") return <></>;
 
   return (
-    <LicenseRequired>
-      <div className="block items-start sm:flex">
-        {!isOrg || !isTeamEvent ? (
-          <EmptyScreen
-            headline={t("Cal.ai")}
-            Icon="sparkles"
-            description={t("upgrade_to_cal_ai_phone_number_description")}
-            buttonRaw={<Button href="/enterprise">{t("upgrade")}</Button>}
-          />
-        ) : (
-          <div className="w-full">
-            <SettingsToggle
-              labelClassName="text-sm"
-              toggleSwitchAtTheEnd={true}
-              switchContainerClassName={classNames(
-                "border-subtle rounded-lg border py-6 px-4 sm:px-6",
-                aiEventState && "rounded-b-none"
-              )}
-              childrenClassName="lg:ml-0"
-              title={t("Cal.ai")}
-              description={t("use_cal_ai_to_make_call_description")}
-              checked={aiEventState}
-              data-testid="instant-event-check"
-              onCheckedChange={(e) => {
-                if (!e) {
-                  formMethods.setValue("aiPhoneCallConfig.enabled", false, {
-                    shouldDirty: true,
-                  });
-                  setAIEventState(false);
-                } else {
-                  formMethods.setValue("aiPhoneCallConfig.enabled", true, {
-                    shouldDirty: true,
-                  });
-                  setAIEventState(true);
-                }
-              }}>
-              <div className="border-subtle rounded-b-lg border border-t-0 p-6">
-                {aiEventState && <AISettings eventType={eventType} />}
-              </div>
-            </SettingsToggle>
+    <div className="block items-start sm:flex">
+      <div className="w-full">
+        <SettingsToggle
+          labelClassName="text-sm"
+          toggleSwitchAtTheEnd={true}
+          switchContainerClassName={classNames(
+            "border-subtle rounded-lg border py-6 px-4 sm:px-6",
+            aiEventState && "rounded-b-none"
+          )}
+          childrenClassName="lg:ml-0"
+          title={t("Cal.ai")}
+          description={t("use_cal_ai_to_make_call_description")}
+          checked={aiEventState}
+          data-testid="instant-event-check"
+          onCheckedChange={(e) => {
+            if (!e) {
+              formMethods.setValue("aiPhoneCallConfig.enabled", false, {
+                shouldDirty: true,
+              });
+              setAIEventState(false);
+            } else {
+              formMethods.setValue("aiPhoneCallConfig.enabled", true, {
+                shouldDirty: true,
+              });
+              setAIEventState(true);
+            }
+          }}>
+          <div className="border-subtle rounded-b-lg border border-t-0 p-6">
+            {aiEventState && <AISettings eventType={eventType} />}
           </div>
-        )}
+        </SettingsToggle>
       </div>
-    </LicenseRequired>
+    </div>
   );
 }
 
@@ -104,41 +77,8 @@ const TemplateFields = () => {
   const { control, watch } = formMethods;
 
   const templateType = watch("aiPhoneCallConfig.templateType");
-  const fields = TEMPLATES_FIELDS[templateType as TemplateType];
 
-  return (
-    <div className="space-y-4">
-      {fields?.map((field) => (
-        <div key={field.name}>
-          <Controller
-            control={control}
-            name={`aiPhoneCallConfig.${field.name}`}
-            render={({ field: { value, onChange }, fieldState: { error } }) => {
-              const { variableName, ...restField } = field;
-              const variableInfo = !!variableName ? `: ${t("variable")} {{${variableName}}}` : "";
-              return (
-                <div>
-                  <ComponentForField
-                    field={{
-                      ...restField,
-                      label: `${t(field.defaultLabel)}${variableInfo}`,
-                      placeholder: t(field.placeholder),
-                    }}
-                    value={value ?? ""}
-                    readOnly={false}
-                    setValue={(val: unknown) => {
-                      onChange(val);
-                    }}
-                  />
-                  {error?.message && <ErrorMessage message={error.message} fieldName={field.name} />}
-                </div>
-              );
-            }}
-          />
-        </div>
-      ))}
-    </div>
-  );
+  return <div className="space-y-4" />;
 };
 
 const AISettings = ({ eventType }: { eventType: EventTypeSetup }) => {
@@ -148,37 +88,10 @@ const AISettings = ({ eventType }: { eventType: EventTypeSetup }) => {
 
   const [calApiKey, setCalApiKey] = useState("");
 
-  const createCallMutation = trpc.viewer.organizations.createPhoneCall.useMutation({
-    onSuccess: (data) => {
-      if (!!data?.callId) {
-        showToast("Phone Call Created successfully", "success");
-      }
-    },
-    onError: (err) => {
-      const message = err?.message ? err.message : t("something_went_wrong");
-      showToast(message, "error");
-    },
-  });
-
   const handleSubmit = async () => {
     try {
       const values = formMethods.getValues("aiPhoneCallConfig");
       const { templateType } = values;
-
-      const schema = getTemplateFieldsSchema({ templateType });
-
-      const data = schema.parse({
-        ...values,
-        guestEmail: values.guestEmail && values.guestEmail.trim().length ? values.guestEmail : undefined,
-        guestCompany:
-          values.guestCompany && values.guestCompany.trim().length ? values.guestCompany : undefined,
-        guestName: values.guestName && values.guestName.trim().length ? values.guestName : undefined,
-        eventTypeId: eventType.id,
-        calApiKey,
-        id: eventType.id,
-      });
-
-      createCallMutation.mutate(data);
     } catch (err) {
       if (err instanceof z.ZodError) {
         const fieldName = err.issues?.[0]?.path?.[0];
@@ -303,20 +216,7 @@ const AISettings = ({ eventType }: { eventType: EventTypeSetup }) => {
 
         <Divider />
 
-        <Button
-          disabled={createCallMutation.isPending}
-          loading={createCallMutation.isPending}
-          onClick={handleSubmit}>
-          {t("make_a_call")}
-        </Button>
-
-        {/* TODO:<small className="block opacity-60">
-          Want to automate outgoing phone calls? Read our{" "}
-          <Link className="underline" href="https://cal.com/docs">
-            API docs
-          </Link>{" "}
-          and learn how to build workflows.
-        </small> */}
+        <Button onClick={handleSubmit}>{t("make_a_call")}</Button>
       </div>
     </div>
   );

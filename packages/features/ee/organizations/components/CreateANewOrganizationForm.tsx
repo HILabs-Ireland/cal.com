@@ -1,13 +1,12 @@
 "use client";
 
 import type { SessionContextValue } from "next-auth/react";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 import { subdomainSuffix } from "@calcom/features/ee/organizations/lib/orgDomains";
-import classNames from "@calcom/lib/classNames";
 import { MINIMUM_NUMBER_OF_ORG_SEATS } from "@calcom/lib/constants";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import slugify from "@calcom/lib/slugify";
@@ -15,7 +14,7 @@ import { telemetryEventTypes, useTelemetry } from "@calcom/lib/telemetry";
 import { UserPermissionRole } from "@calcom/prisma/enums";
 import { trpc } from "@calcom/trpc/react";
 import type { Ensure } from "@calcom/types/utils";
-import { Alert, Button, Form, RadioGroup as RadioArea, TextField } from "@calcom/ui";
+import { Alert, Button, Form, TextField } from "@calcom/ui";
 
 function extractDomainFromEmail(email: string) {
   let out = "";
@@ -49,7 +48,6 @@ const CreateANewOrganizationFormChild = ({
   const newOrganizationFormMethods = useForm<{
     name: string;
     seats: number;
-    pricePerSeat: number;
     slug: string;
     orgOwnerEmail: string;
   }>({
@@ -67,14 +65,6 @@ const CreateANewOrganizationFormChild = ({
       await session.update({
         upId: data.upId,
       });
-      if (isAdmin && data.userId !== session.data?.user.id) {
-        // Impersonate the user chosen as the organization owner(if the admin user isn't the owner himself), so that admin can now configure the organisation on his behalf.
-        // He won't need to have access to the org directly in this way.
-        signIn("impersonation-auth", {
-          username: data.email,
-          callbackUrl: `/settings/organizations/${data.organizationId}/about`,
-        });
-      }
       router.push(`/settings/organizations/${data.organizationId}/about`);
     },
     onError: (err) => {
@@ -220,54 +210,7 @@ const CreateANewOrganizationFormChild = ({
                   )}
                 />
               </div>
-              <div className="w-full">
-                <Controller
-                  name="pricePerSeat"
-                  control={newOrganizationFormMethods.control}
-                  render={({ field: { value, onChange } }) => (
-                    <div className="flex">
-                      <TextField
-                        containerClassName="w-full"
-                        placeholder="30"
-                        name="pricePerSeat"
-                        type="number"
-                        addOnSuffix="$"
-                        label="Price per seat (optional)"
-                        defaultValue={value}
-                        onChange={(e) => {
-                          onChange(+e.target.value);
-                        }}
-                        autoComplete="off"
-                      />
-                    </div>
-                  )}
-                />
-              </div>
             </section>
-          </>
-        )}
-
-        {/* This radio group does nothing - its just for visuall purposes */}
-        {!isAdmin && (
-          <>
-            <div className="bg-subtle space-y-5  rounded-lg p-5">
-              <h3 className="font-cal text-default text-lg font-semibold leading-4">
-                Upgrade to Organizations
-              </h3>
-              <RadioArea.Group className={classNames("mt-1 flex flex-col gap-4")} value="ORGANIZATION">
-                <RadioArea.Item
-                  className={classNames("bg-default w-full text-sm opacity-70")}
-                  value="TEAMS"
-                  disabled>
-                  <strong className="mb-1 block">{t("teams")}</strong>
-                  <p>{t("your_current_plan")}</p>
-                </RadioArea.Item>
-                <RadioArea.Item className={classNames("bg-default w-full text-sm")} value="ORGANIZATION">
-                  <strong className="mb-1 block">{t("organization")}</strong>
-                  <p>{t("organization_price_per_user_month")}</p>
-                </RadioArea.Item>
-              </RadioArea.Group>
-            </div>
           </>
         )}
 

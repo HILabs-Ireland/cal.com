@@ -29,9 +29,6 @@ function Type({
   eventData,
   isInstantMeeting,
   orgBannerUrl,
-  teamMemberEmail,
-  crmOwnerRecordType,
-  crmAppSlug,
   isEmbed,
 }: PageProps) {
   const searchParams = useSearchParams();
@@ -56,9 +53,6 @@ function Type({
           eventData.length
         )}
         orgBannerUrl={orgBannerUrl}
-        teamMemberEmail={teamMemberEmail}
-        crmOwnerRecordType={crmOwnerRecordType}
-        crmAppSlug={crmAppSlug}
       />
     </main>
   );

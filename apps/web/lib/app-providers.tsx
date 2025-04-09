@@ -7,14 +7,11 @@ import type { SSRConfig } from "next-i18next";
 import { appWithTranslation } from "next-i18next";
 import { ThemeProvider } from "next-themes";
 import type { AppProps as NextAppProps, AppProps as NextJsAppProps } from "next/app";
-import dynamic from "next/dynamic";
 import type { ParsedUrlQuery } from "querystring";
 import type { PropsWithChildren, ReactNode } from "react";
 import { useEffect } from "react";
 
-import DynamicPostHogProvider from "@calcom/features/ee/event-tracking/lib/posthog/providerDynamic";
 import { OrgBrandingProvider } from "@calcom/features/ee/organizations/context/provider";
-import DynamicHelpscoutProvider from "@calcom/features/ee/support/lib/helpscout/providerDynamic";
 import { FeatureProvider } from "@calcom/features/flags/context/provider";
 import { useFlags } from "@calcom/features/flags/hooks";
 import { MetaProvider } from "@calcom/ui";
@@ -56,13 +53,6 @@ export type AppProps = Omit<
   /** Will be defined only is there was an error */
   err?: Error;
 };
-
-const PostHogPageView = dynamic(
-  () => import("@calcom/features/ee/event-tracking/lib/posthog/web/PostHogPageView"),
-  {
-    ssr: false,
-  }
-);
 
 type AppPropsWithChildren = AppProps & {
   children: ReactNode;
@@ -315,20 +305,7 @@ const AppProviders = (props: AppPropsWithChildren) => {
     </EventCollectionProvider>
   );
 
-  if (isBookingPage) {
-    return RemainingProviders;
-  }
-
-  return (
-    <>
-      <DynamicHelpscoutProvider>
-        <DynamicPostHogProvider>
-          <PostHogPageView />
-          {RemainingProviders}
-        </DynamicPostHogProvider>
-      </DynamicHelpscoutProvider>
-    </>
-  );
+  return RemainingProviders;
 };
 
 export default AppProviders;

@@ -42,7 +42,6 @@ import { TeamListBulkAction } from "./BulkActions/TeamList";
 import { ChangeUserRoleModal } from "./ChangeUserRoleModal";
 import { DeleteMemberModal } from "./DeleteMemberModal";
 import { EditUserSheet } from "./EditSheet/EditUserSheet";
-import { ImpersonationMemberModal } from "./ImpersonationMemberModal";
 import { InviteMemberModal } from "./InviteMemberModal";
 import { TableActions } from "./UserTableActions";
 import type { UserTableState, UserTableAction, UserTableUser } from "./types";
@@ -52,9 +51,6 @@ const initialState: UserTableState = {
     showModal: false,
   },
   deleteMember: {
-    showModal: false,
-  },
-  impersonateMember: {
     showModal: false,
   },
   inviteMember: {
@@ -79,8 +75,6 @@ function reducer(state: UserTableState, action: UserTableAction): UserTableState
       return { ...state, changeMemberRole: action.payload };
     case "SET_DELETE_ID":
       return { ...state, deleteMember: action.payload };
-    case "SET_IMPERSONATE_ID":
-      return { ...state, impersonateMember: action.payload };
     case "INVITE_MEMBER":
       return { ...state, inviteMember: action.payload };
     case "EDIT_USER_SHEET":
@@ -90,7 +84,6 @@ function reducer(state: UserTableState, action: UserTableAction): UserTableState
         ...state,
         changeMemberRole: { showModal: false },
         deleteMember: { showModal: false },
-        impersonateMember: { showModal: false },
         inviteMember: { showModal: false },
         editSheet: { showModal: false },
       };
@@ -166,7 +159,6 @@ function UserListTableContent() {
       canEdit: adminOrOwner,
       canRemove: adminOrOwner,
       canResendInvitation: adminOrOwner,
-      canImpersonate: false,
     };
     const generateAttributeColumns = () => {
       if (!attributes?.length) {
@@ -422,8 +414,6 @@ function UserListTableContent() {
           const permissionsForUser = {
             canEdit: permissionsRaw.canEdit && user.accepted && !isSelf,
             canRemove: permissionsRaw.canRemove && !isSelf,
-            canImpersonate:
-              user.accepted && !user.disableImpersonation && !isSelf && !!org?.canAdminImpersonate,
             canLeave: user.accepted && isSelf,
             canResendInvitation: permissionsRaw.canResendInvitation && !user.accepted,
           };
@@ -626,7 +616,6 @@ function UserListTableContent() {
 
       {state.deleteMember.showModal && <DeleteMemberModal state={state} dispatch={dispatch} />}
       {state.inviteMember.showModal && <InviteMemberModal dispatch={dispatch} />}
-      {state.impersonateMember.showModal && <ImpersonationMemberModal dispatch={dispatch} state={state} />}
       {state.changeMemberRole.showModal && <ChangeUserRoleModal dispatch={dispatch} state={state} />}
       {state.editSheet.showModal && <EditUserSheet dispatch={dispatch} state={state} />}
     </>

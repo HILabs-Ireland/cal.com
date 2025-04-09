@@ -13,12 +13,7 @@ function useIsAppEnabled(app: EventTypeAppCardApp) {
       return isAppEnabled ?? false; // Default to false if undefined
     }
 
-    const credentialId = getAppData("credentialId");
-    const isAppEnabledForCredential =
-      isAppEnabled &&
-      (app.userCredentialIds.some((id) => id === credentialId) ||
-        app.credentialOwner.credentialId === credentialId);
-    return isAppEnabledForCredential ?? false; // Default to false if undefined
+    return false;
   });
 
   const updateEnabled = (newValue: boolean) => {

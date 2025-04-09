@@ -69,8 +69,6 @@ export type Event = {
   requiresConfirmation: boolean;
   requiresBookerEmailVerification: boolean;
   recurringEvent: boolean;
-  price: number;
-  currency: string;
   seatsPerTimeSlot: number;
   seatsShowAvailabilityCount: boolean;
   bookingFields: unknown; // Define more specifically if possible

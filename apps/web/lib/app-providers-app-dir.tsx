@@ -13,9 +13,7 @@ import { useSearchParams } from "next/navigation";
 import type { ReactNode } from "react";
 import { useEffect } from "react";
 
-import DynamicPostHogProvider from "@calcom/features/ee/event-tracking/lib/posthog/providerDynamic";
 import { OrgBrandingProvider } from "@calcom/features/ee/organizations/context/provider";
-import DynamicHelpscoutProvider from "@calcom/features/ee/support/lib/helpscout/providerDynamic";
 import { FeatureProvider } from "@calcom/features/flags/context/provider";
 import { useFlags } from "@calcom/features/flags/hooks";
 
@@ -289,17 +287,7 @@ const AppProviders = (props: PageWrapperProps) => {
     RemainingProviders
   );
 
-  if (isBookingPage) {
-    return Hydrated;
-  }
-
-  return (
-    <>
-      <DynamicHelpscoutProvider>
-        <DynamicPostHogProvider>{Hydrated}</DynamicPostHogProvider>
-      </DynamicHelpscoutProvider>
-    </>
-  );
+  return Hydrated;
 };
 
 export default AppProviders;

@@ -62,13 +62,6 @@ import { schemaQueryIdParseInt } from "~/lib/validations/shared/queryIdTransform
  *                         "timeZone": "Asia/Kolkata",
  *                         "locale": "en"
  *                       },
- *                       "payment": [
- *                         {
- *                           "id": 1,
- *                           "success": true,
- *                           "paymentOption": "ON_BOOKING"
- *                         }
- *                       ],
  *                       "metadata": {},
  *                       "status": "ACCEPTED",
  *                       "responses": {
@@ -102,7 +95,6 @@ export async function getHandler(req: NextApiRequest) {
     include: {
       attendees: true,
       user: true,
-      payment: true,
       eventType: expand.includes("team") ? { include: { team: true } } : false,
     },
   });

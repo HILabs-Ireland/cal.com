@@ -8,10 +8,8 @@ import { getSuccessPageLocationMessage, guessEventLocationType } from "@calcom/a
 import dayjs from "@calcom/dayjs";
 // TODO: Use browser locale, implement Intl in Dayjs maybe?
 import "@calcom/dayjs/locales";
-import ViewRecordingsDialog from "@calcom/features/ee/video/ViewRecordingsDialog";
 import classNames from "@calcom/lib/classNames";
 import { formatTime } from "@calcom/lib/date-fns";
-import { getPaymentAppData } from "@calcom/lib/getPaymentAppData";
 import { useCopy } from "@calcom/lib/hooks/useCopy";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { useGetTheme } from "@calcom/lib/hooks/useTheme";
@@ -49,10 +47,7 @@ import {
 import assignmentReasonBadgeTitleMap from "@lib/booking/assignmentReasonBadgeTitleMap";
 
 import { AddGuestsDialog } from "@components/dialog/AddGuestsDialog";
-import { ChargeCardDialog } from "@components/dialog/ChargeCardDialog";
 import { EditLocationDialog } from "@components/dialog/EditLocationDialog";
-import { ReassignDialog } from "@components/dialog/ReassignDialog";
-import { RerouteDialog } from "@components/dialog/RerouteDialog";
 import { RescheduleDialog } from "@components/dialog/RescheduleDialog";
 
 type BookingListingStatus = RouterInputs["viewer"]["bookings"]["get"]["filters"]["status"];
@@ -115,10 +110,7 @@ function BookingListItem(booking: BookingItemProps) {
   const utils = trpc.useUtils();
   const [rejectionReason, setRejectionReason] = useState<string>("");
   const [rejectionDialogIsOpen, setRejectionDialogIsOpen] = useState(false);
-  const [chargeCardDialogIsOpen, setChargeCardDialogIsOpen] = useState(false);
-  const [viewRecordingsDialogIsOpen, setViewRecordingsDialogIsOpen] = useState<boolean>(false);
   const [isNoShowDialogOpen, setIsNoShowDialogOpen] = useState<boolean>(false);
-  const cardCharged = booking?.payment[0]?.success;
   const mutation = trpc.viewer.bookings.confirm.useMutation({
     onSuccess: (data) => {
       if (data?.status === BookingStatus.REJECTED) {
@@ -145,8 +137,6 @@ function BookingListItem(booking: BookingItemProps) {
   const isRecurring = booking.recurringEventId !== null;
   const isTabRecurring = booking.listingStatus === "recurring";
   const isTabUnconfirmed = booking.listingStatus === "unconfirmed";
-
-  const paymentAppData = getPaymentAppData(booking.eventType);
 
   const location = booking.location as ReturnType<typeof getEventLocationValue>;
   const locationVideoCallUrl = parsedBooking.metadata?.videoCallUrl;
@@ -197,9 +187,7 @@ function BookingListItem(booking: BookingItemProps) {
       icon: "ban",
       disabled: mutation.isPending,
     },
-    // For bookings with payment, only confirm if the booking is paid for
-    ...((isPending && !paymentAppData.enabled) ||
-    (paymentAppData.enabled && !!paymentAppData.price && booking.paid)
+    ...(isPending
       ? [
           {
             id: "confirm",
@@ -237,18 +225,7 @@ function BookingListItem(booking: BookingItemProps) {
             },
           },
         ]),
-    ...(isBookingReroutable(parsedBooking)
-      ? [
-          {
-            id: "reroute",
-            label: t("reroute"),
-            onClick: () => {
-              setRerouteDialogIsOpen(true);
-            },
-            icon: "waypoints" as const,
-          },
-        ]
-      : []),
+    ...[],
     {
       id: "change_location",
       label: t("edit_location"),
@@ -266,17 +243,6 @@ function BookingListItem(booking: BookingItemProps) {
       icon: "user-plus" as const,
     },
   ];
-
-  // if (booking.eventType.schedulingType === SchedulingType.ROUND_ROBIN) {
-  //   editBookingActions.push({
-  //     id: "reassign ",
-  //     label: t("reassign"),
-  //     onClick: () => {
-  //       setIsOpenReassignDialog(true);
-  //     },
-  //     icon: "users" as const,
-  //   });
-  // }
 
   if (isBookingInPast || isOngoing) {
     editBookingActions.push({
@@ -308,18 +274,6 @@ function BookingListItem(booking: BookingItemProps) {
     },
   ];
 
-  const chargeCardActions: ActionType[] = [
-    {
-      id: "charge_card",
-      label: cardCharged ? t("no_show_fee_charged") : t("collect_no_show_fee"),
-      disabled: cardCharged,
-      onClick: () => {
-        setChargeCardDialogIsOpen(true);
-      },
-      icon: "credit-card" as const,
-    },
-  ];
-
   if (isTabRecurring && isRecurring) {
     bookedActions = bookedActions.filter((action) => action.id !== "edit_booking");
   }
@@ -341,10 +295,8 @@ function BookingListItem(booking: BookingItemProps) {
     .locale(language)
     .format(isUpcoming ? "ddd, D MMM" : "D MMMM YYYY");
   const [isOpenRescheduleDialog, setIsOpenRescheduleDialog] = useState(false);
-  const [isOpenReassignDialog, setIsOpenReassignDialog] = useState(false);
   const [isOpenSetLocationDialog, setIsOpenLocationDialog] = useState(false);
   const [isOpenAddGuestsDialog, setIsOpenAddGuestsDialog] = useState(false);
-  const [rerouteDialogIsOpen, setRerouteDialogIsOpen] = useState(false);
   const setLocationMutation = trpc.viewer.bookings.editLocation.useMutation({
     onSuccess: () => {
       showToast(t("location_updated"), "success");
@@ -401,26 +353,6 @@ function BookingListItem(booking: BookingItemProps) {
 
   const title = booking.title;
 
-  const showViewRecordingsButton = !!(booking.isRecorded && isBookingInPast && isConfirmed);
-  const showCheckRecordingButton =
-    isBookingInPast &&
-    isConfirmed &&
-    !booking.isRecorded &&
-    (!booking.location || booking.location === "integrations:daily" || booking?.location?.trim() === "");
-
-  const showRecordingActions: ActionType[] = [
-    {
-      id: "view_recordings",
-      label: showCheckRecordingButton ? t("check_for_recordings") : t("view_recordings"),
-      onClick: () => {
-        setViewRecordingsDialogIsOpen(true);
-      },
-      color: showCheckRecordingButton ? "secondary" : "primary",
-      disabled: mutation.isPending,
-    },
-  ];
-
-  const showPendingPayment = paymentAppData.enabled && booking.payment.length && !booking.paid;
   const attendeeList = booking.attendees.map((attendee) => {
     return {
       name: attendee.name,
@@ -438,14 +370,6 @@ function BookingListItem(booking: BookingItemProps) {
         setIsOpenDialog={setIsOpenRescheduleDialog}
         bookingUId={booking.uid}
       />
-      {isOpenReassignDialog && (
-        <ReassignDialog
-          isOpenDialog={isOpenReassignDialog}
-          setIsOpenDialog={setIsOpenReassignDialog}
-          bookingId={booking.id}
-          teamId={booking.eventType?.team?.id || 0}
-        />
-      )}
       <EditLocationDialog
         booking={booking}
         saveLocation={saveLocation}
@@ -458,23 +382,6 @@ function BookingListItem(booking: BookingItemProps) {
         setIsOpenDialog={setIsOpenAddGuestsDialog}
         bookingId={booking.id}
       />
-      {booking.paid && booking.payment[0] && (
-        <ChargeCardDialog
-          isOpenDialog={chargeCardDialogIsOpen}
-          setIsOpenDialog={setChargeCardDialogIsOpen}
-          bookingId={booking.id}
-          paymentAmount={booking.payment[0].amount}
-          paymentCurrency={booking.payment[0].currency}
-        />
-      )}
-      {(showViewRecordingsButton || showCheckRecordingButton) && (
-        <ViewRecordingsDialog
-          booking={booking}
-          isOpenDialog={viewRecordingsDialogIsOpen}
-          setIsOpenDialog={setViewRecordingsDialogIsOpen}
-          timeFormat={userTimeFormat ?? null}
-        />
-      )}
       {isNoShowDialogOpen && (
         <NoShowAttendeesDialog
           bookingUid={booking.uid}
@@ -598,11 +505,6 @@ function BookingListItem(booking: BookingItemProps) {
                     {booking.eventType.team.name}
                   </Badge>
                 )}
-                {showPendingPayment && (
-                  <Badge className="ltr:mr-2 rtl:ml-2 sm:hidden" variant="orange">
-                    {t("pending_payment")}
-                  </Badge>
-                )}
                 {recurringDates !== undefined && (
                   <div className="text-muted text-sm sm:hidden">
                     <RecurringBookingsTooltip
@@ -624,12 +526,6 @@ function BookingListItem(booking: BookingItemProps) {
                   )}>
                   {title}
                   <span> </span>
-
-                  {showPendingPayment && (
-                    <Badge className="hidden sm:inline-flex" variant="orange">
-                      {t("pending_payment")}
-                    </Badge>
-                  )}
                 </div>
                 {booking.description && (
                   <div
@@ -665,21 +561,11 @@ function BookingListItem(booking: BookingItemProps) {
             ) : null}
             {isBookingInPast && isPending && !isConfirmed ? <TableActions actions={bookedActions} /> : null}
             {isBookingInPast && isConfirmed ? <TableActions actions={bookedActions} /> : null}
-            {(showViewRecordingsButton || showCheckRecordingButton) && (
-              <TableActions actions={showRecordingActions} />
-            )}
             {isCancelled && booking.rescheduled && (
               <div className="hidden h-full items-center md:flex">
                 <RequestSentMessage />
               </div>
             )}
-            {booking.status === "ACCEPTED" &&
-              booking.paid &&
-              booking.payment[0]?.paymentOption === "HOLD" && (
-                <div className="ml-2">
-                  <TableActions actions={chargeCardActions} />
-                </div>
-              )}
           </div>
         </div>
         <BookingItemBadges
@@ -690,14 +576,6 @@ function BookingListItem(booking: BookingItemProps) {
           userTimeZone={userTimeZone}
         />
       </div>
-
-      {isBookingReroutable(parsedBooking) && (
-        <RerouteDialog
-          isOpenDialog={rerouteDialogIsOpen}
-          setIsOpenDialog={setRerouteDialogIsOpen}
-          booking={{ ...parsedBooking, eventType: parsedBooking.eventType }}
-        />
-      )}
     </>
   );
 }
@@ -732,15 +610,6 @@ const BookingItemBadges = ({
       {booking?.assignmentReason.length > 0 && (
         <AssignmentReasonTooltip assignmentReason={booking.assignmentReason[0]} />
       )}
-      {booking.paid && !booking.payment[0] ? (
-        <Badge className="ltr:mr-2 rtl:ml-2" variant="orange">
-          {t("error_collecting_card")}
-        </Badge>
-      ) : booking.paid ? (
-        <Badge className="ltr:mr-2 rtl:ml-2" variant="green" data-testid="paid_badge">
-          {booking.payment[0].paymentOption === "HOLD" ? t("card_held") : t("paid")}
-        </Badge>
-      ) : null}
       {recurringDates !== undefined && (
         <div className="text-muted mt-2 text-sm">
           <RecurringBookingsTooltip

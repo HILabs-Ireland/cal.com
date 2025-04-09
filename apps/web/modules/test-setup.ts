@@ -25,16 +25,6 @@ vi.mock("@calcom/app-store/BookingPageTagManager", () => ({
   default: vi.fn(),
 }));
 
-vi.mock("@calcom/app-store/locations", () => ({
-  DailyLocationType: "daily",
-  guessEventLocationType: vi.fn(),
-  getSuccessPageLocationMessage: vi.fn(),
-}));
-
-vi.mock("@calcom/app-store/utils", () => ({
-  getEventTypeAppData: vi.fn(),
-}));
-
 vi.mock("@calcom/core/event", () => ({
   getEventName: vi.fn(),
 }));
@@ -54,10 +44,6 @@ vi.mock("@calcom/embed-core/embed-iframe", () => {
     useEmbedNonStylesConfig: vi.fn(),
     useEmbedStyles: vi.fn(),
   };
-});
-
-vi.mock("@calcom/features/bookings/components/event-meta/Price", () => {
-  return {};
 });
 
 vi.mock("@calcom/features/bookings/lib/SystemField", () => {

@@ -22,12 +22,7 @@ export const getCrm = async (credential: CredentialPayload, appOptions: any) => 
     return null;
   }
 
-  const crmApp = await crmAppImportFn();
-
-  if (crmApp && "lib" in crmApp && "CrmService" in crmApp.lib) {
-    const CrmService = crmApp.lib.CrmService as CrmClass;
-    return new CrmService(credential, appOptions);
-  }
+  return null;
 };
 
 export default getCrm;

@@ -65,8 +65,6 @@ type UserPageProps = {
     | "lockTimeZoneToggleOnBookingPage"
     | "requiresConfirmation"
     | "requiresBookerEmailVerification"
-    | "price"
-    | "currency"
     | "recurringEvent"
   >)[];
   isOrgSEOIndexable: boolean | undefined;

@@ -131,7 +131,6 @@ describe("removeMember", () => {
             ],
             organizer,
             usersApartFromOrganizer: otherTeamMembers,
-            apps: [TestData.apps["daily-video"]],
           },
           org
         )

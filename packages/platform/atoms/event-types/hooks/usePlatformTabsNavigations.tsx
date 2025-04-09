@@ -6,9 +6,7 @@ import type { TFunction } from "next-i18next";
 import { useMemo, useState, useEffect } from "react";
 import type { UseFormReturn } from "react-hook-form";
 
-import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
 import type { EventTypeSetupProps, FormValues } from "@calcom/features/eventtypes/lib/types";
-import { getPaymentAppData } from "@calcom/lib/getPaymentAppData";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import type { VerticalTabItemProps } from "@calcom/ui";
 
@@ -39,16 +37,6 @@ export const usePlatformTabsNavigations = ({ formMethods, eventType, team, tabs 
   const watchChildrenCount = formMethods.watch("children").length;
   const availability = formMethods.watch("availability");
 
-  const { isManagedEventType, isChildrenManagedEventType } = useLockedFieldsManager({
-    eventType,
-    translate: t,
-    formMethods,
-  });
-
-  const paymentAppData = getPaymentAppData(eventType);
-
-  const requirePayment = paymentAppData.price > 0;
-
   const EventTypeTabs = useMemo(() => {
     const navigation: VerticalTabItemProps[] = getNavigation({
       t,
@@ -63,7 +51,7 @@ export const usePlatformTabsNavigations = ({ formMethods, eventType, team, tabs 
       currentTab,
     });
 
-    if (!requirePayment && tabs.includes("recurring")) {
+    if (tabs.includes("recurring")) {
       navigation.splice(3, 0, {
         name: "recurring",
         onClick: () => setCurrentTab("recurring"),
@@ -81,18 +69,7 @@ export const usePlatformTabsNavigations = ({ formMethods, eventType, team, tabs 
         isActive: currentTab === "availability",
         href: `${url}?tabName=availability`,
         icon: "calendar",
-        info:
-          isManagedEventType || isChildrenManagedEventType
-            ? formMethods.getValues("schedule") === null
-              ? "members_default_schedule"
-              : isChildrenManagedEventType
-              ? `${
-                  formMethods.getValues("scheduleName")
-                    ? `${formMethods.getValues("scheduleName")} - ${t("managed")}`
-                    : `default_schedule_name`
-                }`
-              : formMethods.getValues("scheduleName") ?? `default_schedule_name`
-            : formMethods.getValues("scheduleName") ?? `default_schedule_name`,
+        info: formMethods.getValues("scheduleName") ?? `default_schedule_name`,
       });
 
     // If there is a team put this navigation item within the tabs
@@ -103,9 +80,7 @@ export const usePlatformTabsNavigations = ({ formMethods, eventType, team, tabs 
         isActive: currentTab === "team",
         href: `${url}?tabName=team`,
         icon: "users",
-        info: `${t(watchSchedulingType?.toLowerCase() ?? "")}${
-          isManagedEventType ? ` - ${t("number_member", { count: watchChildrenCount || 0 })}` : ""
-        }`,
+        info: `${t(watchSchedulingType?.toLowerCase() ?? "")}`,
       });
     }
 
@@ -113,11 +88,8 @@ export const usePlatformTabsNavigations = ({ formMethods, eventType, team, tabs 
   }, [
     t,
     availability,
-    isManagedEventType,
-    isChildrenManagedEventType,
     team,
     length,
-    requirePayment,
     multipleDuration,
     formMethods.getValues("id"),
     watchSchedulingType,
@@ -171,15 +143,6 @@ function getNavigation({ length, multipleDuration, t, tabs, url, onClick, curren
       href: `${url}?tabName=advanced`,
       icon: "sliders-vertical",
       info: `event_advanced_tab_description`,
-    });
-  tabs.includes("payments") &&
-    tabsNavigation.push({
-      name: "event_payments_tab_title",
-      onClick: () => onClick("payments"),
-      isActive: currentTab === "payments",
-      href: `${url}?tabName=payments`,
-      icon: "credit-card",
-      info: `event_payments_tab_description`,
     });
 
   return tabsNavigation;

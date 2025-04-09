@@ -15,8 +15,7 @@ export default (
   lastActiveAt: Date | null,
   teamName: string | null,
   teamSlug: string | null,
-  isOrganization: boolean | null,
-  stripeCustomerId: string | null
+  isOrganization: boolean | null
 ): Card => {
   return {
     key: "customer-card",
@@ -331,25 +330,6 @@ export default (
       {
         componentSpacer: {
           spacerSize: "M",
-        },
-      },
-      {
-        componentRow: {
-          rowMainContent: [
-            {
-              componentText: {
-                text: "Stripe Customer ID",
-                textColor: "MUTED",
-              },
-            },
-          ],
-          rowAsideContent: [
-            {
-              componentText: {
-                text: stripeCustomerId || "Unknown",
-              },
-            },
-          ],
         },
       },
       {

@@ -4,7 +4,6 @@ import type { UseFormGetValues, UseFormSetValue, Control, FormState } from "reac
 import type { MultiValue } from "react-select";
 
 import { useIsPlatform } from "@calcom/atoms/monorepo";
-import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
 import type { LocationCustomClassNames } from "@calcom/features/eventtypes/components/Locations";
 import Locations from "@calcom/features/eventtypes/components/Locations";
 import type {
@@ -83,14 +82,6 @@ export const EventSetupTab = (
     selectedMultipleDuration.find((opt) => opt.value === formMethods.getValues("length")) ?? null
   );
 
-  const { isChildrenManagedEventType, isManagedEventType, shouldLockIndicator, shouldLockDisableProps } =
-    useLockedFieldsManager({ eventType, translate: t, formMethods });
-
-  const lengthLockedProps = shouldLockDisableProps("length");
-  const descriptionLockedProps = shouldLockDisableProps("description");
-  const urlLockedProps = shouldLockDisableProps("slug");
-  const titleLockedProps = shouldLockDisableProps("title");
-
   return (
     <div>
       <div className={classNames("space-y-4", customClassNames?.wrapper)}>
@@ -105,7 +96,6 @@ export const EventSetupTab = (
             labelClassName={classNames(customClassNames?.titleSection?.titleInput?.label)}
             className={classNames(customClassNames?.titleSection?.titleInput?.input)}
             label={t("title")}
-            {...(isManagedEventType || isChildrenManagedEventType ? titleLockedProps : {})}
             defaultValue={eventType.title}
             data-testid="event-title"
             {...formMethods.register("title")}
@@ -113,9 +103,7 @@ export const EventSetupTab = (
           <div>
             {isPlatform ? (
               <TextAreaField
-                {...formMethods.register("description", {
-                  disabled: descriptionLockedProps.disabled,
-                })}
+                {...formMethods.register("description")}
                 placeholder={t("quick_video_meeting")}
                 className={customClassNames?.titleSection?.descriptionInput?.input}
                 labelProps={{
@@ -124,10 +112,7 @@ export const EventSetupTab = (
               />
             ) : (
               <>
-                <Label htmlFor="editor">
-                  {t("description")}
-                  {(isManagedEventType || isChildrenManagedEventType) && shouldLockIndicator("description")}
-                </Label>
+                <Label htmlFor="editor">{t("description")}</Label>
                 <Editor
                   getText={() => md.render(formMethods.getValues("description") || "")}
                   setText={(value: string) =>
@@ -135,7 +120,6 @@ export const EventSetupTab = (
                   }
                   excludedToolbarItems={["blockType"]}
                   placeholder={t("quick_video_meeting")}
-                  editable={!descriptionLockedProps.disabled}
                   firstRender={firstRender}
                   setFirstRender={setFirstRender}
                 />
@@ -151,14 +135,12 @@ export const EventSetupTab = (
                   formMethods.setValue("autoTranslateDescriptionEnabled", value, { shouldDirty: true });
                 }}
                 disabled={!orgId}
-                tooltip={!orgId ? t("orgs_upgrade_to_enable_feature") : undefined}
               />
             </div>
           )}
           <TextField
             required
             label={isPlatform ? "Slug" : t("URL")}
-            {...(isManagedEventType || isChildrenManagedEventType ? urlLockedProps : {})}
             defaultValue={eventType.slug}
             data-testid="event-slug"
             containerClassName={classNames(customClassNames?.titleSection?.urlInput?.container)}
@@ -168,11 +150,9 @@ export const EventSetupTab = (
               isPlatform ? undefined : (
                 <>
                   {urlPrefix}/
-                  {!isManagedEventType
-                    ? team
-                      ? (hasOrgBranding ? "" : "team/") + team.slug
-                      : formMethods.getValues("users")[0].username
-                    : t("username_placeholder")}
+                  {team
+                    ? (hasOrgBranding ? "" : "team/") + team.slug
+                    : formMethods.getValues("users")[0].username}
                   /
                 </>
               )
@@ -207,7 +187,6 @@ export const EventSetupTab = (
                   defaultValue={selectedMultipleDuration}
                   name="metadata.multipleDuration"
                   isSearchable={false}
-                  isDisabled={lengthLockedProps.disabled}
                   className={classNames(
                     "h-auto !min-h-[36px] text-sm",
                     customClassNames?.durationSection?.multipleDuration?.availableDurationsSelect?.select
@@ -253,7 +232,6 @@ export const EventSetupTab = (
                     customClassNames?.durationSection?.multipleDuration?.defaultDurationSelect?.label
                   }>
                   {t("default_duration")}
-                  {shouldLockIndicator("length")}
                 </Skeleton>
                 <Select
                   value={defaultDuration}
@@ -267,7 +245,6 @@ export const EventSetupTab = (
                     customClassNames?.durationSection?.multipleDuration?.defaultDurationSelect
                       ?.innerClassNames
                   }
-                  isDisabled={lengthLockedProps.disabled}
                   noOptionsMessage={() => t("default_duration_no_options")}
                   options={selectedMultipleDuration}
                   onChange={(option) => {
@@ -289,7 +266,6 @@ export const EventSetupTab = (
               labelClassName={classNames(customClassNames?.durationSection?.singleDurationInput?.label)}
               className={classNames(customClassNames?.durationSection?.singleDurationInput?.input)}
               data-testid="duration"
-              {...(isManagedEventType || isChildrenManagedEventType ? lengthLockedProps : {})}
               label={t("duration")}
               defaultValue={formMethods.getValues("length") ?? 15}
               {...formMethods.register("length")}
@@ -297,33 +273,31 @@ export const EventSetupTab = (
               min={1}
             />
           )}
-          {!lengthLockedProps.disabled && (
-            <div className="!mt-4 [&_label]:my-1 [&_label]:font-normal">
-              <SettingsToggle
-                title={t("allow_booker_to_select_duration")}
-                checked={multipleDuration !== undefined}
-                disabled={seatsEnabled}
-                tooltip={seatsEnabled ? t("seat_options_doesnt_multiple_durations") : undefined}
-                labelClassName={customClassNames?.durationSection?.selectDurationToggle?.label}
-                descriptionClassName={customClassNames?.durationSection?.selectDurationToggle?.description}
-                switchContainerClassName={customClassNames?.durationSection?.selectDurationToggle?.container}
-                childrenClassName={customClassNames?.durationSection?.selectDurationToggle?.children}
-                onCheckedChange={() => {
-                  if (multipleDuration !== undefined) {
-                    setMultipleDuration(undefined);
-                    setSelectedMultipleDuration([]);
-                    setDefaultDuration(null);
-                    formMethods.setValue("metadata.multipleDuration", undefined, { shouldDirty: true });
-                    formMethods.setValue("length", eventType.length, { shouldDirty: true });
-                  } else {
-                    setMultipleDuration([]);
-                    formMethods.setValue("metadata.multipleDuration", [], { shouldDirty: true });
-                    formMethods.setValue("length", 0, { shouldDirty: true });
-                  }
-                }}
-              />
-            </div>
-          )}
+          <div className="!mt-4 [&_label]:my-1 [&_label]:font-normal">
+            <SettingsToggle
+              title={t("allow_booker_to_select_duration")}
+              checked={multipleDuration !== undefined}
+              disabled={seatsEnabled}
+              tooltip={seatsEnabled ? t("seat_options_doesnt_multiple_durations") : undefined}
+              labelClassName={customClassNames?.durationSection?.selectDurationToggle?.label}
+              descriptionClassName={customClassNames?.durationSection?.selectDurationToggle?.description}
+              switchContainerClassName={customClassNames?.durationSection?.selectDurationToggle?.container}
+              childrenClassName={customClassNames?.durationSection?.selectDurationToggle?.children}
+              onCheckedChange={() => {
+                if (multipleDuration !== undefined) {
+                  setMultipleDuration(undefined);
+                  setSelectedMultipleDuration([]);
+                  setDefaultDuration(null);
+                  formMethods.setValue("metadata.multipleDuration", undefined, { shouldDirty: true });
+                  formMethods.setValue("length", eventType.length, { shouldDirty: true });
+                } else {
+                  setMultipleDuration([]);
+                  formMethods.setValue("metadata.multipleDuration", [], { shouldDirty: true });
+                  formMethods.setValue("length", 0, { shouldDirty: true });
+                }
+              }}
+            />
+          </div>
         </div>
         <div
           className={classNames(
@@ -337,9 +311,6 @@ export const EventSetupTab = (
               htmlFor="locations"
               className={customClassNames?.locationSection?.label}>
               {t("location")}
-              {/*improve shouldLockIndicator function to also accept eventType and then conditionally render
-              based on Managed Event type or not.*/}
-              {shouldLockIndicator("locations")}
             </Skeleton>
             <Controller
               name="locations"
@@ -348,9 +319,6 @@ export const EventSetupTab = (
               render={() => (
                 <Locations
                   showAppStoreLink={true}
-                  isChildrenManagedEventType={isChildrenManagedEventType}
-                  isManagedEventType={isManagedEventType}
-                  disableLocationProp={shouldLockDisableProps("locations").disabled}
                   getValues={formMethods.getValues as unknown as UseFormGetValues<LocationFormValues>}
                   setValue={formMethods.setValue as unknown as UseFormSetValue<LocationFormValues>}
                   control={formMethods.control as unknown as Control<LocationFormValues>}

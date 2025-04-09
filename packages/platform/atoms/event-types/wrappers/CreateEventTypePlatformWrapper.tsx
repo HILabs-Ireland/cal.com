@@ -68,7 +68,7 @@ export const CreateEventTypePlatformWrapper = ({
   customClassNames,
   onCancel,
 }: CreateEventTypeProps) => {
-  const { form, isManagedEventType } = useCreateEventTypeForm();
+  const { form } = useCreateEventTypeForm();
   const createEventTypeQuery = useCreateEventType({ onSuccess, onError });
   const createTeamEventTypeQuery = useCreateTeamEventType({ onSuccess, onError });
   const { data: teams } = useTeams();
@@ -84,7 +84,6 @@ export const CreateEventTypePlatformWrapper = ({
         urlPrefix=""
         isPending={createTeamEventTypeQuery.isPending}
         form={form}
-        isManagedEventType={isManagedEventType}
         handleSubmit={(values) => {
           createTeamEventTypeQuery.mutate({
             lengthInMinutes: values.length,
@@ -113,7 +112,6 @@ export const CreateEventTypePlatformWrapper = ({
         urlPrefix=""
         isPending={createEventTypeQuery.isPending}
         form={form}
-        isManagedEventType={isManagedEventType}
         handleSubmit={(values) => {
           createEventTypeQuery.mutate({
             lengthInMinutes: values.length,

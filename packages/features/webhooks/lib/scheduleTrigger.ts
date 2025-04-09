@@ -1,7 +1,6 @@
 import type { Prisma, Webhook, Booking } from "@prisma/client";
 import { v4 } from "uuid";
 
-import { selectOOOEntries } from "@calcom/app-store/zapier/api/subscriptions/listOOOEntries";
 import { getHumanReadableLocationValue } from "@calcom/core/location";
 import { getCalEventResponses } from "@calcom/features/bookings/lib/getCalEventResponses";
 import logger from "@calcom/lib/logger";
@@ -220,8 +219,6 @@ export async function listBookings(
             title: true,
             description: true,
             requiresConfirmation: true,
-            price: true,
-            currency: true,
             length: true,
             bookingFields: true,
             team: true,
@@ -486,57 +483,4 @@ export async function updateTriggerForExistingBookings(
     deleteWebhookScheduledTriggers({ triggerEvent, webhookId: webhook.id })
   );
   await Promise.all(promise);
-}
-
-export async function listOOOEntries(
-  appApiKey?: ApiKey,
-  account?: {
-    id: number;
-    name: string | null;
-    isTeam: boolean;
-  } | null
-) {
-  const userId = appApiKey ? appApiKey.userId : account && !account.isTeam ? account.id : null;
-  const teamId = appApiKey ? appApiKey.teamId : account && account.isTeam ? account.id : null;
-
-  try {
-    const where: Prisma.OutOfOfficeEntryWhereInput = {};
-    if (teamId) {
-      where.user = {
-        teams: {
-          some: {
-            teamId,
-          },
-        },
-      };
-    } else if (userId) {
-      where.userId = userId;
-    }
-
-    // early return
-    if (!where.userId && !where.user) {
-      return [];
-    }
-
-    const oooEntries = await prisma.outOfOfficeEntry.findMany({
-      where: {
-        ...where,
-      },
-      take: 3,
-      orderBy: {
-        id: "desc",
-      },
-      select: selectOOOEntries,
-    });
-
-    if (oooEntries.length === 0) {
-      return [];
-    }
-    return oooEntries;
-  } catch (err) {
-    log.error(
-      `Error retrieving list of ooo entries for user ${userId}. or teamId ${teamId}`,
-      safeStringify(err)
-    );
-  }
 }

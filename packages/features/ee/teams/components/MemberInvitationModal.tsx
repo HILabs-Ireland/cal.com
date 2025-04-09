@@ -29,7 +29,6 @@ import {
 } from "@calcom/ui";
 
 import type { PendingMember } from "../lib/types";
-import { GoogleWorkspaceInviteButton } from "./GoogleWorkspaceInviteButton";
 
 type MemberInvitationModalProps = {
   isOpen: boolean;
@@ -306,11 +305,6 @@ export default function MemberInvitationModal(props: MemberInvitationModalProps)
                   )}
                 />
 
-                <GoogleWorkspaceInviteButton
-                  onSuccess={(data) => {
-                    newMemberFormMethods.setValue("emailOrUsername", data);
-                  }}
-                />
                 <Button
                   type="button"
                   color="secondary"

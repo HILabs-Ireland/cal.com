@@ -14,8 +14,6 @@ import { useForm, useFormContext } from "react-hook-form";
 import { Toaster } from "react-hot-toast";
 import { z } from "zod";
 
-import getStripe from "@calcom/app-store/stripepayment/lib/client";
-import { getPremiumPlanPriceValue } from "@calcom/app-store/stripepayment/lib/utils";
 import { getOrgUsernameFromEmail } from "@calcom/features/auth/signup/utils/getOrgUsernameFromEmail";
 import { getOrgFullOrigin } from "@calcom/features/ee/organizations/lib/orgDomains";
 import { classNames } from "@calcom/lib";
@@ -39,17 +37,7 @@ import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { collectPageParameters, telemetryEventTypes, useTelemetry } from "@calcom/lib/telemetry";
 import { signupSchema as apiSignupSchema } from "@calcom/prisma/zod-utils";
 import type { inferSSRProps } from "@calcom/types/inferSSRProps";
-import {
-  Button,
-  HeadSeo,
-  PasswordField,
-  TextField,
-  Form,
-  Alert,
-  CheckboxField,
-  Icon,
-  showToast,
-} from "@calcom/ui";
+import { Button, HeadSeo, PasswordField, TextField, Form, Alert, CheckboxField, Icon } from "@calcom/ui";
 
 import type { getServerSideProps } from "@lib/signup/getServerSideProps";
 
@@ -90,8 +78,6 @@ const FEATURES = [
 
 function UsernameField({
   username,
-  setPremium,
-  premium,
   setUsernameTaken,
   orgSlug,
   usernameTaken,
@@ -99,8 +85,6 @@ function UsernameField({
   ...props
 }: React.ComponentProps<typeof TextField> & {
   username: string;
-  setPremium: (value: boolean) => void;
-  premium: boolean;
   usernameTaken: boolean;
   orgSlug?: string;
   setUsernameTaken: (value: boolean) => void;
@@ -116,12 +100,10 @@ function UsernameField({
       // If the username can't be changed, there is no point in doing the username availability check
       if (disabled) return;
       if (!debouncedUsername) {
-        setPremium(false);
         setUsernameTaken(false);
         return;
       }
       fetchUsername(debouncedUsername, orgSlug ?? null).then(({ data }) => {
-        setPremium(data.premium);
         setUsernameTaken(!data.available);
       });
     }
@@ -146,15 +128,6 @@ function UsernameField({
                 <Icon name="info" className="mr-1 inline-block h-4 w-4" />
                 <p>{t("already_in_use_error")}</p>
               </div>
-            ) : premium ? (
-              <div data-testid="premium-username-warning" className="flex items-center">
-                <Icon name="star" className="mr-1 inline-block h-4 w-4" />
-                <p>
-                  {t("premium_username", {
-                    price: getPremiumPlanPriceValue(),
-                  })}
-                </p>
-              </div>
             ) : null}
           </div>
         </div>
@@ -174,14 +147,11 @@ export default function Signup({
   token,
   orgSlug,
   isGoogleLoginEnabled,
-  isSAMLLoginEnabled,
   orgAutoAcceptEmail,
   redirectUrl,
   emailVerificationEnabled,
 }: SignupProps) {
   const isOrgInviteByLink = orgSlug && !prepopulateFormValues?.username;
-  const [isSamlSignup, setIsSamlSignup] = useState(false);
-  const [premiumUsername, setPremiumUsername] = useState(false);
   const [usernameTaken, setUsernameTaken] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [displayEmailForm, setDisplayEmailForm] = useState(token);
@@ -215,21 +185,10 @@ export default function Signup({
   const loadingSubmitState = isSubmitSuccessful || isSubmitting;
   const displayBackButton = token ? false : displayEmailForm;
 
-  const handleErrorsAndStripe = async (resp: Response) => {
+  const handleErrors = async (resp: Response) => {
     if (!resp.ok) {
       const err = await resp.json();
-      if (err.checkoutSessionId) {
-        const stripe = await getStripe();
-        if (stripe) {
-          console.log("Redirecting to stripe checkout");
-          const { error } = await stripe.redirectToCheckout({
-            sessionId: err.checkoutSessionId,
-          });
-          console.warn(error.message);
-        }
-      } else {
-        throw new Error(err.message);
-      }
+      throw new Error(err.message);
     }
   };
 
@@ -249,7 +208,7 @@ export default function Signup({
       },
       method: "POST",
     })
-      .then(handleErrorsAndStripe)
+      .then(handleErrors)
       .then(async () => {
         if (process.env.NEXT_PUBLIC_GTM_ID)
           pushGTMEvent("create_account", { email: data.email, user: data.username, lang: data.language });
@@ -257,7 +216,6 @@ export default function Signup({
         telemetry.event(telemetryEventTypes.signup, collectPageParameters());
 
         const verifyOrGettingStarted = emailVerificationEnabled ? "auth/verify-email" : "getting-started";
-        const gettingStartedWithPlatform = "settings/platform/new";
 
         const constructCallBackIfUrlPresent = () => {
           if (isOrgInviteByLink) {
@@ -268,10 +226,6 @@ export default function Signup({
         };
 
         const constructCallBackIfUrlNotPresent = () => {
-          if (!!isPlatformUser) {
-            return `${WEBAPP_URL}/${gettingStartedWithPlatform}?from=signup`;
-          }
-
           return `${WEBAPP_URL}/${verifyOrGettingStarted}?from=signup`;
         };
 
@@ -349,7 +303,6 @@ export default function Signup({
                   data-testid="signup-back-button"
                   onClick={() => {
                     setDisplayEmailForm(false);
-                    setIsSamlSignup(false);
                   }}>
                   {t("back")}
                 </Button>
@@ -392,12 +345,10 @@ export default function Signup({
                       orgSlug={orgSlug}
                       label={t("username")}
                       username={watch("username") || ""}
-                      premium={premiumUsername}
                       usernameTaken={usernameTaken}
                       disabled={!!orgSlug}
                       setUsernameTaken={(value) => setUsernameTaken(value)}
                       data-testid="signup-usernamefield"
-                      setPremium={(value) => setPremiumUsername(value)}
                       addOnLeading={
                         orgSlug
                           ? `${getOrgFullOrigin(orgSlug, { protocol: true }).replace(
@@ -418,14 +369,12 @@ export default function Signup({
                   />
 
                   {/* Password */}
-                  {!isSamlSignup && (
-                    <PasswordField
-                      data-testid="signup-passwordfield"
-                      label={t("password")}
-                      {...register("password")}
-                      hintErrors={["caplow", "min", "num"]}
-                    />
-                  )}
+                  <PasswordField
+                    data-testid="signup-passwordfield"
+                    label={t("password")}
+                    {...register("password")}
+                    hintErrors={["caplow", "min", "num"]}
+                  />
                   {/* Cloudflare Turnstile Captcha */}
                   {CLOUDFLARE_SITE_ID ? (
                     <TurnstileCaptcha
@@ -449,65 +398,24 @@ export default function Signup({
                       data-testid="signup-error-message"
                     />
                   )}
-                  {isSamlSignup ? (
-                    <Button
-                      data-testid="saml-submit-button"
-                      color="primary"
-                      disabled={
-                        !!formMethods.formState.errors.username ||
-                        !!formMethods.formState.errors.email ||
-                        !formMethods.getValues("email") ||
-                        !formMethods.getValues("username") ||
-                        premiumUsername ||
-                        isSubmitting
-                      }
-                      onClick={() => {
-                        const username = formMethods.getValues("username");
-                        if (!username) {
-                          // should not be reached but needed to bypass type errors
-                          showToast("error", t("username_required"));
-                          return;
-                        }
-                        localStorage.setItem("username", username);
-                        const sp = new URLSearchParams();
-                        // @NOTE: don't remove username query param as it's required right now for stripe payment page
-                        sp.set("username", username);
-                        sp.set("email", formMethods.getValues("email"));
-                        router.push(
-                          `${process.env.NEXT_PUBLIC_WEBAPP_URL}/auth/sso/saml` + `?${sp.toString()}`
-                        );
-                      }}
-                      className={classNames(
-                        "my-2 w-full justify-center rounded-md text-center",
-                        formMethods.formState.errors.username && formMethods.formState.errors.email
-                          ? "opacity-50"
-                          : ""
-                      )}>
-                      <Icon name="shield-check" className="mr-2 h-5 w-5" />
-                      {t("create_account_with_saml")}
-                    </Button>
-                  ) : (
-                    <Button
-                      type="submit"
-                      data-testid="signup-submit-button"
-                      className="my-2 w-full justify-center"
-                      loading={loadingSubmitState}
-                      disabled={
-                        !!formMethods.formState.errors.username ||
-                        !!formMethods.formState.errors.email ||
-                        !formMethods.getValues("email") ||
-                        !formMethods.getValues("password") ||
-                        (CLOUDFLARE_SITE_ID &&
-                          !process.env.NEXT_PUBLIC_IS_E2E &&
-                          !formMethods.getValues("cfToken")) ||
-                        isSubmitting ||
-                        usernameTaken
-                      }>
-                      {premiumUsername && !usernameTaken
-                        ? `${t("create_account")} (${getPremiumPlanPriceValue()})`
-                        : t("create_account")}
-                    </Button>
-                  )}
+                  <Button
+                    type="submit"
+                    data-testid="signup-submit-button"
+                    className="my-2 w-full justify-center"
+                    loading={loadingSubmitState}
+                    disabled={
+                      !!formMethods.formState.errors.username ||
+                      !!formMethods.formState.errors.email ||
+                      !formMethods.getValues("email") ||
+                      !formMethods.getValues("password") ||
+                      (CLOUDFLARE_SITE_ID &&
+                        !process.env.NEXT_PUBLIC_IS_E2E &&
+                        !formMethods.getValues("cfToken")) ||
+                      isSubmitting ||
+                      usernameTaken
+                    }>
+                    {t("create_account")}
+                  </Button>
                 </Form>
               </div>
             )}
@@ -521,7 +429,7 @@ export default function Signup({
                       loading={isGoogleLoading}
                       CustomStartIcon={
                         <img
-                          className={classNames("text-subtle  mr-2 h-4 w-4", premiumUsername && "opacity-50")}
+                          className={classNames("text-subtle  mr-2 h-4 w-4")}
                           src="/google-icon-colored.svg"
                           alt="Continue with Google Icon"
                         />
@@ -529,7 +437,6 @@ export default function Signup({
                       className={classNames("w-full justify-center rounded-md text-center")}
                       data-testid="continue-with-google-button"
                       onClick={async () => {
-                        setIsSamlSignup(false);
                         setIsGoogleLoading(true);
                         const baseUrl = process.env.NEXT_PUBLIC_WEBAPP_URL;
                         const GOOGLE_AUTH_URL = `${baseUrl}/auth/sso/google`;
@@ -573,24 +480,10 @@ export default function Signup({
                     className={classNames("w-full justify-center rounded-md text-center")}
                     onClick={() => {
                       setDisplayEmailForm(true);
-                      setIsSamlSignup(false);
                     }}
                     data-testid="continue-with-email-button">
                     {t("continue_with_email")}
                   </Button>
-                  {isSAMLLoginEnabled && (
-                    <Button
-                      data-testid="continue-with-saml-button"
-                      color="minimal"
-                      disabled={isGoogleLoading}
-                      className={classNames("w-full justify-center rounded-md text-center")}
-                      onClick={() => {
-                        setDisplayEmailForm(true);
-                        setIsSamlSignup(true);
-                      }}>
-                      {`${t("or").toLocaleLowerCase()} ${t("saml_sso")}`}
-                    </Button>
-                  )}
                 </div>
               </div>
             )}

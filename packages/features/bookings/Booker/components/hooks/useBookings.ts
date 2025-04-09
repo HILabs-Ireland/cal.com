@@ -2,7 +2,6 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useRef, useState, useEffect } from "react";
 
-import { createPaymentLink } from "@calcom/app-store/stripepayment/lib/client";
 import { useHandleBookEvent } from "@calcom/atoms/monorepo";
 import dayjs from "@calcom/dayjs";
 import { sdkActionManager } from "@calcom/embed-core/embed-iframe";
@@ -57,7 +56,6 @@ const getBookingSuccessfulEventPayload = (booking: {
   endTime: string;
   eventTypeId?: number | null;
   status?: BookingStatus;
-  paymentRequired: boolean;
   uid?: string;
   isRecurring: boolean;
 }) => {
@@ -68,7 +66,6 @@ const getBookingSuccessfulEventPayload = (booking: {
     endTime: booking.endTime,
     eventTypeId: booking.eventTypeId,
     status: booking.status,
-    paymentRequired: booking.paymentRequired,
     isRecurring: booking.isRecurring,
   };
 };
@@ -184,7 +181,7 @@ export const useBookings = ({ event, hashedLink, bookingForm, metadata, teamMemb
         router.push("/booking/dry-run-successful");
         return;
       }
-      const { uid, paymentUid } = booking;
+      const { uid } = booking;
       const fullName = getFullName(bookingForm.getValues("responses.name"));
 
       const users = !!event.data?.hosts?.length
@@ -240,19 +237,6 @@ export const useBookings = ({ event, hashedLink, bookingForm, metadata, teamMemb
         );
       }
 
-      if (paymentUid) {
-        router.push(
-          createPaymentLink({
-            paymentUid,
-            date: timeslot,
-            name: fullName,
-            email: bookingForm.getValues("responses.email"),
-            absolute: false,
-          })
-        );
-        return;
-      }
-
       if (!uid) {
         console.error("No uid returned from createBookingMutation");
         return;
@@ -286,7 +270,7 @@ export const useBookings = ({ event, hashedLink, bookingForm, metadata, teamMemb
 
   const createInstantBookingMutation = useMutation({
     mutationFn: createInstantBooking,
-    onSuccess: (responseData) => {
+    onSuccess: (responseData: any) => {
       if (eventTypeId) {
         storeInLocalStorage({
           eventTypeId,

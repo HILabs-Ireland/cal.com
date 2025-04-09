@@ -12,7 +12,6 @@ import classNames from "@calcom/lib/classNames";
 import { APP_NAME } from "@calcom/lib/constants";
 import { useFormbricks } from "@calcom/lib/formbricks-client";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
-import { useNotifications } from "@calcom/lib/hooks/useNotifications";
 import { Button, ErrorBoundary, HeadSeo, SkeletonText } from "@calcom/ui";
 
 import { SideBarContainer } from "./SideBar";
@@ -135,8 +134,6 @@ export default function Shell(props: LayoutProps) {
 export function ShellMain(props: LayoutProps) {
   const router = useRouter();
   const { isLocaleReady, t } = useLocale();
-
-  const { buttonToShow, isLoading, enableNotifications, disableNotifications } = useNotifications();
 
   return (
     <>

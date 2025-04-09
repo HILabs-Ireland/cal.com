@@ -4,18 +4,15 @@ import type { UserPermissionRole } from "@prisma/client";
 import { uuid } from "short-uuid";
 import type z from "zod";
 
-import dailyMeta from "@calcom/app-store/dailyvideo/_metadata";
-import googleMeetMeta from "@calcom/app-store/googlevideo/_metadata";
-import zoomMeta from "@calcom/app-store/zoomvideo/_metadata";
 import dayjs from "@calcom/dayjs";
 import { getOrgFullOrigin } from "@calcom/ee/organizations/lib/orgDomains";
+import { hashAPIKey } from "@calcom/features/api-keys/lib/apiKeys";
 import { hashPassword } from "@calcom/features/auth/lib/hashPassword";
 import { DEFAULT_SCHEDULE, getAvailabilityFromSchedule } from "@calcom/lib/availability";
 import { BookingStatus, MembershipRole, RedirectType, SchedulingType } from "@calcom/prisma/enums";
 import type { Ensure } from "@calcom/types/utils";
 
 import prisma from ".";
-import mainAppStore from "./seed-app-store";
 import mainHugeEventTypesSeed from "./seed-huge-event-types";
 import { createUserAndEventType } from "./seed-utils";
 import type { teamMetadataSchema } from "./zod-utils";
@@ -668,34 +665,10 @@ async function main() {
         },
       },
       {
-        title: "paid",
-        slug: "paid",
-        length: 60,
-        price: 100,
-      },
-      {
         title: "In person meeting",
         slug: "in-person",
         length: 60,
         locations: [{ type: "inPerson", address: "London" }],
-      },
-      {
-        title: "Zoom Event",
-        slug: "zoom",
-        length: 60,
-        locations: [{ type: zoomMeta.appData?.location?.type }],
-      },
-      {
-        title: "Daily Event",
-        slug: "daily",
-        length: 60,
-        locations: [{ type: dailyMeta.appData?.location?.type }],
-      },
-      {
-        title: "Google Meet",
-        slug: "google-meet",
-        length: 60,
-        locations: [{ type: googleMeetMeta.appData?.location?.type }],
       },
       {
         title: "Yoga class",
@@ -843,27 +816,6 @@ async function main() {
 
   await createUserAndEventType({
     user: {
-      email: "trial@example.com",
-      password: "trial",
-      username: "trial",
-      name: "Trial Example",
-    },
-    eventTypes: [
-      {
-        title: "30min",
-        slug: "30min",
-        length: 30,
-      },
-      {
-        title: "60min",
-        slug: "60min",
-        length: 60,
-      },
-    ],
-  });
-
-  await createUserAndEventType({
-    user: {
       email: "free@example.com",
       password: "free",
       username: "free",
@@ -928,6 +880,101 @@ async function main() {
       role: "ADMIN",
     },
   });
+
+  await createTeamAndAddUsers(
+    {
+      name: "Alternaleaf - Nurses",
+      slug: "alternaleaf-nurses",
+      isOrganization: false,
+      isPlatform: false,
+      eventTypes: {
+        createMany: {
+          data: [
+            {
+              title: "Round Robin Nurse Team Event",
+              slug: "round-robin-nurse-team-event",
+              length: 15,
+              schedulingType: "ROUND_ROBIN",
+            },
+          ],
+        },
+      },
+      createdAt: new Date(),
+    },
+    []
+  );
+
+  await createTeamAndAddUsers(
+    {
+      name: "Alternaleaf - Doctors",
+      slug: "alternaleaf-doctors",
+      isOrganization: false,
+      isPlatform: false,
+      eventTypes: {
+        createMany: {
+          data: [
+            {
+              title: "Round Robin Doctor Team Event",
+              slug: "round-robin-doctor-team-event",
+              length: 15,
+              schedulingType: "ROUND_ROBIN",
+            },
+          ],
+        },
+      },
+      createdAt: new Date(),
+    },
+    []
+  );
+
+  const adminUser = await prisma.user.findUnique({
+    where: { email: "admin@example.com" },
+  });
+
+  if (!adminUser) {
+    throw Error("Admin user not found");
+  }
+
+  const adminApiKey = hashAPIKey("test-admin-key");
+
+  await prisma.apiKey.create({
+    data: {
+      id: uuid(),
+      userId: adminUser.id,
+      note: "Admin API Key",
+      expiresAt: null,
+      hashedKey: adminApiKey,
+    },
+  });
+  const existingMembership = await prisma.membership.findUnique({
+    where: {
+      userId_teamId: {
+        userId: adminUser.id,
+        teamId: 1,
+      },
+    },
+  });
+
+  if (!existingMembership) {
+    await prisma.membership.createMany({
+      data: [
+        {
+          teamId: 1,
+          userId: adminUser.id,
+          accepted: true,
+          role: "ADMIN",
+          disableImpersonation: false,
+        },
+        {
+          teamId: 2,
+          userId: adminUser.id,
+          accepted: true,
+          role: "ADMIN",
+          disableImpersonation: false,
+        },
+      ],
+    });
+  }
 
   await createPlatformAndSetupUser({
     teamInput: {
@@ -1235,8 +1282,7 @@ async function main() {
 }
 
 main()
-  .then(() => mainAppStore())
-  .then(() => mainHugeEventTypesSeed())
+  .then(mainHugeEventTypesSeed)
   .catch((e) => {
     console.error(e);
     process.exit(1);

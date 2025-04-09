@@ -37,30 +37,9 @@ test.describe("Onboarding", () => {
           .first()
           .click();
         await page.locator("button[type=submit]").click();
-
-        await expect(page).toHaveURL(/.*connected-calendar/);
-
-        const userComplete = await user.self();
-        expect(userComplete.name).toBe("new user 2");
       });
 
-      await test.step("step 2 - Connected Calendar", async () => {
-        const isDisabled = await page.locator("button[data-testid=save-calendar-button]").isDisabled();
-        await expect(isDisabled).toBe(true);
-        // tests skip button, we don't want to test entire flow.
-        await page.locator("button[data-testid=skip-step]").click();
-        await expect(page).toHaveURL(/.*connected-video/);
-      });
-
-      await test.step("step 3 - Connected Video", async () => {
-        const isDisabled = await page.locator("button[data-testid=save-video-button]").isDisabled();
-        await expect(isDisabled).toBe(true);
-        // tests skip button, we don't want to test entire flow.
-        await page.locator("button[data-testid=skip-step]").click();
-        await expect(page).toHaveURL(/.*setup-availability/);
-      });
-
-      await test.step("step 4 - Setup Availability", async () => {
+      await test.step("step 2 - Setup Availability", async () => {
         const isDisabled = await page.locator("button[data-testid=save-availability]").isDisabled();
         await expect(isDisabled).toBe(false);
         // same here, skip this step.
@@ -69,7 +48,7 @@ test.describe("Onboarding", () => {
         await expect(page).toHaveURL(/.*user-profile/);
       });
 
-      await test.step("step 5- User Profile", async () => {
+      await test.step("step 3 - User Profile", async () => {
         await page.locator("button[type=submit]").click();
         // should redirect to /event-types after onboarding
         await page.waitForURL("/event-types");
@@ -77,10 +56,12 @@ test.describe("Onboarding", () => {
         const userComplete = await user.self();
         expect(userComplete.bio?.replace("<p><br></p>", "").length).toBe(0);
       });
+
+      const userComplete = await user.self();
+      expect(userComplete.name).toBe("new user 2");
     });
   };
 
   testOnboarding(IdentityProvider.GOOGLE);
   testOnboarding(IdentityProvider.CAL);
-  testOnboarding(IdentityProvider.SAML);
 });

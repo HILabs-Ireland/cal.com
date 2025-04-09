@@ -23,11 +23,9 @@ export async function handleBookingRequested(args: {
       team?: {
         parentId: number | null;
       } | null;
-      currency: string;
       description: string | null;
       id: number;
       length: number;
-      price: number;
       requiresConfirmation: boolean;
       title: string;
       teamId?: number | null;

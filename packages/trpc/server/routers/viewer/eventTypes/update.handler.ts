@@ -1,8 +1,6 @@
 import { Prisma } from "@prisma/client";
 import type { NextApiResponse, GetServerSidePropsContext } from "next";
 
-import type { appDataSchemas } from "@calcom/app-store/apps.schemas.generated";
-import updateChildrenEventTypes from "@calcom/features/ee/managed-event-types/lib/handleChildrenEventTypes";
 import {
   allowDisablingAttendeeConfirmationEmails,
   allowDisablingHostConfirmationEmails,
@@ -15,12 +13,10 @@ import { validateBookerLayouts } from "@calcom/lib/validateBookerLayouts";
 import type { PrismaClient } from "@calcom/prisma";
 import { WorkflowTriggerEvents } from "@calcom/prisma/client";
 import { SchedulingType, EventTypeAutoTranslatedField } from "@calcom/prisma/enums";
-import { eventTypeAppMetadataOptionalSchema } from "@calcom/prisma/zod-utils";
 
 import { TRPCError } from "@trpc/server";
 
 import type { TrpcSessionUser } from "../../../trpc";
-import { setDestinationCalendarHandler } from "../../loggedInViewer/setDestinationCalendar.handler";
 import type { TUpdateInputSchema } from "./update.schema";
 import {
   ensureUniqueBookingFields,
@@ -201,17 +197,6 @@ export const updateHandler = async ({ ctx, input }: UpdateOptions) => {
     data.recurringEvent = Prisma.DbNull;
   }
 
-  if (destinationCalendar) {
-    /** We connect or create a destination calendar to the event type instead of the user */
-    await setDestinationCalendarHandler({
-      ctx,
-      input: {
-        ...destinationCalendar,
-        eventTypeId: id,
-      },
-    });
-  }
-
   if (customInputs) {
     data.customInputs = handleCustomInputs(customInputs, id);
   }
@@ -383,16 +368,6 @@ export const updateHandler = async ({ ctx, input }: UpdateOptions) => {
     }
   }
 
-  const apps = eventTypeAppMetadataOptionalSchema.parse(input.metadata?.apps);
-  for (const appKey in apps) {
-    const app = apps[appKey as keyof typeof appDataSchemas];
-    // There should only be one enabled payment app in the metadata
-    if (app.enabled && app.price && app.currency) {
-      data.price = app.price;
-      data.currency = app.currency;
-      break;
-    }
-  }
   const connectedLinks = await ctx.prisma.hashedLink.findMany({
     where: {
       eventTypeId: input.id,
@@ -548,18 +523,6 @@ export const updateHandler = async ({ ctx, input }: UpdateOptions) => {
     }
     return acc;
   }, {});
-
-  // Handling updates to children event types (managed events types)
-  await updateChildrenEventTypes({
-    eventTypeId: id,
-    currentUserId: ctx.user.id,
-    oldEventType: eventType,
-    updatedEventType,
-    children,
-    profileId: ctx.user.profile.id,
-    prisma: ctx.prisma,
-    updatedValues,
-  });
 
   const res = ctx.res as NextApiResponse;
   if (typeof res?.revalidate !== "undefined") {

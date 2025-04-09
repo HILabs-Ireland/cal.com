@@ -120,13 +120,6 @@ import { schemaQuerySingleOrMultipleUserIds } from "~/lib/validations/shared/que
  *                         "timeZone": "Asia/Kolkata",
  *                         "locale": "en"
  *                       },
- *                       "payment": [
- *                         {
- *                           "id": 1,
- *                           "success": true,
- *                           "paymentOption": "ON_BOOKING"
- *                         }
- *                       ],
  *                       "metadata": {},
  *                       "status": "ACCEPTED",
  *                       "responses": {
@@ -227,7 +220,6 @@ export async function handler(req: NextApiRequest) {
   args.include = {
     attendees: true,
     user: true,
-    payment: true,
     eventType: expand.includes("team") ? { include: { team: true } } : false,
   };
 

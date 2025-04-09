@@ -1,4 +1,3 @@
-export { AttendeeAwaitingPaymentEmail } from "./AttendeeAwaitingPaymentEmail";
 export { AttendeeCancelledEmail } from "./AttendeeCancelledEmail";
 export { AttendeeCancelledSeatEmail } from "./AttendeeCancelledSeatEmail";
 export { AttendeeDeclinedEmail } from "./AttendeeDeclinedEmail";
@@ -15,7 +14,6 @@ export { ForgotPasswordEmail } from "./ForgotPasswordEmail";
 export { OrganizerCancelledEmail } from "./OrganizerCancelledEmail";
 export { OrganizerReassignedEmail } from "./OrganizerReassignedEmail";
 export { OrganizerLocationChangeEmail } from "./OrganizerLocationChangeEmail";
-export { OrganizerPaymentRefundFailedEmail } from "./OrganizerPaymentRefundFailedEmail";
 export { OrganizerRequestEmail } from "./OrganizerRequestEmail";
 export { OrganizerRequestEmailV2 } from "./OrganizerRequestEmailV2";
 export { OrganizerRequestReminderEmail } from "./OrganizerRequestReminderEmail";
@@ -23,14 +21,10 @@ export { OrganizerRequestedToRescheduleEmail } from "./OrganizerRequestedToResch
 export { OrganizerRescheduledEmail } from "./OrganizerRescheduledEmail";
 export { OrganizerScheduledEmail } from "./OrganizerScheduledEmail";
 export { TeamInviteEmail } from "./TeamInviteEmail";
-export { BrokenIntegrationEmail } from "./BrokenIntegrationEmail";
 export { OrganizerAttendeeCancelledSeatEmail } from "./OrganizerAttendeeCancelledSeatEmail";
-export { NoShowFeeChargedEmail } from "./NoShowFeeChargedEmail";
 export { VerifyAccountEmail } from "./VerifyAccountEmail";
 export { VerifyEmailByCode } from "./VerifyEmailByCode";
 export * from "@calcom/app-store/routing-forms/emails/components";
-export { DailyVideoDownloadRecordingEmail } from "./DailyVideoDownloadRecordingEmail";
-export { DailyVideoDownloadTranscriptEmail } from "./DailyVideoDownloadTranscriptEmail";
 export { OrganisationAccountVerifyEmail } from "./OrganizationAccountVerifyEmail";
 export { OrgAutoInviteEmail } from "./OrgAutoInviteEmail";
 export { MonthlyDigestEmail } from "./MonthlyDigestEmail";

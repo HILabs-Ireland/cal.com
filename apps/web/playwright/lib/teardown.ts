@@ -40,32 +40,3 @@ export const deleteAllWebhooksByEmail = async (email: string) => {
     },
   });
 };
-
-export const deleteAllPaymentsByEmail = async (email: string) => {
-  await prisma.payment.deleteMany({
-    where: {
-      booking: {
-        user: {
-          email,
-        },
-      },
-    },
-  });
-};
-
-export const deleteAllPaymentCredentialsByEmail = async (email: string) => {
-  await prisma.user.update({
-    where: {
-      email,
-    },
-    data: {
-      credentials: {
-        deleteMany: {
-          type: {
-            endsWith: "_payment",
-          },
-        },
-      },
-    },
-  });
-};

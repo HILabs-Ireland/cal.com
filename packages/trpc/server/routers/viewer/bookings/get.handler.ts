@@ -229,9 +229,7 @@ export async function getBookings({
         id: true,
         title: true,
         eventName: true,
-        price: true,
         recurringEvent: true,
-        currency: true,
         metadata: true,
         seatsShowAttendees: true,
         seatsShowAvailabilityCount: true,
@@ -248,15 +246,6 @@ export async function getBookings({
       },
     },
     status: true,
-    paid: true,
-    payment: {
-      select: {
-        paymentOption: true,
-        amount: true,
-        currency: true,
-        success: true,
-      },
-    },
     user: {
       select: {
         id: true,
@@ -314,7 +303,6 @@ export async function getBookings({
     bookingsQueryUserId,
     bookingsQueryAttendees,
     bookingsQueryTeamMember,
-    bookingsQueryManagedEvents,
     bookingsQueryOrganizationMembers,
     bookingsQuerySeatReference,
     //////////////////////////
@@ -364,21 +352,6 @@ export async function getBookings({
             },
           },
         ],
-        AND: [passedBookingsStatusFilter, ...filtersCombined],
-      },
-      orderBy,
-      take: take + 1,
-      skip,
-    }),
-    prisma.booking.findMany({
-      where: {
-        eventType: {
-          parent: {
-            team: {
-              members: membershipConditionWhereUserIsAdminOwner,
-            },
-          },
-        },
         AND: [passedBookingsStatusFilter, ...filtersCombined],
       },
       orderBy,
@@ -491,7 +464,6 @@ export async function getBookings({
     bookingsQueryUserId
       .concat(bookingsQueryAttendees)
       .concat(bookingsQueryTeamMember)
-      .concat(bookingsQueryManagedEvents)
       .concat(bookingsQueryOrganizationMembers)
       .concat(bookingsQuerySeatReference)
   );
@@ -536,8 +508,6 @@ export async function getBookings({
           ...booking.eventType,
           recurringEvent: parseRecurringEvent(booking.eventType?.recurringEvent),
           eventTypeColor: parseEventTypeColor(booking.eventType?.eventTypeColor),
-          price: booking.eventType?.price || 0,
-          currency: booking.eventType?.currency || "usd",
           metadata: EventTypeMetaDataSchema.parse(booking.eventType?.metadata || {}),
         },
         startTime: booking.startTime.toISOString(),

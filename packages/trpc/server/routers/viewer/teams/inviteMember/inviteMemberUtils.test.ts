@@ -74,7 +74,6 @@ const mockedRegularTeam: TeamWithParent = {
   appIconLogo: null,
   bio: null,
   hideBranding: false,
-  pendingPayment: false,
   hideBookATeamMember: false,
   createdAt: new Date(),
   brandColor: "#292929",

@@ -41,5 +41,4 @@ vscode:
     - dbaeumer.vscode-eslint
     - bradlc.vscode-tailwindcss
     - ban.spellright
-    - stripe.vscode-stripe
     - Prisma.prisma

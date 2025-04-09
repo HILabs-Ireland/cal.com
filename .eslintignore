@@ -1,5 +1,4 @@
 node_modules
-apps/api/v2/dist
 packages/platform/**/dist/*
 **/**/node_modules
 **/**/.next

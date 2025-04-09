@@ -20,8 +20,6 @@ import {
 // TODO (Platform): we shouldnt be importing from web here
 import { useGetUserAttributes } from "@calcom/web/components/settings/platform/hooks/useGetUserAttributes";
 
-import FreshChatProvider from "../../ee/support/lib/freshchat/FreshChatProvider";
-
 declare global {
   interface Window {
     Plain?: {
@@ -113,95 +111,81 @@ export function UserDropdown({ small }: UserDropdownProps) {
       </DropdownMenuTrigger>
 
       <DropdownMenuPortal>
-        <FreshChatProvider>
-          <DropdownMenuContent
-            align="start"
-            onInteractOutside={() => {
-              setMenuOpen(false);
-            }}
-            className="group overflow-hidden rounded-md">
-            <>
-              {!isPlatformPages && (
-                <>
-                  <DropdownMenuItem>
-                    <DropdownItem
-                      type="button"
-                      CustomStartIcon={
-                        <Icon name="user" className="text-default h-4 w-4" aria-hidden="true" />
-                      }
-                      href="/settings/my-account/profile">
-                      {t("my_profile")}
-                    </DropdownItem>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <DropdownItem
-                      type="button"
-                      CustomStartIcon={
-                        <Icon name="settings" className="text-default h-4 w-4" aria-hidden="true" />
-                      }
-                      href="/settings/my-account/general">
-                      {t("my_settings")}
-                    </DropdownItem>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <DropdownItem
-                      type="button"
-                      CustomStartIcon={
-                        <Icon name="moon" className="text-default h-4 w-4" aria-hidden="true" />
-                      }
-                      href="/settings/my-account/out-of-office">
-                      {t("out_of_office")}
-                    </DropdownItem>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                </>
-              )}
-
-              <DropdownMenuItem>
-                <DropdownItem StartIcon="map" target="_blank" href={ROADMAP}>
-                  {t("visit_roadmap")}
-                </DropdownItem>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <DropdownItem
-                  type="button"
-                  StartIcon="circle-help"
-                  aria-hidden="true"
-                  onClick={handleHelpClick}>
-                  {t("help")}
-                </DropdownItem>
-              </DropdownMenuItem>
-              {!isPlatformPages && (
-                <DropdownMenuItem className="todesktop:hidden hidden lg:flex">
-                  <DropdownItem StartIcon="download" target="_blank" rel="noreferrer" href={DESKTOP_APP_LINK}>
-                    {t("download_desktop_app")}
+        <DropdownMenuContent
+          align="start"
+          onInteractOutside={() => {
+            setMenuOpen(false);
+          }}
+          className="group overflow-hidden rounded-md">
+          <>
+            {!isPlatformPages && (
+              <>
+                <DropdownMenuItem>
+                  <DropdownItem
+                    type="button"
+                    CustomStartIcon={<Icon name="user" className="text-default h-4 w-4" aria-hidden="true" />}
+                    href="/settings/my-account/profile">
+                    {t("my_profile")}
                   </DropdownItem>
                 </DropdownMenuItem>
-              )}
-
-              {!isPlatformPages && isPlatformUser && (
-                <DropdownMenuItem className="todesktop:hidden hidden lg:flex">
-                  <DropdownItem StartIcon="blocks" target="_blank" rel="noreferrer" href="/settings/platform">
-                    Platform
+                <DropdownMenuItem>
+                  <DropdownItem
+                    type="button"
+                    CustomStartIcon={
+                      <Icon name="settings" className="text-default h-4 w-4" aria-hidden="true" />
+                    }
+                    href="/settings/my-account/general">
+                    {t("my_settings")}
                   </DropdownItem>
                 </DropdownMenuItem>
-              )}
-              <DropdownMenuSeparator />
+                <DropdownMenuSeparator />
+              </>
+            )}
 
-              <DropdownMenuItem>
-                <DropdownItem
-                  type="button"
-                  StartIcon="log-out"
-                  aria-hidden="true"
-                  onClick={() => {
-                    signOut({ callbackUrl: "/auth/logout" });
-                  }}>
-                  {t("sign_out")}
+            <DropdownMenuItem>
+              <DropdownItem StartIcon="map" target="_blank" href={ROADMAP}>
+                {t("visit_roadmap")}
+              </DropdownItem>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <DropdownItem
+                type="button"
+                StartIcon="circle-help"
+                aria-hidden="true"
+                onClick={handleHelpClick}>
+                {t("help")}
+              </DropdownItem>
+            </DropdownMenuItem>
+            {!isPlatformPages && (
+              <DropdownMenuItem className="todesktop:hidden hidden lg:flex">
+                <DropdownItem StartIcon="download" target="_blank" rel="noreferrer" href={DESKTOP_APP_LINK}>
+                  {t("download_desktop_app")}
                 </DropdownItem>
               </DropdownMenuItem>
-            </>
-          </DropdownMenuContent>
-        </FreshChatProvider>
+            )}
+
+            {!isPlatformPages && isPlatformUser && (
+              <DropdownMenuItem className="todesktop:hidden hidden lg:flex">
+                <DropdownItem StartIcon="blocks" target="_blank" rel="noreferrer" href="/settings/platform">
+                  Platform
+                </DropdownItem>
+              </DropdownMenuItem>
+            )}
+            <DropdownMenuSeparator />
+
+            <DropdownMenuItem>
+              <DropdownItem
+                type="button"
+                StartIcon="log-out"
+                aria-hidden="true"
+                onClick={() => {
+                  signOut({ callbackUrl: "/auth/logout" });
+                }}>
+                {t("sign_out")}
+              </DropdownItem>
+            </DropdownMenuItem>
+          </>
+        </DropdownMenuContent>
       </DropdownMenuPortal>
     </Dropdown>
   );

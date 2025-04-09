@@ -1,9 +1,6 @@
 import type { Prisma, WorkflowReminder } from "@prisma/client";
 import type { NextApiRequest } from "next";
 
-import { FAKE_DAILY_CREDENTIAL } from "@calcom/app-store/dailyvideo/lib/VideoApiAdapter";
-import { DailyLocationType } from "@calcom/app-store/locations";
-import EventManager from "@calcom/core/EventManager";
 import dayjs from "@calcom/dayjs";
 import { sendCancelledEmailsAndSMS } from "@calcom/emails";
 import { getCalEventResponses } from "@calcom/features/bookings/lib/getCalEventResponses";
@@ -20,7 +17,6 @@ import getOrgIdFromMemberOrTeamId from "@calcom/lib/getOrgIdFromMemberOrTeamId";
 import { getTeamIdFromEventType } from "@calcom/lib/getTeamIdFromEventType";
 import { HttpError } from "@calcom/lib/http-error";
 import logger from "@calcom/lib/logger";
-import { processPaymentRefund } from "@calcom/lib/payment/processPaymentRefund";
 import { safeStringify } from "@calcom/lib/safeStringify";
 import { getTranslation } from "@calcom/lib/server/i18n";
 import { WorkflowRepository } from "@calcom/lib/server/repository/workflow";
@@ -29,12 +25,11 @@ import prisma, { bookingMinimalSelect } from "@calcom/prisma";
 import type { WebhookTriggerEvents } from "@calcom/prisma/enums";
 import { BookingStatus } from "@calcom/prisma/enums";
 import { credentialForCalendarServiceSelect } from "@calcom/prisma/selects/credential";
-import { bookingMetadataSchema, EventTypeMetaDataSchema, bookingCancelInput } from "@calcom/prisma/zod-utils";
+import { bookingMetadataSchema, bookingCancelInput } from "@calcom/prisma/zod-utils";
 import type { EventTypeMetadata } from "@calcom/prisma/zod-utils";
 import { getAllWorkflowsFromEventType } from "@calcom/trpc/server/routers/viewer/workflows/util";
 import type { CalendarEvent } from "@calcom/types/Calendar";
 
-import { getAllCredentials } from "./getAllCredentialsForUsersOnEvent/getAllCredentials";
 import cancelAttendeeSeat from "./handleSeats/cancel/cancelAttendeeSeat";
 
 const log = logger.getSubLogger({ prefix: ["handleCancelBooking"] });
@@ -71,8 +66,6 @@ async function getBookingToDelete(id: number | undefined, uid: string | undefine
           thirdPartyRecurringEventId: true,
         },
       },
-      payment: true,
-      paid: true,
       eventType: {
         select: {
           slug: true,
@@ -101,8 +94,6 @@ async function getBookingToDelete(id: number | undefined, uid: string | undefine
           eventName: true,
           description: true,
           requiresConfirmation: true,
-          price: true,
-          currency: true,
           length: true,
           seatsPerTimeSlot: true,
           bookingFields: true,
@@ -220,8 +211,6 @@ async function handler(req: CustomRequest) {
     eventTitle: bookingToDelete?.eventType?.title || null,
     eventDescription: bookingToDelete?.eventType?.description || null,
     requiresConfirmation: bookingToDelete?.eventType?.requiresConfirmation || null,
-    price: bookingToDelete?.eventType?.price || null,
-    currency: bookingToDelete?.eventType?.currency || null,
     length: bookingToDelete?.eventType?.length || null,
   };
 
@@ -506,41 +495,7 @@ async function handler(req: CustomRequest) {
       },
     });
     updatedBookings.push(updatedBooking);
-
-    if (!!bookingToDelete.payment.length) {
-      await processPaymentRefund({
-        booking: bookingToDelete,
-        teamId,
-      });
-    }
   }
-
-  /** TODO: Remove this without breaking functionality */
-  if (bookingToDelete.location === DailyLocationType) {
-    bookingToDelete.user.credentials.push({
-      ...FAKE_DAILY_CREDENTIAL,
-      teamId: bookingToDelete.eventType?.team?.id || null,
-    });
-  }
-
-  const isBookingInRecurringSeries = !!(
-    bookingToDelete.eventType?.recurringEvent &&
-    bookingToDelete.recurringEventId &&
-    allRemainingBookings
-  );
-
-  const bookingToDeleteEventTypeMetadata = EventTypeMetaDataSchema.parse(
-    bookingToDelete.eventType?.metadata || null
-  );
-
-  const credentials = await getAllCredentials(bookingToDelete.user, {
-    ...bookingToDelete.eventType,
-    metadata: bookingToDeleteEventTypeMetadata,
-  });
-
-  const eventManager = new EventManager({ ...bookingToDelete.user, credentials });
-
-  await eventManager.cancelEvent(evt, bookingToDelete.references, isBookingInRecurringSeries);
 
   const bookingReferenceDeletes = prisma.bookingReference.deleteMany({
     where: {

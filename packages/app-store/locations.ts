@@ -1,7 +1,6 @@
 import type { TFunction } from "next-i18next";
 import { z } from "zod";
 
-import { appStoreMetadata } from "@calcom/app-store/bookerAppsMetaData";
 import logger from "@calcom/lib/logger";
 import { BookingStatus } from "@calcom/prisma/enums";
 import type { Ensure, Optional } from "@calcom/types/utils";
@@ -214,46 +213,6 @@ export type BookingLocationValue = string;
 export const AppStoreLocationType: Record<string, string> = {};
 
 const locationsFromApps: EventLocationTypeFromApp[] = [];
-
-for (const [appName, meta] of Object.entries(appStoreMetadata)) {
-  const location = meta.appData?.location;
-  if (location) {
-    // TODO: This template variable replacement should happen once during app-store:build.
-    for (const [key, value] of Object.entries(location)) {
-      if (typeof value === "string") {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        location[key] = value.replace(/{SLUG}/g, meta.slug).replace(/{TITLE}/g, meta.name);
-      }
-    }
-    const newLocation = {
-      ...location,
-      messageForOrganizer: location.messageForOrganizer || `Set ${location.label} link`,
-      iconUrl: meta.logo,
-      // For All event location apps, locationLink is where we store the input
-      // TODO: locationLink and link seems redundant. We can modify the code to keep just one of them.
-      variable: location.variable || "locationLink",
-      defaultValueVariable: location.defaultValueVariable || "link",
-    };
-
-    // Static links always require organizer to input
-    if (newLocation.linkType === "static") {
-      newLocation.organizerInputType = location.organizerInputType || "text";
-      if (newLocation.organizerInputPlaceholder?.match(/https?:\/\//)) {
-        // HACK: Translation ends up removing https? if it's in the beginning :(
-        newLocation.organizerInputPlaceholder = ` ${newLocation.organizerInputPlaceholder}`;
-      }
-    } else {
-      newLocation.organizerInputType = null;
-    }
-
-    AppStoreLocationType[appName] = newLocation.type;
-
-    locationsFromApps.push({
-      ...newLocation,
-    });
-  }
-}
 
 const locations = [...defaultLocations, ...locationsFromApps];
 
