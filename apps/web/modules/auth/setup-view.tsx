@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
 
 import { useCompatSearchParams } from "@calcom/lib/hooks/useCompatSearchParams";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
@@ -9,8 +8,6 @@ import type { inferSSRProps } from "@calcom/types/inferSSRProps";
 import { WizardForm } from "@calcom/ui";
 
 import { AdminUserContainer as AdminUser } from "@components/setup/AdminUser";
-import ChooseLicense from "@components/setup/ChooseLicense";
-import EnterpriseLicense from "@components/setup/EnterpriseLicense";
 
 import type { getServerSideProps } from "@server/lib/setup/getServerSideProps";
 
@@ -29,10 +26,6 @@ function useSetStep() {
 export type PageProps = inferSSRProps<typeof getServerSideProps>;
 export function Setup(props: PageProps) {
   const { t } = useLocale();
-  const router = useRouter();
-  const [value, setValue] = useState(props.isFreeLicense ? "FREE" : "EE");
-  const isFreeLicense = value === "FREE";
-  const [isEnabledEE, setIsEnabledEE] = useState(!props.isFreeLicense);
   const setStep = useSetStep();
 
   const steps: React.ComponentProps<typeof WizardForm>["steps"] = [
@@ -54,51 +47,7 @@ export function Setup(props: PageProps) {
         />
       ),
     },
-    {
-      title: t("choose_a_license"),
-      description: t("choose_license_description"),
-      content: (setIsPending) => {
-        return (
-          <ChooseLicense
-            id="wizard-step-2"
-            name="wizard-step-2"
-            value={value}
-            onChange={setValue}
-            onSubmit={() => {
-              setIsPending(true);
-              setStep(3);
-            }}
-          />
-        );
-      },
-    },
   ];
-
-  if (!isFreeLicense) {
-    steps.push({
-      title: t("step_enterprise_license"),
-      description: t("step_enterprise_license_description"),
-      content: (setIsPending) => {
-        const currentStep = 3;
-        return (
-          <EnterpriseLicense
-            id={`wizard-step-${currentStep}`}
-            name={`wizard-step-${currentStep}`}
-            onSubmit={() => {
-              setIsPending(true);
-            }}
-            onSuccess={() => {
-              setStep(currentStep + 1);
-            }}
-            onSuccessValidate={() => {
-              setIsEnabledEE(true);
-            }}
-          />
-        );
-      },
-      isEnabled: isEnabledEE,
-    });
-  }
 
   return (
     <main className="bg-subtle flex items-center print:h-full md:h-screen">
