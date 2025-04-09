@@ -2,10 +2,6 @@ import { Prisma } from "@prisma/client";
 import type { NextApiResponse, GetServerSidePropsContext } from "next";
 
 import updateChildrenEventTypes from "@calcom/features/ee/managed-event-types/lib/handleChildrenEventTypes";
-import {
-  allowDisablingAttendeeConfirmationEmails,
-  allowDisablingHostConfirmationEmails,
-} from "@calcom/features/ee/workflows/lib/allowDisablingStandardEmails";
 import tasker from "@calcom/features/tasker";
 import { validateIntervalLimitOrder } from "@calcom/lib";
 import logger from "@calcom/lib/logger";
@@ -367,18 +363,6 @@ export const updateHandler = async ({ ctx, input }: UpdateOptions) => {
         steps: true,
       },
     });
-
-    if (input.metadata?.disableStandardEmails.confirmation?.host) {
-      if (!allowDisablingHostConfirmationEmails(workflows)) {
-        input.metadata.disableStandardEmails.confirmation.host = false;
-      }
-    }
-
-    if (input.metadata?.disableStandardEmails.confirmation?.attendee) {
-      if (!allowDisablingAttendeeConfirmationEmails(workflows)) {
-        input.metadata.disableStandardEmails.confirmation.attendee = false;
-      }
-    }
   }
 
   const connectedLinks = await ctx.prisma.hashedLink.findMany({
