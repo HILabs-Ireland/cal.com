@@ -1,6 +1,6 @@
 {
   "identity_provider": "Davatelj identiteta",
-"day_one": "{{count}} dan",
+  "day_one": "{{count}} dan",
   "day_other": "{{count}} dana",
   "second_one": "{{count}} sekunda",
   "second_other": "{{count}} sek.",
@@ -412,6 +412,5 @@
   "ooo_slots_book_with": "Rezerviraj {{displayName}}",
   "ooo_create_entry_modal": "Izađi iz ureda",
   "ooo_select_reason": "Odaberi razlog",
-  "enterprise_license_locally": "Možete testirati ovu značajku lokalno, ali ne u proizvodnji.",
-  "apply_to_all_event_types": "Primjenjuje se na sve, uključujući buduće vrste događaja"
+  "enterprise_license_locally": "Možete testirati ovu značajku lokalno, ali ne u proizvodnji."
 }
