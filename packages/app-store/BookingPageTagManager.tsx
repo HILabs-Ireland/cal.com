@@ -1,5 +1,4 @@
 import type { Tag } from "@calcom/app-store/types";
-import { sdkActionManager } from "@calcom/lib/sdk-event";
 import type { AppMeta } from "@calcom/types/App";
 
 const PushEventPrefix = "cal_analytics_app_";
@@ -55,10 +54,4 @@ export function handleEvent(event: { detail: Record<string, unknown> & { type: s
     );
   }
   return true;
-}
-
-if (typeof window !== "undefined") {
-  // Attach listener outside React as it has to be attached only once per page load
-  // Setup listener for all events to push to analytics apps
-  sdkActionManager?.on("*", handleEvent);
 }

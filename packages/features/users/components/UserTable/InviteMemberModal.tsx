@@ -5,7 +5,6 @@ import MemberInvitationModal from "@calcom/features/ee/teams/components/MemberIn
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { trpc } from "@calcom/trpc";
 import { showToast } from "@calcom/ui";
-import usePlatformMe from "@calcom/web/components/settings/platform/hooks/usePlatformMe";
 
 import type { UserTableAction } from "./types";
 
@@ -15,7 +14,6 @@ interface Props {
 
 export function InviteMemberModal(props: Props) {
   const { data: session } = useSession();
-  const { data: platformUser } = usePlatformMe();
   const utils = trpc.useUtils();
   const { t, i18n } = useLocale();
   const inviteMemberMutation = trpc.viewer.teams.inviteMember.useMutation({
@@ -47,7 +45,7 @@ export function InviteMemberModal(props: Props) {
     },
   });
 
-  const orgId = session?.user.org?.id ?? platformUser?.organizationId;
+  const orgId = session?.user.org?.id;
 
   if (!orgId) return null;
 
@@ -69,7 +67,7 @@ export function InviteMemberModal(props: Props) {
           language: i18n.language,
           role: values.role,
           usernameOrEmail: values.emailOrUsername,
-          isPlatform: platformUser?.organization.isPlatform,
+          isPlatform: false,
         });
       }}
     />

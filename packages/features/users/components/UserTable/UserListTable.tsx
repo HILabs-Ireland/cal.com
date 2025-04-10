@@ -32,7 +32,6 @@ import { getUserAvatarUrl } from "@calcom/lib/getAvatarUrl";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { trpc } from "@calcom/trpc";
 import { Avatar, Badge, Checkbox, showToast } from "@calcom/ui";
-import { useGetUserAttributes } from "@calcom/web/components/settings/platform/hooks/useGetUserAttributes";
 
 import { DeleteBulkUsers } from "./BulkActions/DeleteBulkUsers";
 import { DynamicLink } from "./BulkActions/DynamicLink";
@@ -107,7 +106,6 @@ function UserListTableContent() {
   const { t } = useLocale();
 
   const { data: session } = useSession();
-  const { isPlatformUser } = useGetUserAttributes();
   const { data: org } = trpc.viewer.organizations.listCurrent.useQuery();
   const { data: attributes, isSuccess: isSuccessAttributes } = trpc.viewer.attributes.list.useQuery();
   const { data: teams } = trpc.viewer.organizations.getTeams.useQuery();
@@ -523,7 +521,7 @@ function UserListTableContent() {
     }
   };
 
-  if (!isPlatformUser && !isSuccessAttributes) {
+  if (!isSuccessAttributes) {
     // do not render the table until the attributes are fetched
     return null;
   }
@@ -592,20 +590,18 @@ function UserListTableContent() {
             <p className="text-brand-subtle px-2 text-center text-xs leading-none sm:text-sm sm:font-medium">
               {t("number_selected", { count: numberOfSelectedRows })}
             </p>
-            {!isPlatformUser ? (
-              <>
-                <TeamListBulkAction table={table} />
-                {numberOfSelectedRows >= 2 && (
-                  <DataTableSelectionBar.Button
-                    onClick={() => setDynamicLinkVisible(!dynamicLinkVisible)}
-                    icon="handshake">
-                    {t("group_meeting")}
-                  </DataTableSelectionBar.Button>
-                )}
-                <MassAssignAttributesBulkAction table={table} filters={columnFilters} />
-                <EventTypesList table={table} orgTeams={teams} />
-              </>
-            ) : null}
+            <>
+              <TeamListBulkAction table={table} />
+              {numberOfSelectedRows >= 2 && (
+                <DataTableSelectionBar.Button
+                  onClick={() => setDynamicLinkVisible(!dynamicLinkVisible)}
+                  icon="handshake">
+                  {t("group_meeting")}
+                </DataTableSelectionBar.Button>
+              )}
+              <MassAssignAttributesBulkAction table={table} filters={columnFilters} />
+              <EventTypesList table={table} orgTeams={teams} />
+            </>
             <DeleteBulkUsers
               users={table.getSelectedRowModel().flatRows.map((row) => row.original)}
               onRemove={() => table.toggleAllPageRowsSelected(false)}
