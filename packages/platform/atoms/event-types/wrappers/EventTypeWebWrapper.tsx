@@ -60,10 +60,6 @@ const EventWebhooksTab = dynamic(() =>
   )
 );
 
-const EventAITab = dynamic(() =>
-  import("@calcom/features/eventtypes/components/tabs/ai/EventAITab").then((mod) => mod.EventAITab)
-);
-
 export type EventTypeWebWrapperProps = {
   id: number;
 };
@@ -185,7 +181,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
     instant: <EventInstantTab eventType={eventType} isTeamEvent={!!team} />,
     recurring: <EventRecurringTab eventType={eventType} />,
     webhooks: <EventWebhooksTab eventType={eventType} />,
-    ai: <EventAITab eventType={eventType} isTeamEvent={!!team} />,
   } as const;
 
   useHandleRouteChange({
