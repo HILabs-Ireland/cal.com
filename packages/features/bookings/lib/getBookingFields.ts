@@ -95,7 +95,6 @@ export const ensureBookingInputsHaveSystemFields = ({
     [EventTypeCustomInputType.PHONE]: BookingFieldTypeEnum.phone,
   };
 
-  const smsNumberSources = [] as NonNullable<(typeof bookingFields)[number]["sources"]>;
   const isEmailFieldOptional = !!bookingFields.find((field) => field.name === "email" && !field.required);
 
   // These fields should be added before other user fields
@@ -273,21 +272,6 @@ export const ensureBookingInputsHaveSystemFields = ({
   }
 
   bookingFields = missingSystemBeforeFields.concat(bookingFields);
-
-  // Backward Compatibility for SMS Reminder Number
-  if (
-    smsNumberSources.length &&
-    !bookingFields.find((f) => getFieldIdentifier(f.name) !== getFieldIdentifier(SMS_REMINDER_NUMBER_FIELD))
-  ) {
-    const indexForLocation = bookingFields.findIndex(
-      (f) => getFieldIdentifier(f.name) === getFieldIdentifier("location")
-    );
-    // Add the SMS Reminder Number field after `location` field always
-    bookingFields.splice(indexForLocation + 1, 0, {
-      ...getSmsReminderNumberField(),
-      sources: smsNumberSources,
-    });
-  }
 
   // Backward Compatibility: If we are migrating from old system, we need to map `customInputs` to `bookingFields`
   if (handleMigration) {
