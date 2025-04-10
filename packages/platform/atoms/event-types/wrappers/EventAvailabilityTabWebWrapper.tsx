@@ -1,6 +1,5 @@
 import { useFormContext } from "react-hook-form";
 
-import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
 import type { TeamMembers } from "@calcom/features/eventtypes/components/EventType";
 import { EventAvailabilityTab } from "@calcom/features/eventtypes/components/tabs/availability/EventAvailabilityTab";
 import type { EventTypeSetup, FormValues } from "@calcom/features/eventtypes/lib/types";
@@ -23,18 +22,11 @@ const EventAvailabilityTabWebWrapper = (props: EventAvailabilityTabWebWrapperPro
   const formMethods = useFormContext<FormValues>();
   const scheduleId = formMethods.watch("schedule");
 
-  const { isManagedEventType, isChildrenManagedEventType } = useLockedFieldsManager({
-    eventType: props.eventType,
-    translate: t,
-    formMethods,
-  });
-
   const { isPending: isSchedulePending, data: scheduleQueryData } =
     trpc.viewer.availability.schedule.get.useQuery(
       {
         scheduleId:
           scheduleId || (!props.isTeamEvent ? props.user?.defaultScheduleId : undefined) || undefined,
-        isManagedEventType: isManagedEventType || isChildrenManagedEventType,
       },
       { enabled: !!scheduleId || (!props.isTeamEvent && !!props.user?.defaultScheduleId) }
     );

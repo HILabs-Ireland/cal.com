@@ -18,7 +18,6 @@ type props = {
   urlPrefix?: string;
   form: UseFormReturn<CreateEventTypeFormValues>;
   handleSubmit: (values: CreateEventTypeFormValues) => void;
-  isManagedEventType: boolean;
   SubmitButton: (isPending: boolean) => ReactNode;
 };
 export const TeamEventTypeForm = ({
@@ -29,7 +28,6 @@ export const TeamEventTypeForm = ({
   urlPrefix,
   isPending,
   handleSubmit,
-  isManagedEventType,
   SubmitButton,
 }: props) => {
   const isPlatform = useIsPlatform();
@@ -66,10 +64,8 @@ export const TeamEventTypeForm = ({
               required
               addOnLeading={
                 !isPlatform ? (
-                  <Tooltip content={!isManagedEventType ? `team/${teamSlug}` : t("username_placeholder")}>
-                    <span className="max-w-24 md:max-w-56">
-                      /{!isManagedEventType ? `team/${teamSlug}` : t("username_placeholder")}/
-                    </span>
+                  <Tooltip content={t("username_placeholder")}>
+                    <span className="max-w-24 md:max-w-56">/{t("username_placeholder")}/</span>
                   </Tooltip>
                 ) : undefined
               }
@@ -78,10 +74,6 @@ export const TeamEventTypeForm = ({
                 form.setValue("slug", slugify(e?.target.value), { shouldTouch: true });
               }}
             />
-
-            {isManagedEventType && !isPlatform && (
-              <p className="mt-2 text-sm text-gray-600">{t("managed_event_url_clarification")}</p>
-            )}
           </div>
         ) : (
           <div>
@@ -90,12 +82,9 @@ export const TeamEventTypeForm = ({
               required
               addOnLeading={
                 !isPlatform ? (
-                  <Tooltip
-                    content={`${urlPrefix}/${
-                      !isManagedEventType ? `team/${teamSlug}` : t("username_placeholder")
-                    }/`}>
+                  <Tooltip content={`${urlPrefix}/${t("username_placeholder")}/`}>
                     <span className="max-w-24 md:max-w-56">
-                      {urlPrefix}/{!isManagedEventType ? `team/${teamSlug}` : t("username_placeholder")}/
+                      {urlPrefix}/{t("username_placeholder")}/
                     </span>
                   </Tooltip>
                 ) : undefined
@@ -105,9 +94,6 @@ export const TeamEventTypeForm = ({
                 form.setValue("slug", slugify(e?.target.value), { shouldTouch: true });
               }}
             />
-            {isManagedEventType && !isPlatform && (
-              <p className="mt-2 text-sm text-gray-600">{t("managed_event_url_clarification")}</p>
-            )}
           </div>
         )}
         <div className="mb-4">
@@ -138,17 +124,6 @@ export const TeamEventTypeForm = ({
               <strong className="mb-1 block">{t("round_robin")}</strong>
               <p>{t("round_robin_description")}</p>
             </RadioArea.Item>
-            {isTeamAdminOrOwner && (
-              <RadioArea.Item
-                {...register("schedulingType")}
-                value={SchedulingType.MANAGED}
-                className={classNames("text-sm", !isTeamAdminOrOwner && "w-1/2")}
-                classNames={{ container: classNames(isTeamAdminOrOwner && "w-full") }}
-                data-testid="managed-event-type">
-                <strong className="mb-1 block">{t("managed_event")}</strong>
-                <p>{t("managed_event_description")}</p>
-              </RadioArea.Item>
-            )}
           </RadioArea.Group>
         </div>
       </div>

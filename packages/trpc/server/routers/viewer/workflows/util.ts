@@ -28,7 +28,6 @@ import type { TimeUnit } from "@calcom/prisma/enums";
 import { WorkflowTemplates } from "@calcom/prisma/enums";
 import { SchedulingType } from "@calcom/prisma/enums";
 import { BookingStatus, MembershipRole, WorkflowActions, WorkflowTriggerEvents } from "@calcom/prisma/enums";
-import { EventTypeMetaDataSchema } from "@calcom/prisma/zod-utils";
 
 import { TRPCError } from "@trpc/server";
 
@@ -768,21 +767,7 @@ export async function getAllWorkflowsFromEventType(
 
   const orgId = await getOrgIdFromMemberOrTeamId({ memberId: userId, teamId });
 
-  const isManagedEventType = !!eventType?.parent;
-
-  const eventTypeMetadata = EventTypeMetaDataSchema.parse(eventType?.metadata || {});
-
-  const workflowsLockedForUser = isManagedEventType
-    ? !eventTypeMetadata?.managedEventConfig?.unlockedFields?.workflows
-    : false;
-
-  const allWorkflows = await getAllWorkflows(
-    eventTypeWorkflows,
-    userId,
-    teamId,
-    orgId,
-    workflowsLockedForUser
-  );
+  const allWorkflows = await getAllWorkflows(eventTypeWorkflows, userId, teamId, orgId);
 
   return allWorkflows;
 }

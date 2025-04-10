@@ -9,7 +9,6 @@ import type { GetAllSchedulesByUserIdQueryType } from "@calcom/atoms/event-types
 import { useIsPlatform } from "@calcom/atoms/monorepo";
 import dayjs from "@calcom/dayjs";
 import { SelectSkeletonLoader } from "@calcom/features/availability/components/SkeletonLoader";
-import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
 import type { TeamMembers } from "@calcom/features/eventtypes/components/EventType";
 import type {
   AvailabilityOption,
@@ -22,7 +21,6 @@ import classNames from "@calcom/lib/classNames";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { weekdayNames } from "@calcom/lib/weekday";
 import { weekStartNum } from "@calcom/lib/weekstart";
-import { SchedulingType } from "@calcom/prisma/enums";
 import type { RouterOutputs } from "@calcom/trpc/react";
 import { Avatar, Badge, Button, Icon, Label, Select, SettingsToggle, SkeletonText } from "@calcom/ui";
 import { Spinner } from "@calcom/ui/components/icon/Spinner";
@@ -66,7 +64,7 @@ export type EventAvailabilityTabCustomClassNames = {
 };
 
 type EventTypeScheduleDetailsProps = {
-  scheduleQueryData?: Pick<ScheduleQueryData, "timeZone" | "id" | "isManaged" | "readOnly"> & {
+  scheduleQueryData?: Pick<ScheduleQueryData, "timeZone" | "id" | "readOnly"> & {
     schedule: Array<Pick<ScheduleQueryData["schedule"][number], "days" | "startTime" | "endTime">>;
   };
   isSchedulePending?: boolean;
@@ -123,7 +121,7 @@ type EventAvailabilityTabProps = EventAvailabilityTabBaserProps &
   };
 
 const Option = ({ ...props }: OptionProps<AvailabilityOption>) => {
-  const { label, isDefault, isManaged = false } = props.data;
+  const { label, isDefault } = props.data;
   const { t } = useLocale();
   return (
     <components.Option {...props}>
@@ -133,17 +131,12 @@ const Option = ({ ...props }: OptionProps<AvailabilityOption>) => {
           {t("default")}
         </Badge>
       )}
-      {isManaged && (
-        <Badge variant="gray" className="ml-2">
-          {t("managed")}
-        </Badge>
-      )}
     </components.Option>
   );
 };
 
 const SingleValue = ({ ...props }: SingleValueProps<AvailabilityOption>) => {
-  const { label, isDefault, isManaged = false } = props.data;
+  const { label, isDefault } = props.data;
   const { t } = useLocale();
   return (
     <components.SingleValue {...props}>
@@ -151,11 +144,6 @@ const SingleValue = ({ ...props }: SingleValueProps<AvailabilityOption>) => {
       {isDefault && (
         <Badge variant="blue" className="ml-2">
           {t("default")}
-        </Badge>
-      )}
-      {isManaged && (
-        <Badge variant="gray" className="ml-2">
-          {t("managed")}
         </Badge>
       )}
     </components.SingleValue>
@@ -249,20 +237,17 @@ const EventTypeScheduleDetails = memo(
             <Icon name="globe" className="h-3.5 w-3.5 ltr:mr-2 rtl:ml-2" />
             {scheduleQueryData?.timeZone || <SkeletonText className="block h-5 w-32" />}
           </span>
-          {!!scheduleQueryData?.id &&
-            !scheduleQueryData.isManaged &&
-            !scheduleQueryData.readOnly &&
-            !!editAvailabilityRedirectUrl && (
-              <Button
-                href={editAvailabilityRedirectUrl}
-                disabled={isSchedulePending}
-                color="minimal"
-                EndIcon="external-link"
-                target="_blank"
-                rel="noopener noreferrer">
-                {t("edit_availability")}
-              </Button>
-            )}
+          {!!scheduleQueryData?.id && !scheduleQueryData.readOnly && !!editAvailabilityRedirectUrl && (
+            <Button
+              href={editAvailabilityRedirectUrl}
+              disabled={isSchedulePending}
+              color="minimal"
+              EndIcon="external-link"
+              target="_blank"
+              rel="noopener noreferrer">
+              {t("edit_availability")}
+            </Button>
+          )}
         </div>
       </div>
     );
@@ -280,8 +265,6 @@ const EventTypeSchedule = ({
 }: EventTypeScheduleProps) => {
   const { t } = useLocale();
   const formMethods = useFormContext<FormValues>();
-  const { shouldLockIndicator, shouldLockDisableProps, isManagedEventType, isChildrenManagedEventType } =
-    useLockedFieldsManager({ eventType, translate: t, formMethods });
   const { watch, setValue } = formMethods;
 
   const scheduleId = watch("schedule");
@@ -289,7 +272,7 @@ const EventTypeSchedule = ({
   useEffect(() => {
     // after data is loaded.
     if (schedulesQueryData && scheduleId !== 0 && !scheduleId) {
-      const newValue = isManagedEventType ? 0 : schedulesQueryData.find((schedule) => schedule.isDefault)?.id;
+      const newValue = schedulesQueryData.find((schedule) => schedule.isDefault)?.id;
       if (!newValue && newValue !== 0) return;
       setValue("schedule", newValue, {
         shouldDirty: true,
@@ -306,39 +289,13 @@ const EventTypeSchedule = ({
     value: schedule.id,
     label: schedule.name,
     isDefault: schedule.isDefault,
-    isManaged: false,
   }));
 
-  // We are showing a managed event for a team admin, so adding the option to let members choose their schedule
-  if (isManagedEventType) {
-    options.push({
-      value: 0,
-      label: t("members_default_schedule"),
-      isDefault: false,
-      isManaged: false,
-    });
-  }
-  // We are showing a managed event for a member and team owner selected their own schedule, so adding
-  // the managed schedule option
-  if (
-    isChildrenManagedEventType &&
-    scheduleId &&
-    !schedulesQueryData.find((schedule) => schedule.id === scheduleId)
-  ) {
-    options.push({
-      value: scheduleId,
-      label: eventType.scheduleName ?? t("default_schedule_name"),
-      isDefault: false,
-      isManaged: false,
-    });
-  }
-  // We push the selected schedule from the event type if it's not part of the list response. This happens if the user is an admin but not the schedule owner.
-  else if (eventType.schedule && !schedulesQueryData.find((schedule) => schedule.id === eventType.schedule)) {
+  if (eventType.schedule && !schedulesQueryData.find((schedule) => schedule.id === eventType.schedule)) {
     options.push({
       value: eventType.schedule,
       label: eventType.scheduleName ?? t("default_schedule_name"),
       isDefault: false,
-      isManaged: false,
     });
   }
 
@@ -356,7 +313,6 @@ const EventTypeSchedule = ({
             customClassNames?.availabilitySelect?.label
           )}>
           {t("availability")}
-          {(isManagedEventType || isChildrenManagedEventType) && shouldLockIndicator("schedule")}
         </label>
         <Controller
           name="schedule"
@@ -368,7 +324,6 @@ const EventTypeSchedule = ({
               <Select
                 placeholder={t("select")}
                 options={options}
-                isDisabled={shouldLockDisableProps("schedule").disabled}
                 isSearchable={false}
                 onChange={(selected) => {
                   if (selected) onChange(selected.value);
@@ -389,9 +344,7 @@ const EventTypeSchedule = ({
       {scheduleId !== 0 ? (
         <EventTypeScheduleDetails {...rest} customClassNames={customClassNames?.availabilityTable} />
       ) : (
-        isManagedEventType && (
-          <p className="!mt-2 ml-1 text-sm text-gray-600">{t("members_default_schedule_description")}</p>
-        )
+        <p className="!mt-2 ml-1 text-sm text-gray-600">{t("members_default_schedule_description")}</p>
       )}
     </div>
   );
@@ -424,7 +377,6 @@ const TeamMemberSchedule = ({
     value: schedule.id,
     label: schedule.name,
     isDefault: schedule.isDefault,
-    isManaged: false,
   }));
 
   //Set to defaultSchedule if Host Schedule is not previously selected
@@ -603,7 +555,7 @@ const UseCommonScheduleSettingsToggle = ({
 };
 
 export const EventAvailabilityTab = ({ eventType, isTeamEvent, ...rest }: EventAvailabilityTabProps) => {
-  return isTeamEvent && eventType.schedulingType !== SchedulingType.MANAGED ? (
+  return isTeamEvent ? (
     <UseCommonScheduleSettingsToggle eventType={eventType} {...rest} />
   ) : (
     <EventTypeSchedule

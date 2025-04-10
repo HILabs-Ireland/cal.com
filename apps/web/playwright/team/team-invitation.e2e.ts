@@ -124,12 +124,12 @@ test.skip("[EE feature] Team", () => {
     });
   });
 
-  test("Invited member is assigned to existing managed event, after invitation is accepted", async ({
+  test("Invited member is assigned to existing event, after invitation is accepted", async ({
     page,
     users,
   }) => {
     const t = await localize("en");
-    const teamEventSlugAndTitle = "managed-event-test";
+    const teamEventSlugAndTitle = "event-test";
     const teamMatesObj = [{ name: "teammate-1" }, { name: "teammate-2" }];
     const teamOwner = await users.create(
       { name: `team-owner-${Date.now()}` },
@@ -137,11 +137,10 @@ test.skip("[EE feature] Team", () => {
         hasTeam: true,
         teamRole: MembershipRole.ADMIN,
         teammates: teamMatesObj,
-        schedulingType: SchedulingType.MANAGED,
+        schedulingType: SchedulingType.COLLECTIVE,
         teamEventSlug: teamEventSlugAndTitle,
         teamEventTitle: teamEventSlugAndTitle,
         teamEventLength: 30,
-        addManagedEventToTeamMates: true,
         assignAllTeamMembers: true,
       }
     );
@@ -164,7 +163,7 @@ test.skip("[EE feature] Team", () => {
     expect(response.status()).toBe(200);
     await page.goto(`/event-types`);
 
-    //ensure managed event-type is created for the invited member
+    //ensure event-type is created for the invited member
     await expect(page.locator(`text="${teamEventSlugAndTitle}"`)).toBeVisible();
 
     //ensure the new event-type created for invited member is child of team event-type

@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import Script from "next/script";
 
 import "@calcom/embed-core/src/embed-iframe";
-import LicenseRequired from "@calcom/features/ee/common/components/LicenseRequired";
 
 import AppProviders from "@lib/app-providers-app-dir";
 
@@ -58,9 +57,7 @@ function PageWrapper(props: PageWrapperProps) {
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: `window.CalComPageStatus = '${pageStatus}'` }}
         />
-        {getLayout(
-          props.requiresLicense ? <LicenseRequired>{props.children}</LicenseRequired> : <>{props.children}</>
-        )}
+        {getLayout(<>{props.children}</>)}
       </>
     </AppProviders>
   );

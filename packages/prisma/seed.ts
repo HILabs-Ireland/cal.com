@@ -6,6 +6,7 @@ import type z from "zod";
 
 import dayjs from "@calcom/dayjs";
 import { getOrgFullOrigin } from "@calcom/ee/organizations/lib/orgDomains";
+import { hashAPIKey } from "@calcom/features/api-keys/lib/apiKeys";
 import { hashPassword } from "@calcom/features/auth/lib/hashPassword";
 import { DEFAULT_SCHEDULE, getAvailabilityFromSchedule } from "@calcom/lib/availability";
 import { BookingStatus, MembershipRole, RedirectType, SchedulingType } from "@calcom/prisma/enums";
@@ -930,29 +931,49 @@ async function main() {
     where: { email: "admin@example.com" },
   });
 
-  if (adminUser) {
-    try {
-      await prisma.membership.createMany({
-        data: [
-          {
-            teamId: 1,
-            userId: adminUser.id,
-            accepted: true,
-            role: "ADMIN",
-            disableImpersonation: false,
-          },
-          {
-            teamId: 2,
-            userId: adminUser.id,
-            accepted: true,
-            role: "ADMIN",
-            disableImpersonation: false,
-          },
-        ],
-      });
-    } catch {}
-  } else {
+  if (!adminUser) {
     throw Error("Admin user not found");
+  }
+
+  const adminApiKey = hashAPIKey("test-admin-key");
+
+  await prisma.apiKey.create({
+    data: {
+      id: uuid(),
+      userId: adminUser.id,
+      note: "Admin API Key",
+      expiresAt: null,
+      hashedKey: adminApiKey,
+    },
+  });
+  const existingMembership = await prisma.membership.findUnique({
+    where: {
+      userId_teamId: {
+        userId: adminUser.id,
+        teamId: 1,
+      },
+    },
+  });
+
+  if (!existingMembership) {
+    await prisma.membership.createMany({
+      data: [
+        {
+          teamId: 1,
+          userId: adminUser.id,
+          accepted: true,
+          role: "ADMIN",
+          disableImpersonation: false,
+        },
+        {
+          teamId: 2,
+          userId: adminUser.id,
+          accepted: true,
+          role: "ADMIN",
+          disableImpersonation: false,
+        },
+      ],
+    });
   }
 
   await createPlatformAndSetupUser({

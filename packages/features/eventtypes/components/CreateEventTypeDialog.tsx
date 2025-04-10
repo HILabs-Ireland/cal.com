@@ -100,7 +100,7 @@ export default function CreateEventTypeDialog({
     );
   };
 
-  const { form, createMutation, isManagedEventType } = useCreateEventType(onSuccessMutation, onErrorMutation);
+  const { form, createMutation } = useCreateEventType(onSuccessMutation, onErrorMutation);
 
   const urlPrefix = orgBranding?.fullDomain ?? process.env.NEXT_PUBLIC_WEBSITE_URL;
 
@@ -126,7 +126,6 @@ export default function CreateEventTypeDialog({
             urlPrefix={urlPrefix}
             isPending={createMutation.isPending}
             form={form}
-            isManagedEventType={isManagedEventType}
             handleSubmit={(values) => {
               createMutation.mutate(values);
             }}
@@ -137,7 +136,6 @@ export default function CreateEventTypeDialog({
             urlPrefix={urlPrefix}
             isPending={createMutation.isPending}
             form={form}
-            isManagedEventType={isManagedEventType}
             handleSubmit={(values) => {
               createMutation.mutate(values);
             }}

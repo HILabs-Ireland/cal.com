@@ -1,5 +1,3 @@
-import prisma from "@calcom/prisma";
-
 export async function getTeamIdFromEventType({
   eventType,
 }: {
@@ -11,19 +9,5 @@ export async function getTeamIdFromEventType({
 
   if (eventType?.team?.id) {
     return eventType.team.id;
-  }
-
-  // If it's a managed event we need to find the teamId for it from the parent
-  if (eventType?.parentId) {
-    const managedEvent = await prisma.eventType.findFirst({
-      where: {
-        id: eventType.parentId,
-      },
-      select: {
-        teamId: true,
-      },
-    });
-
-    return managedEvent?.teamId;
   }
 }
