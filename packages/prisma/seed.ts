@@ -937,8 +937,12 @@ async function main() {
 
   const adminApiKey = hashAPIKey("test-admin-key");
 
-  await prisma.apiKey.create({
-    data: {
+  await prisma.apiKey.upsert({
+    where: {
+      hashedKey: adminApiKey, // Check if the hashedKey already exists
+    },
+    update: {}, // Do nothing if it exists
+    create: {
       id: uuid(),
       userId: adminUser.id,
       note: "Admin API Key",
@@ -946,6 +950,7 @@ async function main() {
       hashedKey: adminApiKey,
     },
   });
+
   const existingMembership = await prisma.membership.findUnique({
     where: {
       userId_teamId: {
