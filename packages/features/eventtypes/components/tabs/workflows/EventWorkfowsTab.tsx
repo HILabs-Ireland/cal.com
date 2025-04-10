@@ -3,7 +3,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
-import LicenseRequired from "@calcom/features/ee/common/components/LicenseRequired";
 import SkeletonLoader from "@calcom/features/ee/workflows/components/SkeletonLoaderEventWorkflowsTab";
 import type { WorkflowType } from "@calcom/features/ee/workflows/components/WorkflowListPage";
 import { getActionIcon } from "@calcom/features/ee/workflows/lib/getActionIcon";
@@ -218,7 +217,7 @@ function EventWorkflowsTab(props: Props) {
   });
 
   return (
-    <LicenseRequired>
+    <>
       {!isPending ? (
         <>
           {data?.workflows && sortedWorkflows.length > 0 ? (
@@ -258,7 +257,7 @@ function EventWorkflowsTab(props: Props) {
       ) : (
         <SkeletonLoader />
       )}
-    </LicenseRequired>
+    </>
   );
 }
 
