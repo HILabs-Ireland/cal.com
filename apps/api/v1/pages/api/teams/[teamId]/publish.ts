@@ -30,7 +30,6 @@ const patchHandler = async (req: NextApiRequest, res: NextApiResponse) => {
           upId: "",
         } satisfies UserProfile,
       },
-      hasValidLicense: true /* To comply with TS signature */,
       expires: "" /* Not used in this context */,
       upId: "",
     };

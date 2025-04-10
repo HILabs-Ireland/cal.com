@@ -14,7 +14,6 @@ export const generateMetadata = async () =>
   );
 
 export default WithLayout({
-  requiresLicense: true,
   getLayout: LayoutWrapper,
   Page: LegacyPage,
   getData: withAppDirSsr<inferSSRProps<typeof getServerSideProps>>(getServerSideProps),

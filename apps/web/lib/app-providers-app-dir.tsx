@@ -46,7 +46,6 @@ export type AppProps = Omit<
   "Component"
 > & {
   Component: NextAppProps["Component"] & {
-    requiresLicense?: boolean;
     isBookingPage?: boolean | ((arg: { router: NextAppProps["router"] }) => boolean);
     getLayout?: (page: React.ReactElement) => ReactNode;
     PageWrapper?: (props: AppProps) => JSX.Element;
