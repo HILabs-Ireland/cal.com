@@ -129,7 +129,6 @@ function EventTypeSingleLayout({
             <VerticalDivider className="hidden lg:block" />
           </>
 
-          {/* TODO: Figure out why combined isnt working - works in storybook */}
           <ButtonGroup combined containerProps={{ className: "border-default hidden lg:flex" }}>
             {/* We have to warp this in tooltip as it has a href which disabels the tooltip on buttons */}
             {!isPlatform && (

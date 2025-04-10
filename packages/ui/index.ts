@@ -107,7 +107,7 @@ export {
 } from "./components/dialog";
 export type { DialogProps, ConfirmationDialogContentProps } from "./components/dialog";
 export { CalendarSwitchComponent } from "./components/calendar-switch";
-export { showToast } from "./components/toast"; // We don't export the toast components as they are only used in local storybook file
+export { showToast } from "./components/toast";
 export { Meta, MetaProvider, useMeta } from "./components/meta";
 export { ShellSubHeading } from "./components/layout";
 
@@ -160,5 +160,3 @@ export { HoverCard, HoverCardTrigger, HoverCardContent, HoverCardPortal } from "
 
 export { OrgBanner } from "./components/organization-banner";
 export type { OrgBannerProps } from "./components/organization-banner";
-
-export { StorybookTrpcProvider } from "./components/mocks/trpc";
