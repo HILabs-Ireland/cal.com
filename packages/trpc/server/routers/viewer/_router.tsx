@@ -19,7 +19,6 @@ import { viewerOrganizationsRouter } from "./organizations/_router";
 import { slotsRouter } from "./slots/_router";
 import { viewerTeamsRouter } from "./teams/_router";
 import { webhookRouter } from "./webhook/_router";
-import { workflowsRouter } from "./workflows/_router";
 
 export const viewerRouter = mergeRouters(
   loggedInViewerRouter,
@@ -39,7 +38,6 @@ export const viewerRouter = mergeRouters(
     webhook: webhookRouter,
     apiKeys: apiKeysRouter,
     slots: slotsRouter,
-    workflows: workflowsRouter,
     // NOTE: Add all app related routes in the bottom till the problem described in @calcom/app-store/trpc-routers.ts is solved.
     // After that there would just one merge call here for all the apps.
     features: featureFlagRouter,

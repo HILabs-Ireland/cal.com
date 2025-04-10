@@ -29,7 +29,7 @@ import EventRecurringTabPlatformWrapper from "./EventRecurringTabPlatformWrapper
 import SetupTab from "./EventSetupTabPlatformWrapper";
 import EventTeamAssignmentTabPlatformWrapper from "./EventTeamAssignmentTabPlatformWrapper";
 
-export type PlatformTabs = keyof Omit<TabMap, "workflows" | "webhooks" | "instant" | "ai" | "apps">;
+export type PlatformTabs = keyof Omit<TabMap, "webhooks" | "instant" | "ai" | "apps">;
 
 export type EventTypeCustomClassNames = {
   atomsWrapper?: string;

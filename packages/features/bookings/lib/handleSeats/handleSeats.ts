@@ -1,7 +1,6 @@
 // eslint-disable-next-line no-restricted-imports
 import dayjs from "@calcom/dayjs";
 import { handleWebhookTrigger } from "@calcom/features/bookings/lib/handleWebhookTrigger";
-import { scheduleWorkflowReminders } from "@calcom/features/ee/workflows/lib/reminders/reminderScheduler";
 import type { EventPayloadType } from "@calcom/features/webhooks/lib/sendPayload";
 import { ErrorCode } from "@calcom/lib/errorCodes";
 import { HttpError } from "@calcom/lib/http-error";
@@ -30,7 +29,6 @@ const handleSeats = async (newSeatedBookingObject: NewSeatedBookingObject) => {
     subscriberOptions,
     eventTrigger,
     evt,
-    workflows,
     rescheduledBy,
     rescheduleReason,
     isDryRun = false,
@@ -101,38 +99,12 @@ const handleSeats = async (newSeatedBookingObject: NewSeatedBookingObject) => {
     resultBooking = await createNewSeat(newSeatedBookingObject, seatedBooking, reqBodyMetadata);
   }
 
-  // If the resultBooking is defined we should trigger workflows else, trigger in handleNewBooking
+  // If the resultBooking is not defined we should trigger in handleNewBooking
   if (resultBooking) {
     const metadata = {
       ...(typeof resultBooking.metadata === "object" && resultBooking.metadata),
       ...reqBodyMetadata,
     };
-    try {
-      await scheduleWorkflowReminders({
-        workflows,
-        smsReminderNumber: smsReminderNumber || null,
-        calendarEvent: {
-          ...evt,
-          rescheduleReason,
-          ...{
-            metadata,
-            eventType: {
-              slug: eventType.slug,
-              schedulingType: eventType.schedulingType,
-              hosts: eventType.hosts,
-            },
-          },
-        },
-        isNotConfirmed: evt.requiresConfirmation || false,
-        isRescheduleEvent: !!rescheduleUid,
-        isFirstRecurringEvent: true,
-        emailAttendeeSendToOverride: bookerEmail,
-        seatReferenceUid: evt.attendeeSeatId,
-        isDryRun,
-      });
-    } catch (error) {
-      loggerWithEventDetails.error("Error while scheduling workflow reminders", JSON.stringify({ error }));
-    }
 
     const webhookData: EventPayloadType = {
       ...evt,

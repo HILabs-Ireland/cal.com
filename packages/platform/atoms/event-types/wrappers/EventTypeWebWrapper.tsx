@@ -54,10 +54,6 @@ const EventRecurringTab = dynamic(() =>
   import("./EventRecurringWebWrapper").then((mod) => mod)
 );
 
-const EventWorkflowsTab = dynamic(
-  () => import("@calcom/features/eventtypes/components/tabs/workflows/EventWorkfowsTab")
-);
-
 const EventWebhooksTab = dynamic(() =>
   import("@calcom/features/eventtypes/components/tabs/webhooks/EventWebhooksTab").then(
     (mod) => mod.EventWebhooksTab
@@ -138,16 +134,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
   const { form, handleSubmit } = useEventTypeForm({ eventType, onSubmit: updateMutation.mutate });
   const slug = form.watch("slug") ?? eventType.slug;
 
-  const { data: allActiveWorkflows } = trpc.viewer.workflows.getAllActiveWorkflows.useQuery({
-    eventType: {
-      id,
-      teamId: eventType.teamId,
-      userId: eventType.userId,
-      parent: eventType.parent,
-      metadata: eventType.metadata,
-    },
-  });
-
   const orgBranding = useOrgBranding();
 
   const bookerUrl = orgBranding ? orgBranding?.fullDomain : WEBSITE_URL;
@@ -194,11 +180,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
     ),
     instant: <EventInstantTab eventType={eventType} isTeamEvent={!!team} />,
     recurring: <EventRecurringTab eventType={eventType} />,
-    workflows: allActiveWorkflows ? (
-      <EventWorkflowsTab eventType={eventType} workflows={allActiveWorkflows} />
-    ) : (
-      <></>
-    ),
     webhooks: <EventWebhooksTab eventType={eventType} />,
   } as const;
 
@@ -230,7 +211,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
         EventAdvancedTab,
         EventInstantTab,
         EventRecurringTab,
-        EventWorkflowsTab,
         EventWebhooksTab,
       ];
 
@@ -257,7 +237,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
         "instant",
         "recurring",
         "apps",
-        "workflows",
         "webhooks",
         "ai",
       ])
@@ -292,13 +271,11 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
     eventType,
     team,
     eventTypeApps,
-    allActiveWorkflows,
   });
 
   return (
     <EventTypeComponent
       {...rest}
-      allActiveWorkflows={allActiveWorkflows}
       tabMap={tabMap}
       onDelete={(id) => {
         deleteMutation.mutate({ id });

@@ -14,11 +14,8 @@ import {
 } from "@calcom/web/test/utils/bookingScenario/bookingScenario";
 import { createMockNextJsRequest } from "@calcom/web/test/utils/bookingScenario/createMockNextJsRequest";
 import {
-  // expectWorkflowToBeTriggered,
-  expectSuccessfulBookingCreationEmails,
   expectBookingToBeInDatabase,
   expectBookingCreatedWebhookToHaveBeenFired,
-  expectSMSToBeTriggered,
   expectBookingRequestedEmails,
   expectBookingRequestedWebhookToHaveBeenFired,
 } from "@calcom/web/test/utils/bookingScenario/expects";
@@ -168,17 +165,6 @@ describe("handleNewBooking", () => {
               uid: createdBooking.uid!,
               eventTypeId: mockBookingData.eventTypeId,
               status: BookingStatus.ACCEPTED,
-            });
-
-            expectSuccessfulBookingCreationEmails({
-              booking: {
-                uid: createdBooking.uid!,
-              },
-              booker,
-              organizer,
-              otherTeamMembers,
-              emails,
-              iCalUID: createdBooking.iCalUID,
             });
 
             expectBookingCreatedWebhookToHaveBeenFired({
@@ -412,17 +398,6 @@ describe("handleNewBooking", () => {
               eventTypeId: mockBookingData.eventTypeId,
               status: BookingStatus.ACCEPTED,
             });
-            // expectWorkflowToBeTriggered();
-            expectSuccessfulBookingCreationEmails({
-              booking: {
-                uid: createdBooking.uid!,
-              },
-              booker,
-              organizer,
-              otherTeamMembers,
-              emails,
-              iCalUID: createdBooking.iCalUID,
-            });
             expectBookingCreatedWebhookToHaveBeenFired({
               booker,
               organizer,
@@ -600,17 +575,6 @@ describe("handleNewBooking", () => {
             });
 
             const WEBSITE_PROTOCOL = new URL(WEBSITE_URL).protocol;
-            expectSuccessfulBookingCreationEmails({
-              booking: {
-                uid: createdBooking.uid!,
-                urlOrigin: `${WEBSITE_PROTOCOL}//team-1.cal.local:3000`,
-              },
-              booker,
-              organizer,
-              otherTeamMembers,
-              emails,
-              iCalUID: createdBooking.iCalUID,
-            });
 
             expectBookingCreatedWebhookToHaveBeenFired({
               booker,
@@ -791,17 +755,6 @@ describe("handleNewBooking", () => {
             });
 
             const WEBSITE_PROTOCOL = new URL(WEBSITE_URL).protocol;
-            expectSuccessfulBookingCreationEmails({
-              booking: {
-                uid: createdBooking.uid!,
-                urlOrigin: `${WEBSITE_PROTOCOL}//team-1.cal.local:3000`,
-              },
-              booker: { email: contructEmailFromPhoneNumber(TEST_ATTENDEE_NUMBER), name: booker.name },
-              organizer,
-              otherTeamMembers,
-              emails,
-              iCalUID: createdBooking.iCalUID,
-            });
 
             expectBookingCreatedWebhookToHaveBeenFired({
               booker: { email: contructEmailFromPhoneNumber(TEST_ATTENDEE_NUMBER), name: booker.name },
@@ -812,8 +765,6 @@ describe("handleNewBooking", () => {
               isEmailHidden: true,
               isAttendeePhoneNumberHidden: false,
             });
-
-            expectSMSToBeTriggered({ sms, toNumber: TEST_ATTENDEE_NUMBER });
           },
           timeout
         );
@@ -999,8 +950,6 @@ describe("handleNewBooking", () => {
               eventType: scenarioData.eventTypes[0],
               isEmailHidden: true,
             });
-
-            expectSMSToBeTriggered({ sms, toNumber: TEST_ATTENDEE_NUMBER });
           },
           timeout
         );
@@ -1212,16 +1161,6 @@ describe("handleNewBooking", () => {
             status: BookingStatus.ACCEPTED,
           });
 
-          expectSuccessfulBookingCreationEmails({
-            booking: {
-              uid: createdBooking.uid!,
-            },
-            booker,
-            organizer,
-            otherTeamMembers,
-            emails,
-            iCalUID: createdBooking.iCalUID,
-          });
           expectBookingCreatedWebhookToHaveBeenFired({
             booker,
             organizer,
@@ -1357,18 +1296,7 @@ describe("handleNewBooking", () => {
             eventTypeId: mockBookingData.eventTypeId,
             status: BookingStatus.ACCEPTED,
           });
-          // expectWorkflowToBeTriggered();
 
-          expectSuccessfulBookingCreationEmails({
-            booking: {
-              uid: createdBooking.uid!,
-            },
-            booker,
-            organizer,
-            otherTeamMembers,
-            emails,
-            iCalUID: createdBooking.iCalUID,
-          });
           expectBookingCreatedWebhookToHaveBeenFired({
             booker,
             organizer,
@@ -1513,18 +1441,6 @@ describe("handleNewBooking", () => {
               status: BookingStatus.ACCEPTED,
             });
 
-            expectSuccessfulBookingCreationEmails({
-              booking: {
-                uid: createdBooking.uid!,
-                // All booking links are of WEBAPP_URL and not of the org because the team isn't part of the org
-                urlOrigin: WEBSITE_URL,
-              },
-              booker,
-              organizer,
-              otherTeamMembers,
-              emails,
-              iCalUID: createdBooking.iCalUID,
-            });
             expectBookingCreatedWebhookToHaveBeenFired({
               booker,
               organizer,

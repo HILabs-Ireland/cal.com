@@ -190,7 +190,6 @@ describe("handleSeats", () => {
         expect.objectContaining({
           id: bookingScenarioEventType.id,
           slug: bookingScenarioEventType.slug,
-          workflows: bookingScenarioEventType.workflows,
           seatsPerTimeSlot: bookingScenarioEventType.seatsPerTimeSlot,
           seatsShowAttendees: bookingScenarioEventType.seatsShowAttendees,
         })
@@ -314,7 +313,6 @@ describe("handleSeats", () => {
         expect.objectContaining({
           id: bookingScenarioEventType.id,
           slug: bookingScenarioEventType.slug,
-          workflows: bookingScenarioEventType.workflows,
           seatsPerTimeSlot: bookingScenarioEventType.seatsPerTimeSlot,
           seatsShowAttendees: bookingScenarioEventType.seatsShowAttendees,
         })

@@ -9,7 +9,6 @@ import { getLocationValueForDB } from "@calcom/app-store/locations";
 import { getEventName } from "@calcom/core/event";
 import monitorCallbackAsync from "@calcom/core/sentryWrapper";
 import dayjs from "@calcom/dayjs";
-import { scheduleMandatoryReminder } from "@calcom/ee/workflows/lib/reminders/scheduleMandatoryReminder";
 import {
   sendAttendeeRequestEmailAndSMS,
   sendOrganizerRequestEmail,
@@ -17,18 +16,12 @@ import {
   sendRoundRobinCancelledEmailsAndSMS,
   sendRoundRobinRescheduledEmailsAndSMS,
   sendRoundRobinScheduledEmailsAndSMS,
-  sendScheduledEmailsAndSMS,
 } from "@calcom/emails";
 import getICalUID from "@calcom/emails/lib/getICalUID";
 import { getBookingFieldsWithSystemFields } from "@calcom/features/bookings/lib/getBookingFields";
 import { handleWebhookTrigger } from "@calcom/features/bookings/lib/handleWebhookTrigger";
 import { isEventTypeLoggingEnabled } from "@calcom/features/bookings/lib/isEventTypeLoggingEnabled";
 import { getShouldServeCache } from "@calcom/features/calendar-cache/lib/getShouldServeCache";
-import {
-  allowDisablingAttendeeConfirmationEmails,
-  allowDisablingHostConfirmationEmails,
-} from "@calcom/features/ee/workflows/lib/allowDisablingStandardEmails";
-import { scheduleWorkflowReminders } from "@calcom/features/ee/workflows/lib/reminders/reminderScheduler";
 import { getFullName } from "@calcom/features/form-builder/utils";
 import { UsersRepository } from "@calcom/features/users/users.repository";
 import type { GetSubscriberOptions } from "@calcom/features/webhooks/lib/getWebhooks";
@@ -52,13 +45,10 @@ import { getPiiFreeCalendarEvent, getPiiFreeEventType } from "@calcom/lib/piiFre
 import { safeStringify } from "@calcom/lib/safeStringify";
 import { getLuckyUser } from "@calcom/lib/server/getLuckyUser";
 import { getTranslation } from "@calcom/lib/server/i18n";
-import { WorkflowRepository } from "@calcom/lib/server/repository/workflow";
 import { getTimeFormatStringFromUserTimeFormat } from "@calcom/lib/timeFormat";
 import prisma from "@calcom/prisma";
 import { BookingStatus, SchedulingType, WebhookTriggerEvents } from "@calcom/prisma/enums";
-import { eventTypeMetaDataSchemaWithTypedApps } from "@calcom/prisma/zod-utils";
 import type { PlatformClientParams } from "@calcom/prisma/zod-utils";
-import { getAllWorkflowsFromEventType } from "@calcom/trpc/server/routers/viewer/workflows/util";
 import type { AppsStatus, CalendarEvent, Person } from "@calcom/types/Calendar";
 
 import type { EventPayloadType, EventTypeInfo } from "../../webhooks/lib/sendPayload";
@@ -968,14 +958,6 @@ async function handler(
     oAuthClientId: platformClientId,
   };
 
-  const workflows = await getAllWorkflowsFromEventType(
-    {
-      ...eventType,
-      metadata: eventTypeMetaDataSchemaWithTypedApps.parse(eventType.metadata),
-    },
-    organizerUser.id
-  );
-
   if (isTeamEventType) {
     evt.team = {
       members: teamMembers,
@@ -1016,7 +998,6 @@ async function handler(
       subscriberOptions,
       eventTrigger,
       responses,
-      workflows,
       rescheduledBy: reqBody.rescheduledBy,
       isDryRun,
     });
@@ -1175,8 +1156,6 @@ async function handler(
   //this is the actual rescheduling logic
   if (!eventType.seatsPerTimeSlot && originalRescheduledBooking?.uid) {
     log.silly("Rescheduling booking", originalRescheduledBooking.uid);
-    // cancel workflow reminders from previous rescheduled booking
-    await WorkflowRepository.deleteAllWorkflowReminders(originalRescheduledBooking.workflowReminders);
 
     evt = addVideoCallDataToEvent(originalRescheduledBooking.references, evt);
 
@@ -1317,34 +1296,12 @@ async function handler(
       isAttendeeConfirmationEmailDisabled =
         eventType.metadata?.disableStandardEmails?.confirmation?.attendee || false;
 
-      if (isHostConfirmationEmailsDisabled) {
-        isHostConfirmationEmailsDisabled = allowDisablingHostConfirmationEmails(workflows);
-      }
-
-      if (isAttendeeConfirmationEmailDisabled) {
-        isAttendeeConfirmationEmailDisabled = allowDisablingAttendeeConfirmationEmails(workflows);
-      }
-
       loggerWithEventDetails.debug(
         "Emails: Sending scheduled emails for booking confirmation",
         safeStringify({
           calEvent: getPiiFreeCalendarEvent(evt),
         })
       );
-      if (!isDryRun) {
-        await monitorCallbackAsync(
-          sendScheduledEmailsAndSMS,
-          {
-            ...evt,
-            additionalNotes,
-            customInputs,
-          },
-          eventNameObject,
-          isHostConfirmationEmailsDisabled,
-          isAttendeeConfirmationEmailDisabled,
-          eventType.metadata
-        );
-      }
     }
   }
 
@@ -1510,34 +1467,6 @@ async function handler(
     eventType: { slug: eventType.slug, schedulingType: eventType.schedulingType, hosts: eventType.hosts },
     bookerUrl,
   };
-
-  if (!eventType.metadata?.disableStandardEmails?.all?.attendee) {
-    await scheduleMandatoryReminder({
-      evt: evtWithMetadata,
-      workflows,
-      requiresConfirmation: !isConfirmedByDefault,
-      hideBranding: !!eventType.owner?.hideBranding,
-      seatReferenceUid: evt.attendeeSeatId,
-      isPlatformNoEmail: noEmail && Boolean(platformClientId),
-      isDryRun,
-    });
-  }
-
-  try {
-    await monitorCallbackAsync(scheduleWorkflowReminders, {
-      workflows,
-      smsReminderNumber: smsReminderNumber || null,
-      calendarEvent: evtWithMetadata,
-      isNotConfirmed: rescheduleUid ? false : !isConfirmedByDefault,
-      isRescheduleEvent: !!rescheduleUid,
-      isFirstRecurringEvent: req.body.allRecurringDates ? req.body.isFirstRecurringSlot : undefined,
-      hideBranding: !!eventType.owner?.hideBranding,
-      seatReferenceUid: evt.attendeeSeatId,
-      isDryRun,
-    });
-  } catch (error) {
-    loggerWithEventDetails.error("Error while scheduling workflow reminders", JSON.stringify({ error }));
-  }
 
   // booking successful
   req.statusCode = 201;

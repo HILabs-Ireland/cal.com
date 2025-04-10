@@ -92,12 +92,6 @@ const getNavigationItems = (orgBranding: OrganizationBranding): NavigationItemTy
     moreOnMobile: true,
   },
   {
-    name: "workflows",
-    href: "/workflows",
-    icon: "zap",
-    moreOnMobile: true,
-  },
-  {
     name: "insights",
     href: "/insights",
     icon: "chart-bar",

@@ -6,7 +6,6 @@ import { sendDeclinedEmailsAndSMS } from "@calcom/emails";
 import { getCalEventResponses } from "@calcom/features/bookings/lib/getCalEventResponses";
 import { handleConfirmation } from "@calcom/features/bookings/lib/handleConfirmation";
 import { handleWebhookTrigger } from "@calcom/features/bookings/lib/handleWebhookTrigger";
-import { workflowSelect } from "@calcom/features/ee/workflows/lib/getAllWorkflows";
 import type { GetSubscriberOptions } from "@calcom/features/webhooks/lib/getWebhooks";
 import type { EventPayloadType, EventTypeInfo } from "@calcom/features/webhooks/lib/sendPayload";
 import { isPrismaObjOrUndefined, parseRecurringEvent } from "@calcom/lib";
@@ -86,13 +85,6 @@ export const confirmHandler = async ({ ctx, input }: ConfirmOptions) => {
               id: true,
               name: true,
               parentId: true,
-            },
-          },
-          workflows: {
-            select: {
-              workflow: {
-                select: workflowSelect,
-              },
             },
           },
           customInputs: true,

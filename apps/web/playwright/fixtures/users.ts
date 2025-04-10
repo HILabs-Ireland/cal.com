@@ -10,7 +10,7 @@ import { DEFAULT_SCHEDULE, getAvailabilityFromSchedule } from "@calcom/lib/avail
 import { WEBAPP_URL } from "@calcom/lib/constants";
 import { ProfileRepository } from "@calcom/lib/server/repository/profile";
 import { prisma } from "@calcom/prisma";
-import { MembershipRole, SchedulingType, TimeUnit, WorkflowTriggerEvents } from "@calcom/prisma/enums";
+import { MembershipRole, SchedulingType } from "@calcom/prisma/enums";
 import { teamMetadataSchema } from "@calcom/prisma/zod-utils";
 import type { Schedule } from "@calcom/types/schedule";
 
@@ -45,19 +45,6 @@ const seededForm = {
 };
 
 type UserWithIncludes = PrismaType.UserGetPayload<typeof userWithEventTypes>;
-
-const createTeamWorkflow = async (user: { id: number }, team: { id: number }) => {
-  return await prisma.workflow.create({
-    data: {
-      name: "Team Workflow",
-      trigger: WorkflowTriggerEvents.BEFORE_EVENT,
-      time: 24,
-      timeUnit: TimeUnit.HOUR,
-      userId: user.id,
-      teamId: team.id,
-    },
-  });
-};
 
 const createTeamEventType = async (
   user: { id: number },
@@ -160,7 +147,6 @@ const createTeamAndAddUser = async (
       schedulingType: schedulingType,
       assignAllTeamMembers: assignAllTeamMembersForSubTeamEvents,
     });
-    await createTeamWorkflow(user, team);
     data.children = { connect: [{ id: team.id }] };
   }
   data.orgProfiles = isOrg

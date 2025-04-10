@@ -4,8 +4,6 @@ import prisma from "@calcom/prisma";
 
 import { TRPCError } from "@trpc/server";
 
-import { deleteWorkfowRemindersOfRemovedMember } from "./deleteWorkflowRemindersOfRemovedMember";
-
 const log = logger.getSubLogger({ prefix: ["removeMember"] });
 
 const removeMember = async ({
@@ -132,8 +130,6 @@ const removeMember = async ({
   await prisma.eventType.deleteMany({
     where: { parent: { teamId: teamId }, userId: membership.userId },
   });
-
-  await deleteWorkfowRemindersOfRemovedMember(team, memberId, isOrg);
 
   return { membership };
 };
