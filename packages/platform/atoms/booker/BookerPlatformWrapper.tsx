@@ -505,7 +505,6 @@ export const BookerPlatformWrapper = (
         bookerLayout={bookerLayout}
         verifyCode={undefined}
         isPlatform
-        hasValidLicense={true}
       />
     </AtomsWrapper>
   );

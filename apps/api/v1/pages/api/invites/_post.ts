@@ -29,7 +29,6 @@ async function postHandler(req: NextApiRequest, res: NextApiResponse) {
           upId: "",
         } satisfies UserProfile,
       },
-      hasValidLicense: true,
       expires: "",
       upId: "",
     };

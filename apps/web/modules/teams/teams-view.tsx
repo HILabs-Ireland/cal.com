@@ -41,6 +41,4 @@ function Teams(props: PageProps) {
   );
 }
 
-Teams.requiresLicense = false;
-
 export default Teams;
