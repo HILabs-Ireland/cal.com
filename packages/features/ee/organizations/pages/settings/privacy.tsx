@@ -1,6 +1,6 @@
 "use client";
 
-import MakeTeamPrivateSwitch from "@calcom/features/ee/teams/components/MakeTeamPrivateSwitch";
+import MakeTeamPrivateSwitch from "@calcom/features/teams/components/MakeTeamPrivateSwitch";
 import { MembershipRole } from "@calcom/prisma/enums";
 import { trpc } from "@calcom/trpc/react";
 

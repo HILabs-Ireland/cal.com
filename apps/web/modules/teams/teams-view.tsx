@@ -1,7 +1,7 @@
 "use client";
 
-import { TeamsListing } from "@calcom/features/ee/teams/components";
 import Shell from "@calcom/features/shell/Shell";
+import { TeamsListing } from "@calcom/features/teams/components";
 import { WEBAPP_URL } from "@calcom/lib/constants";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { trpc } from "@calcom/trpc/react";
