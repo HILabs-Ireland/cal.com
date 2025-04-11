@@ -16,7 +16,7 @@ import { trpc } from "@calcom/trpc/react";
 import type { RouterOutputs } from "@calcom/trpc/react";
 import { Button, Form, showToast, SettingsToggle } from "@calcom/ui";
 
-import ThemeLabel from "../../../settings/ThemeLabel";
+import ThemeLabel from "../../settings/ThemeLabel";
 
 type BrandColorsFormValues = {
   brandColor: string;

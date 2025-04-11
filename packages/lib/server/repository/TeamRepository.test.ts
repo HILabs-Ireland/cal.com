@@ -10,7 +10,7 @@ vi.mock("@calcom/lib/domainManager/organization", () => ({
   deleteDomain: vi.fn(),
 }));
 
-vi.mock("@calcom/features/ee/teams/lib/removeMember", () => ({
+vi.mock("@calcom/features/teams/lib/removeMember", () => ({
   default: vi.fn(),
 }));
 
