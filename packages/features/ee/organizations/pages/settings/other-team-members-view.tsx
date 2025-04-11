@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
-import MemberInvitationModal from "@calcom/ee/teams/components/MemberInvitationModal";
+import MemberInvitationModal from "@calcom/features/teams/components/MemberInvitationModal";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { useParamsWithFallback } from "@calcom/lib/hooks/useParamsWithFallback";
 import { MembershipRole } from "@calcom/prisma/enums";
@@ -14,7 +14,7 @@ import { trpc } from "@calcom/trpc/react";
 import type { RouterOutputs } from "@calcom/trpc/react";
 import { showToast, Button } from "@calcom/ui";
 
-import MakeTeamPrivateSwitch from "../../../teams/components/MakeTeamPrivateSwitch";
+import MakeTeamPrivateSwitch from "../../../../teams/components/MakeTeamPrivateSwitch";
 import MemberListItem from "../components/MemberListItem";
 
 type Members = RouterOutputs["viewer"]["organizations"]["listOtherTeamMembers"]["rows"];
