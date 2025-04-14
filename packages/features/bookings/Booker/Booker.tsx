@@ -67,7 +67,6 @@ const BookerComponent = ({
   customClassNames,
   areInstantMeetingParametersSet = false,
   userLocale,
-  hasValidLicense,
 }: BookerProps & WrappedBookerProps) => {
   const searchParams = useCompatSearchParams();
   const isPlatformBookerEmbed = useIsPlatformBookerEmbed();

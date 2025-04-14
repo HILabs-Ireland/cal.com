@@ -10,7 +10,6 @@ import { attributesRouter } from "./attributes/_router";
 import { authRouter } from "./auth/_router";
 import { availabilityRouter } from "./availability/_router";
 import { bookingsRouter } from "./bookings/_router";
-import { deploymentSetupRouter } from "./deploymentSetup/_router";
 import { domainWideDelegationRouter } from "./domainWideDelegation/_router";
 import { eventTypesRouter } from "./eventTypes/_router";
 import { highPerfRouter } from "./highPerf/_router";
@@ -26,7 +25,6 @@ export const viewerRouter = mergeRouters(
     loggedInViewerRouter,
     public: publicViewerRouter,
     auth: authRouter,
-    deploymentSetup: deploymentSetupRouter,
     bookings: bookingsRouter,
     eventTypes: eventTypesRouter,
     availability: availabilityRouter,

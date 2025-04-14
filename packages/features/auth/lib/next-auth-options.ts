@@ -464,7 +464,6 @@ export const getOptions = ({
         ...session,
         profileId,
         upId: token.upId || session.upId,
-        hasValidLicense: false,
         user: {
           ...session.user,
           id: token.id as number,

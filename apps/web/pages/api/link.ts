@@ -57,7 +57,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse<Response>) {
         } satisfies UserProfile,
       },
       upId: "",
-      hasValidLicense: true,
       expires: "" /* Not used in this context */,
     };
   }

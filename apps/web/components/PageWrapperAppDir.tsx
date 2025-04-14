@@ -13,7 +13,6 @@ import AppProviders from "@lib/app-providers-app-dir";
 export type PageWrapperProps = Readonly<{
   getLayout?: ((page: React.ReactElement) => React.ReactNode) | null;
   children: React.ReactNode;
-  requiresLicense: boolean;
   nonce: string | undefined;
   themeBasis: string | null;
   dehydratedState?: DehydratedState;

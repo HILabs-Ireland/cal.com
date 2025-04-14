@@ -13,7 +13,6 @@ type WithLayoutParams<T extends Record<string, any>> = {
   ServerPage?: (props: T) => Promise<React.ReactElement> | null;
   getData?: (arg: GetServerSidePropsContext) => Promise<T | undefined>;
   isBookingPage?: boolean;
-  requiresLicense?: boolean;
 };
 
 export function WithLayout<T extends Record<string, any>>({
@@ -23,7 +22,6 @@ export function WithLayout<T extends Record<string, any>>({
   ServerPage,
   Page,
   isBookingPage,
-  requiresLicense,
 }: WithLayoutParams<T>) {
   // eslint-disable-next-line react/display-name
   return async <P extends "P" | "L">(p: P extends "P" ? PageProps : LayoutProps) => {
@@ -49,7 +47,6 @@ export function WithLayout<T extends Record<string, any>>({
     return (
       <PageWrapper
         getLayout={getLayout}
-        requiresLicense={requiresLicense || !!(Page && "requiresLicense" in Page && Page.requiresLicense)}
         nonce={nonce}
         themeBasis={null}
         isBookingPage={isBookingPage || !!(Page && "isBookingPage" in Page && Page.isBookingPage)}
