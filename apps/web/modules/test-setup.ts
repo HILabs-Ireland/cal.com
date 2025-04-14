@@ -29,7 +29,7 @@ vi.mock("@calcom/core/event", () => ({
   getEventName: vi.fn(),
 }));
 
-vi.mock("@calcom/ee/organizations/lib/orgDomains", () => ({
+vi.mock("@calcom/lib/getBookerUrl/getBookerBaseUrlSync", () => ({
   getOrgFullOrigin: vi.fn(),
 }));
 

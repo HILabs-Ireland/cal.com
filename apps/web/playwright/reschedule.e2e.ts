@@ -1,18 +1,11 @@
-import type { Page } from "@playwright/test";
 import { expect } from "@playwright/test";
 
 import dayjs from "@calcom/dayjs";
 import prisma from "@calcom/prisma";
-import { MembershipRole } from "@calcom/prisma/client";
 import { BookingStatus } from "@calcom/prisma/enums";
 
 import { test } from "./lib/fixtures";
-import {
-  confirmReschedule,
-  doOnOrgDomain,
-  goToUrlWithErrorHandling,
-  selectFirstAvailableTimeSlotNextMonth,
-} from "./lib/testUtils";
+import { confirmReschedule, selectFirstAvailableTimeSlotNextMonth } from "./lib/testUtils";
 
 test.describe.configure({ mode: "parallel" });
 
@@ -213,95 +206,6 @@ test.describe("Reschedule Tests", async () => {
 
   test("Team Event Booking", () => {
     // It is tested in teams.e2e.ts
-  });
-  /* eslint-disable playwright/no-skipped-test */
-  test.skip("[EE feature] Organization", () => {
-    test("Booking should be rescheduleable for a user that was moved to an organization through org domain", async ({
-      users,
-      bookings,
-      orgs,
-      page,
-    }) => {
-      const org = await orgs.create({
-        name: "TestOrg",
-      });
-      const orgMember = await users.create({
-        username: "username-outside-org",
-        organizationId: org.id,
-        profileUsername: "username-inside-org",
-        roleInOrganization: MembershipRole.MEMBER,
-      });
-      const profileUsername = (await orgMember.getFirstProfile()).username;
-      const eventType = orgMember.eventTypes[0];
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const orgSlug = org.slug!;
-      const booking = await bookings.create(orgMember.id, orgMember.username, eventType.id);
-
-      return await doOnOrgDomain(
-        {
-          orgSlug: orgSlug,
-          page,
-        },
-        async ({ page, goToUrlWithErrorHandling }) => {
-          const result = await goToUrlWithErrorHandling(`/reschedule/${booking.uid}`);
-          expectUrlToBeABookingPageOnOrgForUsername({
-            url: result.url,
-            orgSlug,
-            username: profileUsername,
-          });
-
-          const rescheduleUrlToBeOpenedInOrgContext = getNonOrgUrlFromOrgUrl(result.url, orgSlug);
-          await page.goto(rescheduleUrlToBeOpenedInOrgContext);
-          await expectSuccessfulReschedule(page, orgSlug);
-          return { url: result.url };
-        }
-      );
-    });
-
-    test("Booking should be rescheduleable for a user that was moved to an organization through non-org domain", async ({
-      users,
-      bookings,
-      orgs,
-      page,
-    }) => {
-      const org = await orgs.create({
-        name: "TestOrg",
-      });
-      const orgMember = await users.create({
-        username: "username-outside-org",
-        organizationId: org.id,
-        profileUsername: "username-inside-org",
-        roleInOrganization: MembershipRole.MEMBER,
-      });
-      const eventType = orgMember.eventTypes[0];
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const orgSlug = org.slug!;
-      const booking = await bookings.create(orgMember.id, orgMember.username, eventType.id);
-
-      const result = await goToUrlWithErrorHandling({ url: `/reschedule/${booking.uid}`, page });
-
-      await doOnOrgDomain(
-        {
-          orgSlug: orgSlug,
-          page,
-        },
-        async ({ page }) => {
-          await page.goto(getNonOrgUrlFromOrgUrl(result.url, orgSlug));
-          await expectSuccessfulReschedule(page, orgSlug);
-        }
-      );
-    });
-
-    const getNonOrgUrlFromOrgUrl = (url: string, orgSlug: string) => url.replace(orgSlug, "app");
-
-    async function expectSuccessfulReschedule(page: Page, orgSlug: string) {
-      await selectFirstAvailableTimeSlotNextMonth(page);
-      const { protocol, host } = new URL(page.url());
-      // Needed since we we're expecting a non-org URL, causing timeouts.
-      const url = getNonOrgUrlFromOrgUrl(`${protocol}//${host}/api/book/event`, orgSlug);
-      await confirmReschedule(page, url);
-      await expect(page.locator("[data-testid=success-page]")).toBeVisible();
-    }
   });
 });
 
