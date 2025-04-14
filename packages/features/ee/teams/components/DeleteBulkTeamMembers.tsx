@@ -20,8 +20,6 @@ export default function DeleteBulkTeamMembers({ users, onRemove, isOrg, teamId }
     async onSuccess() {
       await utils.viewer.teams.get.invalidate();
       await utils.viewer.eventTypes.invalidate();
-      await utils.viewer.organizations.listMembers.invalidate();
-      await utils.viewer.organizations.getMembers.invalidate();
       showToast("Deleted Users", "success");
     },
     async onError(err) {

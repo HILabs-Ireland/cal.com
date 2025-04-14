@@ -117,7 +117,6 @@ export function EditMemberSheet({
       setRole(role);
       setMutationLoading(false);
       await utils.viewer.teams.get.invalidate();
-      await utils.viewer.organizations.listMembers.invalidate();
       showToast(t("profile_updated_successfully"), "success");
       setEditMode(false);
     },
