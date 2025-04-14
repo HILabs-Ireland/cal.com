@@ -11,7 +11,6 @@ import type { ParsedUrlQuery } from "querystring";
 import type { PropsWithChildren, ReactNode } from "react";
 import { useEffect } from "react";
 
-import { OrgBrandingProvider } from "@calcom/features/ee/organizations/context/provider";
 import { FeatureProvider } from "@calcom/features/flags/context/provider";
 import { useFlags } from "@calcom/features/flags/hooks";
 import { MetaProvider } from "@calcom/ui";
@@ -260,16 +259,6 @@ function FeatureFlagsProvider({ children }: { children: React.ReactNode }) {
   return <FeatureProvider value={flags}>{children}</FeatureProvider>;
 }
 
-function useOrgBrandingValues() {
-  const session = useSession();
-  return session?.data?.user.org;
-}
-
-function OrgBrandProvider({ children }: { children: React.ReactNode }) {
-  const orgBrand = useOrgBrandingValues();
-  return <OrgBrandingProvider value={{ orgBrand }}>{children}</OrgBrandingProvider>;
-}
-
 const AppProviders = (props: AppPropsWithChildren) => {
   const isBookingPage = useIsBookingPage();
   const { pageProps, ...rest } = props;
@@ -295,9 +284,7 @@ const AppProviders = (props: AppPropsWithChildren) => {
             isBookingPage={props.Component.isBookingPage || isBookingPage}
             router={props.router}>
             <FeatureFlagsProvider>
-              <OrgBrandProvider>
-                <MetaProvider>{props.children}</MetaProvider>
-              </OrgBrandProvider>
+              <MetaProvider>{props.children}</MetaProvider>
             </FeatureFlagsProvider>
           </CalcomThemeProvider>
         </TooltipProvider>

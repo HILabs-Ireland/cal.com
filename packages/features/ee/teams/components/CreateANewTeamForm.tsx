@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
+import { IS_PRODUCTION, WEBAPP_URL } from "@calcom/lib/constants";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import slugify from "@calcom/lib/slugify";
 import type { RouterOutputs } from "@calcom/trpc/react";
 import { trpc } from "@calcom/trpc/react";
 import { Alert, Button, DialogFooter, Form, TextField } from "@calcom/ui";
 
-import { useOrgBranding } from "../../organizations/context/provider";
-import { subdomainSuffix } from "../../organizations/lib/orgDomains";
 import type { NewTeamFormValues } from "../lib/types";
 
 interface CreateANewTeamFormProps {
@@ -23,7 +22,6 @@ export const CreateANewTeamForm = (props: CreateANewTeamFormProps) => {
   const { inDialog, onCancel, slug, submitLabel, onSuccess } = props;
   const { t, isLocaleReady } = useLocale();
   const [serverErrorMessage, setServerErrorMessage] = useState<string | null>(null);
-  const orgBranding = useOrgBranding();
 
   const newTeamFormMethods = useForm<NewTeamFormValues>({
     defaultValues: {
@@ -41,6 +39,14 @@ export const CreateANewTeamForm = (props: CreateANewTeamFormProps) => {
       }
     },
   });
+
+  const domain = (() => {
+    if (!IS_PRODUCTION && process.env.LOCAL_TESTING_DOMAIN_VERCEL) {
+      return process.env.LOCAL_TESTING_DOMAIN_VERCEL;
+    }
+    const urlSplit = WEBAPP_URL.replace(/https?:\/\//, "").split(".");
+    return urlSplit.length === 3 ? urlSplit.slice(1).join(".") : urlSplit.join(".");
+  })();
 
   const FormButtons = () => (
     <>
@@ -124,11 +130,7 @@ export const CreateANewTeamForm = (props: CreateANewTeamFormProps) => {
                 name="slug"
                 placeholder="acme"
                 label={t("team_url")}
-                addOnLeading={`${
-                  orgBranding
-                    ? `${orgBranding.fullDomain.replace("https://", "").replace("http://", "")}/`
-                    : `${subdomainSuffix()}/team/`
-                }`}
+                addOnLeading={`${domain}/team/`}
                 value={value}
                 defaultValue={value}
                 onChange={(e) => {

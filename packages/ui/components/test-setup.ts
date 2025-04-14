@@ -6,18 +6,6 @@ import { afterEach, expect, vi } from "vitest";
 // For next.js webapp compponent that use "preserve" for jsx in tsconfig.json
 global.React = React;
 
-vi.mock("@calcom/features/ee/organizations/hooks", () => ({
-  useOrgBrandingValues() {
-    return {};
-  },
-}));
-
-vi.mock("@calcom/features/ee/organizations/context/provider", () => ({
-  useOrgBranding() {
-    return {};
-  },
-}));
-
 vi.mock("@calcom/trpc/react", () => ({
   trpc: {},
 }));

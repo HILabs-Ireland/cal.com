@@ -3,7 +3,6 @@ import { isValidPhoneNumber } from "libphonenumber-js";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
 
-import { useOrgBranding } from "@calcom/features/ee/organizations/context/provider";
 import { TeamEventTypeForm } from "@calcom/features/ee/teams/components/TeamEventTypeForm";
 import { useCreateEventType } from "@calcom/lib/hooks/useCreateEventType";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
@@ -62,7 +61,6 @@ export default function CreateEventTypeDialog({
 }) {
   const { t } = useLocale();
   const router = useRouter();
-  const orgBranding = useOrgBranding();
 
   const {
     data: { teamId, eventPage: pageSlug },
@@ -102,7 +100,7 @@ export default function CreateEventTypeDialog({
 
   const { form, createMutation } = useCreateEventType(onSuccessMutation, onErrorMutation);
 
-  const urlPrefix = orgBranding?.fullDomain ?? process.env.NEXT_PUBLIC_WEBSITE_URL;
+  const urlPrefix = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
   const { data: team } = trpc.viewer.teams.get.useQuery(
     { teamId: teamId ?? -1, isOrg: false },

@@ -3,7 +3,6 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState, useMemo } from "react";
 
-import { useOrgBranding } from "@calcom/features/ee/organizations/context/provider";
 import InviteLinkSettingsModal from "@calcom/features/ee/teams/components/InviteLinkSettingsModal";
 import { MemberInvitationModalWithoutMembers } from "@calcom/features/ee/teams/components/MemberInvitationModal";
 import { classNames } from "@calcom/lib";
@@ -54,22 +53,12 @@ export const AddNewTeamMembersForm = ({ teamId, isOrg }: { teamId: number; isOrg
   const { t } = useLocale();
 
   const router = useRouter();
-  const orgBranding = useOrgBranding();
 
   const showDialog = searchParams?.get("inviteModal") === "true";
   const [memberInviteModal, setMemberInviteModal] = useState(showDialog);
   const [inviteLinkSettingsModal, setInviteLinkSettingsModal] = useState(false);
 
   const { data: team, isPending } = trpc.viewer.teams.get.useQuery({ teamId, isOrg }, { enabled: !!teamId });
-  const { data: orgMembersNotInThisTeam } = trpc.viewer.organizations.getMembers.useQuery(
-    {
-      teamIdToExclude: teamId,
-      distinctUser: true,
-    },
-    {
-      enabled: orgBranding !== null,
-    }
-  );
 
   const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
     trpc.viewer.teams.listMembers.useInfiniteQuery(
@@ -139,7 +128,6 @@ export const AddNewTeamMembersForm = ({ teamId, isOrg }: { teamId: number; isOrg
         <>
           <MemberInvitationModalWithoutMembers
             showMemberInvitationModal={memberInviteModal}
-            orgMembers={orgMembersNotInThisTeam}
             teamId={teamId}
             token={team?.inviteToken?.token}
             hideInvitationModal={() => setMemberInviteModal(false)}
@@ -165,7 +153,7 @@ export const AddNewTeamMembersForm = ({ teamId, isOrg }: { teamId: number; isOrg
       <hr className="border-subtle my-6" />
       <Button
         data-testid="publish-button"
-        EndIcon={!orgBranding || isOrg ? "arrow-right" : undefined}
+        EndIcon={undefined}
         color="primary"
         className="w-full justify-center"
         disabled={publishTeamMutation.isPending}
