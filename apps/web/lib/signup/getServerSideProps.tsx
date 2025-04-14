@@ -1,17 +1,13 @@
 import type { GetServerSidePropsContext } from "next";
 import { z } from "zod";
 
-import { getOrgUsernameFromEmail } from "@calcom/features/auth/signup/utils/getOrgUsernameFromEmail";
 import { getFeatureFlag } from "@calcom/features/flags/server/utils";
 import { WEBAPP_URL } from "@calcom/lib/constants";
 import { emailSchema } from "@calcom/lib/emailSchema";
 import slugify from "@calcom/lib/slugify";
-import { teamMetadataSchema } from "@calcom/prisma/zod-utils";
 
 import { IS_GOOGLE_LOGIN_ENABLED } from "@server/lib/constants";
 import { ssrInit } from "@server/lib/ssr";
-
-const checkValidEmail = (email: string) => emailSchema.safeParse(email).success;
 
 const querySchema = z.object({
   username: z
@@ -46,7 +42,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     emailVerificationEnabled,
   };
 
-  // username + email prepopulated from query params
   const { username: preFillusername, email: prefilEmail } = querySchema.parse(ctx.query);
 
   if ((process.env.NEXT_PUBLIC_DISABLE_SIGNUP === "true" && !token) || signupDisabled) {
@@ -58,7 +53,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     } as const;
   }
 
-  // no token given, treat as a normal signup without verification token
   if (!token) {
     return {
       props: JSON.parse(
@@ -81,17 +75,8 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
       team: {
         select: {
           metadata: true,
-          isOrganization: true,
           parentId: true,
-          parent: {
-            select: {
-              slug: true,
-              isOrganization: true,
-              organizationSettings: true,
-            },
-          },
           slug: true,
-          organizationSettings: true,
         },
       },
     },
@@ -137,45 +122,14 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
   const username = guessUsernameFromEmail(verificationToken.identifier);
 
-  const tokenTeam = {
-    ...verificationToken?.team,
-    metadata: teamMetadataSchema.parse(verificationToken?.team?.metadata),
-  };
-
-  const isATeamInOrganization = tokenTeam?.parentId !== null;
-  // Detect if the team is an org by either the metadata flag or if it has a parent team
-  const isOrganization = tokenTeam.isOrganization;
-  const isOrganizationOrATeamInOrganization = isOrganization || isATeamInOrganization;
-  // If we are dealing with an org, the slug may come from the team itself or its parent
-  const orgSlug = isOrganizationOrATeamInOrganization
-    ? tokenTeam.metadata?.requestedSlug || tokenTeam.parent?.slug || tokenTeam.slug
-    : null;
-
-  const isValidEmail = checkValidEmail(verificationToken.identifier);
-  const isOrgInviteByLink = isOrganizationOrATeamInOrganization && !isValidEmail;
-  const parentOrgSettings = tokenTeam?.parent?.organizationSettings ?? null;
-
   return {
     props: {
       ...props,
       token,
-      prepopulateFormValues: !isOrgInviteByLink
-        ? {
-            email: verificationToken.identifier,
-            username: isOrganizationOrATeamInOrganization
-              ? getOrgUsernameFromEmail(
-                  verificationToken.identifier,
-                  (isOrganization
-                    ? tokenTeam.organizationSettings?.orgAutoAcceptEmail
-                    : parentOrgSettings?.orgAutoAcceptEmail) || ""
-                )
-              : slugify(username),
-          }
-        : null,
-      orgSlug,
-      orgAutoAcceptEmail: isOrgInviteByLink
-        ? tokenTeam?.organizationSettings?.orgAutoAcceptEmail ?? parentOrgSettings?.orgAutoAcceptEmail ?? null
-        : null,
+      prepopulateFormValues: {
+        email: verificationToken.identifier,
+        username: slugify(username),
+      },
     },
   };
 };

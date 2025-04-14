@@ -5,10 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import {
-  getOrgDomainConfigFromHostname,
-  subdomainSuffix,
-} from "@calcom/features/ee/organizations/lib/orgDomains";
 import { DOCS_URL, IS_CALCOM, WEBSITE_URL } from "@calcom/lib/constants";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { HeadSeo } from "@calcom/ui";
@@ -19,7 +15,6 @@ import PageWrapper from "@components/PageWrapper";
 import { getTranslations } from "@server/lib/getTranslations";
 
 enum pageType {
-  ORG = "org",
   TEAM = "team",
   USER = "user",
   OTHER = "other",
@@ -54,12 +49,8 @@ export default function Custom404() {
 
   const [url, setUrl] = useState(`${WEBSITE_URL}/signup`);
   useEffect(() => {
-    const { isValidOrgDomain, currentOrgDomain } = getOrgDomainConfigFromHostname({
-      hostname: window.location.host,
-    });
-
     const [routerUsername] = pathname?.replace("%20", "-").split(/[?#]/) ?? [];
-    if (routerUsername && (!isValidOrgDomain || !currentOrgDomain)) {
+    if (routerUsername) {
       const splitPath = routerUsername.split("/");
       if (splitPath[1] === "team" && splitPath.length === 3) {
         // Accessing a non-existent team
@@ -72,14 +63,6 @@ export default function Custom404() {
         setUsername(routerUsername);
         setUrl(`${WEBSITE_URL}/signup?username=${routerUsername.replace("/", "")}`);
       }
-    } else {
-      setUsername(currentOrgDomain ?? "");
-      setCurrentPageType(pageType.ORG);
-      setUrl(
-        `${WEBSITE_URL}/signup?callbackUrl=settings/organizations/new%3Fslug%3D${
-          currentOrgDomain?.replace("/", "") ?? ""
-        }`
-      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -123,9 +106,7 @@ export default function Custom404() {
             )}
           </div>
           <div className="mt-12">
-            {((!isSubpage && IS_CALCOM) ||
-              currentPageType === pageType.ORG ||
-              currentPageType === pageType.TEAM) && (
+            {((!isSubpage && IS_CALCOM) || currentPageType === pageType.TEAM) && (
               <ul role="list" className="my-4">
                 <li className="border-2 border-green-500 px-4 py-2">
                   <a
@@ -146,8 +127,6 @@ export default function Custom404() {
                             {t("register")}{" "}
                             <strong className="text-green-500">{`${
                               currentPageType === pageType.TEAM ? `${new URL(WEBSITE_URL).host}/team/` : ""
-                            }${username}${
-                              currentPageType === pageType.ORG ? `.${subdomainSuffix()}` : ""
                             }`}</strong>
                           </span>
                         </span>
@@ -168,7 +147,7 @@ export default function Custom404() {
             </h2>
             <ul role="list" className="border-subtle divide-subtle divide-y">
               {links
-                .filter((_, idx) => currentPageType === pageType.ORG || idx !== 0)
+                .filter((_, idx) => idx !== 0)
                 .map((link, linkIdx) => (
                   <li key={linkIdx} className="px-4 py-2">
                     <a

@@ -1,7 +1,6 @@
 import type { User as PrismaUser } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 
-import { whereClauseForOrgWithSlugOrRequestedSlug } from "@calcom/ee/organizations/lib/orgDomains";
 import { safeStringify } from "@calcom/lib/safeStringify";
 import prisma from "@calcom/prisma";
 import { Prisma } from "@calcom/prisma/client";
@@ -420,7 +419,6 @@ export class ProfileRepository {
         username: {
           in: usernames,
         },
-        organization: whereClauseForOrgWithSlugOrRequestedSlug(orgSlug),
       },
       include: {
         user: {
