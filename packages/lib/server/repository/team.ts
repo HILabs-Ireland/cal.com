@@ -1,7 +1,6 @@
 import { Prisma } from "@prisma/client";
 import type { z } from "zod";
 
-import { whereClauseForOrgWithSlugOrRequestedSlug } from "@calcom/ee/organizations/lib/orgDomains";
 import removeMember from "@calcom/features/ee/teams/lib/removeMember";
 import { deleteDomain } from "@calcom/lib/domainManager/organization";
 import logger from "@calcom/lib/logger";
@@ -11,6 +10,7 @@ import { teamMetadataSchema } from "@calcom/prisma/zod-utils";
 
 import { TRPCError } from "@trpc/server";
 
+import { getSlugOrRequestedSlug } from "../../getBookerUrl/getBookerBaseUrlSync";
 import { getParsedTeam } from "./teamUtils";
 
 type TeamGetPayloadWithParsedMetadata<TeamSelect extends Prisma.TeamSelect> =
@@ -76,7 +76,7 @@ async function getTeamOrOrg<TeamSelect extends Prisma.TeamSelect>({
     // We must fetch only the team here.
   } else {
     if (forOrgWithSlug) {
-      where.parent = whereClauseForOrgWithSlugOrRequestedSlug(forOrgWithSlug);
+      where.parent = getSlugOrRequestedSlug(forOrgWithSlug);
     }
   }
 

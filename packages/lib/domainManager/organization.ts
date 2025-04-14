@@ -1,6 +1,6 @@
-import { subdomainSuffix } from "@calcom/ee/organizations/lib/orgDomains";
 import logger from "@calcom/lib/logger";
 
+import { subdomainSuffix } from "../getBookerUrl/getBookerBaseUrlSync";
 import { deleteDnsRecord, addDnsRecord } from "./deploymentServices/cloudflare";
 import {
   deleteDomain as deleteVercelDomain,
