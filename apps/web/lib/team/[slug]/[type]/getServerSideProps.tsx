@@ -4,9 +4,8 @@ import { z } from "zod";
 import { getServerSession } from "@calcom/features/auth/lib/getServerSession";
 import type { GetBookingType } from "@calcom/features/bookings/lib/get-booking";
 import { getBookingForReschedule } from "@calcom/features/bookings/lib/get-booking";
-import { getSlugOrRequestedSlug, orgDomainConfig } from "@calcom/features/ee/organizations/lib/orgDomains";
-import { getOrganizationSEOSettings } from "@calcom/features/ee/organizations/lib/orgSettings";
 import { getPlaceholderAvatar } from "@calcom/lib/defaultAvatarImage";
+import { getSlugOrRequestedSlug, orgDomainConfig } from "@calcom/lib/getBookerUrl/getBookerBaseUrlSync";
 import slugify from "@calcom/lib/slugify";
 import prisma from "@calcom/prisma";
 import { RedirectType } from "@calcom/prisma/client";
@@ -168,8 +167,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   const fromRedirectOfNonOrgLink = context.query.orgRedirection === "true";
   const isUnpublished = team.parent ? !team.parent.slug : !team.slug;
 
-  const organizationSettings = getOrganizationSEOSettings(team);
-  const allowSEOIndexing = organizationSettings?.allowSEOIndexing ?? false;
+  const allowSEOIndexing = false;
 
   if (!eventData) {
     return {

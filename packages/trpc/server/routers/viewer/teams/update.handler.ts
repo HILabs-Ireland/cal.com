@@ -1,7 +1,7 @@
 import type { Prisma } from "@prisma/client";
 
-import { getOrgFullOrigin } from "@calcom/ee/organizations/lib/orgDomains";
 import { validateIntervalLimitOrder } from "@calcom/lib";
+import { WEBSITE_URL } from "@calcom/lib/constants";
 import { uploadLogo } from "@calcom/lib/server/avatar";
 import { isTeamAdmin } from "@calcom/lib/server/queries/teams";
 import { prisma } from "@calcom/prisma";
@@ -116,7 +116,7 @@ export const updateHandler = async ({ ctx, input }: UpdateOptions) => {
       throw new Error(`Parent team wth slug: ${parentTeam?.slug} not found`);
     }
 
-    const orgUrlPrefix = getOrgFullOrigin(parentTeam.slug);
+    const orgUrlPrefix = WEBSITE_URL;
 
     const toUrlOld = `${orgUrlPrefix}/${prevTeam.slug}`;
     const toUrlNew = `${orgUrlPrefix}/${updatedTeam.slug}`;

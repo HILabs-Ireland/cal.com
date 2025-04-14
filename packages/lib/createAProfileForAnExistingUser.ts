@@ -1,4 +1,4 @@
-import { getOrgFullOrigin } from "@calcom/ee/organizations/lib/orgDomains";
+import { WEBSITE_URL } from "@calcom/lib/constants";
 import { ProfileRepository } from "@calcom/lib/server/repository/profile";
 import { TeamRepository } from "@calcom/lib/server/repository/team";
 import { UserRepository } from "@calcom/lib/server/repository/user";
@@ -55,7 +55,7 @@ export const createAProfileForAnExistingUser = async ({
     throw new Error(`Organization with id ${organizationId} doesn't have a slug`);
   }
 
-  const orgUrl = getOrgFullOrigin(orgSlug);
+  const orgUrl = WEBSITE_URL;
 
   if (org.isPlatform) {
     // We don't want redirects for Platform Organizations

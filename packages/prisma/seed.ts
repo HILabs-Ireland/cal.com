@@ -5,10 +5,10 @@ import { uuid } from "short-uuid";
 import type z from "zod";
 
 import dayjs from "@calcom/dayjs";
-import { getOrgFullOrigin } from "@calcom/ee/organizations/lib/orgDomains";
 import { hashAPIKey } from "@calcom/features/api-keys/lib/apiKeys";
 import { hashPassword } from "@calcom/features/auth/lib/hashPassword";
 import { DEFAULT_SCHEDULE, getAvailabilityFromSchedule } from "@calcom/lib/availability";
+import { WEBSITE_URL } from "@calcom/lib/constants";
 import { BookingStatus, MembershipRole, RedirectType, SchedulingType } from "@calcom/prisma/enums";
 import type { Ensure } from "@calcom/types/utils";
 
@@ -336,7 +336,7 @@ async function createOrganizationAndAddMembersAndTeams({
               fromOrgId: 0,
               type: RedirectType.User,
               from: member.memberData.username,
-              toUrl: `${getOrgFullOrigin(orgData.slug)}/${member.orgProfile.username}`,
+              toUrl: `${WEBSITE_URL}/${member.orgProfile.username}`,
             },
           });
 
