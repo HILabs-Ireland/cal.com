@@ -8,7 +8,6 @@ import { teamMetadataSchema } from "@calcom/prisma/zod-utils";
 import { TRPCError } from "@trpc/server";
 
 import type { TrpcSessionUser } from "../../../trpc";
-import { listOtherTeamHandler } from "../organizations/listOtherTeams.handler";
 import type { TGetTeamAndEventTypeOptionsSchema } from "./getTeamAndEventTypeOptions.schema";
 
 type GetTeamAndEventTypeOptions = {
@@ -170,17 +169,7 @@ export const getTeamAndEventTypeOptions = async ({ ctx, input }: GetTeamAndEvent
         };
       });
 
-    const otherTeams = await listOtherTeamHandler({ ctx });
-    const otherTeamsOptions = otherTeams
-      ? otherTeams.map((team) => {
-          return {
-            value: String(team.id) || "",
-            label: team.name || team.slug || "",
-          };
-        })
-      : [];
-
-    teamOptions = profileTeamsOptions.concat(otherTeamsOptions);
+    teamOptions = profileTeamsOptions;
   }
 
   const eventTypeOptions =

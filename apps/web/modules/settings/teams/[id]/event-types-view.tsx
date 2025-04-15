@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 
-import { useOrgBranding } from "@calcom/features/ee/organizations/context/provider";
 import { TeamEventTypeForm } from "@calcom/features/teams/components/TeamEventTypeForm";
 import { useCompatSearchParams } from "@calcom/lib/hooks/useCompatSearchParams";
 import { useCreateEventType } from "@calcom/lib/hooks/useCreateEventType";
@@ -45,8 +44,7 @@ export const CreateTeamEventType = () => {
 
   const { form, createMutation } = useCreateEventType(onSuccessMutation, onErrorMutation);
 
-  const orgBranding = useOrgBranding();
-  const urlPrefix = orgBranding?.fullDomain ?? process.env.NEXT_PUBLIC_WEBSITE_URL;
+  const urlPrefix = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
   return (
     <TeamEventTypeForm

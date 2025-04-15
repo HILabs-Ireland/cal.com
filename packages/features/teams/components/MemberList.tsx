@@ -24,7 +24,6 @@ import {
   useFetchMoreOnBottomReached,
   useColumnFilters,
 } from "@calcom/features/data-table";
-import { useOrgBranding } from "@calcom/features/ee/organizations/context/provider";
 import { DynamicLink } from "@calcom/features/users/components/UserTable/BulkActions/DynamicLink";
 import { WEBAPP_URL } from "@calcom/lib/constants";
 import { getUserAvatarUrl } from "@calcom/lib/getAvatarUrl";
@@ -148,8 +147,7 @@ function MemberListContent(props: Props) {
   const { data: session } = useSession();
 
   const utils = trpc.useUtils();
-  const orgBranding = useOrgBranding();
-  const domain = orgBranding?.fullDomain ?? WEBAPP_URL;
+  const domain = WEBAPP_URL;
 
   const tableContainerRef = useRef<HTMLDivElement>(null);
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -235,8 +233,6 @@ function MemberListContent(props: Props) {
     async onSuccess() {
       await utils.viewer.teams.get.invalidate();
       await utils.viewer.eventTypes.invalidate();
-      await utils.viewer.organizations.listMembers.invalidate();
-      await utils.viewer.organizations.getMembers.invalidate();
       showToast(t("success"), "success");
     },
     async onError(err) {

@@ -106,7 +106,6 @@ export default function MemberChangeRoleModal(props: {
     },
     async onSuccess() {
       await utils.viewer.teams.get.invalidate();
-      await utils.viewer.organizations.listMembers.invalidate();
 
       props.onExit();
     },

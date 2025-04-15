@@ -14,7 +14,6 @@ import { domainWideDelegationRouter } from "./domainWideDelegation/_router";
 import { eventTypesRouter } from "./eventTypes/_router";
 import { highPerfRouter } from "./highPerf/_router";
 import { oAuthRouter } from "./oAuth/_router";
-import { viewerOrganizationsRouter } from "./organizations/_router";
 import { slotsRouter } from "./slots/_router";
 import { viewerTeamsRouter } from "./teams/_router";
 import { webhookRouter } from "./webhook/_router";
@@ -31,7 +30,6 @@ export const viewerRouter = mergeRouters(
     availability: availabilityRouter,
     teams: viewerTeamsRouter,
     timezones: timezonesRouter,
-    organizations: viewerOrganizationsRouter,
     domainWideDelegation: domainWideDelegationRouter,
     webhook: webhookRouter,
     apiKeys: apiKeysRouter,

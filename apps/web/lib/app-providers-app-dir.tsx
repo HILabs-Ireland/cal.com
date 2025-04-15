@@ -13,7 +13,6 @@ import { useSearchParams } from "next/navigation";
 import type { ReactNode } from "react";
 import { useEffect } from "react";
 
-import { OrgBrandingProvider } from "@calcom/features/ee/organizations/context/provider";
 import { FeatureProvider } from "@calcom/features/flags/context/provider";
 import { useFlags } from "@calcom/features/flags/hooks";
 
@@ -246,16 +245,6 @@ function FeatureFlagsProvider({ children }: { children: React.ReactNode }) {
   return <FeatureProvider value={flags}>{children}</FeatureProvider>;
 }
 
-function useOrgBrandingValues() {
-  const session = useSession();
-  return session?.data?.user.org;
-}
-
-function OrgBrandProvider({ children }: { children: React.ReactNode }) {
-  const orgBrand = useOrgBrandingValues();
-  return <OrgBrandingProvider value={{ orgBrand }}>{children}</OrgBrandingProvider>;
-}
-
 const AppProviders = (props: PageWrapperProps) => {
   // No need to have intercom on public pages - Good for Page Performance
   const isBookingPage = useIsBookingPage();
@@ -272,9 +261,7 @@ const AppProviders = (props: PageWrapperProps) => {
             nonce={props.nonce}
             isThemeSupported={isThemeSupported}
             isBookingPage={props.isBookingPage || isBookingPage}>
-            <FeatureFlagsProvider>
-              <OrgBrandProvider>{props.children}</OrgBrandProvider>
-            </FeatureFlagsProvider>
+            <FeatureFlagsProvider>{props.children}</FeatureFlagsProvider>
           </CalcomThemeProvider>
         </TooltipProvider>
       </CustomI18nextProvider>

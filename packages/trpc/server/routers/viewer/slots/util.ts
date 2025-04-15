@@ -10,7 +10,6 @@ import { getUsersAvailability } from "@calcom/core/getUserAvailability";
 import monitorCallbackAsync, { monitorCallbackSync } from "@calcom/core/sentryWrapper";
 import type { Dayjs } from "@calcom/dayjs";
 import dayjs from "@calcom/dayjs";
-import { getSlugOrRequestedSlug, orgDomainConfig } from "@calcom/ee/organizations/lib/orgDomains";
 import { checkForConflicts } from "@calcom/features/bookings/lib/conflictChecker/checkForConflicts";
 import { isEventTypeLoggingEnabled } from "@calcom/features/bookings/lib/isEventTypeLoggingEnabled";
 import { getShouldServeCache } from "@calcom/features/calendar-cache/lib/getShouldServeCache";
@@ -64,10 +63,7 @@ async function getEventTypeId({
   let teamId;
   let userId;
   if (isTeamEvent) {
-    teamId = await getTeamIdFromSlug(
-      slug,
-      organizationDetails ?? { currentOrgDomain: null, isValidOrgDomain: false }
-    );
+    teamId = await getTeamIdFromSlug(slug);
   } else {
     userId = await getUserIdFromUsername(
       slug,
@@ -280,7 +276,10 @@ async function _getAvailableSlots({ input, ctx }: GetScheduleOptions): Promise<I
         currentOrgDomain: input.orgSlug,
         isValidOrgDomain: !!input.orgSlug && !RESERVED_SUBDOMAINS.includes(input.orgSlug),
       }
-    : orgDomainConfig(ctx?.req);
+    : {
+        currentOrgDomain: "",
+        isValidOrgDomain: false,
+      };
 
   if (process.env.INTEGRATION_TEST_MODE === "true") {
     logger.settings.minLevel = 2;
@@ -664,15 +663,11 @@ async function getUserIdFromUsername(
   return user?.id;
 }
 
-async function getTeamIdFromSlug(
-  slug: string,
-  organizationDetails: { currentOrgDomain: string | null; isValidOrgDomain: boolean }
-) {
-  const { currentOrgDomain, isValidOrgDomain } = organizationDetails;
+async function getTeamIdFromSlug(slug: string) {
   const team = await prisma.team.findFirst({
     where: {
       slug,
-      parent: isValidOrgDomain && currentOrgDomain ? getSlugOrRequestedSlug(currentOrgDomain) : null,
+      parent: null,
     },
     select: {
       id: true,

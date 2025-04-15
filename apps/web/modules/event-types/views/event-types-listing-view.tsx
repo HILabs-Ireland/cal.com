@@ -8,7 +8,6 @@ import type { FC } from "react";
 import { memo, useEffect, useState } from "react";
 import { z } from "zod";
 
-import { useOrgBranding } from "@calcom/features/ee/organizations/context/provider";
 import { EventTypeEmbedButton, EventTypeEmbedDialog } from "@calcom/features/embed/EventTypeEmbed";
 import { EventTypeDescription } from "@calcom/features/eventtypes/components";
 import CreateEventTypeDialog from "@calcom/features/eventtypes/components/CreateEventTypeDialog";
@@ -868,7 +867,6 @@ const InfiniteScrollMain = ({
 }) => {
   const searchParams = useSearchParams();
   const { data } = useTypedQuery(querySchema);
-  const orgBranding = useOrgBranding();
 
   if (status === "error") {
     return <Alert severity="error" title="Something went wrong" message={errorMessage} />;
@@ -887,17 +885,13 @@ const InfiniteScrollMain = ({
   const activeEventTypeGroup =
     eventTypeGroups.filter((item) => item.teamId === data.teamId) ?? eventTypeGroups[0];
 
-  const bookerUrl = orgBranding ? orgBranding?.fullDomain : WEBSITE_URL;
+  const bookerUrl = WEBSITE_URL;
 
   // If the event type group is the same as the org branding team, or the parent team, set the bookerUrl to the org branding URL
   // This is to ensure that the bookerUrl is always the same as the one in the org branding settings
   // This keeps the app working for personal event types that were not migrated to the org (rare)
-  if (
-    activeEventTypeGroup[0].teamId === orgBranding?.id ||
-    activeEventTypeGroup[0].parentId === orgBranding?.id
-  ) {
-    activeEventTypeGroup[0].bookerUrl = bookerUrl;
-  }
+
+  activeEventTypeGroup[0].bookerUrl = bookerUrl;
 
   return (
     <>
@@ -919,7 +913,6 @@ const EventTypesPage: React.FC = () => {
   const { data: user } = useMeQuery();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_showProfileBanner, setShowProfileBanner] = useState(false);
-  const orgBranding = useOrgBranding();
   const routerQuery = useRouterQuery();
   const filters = getTeamsFiltersFromQuery(routerQuery);
   const router = useRouter();
@@ -947,10 +940,8 @@ const EventTypesPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    setShowProfileBanner(
-      !!orgBranding && !document.cookie.includes("calcom-profile-banner=1") && !user?.completedOnboarding
-    );
-  }, [orgBranding, user]);
+    setShowProfileBanner(!document.cookie.includes("calcom-profile-banner=1") && !user?.completedOnboarding);
+  }, [user]);
 
   const profileOptions =
     getUserEventGroupsData?.profiles

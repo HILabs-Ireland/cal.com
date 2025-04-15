@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 
-import { orgDomainConfig } from "@calcom/features/ee/organizations/lib/orgDomains";
 import { checkUsername } from "@calcom/lib/server/checkUsername";
 
 type Response = {
@@ -14,8 +13,7 @@ const bodySchema = z.object({
 });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Response>): Promise<void> {
-  const { currentOrgDomain } = orgDomainConfig(req);
-  const { username, orgSlug } = bodySchema.parse(req.body);
-  const result = await checkUsername(username, currentOrgDomain || orgSlug);
+  const { username } = bodySchema.parse(req.body);
+  const result = await checkUsername(username);
   return res.status(200).json(result);
 }

@@ -3,24 +3,18 @@ import { WithLayout } from "app/layoutHOC";
 import { headers } from "next/headers";
 import Link from "next/link";
 
-import {
-  getOrgDomainConfigFromHostname,
-  subdomainSuffix,
-} from "@calcom/features/ee/organizations/lib/orgDomains";
 import { DOCS_URL, IS_CALCOM, WEBSITE_URL } from "@calcom/lib/constants";
 import { Icon } from "@calcom/ui";
 
 enum PageType {
-  ORG = "ORG",
   TEAM = "TEAM",
   USER = "USER",
   OTHER = "OTHER",
 }
 
 function getPageInfo(pathname: string, host: string) {
-  const { isValidOrgDomain, currentOrgDomain } = getOrgDomainConfigFromHostname({ hostname: host });
   const [routerUsername] = pathname?.replace("%20", "-").split(/[?#]/) ?? [];
-  if (routerUsername && (!isValidOrgDomain || !currentOrgDomain)) {
+  if (routerUsername) {
     const splitPath = routerUsername.split("/");
     if (splitPath[1] === "team" && splitPath.length === 3) {
       return {
@@ -37,11 +31,9 @@ function getPageInfo(pathname: string, host: string) {
     }
   } else {
     return {
-      username: currentOrgDomain ?? "",
-      pageType: PageType.ORG,
-      url: `${WEBSITE_URL}/signup?callbackUrl=settings/organizations/new%3Fslug%3D${
-        currentOrgDomain?.replace("/", "") ?? ""
-      }`,
+      username: "",
+      pageType: "",
+      url: "",
     };
   }
 }
@@ -117,7 +109,7 @@ async function NotFound() {
           )}
         </div>
         <div className="mt-12">
-          {((!isSubpage && IS_CALCOM) || pageType === PageType.ORG || pageType === PageType.TEAM) && (
+          {((!isSubpage && IS_CALCOM) || pageType === PageType.TEAM) && (
             <ul role="list" className="my-4">
               <li className="border-2 border-green-500 px-4 py-2">
                 <a
@@ -136,9 +128,6 @@ async function NotFound() {
                         <span className="focus:outline-none">
                           <span className="absolute inset-0" aria-hidden="true" />
                           {t("register")}{" "}
-                          <strong className="text-green-500">{`${
-                            pageType === PageType.TEAM ? `${new URL(WEBSITE_URL).host}/team/` : ""
-                          }${username}${pageType === PageType.ORG ? `.${subdomainSuffix()}` : ""}`}</strong>
                         </span>
                       </span>
                     </h3>
@@ -154,7 +143,7 @@ async function NotFound() {
           <h2 className="text-subtle text-sm font-semibold uppercase tracking-wide">{t("popular_pages")}</h2>
           <ul role="list" className="border-subtle divide-subtle divide-y">
             {links
-              .filter((_, idx) => pageType === PageType.ORG || idx !== 0)
+              .filter((_, idx) => idx !== 0)
               .map((link, linkIdx) => (
                 <li key={linkIdx} className="px-4 py-2">
                   <a

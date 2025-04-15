@@ -2,8 +2,7 @@ import type { GetServerSidePropsContext } from "next";
 import { z } from "zod";
 
 import { getMultipleDurationValue } from "@calcom/features/bookings/lib/get-booking";
-import { getSlugOrRequestedSlug } from "@calcom/features/ee/organizations/lib/orgDomains";
-import { orgDomainConfig } from "@calcom/features/ee/organizations/lib/orgDomains";
+import { orgDomainConfig, getSlugOrRequestedSlug } from "@calcom/lib/getBookerUrl/getBookerBaseUrlSync";
 import slugify from "@calcom/lib/slugify";
 import prisma from "@calcom/prisma";
 

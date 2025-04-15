@@ -178,7 +178,7 @@ const BookerComponent = ({
               email={formEmail}
               isUserSessionRequiredToVerify={false}
               verifyCodeWithSessionNotRequired={verifyCode.verifyCodeWithSessionNotRequired}
-              verifyCodeWithSessionRequired={verifyCode.verifyCodeWithSessionRequired}
+              verifyCodeWithSessionRequired={() => ({})}
               error={verifyCode.error}
               resetErrors={verifyCode.resetErrors}
               isPending={verifyCode.isPending}
@@ -231,7 +231,6 @@ const BookerComponent = ({
     verifyCode?.resetErrors,
     verifyCode?.setIsPending,
     verifyCode?.verifyCodeWithSessionNotRequired,
-    verifyCode?.verifyCodeWithSessionRequired,
     isPlatform,
   ]);
 

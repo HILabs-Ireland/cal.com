@@ -4,8 +4,8 @@ import { generateMeetingMetadata } from "app/_utils";
 import { WithLayout } from "app/layoutHOC";
 import { cookies, headers } from "next/headers";
 
-import { getOrgFullOrigin } from "@calcom/features/ee/organizations/lib/orgDomains";
 import { getOrgOrTeamAvatar } from "@calcom/lib/defaultAvatarImage";
+import { getOrgFullOrigin } from "@calcom/lib/getBookerUrl/getBookerBaseUrlSync";
 
 import { buildLegacyCtx } from "@lib/buildLegacyCtx";
 import { getServerSideProps } from "@lib/team/[slug]/getServerSideProps";
@@ -14,7 +14,7 @@ import type { PageProps } from "~/team/team-view";
 import LegacyPage from "~/team/team-view";
 
 export const generateMetadata = async ({ params, searchParams }: _PageProps) => {
-  const { team, markdownStrippedBio, isSEOIndexable, currentOrgDomain } = await getData(
+  const { team, markdownStrippedBio, currentOrgDomain } = await getData(
     buildLegacyCtx(headers(), cookies(), params, searchParams)
   );
 
@@ -36,8 +36,8 @@ export const generateMetadata = async ({ params, searchParams }: _PageProps) => 
   return {
     ...metadata,
     robots: {
-      follow: isSEOIndexable,
-      index: isSEOIndexable,
+      follow: true,
+      index: true,
     },
   };
 };

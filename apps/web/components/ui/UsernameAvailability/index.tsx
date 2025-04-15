@@ -4,7 +4,6 @@ import { useState } from "react";
 import type { RefCallback, ReactNode } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-import { useOrgBranding } from "@calcom/features/ee/organizations/context/provider";
 import { WEBSITE_URL } from "@calcom/lib/constants";
 import type { TRPCClientErrorLike } from "@calcom/trpc/client";
 import { trpc } from "@calcom/trpc/react";
@@ -55,11 +54,7 @@ export const UsernameAvailabilityField = ({
     },
   });
 
-  const orgBranding = useOrgBranding();
-
-  const usernamePrefix = orgBranding
-    ? orgBranding?.fullDomain.replace(/^(https?:|)\/\//, "")
-    : `${WEBSITE_URL?.replace(/^(https?:|)\/\//, "")}`;
+  const usernamePrefix = `${WEBSITE_URL?.replace(/^(https?:|)\/\//, "")}`;
 
   return (
     <Controller

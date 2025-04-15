@@ -4,7 +4,6 @@ import type { GetServerSideProps } from "next";
 import { encode } from "querystring";
 import type { z } from "zod";
 
-import { orgDomainConfig } from "@calcom/features/ee/organizations/lib/orgDomains";
 import { DEFAULT_DARK_BRAND_COLOR, DEFAULT_LIGHT_BRAND_COLOR } from "@calcom/lib/constants";
 import { getUsernameList } from "@calcom/lib/defaultEvents";
 import { getEventTypesPublic } from "@calcom/lib/event-types/getEventTypesPublic";
@@ -14,11 +13,9 @@ import { markdownToSafeHTML } from "@calcom/lib/markdownToSafeHTML";
 import { safeStringify } from "@calcom/lib/safeStringify";
 import { UserRepository } from "@calcom/lib/server/repository/user";
 import { stripMarkdown } from "@calcom/lib/stripMarkdown";
-import { RedirectType, type EventType, type User } from "@calcom/prisma/client";
+import { type EventType, type User } from "@calcom/prisma/client";
 import type { EventTypeMetaDataSchema } from "@calcom/prisma/zod-utils";
 import type { UserProfile } from "@calcom/types/UserProfile";
-
-import { getTemporaryOrgRedirect } from "@lib/getTemporaryOrgRedirect";
 
 import { ssrInit } from "@server/lib/ssr";
 
@@ -72,35 +69,19 @@ type UserPageProps = {
 
 export const getServerSideProps: GetServerSideProps<UserPageProps> = async (context) => {
   const ssr = await ssrInit(context);
-  const { currentOrgDomain, isValidOrgDomain } = orgDomainConfig(context.req, context.params?.orgSlug);
 
   const usernameList = getUsernameList(context.query.user as string);
   const isARedirectFromNonOrgLink = context.query.orgRedirection === "true";
-  const isOrgContext = isValidOrgDomain && !!currentOrgDomain;
 
   const dataFetchStart = Date.now();
 
-  if (!isOrgContext) {
-    // If there is no org context, see if some redirect is setup due to org migration
-    const redirect = await getTemporaryOrgRedirect({
-      slugs: usernameList,
-      redirectType: RedirectType.User,
-      eventTypeSlug: null,
-      currentQuery: context.query,
-    });
-
-    if (redirect) {
-      return redirect;
-    }
-  }
-
   const usersInOrgContext = await UserRepository.findUsersByUsername({
     usernameList,
-    orgSlug: isValidOrgDomain ? currentOrgDomain : null,
+    orgSlug: null,
   });
 
   const isDynamicGroup = usersInOrgContext.length > 1;
-  log.debug(safeStringify({ usersInOrgContext, isValidOrgDomain, currentOrgDomain, isDynamicGroup }));
+  log.debug(safeStringify({ usersInOrgContext, isDynamicGroup }));
 
   if (isDynamicGroup) {
     const destinationUrl = `/${usernameList.join("+")}/dynamic`;
@@ -124,7 +105,7 @@ export const getServerSideProps: GetServerSideProps<UserPageProps> = async (cont
 
   const isThereAnyNonOrgUser = usersInOrgContext.some(isNonOrgUser);
 
-  if (!usersInOrgContext.length || (!isValidOrgDomain && !isThereAnyNonOrgUser)) {
+  if (!usersInOrgContext.length || !isThereAnyNonOrgUser) {
     return {
       notFound: true,
     } as const;
@@ -186,7 +167,7 @@ export const getServerSideProps: GetServerSideProps<UserPageProps> = async (cont
       entity: {
         ...(org?.logoUrl ? { logoUrl: org?.logoUrl } : {}),
         considerUnpublished: !isARedirectFromNonOrgLink && org?.slug === null,
-        orgSlug: currentOrgDomain,
+        orgSlug: "",
         name: org?.name ?? null,
       },
       eventTypes,

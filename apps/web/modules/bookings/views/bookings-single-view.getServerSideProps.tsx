@@ -1,11 +1,11 @@
 import type { GetServerSidePropsContext } from "next";
 import { z } from "zod";
 
-import { orgDomainConfig } from "@calcom/ee/organizations/lib/orgDomains";
 import { getServerSession } from "@calcom/features/auth/lib/getServerSession";
 import getBookingInfo from "@calcom/features/bookings/lib/getBookingInfo";
 import { parseRecurringEvent } from "@calcom/lib";
 import { getDefaultEvent } from "@calcom/lib/defaultEvents";
+import { orgDomainConfig } from "@calcom/lib/getBookerUrl/getBookerBaseUrlSync";
 import { markdownToSafeHTML } from "@calcom/lib/markdownToSafeHTML";
 import { maybeGetBookingUidFromSeat } from "@calcom/lib/server/maybeGetBookingUidFromSeat";
 import { BookingRepository } from "@calcom/lib/server/repository/booking";

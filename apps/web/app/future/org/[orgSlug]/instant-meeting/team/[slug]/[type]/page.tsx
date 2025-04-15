@@ -4,7 +4,6 @@ import { _generateMetadata } from "app/_utils";
 import { WithLayout } from "app/layoutHOC";
 import { headers, cookies } from "next/headers";
 
-import { orgDomainConfig } from "@calcom/features/ee/organizations/lib/orgDomains";
 import { EventRepository } from "@calcom/lib/server/repository/event";
 
 import { buildLegacyCtx } from "@lib/buildLegacyCtx";
@@ -16,9 +15,8 @@ import Page from "~/org/[orgSlug]/instant-meeting/team/[slug]/[type]/instant-mee
 export const generateMetadata = async ({ params, searchParams }: _PageProps) => {
   const context = buildLegacyCtx(headers(), cookies(), params, searchParams);
   const { slug: eventSlug, user: username } = await getData(context);
-  const { currentOrgDomain, isValidOrgDomain } = orgDomainConfig(context.req, context.params?.orgSlug);
 
-  const org = isValidOrgDomain ? currentOrgDomain : null;
+  const org = null;
 
   const event = await EventRepository.getPublicEvent({
     username,

@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 
-import { orgDomainConfig } from "@calcom/features/ee/organizations/lib/orgDomains";
 import {
   ANDROID_CHROME_ICON_192,
   ANDROID_CHROME_ICON_256,
@@ -154,7 +153,6 @@ async function getTeamLogos(subdomain: string, isValidOrgDomain: boolean) {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { query } = req;
   const parsedQuery = logoApiSchema.parse(query);
-  const { isValidOrgDomain } = orgDomainConfig(req);
 
   const hostname = req?.headers["host"];
   if (!hostname) throw new Error("No hostname");
@@ -162,7 +160,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!domains) throw new Error("No domains");
 
   const [subdomain] = domains;
-  const teamLogos = await getTeamLogos(subdomain, isValidOrgDomain);
+  const teamLogos = await getTeamLogos(subdomain, false);
 
   // Resolve all icon types to team logos, falling back to Cal.com defaults.
   const type: LogoType = parsedQuery?.type && isValidLogoType(parsedQuery.type) ? parsedQuery.type : "logo";

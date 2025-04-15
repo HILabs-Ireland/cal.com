@@ -4,13 +4,11 @@ import type { FormEvent } from "react";
 import { useMemo, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-import TeamInviteFromOrg from "@calcom/features/ee/organizations/components/TeamInviteFromOrg";
 import { classNames } from "@calcom/lib";
 import { MAX_NB_INVITES } from "@calcom/lib/constants";
 import { useCompatSearchParams } from "@calcom/lib/hooks/useCompatSearchParams";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { MembershipRole } from "@calcom/prisma/enums";
-import type { RouterOutputs } from "@calcom/trpc";
 import { trpc } from "@calcom/trpc";
 import { isEmail } from "@calcom/trpc/server/routers/viewer/teams/util";
 import {
@@ -33,7 +31,6 @@ import type { PendingMember } from "../lib/types";
 type MemberInvitationModalProps = {
   isOpen: boolean;
   onExit: () => void;
-  orgMembers?: RouterOutputs["viewer"]["organizations"]["getMembers"];
   onSubmit: (values: NewMemberForm, resetFields: () => void) => void;
   onSettingsOpen?: () => void;
   teamId: number;
@@ -71,24 +68,10 @@ export default function MemberInvitationModal(props: MemberInvitationModalProps)
   const { disableCopyLink = false, isOrg = false } = props;
   const trpcContext = trpc.useUtils();
   const session = useSession();
-  const { data: currentOrg } = trpc.viewer.organizations.listCurrent.useQuery(undefined, {
-    enabled: !!session.data?.user?.org,
-  });
 
   const checkIfMembershipExistsMutation = trpc.viewer.teams.checkIfMembershipExists.useMutation();
 
-  // Check current org role and not team role
-  const isOrgAdminOrOwner =
-    currentOrg &&
-    (currentOrg.user.role === MembershipRole.OWNER || currentOrg.user.role === MembershipRole.ADMIN);
-
-  const canSeeOrganization = currentOrg?.isPrivate
-    ? isOrgAdminOrOwner
-    : !!(props?.orgMembers && props.orgMembers?.length > 0 && isOrgAdminOrOwner);
-
-  const [modalImportMode, setModalInputMode] = useState<ModalMode>(
-    canSeeOrganization ? "ORGANIZATION" : "INDIVIDUAL"
-  );
+  const [modalImportMode, setModalInputMode] = useState<ModalMode>("INDIVIDUAL");
 
   const createInviteMutation = trpc.viewer.teams.createInvite.useMutation({
     async onSuccess({ inviteLink }) {
@@ -107,13 +90,8 @@ export default function MemberInvitationModal(props: MemberInvitationModalProps)
       { value: MembershipRole.OWNER, label: t("owner") },
     ];
 
-    // Adjust options for organizations where the user isn't the owner
-    if (isOrg && !isOrgAdminOrOwner) {
-      return options.filter((option) => option.value !== MembershipRole.OWNER);
-    }
-
     return options;
-  }, [t, isOrgAdminOrOwner, isOrg]);
+  }, [t, isOrg]);
 
   const toggleGroupOptions = useMemo(() => {
     const array = [
@@ -124,15 +102,8 @@ export default function MemberInvitationModal(props: MemberInvitationModalProps)
       },
       { value: "BULK", label: t("invite_team_bulk_segment"), iconLeft: <Icon name="users" /> },
     ];
-    if (canSeeOrganization) {
-      array.unshift({
-        value: "ORGANIZATION",
-        label: t("organization"),
-        iconLeft: <Icon name="building" />,
-      });
-    }
     return array;
-  }, [t, canSeeOrganization]);
+  }, [t]);
 
   const newMemberFormMethods = useForm<NewMemberForm>();
 
@@ -205,14 +176,12 @@ export default function MemberInvitationModal(props: MemberInvitationModalProps)
         type="creation"
         title={t("invite_team_member")}
         description={
-          !currentOrg ? (
-            <span className="text-subtle text-sm leading-tight">
-              <Trans i18nKey="invite_new_member_description">
-                Note: This will <span className="text-emphasis font-medium">cost an extra seat ($15/m)</span>{" "}
-                on your subscription.
-              </Trans>
-            </span>
-          ) : null
+          <span className="text-subtle text-sm leading-tight">
+            <Trans i18nKey="invite_new_member_description">
+              Note: This will <span className="text-emphasis font-medium">cost an extra seat ($15/m)</span> on
+              on your subscription.
+            </Trans>
+          </span>
         }>
         <div className="sm:max-h-9">
           <Label className="sr-only" htmlFor="role">
@@ -327,29 +296,6 @@ export default function MemberInvitationModal(props: MemberInvitationModalProps)
                   onChange={handleFileUpload}
                 />
               </div>
-            )}
-            {modalImportMode === "ORGANIZATION" && (
-              <Controller
-                name="emailOrUsername"
-                control={newMemberFormMethods.control}
-                rules={{
-                  required: t("enter_email_or_username"),
-                }}
-                render={({ field: { onChange, value } }) => (
-                  <>
-                    <TeamInviteFromOrg
-                      selectedEmails={value}
-                      handleOnChecked={(userEmail) => {
-                        // If 'value' is not an array, create a new array with 'userEmail' to allow future updates to the array.
-                        // If 'value' is an array, update the array by either adding or removing 'userEmail'.
-                        const newValue = toggleElementInArray(value, userEmail);
-                        onChange(newValue);
-                      }}
-                      orgMembers={props.orgMembers}
-                    />
-                  </>
-                )}
-              />
             )}
             <Controller
               name="role"
@@ -478,23 +424,11 @@ export const MemberInvitationModalWithoutMembers = ({
 
   const inviteMemberMutation = trpc.viewer.teams.inviteMember.useMutation();
 
-  const { data: orgMembersNotInThisTeam, isPending: isOrgListLoading } =
-    trpc.viewer.organizations.getMembers.useQuery(
-      {
-        teamIdToExclude: teamId,
-        distinctUser: true,
-      },
-      {
-        enabled: searchParams !== null && !!teamId && !!showMemberInvitationModal,
-      }
-    );
-
   return (
     <MemberInvitationModal
       {...props}
-      isPending={inviteMemberMutation.isPending || isOrgListLoading}
+      isPending={inviteMemberMutation.isPending}
       isOpen={showMemberInvitationModal}
-      orgMembers={orgMembersNotInThisTeam}
       teamId={teamId}
       token={token}
       onExit={hideInvitationModal}
@@ -511,7 +445,6 @@ export const MemberInvitationModalWithoutMembers = ({
             onSuccess: async (data) => {
               await utils.viewer.teams.get.invalidate();
               await utils.viewer.teams.listMembers.invalidate();
-              await utils.viewer.organizations.getMembers.invalidate();
               hideInvitationModal();
 
               if (Array.isArray(data.usernameOrEmail)) {

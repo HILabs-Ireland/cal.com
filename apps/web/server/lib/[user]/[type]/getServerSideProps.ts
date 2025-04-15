@@ -6,7 +6,6 @@ import { z } from "zod";
 import { getServerSession } from "@calcom/features/auth/lib/getServerSession";
 import { getBookingForReschedule, getBookingForSeatedEvent } from "@calcom/features/bookings/lib/get-booking";
 import type { GetBookingType } from "@calcom/features/bookings/lib/get-booking";
-import { orgDomainConfig } from "@calcom/features/ee/organizations/lib/orgDomains";
 import type { getPublicEvent } from "@calcom/features/eventtypes/lib/getPublicEvent";
 import { getUsernameList } from "@calcom/lib/defaultEvents";
 import { UserRepository } from "@calcom/lib/server/repository/user";
@@ -105,8 +104,7 @@ async function getDynamicGroupPageProps(context: GetServerSidePropsContext) {
 
   const { ssrInit } = await import("@server/lib/ssr");
   const ssr = await ssrInit(context);
-  const { currentOrgDomain, isValidOrgDomain } = orgDomainConfig(context.req, context.params?.orgSlug);
-  const org = isValidOrgDomain ? currentOrgDomain : null;
+  const org = null;
   if (!org) {
     const redirect = await getTemporaryOrgRedirect({
       slugs: usernames,
@@ -122,7 +120,7 @@ async function getDynamicGroupPageProps(context: GetServerSidePropsContext) {
 
   const usersInOrgContext = await UserRepository.findUsersByUsername({
     usernameList: usernames,
-    orgSlug: isValidOrgDomain ? currentOrgDomain : null,
+    orgSlug: null,
   });
 
   const users = usersInOrgContext;
@@ -196,9 +194,8 @@ async function getUserPageProps(context: GetServerSidePropsContext) {
   const { user: usernames, type: slug } = paramsSchema.parse(context.params);
   const username = usernames[0];
   const { rescheduleUid, bookingUid } = context.query;
-  const { currentOrgDomain, isValidOrgDomain } = orgDomainConfig(context.req, context.params?.orgSlug);
 
-  const isOrgContext = currentOrgDomain && isValidOrgDomain;
+  const isOrgContext = false;
   if (!isOrgContext) {
     const redirect = await getTemporaryOrgRedirect({
       slugs: usernames,
@@ -216,7 +213,7 @@ async function getUserPageProps(context: GetServerSidePropsContext) {
   const ssr = await ssrInit(context);
   const [user] = await UserRepository.findUsersByUsername({
     usernameList: [username],
-    orgSlug: isValidOrgDomain ? currentOrgDomain : null,
+    orgSlug: null,
   });
 
   if (!user) {
@@ -225,7 +222,7 @@ async function getUserPageProps(context: GetServerSidePropsContext) {
     } as const;
   }
 
-  const org = isValidOrgDomain ? currentOrgDomain : null;
+  const org = null;
   // We use this to both prefetch the query on the server,
   // as well as to check if the event exist, so we can show a 404 otherwise.
   const eventData = await ssr.viewer.public.event.fetch({

@@ -1,7 +1,6 @@
 import type { Dispatch } from "react";
 import { shallow } from "zustand/shallow";
 
-import { useOrgBranding } from "@calcom/ee/organizations/context/provider";
 import { WEBAPP_URL } from "@calcom/lib/constants";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { trpc } from "@calcom/trpc/react";
@@ -10,7 +9,6 @@ import { Avatar, Loader, Sheet, SheetContent, SheetBody, SheetHeader, SheetFoote
 import type { UserTableAction, UserTableState } from "../types";
 import { DisplayInfo } from "./DisplayInfo";
 import { EditForm } from "./EditUserForm";
-import { OrganizationBanner } from "./OrganizationBanner";
 import { SheetFooterControls } from "./SheetFooterControls";
 import { useEditMode } from "./store";
 
@@ -27,7 +25,6 @@ export function EditUserSheet({
 }) {
   const { t } = useLocale();
   const { user: selectedUser } = state.editSheet;
-  const orgBranding = useOrgBranding();
   const [editMode, setEditMode] = useEditMode((state) => [state.editMode, state.setEditMode], shallow);
   const { data: loadedUser, isPending } = trpc.viewer.organizations.getUser.useQuery(
     {
@@ -49,7 +46,7 @@ export function EditUserSheet({
       }
     );
 
-  const avatarURL = `${orgBranding?.fullDomain ?? WEBAPP_URL}/${loadedUser?.username}/avatar.png`;
+  const avatarURL = `${WEBAPP_URL}/${loadedUser?.username}/avatar.png`;
 
   const schedulesNames = loadedUser?.schedules && loadedUser?.schedules.map((s) => s.name);
   const teamNames =
@@ -69,7 +66,6 @@ export function EditUserSheet({
               <>
                 <SheetHeader showCloseButton={false} className="w-full">
                   <div className="border-sublte bg-default w-full rounded-xl border p-4">
-                    <OrganizationBanner />
                     <div className="bg-default ml-3 w-fit translate-y-[-50%] rounded-full p-1 ring-1 ring-[#0000000F]">
                       <Avatar asChild size="lg" alt={`${loadedUser?.name} avatar`} imageSrc={avatarURL} />
                     </div>
@@ -86,9 +82,7 @@ export function EditUserSheet({
                     <h3 className="text-emphasis mb-1 text-base font-semibold">{t("profile")}</h3>
                     <DisplayInfo
                       label="Cal"
-                      value={removeProtocol(
-                        `${orgBranding?.fullDomain ?? WEBAPP_URL}/${loadedUser?.username}`
-                      )}
+                      value={removeProtocol(`${WEBAPP_URL}/${loadedUser?.username}`)}
                       icon="external-link"
                     />
                     <DisplayInfo label={t("email")} value={loadedUser?.email ?? ""} icon="at-sign" />
@@ -136,7 +130,7 @@ export function EditUserSheet({
                 <EditForm
                   selectedUser={loadedUser}
                   avatarUrl={loadedUser.avatarUrl ?? avatarURL}
-                  domainUrl={orgBranding?.fullDomain ?? WEBAPP_URL}
+                  domainUrl={WEBAPP_URL}
                   dispatch={dispatch}
                 />
               </>

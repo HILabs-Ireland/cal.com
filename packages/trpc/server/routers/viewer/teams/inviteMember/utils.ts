@@ -1,10 +1,9 @@
 import { randomBytes } from "crypto";
 import type { TFunction } from "next-i18next";
 
-import { getOrgFullOrigin } from "@calcom/ee/organizations/lib/orgDomains";
 import { sendTeamInviteEmail } from "@calcom/emails";
 import { DEFAULT_SCHEDULE, getAvailabilityFromSchedule } from "@calcom/lib/availability";
-import { ENABLE_PROFILE_SWITCHER, WEBAPP_URL } from "@calcom/lib/constants";
+import { ENABLE_PROFILE_SWITCHER, WEBAPP_URL, WEBSITE_URL } from "@calcom/lib/constants";
 import { createAProfileForAnExistingUser } from "@calcom/lib/createAProfileForAnExistingUser";
 import logger from "@calcom/lib/logger";
 import { safeStringify } from "@calcom/lib/safeStringify";
@@ -699,8 +698,8 @@ export const sendExistingUserTeamInviteEmails = async ({
         isOrg: isOrg,
         parentTeamName: currentUserParentTeamName,
         isExistingUserMovedToOrg: true,
-        prevLink: `${getOrgFullOrigin("")}/${user.username || ""}`,
-        newLink: user.profile ? `${getOrgFullOrigin(orgSlug ?? "")}/${user.profile.username}` : null,
+        prevLink: `${WEBSITE_URL}/${user.username || ""}`,
+        newLink: user.profile ? `${WEBSITE_URL}/${user.profile.username}` : null,
       });
     }
   });
