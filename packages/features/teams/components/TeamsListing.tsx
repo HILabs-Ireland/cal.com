@@ -134,7 +134,7 @@ export function TeamsListing() {
               tooltip={
                 isCreateTeamButtonDisabled ? t("org_admins_can_create_new_teams") : t("create_new_team")
               }
-              onClick={() => router.push(`${WEBAPP_URL}/settings/teams/new?returnTo=${WEBAPP_URL}/teams`)}>
+              onClick={() => router.push(`${WEBAPP_URL}/settings/teams/new`)}>
               {t(`create_new_team`)}
             </Button>
           }
