@@ -45,6 +45,8 @@ const CreateTeamForm = ({ onClose }: { onClose: () => void }) => {
 
   const form = useForm<CreateTeamFormValues>();
 
+  const trpcUtils = trpc.useUtils();
+
   const {
     formState: { errors },
   } = form;
@@ -52,7 +54,10 @@ const CreateTeamForm = ({ onClose }: { onClose: () => void }) => {
   const serverErrorMessage = errors.root?.serverError?.message;
 
   const createTeamMutation = trpc.viewer.teams.create.useMutation({
-    onSuccess: onClose,
+    onSuccess: () => {
+      trpcUtils.viewer.teams.list.invalidate();
+      onClose();
+    },
     onError: (err) => {
       if (err.message === "team_url_taken") {
         form.setError("slug", { type: "custom", message: t("url_taken") });
