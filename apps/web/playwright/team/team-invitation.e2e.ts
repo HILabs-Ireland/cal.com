@@ -5,7 +5,7 @@ import { prisma } from "@calcom/prisma";
 import { MembershipRole, SchedulingType } from "@calcom/prisma/enums";
 
 import { test } from "../lib/fixtures";
-import { getInviteLink, localize } from "../lib/testUtils";
+import { localize } from "../lib/testUtils";
 import { expectInvitationEmailToBeReceived } from "./expects";
 
 test.describe.configure({ mode: "parallel" });
@@ -78,7 +78,6 @@ test.skip("[EE feature] Team", () => {
       });
 
       await page.getByTestId("new-member-button").click();
-      const inviteLink = await getInviteLink(page);
 
       const context = await browser.newContext();
       const inviteLinkPage = await context.newPage();

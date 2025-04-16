@@ -228,13 +228,6 @@ export async function gotoRoutingLink({
   await new Promise((resolve) => setTimeout(resolve, 2000));
 }
 
-export async function getInviteLink(page: Page) {
-  const json = await submitAndWaitForJsonResponse(page, "/api/trpc/teams/createInvite?batch=1", {
-    action: () => page.locator(`[data-testid="copy-invite-link-button"]`).click(),
-  });
-  return json[0].result.data.json.inviteLink as string;
-}
-
 export async function getEmailsReceivedByUser({
   emails,
   userEmail,

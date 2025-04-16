@@ -1959,7 +1959,7 @@
   "three_months": "3 months",
   "one_year": "1 year",
   "team_invite_received": "You have been invited to join {{teamName}}",
-  "email_invite_team": "{{email}} has been invited",
+  "email_invite_team": "{{email}} has been added",
   "email_invite_team_bulk": "{{userCount}} users have been invited",
   "image_size_limit_exceed": "Uploaded image shouldn't exceed 5mb size limit",
   "inline_embed": "Inline Embed",

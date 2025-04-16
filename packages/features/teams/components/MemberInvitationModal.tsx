@@ -69,16 +69,6 @@ export default function MemberInvitationModal(props: MemberInvitationModalProps)
 
   const [modalImportMode, setModalInputMode] = useState<ModalMode>("INDIVIDUAL");
 
-  const createInviteMutation = trpc.viewer.teams.createInvite.useMutation({
-    async onSuccess({ inviteLink }) {
-      trpcContext.viewer.teams.get.invalidate();
-      trpcContext.viewer.teams.list.invalidate();
-    },
-    onError: (error) => {
-      showToast(error.message, "error");
-    },
-  });
-
   const options: MembershipRoleOption[] = useMemo(() => {
     const options: MembershipRoleOption[] = [
       { value: MembershipRole.MEMBER, label: t("member") },
