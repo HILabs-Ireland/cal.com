@@ -557,15 +557,6 @@ export const groupUsersByJoinability = ({
   return [usersToAutoJoin, regularUsers];
 };
 
-export const sendEmails = async (emailPromises: Promise<void>[]) => {
-  const sentEmails = await Promise.allSettled(emailPromises);
-  sentEmails.forEach((sentEmail) => {
-    if (sentEmail.status === "rejected") {
-      logger.error("Could not send email to user. Reason:", sentEmail.reason);
-    }
-  });
-};
-
 type inviteMemberHandlerInput = {
   teamId: number;
   role?: "ADMIN" | "MEMBER" | "OWNER";
