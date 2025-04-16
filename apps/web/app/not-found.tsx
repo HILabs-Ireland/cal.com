@@ -12,23 +12,14 @@ enum PageType {
   OTHER = "OTHER",
 }
 
-function getPageInfo(pathname: string, host: string) {
+function getPageInfo(pathname: string) {
   const [routerUsername] = pathname?.replace("%20", "-").split(/[?#]/) ?? [];
   if (routerUsername) {
-    const splitPath = routerUsername.split("/");
-    if (splitPath[1] === "team" && splitPath.length === 3) {
-      return {
-        username: splitPath[2],
-        pageType: PageType.TEAM,
-        url: `${WEBSITE_URL}/signup?callbackUrl=settings/teams/new%3Fslug%3D${splitPath[2].replace("/", "")}`,
-      };
-    } else {
-      return {
-        username: routerUsername,
-        pageType: PageType.USER,
-        url: `${WEBSITE_URL}/signup?username=${routerUsername.replace("/", "")}`,
-      };
-    }
+    return {
+      username: routerUsername,
+      pageType: PageType.USER,
+      url: `${WEBSITE_URL}/signup?username=${routerUsername.replace("/", "")}`,
+    };
   } else {
     return {
       username: "",
@@ -41,7 +32,6 @@ function getPageInfo(pathname: string, host: string) {
 async function NotFound() {
   const t = await getTranslate();
   const headersList = headers();
-  const host = headersList.get("x-forwarded-host") ?? "";
   const pathname = headersList.get("x-pathname") ?? "";
 
   // This makes more sense after full migration to App Router
@@ -49,7 +39,7 @@ async function NotFound() {
   //   redirect("/500");
   // }
 
-  const { username, pageType, url } = getPageInfo(pathname, host);
+  const { username, pageType, url } = getPageInfo(pathname);
   const isBookingSuccessPage = pathname?.startsWith("/booking");
   const isSubpage = pathname?.includes("/", 2) || isBookingSuccessPage;
 

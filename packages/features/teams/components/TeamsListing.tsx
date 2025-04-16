@@ -1,11 +1,11 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
-import { APP_NAME, WEBAPP_URL } from "@calcom/lib/constants";
+import { CreateTeamDialog } from "@calcom/features/teams/components";
 import { useCompatSearchParams } from "@calcom/lib/hooks/useCompatSearchParams";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { trpc } from "@calcom/trpc/react";
-import { Alert, Button, EmptyScreen, Icon, Label, showToast } from "@calcom/ui";
+import { Alert, Button, EmptyScreen, Label, showToast } from "@calcom/ui";
 
 import SkeletonLoaderTeamList from "./SkeletonloaderTeamList";
 import TeamList from "./TeamList";
@@ -59,38 +59,6 @@ export function TeamsListing() {
 
   const isCreateTeamButtonDisabled = !!(user?.organizationId && !user?.organization?.isOrgAdmin);
 
-  const features = [
-    {
-      icon: <Icon name="users" className="h-5 w-5 text-red-500" />,
-      title: t("collective_scheduling"),
-      description: t("make_it_easy_to_book"),
-    },
-    {
-      icon: <Icon name="refresh-ccw" className="h-5 w-5 text-blue-500" />,
-      title: t("round_robin"),
-      description: t("find_the_best_person"),
-    },
-    {
-      icon: <Icon name="user-plus" className="h-5 w-5 text-green-500" />,
-      title: t("fixed_round_robin"),
-      description: t("add_one_fixed_attendee"),
-    },
-    {
-      icon: <Icon name="mail" className="h-5 w-5 text-orange-500" />,
-      title: t("sms_attendee_action"),
-      description: t("send_reminder_sms"),
-    },
-    {
-      icon: <Icon name="video" className="h-5 w-5 text-purple-500" />,
-      title: `Cal Video ${t("recordings_title")}`,
-    },
-    {
-      icon: <Icon name="eye-off" className="h-5 w-5 text-indigo-500" />,
-      title: t("disable_cal_branding", { appName: APP_NAME }),
-      description: t("disable_cal_branding_description", { appName: APP_NAME }),
-    },
-  ];
-
   useEffect(() => {
     if (!router) return;
     if (token) inviteMemberByToken({ token });
@@ -127,16 +95,20 @@ export function TeamsListing() {
           headline={t("create_team_to_get_started")}
           description={t("create_first_team_and_invite_others")}
           buttonRaw={
-            <Button
-              color="secondary"
-              data-testid="create-team-btn"
-              disabled={!!isCreateTeamButtonDisabled}
-              tooltip={
-                isCreateTeamButtonDisabled ? t("org_admins_can_create_new_teams") : t("create_new_team")
-              }
-              onClick={() => router.push(`${WEBAPP_URL}/settings/teams/new`)}>
-              {t(`create_new_team`)}
-            </Button>
+            <CreateTeamDialog>
+              {({ setOpen }) => (
+                <Button
+                  color="secondary"
+                  data-testid="create-team-btn"
+                  disabled={!!isCreateTeamButtonDisabled}
+                  tooltip={
+                    isCreateTeamButtonDisabled ? t("org_admins_can_create_new_teams") : t("create_new_team")
+                  }
+                  onClick={() => setOpen(true)}>
+                  {t(`create_new_team`)}
+                </Button>
+              )}
+            </CreateTeamDialog>
           }
         />
       )}

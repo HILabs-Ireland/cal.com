@@ -1,14 +1,13 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 import { WEBAPP_URL } from "@calcom/lib/constants";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import slugify from "@calcom/lib/slugify";
 import { trpc } from "@calcom/trpc/react";
-import { Alert, Button, Form, TextField } from "@calcom/ui";
+import { Alert, DialogFooter, Button, Form, TextField, Dialog, DialogContent } from "@calcom/ui";
 
 export interface CreateTeamFormValues {
   name: string;
@@ -17,9 +16,31 @@ export interface CreateTeamFormValues {
   logo: string;
 }
 
-const CreateTeamView = () => {
-  const router = useRouter();
+interface RenderControlProps {
+  open: boolean;
+  setOpen: (open: boolean) => void;
+}
 
+interface CreateTeamDialogProps {
+  children: (props: RenderControlProps) => React.ReactNode;
+}
+
+export const CreateTeamDialog = ({ children }: CreateTeamDialogProps) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      {children({ open, setOpen })}
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent type="creation">
+          <CreateTeamForm onClose={() => setOpen(false)} />
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+};
+
+const CreateTeamForm = ({ onClose }: { onClose: () => void }) => {
   const { t, isLocaleReady } = useLocale();
 
   const form = useForm<CreateTeamFormValues>();
@@ -31,10 +52,7 @@ const CreateTeamView = () => {
   const serverErrorMessage = errors.root?.serverError?.message;
 
   const createTeamMutation = trpc.viewer.teams.create.useMutation({
-    onSuccess: (data) => {
-      debugger;
-      return router.push(data.url);
-    },
+    onSuccess: onClose,
     onError: (err) => {
       if (err.message === "team_url_taken") {
         form.setError("slug", { type: "custom", message: t("url_taken") });
@@ -115,11 +133,11 @@ const CreateTeamView = () => {
           )}
         />
       </div>
-      <div className="flex space-x-2 rtl:space-x-reverse">
+      <DialogFooter showDivider className="relative">
         <Button
           disabled={createTeamMutation.isPending}
           color="secondary"
-          onClick={() => router.back()}
+          onClick={onClose}
           className="w-full justify-center">
           {t("cancel")}
         </Button>
@@ -131,7 +149,7 @@ const CreateTeamView = () => {
           data-testid="continue-button">
           {t("submit")}
         </Button>
-      </div>
+      </DialogFooter>
     </Form>
   );
 };
@@ -142,5 +160,3 @@ const getBaseTeamUrl = () => {
 
   return `${domain}/team`;
 };
-
-export default CreateTeamView;
