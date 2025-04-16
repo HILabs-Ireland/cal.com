@@ -57,7 +57,6 @@
   "rejection_reason_description": "Sind Sie sicher, dass Sie die Buchung ablehnen möchten? Wir werden die Person, die versucht hat zu buchen, informieren. Sie können einen Grund angeben.",
   "rejection_confirmation": "Buchung ablehnen",
   "manage_this_event": "Diesen Termin verwalten",
-  "invite_team_member": "Teammitglied einladen",
   "invite_team_individual_segment": "Person einladen",
   "invite_team_bulk_segment": "Massenimport",
   "invite_team_notifcation_badge": "Eing.",

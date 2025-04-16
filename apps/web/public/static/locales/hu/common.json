@@ -57,7 +57,6 @@
   "rejection_reason_description": "Biztosan vissza szeretnéd utasítani a foglalást? Értesítjük azt aki próbált foglalni. Lejjebb megadhatsz egy okot.",
   "rejection_confirmation": "Foglalás visszautasítása",
   "manage_this_event": "Az esemény kezelése",
-  "invite_team_member": "Csapattag meghívása",
   "invite_team_individual_segment": "Személy meghívása",
   "invite_team_bulk_segment": "Tömeges import",
   "invite_team_notifcation_badge": "Megh",

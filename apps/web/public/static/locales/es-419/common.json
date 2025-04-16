@@ -57,7 +57,6 @@
   "rejection_reason_description": "¿Estás seguro de que quieres rechazar la reserva? Informaremos a la persona que intentó reservar. Puedes proporcionar una razón a continuación.",
   "rejection_confirmation": "Rechazar la reserva",
   "manage_this_event": "Gestionar este evento",
-  "invite_team_member": "Invitar a un miembro del equipo",
   "invite_team_individual_segment": "Invitar a un individuo",
   "invite_team_bulk_segment": "Importación masiva",
   "invite_team_notifcation_badge": "Inv.",

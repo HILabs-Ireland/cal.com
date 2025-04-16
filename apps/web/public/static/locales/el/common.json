@@ -57,7 +57,6 @@
   "rejection_reason_description": "Είστε σίγουροι ότι θέλετε να απορρίψετε την κράτηση; Θα ενημερώσουμε το άτομο που προσπάθησε να κάνει την κράτηση. Μπορείτε να δώσετε έναν λόγο παρακάτω.",
   "rejection_confirmation": "Απόρριψη κράτησης",
   "manage_this_event": "Διαχείριση εκδήλωσης",
-  "invite_team_member": "Πρόσκληση μέλους ομάδας",
   "invite_team_individual_segment": "Πρόσκληση ατόμου",
   "invite_team_bulk_segment": "Μαζική εισαγωγή",
   "invite_team_notifcation_badge": "Πρόσκ.",

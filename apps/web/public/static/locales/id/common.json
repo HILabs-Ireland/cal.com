@@ -20,7 +20,6 @@
   "rejection_reason_description": "Kamu yakin menolak pemesanan? Kami akan memberitahu orang yang memesan. Kamu bisa menyediakan alasan di bawah ini.",
   "rejection_confirmation": "Tolak pesanan",
   "manage_this_event": "Kelola acara ini",
-  "invite_team_member": "Undang anggota tim",
   "your_event_has_been_scheduled": "Acara kamu telah terjadwal",
   "your_event_has_been_scheduled_recurring": "Acara berulang kamu telah terjadwal",
   "accept_our_license": "Setujui lisensi dengan mengganti variabel .env <1>NEXT_PUBLIC_LICENSE_CONSENT</1> menjadi {{agree}}.",
