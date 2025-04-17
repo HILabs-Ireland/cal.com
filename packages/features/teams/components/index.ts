@@ -1,2 +1,2 @@
-export { CreateANewTeamForm } from "./CreateANewTeamForm";
+export { CreateTeamDialog } from "./CreateTeamDialog";
 export { TeamsListing } from "./TeamsListing";

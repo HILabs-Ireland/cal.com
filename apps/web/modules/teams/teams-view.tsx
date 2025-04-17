@@ -1,8 +1,7 @@
 "use client";
 
 import Shell from "@calcom/features/shell/Shell";
-import { TeamsListing } from "@calcom/features/teams/components";
-import { WEBAPP_URL } from "@calcom/lib/constants";
+import { TeamsListing, CreateTeamDialog } from "@calcom/features/teams/components";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { trpc } from "@calcom/trpc/react";
 import type { inferSSRProps } from "@calcom/types/inferSSRProps";
@@ -11,7 +10,7 @@ import { Button } from "@calcom/ui";
 import type { getServerSideProps } from "@lib/teams/getServerSideProps";
 
 export type PageProps = inferSSRProps<typeof getServerSideProps>;
-function Teams(props: PageProps) {
+function Teams() {
   const { t } = useLocale();
   const [user] = trpc.viewer.me.useSuspenseQuery();
 
@@ -26,14 +25,13 @@ function Teams(props: PageProps) {
       hideHeadingOnMobile
       CTA={
         (!user.organizationId || user.organization.isOrgAdmin) && (
-          <Button
-            data-testid="new-team-btn"
-            variant="fab"
-            StartIcon="plus"
-            type="button"
-            href={`${WEBAPP_URL}/settings/teams/new?returnTo=${WEBAPP_URL}/teams`}>
-            {t("new")}
-          </Button>
+          <CreateTeamDialog>
+            {({ open }) => (
+              <Button data-testid="new-team-btn" variant="fab" StartIcon="plus" type="button" onClick={open}>
+                {t("new")}
+              </Button>
+            )}
+          </CreateTeamDialog>
         )
       }>
       <TeamsListing />

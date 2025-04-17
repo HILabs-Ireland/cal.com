@@ -51,18 +51,8 @@ export default function Custom404() {
   useEffect(() => {
     const [routerUsername] = pathname?.replace("%20", "-").split(/[?#]/) ?? [];
     if (routerUsername) {
-      const splitPath = routerUsername.split("/");
-      if (splitPath[1] === "team" && splitPath.length === 3) {
-        // Accessing a non-existent team
-        setUsername(splitPath[2]);
-        setCurrentPageType(pageType.TEAM);
-        setUrl(
-          `${WEBSITE_URL}/signup?callbackUrl=settings/teams/new%3Fslug%3D${splitPath[2].replace("/", "")}`
-        );
-      } else {
-        setUsername(routerUsername);
-        setUrl(`${WEBSITE_URL}/signup?username=${routerUsername.replace("/", "")}`);
-      }
+      setUsername(routerUsername);
+      setUrl(`${WEBSITE_URL}/signup?username=${routerUsername.replace("/", "")}`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
