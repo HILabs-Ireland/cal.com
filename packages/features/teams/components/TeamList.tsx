@@ -129,7 +129,7 @@ export default function TeamList(props: Props) {
                     <Card
                       icon={<Icon name="user-plus" className="h-5 w-5 text-green-700" />}
                       variant="basic"
-                      title={t("invite_team_member")}
+                      title={t("add_team_member")}
                       description={t("meetings_are_better_with_the_right")}
                       actionButton={{
                         href: `/settings/teams/${team.id}/members`,

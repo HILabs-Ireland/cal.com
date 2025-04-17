@@ -57,7 +57,6 @@
   "rejection_reason_description": "Er du sikker på at du vil avvise bookingen? Vi gir beskjed til personen som prøvde å booke. Du kan oppgi en årsak nedenfor.",
   "rejection_confirmation": "Avslå bestillingen",
   "manage_this_event": "Administrer denne hendelsen",
-  "invite_team_member": "Inviter teammedlem",
   "invite_team_individual_segment": "Inviter enkeltperson",
   "invite_team_bulk_segment": "Masseimport",
   "invite_team_notifcation_badge": "Inv.",

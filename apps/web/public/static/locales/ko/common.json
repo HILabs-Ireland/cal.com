@@ -57,7 +57,6 @@
   "rejection_reason_description": "예약을 거부하시겠습니까? 예약하려고 시도하셨던 다른 분께 알려드릴 것입니다. 해당 사유는 아래에서 제공하실 수 있습니다.",
   "rejection_confirmation": "예약 취소",
   "manage_this_event": "이 이벤트 관리",
-  "invite_team_member": "팀원 초대",
   "invite_team_individual_segment": "개인 초대",
   "invite_team_bulk_segment": "일괄 가져오기",
   "invite_team_notifcation_badge": "초대",

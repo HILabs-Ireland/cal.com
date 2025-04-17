@@ -57,7 +57,6 @@
   "rejection_reason_description": "Справді відмовити в бронюванні? Ми сповістимо користувача, який надіслав цей запит. Ви можете вказати причину нижче.",
   "rejection_confirmation": "Відмовити в бронюванні",
   "manage_this_event": "Керувати цим заходом",
-  "invite_team_member": "Запросити учасника команди",
   "invite_team_individual_segment": "Запросити фізичну особу",
   "invite_team_bulk_segment": "Запросити групу осіб",
   "invite_team_notifcation_badge": "Запр.",

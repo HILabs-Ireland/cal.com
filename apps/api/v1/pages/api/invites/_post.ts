@@ -44,7 +44,7 @@ async function postHandler(req: NextApiRequest, res: NextApiResponse) {
       usernameOrEmail: data.usernameOrEmail,
     });
 
-    return { success: true, message: `${data.usernameOrEmail} has been invited.` };
+    return { success: true, message: `${data.usernameOrEmail} has been added.` };
   } catch (cause) {
     if (cause instanceof TRPCError) {
       const statusCode = getHTTPStatusCodeFromError(cause);

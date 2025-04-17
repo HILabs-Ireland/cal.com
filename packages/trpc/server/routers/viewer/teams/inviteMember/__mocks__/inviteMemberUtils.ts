@@ -1,4 +1,4 @@
-import { beforeEach, vi, expect } from "vitest";
+import { beforeEach, vi } from "vitest";
 import { mockReset, mockDeep } from "vitest-mock-extended";
 
 import type { MembershipRole } from "@calcom/prisma/enums";
@@ -97,31 +97,4 @@ export const inviteMemberutilsScenarios = {
   },
 };
 
-export const expects = {
-  expectSignupEmailsToBeSent: ({
-    emails,
-    team,
-    inviterName,
-    isOrg,
-    teamId,
-  }: {
-    emails: string[];
-    team: any[];
-    inviterName: string;
-    teamId: number;
-    isOrg: boolean;
-  }) => {
-    emails.forEach((email, index) => {
-      expect(inviteMemberUtilsMock.sendSignupToOrganizationEmail.mock.calls[index][0]).toEqual(
-        expect.objectContaining({
-          usernameOrEmail: email,
-          team: team,
-          inviterName: inviterName,
-          teamId: teamId,
-          isOrg: isOrg,
-        })
-      );
-    });
-  },
-};
 export default inviteMemberUtilsMock;

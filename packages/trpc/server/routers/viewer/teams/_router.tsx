@@ -5,7 +5,6 @@ import { ZAddMembersToEventTypes } from "./addMembersToEventTypes.schema";
 import { ZChangeMemberRoleInputSchema } from "./changeMemberRole.schema";
 import { ZCheckIfMembershipExistsInputSchema } from "./checkIfMembershipExists.schema";
 import { ZCreateInputSchema } from "./create.schema";
-import { ZCreateInviteInputSchema } from "./createInvite.schema";
 import { ZDeleteInputSchema } from "./delete.schema";
 import { ZDeleteInviteInputSchema } from "./deleteInvite.schema";
 import { ZGetSchema } from "./get.schema";
@@ -24,7 +23,6 @@ import { ZRemoveHostsFromEventTypes } from "./removeHostsFromEventTypes.schema";
 import { ZRemoveMemberInputSchema } from "./removeMember.schema";
 import { ZResendInvitationInputSchema } from "./resendInvitation.schema";
 import { ZGetRoundRobinHostsInputSchema } from "./roundRobin/getRoundRobinHostsToReasign.schema";
-import { ZSetInviteExpirationInputSchema } from "./setInviteExpiration.schema";
 import { ZUpdateInputSchema } from "./update.schema";
 import { ZUpdateMembershipInputSchema } from "./updateMembership.schema";
 
@@ -124,17 +122,6 @@ export const viewerTeamsRouter = router({
     const handler = await importHandler(
       namespaced("getUserConnectedApps"),
       () => import("./getUserConnectedApps.handler")
-    );
-    return handler(opts);
-  }),
-  createInvite: authedProcedure.input(ZCreateInviteInputSchema).mutation(async (opts) => {
-    const handler = await importHandler(namespaced("createInvite"), () => import("./createInvite.handler"));
-    return handler(opts);
-  }),
-  setInviteExpiration: authedProcedure.input(ZSetInviteExpirationInputSchema).mutation(async (opts) => {
-    const handler = await importHandler(
-      namespaced("setInviteExpiration"),
-      () => import("./setInviteExpiration.handler")
     );
     return handler(opts);
   }),

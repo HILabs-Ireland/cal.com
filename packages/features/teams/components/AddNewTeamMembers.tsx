@@ -3,7 +3,6 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState, useMemo } from "react";
 
-import InviteLinkSettingsModal from "@calcom/features/teams/components/InviteLinkSettingsModal";
 import { MemberInvitationModalWithoutMembers } from "@calcom/features/teams/components/MemberInvitationModal";
 import { classNames } from "@calcom/lib";
 import { APP_NAME } from "@calcom/lib/constants";
@@ -56,7 +55,6 @@ export const AddNewTeamMembersForm = ({ teamId, isOrg }: { teamId: number; isOrg
 
   const showDialog = searchParams?.get("inviteModal") === "true";
   const [memberInviteModal, setMemberInviteModal] = useState(showDialog);
-  const [inviteLinkSettingsModal, setInviteLinkSettingsModal] = useState(false);
 
   const { data: team, isPending } = trpc.viewer.teams.get.useQuery({ teamId, isOrg }, { enabled: !!teamId });
 
@@ -125,30 +123,12 @@ export const AddNewTeamMembersForm = ({ teamId, isOrg }: { teamId: number; isOrg
       {isPending ? (
         <SkeletonButton />
       ) : (
-        <>
-          <MemberInvitationModalWithoutMembers
-            showMemberInvitationModal={memberInviteModal}
-            teamId={teamId}
-            token={team?.inviteToken?.token}
-            hideInvitationModal={() => setMemberInviteModal(false)}
-            onSettingsOpen={() => {
-              setMemberInviteModal(false);
-              setInviteLinkSettingsModal(true);
-            }}
-          />
-          {team?.inviteToken && (
-            <InviteLinkSettingsModal
-              isOpen={inviteLinkSettingsModal}
-              teamId={team.id}
-              token={team.inviteToken?.token}
-              expiresInDays={team.inviteToken?.expiresInDays || undefined}
-              onExit={() => {
-                setInviteLinkSettingsModal(false);
-                setMemberInviteModal(true);
-              }}
-            />
-          )}
-        </>
+        <MemberInvitationModalWithoutMembers
+          showMemberInvitationModal={memberInviteModal}
+          teamId={teamId}
+          token={team?.inviteToken?.token}
+          hideInvitationModal={() => setMemberInviteModal(false)}
+        />
       )}
       <hr className="border-subtle my-6" />
       <Button

@@ -57,7 +57,6 @@
   "rejection_reason_description": "Estàs segur que vols rebutjar la reserva? Informarem a la persona que ha intentat fer la reserva. Pots indicar un motiu a continuació.",
   "rejection_confirmation": "Rebutjar la reserva",
   "manage_this_event": "Gestiona aquest esdeveniment",
-  "invite_team_member": "Convida un membre de l'equip",
   "invite_team_individual_segment": "Convida individualment",
   "invite_team_bulk_segment": "Importació massiva",
   "invite_team_notifcation_badge": "Conv.",

@@ -57,7 +57,6 @@
   "rejection_reason_description": "Är du säker på att du vill avböja bokningen? Vi kommer att meddela personen som försökte boka. Du kan ange en anledning nedan.",
   "rejection_confirmation": "Avböj bokningen",
   "manage_this_event": "Hantera denna bokning",
-  "invite_team_member": "Bjud in teammedlem",
   "invite_team_individual_segment": "Bjud in individ",
   "invite_team_bulk_segment": "Massimport",
   "invite_team_notifcation_badge": "Inbj.",

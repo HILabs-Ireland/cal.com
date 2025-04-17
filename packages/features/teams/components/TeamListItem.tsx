@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import InviteLinkSettingsModal from "@calcom/features/teams/components/InviteLinkSettingsModal";
 import { MemberInvitationModalWithoutMembers } from "@calcom/features/teams/components/MemberInvitationModal";
 import classNames from "@calcom/lib/classNames";
 import { getPlaceholderAvatar } from "@calcom/lib/defaultAvatarImage";
@@ -50,7 +49,6 @@ export default function TeamListItem(props: Props) {
 
   const showDialog = searchParams?.get("inviteModal") === "true";
   const [openMemberInvitationModal, setOpenMemberInvitationModal] = useState(showDialog);
-  const [openInviteLinkSettingsModal, setOpenInviteLinkSettingsModal] = useState(false);
   const refreshData = useRefreshData();
 
   const acceptOrLeaveMutation = trpc.viewer.teams.acceptOrLeave.useMutation({
@@ -113,20 +111,7 @@ export default function TeamListItem(props: Props) {
         showMemberInvitationModal={openMemberInvitationModal}
         teamId={team.id}
         token={team.inviteToken?.token}
-        onSettingsOpen={() => setOpenInviteLinkSettingsModal(true)}
       />
-      {team.inviteToken && (
-        <InviteLinkSettingsModal
-          isOpen={openInviteLinkSettingsModal}
-          teamId={team.id}
-          token={team.inviteToken?.token}
-          expiresInDays={team.inviteToken?.expiresInDays || undefined}
-          onExit={() => {
-            setOpenInviteLinkSettingsModal(false);
-            setOpenMemberInvitationModal(true);
-          }}
-        />
-      )}
       <div className={classNames("flex items-center  justify-between", !isInvitee && "hover:bg-muted group")}>
         {!isInvitee ? (
           team.slug ? (
@@ -246,7 +231,7 @@ export default function TeamListItem(props: Props) {
                             setOpenMemberInvitationModal(true);
                           }}
                           StartIcon="send">
-                          {t("invite_team_member") as string}
+                          {t("add_team_member") as string}
                         </DropdownItem>
                       </DropdownMenuItem>
                     )}
