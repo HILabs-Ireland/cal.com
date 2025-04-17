@@ -5,8 +5,6 @@ import { usePathname, useRouter as useAppRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 
-import { useOrgBranding } from "@calcom/features/ee/organizations/context/provider";
-import type { ChildrenEventType } from "@calcom/features/eventtypes/components/ChildrenEventTypeSelect";
 import { EventType as EventTypeComponent } from "@calcom/features/eventtypes/components/EventType";
 import { EventAdvancedTab } from "@calcom/features/eventtypes/components/tabs/advanced/EventAdvancedTab";
 import type { EventTypeSetupProps } from "@calcom/features/eventtypes/lib/types";
@@ -14,8 +12,7 @@ import { WEBSITE_URL } from "@calcom/lib/constants";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { useTypedQuery } from "@calcom/lib/hooks/useTypedQuery";
 import { HttpError } from "@calcom/lib/http-error";
-import { telemetryEventTypes, useTelemetry } from "@calcom/lib/telemetry";
-import { SchedulingType } from "@calcom/prisma/enums";
+import { useTelemetry } from "@calcom/lib/telemetry";
 import { trpc, TRPCClientError } from "@calcom/trpc/react";
 import useMeQuery from "@calcom/trpc/react/hooks/useMeQuery";
 import { showToast } from "@calcom/ui";
@@ -23,10 +20,6 @@ import { showToast } from "@calcom/ui";
 import { useEventTypeForm } from "../hooks/useEventTypeForm";
 import { useHandleRouteChange } from "../hooks/useHandleRouteChange";
 import { useTabsNavigations } from "../hooks/useTabsNavigations";
-
-const ManagedEventTypeDialog = dynamic(
-  () => import("@calcom/features/eventtypes/components/dialogs/ManagedEventDialog")
-);
 
 const AssignmentWarningDialog = dynamic(
   () => import("@calcom/features/eventtypes/components/dialogs/AssignmentWarningDialog")
@@ -60,18 +53,10 @@ const EventRecurringTab = dynamic(() =>
   import("./EventRecurringWebWrapper").then((mod) => mod)
 );
 
-const EventWorkflowsTab = dynamic(
-  () => import("@calcom/features/eventtypes/components/tabs/workflows/EventWorkfowsTab")
-);
-
 const EventWebhooksTab = dynamic(() =>
   import("@calcom/features/eventtypes/components/tabs/webhooks/EventWebhooksTab").then(
     (mod) => mod.EventWebhooksTab
   )
-);
-
-const EventAITab = dynamic(() =>
-  import("@calcom/features/eventtypes/components/tabs/ai/EventAITab").then((mod) => mod.EventAITab)
 );
 
 export type EventTypeWebWrapperProps = {
@@ -98,7 +83,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
   const [isOpenAssignmentWarnDialog, setIsOpenAssignmentWarnDialog] = useState<boolean>(false);
   const [pendingRoute, setPendingRoute] = useState("");
   const { eventType, locationOptions, team, teamMembers, destinationCalendar } = rest;
-  const [slugExistsChildrenDialogOpen, setSlugExistsChildrenDialogOpen] = useState<ChildrenEventType[]>([]);
   const { data: eventTypeApps } = trpc.viewer.integrations.useQuery({
     extendsFeature: "EventType",
     teamId: eventType.team?.id || eventType.parent?.teamId,
@@ -149,19 +133,7 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
   const { form, handleSubmit } = useEventTypeForm({ eventType, onSubmit: updateMutation.mutate });
   const slug = form.watch("slug") ?? eventType.slug;
 
-  const { data: allActiveWorkflows } = trpc.viewer.workflows.getAllActiveWorkflows.useQuery({
-    eventType: {
-      id,
-      teamId: eventType.teamId,
-      userId: eventType.userId,
-      parent: eventType.parent,
-      metadata: eventType.metadata,
-    },
-  });
-
-  const orgBranding = useOrgBranding();
-
-  const bookerUrl = orgBranding ? orgBranding?.fullDomain : WEBSITE_URL;
+  const bookerUrl = WEBSITE_URL;
   const permalink = `${bookerUrl}/${team ? `team/${team.slug}` : eventType.users[0].username}/${
     eventType.slug
   }`;
@@ -184,14 +156,7 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
         teamMembers={teamMembers}
       />
     ),
-    team: (
-      <EventTeamAssignmentTab
-        orgId={orgBranding?.id ?? null}
-        teamMembers={teamMembers}
-        team={team}
-        eventType={eventType}
-      />
-    ),
+    team: <EventTeamAssignmentTab orgId={null} teamMembers={teamMembers} team={team} eventType={eventType} />,
     limits: <EventLimitsTab eventType={eventType} />,
     advanced: (
       <EventAdvancedTab
@@ -205,13 +170,7 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
     ),
     instant: <EventInstantTab eventType={eventType} isTeamEvent={!!team} />,
     recurring: <EventRecurringTab eventType={eventType} />,
-    workflows: allActiveWorkflows ? (
-      <EventWorkflowsTab eventType={eventType} workflows={allActiveWorkflows} />
-    ) : (
-      <></>
-    ),
     webhooks: <EventWebhooksTab eventType={eventType} />,
-    ai: <EventAITab eventType={eventType} isTeamEvent={!!team} />,
   } as const;
 
   useHandleRouteChange({
@@ -222,7 +181,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
     assignedUsers: eventType.children,
     hosts: eventType.hosts,
     assignAllTeamMembers: eventType.assignAllTeamMembers,
-    isManagedEventType: eventType.schedulingType === SchedulingType.MANAGED,
     onError: (url) => {
       setIsOpenAssignmentWarnDialog(true);
       setPendingRoute(url);
@@ -243,7 +201,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
         EventAdvancedTab,
         EventInstantTab,
         EventRecurringTab,
-        EventWorkflowsTab,
         EventWebhooksTab,
       ];
 
@@ -259,10 +216,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
     };
   }, []);
 
-  const onConflict = (conflicts: ChildrenEventType[]) => {
-    setSlugExistsChildrenDialogOpen(conflicts);
-  };
-
   const querySchema = z.object({
     tabName: z
       .enum([
@@ -274,7 +227,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
         "instant",
         "recurring",
         "apps",
-        "workflows",
         "webhooks",
         "ai",
       ])
@@ -292,14 +244,12 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
       showToast(t("event_type_deleted_successfully"), "success");
       isTeamEventTypeDeleted.current = true;
       appRouter.push("/event-types");
-      setSlugExistsChildrenDialogOpen([]);
       setIsOpenAssignmentWarnDialog(false);
     },
     onError: (err) => {
       if (err instanceof HttpError) {
         const message = `${err.statusCode}: ${err.message}`;
         showToast(message, "error");
-        setSlugExistsChildrenDialogOpen([]);
       } else if (err instanceof TRPCClientError) {
         showToast(err.message, "error");
       }
@@ -311,19 +261,16 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
     eventType,
     team,
     eventTypeApps,
-    allActiveWorkflows,
   });
 
   return (
     <EventTypeComponent
       {...rest}
-      allActiveWorkflows={allActiveWorkflows}
       tabMap={tabMap}
       onDelete={(id) => {
         deleteMutation.mutate({ id });
       }}
       isDeleting={deleteMutation.isPending}
-      onConflict={onConflict}
       handleSubmit={handleSubmit}
       eventTypeApps={eventTypeApps}
       formMethods={form}
@@ -332,22 +279,6 @@ const EventTypeWeb = ({ id, ...rest }: EventTypeSetupProps & { id: number }) => 
       tabName={tabName}
       tabsNavigation={tabsNavigation}>
       <>
-        {slugExistsChildrenDialogOpen.length ? (
-          <ManagedEventTypeDialog
-            slugExistsChildrenDialogOpen={slugExistsChildrenDialogOpen}
-            isPending={form.formState.isSubmitting}
-            onOpenChange={() => {
-              setSlugExistsChildrenDialogOpen([]);
-            }}
-            slug={slug}
-            onConfirm={(e: { preventDefault: () => void }) => {
-              e.preventDefault();
-              handleSubmit(form.getValues());
-              telemetry.event(telemetryEventTypes.slugReplacementAction);
-              setSlugExistsChildrenDialogOpen([]);
-            }}
-          />
-        ) : null}
         <AssignmentWarningDialog
           isOpenAssignmentWarnDialog={isOpenAssignmentWarnDialog}
           setIsOpenAssignmentWarnDialog={setIsOpenAssignmentWarnDialog}

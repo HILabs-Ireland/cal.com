@@ -78,7 +78,7 @@ export class UpdateScheduleInput_2024_04_15 {
   @DocsProperty()
   @IsArray()
   @ApiProperty({
-    type: [[ScheduleItem]],
+    type: [ScheduleItem],
     example: [
       [],
       [{ start: "2022-01-01T00:00:00.000Z", end: "2022-01-02T00:00:00.000Z" }],

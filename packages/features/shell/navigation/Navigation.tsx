@@ -3,10 +3,6 @@ import { useMemo } from "react";
 
 import { useIsEmbed } from "@calcom/embed-core/embed-iframe";
 import UnconfirmedBookingBadge from "@calcom/features/bookings/UnconfirmedBookingBadge";
-import {
-  useOrgBranding,
-  type OrganizationBranding,
-} from "@calcom/features/ee/organizations/context/provider";
 import { KBarTrigger } from "@calcom/features/kbar/Kbar";
 import { classNames } from "@calcom/lib";
 
@@ -15,7 +11,7 @@ import { NavigationItem, MobileNavigationItem, MobileNavigationMoreItem } from "
 
 export const MORE_SEPARATOR_NAME = "more";
 
-const getNavigationItems = (orgBranding: OrganizationBranding): NavigationItemType[] => [
+const getNavigationItems = (): NavigationItemType[] => [
   {
     name: "event_types_page_title",
     href: "/event-types",
@@ -33,16 +29,6 @@ const getNavigationItems = (orgBranding: OrganizationBranding): NavigationItemTy
     href: "/availability",
     icon: "clock",
   },
-  ...(orgBranding
-    ? [
-        {
-          name: "members",
-          href: `/settings/organizations/${orgBranding.slug}/members`,
-          icon: "building",
-          moreOnMobile: true,
-        } satisfies NavigationItemType,
-      ]
-    : []),
   {
     name: "teams",
     href: "/teams",
@@ -92,12 +78,6 @@ const getNavigationItems = (orgBranding: OrganizationBranding): NavigationItemTy
     moreOnMobile: true,
   },
   {
-    name: "workflows",
-    href: "/workflows",
-    icon: "zap",
-    moreOnMobile: true,
-  },
-  {
     name: "insights",
     href: "/insights",
     icon: "chart-bar",
@@ -107,7 +87,7 @@ const getNavigationItems = (orgBranding: OrganizationBranding): NavigationItemTy
       {
         name: "bookings",
         href: "/insights",
-        isCurrent: ({ pathname: path }) => path == "/insights" ?? false,
+        isCurrent: ({ pathname: path }) => path == "/insights",
       },
       {
         name: "routing",
@@ -168,9 +148,8 @@ const platformNavigationItems: NavigationItemType[] = [
 ];
 
 const useNavigationItems = (isPlatformNavigation = false) => {
-  const orgBranding = useOrgBranding();
   return useMemo(() => {
-    const items = !isPlatformNavigation ? getNavigationItems(orgBranding) : platformNavigationItems;
+    const items = !isPlatformNavigation ? getNavigationItems() : platformNavigationItems;
 
     const desktopNavigationItems = items.filter((item) => item.name !== MORE_SEPARATOR_NAME);
     const mobileNavigationBottomItems = items.filter(
@@ -181,7 +160,7 @@ const useNavigationItems = (isPlatformNavigation = false) => {
     );
 
     return { desktopNavigationItems, mobileNavigationBottomItems, mobileNavigationMoreItems };
-  }, [isPlatformNavigation, orgBranding]);
+  }, [isPlatformNavigation]);
 };
 
 export const Navigation = ({ isPlatformNavigation = false }: { isPlatformNavigation?: boolean }) => {

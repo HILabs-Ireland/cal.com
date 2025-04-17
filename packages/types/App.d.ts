@@ -120,7 +120,6 @@ export interface App {
   key?: Prisma.JsonValue;
   /** If not free, what kind of fees does the app have */
   feeType?: "monthly" | "usage-based" | "one-time" | "free";
-  licenseRequired?: boolean;
   appData?: AppData;
 
   /**

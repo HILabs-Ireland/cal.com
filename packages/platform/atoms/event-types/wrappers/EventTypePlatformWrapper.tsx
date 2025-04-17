@@ -3,9 +3,7 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useRef, useState, useEffect } from "react";
 
-import type { ChildrenEventType } from "@calcom/features/eventtypes/components/ChildrenEventTypeSelect";
 import { EventType as EventTypeComponent } from "@calcom/features/eventtypes/components/EventType";
-import ManagedEventTypeDialog from "@calcom/features/eventtypes/components/dialogs/ManagedEventDialog";
 import type { EventAdvancedTabCustomClassNames } from "@calcom/features/eventtypes/components/tabs/advanced/EventAdvancedTab";
 import type { EventTeamAssignmentTabCustomClassNames } from "@calcom/features/eventtypes/components/tabs/assignment/EventTeamAssignmentTab";
 import type { EventAvailabilityTabCustomClassNames } from "@calcom/features/eventtypes/components/tabs/availability/EventAvailabilityTab";
@@ -14,7 +12,6 @@ import type { EventRecurringTabCustomClassNames } from "@calcom/features/eventty
 import type { EventSetupTabCustomClassNames } from "@calcom/features/eventtypes/components/tabs/setup/EventSetupTab";
 import type { EventTypeSetupProps, FormValues, TabMap } from "@calcom/features/eventtypes/lib/types";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
-import { SchedulingType } from "@calcom/prisma/enums";
 
 import { useDeleteEventTypeById } from "../../hooks/event-types/private/useDeleteEventTypeById";
 import { useDeleteTeamEventTypeById } from "../../hooks/event-types/private/useDeleteTeamEventTypeById";
@@ -32,7 +29,7 @@ import EventRecurringTabPlatformWrapper from "./EventRecurringTabPlatformWrapper
 import SetupTab from "./EventSetupTabPlatformWrapper";
 import EventTeamAssignmentTabPlatformWrapper from "./EventTeamAssignmentTabPlatformWrapper";
 
-export type PlatformTabs = keyof Omit<TabMap, "workflows" | "webhooks" | "instant" | "ai" | "apps">;
+export type PlatformTabs = keyof Omit<TabMap, "webhooks" | "instant" | "ai" | "apps">;
 
 export type EventTypeCustomClassNames = {
   atomsWrapper?: string;
@@ -75,13 +72,11 @@ const EventType = ({
   const [isOpenAssignmentWarnDialog, setIsOpenAssignmentWarnDialog] = useState<boolean>(false);
   const [pendingRoute, setPendingRoute] = useState("");
   const { eventType, locationOptions, team, teamMembers, destinationCalendar } = props;
-  const [slugExistsChildrenDialogOpen, setSlugExistsChildrenDialogOpen] = useState<ChildrenEventType[]>([]);
   const { data: user, isLoading: isUserLoading } = useMe();
 
   const handleDeleteSuccess = () => {
     showToast(t("event_type_deleted_successfully"), "success");
     isTeamEventTypeDeleted.current = true;
-    setSlugExistsChildrenDialogOpen([]);
     setIsOpenAssignmentWarnDialog(false);
     onDeleteSuccess?.();
   };
@@ -217,7 +212,6 @@ const EventType = ({
     assignedUsers: eventType.children,
     hosts: eventType.hosts,
     assignAllTeamMembers: eventType.assignAllTeamMembers,
-    isManagedEventType: eventType.schedulingType === SchedulingType.MANAGED,
     onError: (url) => {
       setIsOpenAssignmentWarnDialog(true);
       setPendingRoute(url);
@@ -239,10 +233,6 @@ const EventType = ({
     }
   };
 
-  const onConflict = (conflicts: ChildrenEventType[]) => {
-    setSlugExistsChildrenDialogOpen(conflicts);
-  };
-
   const { tabsNavigation, currentTab } = usePlatformTabsNavigations({
     formMethods: form,
     eventType,
@@ -255,32 +245,14 @@ const EventType = ({
         {...props}
         tabMap={tabMap}
         onDelete={onDelete}
-        onConflict={onConflict}
         handleSubmit={handleSubmit}
         formMethods={form}
         isUpdating={updateMutation.isPending}
         isPlatform
         tabName={currentTab}
         tabsNavigation={tabsNavigation}
-        allowDelete={allowDelete}>
-        <>
-          {slugExistsChildrenDialogOpen.length ? (
-            <ManagedEventTypeDialog
-              slugExistsChildrenDialogOpen={slugExistsChildrenDialogOpen}
-              isPending={form.formState.isSubmitting}
-              onOpenChange={() => {
-                setSlugExistsChildrenDialogOpen([]);
-              }}
-              slug={slug}
-              onConfirm={(e: { preventDefault: () => void }) => {
-                e.preventDefault();
-                handleSubmit(form.getValues());
-                setSlugExistsChildrenDialogOpen([]);
-              }}
-            />
-          ) : null}
-        </>
-      </EventTypeComponent>
+        allowDelete={allowDelete}
+      />
     </AtomsWrapper>
   );
 };

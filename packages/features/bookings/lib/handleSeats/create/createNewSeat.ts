@@ -3,10 +3,6 @@ import { cloneDeep } from "lodash";
 import { uuid } from "short-uuid";
 
 import { sendScheduledSeatsEmailsAndSMS } from "@calcom/emails";
-import {
-  allowDisablingAttendeeConfirmationEmails,
-  allowDisablingHostConfirmationEmails,
-} from "@calcom/features/ee/workflows/lib/allowDisablingStandardEmails";
 import { ErrorCode } from "@calcom/lib/errorCodes";
 import { HttpError } from "@calcom/lib/http-error";
 import prisma from "@calcom/prisma";
@@ -20,21 +16,8 @@ const createNewSeat = async (
   seatedBooking: SeatedBooking,
   metadata?: Record<string, string>
 ) => {
-  const {
-    tAttendees,
-    attendeeLanguage,
-    invitee,
-    eventType,
-    additionalNotes,
-    noEmail,
-    allCredentials,
-    organizerUser,
-    fullName,
-    bookerEmail,
-    responses,
-    workflows,
-    bookerPhoneNumber,
-  } = rescheduleSeatedBookingObject;
+  const { tAttendees, attendeeLanguage, invitee, eventType, additionalNotes, noEmail, responses } =
+    rescheduleSeatedBookingObject;
   let { evt } = rescheduleSeatedBookingObject;
   let resultBooking: HandleSeatsResultBooking;
   // Need to add translation for attendees to pass type checks. Since these values are never written to the db we can just use the new attendee language
@@ -124,13 +107,6 @@ const createNewSeat = async (
     isAttendeeConfirmationEmailDisabled =
       eventType.metadata?.disableStandardEmails?.confirmation?.attendee || false;
 
-    if (isHostConfirmationEmailsDisabled) {
-      isHostConfirmationEmailsDisabled = allowDisablingHostConfirmationEmails(workflows);
-    }
-
-    if (isAttendeeConfirmationEmailDisabled) {
-      isAttendeeConfirmationEmailDisabled = allowDisablingAttendeeConfirmationEmails(workflows);
-    }
     await sendScheduledSeatsEmailsAndSMS(
       copyEvent,
       inviteeToAdd,

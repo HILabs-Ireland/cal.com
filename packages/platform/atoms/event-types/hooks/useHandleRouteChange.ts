@@ -14,7 +14,6 @@ export const useHandleRouteChange = ({
   assignedUsers,
   hosts,
   assignAllTeamMembers,
-  isManagedEventType,
   onError,
   onStart,
   onEnd,
@@ -26,7 +25,6 @@ export const useHandleRouteChange = ({
   assignedUsers: EventTypeAssignedUsers;
   hosts: EventTypeHosts;
   assignAllTeamMembers: boolean;
-  isManagedEventType: boolean;
   watchTrigger: unknown;
   onError?: (url: string) => void;
   onStart?: (handleRouteChange: (url: string) => void) => void;
@@ -44,10 +42,8 @@ export const useHandleRouteChange = ({
         !isleavingWithoutAssigningHosts &&
         (url === "/event-types" || paths[1] !== "event-types") &&
         checkForEmptyAssignment({
-          assignedUsers,
           hosts,
           assignAllTeamMembers,
-          isManagedEventType,
         })
       ) {
         onError?.(url);

@@ -6,7 +6,6 @@ import { HttpError } from "@calcom/lib/http-error";
 import logger from "@calcom/lib/logger";
 import { safeStringify } from "@calcom/lib/safeStringify";
 import { getTranslation } from "@calcom/lib/server/i18n";
-import { WorkflowRepository } from "@calcom/lib/server/repository/workflow";
 import prisma from "@calcom/prisma";
 import { WebhookTriggerEvents } from "@calcom/prisma/enums";
 import { credentialForCalendarServiceSelect } from "@calcom/prisma/selects/credential";
@@ -149,12 +148,6 @@ async function cancelAttendeeSeat(
     })
   );
   await Promise.all(promises);
-
-  const workflowRemindersForAttendee =
-    bookingToDelete?.workflowReminders.filter((reminder) => reminder.seatReferenceId === seatReferenceUid) ??
-    null;
-
-  await WorkflowRepository.deleteAllWorkflowReminders(workflowRemindersForAttendee);
 
   return { success: true };
 }

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { z } from "zod";
 
-import { CreateANewTeamForm } from "@calcom/features/ee/teams/components";
+import { CreateANewTeamForm } from "@calcom/features/teams/components";
 import { getSafeRedirectUrl } from "@calcom/lib/getSafeRedirectUrl";
 import { useParamsWithFallback } from "@calcom/lib/hooks/useParamsWithFallback";
 import { telemetryEventTypes, useTelemetry } from "@calcom/lib/telemetry";

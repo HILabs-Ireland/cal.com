@@ -22,7 +22,6 @@ const sessionGetter: GetSessionFn = () =>
         upId: "",
       } satisfies UserProfile,
     },
-    hasValidLicense: true /* To comply with TS signature */,
     expires: "" /* Not used in this context */,
     upId: "",
   });

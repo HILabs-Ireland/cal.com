@@ -11,17 +11,14 @@ import { createEmailsFixture } from "../fixtures/emails";
 import { createEmbedsFixture } from "../fixtures/embeds";
 import { createEventTypeFixture } from "../fixtures/eventTypes";
 import { createFeatureFixture } from "../fixtures/features";
-import { createOrgsFixture } from "../fixtures/orgs";
 import { createBookingPageFixture } from "../fixtures/regularBookings";
 import { createRoutingFormsFixture } from "../fixtures/routingForms";
 import { createServersFixture } from "../fixtures/servers";
 import { createUsersFixture } from "../fixtures/users";
 import { createWebhookPageFixture } from "../fixtures/webhooks";
-import { createWorkflowPageFixture } from "../fixtures/workflows";
 
 export interface Fixtures {
   page: Page;
-  orgs: ReturnType<typeof createOrgsFixture>;
   users: ReturnType<typeof createUsersFixture>;
   bookings: ReturnType<typeof createBookingsFixture>;
   embeds: ReturnType<typeof createEmbedsFixture>;
@@ -30,7 +27,6 @@ export interface Fixtures {
   emails: ReturnType<typeof createEmailsFixture>;
   routingForms: ReturnType<typeof createRoutingFormsFixture>;
   bookingPage: ReturnType<typeof createBookingPageFixture>;
-  workflowPage: ReturnType<typeof createWorkflowPageFixture>;
   features: ReturnType<typeof createFeatureFixture>;
   eventTypePage: ReturnType<typeof createEventTypeFixture>;
   webhooks: ReturnType<typeof createWebhookPageFixture>;
@@ -56,10 +52,6 @@ declare global {
  *  @see https://playwright.dev/docs/test-fixtures
  */
 export const test = base.extend<Fixtures>({
-  orgs: async ({ page }, use) => {
-    const orgsFixture = createOrgsFixture(page);
-    await use(orgsFixture);
-  },
   users: async ({ page, context, emails }, use, workerInfo) => {
     const usersFixture = createUsersFixture(page, emails, workerInfo);
     await use(usersFixture);
@@ -93,10 +85,6 @@ export const test = base.extend<Fixtures>({
     const features = createFeatureFixture(page);
     await features.init();
     await use(features);
-  },
-  workflowPage: async ({ page }, use) => {
-    const workflowPage = createWorkflowPageFixture(page);
-    await use(workflowPage);
   },
   eventTypePage: async ({ page }, use) => {
     const eventTypePage = createEventTypeFixture(page);

@@ -67,7 +67,6 @@ const BookerComponent = ({
   customClassNames,
   areInstantMeetingParametersSet = false,
   userLocale,
-  hasValidLicense,
 }: BookerProps & WrappedBookerProps) => {
   const searchParams = useCompatSearchParams();
   const isPlatformBookerEmbed = useIsPlatformBookerEmbed();
@@ -179,7 +178,7 @@ const BookerComponent = ({
               email={formEmail}
               isUserSessionRequiredToVerify={false}
               verifyCodeWithSessionNotRequired={verifyCode.verifyCodeWithSessionNotRequired}
-              verifyCodeWithSessionRequired={verifyCode.verifyCodeWithSessionRequired}
+              verifyCodeWithSessionRequired={() => ({})}
               error={verifyCode.error}
               resetErrors={verifyCode.resetErrors}
               isPending={verifyCode.isPending}
@@ -232,7 +231,6 @@ const BookerComponent = ({
     verifyCode?.resetErrors,
     verifyCode?.setIsPending,
     verifyCode?.verifyCodeWithSessionNotRequired,
-    verifyCode?.verifyCodeWithSessionRequired,
     isPlatform,
   ]);
 

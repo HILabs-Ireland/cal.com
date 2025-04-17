@@ -163,7 +163,6 @@ export type InputEventType = {
     id?: number | null;
     parentId?: number | null;
     bookingLimits?: IntervalLimit;
-    includeManagedEventsInLimits?: boolean;
   };
   requiresConfirmation?: boolean;
   destinationCalendar?: Prisma.DestinationCalendarCreateInput;
@@ -254,7 +253,7 @@ export async function addEventTypesToDb(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     schedule?: any;
     metadata?: any;
-    team?: { id?: number | null; bookingLimits?: IntervalLimit; includeManagedEventsInLimits?: boolean };
+    team?: { id?: number | null; bookingLimits?: IntervalLimit };
   })[]
 ) {
   log.silly("TestData: Add EventTypes to DB", JSON.stringify(eventTypes));
@@ -300,7 +299,6 @@ export async function addEventTypesToDb(
         data: {
           id: eventType.team?.id,
           bookingLimits: eventType.team?.bookingLimits,
-          includeManagedEventsInLimits: eventType.team?.includeManagedEventsInLimits,
           name: "",
         },
       });
@@ -332,7 +330,6 @@ export async function addEventTypes(eventTypes: InputEventType[], usersStore: In
     beforeEventBuffer: 0,
     afterEventBuffer: 0,
     bookingLimits: {},
-    includeManagedEventsInLimits: false,
     schedulingType: null,
     length: 15,
     //TODO: What is the purpose of periodStartDate and periodEndDate? Test these?
@@ -1250,7 +1247,6 @@ export function getScenarioData(
           id: eventType.teamId ?? eventType.team?.id,
           parentId: org ? org.id : null,
           bookingLimits: eventType?.team?.bookingLimits,
-          includeManagedEventsInLimits: eventType?.team?.includeManagedEventsInLimits,
         },
         title: `Test Event Type - ${index + 1}`,
         description: `It's a test event type - ${index + 1}`,

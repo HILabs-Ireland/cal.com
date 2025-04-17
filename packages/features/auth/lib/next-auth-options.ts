@@ -9,7 +9,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import EmailProvider from "next-auth/providers/email";
 import GoogleProvider from "next-auth/providers/google";
 
-import { getOrgFullOrigin, subdomainSuffix } from "@calcom/features/ee/organizations/lib/orgDomains";
 import { checkRateLimitAndThrowError } from "@calcom/lib/checkRateLimitAndThrowError";
 import { GOOGLE_CALENDAR_SCOPES, GOOGLE_OAUTH_SCOPES, IS_CALCOM } from "@calcom/lib/constants";
 import { ENABLE_PROFILE_SWITCHER, WEBAPP_URL } from "@calcom/lib/constants";
@@ -386,18 +385,7 @@ export const getOptions = ({
           // All organizations in the token would be too big to store. It breaks the sessions request.
           // So, we just set the currently switched organization only here.
           // platform org user don't need profiles nor domains
-          org:
-            profileOrg && !profileOrg.isPlatform
-              ? {
-                  id: profileOrg.id,
-                  name: profileOrg.name,
-                  slug: profileOrg.slug ?? profileOrg.requestedSlug ?? "",
-                  logoUrl: profileOrg.logoUrl,
-                  fullDomain: getOrgFullOrigin(profileOrg.slug ?? profileOrg.requestedSlug ?? ""),
-                  domainSuffix: subdomainSuffix(),
-                  role: orgRole as MembershipRole, // It can't be undefined if we have a profileOrg
-                }
-              : null,
+          org: undefined,
         } as JWT;
       };
       if (!user) {
@@ -476,7 +464,6 @@ export const getOptions = ({
         ...session,
         profileId,
         upId: token.upId || session.upId,
-        hasValidLicense: false,
         user: {
           ...session.user,
           id: token.id as number,

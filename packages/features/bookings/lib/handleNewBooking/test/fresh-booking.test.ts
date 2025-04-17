@@ -20,9 +20,6 @@ import {
 } from "@calcom/web/test/utils/bookingScenario/bookingScenario";
 import { createMockNextJsRequest } from "@calcom/web/test/utils/bookingScenario/createMockNextJsRequest";
 import {
-  expectWorkflowToBeTriggered,
-  expectWorkflowToBeNotTriggered,
-  expectSuccessfulBookingCreationEmails,
   expectBookingToBeInDatabase,
   expectBookingRequestedEmails,
   expectBookingRequestedWebhookToHaveBeenFired,
@@ -37,7 +34,7 @@ import type { Request, Response } from "express";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { describe, expect } from "vitest";
 
-import { WEBSITE_URL, WEBAPP_URL } from "@calcom/lib/constants";
+import { WEBAPP_URL } from "@calcom/lib/constants";
 import { ErrorCode } from "@calcom/lib/errorCodes";
 import { BookingStatus } from "@calcom/prisma/enums";
 import { test } from "@calcom/web/test/fixtures/fixtures";
@@ -55,9 +52,8 @@ describe("handleNewBooking", () => {
     testWithAndWithoutOrg(
       `should create a successful booking with Cal Video(Daily Video) if no explicit location is provided
           1. Should create a booking in the database
-          2. Should send emails to the booker as well as organizer
-          3. Should create a booking in the event's destination calendar
-          4. Should trigger BOOKING_CREATED webhook
+          2. Should create a booking in the event's destination calendar
+          3. Should trigger BOOKING_CREATED webhook
     `,
       async ({ emails, org }) => {
         const handleNewBooking = (await import("@calcom/features/bookings/lib/handleNewBooking")).default;
@@ -170,24 +166,7 @@ describe("handleNewBooking", () => {
           iCalUID: createdBooking.iCalUID,
         });
 
-        expectWorkflowToBeTriggered({
-          emailsToReceive: [organizerDestinationCalendarEmailOnEventType],
-          emails,
-        });
-
         const iCalUID = expectICalUIDAsString(createdBooking.iCalUID);
-
-        expectSuccessfulBookingCreationEmails({
-          booking: {
-            uid: createdBooking.uid!,
-            urlOrigin: org ? org.urlOrigin : WEBSITE_URL,
-          },
-          booker,
-          organizer,
-          emails,
-          iCalUID,
-          destinationEmail: organizerDestinationCalendarEmailOnEventType,
-        });
 
         expectBookingCreatedWebhookToHaveBeenFired({
           booker,
@@ -204,8 +183,7 @@ describe("handleNewBooking", () => {
       test(
         `should create a successful booking in the first connected calendar i.e. using the first credential(in the scenario when there is no event-type or organizer destination calendar)
           1. Should create a booking in the database
-          2. Should send emails to the booker as well as organizer
-          3. Should fallback to creating the booking in the first connected Calendar when neither event nor organizer has a destination calendar - This doesn't practically happen because organizer is always required to have a schedule set
+          2. Should fallback to creating the booking in the first connected Calendar when neither event nor organizer has a destination calendar - This doesn't practically happen because organizer is always required to have a schedule set
           3. Should trigger BOOKING_CREATED webhook
     `,
         async ({ emails }) => {
@@ -299,19 +277,8 @@ describe("handleNewBooking", () => {
             iCalUID: createdBooking.iCalUID,
           });
 
-          expectWorkflowToBeTriggered({ emailsToReceive: [organizer.email], emails });
-
           const iCalUID = expectICalUIDAsString(createdBooking.iCalUID);
 
-          expectSuccessfulBookingCreationEmails({
-            booking: {
-              uid: createdBooking.uid!,
-            },
-            booker,
-            organizer,
-            emails,
-            iCalUID,
-          });
           expectBookingCreatedWebhookToHaveBeenFired({
             booker,
             organizer,
@@ -326,8 +293,7 @@ describe("handleNewBooking", () => {
       test(
         `should create a successful booking in the organizer calendar(in the scenario when event type doesn't have destination calendar)
           1. Should create a booking in the database
-          2. Should send emails to the booker as well as organizer
-          3. Should fallback to create a booking in the Organizer Calendar if event doesn't have destination calendar
+          2. Should fallback to create a booking in the Organizer Calendar if event doesn't have destination calendar
           3. Should trigger BOOKING_CREATED webhook
     `,
         async ({ emails }) => {
@@ -425,19 +391,7 @@ describe("handleNewBooking", () => {
             iCalUID: createdBooking.iCalUID,
           });
 
-          expectWorkflowToBeTriggered({ emailsToReceive: [organizer.email], emails });
-
           const iCalUID = expectICalUIDAsString(createdBooking.iCalUID);
-
-          expectSuccessfulBookingCreationEmails({
-            booking: {
-              uid: createdBooking.uid!,
-            },
-            booker,
-            organizer,
-            emails,
-            iCalUID,
-          });
 
           expectBookingCreatedWebhookToHaveBeenFired({
             booker,
@@ -545,8 +499,6 @@ describe("handleNewBooking", () => {
             eventTypeId: mockBookingData.eventTypeId,
             status: BookingStatus.ACCEPTED,
           });
-
-          expectWorkflowToBeTriggered({ emailsToReceive: [organizer.email], emails });
 
           // FIXME: We should send Broken Integration emails on calendar event creation failure
           // expectCalendarEventCreationFailureEmails({ booker, organizer, emails });
@@ -668,19 +620,7 @@ describe("handleNewBooking", () => {
             iCalUID: createdBooking.iCalUID,
           });
 
-          expectWorkflowToBeTriggered({ emailsToReceive: [organizer.email], emails });
-
           const iCalUID = expectICalUIDAsString(createdBooking.iCalUID);
-
-          expectSuccessfulBookingCreationEmails({
-            booking: {
-              uid: createdBooking.uid!,
-            },
-            booker,
-            organizer,
-            emails,
-            iCalUID,
-          });
 
           expectBookingCreatedWebhookToHaveBeenFired({
             booker,
@@ -788,18 +728,6 @@ describe("handleNewBooking", () => {
             uid: createdBooking.uid!,
             eventTypeId: mockBookingData.eventTypeId,
             status: BookingStatus.ACCEPTED,
-          });
-
-          expectWorkflowToBeTriggered({ emailsToReceive: [organizer.email], emails });
-
-          expectSuccessfulBookingCreationEmails({
-            booking: {
-              uid: createdBooking.uid!,
-            },
-            booker,
-            organizer,
-            emails,
-            iCalUID: createdBooking.iCalUID ?? "",
           });
 
           expectBookingCreatedWebhookToHaveBeenFired({
@@ -958,8 +886,7 @@ describe("handleNewBooking", () => {
       test(
         `should create a booking request for event that requires confirmation
             1. Should create a booking in the database with status PENDING
-            2. Should send emails to the booker as well as organizer for booking request and awaiting approval
-            3. Should trigger BOOKING_REQUESTED webhook
+            2. Should trigger BOOKING_REQUESTED webhook
     `,
         async ({ emails }) => {
           const handleNewBooking = (await import("@calcom/features/bookings/lib/handleNewBooking")).default;
@@ -1051,8 +978,6 @@ describe("handleNewBooking", () => {
             status: BookingStatus.PENDING,
           });
 
-          expectWorkflowToBeNotTriggered({ emailsToReceive: [organizer.email], emails });
-
           expectBookingRequestedEmails({
             booker,
             organizer,
@@ -1076,8 +1001,7 @@ describe("handleNewBooking", () => {
       test(
         `should make a fresh booking in PENDING state even when the booker is the organizer of the event-type
         1. Should create a booking in the database with status PENDING
-        2. Should send emails to the booker as well as organizer for booking request and awaiting approval
-        3. Should trigger BOOKING_REQUESTED webhook
+        2. Should trigger BOOKING_REQUESTED webhook
     `,
         async ({ emails }) => {
           const handleNewBooking = (await import("@calcom/features/bookings/lib/handleNewBooking")).default;
@@ -1164,8 +1088,6 @@ describe("handleNewBooking", () => {
             }),
           });
 
-          expectWorkflowToBeNotTriggered({ emailsToReceive: [organizer.email], emails });
-
           expectBookingRequestedEmails({
             booker,
             organizer,
@@ -1186,8 +1108,7 @@ describe("handleNewBooking", () => {
       test(
         `should create a booking for event that requires confirmation based on a booking notice duration threshold, if threshold is not met
             1. Should create a booking in the database with status ACCEPTED
-            2. Should send emails to the booker as well as organizer
-            3. Should trigger BOOKING_CREATED webhook
+            2. Should trigger BOOKING_CREATED webhook
     `,
         async ({ emails }) => {
           const handleNewBooking = (await import("@calcom/features/bookings/lib/handleNewBooking")).default;
@@ -1288,19 +1209,7 @@ describe("handleNewBooking", () => {
             iCalUID: createdBooking.iCalUID,
           });
 
-          expectWorkflowToBeTriggered({ emailsToReceive: [organizer.email], emails });
-
           const iCalUID = expectICalUIDAsString(createdBooking.iCalUID);
-
-          expectSuccessfulBookingCreationEmails({
-            booking: {
-              uid: createdBooking.uid!,
-            },
-            booker,
-            organizer,
-            emails,
-            iCalUID,
-          });
 
           expectBookingCreatedWebhookToHaveBeenFired({
             booker,
@@ -1316,8 +1225,7 @@ describe("handleNewBooking", () => {
       test(
         `should create a booking for event that requires confirmation based on a booking notice duration threshold, if threshold IS MET
             1. Should create a booking in the database with status PENDING
-            2. Should send emails to the booker as well as organizer for booking request and awaiting approval
-            3. Should trigger BOOKING_REQUESTED webhook
+            2. Should trigger BOOKING_REQUESTED webhook
     `,
         async ({ emails }) => {
           const handleNewBooking = (await import("@calcom/features/bookings/lib/handleNewBooking")).default;
@@ -1417,8 +1325,6 @@ describe("handleNewBooking", () => {
             iCalUID: createdBooking.iCalUID,
           });
 
-          expectWorkflowToBeNotTriggered({ emailsToReceive: [organizer.email], emails });
-
           expectBookingRequestedEmails({ booker, organizer, emails });
 
           expectBookingRequestedWebhookToHaveBeenFired({
@@ -1438,8 +1344,7 @@ describe("handleNewBooking", () => {
     test(
       `should create a successful booking when location is provided as label of an option(Done for Organizer Address)
       1. Should create a booking in the database
-      2. Should send emails to the booker as well as organizer
-      3. Should trigger BOOKING_CREATED webhook
+      2. Should trigger BOOKING_CREATED webhook
     `,
       async ({ emails }) => {
         const handleNewBooking = (await import("@calcom/features/bookings/lib/handleNewBooking")).default;
@@ -1533,19 +1438,8 @@ describe("handleNewBooking", () => {
           iCalUID: createdBooking.iCalUID,
         });
 
-        expectWorkflowToBeTriggered({ emailsToReceive: [organizer.email], emails });
-
         const iCalUID = expectICalUIDAsString(createdBooking.iCalUID);
 
-        expectSuccessfulBookingCreationEmails({
-          booking: {
-            uid: createdBooking.uid!,
-          },
-          booker,
-          organizer,
-          emails,
-          iCalUID,
-        });
         expectBookingCreatedWebhookToHaveBeenFired({
           booker,
           organizer,

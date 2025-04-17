@@ -17,8 +17,6 @@ import {
   DropdownMenuTrigger,
   Icon,
 } from "@calcom/ui";
-// TODO (Platform): we shouldnt be importing from web here
-import { useGetUserAttributes } from "@calcom/web/components/settings/platform/hooks/useGetUserAttributes";
 
 declare global {
   interface Window {
@@ -34,7 +32,6 @@ interface UserDropdownProps {
   small?: boolean;
 }
 export function UserDropdown({ small }: UserDropdownProps) {
-  const { isPlatformUser } = useGetUserAttributes();
   const { t } = useLocale();
   const { data: user } = useMeQuery();
   const pathname = usePathname();
@@ -160,14 +157,6 @@ export function UserDropdown({ small }: UserDropdownProps) {
               <DropdownMenuItem className="todesktop:hidden hidden lg:flex">
                 <DropdownItem StartIcon="download" target="_blank" rel="noreferrer" href={DESKTOP_APP_LINK}>
                   {t("download_desktop_app")}
-                </DropdownItem>
-              </DropdownMenuItem>
-            )}
-
-            {!isPlatformPages && isPlatformUser && (
-              <DropdownMenuItem className="todesktop:hidden hidden lg:flex">
-                <DropdownItem StartIcon="blocks" target="_blank" rel="noreferrer" href="/settings/platform">
-                  Platform
                 </DropdownItem>
               </DropdownMenuItem>
             )}

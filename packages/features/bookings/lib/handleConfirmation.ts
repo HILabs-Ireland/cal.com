@@ -1,13 +1,6 @@
 import type { Prisma } from "@prisma/client";
 
-import { scheduleMandatoryReminder } from "@calcom/ee/workflows/lib/reminders/scheduleMandatoryReminder";
 import { sendScheduledEmailsAndSMS } from "@calcom/emails";
-import {
-  allowDisablingAttendeeConfirmationEmails,
-  allowDisablingHostConfirmationEmails,
-} from "@calcom/features/ee/workflows/lib/allowDisablingStandardEmails";
-import { scheduleWorkflowReminders } from "@calcom/features/ee/workflows/lib/reminders/reminderScheduler";
-import type { Workflow } from "@calcom/features/ee/workflows/lib/types";
 import getWebhooks from "@calcom/features/webhooks/lib/getWebhooks";
 import { scheduleTrigger } from "@calcom/features/webhooks/lib/scheduleTrigger";
 import sendPayload from "@calcom/features/webhooks/lib/sendOrSchedulePayload";
@@ -20,9 +13,7 @@ import logger from "@calcom/lib/logger";
 import type { PrismaClient } from "@calcom/prisma";
 import type { SchedulingType } from "@calcom/prisma/enums";
 import { BookingStatus, WebhookTriggerEvents } from "@calcom/prisma/enums";
-import type { PlatformClientParams } from "@calcom/prisma/zod-utils";
-import { EventTypeMetaDataSchema } from "@calcom/prisma/zod-utils";
-import { getAllWorkflowsFromEventType } from "@calcom/trpc/server/routers/viewer/workflows/util";
+import { EventTypeMetaDataSchema, type PlatformClientParams } from "@calcom/prisma/zod-utils";
 import type { AdditionalInformation, CalendarEvent } from "@calcom/types/Calendar";
 
 import { getCalEventResponses } from "./getCalEventResponses";
@@ -53,9 +44,6 @@ export async function handleConfirmation(args: {
       parent?: {
         teamId: number | null;
       } | null;
-      workflows?: {
-        workflow: Workflow;
-      }[];
     } | null;
     metadata?: Prisma.JsonValue;
     eventTypeId: number | null;
@@ -77,26 +65,10 @@ export async function handleConfirmation(args: {
   const eventType = booking.eventType;
   const eventTypeMetadata = EventTypeMetaDataSchema.parse(eventType?.metadata || {});
   const metadata: AdditionalInformation = {};
-  const workflows = await getAllWorkflowsFromEventType(eventType, booking.userId);
 
   try {
-    let isHostConfirmationEmailsDisabled = false;
-    let isAttendeeConfirmationEmailDisabled = false;
-
-    if (workflows) {
-      isHostConfirmationEmailsDisabled =
-        eventTypeMetadata?.disableStandardEmails?.confirmation?.host || false;
-      isAttendeeConfirmationEmailDisabled =
-        eventTypeMetadata?.disableStandardEmails?.confirmation?.attendee || false;
-
-      if (isHostConfirmationEmailsDisabled) {
-        isHostConfirmationEmailsDisabled = allowDisablingHostConfirmationEmails(workflows);
-      }
-
-      if (isAttendeeConfirmationEmailDisabled) {
-        isAttendeeConfirmationEmailDisabled = allowDisablingAttendeeConfirmationEmails(workflows);
-      }
-    }
+    const isHostConfirmationEmailsDisabled = false;
+    const isAttendeeConfirmationEmailDisabled = false;
 
     if (emailsEnabled) {
       await sendScheduledEmailsAndSMS(
@@ -310,26 +282,6 @@ export async function handleConfirmation(args: {
       evtOfBooking.startTime = updatedBookings[index].startTime.toISOString();
       evtOfBooking.endTime = updatedBookings[index].endTime.toISOString();
       evtOfBooking.uid = updatedBookings[index].uid;
-      const isFirstBooking = index === 0;
-
-      if (!eventTypeMetadata?.disableStandardEmails?.all?.attendee) {
-        await scheduleMandatoryReminder({
-          evt: evtOfBooking,
-          workflows,
-          requiresConfirmation: false,
-          hideBranding: !!updatedBookings[index].eventType?.owner?.hideBranding,
-          seatReferenceUid: evt.attendeeSeatId,
-          isPlatformNoEmail: !emailsEnabled && Boolean(platformClientParams?.platformClientId),
-        });
-      }
-
-      await scheduleWorkflowReminders({
-        workflows,
-        smsReminderNumber: updatedBookings[index].smsReminderNumber,
-        calendarEvent: evtOfBooking,
-        isFirstRecurringEvent: isFirstBooking,
-        hideBranding: !!updatedBookings[index].eventType?.owner?.hideBranding,
-      });
     }
   } catch (error) {
     // Silently fail

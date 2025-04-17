@@ -10,7 +10,6 @@ export type AppFlags = {
   teams: boolean;
   webhooks: boolean;
   workflows: boolean;
-  organizations: boolean;
   "email-verification": boolean;
   "google-workspace-directory": boolean;
   "disable-signup": boolean;

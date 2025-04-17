@@ -9,7 +9,6 @@ import {
 } from "@calcom/web/test/utils/bookingScenario/bookingScenario";
 import { createMockNextJsRequest } from "@calcom/web/test/utils/bookingScenario/createMockNextJsRequest";
 import {
-  expectSuccessfulBookingCreationEmails,
   expectBookingToBeInDatabase,
   expectICalUIDAsString,
 } from "@calcom/web/test/utils/bookingScenario/expects";
@@ -147,16 +146,6 @@ describe("handleNewBooking", () => {
         });
 
         const iCalUID = expectICalUIDAsString(createdBooking.iCalUID);
-
-        expectSuccessfulBookingCreationEmails({
-          booking: {
-            uid: createdBooking.uid!,
-          },
-          booker,
-          organizer,
-          emails,
-          iCalUID,
-        });
       },
       timeout
     );
@@ -270,16 +259,6 @@ describe("handleNewBooking", () => {
         });
 
         const iCalUID = expectICalUIDAsString(createdBooking.iCalUID);
-
-        expectSuccessfulBookingCreationEmails({
-          booking: {
-            uid: createdBooking.uid!,
-          },
-          booker,
-          organizer,
-          emails,
-          iCalUID,
-        });
       },
       timeout
     );

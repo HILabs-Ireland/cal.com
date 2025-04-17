@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import type z from "zod";
 
-import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
 import type { EventTypeSetup, SettingsToggleClassNames } from "@calcom/features/eventtypes/lib/types";
 import type { FormValues } from "@calcom/features/eventtypes/lib/types";
 import { classNames } from "@calcom/lib";
@@ -58,9 +57,6 @@ export default function RequiresConfirmationController({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [requiresConfirmation]);
 
-  const { shouldLockDisableProps } = useLockedFieldsManager({ eventType, translate: t, formMethods });
-  const requiresConfirmationLockedProps = shouldLockDisableProps("requiresConfirmation");
-
   const options = [
     { label: t("minute_timeUnit"), value: "minutes" },
     { label: t("hour_timeUnit"), value: "hours" },
@@ -93,11 +89,10 @@ export default function RequiresConfirmationController({
               descriptionClassName={customClassNames?.description}
               title={t("requires_confirmation")}
               data-testid="requires-confirmation"
-              disabled={seatsEnabled || requiresConfirmationLockedProps.disabled}
+              disabled={seatsEnabled}
               tooltip={seatsEnabled ? t("seat_options_doesnt_support_confirmation") : undefined}
               description={t("requires_confirmation_description")}
               checked={requiresConfirmation}
-              LockedIcon={requiresConfirmationLockedProps.LockedIcon}
               onCheckedChange={(val) => {
                 formMethods.setValue("requiresConfirmation", val, { shouldDirty: true });
                 // If we uncheck requires confirmation, we also uncheck the "will block slot" checkbox
@@ -138,21 +133,17 @@ export default function RequiresConfirmationController({
                       "flex flex-col flex-wrap justify-start gap-y-2",
                       customClassNames?.radioGroupContainer
                     )}>
-                    {(requiresConfirmationSetup === undefined ||
-                      !requiresConfirmationLockedProps.disabled) && (
+                    {requiresConfirmationSetup === undefined && (
                       <RadioField
                         label={t("always_requires_confirmation")}
-                        disabled={requiresConfirmationLockedProps.disabled}
                         id="always"
                         value="always"
                         className={customClassNames?.alwaysConfirmationRadio}
                       />
                     )}
-                    {(requiresConfirmationSetup !== undefined ||
-                      !requiresConfirmationLockedProps.disabled) && (
+                    {requiresConfirmationSetup !== undefined && (
                       <>
                         <RadioField
-                          disabled={requiresConfirmationLockedProps.disabled}
                           className={classNames(
                             "items-center",
                             customClassNames?.conditionalConfirmationRadio?.container
@@ -168,7 +159,6 @@ export default function RequiresConfirmationController({
                                       <Input
                                         type="number"
                                         min={1}
-                                        disabled={requiresConfirmationLockedProps.disabled}
                                         onChange={(evt) => {
                                           const val = Number(evt.target?.value);
                                           setRequiresConfirmationSetup({
@@ -189,15 +179,11 @@ export default function RequiresConfirmationController({
                                         )}
                                         defaultValue={metadata?.requiresConfirmationThreshold?.time || 30}
                                       />
-                                      <label
-                                        className={classNames(
-                                          requiresConfirmationLockedProps.disabled && "cursor-not-allowed"
-                                        )}>
+                                      <label className="cursor-not-allowed">
                                         <Select
                                           inputId="notice"
                                           options={options}
                                           isSearchable={false}
-                                          isDisabled={requiresConfirmationLockedProps.disabled}
                                           className={
                                             customClassNames?.conditionalConfirmationRadio?.timeUnitSelect
                                           }

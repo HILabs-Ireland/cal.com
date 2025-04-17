@@ -1,11 +1,10 @@
 import { expect } from "@playwright/test";
 
-import { WEBAPP_URL } from "@calcom/lib/constants";
 import { prisma } from "@calcom/prisma";
 import { MembershipRole, SchedulingType } from "@calcom/prisma/enums";
 
 import { test } from "../lib/fixtures";
-import { getInviteLink, localize } from "../lib/testUtils";
+import { localize } from "../lib/testUtils";
 import { expectInvitationEmailToBeReceived } from "./expects";
 
 test.describe.configure({ mode: "parallel" });
@@ -15,87 +14,6 @@ test.afterEach(async ({ users }) => {
 });
 /* eslint-disable playwright/no-skipped-test */
 test.skip("[EE feature] Team", () => {
-  test("Invitation (non verified)", async ({ browser, page, users, emails }) => {
-    const t = await localize("en");
-    const teamOwner = await users.create(undefined, { hasTeam: true });
-    const { team } = await teamOwner.getFirstTeamMembership();
-    await teamOwner.apiLogin();
-    await page.goto(`/settings/teams/${team.id}/members`);
-
-    await test.step("To the team by email (external user)", async () => {
-      const invitedUserEmail = users.trackEmail({
-        username: "rick",
-        domain: `domain-${Date.now()}.com`,
-      });
-      await page.getByTestId("new-member-button").click();
-      await page.locator('input[name="inviteUser"]').fill(invitedUserEmail);
-      await page.locator(`button:text("${t("send_invite")}")`).click();
-      const inviteLink = await expectInvitationEmailToBeReceived(
-        page,
-        emails,
-        invitedUserEmail,
-        `${team.name}'s admin invited you to join the team ${team.name} on Cal.com`,
-        "signup?token"
-      );
-
-      //Check newly invited member exists and is pending
-      await expect(
-        page.locator(`[data-testid="email-${invitedUserEmail.replace("@", "")}-pending"]`)
-      ).toHaveCount(1);
-
-      // eslint-disable-next-line playwright/no-conditional-in-test
-      if (!inviteLink) return null;
-
-      // Follow invite link to new window
-      const context = await browser.newContext();
-      const newPage = await context.newPage();
-      await newPage.goto(inviteLink);
-      await expect(newPage.locator("text=Create your account")).toBeVisible();
-
-      // Check required fields
-      const button = newPage.locator("button[type=submit][disabled]");
-      await expect(button).toBeVisible(); // email + 3 password hints
-
-      // Check required fields
-      await newPage.locator("input[name=password]").fill(`P4ssw0rd!`);
-      await newPage.locator("button[type=submit]").click();
-      await newPage.waitForURL("/getting-started?from=signup");
-      await newPage.close();
-      await context.close();
-
-      // Check newly invited member is not pending anymore
-      await page.bringToFront();
-      await page.goto(`/settings/teams/${team.id}/members`);
-      await expect(
-        page.locator(`[data-testid="email-${invitedUserEmail.replace("@", "")}-pending"]`)
-      ).toHaveCount(0);
-    });
-
-    await test.step("To the team by invite link", async () => {
-      const user = await users.create({
-        email: `user-invite-${Date.now()}@domain.com`,
-        password: "P4ssw0rd!",
-      });
-
-      await page.getByTestId("new-member-button").click();
-      const inviteLink = await getInviteLink(page);
-
-      const context = await browser.newContext();
-      const inviteLinkPage = await context.newPage();
-      await inviteLinkPage.goto(inviteLink);
-      await inviteLinkPage.waitForLoadState("domcontentloaded");
-
-      await inviteLinkPage.locator("button[type=submit]").click();
-      await expect(inviteLinkPage.locator('[data-testid="field-error"]')).toHaveCount(2);
-
-      await inviteLinkPage.locator("input[name=email]").fill(user.email);
-      await inviteLinkPage.locator("input[name=password]").fill(user.username || "P4ssw0rd!");
-      await inviteLinkPage.locator("button[type=submit]").click();
-
-      await inviteLinkPage.waitForURL(`${WEBAPP_URL}/teams**`);
-    });
-  });
-
   test("Invitation (verified)", async ({ browser, page, users, emails }) => {
     const t = await localize("en");
     const teamOwner = await users.create({ name: `team-owner-${Date.now()}` }, { hasTeam: true });
@@ -124,12 +42,12 @@ test.skip("[EE feature] Team", () => {
     });
   });
 
-  test("Invited member is assigned to existing managed event, after invitation is accepted", async ({
+  test("Invited member is assigned to existing event, after invitation is accepted", async ({
     page,
     users,
   }) => {
     const t = await localize("en");
-    const teamEventSlugAndTitle = "managed-event-test";
+    const teamEventSlugAndTitle = "event-test";
     const teamMatesObj = [{ name: "teammate-1" }, { name: "teammate-2" }];
     const teamOwner = await users.create(
       { name: `team-owner-${Date.now()}` },
@@ -137,11 +55,10 @@ test.skip("[EE feature] Team", () => {
         hasTeam: true,
         teamRole: MembershipRole.ADMIN,
         teammates: teamMatesObj,
-        schedulingType: SchedulingType.MANAGED,
+        schedulingType: SchedulingType.COLLECTIVE,
         teamEventSlug: teamEventSlugAndTitle,
         teamEventTitle: teamEventSlugAndTitle,
         teamEventLength: 30,
-        addManagedEventToTeamMates: true,
         assignAllTeamMembers: true,
       }
     );
@@ -164,7 +81,7 @@ test.skip("[EE feature] Team", () => {
     expect(response.status()).toBe(200);
     await page.goto(`/event-types`);
 
-    //ensure managed event-type is created for the invited member
+    //ensure event-type is created for the invited member
     await expect(page.locator(`text="${teamEventSlugAndTitle}"`)).toBeVisible();
 
     //ensure the new event-type created for invited member is child of team event-type

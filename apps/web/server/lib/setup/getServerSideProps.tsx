@@ -23,12 +23,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     };
   }
 
-  const isFreeLicense = true; // (await getDeploymentKey(prisma)) === "";
-
   return {
     props: {
       trpcState: ssr.dehydrate(),
-      isFreeLicense,
       userCount,
     },
   };

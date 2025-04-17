@@ -27,7 +27,6 @@ export class ScheduleRepository {
   }
 
   static async findDetailedScheduleById({
-    isManagedEventType,
     scheduleId,
     userId,
     defaultScheduleId,
@@ -37,7 +36,6 @@ export class ScheduleRepository {
     userId: number;
     defaultScheduleId: number | null;
     scheduleId?: number;
-    isManagedEventType?: boolean;
   }) {
     const schedule = await prisma.schedule.findUnique({
       where: {
@@ -74,7 +72,6 @@ export class ScheduleRepository {
     return {
       id: schedule.id,
       name: schedule.name,
-      isManaged: schedule.userId !== userId,
       workingHours: transformWorkingHoursForAtom(schedule),
       schedule: schedule.availability,
       availability: transformAvailabilityForAtom(schedule),
@@ -82,7 +79,7 @@ export class ScheduleRepository {
       dateOverrides: transformDateOverridesForAtom(schedule, timeZone),
       isDefault: !scheduleId || defaultScheduleId === schedule.id,
       isLastSchedule: schedulesCount <= 1,
-      readOnly: schedule.userId !== userId && !isManagedEventType,
+      readOnly: schedule.userId !== userId,
     };
   }
 }

@@ -15,7 +15,6 @@ import { Toaster } from "react-hot-toast";
 import { z } from "zod";
 
 import { getOrgUsernameFromEmail } from "@calcom/features/auth/signup/utils/getOrgUsernameFromEmail";
-import { getOrgFullOrigin } from "@calcom/features/ee/organizations/lib/orgDomains";
 import { classNames } from "@calcom/lib";
 import {
   APP_NAME,
@@ -30,6 +29,7 @@ import {
 } from "@calcom/lib/constants";
 import { isENVDev } from "@calcom/lib/env";
 import { fetchUsername } from "@calcom/lib/fetchUsername";
+import { getOrgFullOrigin } from "@calcom/lib/getBookerUrl/getBookerBaseUrlSync";
 import { pushGTMEvent } from "@calcom/lib/gtm";
 import { useCompatSearchParams } from "@calcom/lib/hooks/useCompatSearchParams";
 import { useDebounce } from "@calcom/lib/hooks/useDebounce";

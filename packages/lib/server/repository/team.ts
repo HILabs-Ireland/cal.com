@@ -1,8 +1,7 @@
 import { Prisma } from "@prisma/client";
 import type { z } from "zod";
 
-import { whereClauseForOrgWithSlugOrRequestedSlug } from "@calcom/ee/organizations/lib/orgDomains";
-import removeMember from "@calcom/features/ee/teams/lib/removeMember";
+import removeMember from "@calcom/features/teams/lib/removeMember";
 import { deleteDomain } from "@calcom/lib/domainManager/organization";
 import logger from "@calcom/lib/logger";
 import prisma from "@calcom/prisma";
@@ -11,7 +10,7 @@ import { teamMetadataSchema } from "@calcom/prisma/zod-utils";
 
 import { TRPCError } from "@trpc/server";
 
-import { WorkflowService } from "../service/workflows";
+import { getSlugOrRequestedSlug } from "../../getBookerUrl/getBookerBaseUrlSync";
 import { getParsedTeam } from "./teamUtils";
 
 type TeamGetPayloadWithParsedMetadata<TeamSelect extends Prisma.TeamSelect> =
@@ -77,7 +76,7 @@ async function getTeamOrOrg<TeamSelect extends Prisma.TeamSelect>({
     // We must fetch only the team here.
   } else {
     if (forOrgWithSlug) {
-      where.parent = whereClauseForOrgWithSlugOrRequestedSlug(forOrgWithSlug);
+      where.parent = getSlugOrRequestedSlug(forOrgWithSlug);
     }
   }
 
@@ -186,12 +185,6 @@ export class TeamRepository {
   }
 
   static async deleteById({ id }: { id: number }) {
-    try {
-      await WorkflowService.deleteWorkflowRemindersOfRemovedTeam(id);
-    } catch (e) {
-      console.error(e);
-    }
-
     const deletedTeam = await prisma.$transaction(async (tx) => {
       await tx.eventType.deleteMany({
         where: {
@@ -273,7 +266,7 @@ export class TeamRepository {
     for (const memberId of memberIds) {
       for (const teamId of teamIds) {
         deleteMembershipPromises.push(
-          // This removeMember function is from @calcom/features/ee/teams/lib/removeMember.ts we should probably move it to this repository.
+          // This removeMember function is from @calcom/features/teams/lib/removeMember.ts we should probably move it to this repository.
           removeMember({
             teamId,
             memberId,

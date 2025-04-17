@@ -8,7 +8,6 @@ import type { FC } from "react";
 import { memo, useEffect, useState } from "react";
 import { z } from "zod";
 
-import { useOrgBranding } from "@calcom/features/ee/organizations/context/provider";
 import { EventTypeEmbedButton, EventTypeEmbedDialog } from "@calcom/features/embed/EventTypeEmbed";
 import { EventTypeDescription } from "@calcom/features/eventtypes/components";
 import CreateEventTypeDialog from "@calcom/features/eventtypes/components/CreateEventTypeDialog";
@@ -27,7 +26,7 @@ import { useGetTheme } from "@calcom/lib/hooks/useTheme";
 import { useTypedQuery } from "@calcom/lib/hooks/useTypedQuery";
 import { HttpError } from "@calcom/lib/http-error";
 import type { MembershipRole } from "@calcom/prisma/enums";
-import { SchedulingType } from "@calcom/prisma/enums";
+import type { SchedulingType } from "@calcom/prisma/enums";
 import type { RouterOutputs } from "@calcom/trpc/react";
 import { trpc, TRPCClientError } from "@calcom/trpc/react";
 import {
@@ -183,9 +182,7 @@ const Item = ({
         <small
           className="text-subtle hidden font-normal leading-4 sm:inline"
           data-testid={`event-type-slug-${type.id}`}>
-          {`/${
-            type.schedulingType !== SchedulingType.MANAGED ? group.profile.slug : t("username_placeholder")
-          }/${type.slug}`}
+          {`/${group.profile.slug}/${type.slug}`}
         </small>
       ) : null}
       {readOnly && (
@@ -468,9 +465,6 @@ export const InfiniteEventTypeList = ({
 
   const firstItem = pages?.[0]?.eventTypes[0];
   const lastItem = pages?.[pages.length - 1]?.eventTypes[pages?.[pages.length - 1].eventTypes.length - 1];
-  const isManagedEventPrefix = () => {
-    return deleteDialogTypeSchedulingType === SchedulingType.MANAGED ? "_managed" : "";
-  };
 
   return (
     <div className="bg-default border-subtle flex flex-col overflow-hidden rounded-md border">
@@ -484,10 +478,7 @@ export const InfiniteEventTypeList = ({
                 ? type.hashedLink[privateLinkCopyIndices[type.slug] ?? 0]?.link
                 : "";
             const placeholderHashedLink = `${bookerUrl}/d/${isPrivateURLEnabled}/${type.slug}`;
-            const isManagedEventType = type.schedulingType === SchedulingType.MANAGED;
-            const isChildrenManagedEventType =
-              type.metadata?.managedEventConfig !== undefined &&
-              type.schedulingType !== SchedulingType.MANAGED;
+
             return (
               <li key={type.id}>
                 <div className="hover:bg-muted flex w-full items-center justify-between transition">
@@ -508,7 +499,7 @@ export const InfiniteEventTypeList = ({
                     <MemoizedItem type={type} group={group} readOnly={readOnly} />
                     <div className="mt-4 hidden sm:mt-0 sm:flex">
                       <div className="flex justify-between space-x-2 rtl:space-x-reverse">
-                        {!!type.teamId && !isManagedEventType && (
+                        {!!type.teamId && (
                           <UserAvatarGroup
                             className="relative right-3"
                             size="sm"
@@ -517,7 +508,7 @@ export const InfiniteEventTypeList = ({
                             users={type?.users ?? []}
                           />
                         )}
-                        {isManagedEventType && type?.children && type.children?.length > 0 && (
+                        {type?.children && type.children?.length > 0 && (
                           <UserAvatarGroup
                             className="relative right-3"
                             size="sm"
@@ -527,72 +518,62 @@ export const InfiniteEventTypeList = ({
                           />
                         )}
                         <div className="flex items-center justify-between space-x-2 rtl:space-x-reverse">
-                          {!isManagedEventType && (
-                            <>
-                              {type.hidden && <Badge variant="gray">{t("hidden")}</Badge>}
-                              <Tooltip
-                                content={
-                                  type.hidden ? t("show_eventtype_on_profile") : t("hide_from_profile")
-                                }>
-                                <div className="self-center rounded-md p-2">
-                                  <Switch
-                                    name="Hidden"
-                                    disabled={lockedByOrg}
-                                    checked={!type.hidden}
-                                    onCheckedChange={() => {
-                                      setHiddenMutation.mutate({ id: type.id, hidden: !type.hidden });
-                                    }}
-                                  />
-                                </div>
-                              </Tooltip>
-                            </>
-                          )}
+                          {type.hidden && <Badge variant="gray">{t("hidden")}</Badge>}
+                          <Tooltip
+                            content={type.hidden ? t("show_eventtype_on_profile") : t("hide_from_profile")}>
+                            <div className="self-center rounded-md p-2">
+                              <Switch
+                                name="Hidden"
+                                disabled={lockedByOrg}
+                                checked={!type.hidden}
+                                onCheckedChange={() => {
+                                  setHiddenMutation.mutate({ id: type.id, hidden: !type.hidden });
+                                }}
+                              />
+                            </div>
+                          </Tooltip>
 
                           <ButtonGroup combined>
-                            {!isManagedEventType && (
-                              <>
-                                <Tooltip content={t("preview")}>
-                                  <Button
-                                    data-testid="preview-link-button"
-                                    color="secondary"
-                                    target="_blank"
-                                    variant="icon"
-                                    href={calLink}
-                                    StartIcon="external-link"
-                                  />
-                                </Tooltip>
+                            <Tooltip content={t("preview")}>
+                              <Button
+                                data-testid="preview-link-button"
+                                color="secondary"
+                                target="_blank"
+                                variant="icon"
+                                href={calLink}
+                                StartIcon="external-link"
+                              />
+                            </Tooltip>
 
-                                <Tooltip content={t("copy_link")}>
-                                  <Button
-                                    color="secondary"
-                                    variant="icon"
-                                    StartIcon="link"
-                                    onClick={() => {
-                                      showToast(t("link_copied"), "success");
-                                      copyToClipboard(calLink);
-                                    }}
-                                  />
-                                </Tooltip>
+                            <Tooltip content={t("copy_link")}>
+                              <Button
+                                color="secondary"
+                                variant="icon"
+                                StartIcon="link"
+                                onClick={() => {
+                                  showToast(t("link_copied"), "success");
+                                  copyToClipboard(calLink);
+                                }}
+                              />
+                            </Tooltip>
 
-                                {isPrivateURLEnabled && (
-                                  <Tooltip content={t("copy_private_link_to_event")}>
-                                    <Button
-                                      color="secondary"
-                                      variant="icon"
-                                      StartIcon="venetian-mask"
-                                      onClick={() => {
-                                        showToast(t("private_link_copied"), "success");
-                                        copyToClipboard(placeholderHashedLink);
-                                        setPrivateLinkCopyIndices((prev) => {
-                                          const prevIndex = prev[type.slug] ?? 0;
-                                          prev[type.slug] = (prevIndex + 1) % type.hashedLink.length;
-                                          return prev;
-                                        });
-                                      }}
-                                    />
-                                  </Tooltip>
-                                )}
-                              </>
+                            {isPrivateURLEnabled && (
+                              <Tooltip content={t("copy_private_link_to_event")}>
+                                <Button
+                                  color="secondary"
+                                  variant="icon"
+                                  StartIcon="venetian-mask"
+                                  onClick={() => {
+                                    showToast(t("private_link_copied"), "success");
+                                    copyToClipboard(placeholderHashedLink);
+                                    setPrivateLinkCopyIndices((prev) => {
+                                      const prevIndex = prev[type.slug] ?? 0;
+                                      prev[type.slug] = (prevIndex + 1) % type.hashedLink.length;
+                                      return prev;
+                                    });
+                                  }}
+                                />
+                              </Tooltip>
                             )}
                             <Dropdown modal={false}>
                               <DropdownMenuTrigger asChild data-testid={`event-type-options-${type.id}`}>
@@ -617,7 +598,7 @@ export const InfiniteEventTypeList = ({
                                   </DropdownMenuItem>
                                 )}
                                 {/* readonly is only set when we are on a team - if we are on a user event type null will be the value. */}
-                                {!readOnly && !isManagedEventType && !isChildrenManagedEventType && (
+                                {!readOnly && (
                                   <>
                                     <DropdownMenuItem className="outline-none">
                                       <DropdownItem
@@ -630,22 +611,20 @@ export const InfiniteEventTypeList = ({
                                     </DropdownMenuItem>
                                   </>
                                 )}
-                                {!isManagedEventType && (
-                                  <DropdownMenuItem className="outline-none">
-                                    <EventTypeEmbedButton
-                                      namespace={type.slug}
-                                      as={DropdownItem}
-                                      type="button"
-                                      StartIcon="code"
-                                      className="w-full rounded-none"
-                                      embedUrl={encodeURIComponent(embedLink)}
-                                      eventId={type.id}>
-                                      {t("embed")}
-                                    </EventTypeEmbedButton>
-                                  </DropdownMenuItem>
-                                )}
+                                <DropdownMenuItem className="outline-none">
+                                  <EventTypeEmbedButton
+                                    namespace={type.slug}
+                                    as={DropdownItem}
+                                    type="button"
+                                    StartIcon="code"
+                                    className="w-full rounded-none"
+                                    embedUrl={encodeURIComponent(embedLink)}
+                                    eventId={type.id}>
+                                    {t("embed")}
+                                  </EventTypeEmbedButton>
+                                </DropdownMenuItem>
                                 {/* readonly is only set when we are on a team - if we are on a user event type null will be the value. */}
-                                {!readOnly && !isChildrenManagedEventType && (
+                                {!readOnly && (
                                   <>
                                     <DropdownMenuSeparator />
                                     <DropdownMenuItem>
@@ -677,31 +656,27 @@ export const InfiniteEventTypeList = ({
                       </DropdownMenuTrigger>
                       <DropdownMenuPortal>
                         <DropdownMenuContent>
-                          {!isManagedEventType && (
-                            <>
-                              <DropdownMenuItem className="outline-none">
-                                <DropdownItem
-                                  href={calLink}
-                                  target="_blank"
-                                  StartIcon="external-link"
-                                  className="w-full rounded-none">
-                                  {t("preview")}
-                                </DropdownItem>
-                              </DropdownMenuItem>
-                              <DropdownMenuItem className="outline-none">
-                                <DropdownItem
-                                  data-testid={`event-type-duplicate-${type.id}`}
-                                  onClick={() => {
-                                    navigator.clipboard.writeText(calLink);
-                                    showToast(t("link_copied"), "success");
-                                  }}
-                                  StartIcon="clipboard"
-                                  className="w-full rounded-none text-left">
-                                  {t("copy_link")}
-                                </DropdownItem>
-                              </DropdownMenuItem>
-                            </>
-                          )}
+                          <DropdownMenuItem className="outline-none">
+                            <DropdownItem
+                              href={calLink}
+                              target="_blank"
+                              StartIcon="external-link"
+                              className="w-full rounded-none">
+                              {t("preview")}
+                            </DropdownItem>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem className="outline-none">
+                            <DropdownItem
+                              data-testid={`event-type-duplicate-${type.id}`}
+                              onClick={() => {
+                                navigator.clipboard.writeText(calLink);
+                                showToast(t("link_copied"), "success");
+                              }}
+                              StartIcon="clipboard"
+                              className="w-full rounded-none text-left">
+                              {t("copy_link")}
+                            </DropdownItem>
+                          </DropdownMenuItem>
                           {isNativeShare ? (
                             <DropdownMenuItem className="outline-none">
                               <DropdownItem
@@ -732,18 +707,16 @@ export const InfiniteEventTypeList = ({
                               </DropdownItem>
                             </DropdownMenuItem>
                           )}
-                          {!readOnly && !isManagedEventType && !isChildrenManagedEventType && (
-                            <DropdownMenuItem className="outline-none">
-                              <DropdownItem
-                                onClick={() => openDuplicateModal(type, group)}
-                                StartIcon="copy"
-                                data-testid={`event-type-duplicate-${type.id}`}>
-                                {t("duplicate")}
-                              </DropdownItem>
-                            </DropdownMenuItem>
-                          )}
+                          <DropdownMenuItem className="outline-none">
+                            <DropdownItem
+                              onClick={() => openDuplicateModal(type, group)}
+                              StartIcon="copy"
+                              data-testid={`event-type-duplicate-${type.id}`}>
+                              {t("duplicate")}
+                            </DropdownItem>
+                          </DropdownMenuItem>
                           {/* readonly is only set when we are on a team - if we are on a user event type null will be the value. */}
-                          {!readOnly && !isChildrenManagedEventType && (
+                          {!readOnly && (
                             <>
                               <DropdownMenuItem className="outline-none">
                                 <DropdownItem
@@ -761,24 +734,22 @@ export const InfiniteEventTypeList = ({
                             </>
                           )}
                           <DropdownMenuSeparator />
-                          {!isManagedEventType && (
-                            <div className="hover:bg-subtle flex h-9 cursor-pointer flex-row items-center justify-between px-4 py-2 transition">
-                              <Skeleton
-                                as={Label}
-                                htmlFor="hiddenSwitch"
-                                className="mt-2 inline cursor-pointer self-center pr-2 ">
-                                {type.hidden ? t("show_eventtype_on_profile") : t("hide_from_profile")}
-                              </Skeleton>
-                              <Switch
-                                id="hiddenSwitch"
-                                name="Hidden"
-                                checked={!type.hidden}
-                                onCheckedChange={() => {
-                                  setHiddenMutation.mutate({ id: type.id, hidden: !type.hidden });
-                                }}
-                              />
-                            </div>
-                          )}
+                          <div className="hover:bg-subtle flex h-9 cursor-pointer flex-row items-center justify-between px-4 py-2 transition">
+                            <Skeleton
+                              as={Label}
+                              htmlFor="hiddenSwitch"
+                              className="mt-2 inline cursor-pointer self-center pr-2 ">
+                              {type.hidden ? t("show_eventtype_on_profile") : t("hide_from_profile")}
+                            </Skeleton>
+                            <Switch
+                              id="hiddenSwitch"
+                              name="Hidden"
+                              checked={!type.hidden}
+                              onCheckedChange={() => {
+                                setHiddenMutation.mutate({ id: type.id, hidden: !type.hidden });
+                              }}
+                            />
+                          </div>
                         </DropdownMenuContent>
                       </DropdownMenuPortal>
                     </Dropdown>
@@ -793,7 +764,7 @@ export const InfiniteEventTypeList = ({
       <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
         <ConfirmationDialogContent
           variety="danger"
-          title={t(`delete${isManagedEventPrefix()}_event_type`)}
+          title={t(`delete_event_type`)}
           confirmBtnText={t(`confirm_delete_event_type`)}
           loadingText={t(`confirm_delete_event_type`)}
           isPending={deleteMutation.isPending}
@@ -803,7 +774,7 @@ export const InfiniteEventTypeList = ({
           }}>
           <p className="mt-5">
             <Trans
-              i18nKey={`delete${isManagedEventPrefix()}_event_type_description`}
+              i18nKey="delete_event_type_description"
               components={{ li: <li />, ul: <ul className="ml-4 list-disc" /> }}>
               <ul>
                 <li>Members assigned to this event type will also have their event types deleted.</li>
@@ -896,7 +867,6 @@ const InfiniteScrollMain = ({
 }) => {
   const searchParams = useSearchParams();
   const { data } = useTypedQuery(querySchema);
-  const orgBranding = useOrgBranding();
 
   if (status === "error") {
     return <Alert severity="error" title="Something went wrong" message={errorMessage} />;
@@ -915,17 +885,13 @@ const InfiniteScrollMain = ({
   const activeEventTypeGroup =
     eventTypeGroups.filter((item) => item.teamId === data.teamId) ?? eventTypeGroups[0];
 
-  const bookerUrl = orgBranding ? orgBranding?.fullDomain : WEBSITE_URL;
+  const bookerUrl = WEBSITE_URL;
 
   // If the event type group is the same as the org branding team, or the parent team, set the bookerUrl to the org branding URL
   // This is to ensure that the bookerUrl is always the same as the one in the org branding settings
   // This keeps the app working for personal event types that were not migrated to the org (rare)
-  if (
-    activeEventTypeGroup[0].teamId === orgBranding?.id ||
-    activeEventTypeGroup[0].parentId === orgBranding?.id
-  ) {
-    activeEventTypeGroup[0].bookerUrl = bookerUrl;
-  }
+
+  activeEventTypeGroup[0].bookerUrl = bookerUrl;
 
   return (
     <>
@@ -947,7 +913,6 @@ const EventTypesPage: React.FC = () => {
   const { data: user } = useMeQuery();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_showProfileBanner, setShowProfileBanner] = useState(false);
-  const orgBranding = useOrgBranding();
   const routerQuery = useRouterQuery();
   const filters = getTeamsFiltersFromQuery(routerQuery);
   const router = useRouter();
@@ -975,10 +940,8 @@ const EventTypesPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    setShowProfileBanner(
-      !!orgBranding && !document.cookie.includes("calcom-profile-banner=1") && !user?.completedOnboarding
-    );
-  }, [orgBranding, user]);
+    setShowProfileBanner(!document.cookie.includes("calcom-profile-banner=1") && !user?.completedOnboarding);
+  }, [user]);
 
   const profileOptions =
     getUserEventGroupsData?.profiles

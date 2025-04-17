@@ -1,6 +1,6 @@
 {
   "identity_provider": "Poskytovateľ identity",
-"day_one": "{{count}} deň",
+  "day_one": "{{count}} deň",
   "day_other": "{{count}} dni",
   "second_one": "{{count}} sekunda",
   "second_other": "{{count}} sekundy",
@@ -51,6 +51,5 @@
   "ooo_slots_book_with": "Rezervovať {{displayName}}",
   "ooo_create_entry_modal": "Odísť z kancelárie",
   "ooo_select_reason": "Vybrať dôvod",
-  "enterprise_license_locally": "Túto funkciu môžete otestovať lokálne, ale nie v produkčnom prostredí.",
-  "apply_to_all_event_types": "Platí pre všetky, vrátane budúcich typov udalostí"
+  "enterprise_license_locally": "Túto funkciu môžete otestovať lokálne, ale nie v produkčnom prostredí."
 }

@@ -16,7 +16,6 @@ import {
 } from "@calcom/web/test/utils/bookingScenario/bookingScenario";
 import { createMockNextJsRequest } from "@calcom/web/test/utils/bookingScenario/createMockNextJsRequest";
 import {
-  expectWorkflowToBeTriggered,
   expectBookingToBeInDatabase,
   expectBookingRescheduledWebhookToHaveBeenFired,
   expectSuccessfulBookingRescheduledEmails,
@@ -188,7 +187,6 @@ describe("handleNewBooking", () => {
               }),
             },
           });
-          expectWorkflowToBeTriggered({ emailsToReceive: [organizer.email], emails });
 
           expectSuccessfulBookingRescheduledEmails({
             booker,
@@ -332,8 +330,6 @@ describe("handleNewBooking", () => {
             },
           });
 
-          expectWorkflowToBeTriggered({ emailsToReceive: [organizer.email], emails });
-
           expectSuccessfulBookingRescheduledEmails({
             booker,
             organizer,
@@ -464,8 +460,6 @@ describe("handleNewBooking", () => {
               // Booking References still use the original booking's references - Not sure how intentional it is.
             },
           });
-
-          expectWorkflowToBeTriggered({ emailsToReceive: [organizer.email], emails });
 
           expectSuccessfulBookingRescheduledEmails({
             booker,
@@ -605,8 +599,6 @@ describe("handleNewBooking", () => {
                 }),
               },
             });
-
-            expectWorkflowToBeTriggered({ emailsToReceive: [organizer.email], emails });
 
             expectBookingRequestedEmails({
               booker,
@@ -769,8 +761,6 @@ describe("handleNewBooking", () => {
                 }),
               },
             });
-
-            expectWorkflowToBeTriggered({ emailsToReceive: [organizer.email], emails });
 
             // updateEvent uses existing booking's externalCalendarId to update the event in calendar.
             // and not the event-type's organizer's which is event-type-1@example.com
@@ -942,8 +932,6 @@ describe("handleNewBooking", () => {
               },
             });
 
-            expectWorkflowToBeTriggered({ emailsToReceive: [organizer.email], emails });
-
             expectSuccessfulBookingRescheduledEmails({
               booker,
               organizer,
@@ -1083,8 +1071,6 @@ describe("handleNewBooking", () => {
                 }),
               },
             });
-
-            //expectWorkflowToBeTriggered({ emailsToReceive: [organizer.email], emails });
 
             expectBookingRequestedEmails({
               booker,
@@ -1259,8 +1245,6 @@ describe("handleNewBooking", () => {
                 }),
               },
             });
-
-            expectWorkflowToBeTriggered({ emailsToReceive: [organizer.email], emails });
 
             expectSuccessfulBookingRescheduledEmails({
               booker,

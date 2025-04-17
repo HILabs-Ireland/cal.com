@@ -33,7 +33,7 @@ test.skip("[EE feature] Can signup from a team invite", async () => {
     await page.click('[data-testid="new-member-button"]');
     await page.fill('input[id="inviteUser"]', testUser.email);
     const submitPromise = page.waitForResponse("/api/trpc/teams/inviteMember?batch=1");
-    await page.getByTestId("invite-new-member-button").click();
+    await page.getByTestId("add-new-member-button").click();
     const response = await submitPromise;
     expect(response.status()).toBe(200);
 

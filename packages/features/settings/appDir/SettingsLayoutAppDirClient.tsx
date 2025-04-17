@@ -7,8 +7,6 @@ import { usePathname, useRouter } from "next/navigation";
 import type { ComponentProps } from "react";
 import React, { useEffect, useState, useMemo } from "react";
 
-import { useOrgBranding } from "@calcom/features/ee/organizations/context/provider";
-import type { OrganizationBranding } from "@calcom/features/ee/organizations/context/provider";
 import Shell from "@calcom/features/shell/Shell";
 import { classNames } from "@calcom/lib";
 import { IS_CALCOM, WEBAPP_URL } from "@calcom/lib/constants";
@@ -22,7 +20,7 @@ import { trpc } from "@calcom/trpc/react";
 import type { VerticalTabItemProps } from "@calcom/ui";
 import { Badge, Button, ErrorBoundary, Icon, Skeleton, VerticalTabItem } from "@calcom/ui";
 
-const getTabs = (orgBranding: OrganizationBranding | null) => {
+const getTabs = () => {
   const tabs: VerticalTabItemProps[] = [
     {
       name: "my_account",
@@ -60,49 +58,8 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
       ],
     },
     {
-      name: "organization",
-      href: "/settings/organizations",
-      children: [
-        {
-          name: "profile",
-          href: "/settings/organizations/profile",
-        },
-        {
-          name: "general",
-          href: "/settings/organizations/general",
-        },
-        ...(orgBranding
-          ? [
-              {
-                name: "members",
-                href: `/settings/organizations/${orgBranding.slug}/members`,
-              },
-            ]
-          : []),
-        {
-          name: "privacy",
-          href: "/settings/organizations/privacy",
-        },
-        { name: "OAuth Clients", href: "/settings/organizations/platform/oauth-clients" },
-        {
-          name: "admin_api",
-          href: "https://cal.com/docs/enterprise-features/api/api-reference/bookings#admin-access",
-        },
-        // {
-        //   name: "domain_wide_delegation",
-        //   href: "/settings/organizations/domain-wide-delegation",
-        // },
-      ],
-    },
-    {
       name: "teams",
       href: "/teams",
-      icon: "users",
-      children: [],
-    },
-    {
-      name: "other_teams",
-      href: "/settings/organizations/teams/other",
       icon: "users",
       children: [],
     },
@@ -115,7 +72,6 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
         { name: "features", href: "/settings/admin/flags" },
         { name: "license", href: "/auth/setup?step=1" },
         { name: "apps", href: "/settings/admin/apps/calendar" },
-        { name: "organizations", href: "/settings/admin/organizations" },
         { name: "lockedSMS", href: "/settings/admin/lockedSMS" },
         { name: "oAuth", href: "/settings/admin/oAuth" },
         { name: "Workspace Platforms", href: "/settings/admin/workspace-platforms" },
@@ -134,45 +90,21 @@ const getTabs = (orgBranding: OrganizationBranding | null) => {
 
 // The following keys are assigned to admin only
 const adminRequiredKeys = ["admin"];
-const organizationRequiredKeys = ["organization"];
 const organizationAdminKeys = ["privacy", "OAuth Clients"];
 
 const useTabs = () => {
   const session = useSession();
   const { data: user } = trpc.viewer.me.useQuery({ includePasswordAdded: true });
-  const orgBranding = useOrgBranding();
   const isAdmin = session.data?.user.role === UserPermissionRole.ADMIN;
-  const isOrgAdminOrOwner =
-    orgBranding?.role === MembershipRole.ADMIN || orgBranding?.role === MembershipRole.OWNER;
 
   const processTabsMemod = useMemo(() => {
-    const processedTabs = getTabs(orgBranding).map((tab) => {
+    const processedTabs = getTabs().map((tab) => {
       if (tab.href === "/settings/my-account") {
         return {
           ...tab,
           name: user?.name || "my_account",
           icon: undefined,
           avatar: getUserAvatarUrl(user),
-        };
-      } else if (tab.href === "/settings/organizations") {
-        const newArray = (tab?.children ?? []).filter(
-          (child) => isOrgAdminOrOwner || !organizationAdminKeys.includes(child.name)
-        );
-
-        // TODO: figure out feature flag as it doesnt cause a re-render of the component when loaded.
-        // You have to refresh the page to see the changes.
-        if (true) {
-          newArray.splice(4, 0, {
-            name: "attributes",
-            href: "/settings/organizations/attributes",
-          });
-        }
-
-        return {
-          ...tab,
-          children: newArray,
-          name: orgBranding?.name || "organization",
-          avatar: getPlaceholderAvatar(orgBranding?.logoUrl, orgBranding?.name),
         };
       } else if (
         tab.href === "/settings/security" &&
@@ -185,9 +117,7 @@ const useTabs = () => {
         );
         return { ...tab, children: filtered };
       } else if (tab.href === "/settings/developer") {
-        const filtered = tab?.children?.filter(
-          (childTab) => isOrgAdminOrOwner || childTab.name !== "admin_api"
-        );
+        const filtered = tab?.children?.filter((childTab) => childTab.name !== "admin_api");
         return { ...tab, children: filtered };
       }
       return tab;
@@ -195,13 +125,12 @@ const useTabs = () => {
 
     // check if name is in adminRequiredKeys
     return processedTabs.filter((tab) => {
-      if (organizationRequiredKeys.includes(tab.name)) return !!orgBranding;
-      if (tab.name === "other_teams" && !isOrgAdminOrOwner) return false;
+      if (tab.name === "other_teams") return false;
 
       if (isAdmin) return true;
       return !adminRequiredKeys.includes(tab.name);
     });
-  }, [isAdmin, orgBranding, isOrgAdminOrOwner, user]);
+  }, [isAdmin, user]);
 
   return processTabsMemod;
 };
@@ -385,15 +314,9 @@ const SettingsSidebarContainer = ({
     }[]
   >();
   const session = useSession();
-  const { data: _currentOrg } = trpc.viewer.organizations.listCurrent.useQuery(undefined, {
-    enabled: !!session.data?.user?.org && !currentOrgProp,
-  });
 
-  const { data: _otherTeams } = trpc.viewer.organizations.listOtherTeams.useQuery(undefined, {
-    enabled: !!session.data?.user?.org && !otherTeamsProp,
-  });
-  const currentOrg = currentOrgProp ?? _currentOrg;
-  const otherTeams = otherTeamsProp ?? _otherTeams;
+  const currentOrg = currentOrgProp ?? undefined;
+  const otherTeams = otherTeamsProp ?? undefined;
   // Same as above but for otherTeams
   useEffect(() => {
     if (otherTeams) {

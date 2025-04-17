@@ -1,4 +1,3 @@
-import { getOrgFullOrigin } from "@calcom/features/ee/organizations/lib/orgDomains";
 import { CAL_URL } from "@calcom/lib/constants";
 import { teamMetadataSchema, userMetadata } from "@calcom/prisma/zod-utils";
 
@@ -41,16 +40,8 @@ export const enrichFormWithMigrationData = <
       ...form.team,
       metadata: teamMetadataSchema.parse(form.team?.metadata ?? null),
     },
-    userOrigin: formOwnerOrgSlug
-      ? getOrgFullOrigin(formOwnerOrgSlug, {
-          protocol: true,
-        })
-      : CAL_URL,
-    teamOrigin: form.team?.parent?.slug
-      ? getOrgFullOrigin(form.team.parent.slug, {
-          protocol: true,
-        })
-      : CAL_URL,
+    userOrigin: CAL_URL,
+    teamOrigin: CAL_URL,
     nonOrgUsername,
     nonOrgTeamslug,
   };

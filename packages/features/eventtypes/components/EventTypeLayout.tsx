@@ -2,14 +2,12 @@ import { useMemo, useState, Suspense } from "react";
 import type { UseFormReturn } from "react-hook-form";
 
 import { Shell as PlatformShell } from "@calcom/atoms/monorepo";
-import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
 import { EventTypeEmbedButton, EventTypeEmbedDialog } from "@calcom/features/embed/EventTypeEmbed";
 import type { FormValues } from "@calcom/features/eventtypes/lib/types";
 import type { EventTypeSetupProps } from "@calcom/features/eventtypes/lib/types";
 import WebShell from "@calcom/features/shell/Shell";
 import { classNames } from "@calcom/lib";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
-import { SchedulingType } from "@calcom/prisma/enums";
 import type { VerticalTabItemProps } from "@calcom/ui";
 import {
   Button,
@@ -72,16 +70,8 @@ function EventTypeSingleLayout({
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
   const hasPermsToDelete =
-    currentUserMembership?.role !== "MEMBER" ||
-    !currentUserMembership ||
-    formMethods.getValues("schedulingType") === SchedulingType.MANAGED ||
-    isUserOrganizationAdmin;
+    currentUserMembership?.role !== "MEMBER" || !currentUserMembership || isUserOrganizationAdmin;
 
-  const { isManagedEventType, isChildrenManagedEventType } = useLockedFieldsManager({
-    eventType,
-    translate: t,
-    formMethods,
-  });
   const EventTypeTabs = tabsNavigation;
   const permalink = `${bookerUrl}/${
     team ? `${!team.parentId ? "team/" : ""}${team.slug}` : formMethods.getValues("users")[0].username
@@ -90,7 +80,6 @@ function EventTypeSingleLayout({
   const embedLink = `${
     team ? `team/${team.slug}` : formMethods.getValues("users")[0].username
   }/${formMethods.getValues("slug")}`;
-  const isManagedEvent = formMethods.getValues("schedulingType") === SchedulingType.MANAGED ? "_managed" : "";
 
   const [Shell] = useMemo(() => {
     return isPlatform ? [PlatformShell] : [WebShell];
@@ -104,93 +93,87 @@ function EventTypeSingleLayout({
       withoutSeo={!isPlatform} // Metadata is handled by App Router Metadata API for Event Type Web Page
       CTA={
         <div className="flex items-center justify-end">
-          {!formMethods.getValues("metadata")?.managedEventConfig && (
-            <>
-              <div
-                className={classNames(
-                  "sm:hover:bg-muted hidden cursor-pointer items-center rounded-md transition",
-                  formMethods.watch("hidden") ? "pl-2" : "",
-                  "lg:flex"
-                )}>
-                {formMethods.watch("hidden") && (
-                  <Skeleton
-                    as={Label}
-                    htmlFor="hiddenSwitch"
-                    className="mt-2 hidden cursor-pointer self-center whitespace-nowrap pr-2 sm:inline">
-                    {t("hidden")}
-                  </Skeleton>
-                )}
-                <Tooltip
-                  sideOffset={4}
-                  content={
-                    formMethods.watch("hidden") ? t("show_eventtype_on_profile") : t("hide_from_profile")
-                  }
-                  side="bottom">
-                  <div className="self-center rounded-md p-2">
-                    <Switch
-                      id="hiddenSwitch"
-                      disabled={eventTypesLockedByOrg}
-                      checked={!formMethods.watch("hidden")}
-                      onCheckedChange={(e) => {
-                        formMethods.setValue("hidden", !e, { shouldDirty: true });
-                      }}
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-              <VerticalDivider className="hidden lg:block" />
-            </>
-          )}
+          <>
+            <div
+              className={classNames(
+                "sm:hover:bg-muted hidden cursor-pointer items-center rounded-md transition",
+                formMethods.watch("hidden") ? "pl-2" : "",
+                "lg:flex"
+              )}>
+              {formMethods.watch("hidden") && (
+                <Skeleton
+                  as={Label}
+                  htmlFor="hiddenSwitch"
+                  className="mt-2 hidden cursor-pointer self-center whitespace-nowrap pr-2 sm:inline">
+                  {t("hidden")}
+                </Skeleton>
+              )}
+              <Tooltip
+                sideOffset={4}
+                content={
+                  formMethods.watch("hidden") ? t("show_eventtype_on_profile") : t("hide_from_profile")
+                }
+                side="bottom">
+                <div className="self-center rounded-md p-2">
+                  <Switch
+                    id="hiddenSwitch"
+                    disabled={eventTypesLockedByOrg}
+                    checked={!formMethods.watch("hidden")}
+                    onCheckedChange={(e) => {
+                      formMethods.setValue("hidden", !e, { shouldDirty: true });
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            </div>
+            <VerticalDivider className="hidden lg:block" />
+          </>
 
           {/* TODO: Figure out why combined isnt working - works in storybook */}
           <ButtonGroup combined containerProps={{ className: "border-default hidden lg:flex" }}>
-            {!isManagedEventType && (
-              <>
-                {/* We have to warp this in tooltip as it has a href which disabels the tooltip on buttons */}
-                {!isPlatform && (
-                  <Tooltip content={t("preview")} side="bottom" sideOffset={4}>
-                    <Button
-                      color="secondary"
-                      data-testid="preview-button"
-                      target="_blank"
-                      variant="icon"
-                      href={permalink}
-                      rel="noreferrer"
-                      StartIcon="external-link"
-                    />
-                  </Tooltip>
-                )}
-
-                {!isPlatform && (
-                  <Button
-                    color="secondary"
-                    variant="icon"
-                    StartIcon="link"
-                    tooltip={t("copy_link")}
-                    tooltipSide="bottom"
-                    tooltipOffset={4}
-                    onClick={() => {
-                      navigator.clipboard.writeText(permalink);
-                      showToast("Link copied!", "success");
-                    }}
-                  />
-                )}
-                {!isPlatform && (
-                  <EventTypeEmbedButton
-                    embedUrl={encodeURIComponent(embedLink)}
-                    StartIcon="code"
-                    color="secondary"
-                    variant="icon"
-                    namespace={eventType.slug}
-                    tooltip={t("embed")}
-                    tooltipSide="bottom"
-                    tooltipOffset={4}
-                    eventId={formMethods.getValues("id")}
-                  />
-                )}
-              </>
+            {/* We have to warp this in tooltip as it has a href which disabels the tooltip on buttons */}
+            {!isPlatform && (
+              <Tooltip content={t("preview")} side="bottom" sideOffset={4}>
+                <Button
+                  color="secondary"
+                  data-testid="preview-button"
+                  target="_blank"
+                  variant="icon"
+                  href={permalink}
+                  rel="noreferrer"
+                  StartIcon="external-link"
+                />
+              </Tooltip>
             )}
-            {!isChildrenManagedEventType && allowDelete && (
+
+            {!isPlatform && (
+              <Button
+                color="secondary"
+                variant="icon"
+                StartIcon="link"
+                tooltip={t("copy_link")}
+                tooltipSide="bottom"
+                tooltipOffset={4}
+                onClick={() => {
+                  navigator.clipboard.writeText(permalink);
+                  showToast("Link copied!", "success");
+                }}
+              />
+            )}
+            {!isPlatform && (
+              <EventTypeEmbedButton
+                embedUrl={encodeURIComponent(embedLink)}
+                StartIcon="code"
+                color="secondary"
+                variant="icon"
+                namespace={eventType.slug}
+                tooltip={t("embed")}
+                tooltipSide="bottom"
+                tooltipOffset={4}
+                eventId={formMethods.getValues("id")}
+              />
+            )}
+            {allowDelete && (
               <Button
                 color="destructive"
                 variant="icon"
@@ -301,7 +284,6 @@ function EventTypeSingleLayout({
       </Suspense>
       <DeleteDialog
         eventTypeId={eventType.id}
-        isManagedEvent={isManagedEvent}
         open={deleteDialogOpen}
         onOpenChange={setDeleteDialogOpen}
         onDelete={onDelete}

@@ -50,17 +50,6 @@
       "cache": false,
       "dependsOn": []
     },
-    "@calcom/api-v2#build": {
-      "dependsOn": ["^build"],
-      "env": [
-        "NODE_ENV",
-        "API_PORT",
-        "DATABASE_READ_URL",
-        "DATABASE_WRITE_URL",
-        "LOG_LEVEL",
-        "NEXTAUTH_SECRET"
-      ]
-    },
     "@calcom/ai#build": {
       "env": [
         "FRONTEND_URL",
@@ -339,7 +328,6 @@
     "RAILWAY_STATIC_URL",
     "RENDER_EXTERNAL_URL",
     "RESERVED_SUBDOMAINS",
-    "RETELL_AI_KEY",
     "SALESFORCE_CONSUMER_KEY",
     "SALESFORCE_CONSUMER_SECRET",
     "SEND_FEEDBACK_EMAIL",

@@ -5,14 +5,12 @@ import type { DialogProps } from "@calcom/ui";
 import { ConfirmationDialogContent, Dialog } from "@calcom/ui";
 
 export function DeleteDialog({
-  isManagedEvent,
   eventTypeId,
   open,
   onOpenChange,
   onDelete,
   isDeleting,
 }: {
-  isManagedEvent: string;
   eventTypeId: number;
   onDelete: (id: number) => void;
   isDeleting?: boolean;
@@ -24,7 +22,7 @@ export function DeleteDialog({
       <ConfirmationDialogContent
         isPending={isDeleting}
         variety="danger"
-        title={t(`delete${isManagedEvent}_event_type`)}
+        title={t(`delete_event_type`)}
         confirmBtnText={t(`confirm_delete_event_type`)}
         loadingText={t(`confirm_delete_event_type`)}
         onConfirm={(e) => {
@@ -33,7 +31,7 @@ export function DeleteDialog({
         }}>
         <p className="mt-5">
           <Trans
-            i18nKey={`delete${isManagedEvent}_event_type_description`}
+            i18nKey="delete_event_type_description"
             components={{ li: <li />, ul: <ul className="ml-4 list-disc" /> }}>
             <ul>
               <li>Members assigned to this event type will also have their event types deleted.</li>

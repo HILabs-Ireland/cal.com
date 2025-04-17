@@ -52,8 +52,6 @@ type LocationsProps = {
   team: { id: number } | null;
   destinationCalendar: TDestinationCalendar;
   showAppStoreLink: boolean;
-  isChildrenManagedEventType?: boolean;
-  isManagedEventType?: boolean;
   disableLocationProp?: boolean;
   getValues: UseFormGetValues<LocationFormValues>;
   setValue: UseFormSetValue<LocationFormValues>;
@@ -101,9 +99,7 @@ const getLocationInfo = ({
 };
 
 const Locations: React.FC<LocationsProps> = ({
-  isChildrenManagedEventType,
   disableLocationProp,
-  isManagedEventType,
   getValues,
   setValue,
   control,
@@ -150,9 +146,7 @@ const Locations: React.FC<LocationsProps> = ({
       return true;
     }) || [];
 
-  const defaultValue = isManagedEventType
-    ? locationOptions.find((op) => op.label === t("default"))?.options[0]
-    : undefined;
+  const defaultValue = undefined;
 
   const { locationDetails, locationAvailable } = getLocationInfo({
     eventType,
@@ -306,7 +300,7 @@ const Locations: React.FC<LocationsProps> = ({
                     }
                   }}
                 />
-                {!(disableLocationProp && isChildrenManagedEventType) && (
+                {!disableLocationProp && (
                   <button
                     data-testid={`delete-locations.${index}.type`}
                     className={classNames("min-h-9 block h-9 px-2", customClassNames?.removeLocationButton)}
@@ -450,7 +444,7 @@ const Locations: React.FC<LocationsProps> = ({
             </p>
           </div>
         )}
-        {isChildrenManagedEventType && !locationAvailable && locationDetails && (
+        {!locationAvailable && locationDetails && (
           <p className="pl-1 text-sm leading-none text-red-600">
             {t("app_not_connected", { appName: locationDetails.name })}{" "}
             <a className="underline" href={`${WEBAPP_URL}/apps/${locationDetails.slug}`}>
@@ -459,7 +453,6 @@ const Locations: React.FC<LocationsProps> = ({
           </p>
         )}
         {validLocations.length > 0 && !disableLocationProp && (
-          //  && !isChildrenManagedEventType : Add this to hide add-location button only when location is disabled by Admin
           <li>
             <Button
               data-testid="add-location"

@@ -6,11 +6,6 @@ import { useAtomsContext, useIsPlatform } from "@calcom/atoms/monorepo";
 import type { EventNameObjectType } from "@calcom/core/event";
 import { getEventName } from "@calcom/core/event";
 import getLocationsOptionsForSelect from "@calcom/features/bookings/lib/getLocationOptionsForSelect";
-import useLockedFieldsManager from "@calcom/features/ee/managed-event-types/hooks/useLockedFieldsManager";
-import {
-  allowDisablingAttendeeConfirmationEmails,
-  allowDisablingHostConfirmationEmails,
-} from "@calcom/features/ee/workflows/lib/allowDisablingStandardEmails";
 import { MultiplePrivateLinksController } from "@calcom/features/eventtypes/components";
 import type {
   FormValues,
@@ -113,7 +108,6 @@ export const EventAdvancedTab = ({
   const [redirectUrlVisible, setRedirectUrlVisible] = useState(!!formMethods.getValues("successRedirectUrl"));
 
   const bookingFields: Prisma.JsonObject = {};
-  const workflows = eventType.workflows.map((workflowOnEventType) => workflowOnEventType.workflow);
   const selectedThemeIsDark =
     user?.theme === "dark" ||
     (!user?.theme && typeof document !== "undefined" && document.documentElement.classList.contains("dark"));
@@ -163,29 +157,10 @@ export const EventAdvancedTab = ({
     );
   };
 
-  const { isChildrenManagedEventType, isManagedEventType, shouldLockDisableProps } = useLockedFieldsManager({
-    eventType,
-    translate: t,
-    formMethods,
-  });
   const eventNamePlaceholder = getEventName({
     ...eventNameObject,
     eventName: formMethods.watch("eventName"),
   });
-
-  const successRedirectUrlLocked = shouldLockDisableProps("successRedirectUrl");
-  const seatsLocked = shouldLockDisableProps("seatsPerTimeSlotEnabled");
-  const requiresBookerEmailVerificationProps = shouldLockDisableProps("requiresBookerEmailVerification");
-  const hideCalendarNotesLocked = shouldLockDisableProps("hideCalendarNotes");
-  const hideCalendarEventDetailsLocked = shouldLockDisableProps("hideCalendarEventDetails");
-  const eventTypeColorLocked = shouldLockDisableProps("eventTypeColor");
-  const lockTimeZoneToggleOnBookingPageLocked = shouldLockDisableProps("lockTimeZoneToggleOnBookingPage");
-  const multiplePrivateLinksLocked = shouldLockDisableProps("multiplePrivateLinks");
-  const { isLocked, ...eventNameLocked } = shouldLockDisableProps("eventName");
-
-  if (isManagedEventType) {
-    multiplePrivateLinksLocked.disabled = true;
-  }
 
   const closeEventNameTip = () => setShowEventNameTip(false);
 
@@ -238,7 +213,8 @@ export const EventAdvancedTab = ({
           description={t("booking_questions_description")}
           addFieldLabel={t("add_a_booking_question")}
           formProp="bookingFields"
-          {...shouldLockDisableProps("bookingFields")}
+          disabled={false}
+          LockedIcon={false}
           dataStore={{
             options: {
               locations: {
@@ -275,7 +251,6 @@ export const EventAdvancedTab = ({
             )}
             title={t("requires_booker_email_verification")}
             data-testid="requires-booker-email-verification"
-            {...requiresBookerEmailVerificationProps}
             description={t("description_requires_booker_email_verification")}
             descriptionClassName={customClassNames?.bookerEmailVerification?.description}
             checked={value}
@@ -296,7 +271,6 @@ export const EventAdvancedTab = ({
             descriptionClassName={customClassNames?.calendarNotes?.description}
             data-testid="disable-notes"
             title={t("disable_notes")}
-            {...hideCalendarNotesLocked}
             description={t("disable_notes_description")}
             checked={value}
             onCheckedChange={(e) => onChange(e)}
@@ -315,7 +289,6 @@ export const EventAdvancedTab = ({
             )}
             descriptionClassName={customClassNames?.eventDetailsVisibility?.description}
             title={t("hide_calendar_event_details")}
-            {...hideCalendarEventDetailsLocked}
             description={t("description_hide_calendar_event_details")}
             checked={value}
             onCheckedChange={(e) => onChange(e)}
@@ -338,7 +311,6 @@ export const EventAdvancedTab = ({
               descriptionClassName={customClassNames?.bookingRedirect?.description}
               title={t("redirect_success_booking")}
               data-testid="redirect-success-booking"
-              {...successRedirectUrlLocked}
               description={t("redirect_url_description")}
               checked={redirectUrlVisible}
               onCheckedChange={(e) => {
@@ -355,7 +327,6 @@ export const EventAdvancedTab = ({
                   label={t("redirect_success_booking")}
                   labelClassName={customClassNames?.bookingRedirect?.redirectUrlInput?.label}
                   labelSrOnly
-                  disabled={successRedirectUrlLocked.disabled}
                   placeholder={t("external_redirect_url")}
                   data-testid="external-redirect-url"
                   required={redirectUrlVisible}
@@ -373,7 +344,6 @@ export const EventAdvancedTab = ({
                     render={({ field: { value, onChange } }) => (
                       <CheckboxField
                         description={t("forward_params_redirect")}
-                        disabled={successRedirectUrlLocked.disabled}
                         className={customClassNames?.bookingRedirect?.forwardParamsCheckbox?.checkbox}
                         descriptionClassName={
                           customClassNames?.bookingRedirect?.forwardParamsCheckbox?.description
@@ -413,9 +383,7 @@ export const EventAdvancedTab = ({
                 childrenClassName="lg:ml-0"
                 data-testid="multiplePrivateLinksCheck"
                 title={t("multiple_private_links_title")}
-                {...multiplePrivateLinksLocked}
                 description={t("multiple_private_links_description", { appName: APP_NAME })}
-                tooltip={isManagedEventType ? t("managed_event_field_parent_control_disabled") : ""}
                 checked={multiplePrivateLinksVisible}
                 onCheckedChange={(e) => {
                   if (!e) {
@@ -429,11 +397,9 @@ export const EventAdvancedTab = ({
                   }
                   setMultiplePrivateLinksVisible(e);
                 }}>
-                {!isManagedEventType && (
-                  <div className="border-subtle rounded-b-lg border border-t-0 p-6">
-                    <MultiplePrivateLinksController team={team} bookerUrl={eventType.bookerUrl} />
-                  </div>
-                )}
+                <div className="border-subtle rounded-b-lg border border-t-0 p-6">
+                  <MultiplePrivateLinksController team={team} bookerUrl={eventType.bookerUrl} />
+                </div>
               </SettingsToggle>
             );
           }}
@@ -455,7 +421,6 @@ export const EventAdvancedTab = ({
               descriptionClassName={customClassNames?.seatsOptions?.description}
               data-testid="offer-seats-toggle"
               title={t("offer_seats")}
-              {...seatsLocked}
               description={t("offer_seats_description")}
               checked={value}
               disabled={multiLocation}
@@ -487,7 +452,6 @@ export const EventAdvancedTab = ({
                         labelSrOnly
                         label={t("number_of_seats")}
                         type="number"
-                        disabled={seatsLocked.disabled}
                         defaultValue={value}
                         min={1}
                         containerClassName={classNames(
@@ -518,7 +482,6 @@ export const EventAdvancedTab = ({
                               descriptionClassName={
                                 customClassNames?.seatsOptions?.showAttendeesCheckbox?.description
                               }
-                              disabled={seatsLocked.disabled}
                               onChange={(e) => onChange(e)}
                               checked={value}
                             />
@@ -535,7 +498,6 @@ export const EventAdvancedTab = ({
                           render={({ field: { value, onChange } }) => (
                             <CheckboxField
                               description={t("show_available_seats_count")}
-                              disabled={seatsLocked.disabled}
                               onChange={(e) => onChange(e)}
                               checked={value}
                               className={
@@ -568,7 +530,6 @@ export const EventAdvancedTab = ({
               customClassNames?.timezoneLock?.container
             )}
             title={t("lock_timezone_toggle_on_booking_page")}
-            {...lockTimeZoneToggleOnBookingPageLocked}
             description={t("description_lock_timezone_toggle_on_booking_page")}
             checked={value}
             onCheckedChange={(e) => onChange(e)}
@@ -588,7 +549,6 @@ export const EventAdvancedTab = ({
               customClassNames?.eventTypeColors?.container
             )}
             title={t("event_type_color")}
-            {...eventTypeColorLocked}
             description={t("event_type_color_description")}
             descriptionClassName={customClassNames?.eventTypeColors?.description}
             checked={isEventTypeColorChecked}
@@ -679,51 +639,6 @@ export const EventAdvancedTab = ({
               checked={value}
               onCheckedChange={(e) => onChange(e)}
             />
-          )}
-        />
-      )}
-      {allowDisablingAttendeeConfirmationEmails(workflows) && (
-        <Controller
-          name="metadata.disableStandardEmails.confirmation.attendee"
-          render={({ field: { value, onChange } }) => (
-            <>
-              <SettingsToggle
-                labelClassName={classNames("text-sm", customClassNames?.emailNotifications?.label)}
-                toggleSwitchAtTheEnd={true}
-                switchContainerClassName={classNames(
-                  "border-subtle rounded-lg border py-6 px-4 sm:px-6",
-                  customClassNames?.emailNotifications?.container
-                )}
-                title={t("disable_attendees_confirmation_emails")}
-                description={t("disable_attendees_confirmation_emails_description")}
-                descriptionClassName={customClassNames?.emailNotifications?.description}
-                checked={value}
-                onCheckedChange={(e) => onChange(e)}
-              />
-            </>
-          )}
-        />
-      )}
-      {allowDisablingHostConfirmationEmails(workflows) && (
-        <Controller
-          name="metadata.disableStandardEmails.confirmation.host"
-          defaultValue={!!formMethods.getValues("seatsPerTimeSlot")}
-          render={({ field: { value, onChange } }) => (
-            <>
-              <SettingsToggle
-                labelClassName={classNames("text-sm", customClassNames?.emailNotifications?.label)}
-                toggleSwitchAtTheEnd={true}
-                switchContainerClassName={classNames(
-                  "border-subtle rounded-lg border py-6 px-4 sm:px-6",
-                  customClassNames?.emailNotifications?.container
-                )}
-                descriptionClassName={customClassNames?.emailNotifications?.description}
-                title={t("disable_host_confirmation_emails")}
-                description={t("disable_host_confirmation_emails_description")}
-                checked={value}
-                onCheckedChange={(e) => onChange(e)}
-              />
-            </>
           )}
         />
       )}

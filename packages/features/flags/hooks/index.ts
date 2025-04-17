@@ -2,7 +2,6 @@ import type { AppFlags } from "@calcom/features/flags/config";
 import { trpc } from "@calcom/trpc/react";
 
 const initialData: AppFlags = {
-  organizations: false,
   teams: false,
   "calendar-cache": false,
   "calendar-cache-serve": false,
@@ -20,7 +19,6 @@ const initialData: AppFlags = {
 };
 
 if (process.env.NEXT_PUBLIC_IS_E2E) {
-  initialData.organizations = true;
   initialData.teams = true;
 }
 

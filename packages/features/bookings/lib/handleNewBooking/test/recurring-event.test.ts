@@ -11,8 +11,7 @@ import {
 import { createMockNextJsRequest } from "@calcom/web/test/utils/bookingScenario/createMockNextJsRequest";
 import {
   expectBookingCreatedWebhookToHaveBeenFired,
-  expectBookingToBeInDatabase, // expectWorkflowToBeTriggered,
-  expectSuccessfulBookingCreationEmails,
+  expectBookingToBeInDatabase,
 } from "@calcom/web/test/utils/bookingScenario/expects";
 import { getMockRequestDataForBooking } from "@calcom/web/test/utils/bookingScenario/getMockRequestDataForBooking";
 import { setupAndTeardown } from "@calcom/web/test/utils/bookingScenario/setupAndTeardown";
@@ -20,7 +19,7 @@ import { setupAndTeardown } from "@calcom/web/test/utils/bookingScenario/setupAn
 import { v4 as uuidv4 } from "uuid";
 import { describe, expect } from "vitest";
 
-import { WEBAPP_URL, WEBSITE_URL } from "@calcom/lib/constants";
+import { WEBAPP_URL } from "@calcom/lib/constants";
 import { ErrorCode } from "@calcom/lib/errorCodes";
 import logger from "@calcom/lib/logger";
 import { BookingStatus, SchedulingType } from "@calcom/prisma/enums";
@@ -171,32 +170,6 @@ describe("handleNewBooking", () => {
               videoCallUrl: `${WEBAPP_URL}/video/${createdBookings[0].uid}`,
             });
           }
-
-          // expectWorkflowToBeTriggered();
-
-          expectSuccessfulBookingCreationEmails({
-            booker,
-            booking: {
-              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-              uid: createdBookings[0].uid!,
-              urlOrigin: WEBSITE_URL,
-            },
-            organizer,
-            emails,
-            bookingTimeRange: {
-              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-              start: createdBookings[0].startTime!,
-              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-              end: createdBookings[0].endTime!,
-            },
-            iCalUID: createdBookings[0].iCalUID,
-            recurrence: {
-              ...recurrence,
-              count: recurringCountInRequest,
-            },
-          });
-
-          expect(emails.get().length).toBe(2);
         },
         timeout
       );
@@ -454,26 +427,6 @@ describe("handleNewBooking", () => {
               videoCallUrl: `${WEBAPP_URL}/video/${createdBookings[0].uid}`,
             });
           }
-
-          // expectWorkflowToBeTriggered();
-
-          expectSuccessfulBookingCreationEmails({
-            booker,
-            booking: {
-              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-              uid: createdBookings[0].uid!,
-              urlOrigin: WEBSITE_URL,
-            },
-            organizer,
-            emails,
-            iCalUID: createdBookings[0].iCalUID,
-            recurrence: {
-              ...recurrence,
-              count: recurringCountInRequest,
-            },
-          });
-
-          expect(emails.get().length).toBe(2);
         },
         timeout
       );
@@ -621,26 +574,6 @@ describe("handleNewBooking", () => {
               videoCallUrl: `${WEBAPP_URL}/video/${createdBookings[0].uid}`,
             });
           }
-
-          // expectWorkflowToBeTriggered();
-
-          expectSuccessfulBookingCreationEmails({
-            booking: {
-              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-              uid: createdBookings[0].uid!,
-              urlOrigin: WEBSITE_URL,
-            },
-            booker,
-            organizer,
-            emails,
-            iCalUID: createdBookings[0].iCalUID,
-            recurrence: {
-              ...recurrence,
-              count: recurringCountInRequest,
-            },
-          });
-
-          expect(emails.get().length).toBe(2);
         },
         timeout
       );

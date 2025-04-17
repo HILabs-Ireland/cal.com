@@ -12,7 +12,6 @@ type TeamBookingsParamsBase = {
   startDate: Date;
   endDate: Date;
   excludedUid?: string | null;
-  includeManagedEvents: boolean;
   shouldReturnCount?: boolean;
 };
 
@@ -365,7 +364,7 @@ export class BookingRepository {
   ): Promise<Array<Booking>>;
 
   static async getAllAcceptedTeamBookingsOfUser(params: TeamBookingsParamsBase) {
-    const { user, teamId, startDate, endDate, excludedUid, shouldReturnCount, includeManagedEvents } = params;
+    const { user, teamId, startDate, endDate, excludedUid, shouldReturnCount } = params;
 
     const baseWhere: Prisma.BookingWhereInput = {
       status: BookingStatus.ACCEPTED,
@@ -402,16 +401,6 @@ export class BookingRepository {
       },
     };
 
-    const whereManagedBookings: Prisma.BookingWhereInput = {
-      ...baseWhere,
-      userId: user.id,
-      eventType: {
-        parent: {
-          teamId,
-        },
-      },
-    };
-
     if (shouldReturnCount) {
       const collectiveRoundRobinBookingsOwner = await prisma.booking.count({
         where: whereCollectiveRoundRobinOwner,
@@ -421,16 +410,7 @@ export class BookingRepository {
         where: whereCollectiveRoundRobinBookingsAttendee,
       });
 
-      let managedBookings = 0;
-
-      if (includeManagedEvents) {
-        managedBookings = await prisma.booking.count({
-          where: whereManagedBookings,
-        });
-      }
-
-      const totalNrOfBooking =
-        collectiveRoundRobinBookingsOwner + collectiveRoundRobinBookingsAttendee + managedBookings;
+      const totalNrOfBooking = collectiveRoundRobinBookingsOwner + collectiveRoundRobinBookingsAttendee;
 
       return totalNrOfBooking;
     }
@@ -442,19 +422,7 @@ export class BookingRepository {
       where: whereCollectiveRoundRobinBookingsAttendee,
     });
 
-    let managedBookings: typeof collectiveRoundRobinBookingsAttendee = [];
-
-    if (includeManagedEvents) {
-      managedBookings = await prisma.booking.findMany({
-        where: whereManagedBookings,
-      });
-    }
-
-    return [
-      ...collectiveRoundRobinBookingsOwner,
-      ...collectiveRoundRobinBookingsAttendee,
-      ...managedBookings,
-    ];
+    return [...collectiveRoundRobinBookingsOwner, ...collectiveRoundRobinBookingsAttendee];
   }
 
   static async findOriginalRescheduledBooking(uid: string, seatsEventType?: boolean) {

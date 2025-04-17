@@ -3,8 +3,7 @@ import { isValidPhoneNumber } from "libphonenumber-js";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
 
-import { useOrgBranding } from "@calcom/features/ee/organizations/context/provider";
-import { TeamEventTypeForm } from "@calcom/features/ee/teams/components/TeamEventTypeForm";
+import { TeamEventTypeForm } from "@calcom/features/teams/components/TeamEventTypeForm";
 import { useCreateEventType } from "@calcom/lib/hooks/useCreateEventType";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { useTypedQuery } from "@calcom/lib/hooks/useTypedQuery";
@@ -62,7 +61,6 @@ export default function CreateEventTypeDialog({
 }) {
   const { t } = useLocale();
   const router = useRouter();
-  const orgBranding = useOrgBranding();
 
   const {
     data: { teamId, eventPage: pageSlug },
@@ -100,9 +98,9 @@ export default function CreateEventTypeDialog({
     );
   };
 
-  const { form, createMutation, isManagedEventType } = useCreateEventType(onSuccessMutation, onErrorMutation);
+  const { form, createMutation } = useCreateEventType(onSuccessMutation, onErrorMutation);
 
-  const urlPrefix = orgBranding?.fullDomain ?? process.env.NEXT_PUBLIC_WEBSITE_URL;
+  const urlPrefix = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
   const { data: team } = trpc.viewer.teams.get.useQuery(
     { teamId: teamId ?? -1, isOrg: false },
@@ -126,7 +124,6 @@ export default function CreateEventTypeDialog({
             urlPrefix={urlPrefix}
             isPending={createMutation.isPending}
             form={form}
-            isManagedEventType={isManagedEventType}
             handleSubmit={(values) => {
               createMutation.mutate(values);
             }}
@@ -137,7 +134,6 @@ export default function CreateEventTypeDialog({
             urlPrefix={urlPrefix}
             isPending={createMutation.isPending}
             form={form}
-            isManagedEventType={isManagedEventType}
             handleSubmit={(values) => {
               createMutation.mutate(values);
             }}

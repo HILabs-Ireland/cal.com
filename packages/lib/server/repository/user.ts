@@ -1,6 +1,5 @@
 import { createHash } from "crypto";
 
-import { whereClauseForOrgWithSlugOrRequestedSlug } from "@calcom/ee/organizations/lib/orgDomains";
 import { hashPassword } from "@calcom/features/auth/lib/hashPassword";
 import logger from "@calcom/lib/logger";
 import { safeStringify } from "@calcom/lib/safeStringify";
@@ -219,7 +218,7 @@ export class UserRepository {
             },
             ...(orgSlug
               ? {
-                  organization: whereClauseForOrgWithSlugOrRequestedSlug(orgSlug),
+                  organization: null,
                 }
               : {
                   organization: null,

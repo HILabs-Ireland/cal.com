@@ -13,7 +13,8 @@ import { EventTypeRepository } from "@calcom/lib/server/repository/eventType";
 import { MembershipRepository } from "@calcom/lib/server/repository/membership";
 import { ProfileRepository } from "@calcom/lib/server/repository/profile";
 import { UserRepository } from "@calcom/lib/server/repository/user";
-import { MembershipRole, SchedulingType } from "@calcom/prisma/enums";
+import type { SchedulingType } from "@calcom/prisma/enums";
+import { MembershipRole } from "@calcom/prisma/enums";
 import { teamMetadataSchema } from "@calcom/prisma/zod-utils";
 import { eventTypeMetaDataSchemaWithoutApps } from "@calcom/prisma/zod-utils";
 
@@ -165,10 +166,6 @@ export const getEventTypesByViewer = async (user: User, filters?: Filters, forRo
 
   let eventTypeGroups: EventTypeGroup[] = [];
 
-  const unmanagedEventTypes = userEventTypes.filter(
-    (evType) => evType.schedulingType !== SchedulingType.MANAGED
-  );
-
   log.debug(safeStringify({ profileMemberships, profileEventTypes, profile }));
 
   log.debug(
@@ -193,7 +190,7 @@ export const getEventTypesByViewer = async (user: User, filters?: Filters, forRo
         }),
         eventTypesLockedByOrg: parentOrgHasLockedEventTypes,
       },
-      eventTypes: orderBy(unmanagedEventTypes, ["position", "id"], ["desc", "asc"]),
+      eventTypes: orderBy(userEventTypes, ["position", "id"], ["desc", "asc"]),
       metadata: {
         membershipCount: 1,
         readOnly: false,
@@ -290,11 +287,6 @@ export const getEventTypesByViewer = async (user: User, filters?: Filters, forRo
                 const res = evType.userId === null || evType.userId === user.id;
                 return res;
               })
-              .filter((evType) =>
-                membership.role === MembershipRole.MEMBER
-                  ? evType.schedulingType !== SchedulingType.MANAGED
-                  : true
-              )
               .filter(filterBySchedulingTypes),
           };
         })
