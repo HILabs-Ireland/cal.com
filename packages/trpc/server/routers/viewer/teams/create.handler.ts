@@ -1,4 +1,3 @@
-import { WEBAPP_URL } from "@calcom/lib/constants";
 import { uploadLogo } from "@calcom/lib/server/avatar";
 import { ProfileRepository } from "@calcom/lib/server/repository/profile";
 import { resizeBase64Image } from "@calcom/lib/server/resizeBase64Image";
@@ -77,8 +76,6 @@ export const createHandler = async ({ ctx, input }: CreateOptions) => {
   }
 
   return {
-    url: `${WEBAPP_URL}/settings/teams/${createdTeam.id}/onboard-members`,
-    message: "Team billing is disabled, not generating a checkout session.",
     team: createdTeam,
   };
 };

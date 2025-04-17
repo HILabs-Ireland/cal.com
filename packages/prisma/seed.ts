@@ -1232,12 +1232,14 @@ async function main() {
     UPDATE "EventType"
     SET "teamId" = 3
     WHERE "teamId" = 1
+    AND EXISTS (SELECT 1 FROM "Team" WHERE id = 3)
   `;
 
   await prisma.$executeRaw`
     UPDATE "EventType"
     SET "teamId" = 4
     WHERE "teamId" = 2
+    AND EXISTS (SELECT 1 FROM "Team" WHERE id = 4)
   `;
 
   // Team id: 1 = Nurses

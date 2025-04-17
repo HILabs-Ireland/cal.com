@@ -8,8 +8,9 @@ import type { ComponentProps } from "react";
 import React, { useEffect, useState, useMemo } from "react";
 
 import Shell from "@calcom/features/shell/Shell";
+import { CreateTeamDialog } from "@calcom/features/teams/components";
 import { classNames } from "@calcom/lib";
-import { IS_CALCOM, WEBAPP_URL } from "@calcom/lib/constants";
+import { IS_CALCOM } from "@calcom/lib/constants";
 import { getPlaceholderAvatar } from "@calcom/lib/defaultAvatarImage";
 import { getUserAvatarUrl } from "@calcom/lib/getAvatarUrl";
 import { useCompatSearchParams } from "@calcom/lib/hooks/useCompatSearchParams";
@@ -421,13 +422,18 @@ const SettingsSidebarContainer = ({
                     </Link>
                     <TeamListCollapsible />
                     {(!currentOrg || (currentOrg && currentOrg?.user?.role !== "MEMBER")) && (
-                      <VerticalTabItem
-                        name={t("add_a_team")}
-                        href={`${WEBAPP_URL}/settings/teams/new`}
-                        textClassNames="px-3 items-center mt-2 text-emphasis font-medium text-sm"
-                        icon="plus"
-                        disableChevron
-                      />
+                      <CreateTeamDialog>
+                        {({ open }) => (
+                          <VerticalTabItem
+                            href=""
+                            name={t("add_a_team")}
+                            onClick={open}
+                            textClassNames="px-3 items-center mt-2 text-emphasis font-medium text-sm"
+                            icon="plus"
+                            disableChevron
+                          />
+                        )}
+                      </CreateTeamDialog>
                     )}
                   </div>
                 </React.Fragment>

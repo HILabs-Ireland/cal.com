@@ -134,14 +134,6 @@ test.describe("Teams - NonOrg", () => {
       await expect(page.locator("[data-testid=new-team-btn]")).toBeHidden();
       await expect(page.locator("[data-testid=create-team-btn]")).toHaveAttribute("disabled", "");
 
-      const uniqueName = "test-unique-team-name";
-
-      // Go directly to the create team page
-      await page.goto("/settings/teams/new");
-      // Fill input[name="name"]
-      await page.locator('input[name="name"]').fill(uniqueName);
-      await page.click("[type=submit]");
-
       // cleanup
       const org = await owner.getOrgMembership();
       await prisma.team.delete({ where: { id: org.teamId } });
@@ -156,22 +148,24 @@ test.describe("Teams - NonOrg", () => {
     await page.goto("/teams");
 
     await test.step("Can create team with same name", async () => {
-      // Click text=Create Team
-      await page.locator("text=Create a new team").click();
-      const url = await page.url();
-      await page.waitForURL((url) => url.href.includes("/settings/teams/new"));
-      // Fill input[name="name"]
+      // Check if team list is empty
+      await expect(page.getByTestId("team-list-item-link")).not.toBeAttached();
 
+      // Open create team dialog
+      await page.locator("text=Create a new team").click();
+
+      const dialog = page.getByRole("dialog").locator("button", { hasText: "Submit" });
+      await expect(dialog).toBeVisible();
+
+      // Create Team
       await page.locator('input[name="name"]').fill(uniqueName);
-      // Click text=Continue
+
       await page.click("[type=submit]");
-      // TODO: Figure out a way to make this more reliable
-      await page.waitForURL(/\/settings\/teams\/(\d+)\/onboard-members.*$/i);
-      // Click text=Continue
-      await page.locator("[data-testid=publish-button]").click();
-      await page.waitForURL(/\/settings\/teams\/(\d+)\/event-type*$/i);
-      await page.locator("[data-testid=handle-later-button]").click();
-      await page.waitForURL(/\/settings\/teams\/(\d+)\/profile$/i);
+
+      await expect(dialog).toBeHidden();
+
+      // Check if team is created
+      await expect(page.getByTestId("team-list-item-link").filter({ hasText: uniqueName })).toBeVisible();
     });
 
     await test.step("Can access user and team with same slug", async () => {

@@ -22,12 +22,22 @@ test.skip("[EE feature] Can signup from a team invite", async () => {
       password: `${proUser.username}-MEMBER`,
       email: `${proUser.username}-member@example.com`,
     };
-    await page.goto("/settings/teams/new");
+
+    await page.goto("/teams");
+    await page.locator("text=Create a new team").click();
+    const dialog = page.getByRole("dialog").locator("button", { hasText: "Submit" });
+    await expect(dialog).toBeVisible();
 
     // Create a new team
     await page.locator('input[name="name"]').fill(teamName);
     await page.locator('input[name="slug"]').fill(teamName);
     await page.locator('button[type="submit"]').click();
+
+    await expect(dialog).toBeHidden();
+
+    // Go to the team settings
+    await page.locator("data-testid=team-list-item-link").filter({ hasText: teamName }).click();
+    await page.locator('title="Members"').click();
 
     // Add new member to team
     await page.click('[data-testid="new-member-button"]');
