@@ -449,7 +449,7 @@ export const MemberInvitationModalWithoutMembers = ({
 
               if (Array.isArray(data.usernameOrEmail)) {
                 showToast(
-                  t("email_invite_team_bulk", {
+                  t("email_add_team_bulk", {
                     userCount: data.numUsersInvited,
                   }),
                   "success"
@@ -457,7 +457,7 @@ export const MemberInvitationModalWithoutMembers = ({
                 resetFields();
               } else {
                 showToast(
-                  t("email_invite_team", {
+                  t("email_add_team", {
                     email: data.usernameOrEmail,
                   }),
                   "success"
