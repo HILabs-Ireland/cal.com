@@ -24,7 +24,7 @@ import {
 
 import TeamRoleTag from "./TeamRoleTag";
 
-interface TeamListItemProps {
+interface Props {
   team: RouterOutputs["viewer"]["teams"]["list"][number];
   key: number;
   onActionSelect: (text: string) => void;
@@ -39,7 +39,7 @@ export default function TeamListItem({
   isPending,
   hideDropdown,
   setHideDropdown,
-}: TeamListItemProps) {
+}: Props) {
   const { t } = useLocale();
   const [openMemberAddModal, setOpenMemberAddModal] = useState(
     useCompatSearchParams()?.get("inviteModal") === "true"
