@@ -57,7 +57,6 @@
   "rejection_reason_description": "Haluatko varmasti hylätä varauksen? Ilmoitamme asiasta varaajalle. Voit antaa syyn alla.",
   "rejection_confirmation": "Hylkää varaus",
   "manage_this_event": "Hallinnoi tätä tapahtumaa",
-  "invite_team_member": "Kutsu tiimin jäsen",
   "invite_team_individual_segment": "Kutsu henkilö",
   "invite_team_bulk_segment": "Massatuonti",
   "invite_team_notifcation_badge": "Kutsu",

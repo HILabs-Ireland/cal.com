@@ -57,7 +57,6 @@
   "rejection_reason_description": "Сигурни ли сте, че искате да отхвърлите резервацията? Ще уведомим човека, който се е опитал да направи резервация. Можете да посочите причина по-долу.",
   "rejection_confirmation": "Отхвърли резервацията",
   "manage_this_event": "Управление на това събитие",
-  "invite_team_member": "Покани член на екипа",
   "invite_team_individual_segment": "Покани индивидуално",
   "invite_team_bulk_segment": "Масов импорт",
   "invite_team_notifcation_badge": "Пок.",

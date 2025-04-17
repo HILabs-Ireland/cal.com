@@ -57,7 +57,6 @@ export default function TeamListItem({
         showMemberInvitationModal={openMemberAddModal}
         teamId={team.id}
         token={team.inviteToken?.token}
-        onSettingsOpen={() => null}
       />
       <div className={classNames("hover:bg-muted group flex items-center justify-between")}>
         <Link href={`/settings/teams/${team.id}/profile`} className="flex w-full items-center">

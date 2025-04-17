@@ -413,21 +413,6 @@ describe("Invite Member Utils", () => {
       expect(canBeInvited(inviteeWithOrg, organization)).toBe(INVITE_STATUS.USER_ALREADY_INVITED_OR_MEMBER);
     });
 
-    it("should return USER_PENDING_MEMBER_OF_THE_ORG if the invitee is being invited to a team in an organization but he has not accepted the organization membership", () => {
-      const inviteeOrganizationId = 2;
-      const inviteeWithOrg: UserWithMembership = {
-        ...invitee,
-        teams: [{ teamId: inviteeOrganizationId, accepted: false, userId: invitee.id, role: "ADMIN" }],
-      };
-
-      const subTeam = {
-        ...mockedRegularTeam,
-        parentId: inviteeOrganizationId,
-        id: 1,
-      };
-      expect(canBeInvited(inviteeWithOrg, subTeam)).toBe(INVITE_STATUS.USER_PENDING_MEMBER_OF_THE_ORG);
-    });
-
     it("should return USER_MEMBER_OF_OTHER_ORGANIZATION if the invitee is being invited to an organization but he belongs to another organization", () => {
       const inviteeOrganizationId = 2;
       const organizationIdBeingInvitedTo = 3;

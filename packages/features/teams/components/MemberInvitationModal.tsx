@@ -1,10 +1,8 @@
 import { useSession } from "next-auth/react";
-import { Trans } from "next-i18next";
 import type { FormEvent } from "react";
 import { useMemo, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-import { classNames } from "@calcom/lib";
 import { MAX_NB_INVITES } from "@calcom/lib/constants";
 import { useCompatSearchParams } from "@calcom/lib/hooks/useCompatSearchParams";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
@@ -32,12 +30,10 @@ type MemberInvitationModalProps = {
   isOpen: boolean;
   onExit: () => void;
   onSubmit: (values: NewMemberForm, resetFields: () => void) => void;
-  onSettingsOpen?: () => void;
   teamId: number;
   members?: PendingMember[];
   token?: string;
   isPending?: boolean;
-  disableCopyLink?: boolean;
   isOrg?: boolean;
   checkMembershipMutation?: boolean;
 };
@@ -65,23 +61,13 @@ function toggleElementInArray(value: string[] | string | undefined, element: str
 
 export default function MemberInvitationModal(props: MemberInvitationModalProps) {
   const { t } = useLocale();
-  const { disableCopyLink = false, isOrg = false } = props;
+  const { isOrg = false } = props;
   const trpcContext = trpc.useUtils();
   const session = useSession();
 
   const checkIfMembershipExistsMutation = trpc.viewer.teams.checkIfMembershipExists.useMutation();
 
   const [modalImportMode, setModalInputMode] = useState<ModalMode>("INDIVIDUAL");
-
-  const createInviteMutation = trpc.viewer.teams.createInvite.useMutation({
-    async onSuccess({ inviteLink }) {
-      trpcContext.viewer.teams.get.invalidate();
-      trpcContext.viewer.teams.list.invalidate();
-    },
-    onError: (error) => {
-      showToast(error.message, "error");
-    },
-  });
 
   const options: MembershipRoleOption[] = useMemo(() => {
     const options: MembershipRoleOption[] = [
@@ -171,18 +157,7 @@ export default function MemberInvitationModal(props: MemberInvitationModalProps)
         props.onExit();
         newMemberFormMethods.reset();
       }}>
-      <DialogContent
-        enableOverflow
-        type="creation"
-        title={t("invite_team_member")}
-        description={
-          <span className="text-subtle text-sm leading-tight">
-            <Trans i18nKey="invite_new_member_description">
-              Note: This will <span className="text-emphasis font-medium">cost an extra seat ($15/m)</span> on
-              on your subscription.
-            </Trans>
-          </span>
-        }>
+      <DialogContent enableOverflow type="creation" title={t("add_team_member")}>
         <div className="sm:max-h-9">
           <Label className="sr-only" htmlFor="role">
             {t("import_mode")}
@@ -317,67 +292,8 @@ export default function MemberInvitationModal(props: MemberInvitationModalProps)
                 </div>
               )}
             />
-            {props.token && (
-              <div className="flex">
-                <Button
-                  type="button"
-                  color="minimal"
-                  className="me-2 ms-2"
-                  onClick={() => {
-                    props.onSettingsOpen && props.onSettingsOpen();
-                    newMemberFormMethods.reset();
-                  }}
-                  data-testid="edit-invite-link-button">
-                  {t("edit_invite_link")}
-                </Button>
-              </div>
-            )}
           </div>
           <DialogFooter showDivider>
-            {!disableCopyLink && (
-              <div className="flex-grow">
-                <Button
-                  type="button"
-                  color="minimal"
-                  variant="icon"
-                  onClick={async function () {
-                    try {
-                      // Required for Safari but also works on Chrome
-                      // Credits to https://wolfgangrittner.dev/how-to-use-clipboard-api-in-firefox/
-                      if (typeof ClipboardItem !== "undefined") {
-                        const inviteLinkClipbardItem = new ClipboardItem({
-                          "text/plain": new Promise(async (resolve) => {
-                            // Instead of doing async work and then writing to clipboard, do async work in clipboard API itself
-                            const { inviteLink } = await createInviteMutation.mutateAsync({
-                              teamId: props.teamId,
-                              token: props.token,
-                            });
-                            showToast(t("invite_link_copied"), "success");
-                            resolve(new Blob([inviteLink], { type: "text/plain" }));
-                          }),
-                        });
-                        await navigator.clipboard.write([inviteLinkClipbardItem]);
-                      } else {
-                        // Fallback for browsers that don't support ClipboardItem e.g. Firefox
-                        const { inviteLink } = await createInviteMutation.mutateAsync({
-                          teamId: props.teamId,
-                          token: props.token,
-                        });
-                        await navigator.clipboard.writeText(inviteLink);
-                        showToast(t("invite_link_copied"), "success");
-                      }
-                    } catch (e) {
-                      showToast(t("something_went_wrong_on_our_end"), "error");
-                      console.error(e);
-                    }
-                  }}
-                  className={classNames("gap-2", props.token && "opacity-50")}
-                  data-testid="copy-invite-link-button">
-                  <Icon name="link" className="text-default h-4 w-4" aria-hidden="true" />
-                  <span className="hidden sm:inline">{t("copy_invite_link")}</span>
-                </Button>
-              </div>
-            )}
             <Button
               type="button"
               color="minimal"
@@ -388,13 +304,11 @@ export default function MemberInvitationModal(props: MemberInvitationModalProps)
               {t("cancel")}
             </Button>
             <Button
-              loading={
-                props.isPending || createInviteMutation.isPending || checkIfMembershipExistsMutation.isPending
-              }
+              loading={props.isPending || checkIfMembershipExistsMutation.isPending}
               type="submit"
               color="primary"
               className="me-2 ms-2"
-              data-testid="invite-new-member-button">
+              data-testid="add-new-member-button">
               {t("send_invite")}
             </Button>
           </DialogFooter>
@@ -409,14 +323,12 @@ export const MemberInvitationModalWithoutMembers = ({
   showMemberInvitationModal,
   teamId,
   token,
-  onSettingsOpen,
   ...props
 }: Partial<MemberInvitationModalProps> & {
   hideInvitationModal: () => void;
   showMemberInvitationModal: boolean;
   teamId: number;
   token?: string;
-  onSettingsOpen: () => void;
 }) => {
   const searchParams = useCompatSearchParams();
   const { t, i18n } = useLocale();
@@ -469,10 +381,6 @@ export const MemberInvitationModalWithoutMembers = ({
             },
           }
         );
-      }}
-      onSettingsOpen={() => {
-        hideInvitationModal();
-        onSettingsOpen();
       }}
     />
   );

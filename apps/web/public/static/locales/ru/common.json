@@ -57,7 +57,6 @@
   "rejection_reason_description": "Отказаться от брони? Мы сообщим пользователю, который пытался оформить бронь. Вы можете указать причину отказа ниже.",
   "rejection_confirmation": "Отказаться от бронирования",
   "manage_this_event": "Управление этой встречей",
-  "invite_team_member": "Пригласить участника команды",
   "invite_team_individual_segment": "Пригласить пользователя",
   "invite_team_bulk_segment": "Массовый импорт контактов",
   "invite_team_notifcation_badge": "Прг.",

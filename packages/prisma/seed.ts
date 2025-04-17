@@ -166,18 +166,6 @@ async function createPlatformAndSetupUser({
       username: user.username,
     });
 
-    await prisma.platformOAuthClient.create({
-      data: {
-        name: "Acme",
-        redirectUris: ["http://localhost:4321"],
-        permissions: 1023,
-        areEmailsEnabled: true,
-        organizationId: team.id,
-        id: "clxyyy21o0003sbk7yw5z6tzg",
-        secret:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWNtZSAiLCJwZXJtaXNzaW9ucyI6MTAyMywicmVkaXJlY3RVcmlzIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NDMyMSJdLCJib29raW5nUmVkaXJlY3RVcmkiOiIiLCJib29raW5nQ2FuY2VsUmVkaXJlY3RVcmkiOiIiLCJib29raW5nUmVzY2hlZHVsZVJlZGlyZWN0VXJpIjoiIiwiYXJlRW1haWxzRW5hYmxlZCI6dHJ1ZSwiaWF0IjoxNzE5NTk1ODA4fQ.L5_jSS14fcKLCD_9_DAOgtGd6lUSZlU5CEpCPaPt41I",
-      },
-    });
     console.log(`\t👤 Added '${teamInput.name}' membership for '${username}' with role '${role}'`);
   }
 }
@@ -881,106 +869,6 @@ async function main() {
     },
   });
 
-  await createTeamAndAddUsers(
-    {
-      name: "Alternaleaf - Nurses",
-      slug: "alternaleaf-nurses",
-      isOrganization: false,
-      isPlatform: false,
-      eventTypes: {
-        createMany: {
-          data: [
-            {
-              title: "Round Robin Nurse Team Event",
-              slug: "round-robin-nurse-team-event",
-              length: 15,
-              schedulingType: "ROUND_ROBIN",
-            },
-          ],
-        },
-      },
-      createdAt: new Date(),
-    },
-    []
-  );
-
-  await createTeamAndAddUsers(
-    {
-      name: "Alternaleaf - Doctors",
-      slug: "alternaleaf-doctors",
-      isOrganization: false,
-      isPlatform: false,
-      eventTypes: {
-        createMany: {
-          data: [
-            {
-              title: "Round Robin Doctor Team Event",
-              slug: "round-robin-doctor-team-event",
-              length: 15,
-              schedulingType: "ROUND_ROBIN",
-            },
-          ],
-        },
-      },
-      createdAt: new Date(),
-    },
-    []
-  );
-
-  const adminUser = await prisma.user.findUnique({
-    where: { email: "admin@example.com" },
-  });
-
-  if (!adminUser) {
-    throw Error("Admin user not found");
-  }
-
-  const adminApiKey = hashAPIKey("test-admin-key");
-
-  await prisma.apiKey.upsert({
-    where: {
-      hashedKey: adminApiKey, // Check if the hashedKey already exists
-    },
-    update: {}, // Do nothing if it exists
-    create: {
-      id: uuid(),
-      userId: adminUser.id,
-      note: "Admin API Key",
-      expiresAt: null,
-      hashedKey: adminApiKey,
-    },
-  });
-
-  const existingMembership = await prisma.membership.findUnique({
-    where: {
-      userId_teamId: {
-        userId: adminUser.id,
-        teamId: 1,
-      },
-    },
-  });
-
-  if (!existingMembership) {
-    await prisma.membership.createMany({
-      data: [
-        {
-          teamId: 1,
-          userId: adminUser.id,
-          accepted: true,
-          role: "ADMIN",
-          disableImpersonation: false,
-        },
-        {
-          teamId: 2,
-          userId: adminUser.id,
-          accepted: true,
-          role: "ADMIN",
-          disableImpersonation: false,
-        },
-      ],
-    });
-  }
-
   await createPlatformAndSetupUser({
     teamInput: {
       name: "Platform Team",
@@ -1283,6 +1171,585 @@ async function main() {
         username: "john-outside-org",
       },
     ],
+  });
+
+  const adminUser = await prisma.user.findUnique({
+    where: { email: "admin@example.com" },
+  });
+
+  if (!adminUser) {
+    throw Error("Admin user not found");
+  }
+
+  const adminApiKey = hashAPIKey("test-admin-key");
+
+  await prisma.apiKey.upsert({
+    where: {
+      hashedKey: adminApiKey, // Check if the hashedKey already exists
+    },
+    update: {}, // Do nothing if it exists
+    create: {
+      id: uuid(),
+      userId: adminUser.id,
+      note: "Admin API Key",
+      expiresAt: null,
+      hashedKey: adminApiKey,
+    },
+  });
+
+  const existingMembership = await prisma.membership.findUnique({
+    where: {
+      userId_teamId: {
+        userId: adminUser.id,
+        teamId: 1,
+      },
+    },
+  });
+
+  if (!existingMembership) {
+    await prisma.membership.createMany({
+      data: [
+        {
+          teamId: 1,
+          userId: adminUser.id,
+          accepted: true,
+          role: "ADMIN",
+          disableImpersonation: false,
+        },
+        {
+          teamId: 2,
+          userId: adminUser.id,
+          accepted: true,
+          role: "ADMIN",
+          disableImpersonation: false,
+        },
+      ],
+    });
+  }
+
+  // Change existing teamId for event types
+  await prisma.$executeRaw`
+    UPDATE "EventType"
+    SET "teamId" = 3
+    WHERE "teamId" = 1
+  `;
+
+  await prisma.$executeRaw`
+    UPDATE "EventType"
+    SET "teamId" = 4
+    WHERE "teamId" = 2
+  `;
+
+  // Team id: 1 = Nurses
+  await prisma.team.update({
+    where: { id: 1 },
+    data: {
+      name: "Alternaleaf - Nurses",
+      slug: "alternaleaf-nurses",
+      timeZone: "Europe/London",
+      isPlatform: false,
+      isOrganization: false,
+    },
+  });
+
+  // Nurse webhooks
+  await prisma.webhook.upsert({
+    where: {
+      id: "49bb4152-3e05-452b-b1f3-c133b0432118",
+    },
+    update: {},
+    create: {
+      teamId: 1,
+      id: "49bb4152-3e05-452b-b1f3-c133b0432118",
+      subscriberUrl: "http://localhost:9000/api/v1/calcom/webhooks",
+      active: true,
+      eventTriggers: ["BOOKING_CANCELLED", "BOOKING_CREATED", "BOOKING_RESCHEDULED"],
+      secret: "pms-service-webhook-secret",
+      platform: false,
+    },
+  });
+
+  // Nurse round robin event
+  await prisma.eventType.update({
+    where: { id: 4 },
+    data: {
+      teamId: 1,
+      title: "Initial Consultation - Staging",
+      slug: "initial-consultation",
+      description:
+        "Book your 20-minute consultation with one of our friendly Alternaleaf nurses, which includes:\n\n✓ Speaking to a qualified clinician with deep medical knowledge across a range of physical and mental health conditions.\n\n✓ Telehealth consultation from the comfort of your home.\n\n✓ Personalised treatment plan based on your condition and medical history.\n\nFollowing your nurse consultation, you'll be invited to book an appointment with one of our qualified doctors.",
+      locations: [{ link: "https://alternaleaf.com.au", type: "link" }],
+      length: 20,
+      hidden: true,
+      userId: adminUser.id,
+      eventName: "",
+      timeZone: null,
+      periodCountCalendarDays: false,
+      periodDays: 45,
+      requiresConfirmation: false,
+      minimumBookingNotice: 15,
+      schedulingType: "ROUND_ROBIN",
+      disableGuests: true,
+      position: 0,
+      periodType: "ROLLING",
+      slotInterval: 20,
+      metadata: {
+        config: { useHostSchedulesForTeamEvent: true },
+        bookerLayouts: { defaultLayout: "month_view", enabledLayouts: ["month_view", "week_view"] },
+      },
+      afterEventBuffer: 0,
+      beforeEventBuffer: 0,
+      hideCalendarNotes: false,
+      successRedirectUrl: "",
+      seatsPerTimeSlot: null,
+      recurringEvent: false,
+      scheduleId: null,
+      bookingLimits: {},
+      seatsShowAttendees: false,
+      bookingFields: [
+        {
+          name: "name",
+          type: "name",
+          label: "",
+          sources: [{ id: "default", type: "default", label: "Default" }],
+          variant: "firstAndLastName",
+          editable: "system",
+          required: true,
+          placeholder: "",
+          defaultLabel: "your_name",
+          variantsConfig: {
+            variants: {
+              fullName: {
+                fields: [
+                  { name: "fullName", type: "text", label: "Your name", required: true, placeholder: "" },
+                ],
+              },
+              firstAndLastName: {
+                fields: [
+                  { name: "firstName", type: "text", label: "", required: true, placeholder: "" },
+                  { name: "lastName", type: "text", label: "", required: true, placeholder: "" },
+                ],
+              },
+            },
+          },
+          disableOnPrefill: false,
+        },
+        {
+          name: "email",
+          type: "email",
+          sources: [{ id: "default", type: "default", label: "Default" }],
+          editable: "system",
+          required: true,
+          defaultLabel: "email_address",
+        },
+        {
+          name: "location",
+          type: "radioInput",
+          sources: [{ id: "default", type: "default", label: "Default" }],
+          editable: "system",
+          required: false,
+          defaultLabel: "location",
+          getOptionsAt: "locations",
+          optionsInputs: {
+            phone: { type: "phone", required: true, placeholder: "" },
+            attendeeInPerson: { type: "address", required: true, placeholder: "" },
+          },
+          hideWhenJustOneOption: true,
+        },
+        {
+          name: "phoneNumber",
+          type: "phone",
+          label: "Phone number (in case the clinic needs to reach you)",
+          required: true,
+          placeholder: "+61",
+          disableOnPrefill: false,
+        },
+        {
+          name: "consentToConsultationRecording",
+          type: "boolean",
+          label:
+            "I understand that Alternaleaf may record and/or transcribe the consultations I may have with Alternaleaf health care providers for training and quality purposes. In proceeding with this booking, I am consenting to my consultations being recorded.",
+          sources: [{ id: "user", type: "user", label: "User", fieldRequired: true }],
+          editable: "user",
+          required: true,
+          placeholder: "",
+          labelAsSafeHtml:
+            "<p>I understand that Alternaleaf may record and/or transcribe the consultations I may have with Alternaleaf health care providers for training and quality purposes. In proceeding with this booking,<br />I am consenting to my consultations being recorded.</p>\n",
+          disableOnPrefill: false,
+        },
+        {
+          name: "medicareNameCheck",
+          type: "boolean",
+          label: "My first and last name matches the name on my Medicare card.",
+          hidden: false,
+          options: [
+            { label: "Option 1", value: "Option 1" },
+            { label: "Option 2", value: "Option 2" },
+          ],
+          required: true,
+          labelAsSafeHtml: "<p>My first and last name matches the name on my Medicare card.</p>\n",
+        },
+        {
+          name: "appointmentConfirmation",
+          type: "boolean",
+          label:
+            "I confirm I can make my appointment. Nurse appointments are in high demand. Please consider fellow patients and avoid booking slots you can't attend. Charges may apply if appointments are cancelled with less than 24 hours notice.",
+          hidden: true,
+          options: [
+            { label: "Option 1", value: "Option 1" },
+            { label: "Option 2", value: "Option 2" },
+          ],
+          required: true,
+          labelAsSafeHtml:
+            "<p>I confirm I can make my appointment. Nurse appointments are in high demand. Please consider fellow patients and avoid booking slots you can't attend. Charges may apply if appointments are cancelled with less than 24 hours notice.</p>\n",
+        },
+        {
+          name: "title",
+          type: "text",
+          hidden: true,
+          sources: [{ id: "default", type: "default", label: "Default" }],
+          editable: "system-but-optional",
+          required: true,
+          defaultLabel: "what_is_this_meeting_about",
+          defaultPlaceholder: "",
+        },
+        {
+          name: "notes",
+          type: "textarea",
+          hidden: true,
+          sources: [{ id: "default", type: "default", label: "Default" }],
+          editable: "system-but-optional",
+          required: false,
+          defaultLabel: "additional_notes",
+          defaultPlaceholder: "share_additional_notes",
+        },
+        {
+          name: "guests",
+          type: "multiemail",
+          hidden: true,
+          sources: [{ id: "default", type: "default", label: "Default" }],
+          editable: "system-but-optional",
+          required: false,
+          defaultLabel: "additional_guests",
+          defaultPlaceholder: "email",
+        },
+        {
+          name: "rescheduleReason",
+          type: "textarea",
+          label: "",
+          views: [{ id: "reschedule", label: "Reschedule View" }],
+          hidden: false,
+          sources: [{ id: "default", type: "default", label: "Default" }],
+          editable: "system-but-optional",
+          required: false,
+          placeholder: "",
+          defaultLabel: "reason_for_reschedule",
+          defaultPlaceholder: "reschedule_placeholder",
+        },
+        {
+          name: "utmCampaign",
+          type: "textarea",
+          label: "utmCampaign",
+          hidden: true,
+          sources: [{ id: "user", type: "user", label: "User", fieldRequired: true }],
+          editable: "user",
+          required: false,
+          placeholder: "",
+        },
+        {
+          name: "utmTerm",
+          type: "textarea",
+          label: "utmTerm",
+          hidden: true,
+          sources: [{ id: "user", type: "user", label: "User", fieldRequired: false }],
+          editable: "user",
+          required: false,
+          placeholder: "",
+        },
+        {
+          name: "utmMedium",
+          type: "textarea",
+          label: "utmMedium",
+          hidden: true,
+          sources: [{ id: "user", type: "user", label: "User", fieldRequired: false }],
+          editable: "user",
+          required: false,
+          placeholder: "",
+        },
+        {
+          name: "utmSource",
+          type: "textarea",
+          label: "utmSource",
+          hidden: true,
+          sources: [{ id: "user", type: "user", label: "User", fieldRequired: false }],
+          editable: "user",
+          required: false,
+          placeholder: "",
+        },
+        {
+          name: "utmContent",
+          type: "textarea",
+          label: "utmContent",
+          hidden: true,
+          sources: [{ id: "user", type: "user", label: "User", fieldRequired: false }],
+          editable: "user",
+          required: false,
+          placeholder: "",
+        },
+        {
+          name: "isEwayPayment",
+          type: "textarea",
+          label: "isEwayPayment",
+          hidden: true,
+          sources: [{ id: "user", type: "user", label: "User", fieldRequired: true }],
+          editable: "user",
+          required: true,
+          placeholder: "",
+        },
+        {
+          name: "promocode",
+          type: "textarea",
+          label: "promocode",
+          hidden: true,
+          sources: [{ id: "user", type: "user", label: "User", fieldRequired: false }],
+          editable: "user",
+          required: false,
+          placeholder: "",
+        },
+      ],
+      durationLimits: {},
+      parentId: null,
+      offsetStart: 0,
+      requiresBookerEmailVerification: false,
+      seatsShowAvailabilityCount: true,
+      lockTimeZoneToggleOnBookingPage: false,
+      onlyShowFirstAvailableSlot: false,
+      isInstantEvent: false,
+      assignAllTeamMembers: false,
+      profileId: null,
+      useEventTypeDestinationCalendarEmail: false,
+      secondaryEmailId: null,
+      forwardParamsSuccessRedirect: true,
+      isRRWeightsEnabled: false,
+      rescheduleWithSameRoundRobinHost: false,
+      requiresConfirmationWillBlockSlot: false,
+      hideCalendarEventDetails: false,
+      assignRRMembersUsingSegment: false,
+      maxLeadThreshold: null,
+      requiresConfirmationForFreeEmail: false,
+    },
+  });
+
+  // Team id: 2 = Doctors
+  await prisma.team.update({
+    where: { id: 2 },
+    data: {
+      name: "Alternaleaf - Doctors",
+      slug: "alternaleaf-doctors",
+      timeZone: "Europe/London",
+      isPlatform: false,
+      isOrganization: false,
+    },
+  });
+
+  // Doctor webhooks
+  await prisma.webhook.upsert({
+    where: {
+      id: "3aab44ee-f1f8-4658-ace9-7accb81ea729",
+    },
+    update: {},
+    create: {
+      teamId: 2,
+      id: "3aab44ee-f1f8-4658-ace9-7accb81ea729",
+      subscriberUrl: "http://localhost:9000/api/v1/calcom/webhooks",
+      active: true,
+      eventTriggers: ["BOOKING_CANCELLED", "BOOKING_CREATED", "BOOKING_RESCHEDULED"],
+      secret: "pms-service-webhook-secret",
+      platform: false,
+    },
+  });
+
+  // Doctor round robin event
+  await prisma.eventType.update({
+    where: {
+      id: 5,
+    },
+    data: {
+      teamId: 2,
+      title: "Medical Consultation - Staging",
+      slug: "medical-cannabis-consultation",
+      description:
+        "Book your 10-minute consultation with a friendly Alternaleaf doctor, which includes:\n\n✓ Speaking to a qualified doctor with a deep knowledge of plant medicine.\n\n✓ Telehealth consultation from the comfort of your home.\n\n✓ Personalised treatment plan based on your condition and medical history.\n\nFollowing your doctor consultation, you'll receive a script with your medicine to your email address.",
+      locations: [{ link: "https://alternaleaf.com.au", type: "link" }],
+      length: 10,
+      hidden: true,
+      userId: adminUser.id,
+      eventName: "",
+      timeZone: null,
+      periodCountCalendarDays: false,
+      periodDays: 45,
+      requiresConfirmation: false,
+      minimumBookingNotice: 15,
+      schedulingType: "ROUND_ROBIN",
+      disableGuests: true,
+      position: 0,
+      periodType: "ROLLING",
+      slotInterval: 10,
+      metadata: {
+        config: { useHostSchedulesForTeamEvent: true },
+      },
+      afterEventBuffer: 0,
+      beforeEventBuffer: 0,
+      hideCalendarNotes: false,
+      successRedirectUrl: "",
+      seatsPerTimeSlot: null,
+      recurringEvent: false,
+      scheduleId: null,
+      bookingLimits: {},
+      seatsShowAttendees: false,
+      bookingFields: [
+        {
+          name: "name",
+          type: "name",
+          label: "",
+          sources: [{ id: "default", type: "default", label: "Default" }],
+          editable: "system",
+          required: true,
+          placeholder: "",
+          defaultLabel: "your_name",
+          variantsConfig: {
+            variants: {
+              fullName: {
+                fields: [
+                  { name: "fullName", type: "text", label: "Your name", required: true, placeholder: "" },
+                ],
+              },
+              firstAndLastName: {
+                fields: [
+                  { name: "firstName", type: "text", required: true },
+                  { name: "lastName", type: "text", required: false },
+                ],
+              },
+            },
+          },
+          disableOnPrefill: true,
+        },
+        {
+          name: "email",
+          type: "email",
+          label: "",
+          sources: [{ id: "default", type: "default", label: "Default" }],
+          editable: "system",
+          required: true,
+          placeholder: "",
+          defaultLabel: "email_address",
+          excludeEmails: "",
+          requireEmails: "",
+          disableOnPrefill: true,
+        },
+        {
+          name: "location",
+          type: "radioInput",
+          sources: [{ id: "default", type: "default", label: "Default" }],
+          editable: "system",
+          required: false,
+          defaultLabel: "location",
+          getOptionsAt: "locations",
+          optionsInputs: {
+            phone: { type: "phone", required: true, placeholder: "" },
+            attendeeInPerson: { type: "address", required: true, placeholder: "" },
+          },
+          hideWhenJustOneOption: true,
+        },
+        {
+          name: "phoneNumber",
+          type: "phone",
+          label: "Phone number (in case the clinic needs to reach you)",
+          hidden: false,
+          required: true,
+          placeholder: "+61",
+          disableOnPrefill: true,
+        },
+        {
+          name: "consentToConsultationRecording",
+          type: "boolean",
+          label:
+            "I understand that Alternaleaf may record and/or transcribe the consultations I may have with Alternaleaf health care providers for training and quality purposes. In proceeding with this booking, I am consenting to my consultations being recorded.",
+          options: [
+            { label: "Option 1", value: "Option 1" },
+            { label: "Option 2", value: "Option 2" },
+          ],
+          sources: [{ id: "user", type: "user", label: "User", fieldRequired: true }],
+          editable: "user",
+          required: true,
+          placeholder: "",
+          labelAsSafeHtml:
+            "<p>I understand that Alternaleaf may record and/or transcribe the consultations I may have with Alternaleaf health care providers for training and quality purposes. In proceeding with this booking, I am consenting to my consultations being recorded.</p>\n",
+          disableOnPrefill: false,
+        },
+        {
+          name: "title",
+          type: "text",
+          hidden: true,
+          sources: [{ id: "default", type: "default", label: "Default" }],
+          editable: "system-but-optional",
+          required: true,
+          defaultLabel: "what_is_this_meeting_about",
+          defaultPlaceholder: "",
+        },
+        {
+          name: "notes",
+          type: "textarea",
+          hidden: true,
+          sources: [{ id: "default", type: "default", label: "Default" }],
+          editable: "system-but-optional",
+          required: false,
+          defaultLabel: "additional_notes",
+          defaultPlaceholder: "share_additional_notes",
+        },
+        {
+          name: "guests",
+          type: "multiemail",
+          hidden: true,
+          sources: [{ id: "default", type: "default", label: "Default" }],
+          editable: "system-but-optional",
+          required: false,
+          defaultLabel: "additional_guests",
+          defaultPlaceholder: "email",
+        },
+        {
+          name: "rescheduleReason",
+          type: "textarea",
+          views: [{ id: "reschedule", label: "Reschedule View" }],
+          hidden: true,
+          sources: [{ id: "default", type: "default", label: "Default" }],
+          editable: "system-but-optional",
+          required: false,
+          defaultLabel: "reason_for_reschedule",
+          defaultPlaceholder: "reschedule_placeholder",
+        },
+      ],
+      durationLimits: {},
+      parentId: null,
+      offsetStart: 0,
+      requiresBookerEmailVerification: false,
+      seatsShowAvailabilityCount: true,
+      lockTimeZoneToggleOnBookingPage: false,
+      onlyShowFirstAvailableSlot: false,
+      isInstantEvent: false,
+      assignAllTeamMembers: false,
+      profileId: null,
+      useEventTypeDestinationCalendarEmail: false,
+      secondaryEmailId: null,
+      forwardParamsSuccessRedirect: true,
+      isRRWeightsEnabled: false,
+      rescheduleWithSameRoundRobinHost: false,
+      requiresConfirmationWillBlockSlot: false,
+      hideCalendarEventDetails: false,
+      assignRRMembersUsingSegment: false,
+      maxLeadThreshold: null,
+      requiresConfirmationForFreeEmail: false,
+    },
   });
 }
 

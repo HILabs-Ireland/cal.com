@@ -10,7 +10,6 @@ import { MembershipRole } from "@calcom/prisma/enums";
 import { trpc } from "@calcom/trpc/react";
 
 import DisableTeamImpersonation from "../components/DisableTeamImpersonation";
-import InviteLinkSettingsModal from "../components/InviteLinkSettingsModal";
 import MakeTeamPrivateSwitch from "../components/MakeTeamPrivateSwitch";
 import { MemberInvitationModalWithoutMembers } from "../components/MemberInvitationModal";
 import MemberList from "../components/MemberList";
@@ -19,7 +18,6 @@ import TeamInviteList from "../components/TeamInviteList";
 const MembersView = () => {
   const { t } = useLocale();
   const [showMemberInvitationModal, setShowMemberInvitationModal] = useState(false);
-  const [showInviteLinkSettingsModal, setInviteLinkSettingsModal] = useState(false);
   const router = useRouter();
   const session = useSession();
   const org = session?.data?.user.org;
@@ -97,20 +95,6 @@ const MembersView = () => {
                 showMemberInvitationModal={showMemberInvitationModal}
                 teamId={team.id}
                 token={team.inviteToken?.token}
-                onSettingsOpen={() => setInviteLinkSettingsModal(true)}
-              />
-            )}
-
-            {showInviteLinkSettingsModal && team?.inviteToken && team.id && (
-              <InviteLinkSettingsModal
-                isOpen={showInviteLinkSettingsModal}
-                teamId={team.id}
-                token={team.inviteToken.token}
-                expiresInDays={team.inviteToken.expiresInDays || undefined}
-                onExit={() => {
-                  setInviteLinkSettingsModal(false);
-                  setShowMemberInvitationModal(true);
-                }}
               />
             )}
 

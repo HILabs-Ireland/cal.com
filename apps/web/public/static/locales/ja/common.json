@@ -57,7 +57,6 @@
   "rejection_reason_description": "この予約を拒否してよろしいですか？予約を試みたユーザーに通知を送ります。拒否の理由は、下にご記入いただけます。",
   "rejection_confirmation": "予約を拒否する",
   "manage_this_event": "このイベントを管理する",
-  "invite_team_member": "チームメンバーを招待",
   "invite_team_individual_segment": "個人を招待",
   "invite_team_bulk_segment": "一括インポート",
   "invite_team_notifcation_badge": "招待",
